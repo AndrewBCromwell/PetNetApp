@@ -2,7 +2,26 @@
 Day Section
 Kirkwood Community College
 
-Developers:
+Project Manager:
 
 
-Scrum Leaders: Asa
+Product Owner:
+
+
+Scrum Leaders:
+
+Matthew Meppelink
+Asa Armstrong
+
+
+Project Developers:
+
+Alexis Oetken
+William Rients
+
+Chris Dreismeier
+
+Barry Mikulas
+Asa Armstrong
+
+Tyler Hand
