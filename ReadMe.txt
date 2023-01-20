@@ -32,7 +32,6 @@ Nathan Zumsande
 Asa Armstrong
 Andrew Cromwell
 Teft Francisco
-Brian Collum
 Hoang Chu
 Mads Rhea
 John Morris
