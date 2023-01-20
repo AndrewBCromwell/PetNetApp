@@ -27,13 +27,10 @@ Brian Collum
 Matthew Meppelink
 Hoang Chu
 Molly Meister
-Matthew Meppelink
 Nathan Zumsande
 Asa Armstrong
 Andrew Cromwell
 Teft Francisco
-Brian Collum
-Hoang Chu
 Mads Rhea
 John Morris
 Zaid Rachman
