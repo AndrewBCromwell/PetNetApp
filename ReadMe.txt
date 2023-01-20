@@ -11,6 +11,8 @@ Product Owner:
 
 Scrum Leaders:
 
+Zaid Rachman
+
 
 Project Developers:
 
@@ -20,4 +22,5 @@ Chris Dreismeier
 
 Barry Mikulas
 
+Zaid Rachman
 
