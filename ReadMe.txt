@@ -17,6 +17,7 @@ Asa Armstrong
 Project Developers:
 Alexis Oetken
 William Rients
+Andrew Schneider
 Chris Dreismeier
 Stephen Jaurigue
 Barry Mikulas
@@ -26,7 +27,4 @@ Matthew Meppelink
 Brian Collum
 Tyler Hand
 Asa Armstrong
-Tyler Hand
-Brian Collum
-Matthew Meppelink
 Hoang Chu
