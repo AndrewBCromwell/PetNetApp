@@ -21,12 +21,11 @@ Project Developers:
 
 Alexis Oetken
 William Rients
-
 Chris Dreismeier
 Stephen Jaurigue
 Barry Mikulas
 Zaid Rachman
 Tyler Hand
 Matthew Meppelink
-
-
+Brian Collum
+Hoang Chu
