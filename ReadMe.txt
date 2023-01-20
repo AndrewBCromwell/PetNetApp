@@ -17,16 +17,12 @@ Matthew Meppelink
 Project Developers:
 
 Alexis Oetken
+Teft Francisco
 William Rients
-
-Chris Dreismeier
-
+Chris Dreismeier	
 Barry Mikulas
-
-<<<<<<< HEAD
 Tyler Hand
-=======
 Matthew Meppelink
->>>>>>> origin/main
+
 
 
