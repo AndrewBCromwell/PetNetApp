@@ -22,8 +22,8 @@ Andrew Schneider
 Asa Armstrong
 Barry Mikulas
 Brian Collum
-Ethan Kline
 Chris Dreismeier
+Ethan Kline
 Gwen Arman
 Hoang Chu
 John Morris
