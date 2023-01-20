@@ -10,6 +10,7 @@ Product Owner:
 
 
 Scrum Leaders:
+Gwen Arman
 
 Matthew Meppelink
 
