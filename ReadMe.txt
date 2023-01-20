@@ -27,8 +27,6 @@ Asa Armstrong
 Teft Francisco
 Tyler Hand
 Brian Collum
-
-
 Matthew Meppelink
-
 Hoang Chu
+Molly Meister
