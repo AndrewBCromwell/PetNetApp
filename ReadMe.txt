@@ -11,6 +11,8 @@ Product Owner:
 
 Scrum Leaders:
 
+Matthew Meppelink
+
 
 Project Developers:
 
@@ -20,5 +22,7 @@ William Rients
 Chris Dreismeier
 
 Barry Mikulas
+
+Matthew Meppelink
 
 
