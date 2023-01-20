@@ -7,9 +7,10 @@ Project Manager:
 
 
 Product Owner:
-
+Stephen Jaurigue
 
 Scrum Leaders:
+Gwen Arman
 
 Matthew Meppelink
 
@@ -17,12 +18,16 @@ Matthew Meppelink
 Project Developers:
 
 Alexis Oetken
-Teft Francisco
 William Rients
-Chris Dreismeier	
+Teft Francisco
+Chris Dreismeier
+Stephen Jaurigue
 Barry Mikulas
+
+Brian Collum
+
 Tyler Hand
+
 Matthew Meppelink
 
-
-
+Hoang Chu
