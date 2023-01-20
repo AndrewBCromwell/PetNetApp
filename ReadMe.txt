@@ -23,11 +23,15 @@ Asa Armstrong
 Barry Mikulas
 Brian Collum
 Chris Dreismeier
+Gwen Arman
 Hoang Chu
 John Morris
 Mads Rhea
 Matthew Meppelink
+Mohmeed Tomsah
+Molly Meister
 Nathan Zumsande
+Oleksiy Fedchuk
 Stephen Jaurigue
 Teft Francisco
 Tyler Hand
