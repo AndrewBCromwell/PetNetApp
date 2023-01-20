@@ -10,6 +10,7 @@ Product Owner:
 Stephen Jaurigue
 
 Scrum Leaders:
+Gwen Arman
 
 Matthew Meppelink
 
@@ -23,6 +24,10 @@ Chris Dreismeier
 Stephen Jaurigue
 Barry Mikulas
 
+<<<<<<< HEAD
+Tyler Hand
+=======
 Matthew Meppelink
+>>>>>>> origin/main
 
 
