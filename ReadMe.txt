@@ -9,8 +9,16 @@ Project Manager:
 Product Owner:
 
 
+Scrum Leaders:
+
+
 Project Developers:
 
 Alexis Oetken
 William Rients
+
+Chris Dreismeier
+
+Barry Mikulas
+
 
