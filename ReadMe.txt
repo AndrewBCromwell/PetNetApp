@@ -24,9 +24,8 @@ Chris Dreismeier
 Stephen Jaurigue
 Barry Mikulas
 Asa Armstrong
-
 Andrew Cromwell
-
+Teft Francisco
 Tyler Hand
 
 Brian Collum
