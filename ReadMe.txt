@@ -2,7 +2,6 @@
 Day Section
 Kirkwood Community College
 
-
 Project Manager:
 
 
@@ -13,6 +12,7 @@ Scrum Leaders:
 Gwen Arman
 
 Matthew Meppelink
+Asa Armstrong
 
 
 Project Developers:
@@ -23,12 +23,14 @@ William Rients
 Chris Dreismeier
 Stephen Jaurigue
 Barry Mikulas
+Asa Armstrong
 
 Andrew Cromwell
 
+Tyler Hand
+
 Brian Collum
 
-Tyler Hand
 
 Matthew Meppelink
 
