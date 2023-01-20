@@ -4,7 +4,7 @@ Kirkwood Community College
 
 
 Project Manager:
-
+Molly Meister
 
 Product Owner:
 Stephen Jaurigue
