@@ -6,7 +6,7 @@ Project Manager:
 
 
 Product Owner:
-
+Stephen Jaurigue
 
 Scrum Leaders:
 Gwen Arman
@@ -21,8 +21,12 @@ Alexis Oetken
 William Rients
 
 Chris Dreismeier
-
+Stephen Jaurigue
 Barry Mikulas
 Asa Armstrong
 
 Tyler Hand
+Brian Collum
+
+
+Matthew Meppelink
