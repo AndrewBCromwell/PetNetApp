@@ -3,7 +3,7 @@ Day Section
 Kirkwood Community College
 
 Project Manager:
-
+Molly Meister
 
 Product Owner:
 Stephen Jaurigue
@@ -29,6 +29,7 @@ Teft Francisco
 Tyler Hand
 
 Brian Collum
+John Morris
 
 
 Matthew Meppelink
