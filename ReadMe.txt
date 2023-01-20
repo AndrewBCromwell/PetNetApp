@@ -11,13 +11,21 @@ Product Owner:
 
 Scrum Leaders:
 
+Matthew Meppelink
+
 
 Project Developers:
 
 Alexis Oetken
+William Rients
 
 Chris Dreismeier
 
 Barry Mikulas
 
 Andrew Cromwell
+
+Tyler Hand
+
+Matthew Meppelink
+
