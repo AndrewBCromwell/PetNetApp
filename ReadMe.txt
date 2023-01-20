@@ -12,4 +12,5 @@ Product Owner:
 Project Developers:
 
 Alexis Oetken
+William Rients
 
