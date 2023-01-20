@@ -14,5 +14,5 @@ Scrum Leaders:
 
 Project Developers:
 
-
+Alexis Oetken
 
