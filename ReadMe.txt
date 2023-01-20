@@ -2,4 +2,14 @@
 Day Section
 Kirkwood Community College
 
-Developers:
+
+Project Manager:
+
+
+Product Owner:
+
+
+Project Developers:
+
+
+
