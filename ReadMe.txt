@@ -10,16 +10,14 @@ Stephen Jaurigue
 
 Scrum Leaders:
 Gwen Arman
-
 Matthew Meppelink
 Asa Armstrong
+Zaid Rachman
 
 
 Project Developers:
-
 Alexis Oetken
 William Rients
-Andrew Schneider
 Chris Dreismeier
 Stephen Jaurigue
 Barry Mikulas
@@ -32,5 +30,6 @@ Teft Francisco
 Brian Collum
 Hoang Chu
 John Morris
-
+Zaid Rachman
+Andrew Schneider
 
