@@ -38,7 +38,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <ScrollViewer Background="#6A9F83" Grid.Row="0" HorizontalScrollBarVisibility="Hidden" Height="40" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+        <ScrollViewer Background="#6A9F83" Grid.Row="0" HorizontalScrollBarVisibility="Hidden" Height="40" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                 <Rectangle Width="20"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Adopt" x:Name="btnAdopt" Click="btnAdopt_Click"/>
@@ -46,6 +46,7 @@
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Surrender" x:Name="btnSurrender" Click="btnSurrender_Click" />
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Animal List" x:Name="btnAnimalList" Click="btnAnimalList_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Medical" x:Name="btnMedical" Click="btnMedical_Click" />
+                <Rectangle Width="20"/>
             </StackPanel>
         </ScrollViewer>
         <Frame x:Name="frameAnimals" Grid.Row="2"></Frame>

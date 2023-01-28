@@ -166,7 +166,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Height="45" VerticalAlignment="Bottom">
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Height="45" VerticalAlignment="Bottom" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <StackPanel Orientation="Horizontal">
                 <Rectangle Width="20"/>
                 <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Animals" x:Name="btnAnimals" Click="btnAnimals_Click"/>
@@ -176,6 +176,7 @@
                 <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Donate" x:Name="btnDonate" Click="btnDonate_Click"/>
                 <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Management" x:Name="btnManagement" Click="btnManagement_Click"/>
                 <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Donations" x:Name="btnDonations" Click="btnDonations_Click"/>
+                <Rectangle Width="20"/>
             </StackPanel>
         </ScrollViewer>
         <Frame x:Name="frameMain" Grid.Row="2" NavigationUIVisibility="Hidden"></Frame>

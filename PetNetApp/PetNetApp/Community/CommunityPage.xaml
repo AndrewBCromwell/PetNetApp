@@ -38,12 +38,13 @@
             <RowDefinition Height="40"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <ScrollViewer Background="#6A9F83" Grid.Row="0" HorizontalScrollBarVisibility="Hidden" Height="40" VerticalScrollBarVisibility="Disabled">
+        <ScrollViewer Background="#6A9F83" Grid.Row="0" HorizontalScrollBarVisibility="Hidden" Height="40" VerticalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                 <Rectangle Width="20"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Forum" x:Name="btnForum" Click="btnForum_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Users" x:Name="btnUsers" Click="btnUsers_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="About" x:Name="btnAbout" Click="btnAbout_Click" />
+                <Rectangle Width="20"/>
             </StackPanel>
         </ScrollViewer>
         <Frame x:Name="frameCommunity" Grid.Row="2"></Frame>
