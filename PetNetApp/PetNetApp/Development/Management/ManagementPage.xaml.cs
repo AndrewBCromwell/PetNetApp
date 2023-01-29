@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
 
-namespace WpfPresentation.Management
+namespace WpfPresentation.Development.Management
 {
     /// <summary>
     /// Interaction logic for ManagementPage.xaml

@@ -12,13 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfPresentation.Animals;
-using WpfPresentation.Community;
-using WpfPresentation.Management;
+using WpfPresentation.Development.Animals;
+using WpfPresentation.Development.Community;
+using WpfPresentation.Development.Management;
 using LogicLayer;
 using System.Diagnostics;
 
-namespace PetNetApp
+namespace PetNetApp.Development
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

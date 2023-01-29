@@ -59,16 +59,22 @@ namespace WpfPresentation.Community
         private void btnForum_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameCommunity.Navigate(null);
         }
 
         private void btnUsers_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameCommunity.Navigate(null);
         }
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameCommunity.Navigate(null);
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -107,14 +113,12 @@ namespace WpfPresentation.Community
 
         private void btnScrollRight_Click(object sender, RoutedEventArgs e)
         {
-            svCommunityPageTabs.LineRight();
-            svCommunityPageTabs.LineRight();
+            svCommunityPageTabs.ScrollToHorizontalOffset(svCommunityPageTabs.HorizontalOffset + 130);
         }
 
         private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
         {
-            svCommunityPageTabs.LineLeft();
-            svCommunityPageTabs.LineLeft();
+            svCommunityPageTabs.ScrollToHorizontalOffset(svCommunityPageTabs.HorizontalOffset - 130);
         }
 
         private void svCommunityPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)

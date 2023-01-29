@@ -59,27 +59,36 @@ namespace WpfPresentation.Animals
         private void btnAdopt_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameAnimals.Navigate(null);
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(new FosterPage());
+            // replace with page name and then delete comment
+            frameAnimals.Navigate(null);
         }
 
         private void btnSurrender_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameAnimals.Navigate(null);
         }
 
         private void btnAnimalList_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameAnimals.Navigate(null);
         }
 
         private void btnMedical_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameAnimals.Navigate(null);
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -120,16 +129,15 @@ namespace WpfPresentation.Animals
         {
             UpdateScrollButtons();
         }
+
         private void btnScrollRight_Click(object sender, RoutedEventArgs e)
         {
-            svAnimalTabs.LineRight();
-            svAnimalTabs.LineRight();
+            svAnimalTabs.ScrollToHorizontalOffset(svAnimalTabs.HorizontalOffset + 130);
         }
 
         private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
         {
-            svAnimalTabs.LineLeft();
-            svAnimalTabs.LineLeft();
+            svAnimalTabs.ScrollToHorizontalOffset(svAnimalTabs.HorizontalOffset - 130);
         }
     }
 }

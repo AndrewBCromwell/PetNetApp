@@ -14,31 +14,32 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
 
-namespace WpfPresentation.Management
+namespace WpfPresentation.Development.Community
 {
     /// <summary>
-    /// Interaction logic for ManagementPage.xaml
+    /// Interaction logic for CommunityPage.xaml
     /// </summary>
-    public partial class ManagementPage : Page
+    public partial class CommunityPage : Page
     {
-        private static ManagementPage _existingManagementPage = null;
+        private static CommunityPage _existingCommunityPage = null;
 
+        private Button[] _communityTabButtons;
         private MasterManager _manager = null;
-        private Button[] _managementPageButtons;
-        public ManagementPage(MasterManager manager)
+
+        public CommunityPage(MasterManager manager)
         {
             InitializeComponent();
             _manager = manager;
-            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnShelters, btnTickets, btnVolunteer };
+            _communityTabButtons = new Button[] { btnAbout, btnForum, btnUsers };
         }
 
-        public static ManagementPage GetManagementPage(MasterManager manager)
+        public static CommunityPage GetCommunityPage(MasterManager manager)
         {
-            if (_existingManagementPage == null)
+            if (_existingCommunityPage == null)
             {
-                _existingManagementPage = new ManagementPage(manager);
+                _existingCommunityPage = new CommunityPage(manager);
             }
-            return _existingManagementPage;
+            return _existingCommunityPage;
         }
 
         private void ChangeSelectedButton(Button selectedButton)
@@ -49,45 +50,31 @@ namespace WpfPresentation.Management
 
         private void UnselectAllButtons()
         {
-            foreach (Button button in _managementPageButtons)
+            foreach (Button button in _communityTabButtons)
             {
                 button.Style = (Style)Application.Current.Resources["rsrcUnselectedButton"];
             }
         }
 
-        private void btnShelters_Click(object sender, RoutedEventArgs e)
+        private void btnForum_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameCommunity.Navigate(null);
         }
 
-        private void btnInventory_Click(object sender, RoutedEventArgs e)
+        private void btnUsers_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameCommunity.Navigate(null);
         }
 
-        private void btnTickets_Click(object sender, RoutedEventArgs e)
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
-        }
-
-        private void btnKennel_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
-        }
-
-        private void btnVolunteer_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameCommunity.Navigate(null);
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -103,14 +90,9 @@ namespace WpfPresentation.Management
             }
             e.Handled = true;
         }
-
-        private void svManagementPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
-        {
-            UpdateScrollButtons();
-        }
         private void UpdateScrollButtons()
         {
-            if (svManagementPageTabs.HorizontalOffset > svManagementPageTabs.ScrollableWidth - 0.05)
+            if (svCommunityPageTabs.HorizontalOffset > svCommunityPageTabs.ScrollableWidth - 0.05)
             {
                 btnScrollRight.Visibility = Visibility.Hidden;
             }
@@ -119,7 +101,7 @@ namespace WpfPresentation.Management
                 btnScrollRight.Visibility = Visibility.Visible;
             }
 
-            if (svManagementPageTabs.HorizontalOffset < 0.05)
+            if (svCommunityPageTabs.HorizontalOffset < 0.05)
             {
                 btnScrollLeft.Visibility = Visibility.Hidden;
             }
@@ -131,12 +113,17 @@ namespace WpfPresentation.Management
 
         private void btnScrollRight_Click(object sender, RoutedEventArgs e)
         {
-            svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset + 130);
+            svCommunityPageTabs.ScrollToHorizontalOffset(svCommunityPageTabs.HorizontalOffset + 130);
         }
 
         private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
         {
-            svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
+            svCommunityPageTabs.ScrollToHorizontalOffset(svCommunityPageTabs.HorizontalOffset - 130);
+        }
+
+        private void svCommunityPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            UpdateScrollButtons();
         }
     }
 }
