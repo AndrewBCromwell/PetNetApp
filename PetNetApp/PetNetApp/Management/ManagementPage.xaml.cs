@@ -44,14 +44,14 @@ namespace WpfPresentation.Management
         private void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
-            selectedButton.Style = (Style)Resources["rsrcSelectedButton"];
+            selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
         }
 
         private void UnselectAllButtons()
         {
             foreach (Button button in _managementPageButtons)
             {
-                button.Style = (Style)Resources["rsrcUnselectedButton"];
+                button.Style = (Style)Application.Current.Resources["rsrcUnselectedButton"];
             }
         }
 
@@ -84,10 +84,51 @@ namespace WpfPresentation.Management
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;
             if (e.Delta > 0)
+            {
                 scrollviewer.LineLeft();
+            }
             else
+            {
                 scrollviewer.LineRight();
+            }
             e.Handled = true;
+        }
+
+        private void svManagementPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            UpdateScrollButtons();
+        }
+        private void UpdateScrollButtons()
+        {
+            if (svManagementPageTabs.HorizontalOffset > svManagementPageTabs.ScrollableWidth - 0.05)
+            {
+                btnScrollRight.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnScrollRight.Visibility = Visibility.Visible;
+            }
+
+            if (svManagementPageTabs.HorizontalOffset < 0.05)
+            {
+                btnScrollLeft.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnScrollLeft.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void btnScrollRight_Click(object sender, RoutedEventArgs e)
+        {
+            svManagementPageTabs.LineRight();
+            svManagementPageTabs.LineRight();
+        }
+
+        private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
+        {
+            svManagementPageTabs.LineLeft();
+            svManagementPageTabs.LineLeft();
         }
     }
 }

@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetNetApp"
         mc:Ignorable="d"
-        Title="petnet" Height="450" Width="800">
+        Title="petnet" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Window.Resources>
         <ResourceDictionary>
             <Style TargetType="Button" x:Key="rsrcNewNotifications">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="10 10 0 0">
+                            <Border Background="{TemplateBinding Background}">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -37,7 +37,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="10 10 0 0">
+                            <Border Background="{TemplateBinding Background}">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -58,7 +58,8 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <Style x:Key="rsrcUnselectedButton" TargetType="Button">
+
+            <Style x:Key="rsrcUnselectedTabButton" TargetType="Button">
                 <Setter Property="Background" Value="#D6CDA4"/>
                 <Setter Property="Foreground" Value="#1C6758"/>
                 <Setter Property="Template">
@@ -76,7 +77,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <Style x:Key="rsrcSelectedButton" TargetType="Button" BasedOn="{StaticResource ResourceKey=rsrcUnselectedButton}">
+            <Style x:Key="rsrcSelectedTabButton" TargetType="Button" BasedOn="{StaticResource ResourceKey=rsrcUnselectedTabButton}">
                 <Setter Property="Background" Value="#EEF2E6"/>
             </Style>
         </ResourceDictionary>
@@ -87,16 +88,9 @@
             <RowDefinition Height="50"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Rectangle Grid.Row="0">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#3D8361"></SolidColorBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle Grid.Row="1">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#1C6758 "></SolidColorBrush>
-            </Rectangle.Fill>
-        </Rectangle>
+        <Rectangle Grid.Row="0" Fill="#3D8361"/>
+
+        <Rectangle Grid.Row="1" Fill="#1C6758"/>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="160"/>
@@ -112,7 +106,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="10 10 0 0">
+                                        <Border Background="{TemplateBinding Background}">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
                                     </ControlTemplate>
@@ -135,13 +129,13 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button Width="40" Height="40" Margin="3" BorderBrush="Transparent" x:Name="btnMenu">
+                <Button Width="40" Height="40" Margin="3" BorderBrush="Transparent" x:Name="btnMenu" Click="btnMenu_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="10 10 0 0">
+                                        <Border Background="{TemplateBinding Background}">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
                                     </ControlTemplate>
@@ -163,22 +157,34 @@
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
+                    <Button.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="mnuUserFeed" Header="User Feed"/>
+                            <MenuItem x:Name="mnuAccountSettings" Header="Account Settings"/>
+                            <MenuItem x:Name="mnuLogout" Header="Logout"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
                 </Button>
             </StackPanel>
         </Grid>
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Height="45" VerticalAlignment="Bottom" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+        <ScrollViewer x:Name="svMainTabs" Grid.Row="1" HorizontalScrollBarVisibility="Hidden" ScrollChanged="svMainTabs_ScrollChanged" VerticalScrollBarVisibility="Disabled" Height="45" VerticalAlignment="Bottom" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <StackPanel Orientation="Horizontal">
-                <Rectangle Width="20"/>
-                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Animals" x:Name="btnAnimals" Click="btnAnimals_Click"/>
-                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Shelters" x:Name="btnShelters" Click="btnShelters_Click"/>
-                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Events" x:Name="btnEvents" Click="btnEvents_Click"/>
-                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Community" x:Name="btnCommunity" Click="btnCommunity_Click"/>
-                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Donate" x:Name="btnDonate" Click="btnDonate_Click"/>
-                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Management" x:Name="btnManagement" Click="btnManagement_Click"/>
-                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Donations" x:Name="btnDonations" Click="btnDonations_Click"/>
-                <Rectangle Width="20"/>
-            </StackPanel>
+                    <Rectangle Width="25"/>
+                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Animals" x:Name="btnAnimals" Click="btnAnimals_Click"/>
+                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Shelters" x:Name="btnShelters" Click="btnShelters_Click"/>
+                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Events" x:Name="btnEvents" Click="btnEvents_Click"/>
+                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Community" x:Name="btnCommunity" Click="btnCommunity_Click"/>
+                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Donate" x:Name="btnDonate" Click="btnDonate_Click"/>
+                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Management" x:Name="btnManagement" Click="btnManagement_Click"/>
+                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Donations" x:Name="btnDonations" Click="btnDonations_Click"/>
+                    <Rectangle Width="25"/>
+                </StackPanel>
         </ScrollViewer>
+        <!-- Tab Navigation Buttons -->
+        <Grid Grid.Row="1">
+            <Button Width="20" Margin="2 0 0 0" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="35" x:Name="btnScrollLeft"  Style="{StaticResource ResourceKey=rsrcLeftScroll}" Click="btnScrollLeft_Click"/>
+            <Button Width="20" Margin="0 0 2 0" HorizontalAlignment="Right" VerticalAlignment="Center" Height="35" x:Name="btnScrollRight" Style="{StaticResource ResourceKey=rsrcRightScroll}"  Click="btnScrollRight_Click"/>
+        </Grid>
         <Frame x:Name="frameMain" Grid.Row="2" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

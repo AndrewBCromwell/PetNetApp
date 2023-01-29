@@ -45,14 +45,14 @@ namespace WpfPresentation.Community
         private void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
-            selectedButton.Style = (Style)Resources["rsrcSelectedButton"];
+            selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
         }
 
         private void UnselectAllButtons()
         {
             foreach (Button button in _communityTabButtons)
             {
-                button.Style = (Style)Resources["rsrcUnselectedButton"];
+                button.Style = (Style)Application.Current.Resources["rsrcUnselectedButton"];
             }
         }
 
@@ -75,10 +75,51 @@ namespace WpfPresentation.Community
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;
             if (e.Delta > 0)
+            {
                 scrollviewer.LineLeft();
+            }
             else
+            {
                 scrollviewer.LineRight();
+            }
             e.Handled = true;
+        }
+        private void UpdateScrollButtons()
+        {
+            if (svCommunityPageTabs.HorizontalOffset > svCommunityPageTabs.ScrollableWidth - 0.05)
+            {
+                btnScrollRight.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnScrollRight.Visibility = Visibility.Visible;
+            }
+
+            if (svCommunityPageTabs.HorizontalOffset < 0.05)
+            {
+                btnScrollLeft.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnScrollLeft.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void btnScrollRight_Click(object sender, RoutedEventArgs e)
+        {
+            svCommunityPageTabs.LineRight();
+            svCommunityPageTabs.LineRight();
+        }
+
+        private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
+        {
+            svCommunityPageTabs.LineLeft();
+            svCommunityPageTabs.LineLeft();
+        }
+
+        private void svCommunityPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            UpdateScrollButtons();
         }
     }
 }

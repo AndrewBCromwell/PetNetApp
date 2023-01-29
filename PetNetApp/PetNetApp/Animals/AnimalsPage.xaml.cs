@@ -45,21 +45,20 @@ namespace WpfPresentation.Animals
         private void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
-            selectedButton.Style = (Style)Resources["rsrcSelectedButton"];
+            selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
         }
 
         private void UnselectAllButtons()
         {
             foreach (Button button in _animalsTabButtons)
             {
-                button.Style = (Style)Resources["rsrcUnselectedButton"];
+                button.Style = (Style)Application.Current.Resources["rsrcUnselectedButton"];
             }
         }
 
         private void btnAdopt_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(new AdoptPage());
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)
@@ -75,22 +74,62 @@ namespace WpfPresentation.Animals
 
         private void btnAnimalList_Click(object sender, RoutedEventArgs e)
         {
-
+            ChangeSelectedButton((Button)sender);
         }
 
         private void btnMedical_Click(object sender, RoutedEventArgs e)
         {
-
+            ChangeSelectedButton((Button)sender);
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;
             if (e.Delta > 0)
+            {
                 scrollviewer.LineLeft();
+            }
             else
+            {
                 scrollviewer.LineRight();
+            }
             e.Handled = true;
+        }
+        private void UpdateScrollButtons()
+        {
+            if (svAnimalTabs.HorizontalOffset > svAnimalTabs.ScrollableWidth - 0.05)
+            {
+                btnScrollRight.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnScrollRight.Visibility = Visibility.Visible;
+            }
+
+            if (svAnimalTabs.HorizontalOffset < 0.05)
+            {
+                btnScrollLeft.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnScrollLeft.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void svAnimalTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            UpdateScrollButtons();
+        }
+        private void btnScrollRight_Click(object sender, RoutedEventArgs e)
+        {
+            svAnimalTabs.LineRight();
+            svAnimalTabs.LineRight();
+        }
+
+        private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
+        {
+            svAnimalTabs.LineLeft();
+            svAnimalTabs.LineLeft();
         }
     }
 }
