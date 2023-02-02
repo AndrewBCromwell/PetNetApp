@@ -8,8 +8,22 @@ using DataAccessLayerInterfaces;
 
 namespace DataAccessLayer
 {
+    /// <summary>
+    /// Stephen Jaurigue
+    /// Created: 2023/02/01
+    /// 
+    /// Connection class for managing the connection to the PetNet database
+    /// </summary>
     internal class DBConnection : IDBConnection
     {
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/01
+        /// 
+        /// Method for returning a connection to the PetNet database
+        /// </summary>
+        /// 
+        /// <returns>SqlConnection</returns>	
         public SqlConnection GetConnection()
         {
             SqlConnection conn = null;

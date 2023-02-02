@@ -9,6 +9,6 @@ namespace DataAccessLayerInterfaces
 {
     public interface IDBConnection
     {
-        SqlConnection GetConnection();
+		SqlConnection GetConnection();
     }
 }
