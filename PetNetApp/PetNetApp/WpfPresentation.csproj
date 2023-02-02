@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\KennelUserControl.xaml.cs">
+      <DependentUpon>KennelUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="Animals\AnimalsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +84,10 @@
     <Page Include="Development\Management\ManagementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Development\Management\ViewKennelPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +115,9 @@
     <Compile Include="Development\Management\ManagementPage.xaml.cs">
       <DependentUpon>ManagementPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Management\ViewKennelPage.xaml.cs">
+      <DependentUpon>ViewKennelPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -117,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\KennelUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -298,6 +312,12 @@
     <Resource Include="Development\Images\user_hover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PlusIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AnimalImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
