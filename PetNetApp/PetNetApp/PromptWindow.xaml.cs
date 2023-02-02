@@ -108,7 +108,7 @@ namespace WpfPresentation
             this.Close();
         }
     
-        private static PromptSelection ShowPrompt(string title, string prompt, ButtonMode buttonMode = ButtonMode.Ok)
+        public static PromptSelection ShowPrompt(string title, string prompt, ButtonMode buttonMode = ButtonMode.Ok)
         {
             PromptWindow promptWindow = new PromptWindow()
             {
