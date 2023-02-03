@@ -60,7 +60,7 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new AddAnimalDOD513());
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)
