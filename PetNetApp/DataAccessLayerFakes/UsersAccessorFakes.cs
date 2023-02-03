@@ -18,7 +18,7 @@ namespace DataAccessLayerFakes
         {
             fakeUsers.Add(new UsersVM()
             {
-                UserId = 1000,
+                UsersId = 1000,
                 GivenName = "Stephan",
                 FamilyName = "technowiz",
                 Email = "Stephan@company.com",
@@ -30,7 +30,7 @@ namespace DataAccessLayerFakes
             }) ;
             fakeUsers.Add(new UsersVM()
             {
-                UserId = 1001,
+                UsersId = 1001,
                 GivenName = "Chris",
                 FamilyName = "Dreismeier",
                 Email = "Chris@company.com",
@@ -42,7 +42,7 @@ namespace DataAccessLayerFakes
             });
             fakeUsers.Add(new UsersVM()
             {
-                UserId = 1002,
+                UsersId = 1002,
                 GivenName = "Asa",
                 FamilyName = "arm",
                 Email = "Asa@company.com",
@@ -54,7 +54,7 @@ namespace DataAccessLayerFakes
             });
             fakeUsers.Add(new UsersVM()
             {
-                UserId = 1003,
+                UsersId = 1003,
                 GivenName = "Andrew",
                 FamilyName = "bob",
                 Email = "Andrew@company.com",
@@ -70,6 +70,11 @@ namespace DataAccessLayerFakes
             fakeUsers[1].Roles.Add("Volunteer");
             fakeUsers[2].Roles.Add("Volunteer");
             fakeUsers[3].Roles.Add("Admin");
+        }
+
+        public List<Users> SelectAllEmployees()
+        {
+            throw new NotImplementedException();
         }
 
         public List<UsersVM> SelectUserByRole(string RoleId)
