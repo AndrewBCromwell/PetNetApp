@@ -45,7 +45,7 @@ namespace WpfPresentation.Development.Management
             
             try
             {
-                _users = _mastermanager.UserManager.RetrieveUserByRole("Volunteer");
+                _users = _mastermanager.UsersManager.RetrieveUserByRole("Volunteer");
                 datVolunteer.ItemsSource = _users;
             }
             catch (Exception ex)

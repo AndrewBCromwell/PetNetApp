@@ -51,7 +51,7 @@ namespace DataAccessLayer
                 // execute and get a SqlDataReader
                 var reader = cmd.ExecuteReader();
 
-               
+
                 if (reader.HasRows)
                 {
                     // most of the time there will be a while loop
@@ -62,9 +62,9 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         UsersVM user = new UsersVM();
-                        user.UserId = reader.GetInt32(0);
+                        user.UsersId = reader.GetInt32(0);
                         user.GenderId = reader.GetString(1);
-                        user.PronounId = reader.GetString(2);
+                        user.PronoundId = reader.GetString(2);
                         user.ShelterId = reader.GetInt32(3);
                         user.GivenName = reader.GetString(4);
                         user.FamilyName = reader.GetString(5);
@@ -79,8 +79,8 @@ namespace DataAccessLayer
                         users.Add(user);
                     }
 
-                    
-                    
+
+
                 }
                 // close reader
                 reader.Close();
@@ -92,6 +92,9 @@ namespace DataAccessLayer
             }
 
             return users;
+
+
+        }
         public List<Users> SelectAllEmployees()
         {
             List<Users> employeeList = new List<Users>();
@@ -125,22 +128,22 @@ namespace DataAccessLayer
                     user.GivenName = reader.GetString(4);
                     user.FamilyName = reader.GetString(5);
                     user.Email = reader.GetString(6);
-                    user.PasswordHash = reader.GetString(7);
-                    user.Address = reader.GetString(8);
-                    if (reader.IsDBNull(9))
+                    //user.PasswordHash = reader.GetString(7);
+                    user.Address = reader.GetString(7);
+                    if (reader.IsDBNull(8))
                     {
                         user.AddressTwo = null;
                     }
                     else
                     {
-                        user.AddressTwo = reader.GetString(9);
+                        user.AddressTwo = reader.GetString(8);
                     }
 
-                    user.Zipcode = reader.GetString(10);
-                    user.Phone = reader.GetString(11);
-                    user.CreationDate = reader.GetDateTime(12);
-                    user.Active = reader.GetBoolean(13);
-                    user.Suspended = reader.GetBoolean(14);
+                    user.Zipcode = reader.GetString(9);
+                    user.Phone = reader.GetString(10);
+                    user.CreationDate = reader.GetDateTime(11);
+                    user.Active = reader.GetBoolean(12);
+                    user.SuspendEmployee = reader.GetBoolean(13);
 
                     employeeList.Add(user);
                 }
