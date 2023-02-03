@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IKennelAccessor.cs" />
+    <Compile Include="IUserAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
