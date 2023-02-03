@@ -33,7 +33,15 @@ namespace WpfPresentation.Management
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // Replace 100000 with User.Shelter.ShelterId when users are made
-            kennelVMs = masterManager.KennelManager.RetrieveKennels(100000);
+            try
+            {
+                kennelVMs = masterManager.KennelManager.RetrieveKennels(100000);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
 
             for(int i = 0; i < kennelVMs.Count / 4; i++)
             {
