@@ -13,10 +13,12 @@ namespace LogicLayer
     public class MasterManager
     {
         public IKennelManager KennelManager { get; set; }
-
+        public IUsersManager UsersManager { get; set; }
+        
         public MasterManager()
         {
             KennelManager = new KennelManager();
+            UsersManager = new UsersManager();
         }
     }
 }
