@@ -82,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Development\Management\VolunteerManagment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PromptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +115,9 @@
     </Compile>
     <Compile Include="Development\Management\ManagementPage.xaml.cs">
       <DependentUpon>ManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\VolunteerManagment.xaml.cs">
+      <DependentUpon>VolunteerManagment.xaml</DependentUpon>
     </Compile>
     <Compile Include="PromptWindow.xaml.cs">
       <DependentUpon>PromptWindow.xaml</DependentUpon>
