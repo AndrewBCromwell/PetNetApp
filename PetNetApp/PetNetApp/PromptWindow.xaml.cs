@@ -19,7 +19,7 @@ namespace WpfPresentation
     /// Stephen Jaurigue
     /// Created: 2023/01/31
     /// 
-    /// Internal class for the Prompt Class
+    /// Replacement for Messagebox
     /// </summary>
     public partial class PromptWindow : Window
     {
@@ -27,7 +27,7 @@ namespace WpfPresentation
         public ButtonMode ButtonMode { get; set; }
         public PromptSelection PromptSelection { get; private set; }
 
-        public PromptWindow()
+        private PromptWindow()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -107,44 +107,17 @@ namespace WpfPresentation
             }
             this.Close();
         }
-    }
-    /// <summary>
-    /// Stephen Jaurigue
-    /// Created: 2023/01/31
-    /// 
-    /// This is a custom messagebox class styled for our application
-    /// </summary>
-    public class Prompt
-    {
-        private PromptWindow _promptWindow = null;
-        public PromptSelection PromptSelection
+    
+        public static PromptSelection ShowPrompt(string title, string prompt, ButtonMode buttonMode = ButtonMode.Ok)
         {
-            get
-            {
-                return _promptWindow.PromptSelection;
-            }
-        }
-
-        public Prompt(string title, string prompt, ButtonMode buttonMode = ButtonMode.Ok)
-        {
-            _promptWindow = new PromptWindow()
+            PromptWindow promptWindow = new PromptWindow()
             {
                 PromptText = prompt,
                 Title = title,
                 ButtonMode = buttonMode
             };
-        }
-        
-        /// <summary>
-        /// Stephen Jaurigue
-        /// Created: 2023/01/31
-        /// 
-        /// Displays the Prompt and returns a PromptSelection
-        /// </summary>
-        public PromptSelection Show()
-        {
-            _promptWindow.ShowDialog();
-            return _promptWindow.PromptSelection;
+            promptWindow.ShowDialog();
+            return promptWindow.PromptSelection;
         }
     }
 
