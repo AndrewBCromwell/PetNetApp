@@ -8,5 +8,6 @@ namespace LogicLayer
 {
     public class MasterManager
     {
+        public AnimalManager AnimalManager = new AnimalManager();
     }
 }

@@ -80,7 +80,7 @@ namespace WpfPresentation.Development.Animals
         private void btnAnimalList_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
+
             frameAnimals.Navigate(null);
         }
 
