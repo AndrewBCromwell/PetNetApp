@@ -36,37 +36,39 @@ namespace WpfPresentation.Management
             try
             {
                 kennelVMs = masterManager.KennelManager.RetrieveKennels(100000);
+
+                for (int i = 0; i < kennelVMs.Count / 4; i++)
+                {
+                    grdKennel.RowDefinitions.Add(new RowDefinition());
+                }
+
+                for (int i = 0; i < kennelVMs.Count; i++)
+                {
+
+                    KennelUserControl kennelUserControl = new KennelUserControl();
+
+                    kennelUserControl.lblKennelName.Content += kennelVMs[i].KennelName + ": ";
+                    if (kennelVMs[i].Animal == null)
+                    {
+                        UpdateUserControlStyles(kennelUserControl);
+                    }
+                    else
+                    {
+                        kennelUserControl.lblKennelName.Content += kennelVMs[i].Animal.AnimalName;
+                    }
+                    int j = i;
+                    kennelUserControl.btnKennel.Click += (obj, arg) => UserControlClick(kennelVMs[j]);
+
+                    Grid.SetRow(kennelUserControl, i / 4);
+                    Grid.SetColumn(kennelUserControl, i % 4);
+                    grdKennel.Children.Add(kennelUserControl);
+                }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
-            }
-
-            for(int i = 0; i < kennelVMs.Count / 4; i++)
-            {
-                grdKennel.RowDefinitions.Add(new RowDefinition());
-            }
-
-            for(int i = 0; i < kennelVMs.Count; i++)
-            {
-                
-                KennelUserControl kennelUserControl = new KennelUserControl();
-
-                kennelUserControl.lblKennelName.Content += kennelVMs[i].KennelName + ": ";
-                if (kennelVMs[i].Animal == null)
-                {
-                    UpdateUserControlStyles(kennelUserControl);
-                } else
-                {
-                    kennelUserControl.lblKennelName.Content += kennelVMs[i].Animal.AnimalName;
-                }
-                int j = i;
-                kennelUserControl.btnKennel.Click += (obj, arg) => UserControlClick(kennelVMs[j]);
-
-                Grid.SetRow(kennelUserControl, i / 4);
-                Grid.SetColumn(kennelUserControl, i % 4);
-                grdKennel.Children.Add(kennelUserControl);
+               
             }
         }
 
