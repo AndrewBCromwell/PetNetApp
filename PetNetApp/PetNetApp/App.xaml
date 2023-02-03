@@ -2,12 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:PetNetApp"
-             StartupUri="Development\MainWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <!--Default Label Style-->
             <Style TargetType="Label">
-                <Setter Property="Foreground" Value="{DynamicResource ColorDarkGreen}"/>
+                <Setter Property="Foreground" Value="#1C6758"/>
                 <Setter Property="FontSize" Value="16"/>
             </Style>
 
@@ -17,15 +17,15 @@
 
             <!--Default Datagrid Style-->
             <Style TargetType="DataGrid">
-                <Setter Property="Background" Value="{DynamicResource ColorLightBackground}"/>
+                <Setter Property="Background" Value="#EEF2E6"/>
                 <Setter Property="RowHeaderWidth" Value="0"/>
                 <Setter Property="RowBackground" Value="#9ec1b0"/>
                 <Setter Property="AlternatingRowBackground" Value="#eeefe1"/>
                 <Setter Property="IsReadOnly" Value="True"/>
             </Style>
             <Style TargetType="DataGridColumnHeader">
-                <Setter Property="Background" Value="{DynamicResource ColorDarkGreen}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ColorLightBackground}"/>
+                <Setter Property="Background" Value="#1C6758"/>
+                <Setter Property="Foreground" Value="#EEF2E6"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Padding" Value="5 0"/>
             </Style>
@@ -36,26 +36,26 @@
             <Style TargetType="DataGridCell">
                 <Style.Triggers>
                     <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="{DynamicResource ColorGreen}" />
-                        <Setter Property="Foreground" Value="{DynamicResource ColorLightBackground}" />
-                        <Setter Property="BorderBrush" Value="{DynamicResource ColorDarkGreen}" />
+                        <Setter Property="Background" Value="#3D8361" />
+                        <Setter Property="Foreground" Value="#EEF2E6" />
+                        <Setter Property="BorderBrush" Value="#1C6758" />
                     </Trigger>
                 </Style.Triggers>
             </Style>
 
             <!--Default Menu Style-->
             <Style TargetType="ContextMenu" x:Name="MenuStyle">
-                <Setter Property="Background" Value="{DynamicResource ColorLightBackground}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource ColorDarkGreen}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ColorDarkGreen}"/>
+                <Setter Property="Background" Value="#EEF2E6"/>
+                <Setter Property="BorderBrush" Value="#1C6758"/>
+                <Setter Property="Foreground" Value="#1C6758"/>
                 <Setter Property="FontSize" Value="16"/>
             </Style>
 
             <!--Default TextBox Style-->
             <Style TargetType="TextBox">
-                <Setter Property="Foreground" Value="{DynamicResource ColorDarkGreen}"/>
-                <Setter Property="Background" Value="{DynamicResource ColorLightBackground}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource ColorGolden}"/>
+                <Setter Property="Foreground" Value="#1C6758"/>
+                <Setter Property="Background" Value="#EEF2E6"/>
+                <Setter Property="BorderBrush" Value="#D6CDA4"/>
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Template">
@@ -73,7 +73,7 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource ColorDarkGreen}"/>
+                                    <Setter Property="BorderBrush" TargetName="Border" Value="#1C6758"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -86,16 +86,13 @@
                 </Style.Resources>
             </Style>
 
-
-
-
             <!-- Default Password Box Style -->
 
             <Style TargetType="PasswordBox">
                 <Setter Property="SnapsToDevicePixels" Value="true" />
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource ColorDarkGreen}"/>
+                        <SolidColorBrush Color="#1C6758"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -112,10 +109,10 @@
                         <ControlTemplate TargetType="{x:Type PasswordBox}">
                             <Border x:Name="Border" CornerRadius="10" Padding="2" BorderThickness="1">
                                 <Border.Background>
-                                    <SolidColorBrush Color="{DynamicResource ColorLightBackground}" />
+                                    <SolidColorBrush Color="#EEF2E6" />
                                 </Border.Background>
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource ColorGolden}" />
+                                    <SolidColorBrush Color="#D6CDA4" />
                                 </Border.BorderBrush>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
@@ -130,7 +127,7 @@
                                 <Trigger Property="IsFocused" Value="True">
                                     <Setter Property="BorderBrush" TargetName="Border">
                                         <Setter.Value>
-                                            <SolidColorBrush Color="{DynamicResource ColorDarkGreen}"/>
+                                            <SolidColorBrush Color="#1C6758"/>
                                         </Setter.Value>
                                     </Setter>
                                 </Trigger>

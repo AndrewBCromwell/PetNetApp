@@ -61,8 +61,8 @@
 
     <!-- Subtab Styles -->
     <Style x:Key="rsrcUnselectedButton" TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource ColorLightGreen}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ColorDarkGreen}"/>
+        <Setter Property="Background" Value="#9EC1B0"/>
+        <Setter Property="Foreground" Value="#1C6758"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -75,19 +75,19 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ColorLightBackground}"/>
+                <Setter Property="Background" Value="#EEF2E6"/>
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style x:Key="rsrcSelectedButton" TargetType="Button" BasedOn="{StaticResource ResourceKey=rsrcUnselectedButton}">
-        <Setter Property="Background" Value="{DynamicResource ColorLightBackground}"/>
+        <Setter Property="Background" Value="#EEF2E6"/>
     </Style>
 
     <!--Default Button Style-->
     <Style TargetType="Button" x:Key="rsrcDefaultButton">
-        <Setter Property="Background" Value="{DynamicResource ColorGreen}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ColorLightBackground}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ColorDarkGreen}"/>
+        <Setter Property="Background" Value="#3D8361"/>
+        <Setter Property="Foreground" Value="#EEF2E6"/>
+        <Setter Property="BorderBrush" Value="#1C6758"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Template">
@@ -112,7 +112,7 @@
     <!-- Warning Button Style -->
     <Style x:Key="rsrcWarningButton" TargetType="Button">
         <Setter Property="Background" Value="#C02825 "/>
-        <Setter Property="Foreground" Value="{DynamicResource ColorLightBackground}"/>
+        <Setter Property="Foreground" Value="#EEF2E6"/>
         <Setter Property="BorderBrush" Value="#b22b29"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -137,9 +137,9 @@
 
     <!-- Safe Button Style -->
     <Style x:Key="rsrcSafeButton" TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource ColorLightBackground}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ColorGreen}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ColorDarkGreen}"/>
+        <Setter Property="Background" Value="#EEF2E6"/>
+        <Setter Property="Foreground" Value="#3D8361"/>
+        <Setter Property="BorderBrush" Value="#1C6758"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Template">
