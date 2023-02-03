@@ -12,14 +12,14 @@ namespace LogicLayer
 {
     public class UsersManager : IUsersManager
     {
-        IUserAccessor _userAccessor = null;
+        IUsersAccessor _userAccessor = null;
 
         public UsersManager()
         {
-            _userAccessor = new UserAccessor();
+            _userAccessor = new UsersAccessor();
         }
 
-        public UsersManager(IUserAccessor ua)
+        public UsersManager(IUsersAccessor ua)
         {
             _userAccessor = ua;
         }

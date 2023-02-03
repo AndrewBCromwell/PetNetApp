@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
-    public class UserAccessor : IUserAccessor
+    public class UsersAccessor : IUsersAccessor
     {
         public List<Users> SelectAllEmployees()
         {
