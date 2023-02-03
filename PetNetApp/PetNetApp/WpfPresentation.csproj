@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Development\Animals\MedicalNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Community\CommunityPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +102,9 @@
     </Compile>
     <Compile Include="Development\Animals\AnimalsPage.xaml.cs">
       <DependentUpon>AnimalsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Animals\MedicalNavigationPage.xaml.cs">
+      <DependentUpon>MedicalNavigationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>
@@ -298,6 +305,30 @@
     <Resource Include="Development\Images\user_hover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\pharmacy_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\notes_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\needle_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\clipboard_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\beaker_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\ambulance_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\libraryplus_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\arrow_left3_dark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
