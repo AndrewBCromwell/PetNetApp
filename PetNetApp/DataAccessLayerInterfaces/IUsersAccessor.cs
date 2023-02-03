@@ -10,5 +10,6 @@ namespace DataAccessLayerInterfaces
     public interface IUsersAccessor
     {
         List<UsersVM> SelectUserByRole(string RoleId);
+        List<Users> SelectAllEmployees();
     }
 }

@@ -8,9 +8,9 @@ namespace DataObjects
 {
     public class Users
     {
-        public int UserId { get; set; }
+        public int UsersId { get; set; }
         public string GenderId { get; set; }
-        public string PronounId { get; set; }
+        public string PronoundId { get; set; }
         public int ShelterId { get; set; }
         public string GivenName { get; set; }
         public string FamilyName { get; set; }

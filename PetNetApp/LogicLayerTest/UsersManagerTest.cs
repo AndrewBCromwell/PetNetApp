@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LogicLayer;
-using DataAccessLayerFakes;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using DataAccessLayer;
 using DataObjects;
+using LogicLayer;
 using DataAccessLayerInterfaces;
+using DataAccessLayerFakes;
 using System.Collections.Generic;
-using LogicLayerInterfaces;
 
 namespace LogicLayerTest
 {
@@ -41,6 +41,18 @@ namespace LogicLayerTest
 
             // assert
             Assert.AreEqual(expectedCount, actualCount);
+        UsersManager usersManager = null;
+
+        [TestMethod]
+        public void TestSelectAllEmployee()
+        {
+            List<Users> listUser = null;
+            listUser = usersManager.RetriveAllEmployees();
+
+            int actualResult = listUser.Count;
+            int expectedResult = 10; // 3 for fake data
+
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }

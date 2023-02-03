@@ -14,8 +14,7 @@ namespace LogicLayer
 {
     public class UsersManager : IUsersManager
     {
-        
-        IUsersAccessor _userAccessor;
+        IUsersAccessor _userAccessor = null;
 
         public UsersManager()
         {
@@ -58,5 +57,27 @@ namespace LogicLayer
 
             return users;
         }
+
+
+         /// Hoang Chu
+        /// Created: 2023/02/01
+        /// 
+        public List<Users> RetriveAllEmployees()
+        {
+            List<Users> employeeList = null;
+
+            try
+            {
+                employeeList = _userAccessor.SelectAllEmployees();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Data not found", ex);
+            }
+
+            return employeeList;
+        }
+        /// <returns>List<Users></returns>
+        
     }
 }
