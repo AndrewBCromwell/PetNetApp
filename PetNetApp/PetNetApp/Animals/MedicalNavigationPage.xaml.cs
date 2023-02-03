@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using DataObjects;
+using WpfPresentation.Development.Animals.Medical;
 
 namespace WpfPresentation.Development.Animals
 {
@@ -23,7 +25,7 @@ namespace WpfPresentation.Development.Animals
     {
         private static MedicalNavigationPage _existingMedicalNavigationPage = null;
         
-        // private Animal _medicalProfileAnimal = null;
+        private Animal _medicalProfileAnimal = null;
         // the page needs to have an animal associated with it for the Use Cases it relates to 
         // too work properly. However, that can not happen until there is a way to select an animal.
 
@@ -32,56 +34,23 @@ namespace WpfPresentation.Development.Animals
         private MasterManager _manager = null;
         private Button[] _medicalTabButtons;
 
-        public MedicalNavigationPage(MasterManager manager) // if there is no way to get to this page without selecting an animal, only the other constructor will be needed, else both will be needed
-        {
+        
+
+         public MedicalNavigationPage(MasterManager manager, Animal animal) 
+         {
             InitializeComponent();
             _manager = manager;
             _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
+            _medicalProfileAnimal = animal;
+            displayMedProfileAnimalName();
         }
 
-        // public MedicalNavigationPage(MasterManager manager, Animal animal) // this is commented out because  it would cause syntax errors untill there is such an Object as Animal is defined.
-        // {
-        //    InitializeComponent();
-        //    _manager = manager;
-        //    _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
-        //    _medicalProfileAnimal = animal;
-        //    displayMedProfileAnimalName();
-        //}
 
-        public static MedicalNavigationPage GetMedicalNavigationPage(MasterManager manager) // if there is no way to get to this page without selecting an animal, only the other GetMedicalNavigationPage will be needed, else both will be needed
+        private void displayMedProfileAnimalName()            
         {
-            if (_existingMedicalNavigationPage == null)
-            {
-                _existingMedicalNavigationPage = new MedicalNavigationPage(manager); 
-            }
-            return _existingMedicalNavigationPage;
+            this.lblMedProfileAnimal.Content = _medicalProfileAnimal.AnimalName;
         }
 
-        //public static MedicalNavigationPage GetMedicalNavigationPage(MasterManager manager, Animal animal) // this is commented out because  it would cause syntax errors untill there is such an Object as Animal is defined.
-        //{
-        //    if (_existingMedicalNavigationPage == null)
-        //    {
-        //        _existingMedicalNavigationPage = new MedicalNavigationPage(manager, animal); 
-        //    }
-        //    else if (_existingMedicalNavigationPage.GetMedProfileAnimalId() != animal.AnimalId)
-        //    {
-        //        _existingMedicalNavigationPage = new MedicalNavigationPage(manager, animal); // Would it work to just change which animal the existing page refers to, or would we also need to create a new page when a different animal is selected?
-        //    {
-        //    return _existingMedicalNavigationPage;
-        //}
-
-        //private void displayMedProfileAnimalName()            This will make the animal's name appear at the top of the side navigation bar, it is commented because it will cause syntaxs errors until such an Object as an animal is defined.
-        //{
-        //    this.lblMedProfileAnimal.Content = _medicalProfileAnimal.Name;
-        //}
-
-        //public int GetMedProfileAnimalId() 
-        //{
-        
-        //  result = _medicalProfileAnimal.AnimalId;
-      
-        //  return result;
-        //}
 
         private void ChangeSelectedButton(Button selectedButton)
         {
@@ -141,7 +110,7 @@ namespace WpfPresentation.Development.Animals
 
         private void btnMedBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(null);
+            NavigationService.Navigate(MedicalPage.getMedicalPage(_manager ));
         }
     }
 }

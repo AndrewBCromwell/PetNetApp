@@ -91,7 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Development\Animals\MedicalNavigationPage.xaml">
+    <Page Include="Animals\MedicalNavigationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,7 +130,7 @@
     <Compile Include="Development\Animals\AnimalsPage.xaml.cs">
       <DependentUpon>AnimalsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Animals\MedicalNavigationPage.xaml.cs">
+    <Compile Include="Animals\MedicalNavigationPage.xaml.cs">
       <DependentUpon>MedicalNavigationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Community\CommunityPage.xaml.cs">
@@ -342,7 +342,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-
     <Resource Include="Development\Images\pharmacy_dark.png" />
   </ItemGroup>
   <ItemGroup>
@@ -365,8 +364,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Development\Images\arrow_left3_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\PlusIcon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -383,7 +382,30 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Development\Images\txtSearch.png" />
-
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ambulance_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_left3_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\beaker_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\clipboard_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\libraryplus_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\needle_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\notes_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pharmacy_dark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
