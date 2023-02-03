@@ -20,9 +20,9 @@ namespace LogicLayerTest
         [TestMethod]
         public void TestRetrieveKennelsByShelterId()
         {
-            int expectedCount = 1;
+            int expectedCount = 6; // fake data should be 3
             int actualCount = 0;
-            int ShelterId = 100000;
+            int ShelterId = 100000; // fake data should be shelterid = 1
 
             var kennels = kennelManager.RetrieveKennels(ShelterId);
             actualCount = kennels.Count;

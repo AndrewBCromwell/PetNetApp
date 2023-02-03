@@ -85,7 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Development\Management\ViewKennelPage.xaml">
+    <Page Include="Management\ViewKennelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,7 +115,7 @@
     <Compile Include="Development\Management\ManagementPage.xaml.cs">
       <DependentUpon>ManagementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\ViewKennelPage.xaml.cs">
+    <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">

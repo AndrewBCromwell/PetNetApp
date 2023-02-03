@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.UserControls;
 
-namespace WpfPresentation.Development.Management
+namespace WpfPresentation.Management
 {
     /// <summary>
     /// Interaction logic for ViewKennelPage.xaml
@@ -42,8 +42,10 @@ namespace WpfPresentation.Development.Management
 
             for(int i = 0; i < kennelVMs.Count; i++)
             {
+                
                 KennelUserControl kennelUserControl = new KennelUserControl();
-                kennelUserControl.lblKennelName.Content += " " + (i+1) + ": ";
+
+                kennelUserControl.lblKennelName.Content += kennelVMs[i].KennelName + ": ";
                 if (kennelVMs[i].Animal == null)
                 {
                     UpdateUserControlStyles(kennelUserControl);
@@ -53,6 +55,7 @@ namespace WpfPresentation.Development.Management
                 }
                 int j = i;
                 kennelUserControl.btnKennel.Click += (obj, arg) => UserControlClick(kennelVMs[j]);
+
                 Grid.SetRow(kennelUserControl, i / 4);
                 Grid.SetColumn(kennelUserControl, i % 4);
                 grdKennel.Children.Add(kennelUserControl);
@@ -77,10 +80,11 @@ namespace WpfPresentation.Development.Management
         {
             if(kennelVM.Animal != null)
             {
+                MessageBox.Show(kennelVM.KennelName);
                 // Placeholder for ViewIndivisualOccupiedKennel
             } else
             {
-                // Placeholder for ViewIndivisualEmptyKennel
+                // Placeholder for AssignAnimalToKennel
             }
         }
 

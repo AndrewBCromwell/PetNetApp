@@ -79,7 +79,7 @@ namespace WpfPresentation.Development.Management
         private void btnKennel_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(new ViewKennelPage());
+            frameAnimals.Navigate(null);
         }
 
         private void btnVolunteer_Click(object sender, RoutedEventArgs e)

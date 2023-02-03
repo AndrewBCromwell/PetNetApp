@@ -30,7 +30,6 @@ namespace DataAccessLayer
         public List<KennelVM> SelectKennels(int ShelterId)
         {
             List<KennelVM> kennelVMs = new List<KennelVM>();
-            
 
             DBConnection connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class DBConnection : IDBConnection
+    internal class DBConnection : IDBConnection
     {
         public SqlConnection GetConnection()
         {
