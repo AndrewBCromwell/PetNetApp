@@ -10,11 +10,11 @@ namespace LogicLayer
 {
     public class MasterManager
     {
-        public IUserManager UserManager { get; set; }
+        public IUsersManager UserManager { get; set; }
 
         public MasterManager()
         {
-            UserManager = new UserManager();
+            UserManager = new UsersManager();
         }
     }
 }

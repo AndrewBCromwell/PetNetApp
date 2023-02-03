@@ -10,15 +10,15 @@ using LogicLayerInterfaces;
 namespace LogicLayerTest
 {
     [TestClass]
-    public class UserManagerTest
+    public class UsersManagerTest
     {
-        private IUserManager _userManager = null;
+        private IUsersManager _userManager = null;
 
 
         [TestInitialize]
         public void TestSetup()
         {
-            _userManager = new UserManager(new UserAccessorFakes());
+            _userManager = new UsersManager(new UsersAccessorFakes());
         }
 
         [TestCleanup]

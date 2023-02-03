@@ -10,7 +10,7 @@ using System.Data;
 
 namespace DataAccessLayer
 {
-    public class UserAccessor : IUserAccessor
+    public class UsersAccessor : IUsersAccessor
     {
 
         /// <summary>
@@ -27,9 +27,9 @@ namespace DataAccessLayer
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <param name="RoleId"></param>
-        public List<UserVM> SelectUserByRole(string RoleId)
+        public List<UsersVM> SelectUserByRole(string RoleId)
         {
-            var users = new List<UserVM>();
+            var users = new List<UsersVM>();
 
             var conn = new DBConnection().GetConnection();
 
@@ -61,7 +61,7 @@ namespace DataAccessLayer
                     // [GivenName], [FamilyName],[UserName],[gender], [Email]
                     while (reader.Read())
                     {
-                        UserVM user = new UserVM();
+                        UsersVM user = new UsersVM();
                         user.UserId = reader.GetInt32(0);
                         user.GenderId = reader.GetString(1);
                         user.PronounId = reader.GetString(2);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataObjects
 {
-    public class User
+    public class Users
     {
         public int UserId { get; set; }
         public string GenderId { get; set; }
@@ -24,7 +24,7 @@ namespace DataObjects
         public bool SuspendEmployee { get; set; }
     }
 
-    public class UserVM : User
+    public class UsersVM : Users
     {
         public List<string> Roles {get;set;}
         public List<ScheduleVM> Schedule { get; set; }

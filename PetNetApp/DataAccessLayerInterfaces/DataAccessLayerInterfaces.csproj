@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDBConnection.cs" />
-    <Compile Include="IUserAccessor.cs" />
+    <Compile Include="IUsersAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,17 +12,17 @@ using System.Security.Cryptography;
 
 namespace LogicLayer
 {
-    public class UserManager : IUserManager
+    public class UsersManager : IUsersManager
     {
         
-        IUserAccessor _userAccessor;
+        IUsersAccessor _userAccessor;
 
-        public UserManager()
+        public UsersManager()
         {
-            _userAccessor = new UserAccessor();
+            _userAccessor = new UsersAccessor();
         }
 
-        public UserManager(IUserAccessor userAccessor)
+        public UsersManager(IUsersAccessor userAccessor)
         {
             _userAccessor = userAccessor;
         }
@@ -42,9 +42,9 @@ namespace LogicLayer
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <param name="RoleId"></param>
-        public List<UserVM> RetrieveUserByRole(string RoleId)
+        public List<UsersVM> RetrieveUserByRole(string RoleId)
         {
-            List<UserVM> users = new List<UserVM>();
+            List<UsersVM> users = new List<UsersVM>();
 
             try
             {

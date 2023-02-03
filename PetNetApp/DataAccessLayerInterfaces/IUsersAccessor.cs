@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using DataObjects;
 
-namespace LogicLayerInterfaces
+namespace DataAccessLayerInterfaces
 {
-    public interface IUserManager
+    public interface IUsersAccessor
     {
-        List<UserVM> RetrieveUserByRole(string RoleId);
+        List<UsersVM> SelectUserByRole(string RoleId);
     }
 }

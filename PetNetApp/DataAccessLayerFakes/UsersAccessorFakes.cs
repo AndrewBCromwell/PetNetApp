@@ -9,14 +9,14 @@ using DataObjects;
 
 namespace DataAccessLayerFakes
 {
-    public class UserAccessorFakes : IUserAccessor
+    public class UsersAccessorFakes : IUsersAccessor
     {
-        private List<UserVM> fakeUsers = new List<UserVM>();
+        private List<UsersVM> fakeUsers = new List<UsersVM>();
 
 
-        public UserAccessorFakes()
+        public UsersAccessorFakes()
         {
-            fakeUsers.Add(new UserVM()
+            fakeUsers.Add(new UsersVM()
             {
                 UserId = 1000,
                 GivenName = "Stephan",
@@ -28,7 +28,7 @@ namespace DataAccessLayerFakes
                 Active = true,
                 Roles = new List<string>()
             }) ;
-            fakeUsers.Add(new UserVM()
+            fakeUsers.Add(new UsersVM()
             {
                 UserId = 1001,
                 GivenName = "Chris",
@@ -40,7 +40,7 @@ namespace DataAccessLayerFakes
                 Active = true,
                 Roles = new List<string>()
             });
-            fakeUsers.Add(new UserVM()
+            fakeUsers.Add(new UsersVM()
             {
                 UserId = 1002,
                 GivenName = "Asa",
@@ -52,7 +52,7 @@ namespace DataAccessLayerFakes
                 Active = true,
                 Roles = new List<string>()
             });
-            fakeUsers.Add(new UserVM()
+            fakeUsers.Add(new UsersVM()
             {
                 UserId = 1003,
                 GivenName = "Andrew",
@@ -72,9 +72,9 @@ namespace DataAccessLayerFakes
             fakeUsers[3].Roles.Add("Admin");
         }
 
-        public List<UserVM> SelectUserByRole(string RoleId)
+        public List<UsersVM> SelectUserByRole(string RoleId)
         {
-            List<UserVM> users = new List<UserVM>();
+            List<UsersVM> users = new List<UsersVM>();
 
             foreach (var user in fakeUsers)
             {
