@@ -1,0 +1,43 @@
+﻿<Page x:Class="WpfPresentation.Community.UserManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.Development.Community"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="700"
+      Title="UserManagementPage" Loaded="Page_Loaded">
+
+    <Grid Background="#EEF2E6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100px"/>
+            <RowDefinition/>
+            <RowDefinition Height="50px"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="180"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnAddUser" Content="+ | Add User" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                    Height="60" Width="150" FontSize="20" Margin="50 0 0 0"/>
+            <TextBox x:Name="txtSearchUserName" Grid.Column="1" Height="60" 
+                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black"
+                     Background="White" Text="Search" FontSize="22"/>
+            <ComboBox Name="cmbFilterUsers" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="160"
+                      Height="60" BorderBrush="Black" Background="White" Margin="0 0 10 0">
+                
+                <ComboBoxItem>Add User Filter Here</ComboBoxItem>
+                
+            </ComboBox>
+        </Grid>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel x:Name="stpUsersList">
+                
+            </StackPanel>
+        </ScrollViewer>
+        
+    </Grid>
+</Page>
