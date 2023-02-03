@@ -155,4 +155,9 @@
         </Style.Triggers>
     </Style>
 
+    <!-- Multiline Textblock Style for datagrid-->
+    <Style x:Key="rsrcMultiLineTextBlock" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
 </ResourceDictionary>

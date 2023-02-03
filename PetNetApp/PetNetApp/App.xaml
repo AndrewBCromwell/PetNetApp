@@ -33,6 +33,15 @@
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="Foreground" Value="#1c6758"/>
             </Style>
+            <Style TargetType="DataGridCell">
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="#3D8361" />
+                        <Setter Property="Foreground" Value="#EEF2E6" />
+                        <Setter Property="BorderBrush" Value="#1C6758" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
             
             <!--Default Menu Style-->
             <Style TargetType="ContextMenu" x:Name="MenuStyle">
