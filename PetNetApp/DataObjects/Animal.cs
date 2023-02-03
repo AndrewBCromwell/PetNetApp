@@ -14,7 +14,7 @@ namespace DataObjects
         public string Description { get; set; }
         public DateTime BroughtIn { get; set; }
         public string MicrochipNumber { get; set; }
-        public bool Agressive { get; set; }
+        public bool Aggressive { get; set; }
         public string AggressiveDescription { get; set; }
         public bool ChildFriendly { get; set; }
         public bool NeuterStatus { get; set; }

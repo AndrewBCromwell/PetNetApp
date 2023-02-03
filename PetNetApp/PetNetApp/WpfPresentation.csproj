@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animals\MedicalPage.xaml.cs">
+      <DependentUpon>MedicalPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>
     </Compile>
@@ -67,6 +70,10 @@
     <Page Include="Animals\AnimalsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\MedicalPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Community\CommunityPage.xaml">
       <SubType>Designer</SubType>
@@ -318,6 +325,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\AnimalImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\sampleDogImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\txtSearch.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

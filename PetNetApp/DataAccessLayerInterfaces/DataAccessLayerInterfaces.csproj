@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IKennelAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
