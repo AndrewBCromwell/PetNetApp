@@ -96,7 +96,11 @@
                 <ColumnDefinition MinWidth="160"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Source="Images/petnetLogo.png" Margin="20 10" HorizontalAlignment="Left" VerticalAlignment="Center"></Image>
+            <Image Grid.Column="0" Source="Images/petnetLogo.png" Margin="20 10" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Image.OpacityMask>
+                    <ImageBrush/>
+                </Image.OpacityMask>
+            </Image>
             <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Width="35" Height="35" Margin="3" BorderBrush="Transparent" Style="{StaticResource ResourceKey=rsrcNotifications}" x:Name="btnNotification" Click="btnNotification_Click">
                 </Button>
@@ -169,16 +173,16 @@
         </Grid>
         <ScrollViewer x:Name="svMainTabs" Grid.Row="1" HorizontalScrollBarVisibility="Hidden" ScrollChanged="svMainTabs_ScrollChanged" VerticalScrollBarVisibility="Disabled" Height="45" VerticalAlignment="Bottom" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <StackPanel Orientation="Horizontal">
-                    <Rectangle Width="25"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Animals" x:Name="btnAnimals" Click="btnAnimals_Click"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Shelters" x:Name="btnShelters" Click="btnShelters_Click"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Events" x:Name="btnEvents" Click="btnEvents_Click"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Community" x:Name="btnCommunity" Click="btnCommunity_Click"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Donate" x:Name="btnDonate" Click="btnDonate_Click"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Management" x:Name="btnManagement" Click="btnManagement_Click"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Donations" x:Name="btnDonations" Click="btnDonations_Click"/>
-                    <Rectangle Width="25"/>
-                </StackPanel>
+                <Rectangle Width="25"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Animals" x:Name="btnAnimals" Click="btnAnimals_Click"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Shelters" x:Name="btnShelters" Click="btnShelters_Click"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Events" x:Name="btnEvents" Click="btnEvents_Click"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Community" x:Name="btnCommunity" Click="btnCommunity_Click"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Donate" x:Name="btnDonate" Click="btnDonate_Click"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Management" x:Name="btnManagement" Click="btnManagement_Click"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Donations" x:Name="btnDonations" Click="btnDonations_Click"/>
+                <Rectangle Width="25"/>
+            </StackPanel>
         </ScrollViewer>
         <!-- Tab Navigation Buttons -->
         <Grid Grid.Row="1">

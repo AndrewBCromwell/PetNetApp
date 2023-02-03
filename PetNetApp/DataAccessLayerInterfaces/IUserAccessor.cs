@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataObjects;
 
 namespace DataAccessLayerInterfaces
 {
-    public interface IDBConnection
+    public interface IUserAccessor
     {
-        SqlConnection GetConnection();
+        List<Users> SelectAllEmployees();
     }
 }
