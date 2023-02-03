@@ -7,7 +7,7 @@ using DataObjects;
 
 namespace DataAccessLayerInterfaces
 {
-    public interface IUserAccessor
+    public interface IUsersAccessor
     {
         List<Users> SelectAllEmployees();
     }

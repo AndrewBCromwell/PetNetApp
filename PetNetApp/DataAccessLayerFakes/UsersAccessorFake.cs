@@ -8,11 +8,11 @@ using DataAccessLayerInterfaces;
 
 namespace DataAccessLayerFakes
 {
-    public class UserAccessorFake : IUserAccessor
+    public class UsersAccessorFake : IUsersAccessor
     {
         private List<Users> fakeUsers = new List<Users>();
 
-        public UserAccessorFake()
+        public UsersAccessorFake()
         {
             fakeUsers.Add(new Users()
             {
