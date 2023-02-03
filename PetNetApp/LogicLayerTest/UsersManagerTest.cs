@@ -18,7 +18,7 @@ namespace LogicLayerTest
         public void TestSetUp()
         {
             //usersManager = new UsersManager(new UserAccessorFake()); // Fake Data
-            usersManager = new UsersManager(new UserAccessor()); // Actual Data
+            usersManager = new UsersManager(new UsersAccessor()); // Actual Data
         }
 
         [TestMethod]
