@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AnimalManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AnimalManagerTests.cs" />
     <Compile Include="KennelManagerTest.cs" />
     <Compile Include="UsersManagerTest.cs" />
   </ItemGroup>

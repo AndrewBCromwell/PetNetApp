@@ -1805,3 +1805,138 @@ GO
 
 
 
+/*  
+	Project:		PetNet
+	Database Name:	PetNet_db_am
+	Author:			Gwen Arman
+    Description: 	Sprint 1, sample data
+*/
+
+print '' print '*** Using PetNet_db_am'
+USE [PetNet_db_am]
+GO 
+
+/* Source: https://simplemaps.com/data/us-zips */
+print '' print '*** creating Zipcode sample data'
+GO 
+INSERT INTO [dbo].[Zipcode]
+	(
+    [Zipcode],
+    [City],
+    [State],
+    [Latitude],
+    [Longitude]
+    )
+VALUES
+(50001,'Ackworth','Iowa', 41.3669, 93.4727),
+(50002,'Adair','Iowa', 41.5004, 94.6434)
+GO
+
+print '' print '*** creating Shelter sample data'
+GO 
+INSERT INTO [dbo].[Shelter]
+	(
+    [ShelterName],
+    [Address],
+    [Zipcode],
+    [Phone],
+    [Email],
+    [Areasofneed],
+    [ShelterActive]
+    )
+VALUES
+("S1", "111 Shelter Drive", 50001, "123-123-1111", "shelter1@shelter.com", "Animal Food", 1),
+("S2", "112 Shelter Drive", 50002, "123-123-1112", "shelter2@shelter.com", "Animal Medicine", 1),
+("S3", "113 Shelter Drive", 50001, "123-123-1113", "shelter3@shelter.com", "Kitty Litter", 1)
+GO
+
+
+/* Insert Into AnimalStatus table stored procedure */
+/* Created by Andrew Schneider */
+print '' print '*** adding AnimalStatus records (Andrew S.)***'
+GO
+INSERT INTO dbo.AnimalStatus
+	([AnimalStatusId], [AnimalStatusDescription])
+	VALUES
+		('Available', 'Test animal status description')
+GO
+
+
+/* Insert Into Animal table stored procedure */
+/* Created by Andrew Schneider */
+print '' print '*** adding Animal records (Andrew S.)***'
+GO
+INSERT INTO dbo.Animal
+(	
+	[AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [Personality], [Description], [AnimalStatusId],		
+	[RecievedDate], [MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]					
+)
+		
+	VALUES
+		('Fido', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'15A73', 0, 'Not aggressive', 1, 1, 'No notes')
+GO
+
+
+
+print '' print '*** creating Kennel sample data'
+GO 
+INSERT INTO [dbo].[Kennel]
+	(
+    [ShelterId],
+    [KennelName],
+    [AnimalTypeId],
+    [KennelSpace],
+    [KennelActive]
+    )
+VALUES
+(100000, "Kennel 1", "Dog", 1, 1),
+(100001, "Kennel 2", "Dog", 1, 1),
+(100002, "Kennel 3", "Dog", 1, 1),
+(100000, "Kennel 4", "Dog", 1, 1),
+(100000, "Kennel 5", "Dog", 1, 1),
+(100000, "Kennel 6", "Dog", 1, 1),
+(100000, "Kennel 7", "Dog", 1, 1),
+(100000, "Kennel 8", "Dog", 1, 1),
+(100000, "Kennel 9", "Dog", 1, 1),
+(100000, "Kennel 10", "Dog", 1, 1)
+GO
+
+print '' print '*** creating AnimalKenneling sample data'
+GO 
+INSERT INTO [dbo].[AnimalKenneling]
+	(
+	[KennelId],
+	[AnimalId]
+    )
+VALUES
+(100000, 100000)
+GO
+
+
+
+
+/* SelectAnimalByAnimalId stored procedure */
+/* Created by Andrew Schneider */
+print '' print '*** creating sp_select_animal_by_animalId (Andrew S.)'
+GO
+CREATE PROCEDURE [dbo].[sp_select_animal_by_animalId]
+(
+	@AnimalId			[int]
+)
+AS
+	BEGIN
+		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalGender], [Animal].[AnimalTypeId], [AnimalBreedId],
+				[Kennel].[KennelName], [Personality], [Description], [Animal].[AnimalStatusId],
+				[AnimalStatus].[AnimalStatusDescription], [RecievedDate], [MicrochipSerialNumber],
+				[Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
+		FROM 	[Animal]
+		JOIN 	[AnimalStatus]
+			ON 	[Animal].[AnimalStatusID] = [AnimalStatus].[AnimalStatusID]
+		JOIN 	[AnimalKenneling]
+			ON	[Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
+		JOIN	[Kennel]
+			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
+		WHERE	@AnimalId = [Animal].[AnimalId]
+	END
+GO

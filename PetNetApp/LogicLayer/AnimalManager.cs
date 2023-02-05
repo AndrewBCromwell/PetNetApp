@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LogicLayer
 {
     public class AnimalManager : IAnimalManager
@@ -17,6 +18,7 @@ namespace LogicLayer
         {
             _animalAccessor = new DataAccessLayer.AnimalAccessor();
         }
+
         public AnimalManager(IAnimalAccessor animalAccessor)
         {
             _animalAccessor = animalAccessor;
@@ -32,8 +34,32 @@ namespace LogicLayer
             catch (Exception ex)
             {
                 throw new ApplicationException("There was an error retrieving animal data.", ex);
-            }
+        }
             return animals;
+        }
+
+        public AnimalVM RetrieveAnimalByAnimalId(int animalId)
+        {
+            /*
+                var fakeAnimal = new AnimalVM();
+                fakeAnimal.AnimalName = "Test name 2";
+                return fakeAnimal;
+            */
+            AnimalVM animalVM = null;
+            try
+            {
+                animalVM = _animalAccessor.SelectAnimalByAnimalId(animalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Data not found.", ex);
+            }
+            return animalVM;
+        }
+
+        public bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
+        {
+            throw new NotImplementedException();
         }
     }
 }
