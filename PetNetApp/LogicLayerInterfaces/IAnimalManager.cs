@@ -10,6 +10,6 @@ namespace LogicLayerInterfaces
     public interface IAnimalManager
     {
         AnimalVM RetrieveAnimalByAnimalId(int animalId);
-        bool EditAnimal(Animal oldAnimal, Animal newAnimal);
+        bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
     }
 }

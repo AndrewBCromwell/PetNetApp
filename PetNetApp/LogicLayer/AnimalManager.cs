@@ -42,7 +42,7 @@ namespace LogicLayer
             return animalVM;
         }
 
-        public bool EditAnimal(Animal oldAnimal, Animal newAnimal)
+        public bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
         {
             throw new NotImplementedException();
         }

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WpfPresentation.Development.Animals"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AnimalsPage">
+      Title="AnimalsPage" ScrollViewer.CanContentScroll="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>

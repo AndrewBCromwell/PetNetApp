@@ -10,6 +10,6 @@ namespace DataAccessLayerInterfaces
     public interface IAnimalAccessor
     {
         AnimalVM SelectAnimalByAnimalId(int animalId);
-        int UpdateAnimal(Animal oldAnimal, Animal newAnimal);
+        int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
     }
 }

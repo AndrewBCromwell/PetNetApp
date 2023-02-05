@@ -28,7 +28,7 @@ namespace DataObjects
     public class AnimalVM : Animal
     {
         public string AnimalStatusDescription { get; set; }
-        // public string KennelName { get; set; }
+        public string KennelName { get; set; }
         // public List<MedicalRecord> MedicalNotes { get; set; }
         // public DeathVM AnimalDeath { get; set; }
     }

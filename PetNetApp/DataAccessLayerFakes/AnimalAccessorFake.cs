@@ -21,12 +21,13 @@ namespace DataAccessLayerFakes
                 AnimalGender = "Test gender 1",
                 AnimalTypeId = "Test type 1",
                 AnimalBreedId = "Test breed 1",
+                KennelName = "Test kennel 1",
                 Personality = "Test personality 1",
                 Description = "Test description 1",
                 AnimalStatusId = "Test status 1",
                 AnimalStatusDescription = "Test status description 1",
                 ReceivedDate = DateTime.Parse("2023-06-01"),
-                MicrochipSerialNumber = '1',
+                MicrochipSerialNumber = "Test SN",
                 Aggressive = false,
                 AggressionDescription = "Not aggressive",
                 ChildFriendly = true,
@@ -41,12 +42,13 @@ namespace DataAccessLayerFakes
                 AnimalGender = "Test gender 2",
                 AnimalTypeId = "Test type 2",
                 AnimalBreedId = "Test breed 2",
+                KennelName = "Test kennel 2",
                 Personality = "Test personality 2",
                 Description = "Test description 2",
                 AnimalStatusId = "Test status 2",
                 AnimalStatusDescription = "Test status description 2",
                 ReceivedDate = DateTime.Parse("2023-06-02"),
-                MicrochipSerialNumber = '2',
+                MicrochipSerialNumber = "Test SN",
                 Aggressive = true,
                 AggressionDescription = "Bites",
                 ChildFriendly = false,
@@ -61,12 +63,13 @@ namespace DataAccessLayerFakes
                 AnimalGender = "Test gender 3",
                 AnimalTypeId = "Test type 3",
                 AnimalBreedId = "Test breed 3",
+                KennelName = "Test kennel 1",
                 Personality = "Test personality 3",
                 Description = "Test description 3",
                 AnimalStatusId = "Test status 3",
                 AnimalStatusDescription = "Test status description 3",
                 ReceivedDate = DateTime.Parse("2023-06-03"),
-                MicrochipSerialNumber = '3',
+                MicrochipSerialNumber = "Test SN",
                 Aggressive = false,
                 AggressionDescription = "Not aggressive",
                 ChildFriendly = true,
@@ -94,7 +97,7 @@ namespace DataAccessLayerFakes
             return animalVM;
         }
 
-        public int UpdateAnimal(Animal oldAnimal, Animal newAnimal)
+        public int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
         {
             throw new NotImplementedException();
         }

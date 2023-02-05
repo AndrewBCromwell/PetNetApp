@@ -70,7 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Development\Animals\ViewEditAnimalProfile.xaml">
+    <Page Include="Development\Animals\EditDetailAnimalProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,8 +107,8 @@
     <Compile Include="Development\Animals\AnimalsPage.xaml.cs">
       <DependentUpon>AnimalsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Animals\ViewEditAnimalProfile.xaml.cs">
-      <DependentUpon>ViewEditAnimalProfile.xaml</DependentUpon>
+    <Compile Include="Development\Animals\EditDetailAnimalProfile.xaml.cs">
+      <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>

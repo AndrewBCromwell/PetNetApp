@@ -48,7 +48,7 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         /*
-                         *[AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [Personality],
+                         *[AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [KennelName], [Personality],
                          *[Description], [Animal].[AnimalStatusId], [AnimalStatus].[AnimalStatusDescription], [RecievedDate],
                          *[MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
                         */
@@ -58,17 +58,18 @@ namespace DataAccessLayer
                         animal.AnimalGender = reader.GetString(2);
                         animal.AnimalTypeId = reader.GetString(3);
                         animal.AnimalBreedId = reader.GetString(4);
-                        animal.Personality = reader.GetString(5);
-                        animal.Description = reader.GetString(6);
-                        animal.AnimalStatusId = reader.GetString(7);
-                        animal.AnimalStatusDescription = reader.GetString(8);
-                        animal.ReceivedDate = reader.GetDateTime(9);
-                        animal.MicrochipSerialNumber = reader.GetString(10);
-                        animal.Aggressive = reader.GetBoolean(11);
-                        animal.AggressionDescription = reader.GetString(12);
-                        animal.ChildFriendly = reader.GetBoolean(13);
-                        animal.NeuterStatus = reader.GetBoolean(14);
-                        animal.Notes = reader.GetString(15);
+                        animal.KennelName = reader.GetString(5);
+                        animal.Personality = reader.GetString(6);
+                        animal.Description = reader.GetString(7);
+                        animal.AnimalStatusId = reader.GetString(8);
+                        animal.AnimalStatusDescription = reader.GetString(9);
+                        animal.ReceivedDate = reader.GetDateTime(10);
+                        animal.MicrochipSerialNumber = reader.GetString(11);
+                        animal.Aggressive = reader.GetBoolean(12);
+                        animal.AggressionDescription = reader.GetString(13);
+                        animal.ChildFriendly = reader.GetBoolean(14);
+                        animal.NeuterStatus = reader.GetBoolean(15);
+                        animal.Notes = reader.GetString(16);
                     }
                 }
             }
@@ -85,7 +86,7 @@ namespace DataAccessLayer
             return animal;
         }
 
-        public int UpdateAnimal(Animal oldAnimal, Animal newAnimal)
+        public int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
         {
             throw new NotImplementedException();
         }
