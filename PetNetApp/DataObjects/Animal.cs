@@ -8,7 +8,7 @@ namespace DataObjects
 {
     public class Animal
     {
-		public int AnimalId { get; set; }
+        public int AnimalId { get; set; }
         public string AnimalName { get; set; }
         public string AnimalTypeId { get; set; }
         public string AnimalBreedId { get; set; }
@@ -29,8 +29,9 @@ namespace DataObjects
         public string AnimalStatusDescription { get; set; }
         public string KennelName { get; set; }
         public string AnimalGender { get; set; }
-        //public List<MedicalRecord> MedicalRecords { get; set; }
-        //public DeathVM AnimalDeath { get; set; }
+        public string AnimalTypeDescription { get; set; }
+        public string AnimalBreedDescription { get; set; }
+        //public List<MedicalRecord> MedicalNotes { get; set; }
+        //public DeathVM AnimalDeathh { get; set; }
     }
-
 }

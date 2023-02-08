@@ -11,5 +11,6 @@ namespace DataAccessLayerInterfaces
     {
         AnimalVM SelectAnimalByAnimalId(int animalId);
         List<Animal> SelectAllAnimals(String animalName);
+        List<Animal> SelectAllAnimals();
     }
 }
