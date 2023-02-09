@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Created by Asa Armstrong
+// Created on 2023/02/02
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +23,12 @@ namespace WpfPresentation.Development.Animals
     public partial class AddAnimalDOD513 : Page
     {
         private DeathVM _death = new DeathVM();
-        private DeathManager _deathManager = new DeathManager();
+        private MasterManager _masterManager = new MasterManager();
+        private Animal _animal = new Animal();
 
-        public AddAnimalDOD513()
+        public AddAnimalDOD513(Animal animal)
         {
+            _animal = animal;
             InitializeComponent();
         }
 
@@ -34,10 +39,13 @@ namespace WpfPresentation.Development.Animals
                 _death.DeathDate = date_DOD.SelectedDate;
                 _death.DeathCause = txt_Cause.Text;
                 _death.DeathNotes = txt_Notes.Text;
+                _death.AnimalId = _animal.AnimalId;
 
-                // Had to add fake data for a few fields
-                _death.AnimalId = 100000;
+                // need currently signed in user
                 _death.UsersId = 100000;
+                //_death.UsersId = MasterManager.User.UsersId;
+
+                //No field for these in UI?
                 _death.DeathDisposal = "UNKNOWN";
                 _death.DeathDisposalDate = DateTime.Now;
 
@@ -62,11 +70,11 @@ namespace WpfPresentation.Development.Animals
                     throw new ApplicationException("Death Date cannot be in the future.");
                 }
 
-                _deathManager.AddAnimalDOD(_death);
+                _masterManager.DeathManager.AddAnimalDOD(_death);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message); // needs PromptWindow.ShowPrompt(name,desc,buttonmode)
             }
         }
     }

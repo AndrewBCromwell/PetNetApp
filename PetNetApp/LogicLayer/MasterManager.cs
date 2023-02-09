@@ -14,11 +14,13 @@ namespace LogicLayer
     {
         public IKennelManager KennelManager { get; set; }
         public IUsersManager UsersManager { get; set; }
+        public IDeathManager DeathManager { get; set; }
         
         public MasterManager()
         {
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
+            DeathManager = new DeathManager();
         }
     }
 }
