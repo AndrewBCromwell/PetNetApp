@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <!--Default Label Style-->
             <Style TargetType="Label">
-                <Setter Property="Foreground" Value="#1c6758"/>
+                <Setter Property="Foreground" Value="#1C6758"/>
                 <Setter Property="FontSize" Value="16"/>
             </Style>
 
@@ -17,15 +17,15 @@
 
             <!--Default Datagrid Style-->
             <Style TargetType="DataGrid">
-                <Setter Property="Background" Value="#eef2e6"/>
+                <Setter Property="Background" Value="#EEF2E6"/>
                 <Setter Property="RowHeaderWidth" Value="0"/>
                 <Setter Property="RowBackground" Value="#9ec1b0"/>
                 <Setter Property="AlternatingRowBackground" Value="#eeefe1"/>
                 <Setter Property="IsReadOnly" Value="True"/>
             </Style>
             <Style TargetType="DataGridColumnHeader">
-                <Setter Property="Background" Value="#1c6758"/>
-                <Setter Property="Foreground" Value="#eef2e6"/>
+                <Setter Property="Background" Value="#1C6758"/>
+                <Setter Property="Foreground" Value="#EEF2E6"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Padding" Value="5 0"/>
             </Style>
@@ -42,7 +42,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            
+
             <!--Default Menu Style-->
             <Style TargetType="ContextMenu" x:Name="MenuStyle">
                 <Setter Property="Background" Value="#EEF2E6"/>
@@ -50,12 +50,12 @@
                 <Setter Property="Foreground" Value="#1C6758"/>
                 <Setter Property="FontSize" Value="16"/>
             </Style>
-                
+
             <!--Default TextBox Style-->
             <Style TargetType="TextBox">
                 <Setter Property="Foreground" Value="#1C6758"/>
-                <Setter Property="Background" Value="#eef2e6"/>
-                <Setter Property="BorderBrush" Value="#d6cda4"/>
+                <Setter Property="Background" Value="#EEF2E6"/>
+                <Setter Property="BorderBrush" Value="#D6CDA4"/>
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Template">
@@ -73,10 +73,7 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="BorderBrush" 
-								TargetName="Border" 
-								Value="#1C6758">
-                                    </Setter>
+                                    <Setter Property="BorderBrush" TargetName="Border" Value="#1C6758"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -87,8 +84,59 @@
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Style.Resources>
-                
             </Style>
+
+            <!-- Default Password Box Style -->
+
+            <Style TargetType="PasswordBox">
+                <Setter Property="SnapsToDevicePixels" Value="true" />
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="#1C6758"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="OverridesDefaultStyle" Value="true" />
+                <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+                <Setter Property="FontFamily" Value="Verdana" />
+                <Setter Property="PasswordChar" Value="*" />
+                <Setter Property="MinWidth" Value="120" />
+                <Setter Property="MinHeight" Value="20" />
+                <Setter Property="AllowDrop" Value="true" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type PasswordBox}">
+                            <Border x:Name="Border" CornerRadius="10" Padding="2" BorderThickness="1">
+                                <Border.Background>
+                                    <SolidColorBrush Color="#EEF2E6" />
+                                </Border.Background>
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="#D6CDA4" />
+                                </Border.BorderBrush>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="Disabled" />
+                                        <VisualState x:Name="MouseOver" />
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" TargetName="Border">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="#1C6758"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
 
 
             <ResourceDictionary.MergedDictionaries>

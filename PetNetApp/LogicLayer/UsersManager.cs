@@ -5,38 +5,63 @@ using System.Text;
 using System.Threading.Tasks;
 using DataObjects;
 using LogicLayerInterfaces;
-using DataAccessLayer;
 using DataAccessLayerInterfaces;
+using DataAccessLayer;
+using DataAccessLayerFakes;
+using System.Security.Cryptography;
 
 namespace LogicLayer
 {
     public class UsersManager : IUsersManager
     {
-        IUserAccessor _userAccessor = null;
+        IUsersAccessor _userAccessor = null;
 
         public UsersManager()
         {
-            _userAccessor = new UserAccessor();
+            _userAccessor = new UsersAccessor();
         }
 
-        public UsersManager(IUserAccessor ua)
+        public UsersManager(IUsersAccessor userAccessor)
         {
-            _userAccessor = ua;
+            _userAccessor = userAccessor;
         }
+
 
         /// <summary>
-        /// Hoang Chu
-        /// Created: 2023/02/01
+        /// Chris Dreismeier
+        /// Created: 2023/03/02
         /// 
         /// 
         /// </summary>
+        /// Retrieves all users with a certain role
         ///
         /// <remarks>
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        /// <returns>List<Users></returns>
+        /// <param name="RoleId"></param>
+        public List<UsersVM> RetrieveUserByRole(string RoleId)
+        {
+            List<UsersVM> users = new List<UsersVM>();
+
+            try
+            {
+                users = _userAccessor.SelectUserByRole(RoleId);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return users;
+        }
+
+
+         /// Hoang Chu
+        /// Created: 2023/02/01
+        /// 
         public List<Users> RetriveAllEmployees()
         {
             List<Users> employeeList = null;
@@ -52,5 +77,7 @@ namespace LogicLayer
 
             return employeeList;
         }
+        /// <returns>List<Users></returns>
+        
     }
 }

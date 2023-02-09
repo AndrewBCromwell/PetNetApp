@@ -8,11 +8,11 @@ using DataAccessLayerInterfaces;
 
 namespace DataAccessLayerFakes
 {
-    public class UserAccessorFake : IUserAccessor
+    public class UsersAccessorFake : IUsersAccessor
     {
         private List<Users> fakeUsers = new List<Users>();
 
-        public UserAccessorFake()
+        public UsersAccessorFake()
         {
             fakeUsers.Add(new Users()
             {
@@ -22,13 +22,12 @@ namespace DataAccessLayerFakes
                 GivenName = "Test",
                 FamilyName = "User",
                 Email = "test@gmail.com",
-                PasswordHash = "123456789",
                 Address = "33 Sage Road",
                 Zipcode = "52404",
                 Phone = "123456789",
                 CreationDate = DateTime.Now,
                 Active = true,
-                Suspended = false
+                SuspendEmployee = false
             });
 
             fakeUsers.Add(new Users()
@@ -39,13 +38,12 @@ namespace DataAccessLayerFakes
                 GivenName = "Test",
                 FamilyName = "User2",
                 Email = "test2@gmail.com",
-                PasswordHash = "123456789",
                 Address = "33 Sage Road",
                 Zipcode = "52404",
                 Phone = "123456789",
                 CreationDate = DateTime.Now,
                 Active = true,
-                Suspended = false
+                SuspendEmployee = false
             });
 
             fakeUsers.Add(new Users()
@@ -56,13 +54,12 @@ namespace DataAccessLayerFakes
                 GivenName = "Test",
                 FamilyName = "User3",
                 Email = "test3@gmail.com",
-                PasswordHash = "123456789",
                 Address = "33 Sage Road",
                 Zipcode = "52404",
                 Phone = "123456789",
                 CreationDate = DateTime.Now,
                 Active = true,
-                Suspended = false
+                SuspendEmployee = false
             });
         }
 
@@ -83,6 +80,11 @@ namespace DataAccessLayerFakes
         public List<Users> SelectAllEmployees()
         {
             return fakeUsers;
+        }
+
+        public List<UsersVM> SelectUserByRole(string RoleId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

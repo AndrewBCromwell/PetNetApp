@@ -10,6 +10,8 @@ namespace DataObjects
     {
         public int AnimalId { get; set; }
         public string AnimalName { get; set; }
+        public string AnimalTypeId { get; set; }
+        public string AnimalBreedId { get; set; }
         public string Personality { get; set; }
         public string Description { get; set; }
         public DateTime BroughtIn { get; set; }
@@ -19,16 +21,17 @@ namespace DataObjects
         public bool ChildFriendly { get; set; }
         public bool NeuterStatus { get; set; }
         public string Notes { get; set; }
-        public string AnimalTypeId { get; set; }
-        public string AnimalBreedId { get; set; }
         public string AnimalStatusId { get; set; }
     }
 
     public class AnimalVM : Animal
     {
+        public string AnimalStatusDescription { get; set; }
         public string KennelName { get; set; }
         public string AnimalGender { get; set; }
-        //public List<MedicalRecord> MedicalRecords { get; set; }
-        //public DeathVM AnimalDeath { get; set; }
+        public string AnimalTypeDescription { get; set; }
+        public string AnimalBreedDescription { get; set; }
+        //public List<MedicalRecord> MedicalNotes { get; set; }
+        //public DeathVM AnimalDeathh { get; set; }
     }
 }

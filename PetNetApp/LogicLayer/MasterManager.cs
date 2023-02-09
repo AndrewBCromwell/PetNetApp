@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LogicLayerInterfaces;
 
 namespace LogicLayer
 {
@@ -16,11 +17,16 @@ namespace LogicLayer
         public IUsersManager UsersManager { get; set; }
         public IDeathManager DeathManager { get; set; }
         
+        public IAnimalManager AnimalManager { get; set; }
+
         public MasterManager()
         {
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
             DeathManager = new DeathManager();
+            AnimalManager = new AnimalManager();
         }
+    
+        
     }
 }

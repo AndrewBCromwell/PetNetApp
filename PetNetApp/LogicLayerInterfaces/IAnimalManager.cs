@@ -10,5 +10,8 @@ namespace LogicLayerInterfaces
     public interface IAnimalManager
     {
         List<Animal> RetrieveAllAnimals(String animalName);
+        AnimalVM RetrieveAnimalByAnimalId(int animalId);
+        bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
+        List<Animal> RetrieveAllAnimals();
     }
 }

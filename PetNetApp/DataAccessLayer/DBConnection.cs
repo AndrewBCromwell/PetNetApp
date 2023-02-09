@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
+    
     /// <summary>
     /// Stephen Jaurigue
     /// Created: 2023/02/01
@@ -24,11 +25,11 @@ namespace DataAccessLayer
         /// </summary>
         /// 
         /// <returns>SqlConnection</returns>	
+
         public SqlConnection GetConnection()
         {
             SqlConnection conn = null;
-
-            string connectionString = "Data Source=localhost;Initial Catalog=PetNet_db_am;Integrated Security=True";
+            string connectionString = @"Data Source=localhost; Initial Catalog=PetNet_db_am; Integrated Security=True";
             conn = new SqlConnection(connectionString);
 
             return conn;

@@ -91,12 +91,6 @@ namespace WpfPresentation.Community
                             menuItemActivate.Click += (object1, args) => menuItem_Activate_Click();
                             ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemActivate);
                         }
-
-
-                        
-
-                        
-                        
                         
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu.IsOpen = true;
                         return;

@@ -50,7 +50,7 @@ namespace WpfPresentation.Development.Animals.Medical
 
         private void pgMedicalAnimalsView_Loaded(object sender, RoutedEventArgs e)
         {
-
+            wrpMedicalAnimalList.Children.Clear(); // this prevents getting dupe animals when loading page a second time
             try
             {
                 _animals = _animalManager.RetrieveAllAnimals("");
@@ -105,7 +105,7 @@ namespace WpfPresentation.Development.Animals.Medical
 
 
                 // add window to be opened when clicking here, send the AnimalId and animalname or both.
-
+                NavigationService.Navigate(new MedicalNavigationPage(_manager, animal));
 
                 // MessageBox.Show(animalId.ToString()); // for testing purposes
             };
