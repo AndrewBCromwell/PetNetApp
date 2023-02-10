@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAnimalAccessor.cs" />
+    <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IKennelAccessor.cs" />
     <Compile Include="IMedicalRecordAccessor.cs" />

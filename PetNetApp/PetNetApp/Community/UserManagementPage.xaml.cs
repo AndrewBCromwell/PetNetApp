@@ -144,7 +144,7 @@ namespace WpfPresentation.Community
                 {
                     _employeeList = _masterManager.UsersManager.RetriveAllEmployees();
                     int index = 0;
-                    foreach (Users user in _employeeList)
+                    foreach (UsersVM user in _employeeList)
                     {
                         DisplayUsers(user, index);
                         index++;

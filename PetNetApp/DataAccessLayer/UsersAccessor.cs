@@ -95,6 +95,14 @@ namespace DataAccessLayer
 
 
         }
+
+        /// <summary>
+        /// Hoang Chu
+        /// Created: 2023/03/02
+        /// 
+        /// 
+        /// </summary>
+        /// Selects all users with employee role
         public List<UsersVM> SelectAllEmployees()
         {
             List<UsersVM> employeeList = new List<UsersVM>();
@@ -123,12 +131,18 @@ namespace DataAccessLayer
 
                     user.UsersId = reader.GetInt32(0);
                     user.GenderId = reader.GetString(1);
-                    //user.PronoundId = reader.GetString(2);
+                    if (reader.IsDBNull(2))
+                    {
+                        user.PronounId = "N/A";
+                    }
+                    else
+                    {
+                        user.PronounId = reader.GetString(2);
+                    }
                     user.ShelterId = reader.GetInt32(3);
                     user.GivenName = reader.GetString(4);
                     user.FamilyName = reader.GetString(5);
                     user.Email = reader.GetString(6);
-                    //user.PasswordHash = reader.GetString(7);
                     user.Address = reader.GetString(7);
                     if (reader.IsDBNull(8))
                     {

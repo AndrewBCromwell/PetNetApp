@@ -20,7 +20,8 @@ namespace LogicLayerTest
         [TestInitialize]
         public void TestSetup()
         {
-            _userManager = new UsersManager(new UsersAccessorFakes());
+            _userManager = new UsersManager(new UsersAccessorFakes()); // Fake Data
+            // _userManager = new UsersManager(new UsersAccessor()); // Actual Data
         }
 
         [TestCleanup]
@@ -54,7 +55,7 @@ namespace LogicLayerTest
             listUser = _userManager.RetriveAllEmployees();
 
             int actualResult = listUser.Count;
-            int expectedResult = 10; // 3 for fake data
+            int expectedResult = 4;
 
             Assert.AreEqual(expectedResult, actualResult);
         }

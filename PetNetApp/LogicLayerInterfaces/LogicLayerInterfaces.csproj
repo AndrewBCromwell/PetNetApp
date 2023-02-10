@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAnimalManager.cs" />
+    <Compile Include="IAnimalUpdatesManager.cs" />
     <Compile Include="IKennelManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
     <Compile Include="IProcedureManager.cs" />
