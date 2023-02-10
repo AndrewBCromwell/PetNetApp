@@ -1682,7 +1682,7 @@ GO
 print '' print '*** creating table for AnimalUpdates'
 GO
 CREATE TABLE [dbo].[AnimalUpdates] (
-    [AnimalRecordId]        [int]                                   NOT NULL,
+    [AnimalRecordId]        [int]           IDENTITY(100000, 1)     NOT NULL,
     [AnimalId]              [int]                                   NOT NULL,
     [AnimalRecordNotes]     [nvarchar](500)                         NOT NULL,
     [AnimalRecordDate]      [datetime]	DEFAULT GETDATE()           NOT NULL,
