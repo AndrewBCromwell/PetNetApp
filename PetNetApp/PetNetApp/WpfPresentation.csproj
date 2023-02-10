@@ -62,9 +62,6 @@
     <Compile Include="Animals\MedicalPage.xaml.cs">
       <DependentUpon>MedicalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Testing.xaml.cs">
-      <DependentUpon>Testing.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>
     </Compile>
@@ -112,10 +109,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Development\Management\VolunteerManagment.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Testing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
