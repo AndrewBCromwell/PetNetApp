@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 using WpfPresentation.Development.Animals.Medical;
+using WpfPresentation.Animals;
 
 namespace WpfPresentation.Development.Animals
 {
@@ -24,7 +25,7 @@ namespace WpfPresentation.Development.Animals
     public partial class MedicalNavigationPage : Page
     {
         private static MedicalNavigationPage _existingMedicalNavigationPage = null;
-        
+
         private Animal _medicalProfileAnimal = null;
         // the page needs to have an animal associated with it for the Use Cases it relates to 
         // too work properly. However, that can not happen until there is a way to select an animal.
@@ -34,10 +35,10 @@ namespace WpfPresentation.Development.Animals
         private MasterManager _manager = null;
         private Button[] _medicalTabButtons;
 
-        
 
-         public MedicalNavigationPage(MasterManager manager, Animal animal) 
-         {
+
+        public MedicalNavigationPage(MasterManager manager, Animal animal)
+        {
             InitializeComponent();
             _manager = manager;
             _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
@@ -46,7 +47,7 @@ namespace WpfPresentation.Development.Animals
         }
 
 
-        private void displayMedProfileAnimalName()            
+        private void displayMedProfileAnimalName()
         {
             this.lblMedProfileAnimal.Content = _medicalProfileAnimal.AnimalName;
         }
@@ -83,8 +84,7 @@ namespace WpfPresentation.Development.Animals
         private void btnTreatment_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMedical.Navigate(null);
+            frameMedical.Navigate(new MedicalTreatmentPage(_medicalProfileAnimal));
         }
 
         private void btnTests_Click(object sender, RoutedEventArgs e)
@@ -110,7 +110,7 @@ namespace WpfPresentation.Development.Animals
 
         private void btnMedBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(MedicalPage.getMedicalPage(_manager ));
+            NavigationService.Navigate(MedicalPage.getMedicalPage(_manager));
         }
     }
 }

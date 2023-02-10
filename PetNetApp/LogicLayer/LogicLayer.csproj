@@ -48,6 +48,7 @@
     <Compile Include="AnimalManager.cs" />
     <Compile Include="KennelManager.cs" />
     <Compile Include="MasterManager.cs" />
+    <Compile Include="MedicalRecordManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersManager.cs" />
   </ItemGroup>
