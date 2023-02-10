@@ -13,7 +13,11 @@ namespace LogicLayerTest
         [TestInitialize]
         public void TestSetup()
         {
+<<<<<<< HEAD
             
+=======
+            //kennelManager = new KennelManager();
+>>>>>>> origin/main
             kennelManager = new KennelManager(new DataAccessLayerFakes.KennelAccessorFake());
         }
 

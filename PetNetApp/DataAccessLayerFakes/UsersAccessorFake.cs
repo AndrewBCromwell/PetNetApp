@@ -10,11 +10,12 @@ namespace DataAccessLayerFakes
 {
     public class UsersAccessorFake : IUsersAccessor
     {
-        private List<Users> fakeUsers = new List<Users>();
+        private List<UsersVM> fakeUsers = new List<UsersVM>();
+        private List<string> fakePassword = new List<string>();
 
         public UsersAccessorFake()
         {
-            fakeUsers.Add(new Users()
+            fakeUsers.Add(new UsersVM()
             {
                 UsersId = 100000,
                 GenderId = "Unknow",
@@ -30,7 +31,7 @@ namespace DataAccessLayerFakes
                 SuspendEmployee = false
             });
 
-            fakeUsers.Add(new Users()
+            fakeUsers.Add(new UsersVM()
             {
                 UsersId = 100001,
                 GenderId = "Unknow",
@@ -46,7 +47,7 @@ namespace DataAccessLayerFakes
                 SuspendEmployee = false
             });
 
-            fakeUsers.Add(new Users()
+            fakeUsers.Add(new UsersVM()
             {
                 UsersId = 100002,
                 GenderId = "Unknow",
@@ -61,6 +62,27 @@ namespace DataAccessLayerFakes
                 Active = true,
                 SuspendEmployee = false
             });
+
+            fakePassword.Add("9c9064c59f1ffa2e174ee754d2979be80dd30db552ec03e7e327e9b1a4bd594e");
+
+        }
+
+        public int AuthenticateUserWithEmailAndPasswordHash(string email, string passwordHash)
+        {
+            int numAuthenticated = 0;
+
+            for (int i = 0; i < fakeUsers.Count; i++)
+            {
+                if (fakeUsers[i].Email == email)
+                {
+                    if (fakePassword[i] == passwordHash && fakeUsers[i].Active && !fakeUsers[i].SuspendEmployee)
+                    {
+                        numAuthenticated += 1;
+                    }
+                }
+            }
+
+            return numAuthenticated;
         }
 
         /// <summary>
@@ -77,9 +99,59 @@ namespace DataAccessLayerFakes
         /// </remarks>
         /// <returns>List<Users></returns>
 
-        public List<Users> SelectAllEmployees()
+        public List<UsersVM> SelectAllEmployees()
         {
             return fakeUsers;
+        }
+
+        public List<string> SelectAllGenders()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> SelectAllPronouns()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> SelectRolesByUserID(int userId)
+        {
+            List<string> roles = new List<string>();
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                if (fakeUser.UsersId == userId)
+                {
+                    roles = fakeUser.Roles;
+                    break;
+                }
+
+            }
+
+            return roles;
+        }
+
+        public UsersVM SelectUserByEmail(string email)
+        {
+            UsersVM user = new UsersVM();
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                if (fakeUser.Email == email)
+                {
+                    user = fakeUser;
+                    user.Roles = new List<string>();
+                    break;
+                }
+
+            }
+
+            if (user == null)
+            {
+                throw new ApplicationException("User not found.");
+            }
+
+            return user;
         }
 
         public List<UsersVM> SelectUserByRole(string RoleId)

@@ -44,8 +44,12 @@
     <Compile Include="AnimalAccessorFakes.cs" />
     <Compile Include="KennelAccessorFake.cs" />
     <Compile Include="MedicalRecordAccessorFakes.cs" />
+<<<<<<< HEAD
     <Compile Include="ProcedureAccessorFakes.cs" />
+=======
+>>>>>>> origin/main
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScheduleAccessorFakes.cs" />
     <Compile Include="UsersAccessorFakes.cs" />
     <Compile Include="UsersAccessorFake.cs" />
   </ItemGroup>

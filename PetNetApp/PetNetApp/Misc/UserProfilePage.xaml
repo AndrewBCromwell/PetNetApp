@@ -1,0 +1,29 @@
+﻿<Page x:Class="WpfPresentation.Misc.UserProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.Misc"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserProfilePage">
+
+    <Grid Background="#FFEEF2E6">
+        <!-- Top Bar -->
+        <Rectangle Fill="#6a9f83" Height="25" VerticalAlignment="Top" Panel.ZIndex="2"/>
+
+        <!-- given name -->
+        <Label Content="User Profile :D" FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" Panel.ZIndex="1"/>
+
+
+        <!-- Backgound Colors -->
+        <Rectangle Fill="#9ec1b0" Width="150" HorizontalAlignment="Left" Panel.ZIndex="1"/>
+        <Rectangle Fill="#eceee0" Width="225" HorizontalAlignment="Left"/>
+        <Rectangle Fill="#eceee0" Width="225" HorizontalAlignment="Right"/>
+        <Rectangle Fill="#9ec1b0" Width="150" HorizontalAlignment="Right" Panel.ZIndex="1"/>
+
+
+        <!-- Bottom Bar -->
+        <Rectangle Fill="#6a9f83" Height="25" VerticalAlignment="Bottom" Panel.ZIndex="2"/>
+    </Grid>
+</Page>

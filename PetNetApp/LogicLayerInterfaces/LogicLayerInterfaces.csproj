@@ -44,7 +44,11 @@
     <Compile Include="IAnimalManager.cs" />
     <Compile Include="IKennelManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
+<<<<<<< HEAD
     <Compile Include="IProcedureManager.cs" />
+=======
+    <Compile Include="IScheduleManager.cs" />
+>>>>>>> origin/main
     <Compile Include="IUsersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

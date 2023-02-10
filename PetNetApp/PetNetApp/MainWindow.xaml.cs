@@ -17,6 +17,7 @@ using WpfPresentation.Community;
 using WpfPresentation.Management;
 using LogicLayer;
 using System.Diagnostics;
+using WpfPresentation.Misc;
 
 namespace PetNetApp
 {
@@ -33,6 +34,12 @@ namespace PetNetApp
             InitializeComponent();
             _manager = new MasterManager();
             _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnDonations, btnManagement };
+
+            if (_manager.User == null)
+            {
+                mnuLogout.Header = "Log In";
+            }
+
         }
 
         private void btnDonate_Click(object sender, RoutedEventArgs e)
@@ -98,6 +105,14 @@ namespace PetNetApp
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
             UnselectAllButtons();
+            if (_manager.User == null)
+            {
+                frameMain.Navigate(LogInPage.GetLogInPage(_manager, this));
+            }
+            else
+            {
+                frameMain.Navigate(UserProfilePage.GetUserProfilePage(_manager, this));
+            }
         }
 
         private void btnNotification_Click(object sender, RoutedEventArgs e)
@@ -150,7 +165,6 @@ namespace PetNetApp
             svMainTabs.ScrollToHorizontalOffset(svMainTabs.HorizontalOffset - 160);
         }
 
-
         private void svMainTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             UpdateScrollButtons();
@@ -159,6 +173,118 @@ namespace PetNetApp
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
             btnMenu.ContextMenu.IsOpen = true;
+        }
+
+        private void mnuLogout_Click(object sender, RoutedEventArgs e)
+        {
+            if ((string)mnuLogout.Header == "Log In")
+            {
+                UnselectAllButtons();
+                frameMain.Navigate(LogInPage.GetLogInPage(_manager, this));
+            }
+            else if ((string)mnuLogout.Header == "Log Out")
+            {
+                frameMain.Navigate(LandingPage.GetLandingPage(_manager, this));
+
+                _manager.User = null;
+                mnuUser.Header = "Hello, Guest";
+                mnuLogout.Header = "Log In";
+
+            }
+        }
+
+        public void ShowButtonsByRole()
+        {
+            foreach (var role in _manager.User.Roles)
+            {
+                switch (role)
+                {
+                    case "Admin":
+                        // Unhide ALL things
+                        break;
+
+                    case "Adoption":
+                        // Unhide adopter perks
+                        break;
+
+                    case "Donation":
+                        // Unhide Donation perks
+                        break;
+
+                    case "Fosterer":
+                        // Unhide Fosterer Abilities
+                        break;
+
+                    case "Fundraising":
+                        // Unhide Kennel subtabs
+                        break;
+
+                    case "Intake":
+                        // Unhide Intake privledges
+                        break;
+
+                    case "Inventory":
+                        // Unhide Inventory subtabs
+                        break;
+
+                    case "Kennel":
+                        // Unhide Kennel subtabs
+                        break;
+
+                    case "Medical":
+                        // Unhide manager tabs
+                        break;
+
+                    case "Public Relations":
+                        // Unhide given volunteer tabs
+                        break;
+
+                    case "Social":
+
+                        break;
+
+                    case "Surrender":
+                        break;
+
+                    case "Volunteer":
+                        break;
+
+                    case "Home Inspector":
+                        break;
+
+                    default:
+                        // unhide User tabs (Animals,   
+                        break;
+                }
+            }
+        }
+
+        private void mnuAccountSettings_Click(object sender, RoutedEventArgs e)
+        {
+            UnselectAllButtons();
+            if (_manager.User == null)
+            {
+                frameMain.Navigate(LogInPage.GetLogInPage(_manager, this));
+            }
+            else
+            {
+                frameMain.Navigate(AccountSettingsPage.GetAccountSettingsPage(_manager, this));
+            }
+        }
+
+        private void btnPetNetLogo_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(LandingPage.GetLandingPage(_manager, this));
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            frameMain.Navigate(LandingPage.GetLandingPage(_manager, this));
+
+            foreach (var tab in _mainTabButtons)
+            {
+                tab.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

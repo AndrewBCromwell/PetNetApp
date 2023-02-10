@@ -1,7 +1,18 @@
+<<<<<<< HEAD
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using LogicLayer;
 using DataAccessLayerFakes;
+=======
+﻿using DataAccessLayerFakes;
+using LogicLayer;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+>>>>>>> origin/main
 
 namespace LogicLayerTest
 {
@@ -17,6 +28,7 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
+<<<<<<< HEAD
         public void TestSelectLastMedicalRecordIdByAnimalIdReturnsCorrectNumber()
         {
             int expectedResult = 61;
@@ -38,6 +50,18 @@ namespace LogicLayerTest
             acctualResult = _medicalRecordManager.getLastMedicalRecordIdByAnimalId(animalId);
 
             Assert.AreEqual(expectedResult, acctualResult);
+=======
+        public void TestRetrieveMedicalDiagnosisByAnimalId()
+        {
+            int animalId = 100000;
+            int expectedCount = 1;
+            int actualCount = 0;
+
+            var medicalRecords = _medicalRecordManager.RetrieveMedicalRecordDiagnosisByAnimalId(animalId);
+            actualCount = medicalRecords.Count;
+
+            Assert.AreEqual(expectedCount, actualCount);
+>>>>>>> origin/main
         }
     }
 }

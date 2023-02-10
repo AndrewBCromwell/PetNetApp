@@ -203,5 +203,9 @@ namespace DataAccessLayer
             return animals;
         }
 
+        public List<Animal> SelectAllAnimalsNotInKennel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

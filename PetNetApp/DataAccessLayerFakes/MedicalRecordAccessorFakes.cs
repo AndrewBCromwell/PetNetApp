@@ -1,14 +1,24 @@
+<<<<<<< HEAD
 ﻿using System;
+=======
+﻿using DataAccessLayerInterfaces;
+using DataObjects;
+using System;
+>>>>>>> origin/main
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using DataAccessLayerInterfaces;
+=======
+>>>>>>> origin/main
 
 namespace DataAccessLayerFakes
 {
     public class MedicalRecordAccessorFakes : IMedicalRecordAccessor
     {
+<<<<<<< HEAD
         private Dictionary<int, int> medicalRecordRepresentation = new Dictionary<int, int>()
         {
             {50, 60 },
@@ -24,6 +34,30 @@ namespace DataAccessLayerFakes
                 medicalRecordId = medicalRecordRepresentation[animalId];
             }
             return medicalRecordId;
+=======
+        List<MedicalRecordVM> medicalRecords = new List<MedicalRecordVM>();
+
+        public MedicalRecordAccessorFakes()
+        {
+            medicalRecords.Add(new MedicalRecordVM
+            {
+                AnimalId = 100000,
+                Date = DateTime.Now,
+                MedicalNotes = "These are sample medical notes",
+                Procedure = true,
+                Test = true,
+                Vaccination = true,
+                PrescriptionStatus = false,
+                Images = false,
+                QuarantineStatus = false,
+                Diagnosis = "Sample Diagnosis 1"
+            });
+        }
+
+        public List<MedicalRecordVM> SelectMedicalRecordDiagnosisByAnimalId(int animalId)
+        {
+            return medicalRecords.Where(m => m.AnimalId == animalId).ToList();
+>>>>>>> origin/main
         }
     }
 }

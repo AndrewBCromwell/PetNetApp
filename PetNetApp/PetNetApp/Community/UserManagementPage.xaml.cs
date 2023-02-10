@@ -24,9 +24,9 @@ namespace WpfPresentation.Community
 
     public partial class UserManagementPage : Page
     {
-        MasterManager _masterManager;
+        public MasterManager _masterManager;
 
-        List<Users> _employeeList = null;
+        List<UsersVM> _employeeList = null;
         public UserManagementPage()
         {
             InitializeComponent();
