@@ -64,7 +64,7 @@ namespace DataAccessLayer
                         UsersVM user = new UsersVM();
                         user.UsersId = reader.GetInt32(0);
                         user.GenderId = reader.GetString(1);
-                        user.PronoundId = reader.GetString(2);
+                        user.PronounId = reader.GetString(2);
                         user.ShelterId = reader.GetInt32(3);
                         user.GivenName = reader.GetString(4);
                         user.FamilyName = reader.GetString(5);
@@ -95,9 +95,9 @@ namespace DataAccessLayer
 
 
         }
-        public List<Users> SelectAllEmployees()
+        public List<UsersVM> SelectAllEmployees()
         {
-            List<Users> employeeList = new List<Users>();
+            List<UsersVM> employeeList = new List<UsersVM>();
 
             DBConnection connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
@@ -116,7 +116,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    Users user = new Users();
+                    UsersVM user = new UsersVM();
                     // [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName],
                     // [Email], [PasswordHash], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], 
                     // [Active], [Suspended]
@@ -159,5 +159,242 @@ namespace DataAccessLayer
 
             return employeeList;
         }
+
+        // Mads
+        public int AuthenticateUserWithEmailAndPasswordHash(string email, string passwordHash)
+        {
+            int result = 0;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_authenticate_user";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 254);
+            cmd.Parameters.Add("@PasswordHash", SqlDbType.NVarChar, 100);
+
+            cmd.Parameters["@Email"].Value = email;
+            cmd.Parameters["@PasswordHash"].Value = passwordHash;
+
+            try
+            {
+                conn.Open();
+
+                result = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return result;
+        }
+
+        public UsersVM SelectUserByEmail(string email)
+        {
+
+            UsersVM user = null;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_user_by_email";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 254);
+
+            cmd.Parameters["@Email"].Value = email;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    user = new UsersVM
+                    {
+                        UsersId = reader.GetInt32(0),
+                        GenderId = reader.GetString(1),
+                        PronounId = reader.GetString(2),
+                        ShelterId = reader.GetInt32(3),
+                        GivenName = reader.GetString(4),
+                        FamilyName = reader.GetString(5),
+                        Email = reader.GetString(6),
+                        Address = reader.GetString(7),
+                        AddressTwo = reader.GetString(8),
+                        Zipcode = reader.GetString(9),
+                        Phone = reader.GetString(10),
+                        Active = reader.GetBoolean(11),
+                        SuspendEmployee = reader.GetBoolean(12),
+                        Roles = new List<string>()
+                    };
+                }
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return user;
+        }
+
+        public List<string> SelectRolesByUserID(int userId)
+        {
+            List<string> roles = new List<string>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_roles_by_userid";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+
+            cmd.Parameters["@UsersId"].Value = userId;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        roles.Add(reader.GetString(0));
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Cannot retrieve roles.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return roles;
+        }
+
+        public List<string> SelectAllPronouns()
+        {
+            List<string> pronouns = new List<string>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_all_pronouns";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        pronouns.Add(reader.GetString(0));
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Cannot retrieve pronouns.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return pronouns;
+        }
+
+        public List<string> SelectAllGenders()
+        {
+            List<string> genders = new List<string>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_all_genders";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        genders.Add(reader.GetString(0));
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Cannot retrieve genders.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return genders;
+        }
+
     }
 }

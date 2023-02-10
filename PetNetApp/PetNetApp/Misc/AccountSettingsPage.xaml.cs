@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using LogicLayer;
+using DataObjects;
+using PetNetApp;
+
+namespace WpfPresentation.Misc
+{
+    /// <summary>
+    /// Interaction logic for AccountSettingsPage.xaml
+    /// </summary>
+    public partial class AccountSettingsPage : Page
+    {
+        private static AccountSettingsPage _existingAccountSettings = null;
+        private MasterManager _manager = null;
+        private MainWindow _mainWindow = null;
+
+        public AccountSettingsPage(MasterManager manager)
+        {
+            InitializeComponent();
+            _manager = manager;
+        }
+
+        public static AccountSettingsPage GetAccountSettingsPage(MasterManager manager, MainWindow mainWindow)
+        {
+            if (_existingAccountSettings == null)
+            {
+                _existingAccountSettings = new AccountSettingsPage(manager);
+            }
+
+            _existingAccountSettings._mainWindow = mainWindow;
+
+            return _existingAccountSettings;
+        }
+
+        private void cmboGender_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> genders = _manager.UsersManager.RetrieveGenders();
+
+            foreach (var gender in genders)
+            {
+                cmboGender.Items.Add(gender);
+            }
+        }
+
+        private void cmboPronoun_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> pronouns = _manager.UsersManager.RetrievePronouns();
+
+            foreach (var pronoun in pronouns)
+            {
+                cmboPronoun.Items.Add(pronoun);
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtGivenName.Text = _manager.User.GivenName;
+            txtFamilyName.Text = _manager.User.FamilyName;
+            cmboGender.SelectedItem = _manager.User.GenderId;
+            cmboPronoun.SelectedItem = _manager.User.PronounId;
+            txtAddress.Text = _manager.User.Address;
+            txtAddressTwo.Text = _manager.User.AddressTwo;
+            txtPhone.Text = _manager.User.Phone;
+            txtZipcode.Text = _manager.User.Zipcode;
+        }
+    }
+}
