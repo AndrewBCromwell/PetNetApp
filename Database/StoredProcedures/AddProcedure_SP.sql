@@ -1,27 +1,22 @@
- USE [PetNet_db_am]
+/***************************************************************
+Andrew Cromwell
+Created: 2023/02/10
 
-DROP PROCEDURE IF EXISTS dbo.sp_select_users_by_roleId;  
-GO
+Description:
+File containing stored procedure for AddProcedure use case
+**************************************************************
+<Updater Name>
+Updated: yyyy/mm/dd
 
-print '' print '*** creating sp_select_all_animals'
-DROP PROCEDURE IF EXISTS [dbo].[sp_select_all_animals]  
-GO
-CREATE PROCEDURE [dbo].[sp_select_all_animals]
-(
-	@AnimalName			[nvarchar](50)
-)
-AS
-	BEGIN
-		SELECT  [Animal].[AnimalId], [Animal].[AnimalName] AS 'Animal Name'
-        FROM    [dbo].[Animal]
-		WHERE   [AnimalName] LIKE '%' + @AnimalName + '%'
-	END
+Description: 
+****************************************************************/
+
+USE [PetNet_db_am]
 GO
 
 print '' print '*** creting sp_insert_procedure_by_medical_record_id'
 GO
-DROP PROCEDURE IF EXISTS [dbo].[sp_insert_procedure_by_medical_record_id] ;
-GO
+
 CREATE PROCEDURE [dbo].[sp_insert_procedure_by_medical_record_id]
 (
 	@MedicalRecordId	    	int,
@@ -49,11 +44,12 @@ AS
 	END
 GO
 
+
+
 print '' print '*** creating sp_select_last_medical_record_id_by_animal_id'
 GO
-DROP PROCEDURE IF EXISTS [dbo].[sp_get_last_medical_record_by_animal_id]
-GO 
-CREATE PROCEDURE [dbo].[sp_get_last_medical_record_by_animal_id]
+
+CREATE PROCEDURE [dbo].[sp_select_last_medical_record_by_animal_id]
 (
 	@AnimalId					int 
 )
