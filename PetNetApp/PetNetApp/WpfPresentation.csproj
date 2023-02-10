@@ -64,15 +64,21 @@
     <Compile Include="Animals\MedicalPage.xaml.cs">
       <DependentUpon>MedicalPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\EditProcedurePage.xaml.cs">
+      <DependentUpon>EditProcedurePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedProcedurePage.xaml.cs">
+      <DependentUpon>MedProcedurePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\KennelUserControl.xaml.cs">
       <DependentUpon>KennelUserControl.xaml</DependentUpon>
     </Compile>
-	  <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
-		  <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
+      <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="Animals\AnimalsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +112,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Animals\MedicalNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\EditProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\MedProcedurePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

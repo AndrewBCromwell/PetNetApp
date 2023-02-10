@@ -105,7 +105,7 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameMedical.Navigate(null);
+            frameMedical.Navigate(new MedProcedurePage(_medicalProfileAnimal));
         }
 
         private void btnMedBack_Click(object sender, RoutedEventArgs e)
