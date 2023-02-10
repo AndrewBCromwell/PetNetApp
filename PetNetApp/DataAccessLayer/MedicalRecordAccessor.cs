@@ -20,7 +20,7 @@ namespace DataAccessLayer
             DBConnection connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
                            
-            var cmdText = "sp_get_last_medical_record_by_animal_id";
+            var cmdText = "sp_select_last_medical_record_by_animal_id";
 
             var cmd = new SqlCommand(cmdText, conn);
 
