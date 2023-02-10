@@ -12,7 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataObjects;
 using LogicLayer;
+using WpfPresentation.Animals;
+using WpfPresentation.Development.Animals.Medical;
 
 namespace WpfPresentation.Development.Animals
 {
@@ -88,7 +91,7 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new MedicalPage(_manager));
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

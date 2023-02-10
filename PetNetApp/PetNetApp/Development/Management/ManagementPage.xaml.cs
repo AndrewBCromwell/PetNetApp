@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using WpfPresentation.Management;
 
 namespace WpfPresentation.Development.Management
 {
@@ -79,7 +80,7 @@ namespace WpfPresentation.Development.Management
         private void btnKennel_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new ViewKennelPage());
         }
 
         private void btnVolunteer_Click(object sender, RoutedEventArgs e)

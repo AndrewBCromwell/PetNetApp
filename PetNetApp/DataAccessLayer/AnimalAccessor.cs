@@ -203,5 +203,58 @@ namespace DataAccessLayer
             return animals;
         }
 
+        public AnimalVM SelectAnimalMedicalProfileByAnimalId(int animalId)
+        {
+            AnimalVM animalVM = new AnimalVM();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_animal_record_by_animal_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@AnimalId", SqlDbType.Int);
+            cmd.Parameters["@AnimalId"].Value = animalId;
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //[AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [Personality], [Description],
+                        //[AnimalStatusId],[RecievedDate], [MicrochipSerialNumber], [Aggressive], [AggressiveDescription],
+                        //[ChildFriendly], [NeuterStatus],[Notes]
+
+                        animalVM.AnimalId = reader.GetInt32(0);
+                        animalVM.AnimalName = reader.GetString(1);
+                        animalVM.AnimalGender = reader.GetString(2);
+                        animalVM.AnimalTypeId = reader.GetString(3);
+                        animalVM.AnimalBreedId = reader.GetString(4);
+                        animalVM.Personality = reader.GetString(5);
+                        animalVM.Description = reader.GetString(6);
+                        animalVM.AnimalStatusId = reader.GetString(7);
+                        animalVM.BroughtIn = reader.GetDateTime(8);
+                        animalVM.MicrochipNumber = reader.GetString(9);
+                        animalVM.Aggressive = reader.GetBoolean(10);
+                        animalVM.AggressiveDescription = reader.GetString(11);
+                        animalVM.ChildFriendly = reader.GetBoolean(12);
+                        animalVM.NeuterStatus = reader.GetBoolean(13);
+                        animalVM.Notes = reader.GetString(14);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return animalVM;
+        }
     }
 }

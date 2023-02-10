@@ -58,11 +58,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
+      <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\MedicalPage.xaml.cs">
       <DependentUpon>MedicalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\AssignAnimalToKennel.xaml.cs">
+      <DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewAnimalsForKennel.xaml.cs">
+      <DependentUpon>ViewAnimalsForKennel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>
@@ -70,9 +79,13 @@
     <Compile Include="UserControls\KennelUserControl.xaml.cs">
       <DependentUpon>KennelUserControl.xaml</DependentUpon>
     </Compile>
-	  <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
-		  <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
+      <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Animals\AnimalMedicalProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AnimalsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,9 +130,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Management\AssignAnimalToKennel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Management\ManagementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\ViewAnimalsForKennel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Management\VolunteerManagment.xaml">
       <SubType>Designer</SubType>

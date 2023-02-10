@@ -1874,7 +1874,15 @@ INSERT INTO dbo.Animal
 		
 	VALUES
 		('Fido', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
-		'15A73', 0, 'Not aggressive', 1, 1, 'No notes')
+		'15A73', 0, 'Not aggressive', 1, 1, 'No notes'),
+		('Donny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'12345dgas', 0, 'Not aggressive', 1, 1, 'No notes'),
+		('Johny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'512314', 0, 'Not aggressive', 1, 1, 'No notes'),
+		('Bonny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'568533', 0, 'Not aggressive', 1, 1, 'No notes'),
+		('Doggy', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'6868564', 0, 'Not aggressive', 1, 1, 'No notes')
 GO
 
 
@@ -1939,4 +1947,180 @@ AS
 			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
 		WHERE	@AnimalId = [Animal].[AnimalId]
 	END
+GO
+
+/* Select Animal Record by AnimalID */
+/* William Rients */
+print '' print '*** creating sp_select_animal_record_by_animal_id'
+GO
+CREATE PROCEDURE [dbo].[sp_select_animal_record_by_animal_id]
+(
+	@AnimalId		[int]
+)
+AS
+	BEGIN
+		SELECT	[AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [Personality], [Description], [AnimalStatusId],
+				[RecievedDate], [MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus],[Notes]
+		FROM	[Animal]
+		WHERE	@AnimalId = [AnimalId]
+	END
+GO
+
+/* Select KennelID by AnimalID */
+/* William Rients */
+print '' print '*** creating sp_select_kennelId_by_animal_Id'
+GO
+CREATE PROCEDURE [dbo].[sp_select_kennelId_by_animal_Id]
+(
+	@AnimalId		[int]
+)
+AS
+	BEGIN
+		SELECT	[KennelId], [AnimalId]
+		FROM	[AnimalKenneling]
+		WHERE	@AnimalId = [AnimalId]
+	END
+GO
+
+/* Insert Animal into Kennel */
+/* William Rients */
+print '' print '*** creating sp_insert_animal_into_kennel_by_animalId_and_kennelId'
+GO
+CREATE PROCEDURE [dbo].[sp_insert_animal_into_kennel_by_animalId_and_kennelId]
+(
+	@KennelId		[int],
+	@AnimalId		[int]
+)
+AS
+	BEGIN
+		INSERT INTO	[dbo].[AnimalKenneling]
+			([KennelId], [AnimalId])
+		VALUES	
+			(@KennelId, @AnimalId)
+	END
+GO
+
+
+
+/* Select All Animals */
+/* William Rients */
+print '' print '*** creating sp_select_all_animals_without_kennel'
+GO
+CREATE PROCEDURE [dbo].[sp_select_all_animals_without_kennel]
+AS
+	BEGIN
+		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalTypeId], [AnimalBreedId], [Personality], [RecievedDate], [Description],
+				[MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalStatusId]
+		FROM	[Animal] LEFT JOIN [AnimalKenneling] 
+				ON [Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
+		WHERE 	[AnimalKenneling].[AnimalId] IS NULL
+	END
+GO
+
+
+/*  
+	Project:		PetNet
+	Database Name:	PetNet_db_am
+	Author:			Gwen Arman
+    Description: 	Sprint 1, stored procedures
+*/
+
+print '' print '*** Using PetNet_db_am'
+GO
+USE [PetNet_db_am]
+GO 
+
+print '' print '*** creating sp_select_kennels'
+GO
+Create procedure [dbo].[sp_select_kennels]
+(
+	@ShelterId	[int]
+)
+AS
+	BEGIN
+		Select 	[Kennel].[KennelId], [ShelterId], [KennelName], [Kennel].[AnimalTypeId], [KennelActive], [AnimalName],
+				[RecievedDate], [Notes]
+        From	[Kennel] left join [AnimalKenneling]
+					on [Kennel].[KennelId] = [AnimalKenneling].[KennelId]
+				left join [Animal]
+					on [AnimalKenneling].[AnimalId] = [Animal].[AnimalId]
+		Where	@ShelterId = [ShelterId] AND [KennelActive] = 1
+		
+    END
+GO
+
+print '' print '*** creating sp_insert_kennel'
+GO
+Create procedure [dbo].[sp_insert_kennel]
+(
+    @ShelterId				[int],
+    @KennelName				[nvarchar](50),
+    @AnimalTypeId			[nvarchar](50)
+)
+AS
+	BEGIN
+		Insert into [Kennel]
+			([ShelterId], [KennelName], [AnimalTypeId])
+        Values
+			(@ShelterId, @KennelName, @AnimalTypeId)
+		Return @@ROWCOUNT
+    END
+GO
+
+print '' print '*** creating sp_update_kennel_status_by_kennelid'
+GO
+
+Create procedure [dbo].[sp_update_kennel_status_by_kennelid]
+(
+	@KennelId				[int]
+)
+AS
+	BEGIN
+		Update 	[Kennel]
+		Set		[KennelActive] = 0
+		Where 	@KennelId = [KennelId]
+        Return @@ROWCOUNT
+    END
+GO
+
+print '' print '*** creating sp_select_animal_types'
+GO
+Create procedure [dbo].[sp_select_animal_types]
+AS
+	BEGIN
+		Select 	[AnimalTypeId]
+        From	[AnimalType]
+    END
+GO
+
+
+print '' print '*** creating sp_delete_animal_kenneling_by_kennelid'
+GO
+
+Create procedure [dbo].[sp_delete_animal_kenneling_by_kennelid]
+(
+	@KennelId				[int]
+)
+AS
+	BEGIN
+		Delete 
+		From	[AnimalKenneling]
+		Where 	@KennelId = [KennelId]
+        Return @@ROWCOUNT
+    END
+GO
+
+print '' print '*** creating sp_select_all_animals'
+DROP PROCEDURE IF EXISTS [dbo].[sp_select_all_animals]
+GO
+CREATE PROCEDURE [dbo].[sp_select_all_animals]
+(
+    @AnimalName            [nvarchar](50)
+)
+AS
+    BEGIN
+        SELECT  [Animal].[AnimalId], [Animal].[AnimalName] AS 'Animal Name'
+        FROM    [dbo].[Animal]
+        WHERE   [AnimalName] LIKE '%' + @AnimalName + '%'
+    END
 GO

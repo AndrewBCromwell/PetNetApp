@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.Development.Management;
 using WpfPresentation.UserControls;
 
 namespace WpfPresentation.Management
@@ -94,7 +95,7 @@ namespace WpfPresentation.Management
                 // Placeholder for ViewIndivisualOccupiedKennel
             } else
             {
-                // Placeholder for AssignAnimalToKennel
+                NavigationService.Navigate(new AssignAnimalToKennel(masterManager, kennelVM));
             }
         }
 
