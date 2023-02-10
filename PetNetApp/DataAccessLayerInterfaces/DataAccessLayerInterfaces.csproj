@@ -44,6 +44,7 @@
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IKennelAccessor.cs" />
+    <Compile Include="IScheduleAccessor.cs" />
     <Compile Include="IUsersAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

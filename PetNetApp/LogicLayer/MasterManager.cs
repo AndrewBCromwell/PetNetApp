@@ -16,12 +16,14 @@ namespace LogicLayer
         public IKennelManager KennelManager { get; set; }
         public IUsersManager UsersManager { get; set; }
         public IAnimalManager AnimalManager { get; set; }
+        public IScheduleManager scheduleManager { get; set; }
 
         public MasterManager()
         {
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
             AnimalManager = new AnimalManager();
+            scheduleManager = new ScheduleManager();
         }
     
         
