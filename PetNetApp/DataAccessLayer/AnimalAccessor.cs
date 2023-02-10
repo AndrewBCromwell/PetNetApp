@@ -13,6 +13,8 @@ namespace DataAccessLayer
 {
     public class AnimalAccessor : IAnimalAccessor
     {
+        
+
         public List<Animal> SelectAllAnimals(string animalName)
         {
             List<Animal> animals = new List<Animal>();
@@ -140,9 +142,267 @@ namespace DataAccessLayer
             return animal;
         }
 
+        public List<string> SelectAllAnimalBreeds()
+        {
+            List<string> breeds = new List<string>();
+
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            // command text
+            var cmdText = "sp_select_all_animal_breeds";
+
+            // command
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // try-catch-finally
+            try
+            {
+                // open a connection
+                conn.Open();
+
+                // execute command
+                var reader = cmd.ExecuteReader();
+
+                // process the results
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string breed = "";
+                        breed = reader.GetString(0);
+                        breeds.Add(breed);
+                        
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return breeds;
+        }
+
+        public List<string> SelectAllAnimalGenders()
+        {
+            List<string> genders = new List<string>();
+
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            // command text
+            var cmdText = "sp_select_all_animal_genders";
+
+            // command
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // try-catch-finally
+            try
+            {
+                // open a connection
+                conn.Open();
+
+                // execute command
+                var reader = cmd.ExecuteReader();
+
+                // process the results
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string gender = "";
+                        gender = reader.GetString(0);
+                        genders.Add(gender);
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return genders;
+        }
+
+        public List<string> SelectAllAnimalStatuses()
+        {
+            List<string> statuses = new List<string>();
+
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            // command text
+            var cmdText = "sp_select_all_animal_statuses";
+
+            // command
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // try-catch-finally
+            try
+            {
+                // open a connection
+                conn.Open();
+
+                // execute command
+                var reader = cmd.ExecuteReader();
+
+                // process the results
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string status = "";
+                        status = reader.GetString(0);
+                        statuses.Add(status);
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return statuses;
+        }
+
+        public List<string> SelectAllAnimalTypes()
+        {
+            List<string> types = new List<string>();
+
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            // command text
+            var cmdText = "sp_select_all_animal_types";
+
+            // command
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // try-catch-finally
+            try
+            {
+                // open a connection
+                conn.Open();
+
+                // execute command
+                var reader = cmd.ExecuteReader();
+
+                // process the results
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string type = "";
+                        type = reader.GetString(0);
+                        types.Add(type);
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return types;
+        }
+
         public int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
         {
-            throw new NotImplementedException();
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            // cmdText
+            var cmdText = "sp_update_animal";
+
+            //command
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // parameters
+            cmd.Parameters.AddWithValue("@AnimalId", oldAnimal.AnimalId);
+            cmd.Parameters.AddWithValue("@OldAnimalName", oldAnimal.AnimalName);
+            cmd.Parameters.AddWithValue("@OldAnimalGender", oldAnimal.AnimalGender);
+            cmd.Parameters.AddWithValue("@OldAnimalTypeId", oldAnimal.AnimalTypeId);
+            cmd.Parameters.AddWithValue("@OldAnimalBreedId", oldAnimal.AnimalBreedId);
+            cmd.Parameters.AddWithValue("@OldPersonality", oldAnimal.Personality);
+            cmd.Parameters.AddWithValue("@OldDescription", oldAnimal.Description);
+            cmd.Parameters.AddWithValue("@OldAnimalStatusId", oldAnimal.AnimalStatusId);
+            cmd.Parameters.AddWithValue("@OldReceivedDate", oldAnimal.BroughtIn); // "ReceivedDate" in the DB
+            cmd.Parameters.AddWithValue("@OldMicrochipSerialNumber", oldAnimal.MicrochipNumber);
+            cmd.Parameters.AddWithValue("@OldAggressive", oldAnimal.Aggressive);
+            cmd.Parameters.AddWithValue("@OldAggressiveDescription", oldAnimal.AggressiveDescription);
+            cmd.Parameters.AddWithValue("@OldChildFriendly", oldAnimal.ChildFriendly);
+            cmd.Parameters.AddWithValue("@OldNeuterStatus", oldAnimal.NeuterStatus);
+            cmd.Parameters.AddWithValue("@OldNotes", oldAnimal.Notes);
+
+            cmd.Parameters.AddWithValue("NewAnimalName", newAnimal.AnimalName);
+            cmd.Parameters.AddWithValue("NewAnimalGender", newAnimal.AnimalGender);
+            cmd.Parameters.AddWithValue("NewAnimalTypeId", newAnimal.AnimalTypeId);
+            cmd.Parameters.AddWithValue("NewAnimalBreedId", newAnimal.AnimalBreedId);
+            cmd.Parameters.AddWithValue("NewPersonality", newAnimal.Personality);
+            cmd.Parameters.AddWithValue("NewDescription", newAnimal.Description);
+            cmd.Parameters.AddWithValue("NewAnimalStatusId", newAnimal.AnimalStatusId);
+            cmd.Parameters.AddWithValue("NewReceivedDate", newAnimal.BroughtIn); // "ReceivedDate" in the DB
+            cmd.Parameters.AddWithValue("NewMicrochipSerialNumber", newAnimal.MicrochipNumber);
+            cmd.Parameters.AddWithValue("NewAggressive", newAnimal.Aggressive);
+            cmd.Parameters.AddWithValue("NewAggressiveDescription", newAnimal.AggressiveDescription);
+            cmd.Parameters.AddWithValue("NewChildFriendly", newAnimal.ChildFriendly);
+            cmd.Parameters.AddWithValue("NewNeuterStatus", newAnimal.NeuterStatus);
+            cmd.Parameters.AddWithValue("NewNotes", newAnimal.Notes);
+
+            try
+            {
+                conn.Open();
+
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return rows;
         }
     }
 }

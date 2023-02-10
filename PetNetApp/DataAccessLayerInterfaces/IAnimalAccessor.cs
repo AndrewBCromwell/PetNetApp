@@ -11,5 +11,13 @@ namespace DataAccessLayerInterfaces
     {
         AnimalVM SelectAnimalByAnimalId(int animalId);
         List<Animal> SelectAllAnimals(String animalName);
+
+        // For populating edit animal profile combo boxes 
+        List<string> SelectAllAnimalBreeds();
+        List<string> SelectAllAnimalGenders();
+        List<string> SelectAllAnimalTypes();
+        List<string> SelectAllAnimalStatuses();
+
+        int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
     }
 }

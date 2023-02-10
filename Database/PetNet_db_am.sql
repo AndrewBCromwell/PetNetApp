@@ -1851,16 +1851,6 @@ VALUES
 GO
 
 
-/* Insert Into AnimalStatus table stored procedure */
-/* Created by Andrew Schneider */
-print '' print '*** adding AnimalStatus records (Andrew S.)***'
-GO
-INSERT INTO dbo.AnimalStatus
-	([AnimalStatusId], [AnimalStatusDescription])
-	VALUES
-		('Available', 'Test animal status description')
-GO
-
 
 /* Insert Into Animal table stored procedure */
 /* Created by Andrew Schneider */
@@ -1873,7 +1863,7 @@ INSERT INTO dbo.Animal
 )
 		
 	VALUES
-		('Fido', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		('Max', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
 		'15A73', 0, 'Not aggressive', 1, 1, 'No notes')
 GO
 
@@ -1911,32 +1901,4 @@ INSERT INTO [dbo].[AnimalKenneling]
     )
 VALUES
 (100000, 100000)
-GO
-
-
-
-
-/* SelectAnimalByAnimalId stored procedure */
-/* Created by Andrew Schneider */
-print '' print '*** creating sp_select_animal_by_animalId (Andrew S.)'
-GO
-CREATE PROCEDURE [dbo].[sp_select_animal_by_animalId]
-(
-	@AnimalId			[int]
-)
-AS
-	BEGIN
-		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalGender], [Animal].[AnimalTypeId], [AnimalBreedId],
-				[Kennel].[KennelName], [Personality], [Description], [Animal].[AnimalStatusId],
-				[AnimalStatus].[AnimalStatusDescription], [RecievedDate], [MicrochipSerialNumber],
-				[Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
-		FROM 	[Animal]
-		JOIN 	[AnimalStatus]
-			ON 	[Animal].[AnimalStatusID] = [AnimalStatus].[AnimalStatusID]
-		JOIN 	[AnimalKenneling]
-			ON	[Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
-		JOIN	[Kennel]
-			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
-		WHERE	@AnimalId = [Animal].[AnimalId]
-	END
 GO

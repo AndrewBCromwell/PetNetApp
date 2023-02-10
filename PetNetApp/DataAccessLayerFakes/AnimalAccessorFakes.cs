@@ -11,6 +11,10 @@ namespace DataAccessLayerFakes
     public class AnimalAccessorFakes : IAnimalAccessor
     {
         List<Animal> animals = new List<Animal>();
+        List<string> breeds = new List<string>();
+        List<string> genders = new List<string>();
+        List<string> types = new List<string>();
+        List<string> statuses = new List<string>();
         List<AnimalVM> fakeAnimals = new List<AnimalVM>();
 
         public AnimalAccessorFakes()
@@ -88,9 +92,23 @@ namespace DataAccessLayerFakes
                 AggressiveDescription = "Not aggressive",
                 ChildFriendly = true,
                 NeuterStatus = true,
-                Notes = "N/A"
+                Notes = "old notes"
             });
 
+            breeds.Add("Test breed 1");
+            breeds.Add("Test breed 2");
+            genders.Add("Test gender 1");
+            genders.Add("Test gender 2");
+            types.Add("Test type 1");
+            types.Add("Test type 2");
+            statuses.Add("Test status 1");
+            statuses.Add("Test status 2");
+
+        }
+
+        public List<Animal> SelectAllAnimals(String animalName)
+        {
+            return animals.Where(a => a.AnimalName == animalName).ToList();
         }
 
         public AnimalVM SelectAnimalByAnimalId(int animalId)
@@ -112,9 +130,43 @@ namespace DataAccessLayerFakes
             return animalVM;
         }
 
-        public List<Animal> SelectAllAnimals(String animalName)
+        public List<string> SelectAllAnimalBreeds()
         {
-            return animals.Where(a => a.AnimalName == animalName).ToList();
+            return breeds;
+        }
+
+        public List<string> SelectAllAnimalGenders()
+        {
+            return genders;
+        }
+
+        public List<string> SelectAllAnimalTypes()
+        {
+            return types;
+        }
+
+        public List<string> SelectAllAnimalStatuses()
+        {
+            return statuses;
+        }
+
+        public int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
+        {
+            int result = 0;
+
+            for (int i = 0; i < fakeAnimals.Count; i++)
+            {
+                if(fakeAnimals[i].AnimalId == oldAnimal.AnimalId)
+                {
+                    // the real database will check for every editable field in the stored procedure
+                    fakeAnimals[i].Notes = fakeAnimals[i].Notes == oldAnimal.Notes ?  fakeAnimals[i].Notes = newAnimal.Notes : oldAnimal.Notes;
+
+                    result++;
+                    break;
+                }
+            }
+
+            return result;
         }
     }
 }

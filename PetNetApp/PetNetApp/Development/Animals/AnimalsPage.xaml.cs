@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataObjects;
 using LogicLayer;
 
 namespace WpfPresentation.Development.Animals
@@ -81,7 +82,8 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+
+           frameAnimals.Navigate(new EditDetailAnimalProfile(_manager, _manager.AnimalManager.RetrieveAnimalByAnimalId(100000)));
         }
 
         private void btnMedical_Click(object sender, RoutedEventArgs e)

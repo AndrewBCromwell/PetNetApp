@@ -45,7 +45,7 @@ namespace LogicLayer
                 fakeAnimal.AnimalName = "Test name 2";
                 return fakeAnimal;
             */
-            AnimalVM animalVM = null;
+            AnimalVM animalVM = new AnimalVM();
             try
             {
                 animalVM = _animalAccessor.SelectAnimalByAnimalId(animalId);
@@ -57,9 +57,84 @@ namespace LogicLayer
             return animalVM;
         }
 
+        public List<string> RetrieveAllAnimalBreeds()
+        {
+            //var breeds = new List<string>();
+            //breeds.Add("Test breed 1");
+            //breeds.Add("Test breed 2");
+            //return breeds;
+
+            try
+            {
+                return _animalAccessor.SelectAllAnimalBreeds();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<string> RetrieveAllAnimalGenders()
+        {
+            //var genders = new List<string>();
+            //genders.Add("Test gender 1");
+            //genders.Add("Test gender 2");
+            //return genders;
+
+            try
+            {
+                return _animalAccessor.SelectAllAnimalGenders();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<string> RetrieveAllAnimalTypes()
+        {
+            //var types = new List<string>();
+            //types.Add("Test type 1");
+            //types.Add("Test type 2");
+            //return types;
+
+            try
+            {
+                return _animalAccessor.SelectAllAnimalTypes();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<string> RetrieveAllAnimalStatuses()
+        {
+            //var statuses = new List<string>();
+            //statuses.Add("Test status 1");
+            //statuses.Add("Test status 2");
+            //return statuses;
+
+            try
+            {
+                return _animalAccessor.SelectAllAnimalStatuses();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return 1 == _animalAccessor.UpdateAnimal(oldAnimal, newAnimal);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
