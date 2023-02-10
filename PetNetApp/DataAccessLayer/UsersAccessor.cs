@@ -95,9 +95,17 @@ namespace DataAccessLayer
 
 
         }
-        public List<Users> SelectAllEmployees()
+
+        /// <summary>
+        /// Hoang Chu
+        /// Created: 2023/03/02
+        /// 
+        /// 
+        /// </summary>
+        /// Selects all users with employee role
+        public List<UsersVM> SelectAllEmployees()
         {
-            List<Users> employeeList = new List<Users>();
+            List<UsersVM> employeeList = new List<UsersVM>();
 
             DBConnection connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
@@ -116,19 +124,25 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    Users user = new Users();
+                    UsersVM user = new UsersVM();
                     // [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName],
                     // [Email], [PasswordHash], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], 
                     // [Active], [Suspended]
 
                     user.UsersId = reader.GetInt32(0);
                     user.GenderId = reader.GetString(1);
-                    //user.PronoundId = reader.GetString(2);
+                    if (reader.IsDBNull(2))
+                    {
+                        user.PronoundId = "N/A";
+                    }
+                    else
+                    {
+                        user.PronoundId = reader.GetString(2);
+                    }
                     user.ShelterId = reader.GetInt32(3);
                     user.GivenName = reader.GetString(4);
                     user.FamilyName = reader.GetString(5);
                     user.Email = reader.GetString(6);
-                    //user.PasswordHash = reader.GetString(7);
                     user.Address = reader.GetString(7);
                     if (reader.IsDBNull(8))
                     {

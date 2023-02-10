@@ -163,7 +163,7 @@
                     </Button.Style>
                     <Button.ContextMenu>
                         <ContextMenu>
-                            <MenuItem x:Name="mnuUserFeed" Header="User Feed"/>
+                            <MenuItem x:Name="mnuUserFeed" Header="User Feed" Click="mnuUserFeed_Click"/>
                             <MenuItem x:Name="mnuAccountSettings" Header="Account Settings"/>
                             <MenuItem x:Name="mnuLogout" Header="Logout"/>
                         </ContextMenu>

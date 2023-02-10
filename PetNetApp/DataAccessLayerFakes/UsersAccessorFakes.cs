@@ -72,9 +72,23 @@ namespace DataAccessLayerFakes
             fakeUsers[3].Roles.Add("Admin");
         }
 
-        public List<Users> SelectAllEmployees()
+        /// <summary>
+        /// Hoang Chu
+        /// Created: 2023/02/01
+        /// 
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <returns>List<Users></returns>
+
+        public List<UsersVM> SelectAllEmployees()
         {
-            throw new NotImplementedException();
+            return fakeUsers;
         }
 
         public List<UsersVM> SelectUserByRole(string RoleId)

@@ -26,7 +26,7 @@ namespace WpfPresentation.Community
     {
         MasterManager _masterManager;
 
-        List<Users> _employeeList = null;
+        List<UsersVM> _employeeList = null;
         public UserManagementPage()
         {
             InitializeComponent();
@@ -145,7 +145,7 @@ namespace WpfPresentation.Community
                 {
                     _employeeList = _masterManager.UsersManager.RetriveAllEmployees();
                     int index = 0;
-                    foreach (Users user in _employeeList)
+                    foreach (UsersVM user in _employeeList)
                     {
                         DisplayUsers(user, index);
                         index++;

@@ -160,5 +160,10 @@ namespace PetNetApp
         {
             btnMenu.ContextMenu.IsOpen = true;
         }
+
+        private void mnuUserFeed_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

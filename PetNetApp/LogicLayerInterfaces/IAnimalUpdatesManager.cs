@@ -7,9 +7,9 @@ using DataObjects;
 
 namespace LogicLayerInterfaces
 {
-    public interface IUsersManager
+    public interface IAnimalUpdatesManager
     {
-        List<UsersVM> RetrieveUserByRole(string RoleId);
-        List<UsersVM> RetriveAllEmployees();
+        bool AddAnimalUpdatesByAnimalId(int animalId, string animalRecordNotes);
+        string RetrieveAnimalUpdatesByAnimal(int animalId);
     }
 }

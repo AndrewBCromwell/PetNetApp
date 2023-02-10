@@ -62,9 +62,9 @@ namespace LogicLayer
          /// Hoang Chu
         /// Created: 2023/02/01
         /// 
-        public List<Users> RetriveAllEmployees()
+        public List<UsersVM> RetriveAllEmployees()
         {
-            List<Users> employeeList = null;
+            List<UsersVM> employeeList = null;
 
             try
             {
@@ -77,7 +77,7 @@ namespace LogicLayer
 
             return employeeList;
         }
-        /// <returns>List<Users></returns>
+        /// <returns>List<UsersVM></returns>
         
     }
 }

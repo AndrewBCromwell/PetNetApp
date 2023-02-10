@@ -7,9 +7,9 @@ using DataObjects;
 
 namespace DataAccessLayerInterfaces
 {
-    public interface IUsersAccessor
+    public interface IAnimalUpdatesAccessor
     {
-        List<UsersVM> SelectUserByRole(string RoleId);
-        List<UsersVM> SelectAllEmployees();
+        int InsertAnimalUpdatesByAnimalId(int animalId, string animalRecordNotes);
+        string SelectAnimalUpdatesByAnimal(int animalId);
     }
 }

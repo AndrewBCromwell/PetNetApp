@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimalManager.cs" />
+    <Compile Include="AnimalUpdatesManager.cs" />
     <Compile Include="KennelManager.cs" />
     <Compile Include="MasterManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
