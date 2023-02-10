@@ -50,7 +50,7 @@ namespace LogicLayerTest
         [TestMethod]
         public void TestSelectAllEmployee()
         {
-            List<Users> listUser = null;
+            List<UsersVM> listUser = null;
             listUser = _userManager.RetriveAllEmployees();
 
             int actualResult = listUser.Count;

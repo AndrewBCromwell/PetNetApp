@@ -1,30 +1,21 @@
-<<<<<<< HEAD
-﻿using System;
-=======
-﻿using DataAccessLayerInterfaces;
-using DataObjects;
 using System;
->>>>>>> origin/main
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using DataAccessLayerInterfaces;
-=======
->>>>>>> origin/main
+using DataObjects;
 
 namespace DataAccessLayerFakes
 {
     public class MedicalRecordAccessorFakes : IMedicalRecordAccessor
     {
-<<<<<<< HEAD
         private Dictionary<int, int> medicalRecordRepresentation = new Dictionary<int, int>()
         {
             {50, 60 },
             {51, 61 }
         };
-        
+
 
         public int SelectLastMedicalRecordIdByAnimalId(int animalId)
         {
@@ -34,7 +25,7 @@ namespace DataAccessLayerFakes
                 medicalRecordId = medicalRecordRepresentation[animalId];
             }
             return medicalRecordId;
-=======
+        }
         List<MedicalRecordVM> medicalRecords = new List<MedicalRecordVM>();
 
         public MedicalRecordAccessorFakes()
@@ -57,7 +48,6 @@ namespace DataAccessLayerFakes
         public List<MedicalRecordVM> SelectMedicalRecordDiagnosisByAnimalId(int animalId)
         {
             return medicalRecords.Where(m => m.AnimalId == animalId).ToList();
->>>>>>> origin/main
         }
     }
 }

@@ -64,19 +64,17 @@
     <Compile Include="Animals\MedicalPage.xaml.cs">
       <DependentUpon>MedicalPage.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Animals\EditProcedurePage.xaml.cs">
       <DependentUpon>EditProcedurePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\MedProcedurePage.xaml.cs">
       <DependentUpon>MedProcedurePage.xaml</DependentUpon>
-=======
+	</Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
       <DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
->>>>>>> origin/main
     </Compile>
     <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>

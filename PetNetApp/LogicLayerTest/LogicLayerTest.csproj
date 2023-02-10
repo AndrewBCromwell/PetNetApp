@@ -53,12 +53,8 @@
     <Compile Include="MedicalRecordManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="KennelManagerTest.cs" />
-<<<<<<< HEAD
     <Compile Include="ProcedureManagerTests.cs" />
-    <Compile Include="MedicalRecordManagerTests.cs" />
-=======
     <Compile Include="ScheduleManagerTests.cs" />
->>>>>>> origin/main
     <Compile Include="UsersManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>

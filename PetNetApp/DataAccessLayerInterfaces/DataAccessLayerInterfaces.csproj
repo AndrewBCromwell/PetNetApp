@@ -44,13 +44,9 @@
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IKennelAccessor.cs" />
-<<<<<<< HEAD
     <Compile Include="IMedicalRecordAccessor.cs" />
     <Compile Include="IProcedureAccessor.cs" />
-=======
     <Compile Include="IScheduleAccessor.cs" />
-    <Compile Include="IMedicalRecordAccessor.cs" />
->>>>>>> origin/main
     <Compile Include="IUsersAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
