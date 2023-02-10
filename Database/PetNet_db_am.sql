@@ -61,6 +61,9 @@ CREATE TABLE [dbo].[Job] (
 )
 GO
 
+
+
+
 /* Created by: Oleksiy Fedchuk */
 print '' print '*** creating table for TableName Role'
 GO
@@ -79,6 +82,19 @@ CREATE TABLE [dbo].[Pronoun] (
 	CONSTRAINT [pk_PronounId] PRIMARY KEY([PronounId])
 )
 GO
+
+--print '' print '*** creating Pronoun test records' 
+GO 
+INSERT INTO [dbo].[Pronoun]
+	([PronounId])
+VALUES 
+('He/Him'),
+('She/Her'),
+('N/A')
+GO
+
+
+
 /* Image table*/
 /* Created by: Andrew Cromwell */
 print '' print '** creating Images table'
@@ -1901,4 +1917,67 @@ INSERT INTO [dbo].[AnimalKenneling]
     )
 VALUES
 (100000, 100000)
+GO
+
+
+
+
+/* SelectAnimalByAnimalId stored procedure */
+/* Created by Andrew Schneider */
+print '' print '*** creating sp_select_animal_by_animalId (Andrew S.)'
+GO
+CREATE PROCEDURE [dbo].[sp_select_animal_by_animalId]
+(
+	@AnimalId			[int]
+)
+AS
+	BEGIN
+		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalGender], [Animal].[AnimalTypeId], [AnimalBreedId],
+				[Kennel].[KennelName], [Personality], [Description], [Animal].[AnimalStatusId],
+				[AnimalStatus].[AnimalStatusDescription], [RecievedDate], [MicrochipSerialNumber],
+				[Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
+		FROM 	[Animal]
+		JOIN 	[AnimalStatus]
+			ON 	[Animal].[AnimalStatusID] = [AnimalStatus].[AnimalStatusID]
+		JOIN 	[AnimalKenneling]
+			ON	[Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
+		JOIN	[Kennel]
+			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
+		WHERE	@AnimalId = [Animal].[AnimalId]
+	END
+GO
+
+
+
+USE [PetNet_db_am]
+
+DROP PROCEDURE IF EXISTS dbo.sp_select_users_by_roleId;  
+GO
+
+
+print '' print '*** creating sp_select_Users_by_RoleId'
+GO
+CREATE PROCEDURE [dbo].[sp_select_users_by_roleId]
+(
+	@RoleId			[NVARCHAR](50)
+)
+AS
+	BEGIN
+		SELECT 	[Users].[UsersId],
+				[GenderId],
+				[PronounId],
+				[ShelterId],
+				[GivenName],
+				[FamilyName],
+				[Email],
+				[Address],
+				[AddressTwo],
+				[Zipcode],
+				[Phone],
+				[CreationDate],
+				[Active],
+				[Suspended]
+		FROM	[Users] Join [UserRoles] on [Users].[UsersId] = [UserRoles].[UsersId] 
+		WHERE	@RoleId = [UserRoles].[RoleId]
+	END
 GO

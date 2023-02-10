@@ -62,9 +62,9 @@ namespace LogicLayer
          /// Hoang Chu
         /// Created: 2023/02/01
         /// 
-        public List<Users> RetriveAllEmployees()
+        public List<UsersVM> RetriveAllEmployees()
         {
-            List<Users> employeeList = null;
+            List<UsersVM> employeeList = null;
 
             try
             {
@@ -78,6 +78,102 @@ namespace LogicLayer
             return employeeList;
         }
         /// <returns>List<Users></returns>
-        
+
+        // Mads Rhea
+        // Created: 2023_02_10
+
+        public string HashSha265(string source)
+        {
+            string result = "";
+
+            if (source == null || source == "")
+            {
+                throw new ArgumentNullException("Missing input");
+            }
+
+            byte[] data;
+
+            using (SHA256 sha256hasher = SHA256.Create())
+            {
+                data = sha256hasher.ComputeHash(Encoding.UTF8.GetBytes(source));
+            }
+
+            var s = new StringBuilder();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                s.Append(data[i].ToString("x2"));
+            }
+
+            result = s.ToString();
+
+            return result;
+        }
+
+        public UsersVM LoginUser(string email, string password)
+        {
+            UsersVM user = null;
+
+            try
+            {
+                password = HashSha265(password);
+                if (1 == _userAccessor.AuthenticateUserWithEmailAndPasswordHash(email, password))
+                {
+                    user = _userAccessor.SelectUserByEmail(email);
+                    try
+                    {
+                        user.Roles = _userAccessor.SelectRolesByUserID(user.UsersId);
+                    }
+                    catch (Exception up)
+                    {
+                        throw new ApplicationException("Unable to load roles for user.", up);
+                    }
+
+                }
+                else
+                {
+                    throw new ApplicationException("User not found.");
+                }
+
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Bad username or password.", up);
+            }
+
+            return user;
+        }
+
+        public List<string> RetrieveGenders()
+        {
+            List<string> genders = new List<string>();
+
+            try
+            {
+                genders = _userAccessor.SelectAllGenders();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return genders;
+        }
+
+        public List<string> RetrievePronouns()
+        {
+            List<string> pronouns = new List<string>();
+
+            try
+            {
+                pronouns = _userAccessor.SelectAllPronouns();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return pronouns;
+        }
     }
 }

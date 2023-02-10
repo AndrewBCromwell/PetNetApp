@@ -16,6 +16,7 @@ namespace DataAccessLayerFakes
         List<string> types = new List<string>();
         List<string> statuses = new List<string>();
         List<AnimalVM> fakeAnimals = new List<AnimalVM>();
+        List<Animal> fakeAnimals1 = new List<Animal>();
 
         public AnimalAccessorFakes()
         {
@@ -95,6 +96,115 @@ namespace DataAccessLayerFakes
                 Notes = "old notes"
             });
 
+            fakeAnimals1.Add(new Animal
+            {
+                AnimalId = 100001,
+                AnimalName = "Remy",
+                Personality = "Gay",
+                Description = "Brown and White",
+                BroughtIn = DateTime.Today,
+                MicrochipNumber = "111111111111111",
+                Aggressive = false,
+                AggressiveDescription = null,
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = null,
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Lab",
+                AnimalStatusId = "Available"
+            });
+
+            fakeAnimals1.Add(new Animal
+            {
+                AnimalId = 100002,
+                AnimalName = "Jack",
+                Personality = "Nice",
+                Description = "Black and White",
+                BroughtIn = DateTime.Today,
+                MicrochipNumber = "111111111111121",
+                Aggressive = false,
+                AggressiveDescription = null,
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = null,
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Lab",
+                AnimalStatusId = "Available"
+            });
+
+            fakeAnimals1.Add(new Animal
+            {
+                AnimalId = 100002,
+                AnimalName = "Kyle",
+                Personality = "Mean",
+                Description = "Brown and White",
+                BroughtIn = DateTime.Today,
+                MicrochipNumber = "111111111111115",
+                Aggressive = false,
+                AggressiveDescription = null,
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = null,
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Lab",
+                AnimalStatusId = "Available"
+            });
+
+            fakeAnimals1.Add(new Animal
+            {
+                AnimalId = 100003,
+                AnimalName = "Kate",
+                Personality = "Gay",
+                Description = "Brown and White",
+                BroughtIn = DateTime.Today,
+                MicrochipNumber = "111111111111811",
+                Aggressive = false,
+                AggressiveDescription = null,
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = null,
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Lab",
+                AnimalStatusId = "Available"
+            });
+
+            fakeAnimals1.Add(new Animal
+            {
+                AnimalId = 100004,
+                AnimalName = "Matt",
+                Personality = "Gay",
+                Description = "Brown and White",
+                BroughtIn = DateTime.Today,
+                MicrochipNumber = "111119111111111",
+                Aggressive = false,
+                AggressiveDescription = null,
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = null,
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Lab",
+                AnimalStatusId = "Available"
+            });
+
+            fakeAnimals1.Add(new Animal
+            {
+                AnimalId = 100005,
+                AnimalName = "Gaylord",
+                Personality = "Gay",
+                Description = "Brown and White",
+                BroughtIn = DateTime.Today,
+                MicrochipNumber = "211111111111111",
+                Aggressive = false,
+                AggressiveDescription = null,
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = null,
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Lab",
+                AnimalStatusId = "Available"
+            });
+
+
             breeds.Add("Test breed 1");
             breeds.Add("Test breed 2");
             genders.Add("Test gender 1");
@@ -112,7 +222,7 @@ namespace DataAccessLayerFakes
         }
 
         public AnimalVM SelectAnimalByAnimalId(int animalId)
-        {
+            {
             AnimalVM animalVM = new AnimalVM();
 
             foreach (AnimalVM fakeAnimal in fakeAnimals)
@@ -167,6 +277,17 @@ namespace DataAccessLayerFakes
             }
 
             return result;
+        }
+
+        public List<Animal> SelectAllAnimals()
+        {
+            return fakeAnimals1;
+
+        }
+
+        public List<Animal> SelectAllAnimalsNotInKennel()
+        {
+            throw new NotImplementedException();
         }
     }
 }

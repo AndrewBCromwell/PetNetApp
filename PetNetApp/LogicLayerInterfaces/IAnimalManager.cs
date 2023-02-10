@@ -19,5 +19,6 @@ namespace LogicLayerInterfaces
         List<string> RetrieveAllAnimalStatuses();
 
         bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
+        List<Animal> RetrieveAllAnimals();
     }
 }

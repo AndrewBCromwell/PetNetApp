@@ -19,5 +19,7 @@ namespace DataAccessLayerInterfaces
         List<string> SelectAllAnimalStatuses();
 
         int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
+        List<Animal> SelectAllAnimals();
+        List<Animal> SelectAllAnimalsNotInKennel();
     }
 }

@@ -42,7 +42,7 @@ namespace DataAccessLayerFakes
                 KennelActive = true,
                 AnimalTypeId = "Dog",
                 ShelterName = "Shelter3",
-                Animal = new Animal()
+                //Animal = new Animal()
             });
         }
 
@@ -62,7 +62,7 @@ namespace DataAccessLayerFakes
         /// <returns>List<KennelVM></returns>
         public List<KennelVM> SelectKennels(int shelterid)
         {
-            return (fakeKennelVMs.Where(ken => ken.ShelterId == shelterid).ToList());
+            return fakeKennelVMs.Where(ken => ken.ShelterId == shelterid).ToList();
         }
     }
 }

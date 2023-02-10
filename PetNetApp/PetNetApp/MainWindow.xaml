@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetNetApp"
         mc:Ignorable="d"
-        Title="petnet" Height="900" Width="1200" MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen">
+        Title="petnet" Height="900" Width="1200" MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <Style TargetType="Button" x:Key="rsrcNewNotifications">
@@ -96,11 +96,14 @@
                 <ColumnDefinition MinWidth="160"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Source="Images/petnetLogo.png" Margin="20 10" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Image.OpacityMask>
-                    <ImageBrush/>
-                </Image.OpacityMask>
-            </Image>
+            <Button x:Name="btnPetNetLogo" Grid.Column="0" Margin="24,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#00000000" Panel.ZIndex="1" Width="200" Height="70" Click="btnPetNetLogo_Click">
+                <Button.Foreground>
+                    <ImageBrush Stretch="Uniform"/>
+                </Button.Foreground>
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/petnetLogo.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
             <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Width="35" Height="35" Margin="3" BorderBrush="Transparent" Style="{StaticResource ResourceKey=rsrcNotifications}" x:Name="btnNotification" Click="btnNotification_Click">
                 </Button>
@@ -163,9 +166,9 @@
                     </Button.Style>
                     <Button.ContextMenu>
                         <ContextMenu>
-                            <MenuItem x:Name="mnuUserFeed" Header="User Feed"/>
-                            <MenuItem x:Name="mnuAccountSettings" Header="Account Settings"/>
-                            <MenuItem x:Name="mnuLogout" Header="Logout"/>
+                            <MenuItem x:Name="mnuUser" Header="Hello, Guest" IsEnabled="False" />
+                            <MenuItem x:Name="mnuAccountSettings" Header="Account Settings" Click="mnuAccountSettings_Click"/>
+                            <MenuItem x:Name="mnuLogout" Header="Logout" Click="mnuLogout_Click"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

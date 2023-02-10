@@ -90,6 +90,14 @@ namespace WpfPresentation.Management
             frameAnimals.Navigate(null);
         }
 
+        private void btnSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameAnimals.Navigate(null);
+        }
+
+
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;
@@ -138,5 +146,7 @@ namespace WpfPresentation.Management
         {
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
+
+       
     }
 }

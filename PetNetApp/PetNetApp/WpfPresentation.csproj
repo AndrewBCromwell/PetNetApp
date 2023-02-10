@@ -64,11 +64,32 @@
     <Compile Include="Animals\MedicalPage.xaml.cs">
       <DependentUpon>MedicalPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Management\SchedulePage.xaml.cs">
+      <DependentUpon>SchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
+      <DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Misc\AccountSettingsPage.xaml.cs">
+      <DependentUpon>AccountSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LandingPage.xaml.cs">
+      <DependentUpon>LandingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LogInPage.xaml.cs">
+      <DependentUpon>LogInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\UserProfilePage.xaml.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\KennelUserControl.xaml.cs">
       <DependentUpon>KennelUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
+      <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Animals\AnimalsPage.xaml">
       <SubType>Designer</SubType>
@@ -82,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Animals\MedicalTreatmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Community\CommunityPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +118,10 @@
     <Page Include="Community\UsersControl\UCPreviewUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\AnimalListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Animals\AnimalsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -114,9 +143,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Development\Management\SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Management\VolunteerManagment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\AccountSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\LandingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\LogInPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\UserProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="PromptWindow.xaml">
       <SubType>Designer</SubType>
@@ -141,6 +190,9 @@
     </Compile>
     <Compile Include="Community\UsersControl\UCPreviewUser.xaml.cs">
       <DependentUpon>UCPreviewUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalListPage.xaml.cs">
+      <DependentUpon>AnimalListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Animals\AnimalsPage.xaml.cs">
       <DependentUpon>AnimalsPage.xaml</DependentUpon>
@@ -180,6 +232,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\KennelUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AnimalListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -427,6 +483,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\pharmacy_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\perfectCAT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\perfectCAT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PlusIcon_light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

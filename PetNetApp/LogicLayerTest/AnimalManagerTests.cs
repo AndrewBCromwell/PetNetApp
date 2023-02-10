@@ -10,11 +10,14 @@ using System.Threading.Tasks;
 
 namespace LogicLayerTest
 {
+    /// <summary>
+    /// Summary description for AnimalManagerTests
+    /// </summary>
     [TestClass]
     public class AnimalManagerTests
     {
         private AnimalManager _animalManager = null;
-
+      
         [TestInitialize]
         public void TestSetup()
         {
@@ -22,6 +25,7 @@ namespace LogicLayerTest
             _animalManager = new AnimalManager(new AnimalAccessorFakes());
         }
 
+      
         [TestCleanup]
         public void testTearDown()
         {
@@ -182,5 +186,20 @@ namespace LogicLayerTest
             // Assert
             Assert.IsFalse(actualResult);
         }
+
+        [TestMethod]
+        public void TestRetrieveAllAnimalsReturnsCorrectList()
+        {
+            // arrange
+            const int expectedCount = 6;
+            int actualcount = 0;
+
+            // act
+            actualcount = _animalManager.RetrieveAllAnimals().Count;
+
+            // assert 
+            Assert.AreEqual(expectedCount, actualcount);
+        }
+
     }
 }
