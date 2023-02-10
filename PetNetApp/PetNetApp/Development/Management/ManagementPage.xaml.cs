@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using WpfPresentation.Management;
 
 namespace WpfPresentation.Development.Management
 {
@@ -79,7 +80,7 @@ namespace WpfPresentation.Development.Management
         private void btnKennel_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new ViewKennelPage());
         }
 
         private void btnVolunteer_Click(object sender, RoutedEventArgs e)
@@ -87,6 +88,13 @@ namespace WpfPresentation.Development.Management
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
             frameAnimals.Navigate(new VolunteerManagment());
+        }
+
+        private void btnSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameAnimals.Navigate(new SchedulePage());
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -137,5 +145,7 @@ namespace WpfPresentation.Development.Management
         {
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
+
+        
     }
 }

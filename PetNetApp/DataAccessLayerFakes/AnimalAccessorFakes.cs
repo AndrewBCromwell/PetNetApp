@@ -233,5 +233,9 @@ namespace DataAccessLayerFakes
 
         }
 
+        public List<Animal> SelectAllAnimalsNotInKennel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

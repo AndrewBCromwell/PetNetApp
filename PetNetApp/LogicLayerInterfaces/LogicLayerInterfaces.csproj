@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="IAnimalManager.cs" />
     <Compile Include="IKennelManager.cs" />
+    <Compile Include="IMedicalRecordManager.cs" />
+    <Compile Include="IScheduleManager.cs" />
     <Compile Include="IUsersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

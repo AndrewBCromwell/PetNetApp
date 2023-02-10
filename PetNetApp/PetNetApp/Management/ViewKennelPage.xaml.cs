@@ -35,7 +35,7 @@ namespace WpfPresentation.Management
             // Replace 100000 with User.Shelter.ShelterId when users are made
             try
             {
-                kennelVMs = masterManager.KennelManager.RetrieveKennels(100000);
+                kennelVMs = masterManager.KennelManager.RetrieveKennels(1);
 
                 for (int i = 0; i < kennelVMs.Count / 4; i++)
                 {
@@ -95,6 +95,7 @@ namespace WpfPresentation.Management
             } else
             {
                 // Placeholder for AssignAnimalToKennel
+                MessageBox.Show("add Animal");
             }
         }
 
