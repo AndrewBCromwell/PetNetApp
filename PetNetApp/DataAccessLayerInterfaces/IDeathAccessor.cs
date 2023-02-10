@@ -12,7 +12,8 @@ namespace DataAccessLayerInterfaces
 {
     public interface IDeathAccessor
     {
-        int AddAnimalDOD(Death death);
-        int EditAnimalDOD(Death oldDeath, Death newDeath);
+        int InsertAnimalDeath(Death death);
+        DeathVM SelectAnimalDeath(Animal animal);
+        int UpdateAnimalDeath(Death newDeath, Death oldDeath);
     }
 }

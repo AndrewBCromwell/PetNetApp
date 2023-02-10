@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using DataObjects;
 
 namespace WpfPresentation.Development.Animals
 {
@@ -60,7 +61,7 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new AddAnimalDOD513());
+            frameAnimals.Navigate(new AddAnimalDOD513(new Animal() { AnimalId = 100000 }));   // needs selected animal from animal list instead of new Animal()
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)

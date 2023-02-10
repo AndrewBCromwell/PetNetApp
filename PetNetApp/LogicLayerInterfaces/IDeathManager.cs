@@ -12,7 +12,8 @@ namespace LogicLayerInterfaces
 {
     public interface IDeathManager
     {
-        bool AddAnimalDOD(Death death);
-        bool EditAnimalDOD(Death oldDeath, Death newDeath);
+        bool AddAnimalDeath(Death death);
+        DeathVM RetrieveAnimalDeath(Animal animal);
+        bool EditAnimalDeath(Death newDeath, Death oldDeath);
     }
 }

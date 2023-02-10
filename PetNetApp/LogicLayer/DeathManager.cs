@@ -27,13 +27,13 @@ namespace LogicLayer
             _deathAccessor = deathAccessor;
         }
 
-        public bool AddAnimalDOD(Death death)
+        public bool AddAnimalDeath(Death death)
         {
             bool wasAdded = false;
 
             try
             {
-                wasAdded = (0 < _deathAccessor.AddAnimalDOD(death));
+                wasAdded = (0 < _deathAccessor.InsertAnimalDeath(death));
             }
             catch (Exception ex)
             {
@@ -43,9 +43,36 @@ namespace LogicLayer
             return wasAdded;
         }
 
-        public bool EditAnimalDOD(Death oldDeath, Death newDeath)
+        public bool EditAnimalDeath(Death newDeath, Death oldDeath)
         {
-            throw new NotImplementedException();
+            bool wasEdited = false;
+
+            try
+            {
+                wasEdited = (0 < _deathAccessor.UpdateAnimalDeath(newDeath, oldDeath));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return wasEdited;
+        }
+
+        public DeathVM RetrieveAnimalDeath(Animal animal)
+        {
+            DeathVM deathVM = new DeathVM();
+
+            try
+            {
+                deathVM = _deathAccessor.SelectAnimalDeath(animal);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return deathVM;
         }
     }
 }
