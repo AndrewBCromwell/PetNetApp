@@ -24,21 +24,20 @@ namespace WpfPresentation.Animals
     {
         private static AnimalsPage _existingAnimalsPage = null;
 
-        private MasterManager _manager = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
         private Button[] _animalsTabButtons;
 
-        private AnimalsPage(MasterManager manager)
+        private AnimalsPage()
         {
             InitializeComponent();
-            _manager = manager;
             _animalsTabButtons = new Button[] { btnAdopt, btnFoster, btnSurrender, btnAnimalList, btnMedical };
         }
 
-        public static AnimalsPage GetAnimalsPage(MasterManager manager)
+        public static AnimalsPage GetAnimalsPage()
         {
             if (_existingAnimalsPage == null)
             {
-                _existingAnimalsPage = new AnimalsPage(manager);
+                _existingAnimalsPage = new AnimalsPage();
             }
             return _existingAnimalsPage;
         }

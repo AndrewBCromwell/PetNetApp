@@ -26,13 +26,11 @@ namespace PetNetApp.Development
     public partial class MainWindow : Window
     {
         private Button[] _mainTabButtons;
-        private MasterManager _manager = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
 
         public MainWindow()
         {
-            InitializeComponent();
-            _manager = new MasterManager();
-            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnDonations, btnManagement };
+            InitializeComponent();            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnDonations, btnManagement };
         }
 
         private void btnDonate_Click(object sender, RoutedEventArgs e)

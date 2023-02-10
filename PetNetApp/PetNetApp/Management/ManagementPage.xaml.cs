@@ -23,20 +23,19 @@ namespace WpfPresentation.Management
     {
         private static ManagementPage _existingManagementPage = null;
 
-        private MasterManager _manager = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
         private Button[] _managementPageButtons;
-        public ManagementPage(MasterManager manager)
+        public ManagementPage()
         {
             InitializeComponent();
-            _manager = manager;
             _managementPageButtons = new Button[] { btnInventory, btnKennel, btnShelters, btnTickets, btnVolunteer };
         }
 
-        public static ManagementPage GetManagementPage(MasterManager manager)
+        public static ManagementPage GetManagementPage()
         {
             if (_existingManagementPage == null)
             {
-                _existingManagementPage = new ManagementPage(manager);
+                _existingManagementPage = new ManagementPage();
             }
             return _existingManagementPage;
         }

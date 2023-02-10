@@ -24,13 +24,12 @@ namespace WpfPresentation.Community
 
     public partial class UserManagementPage : Page
     {
-        public MasterManager _masterManager;
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
 
         List<UsersVM> _employeeList = null;
         public UserManagementPage()
         {
             InitializeComponent();
-            _masterManager = new MasterManager();
             
         }
 

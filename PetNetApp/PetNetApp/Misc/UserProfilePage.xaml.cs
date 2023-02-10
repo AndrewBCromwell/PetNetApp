@@ -24,20 +24,18 @@ namespace WpfPresentation.Misc
     public partial class UserProfilePage : Page
     {
         private static UserProfilePage _existingProfilePage = null;
-        private MasterManager _manager = null;
         private MainWindow _mainWindow = null;
 
-        public UserProfilePage(MasterManager manager)
+        public UserProfilePage()
         {
             InitializeComponent();
-            _manager = manager;
         }
 
-        public static UserProfilePage GetUserProfilePage(MasterManager manager, MainWindow mainWindow)
+        public static UserProfilePage GetUserProfilePage(MainWindow mainWindow)
         {
             if (_existingProfilePage == null)
             {
-                _existingProfilePage = new UserProfilePage(manager);
+                _existingProfilePage = new UserProfilePage();
             }
 
             _existingProfilePage._mainWindow = mainWindow;

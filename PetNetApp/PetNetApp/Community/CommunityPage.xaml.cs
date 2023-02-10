@@ -24,20 +24,19 @@ namespace WpfPresentation.Community
         private static CommunityPage _existingCommunityPage = null;
 
         private Button[] _communityTabButtons;
-        private MasterManager _manager = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
 
-        public CommunityPage(MasterManager manager)
+        public CommunityPage()
         {
             InitializeComponent();
-            _manager = manager;
             _communityTabButtons = new Button[] { btnAbout, btnForum, btnUsers };
         }
 
-        public static CommunityPage GetCommunityPage(MasterManager manager)
+        public static CommunityPage GetCommunityPage()
         {
             if (_existingCommunityPage == null)
             {
-                _existingCommunityPage = new CommunityPage(manager);
+                _existingCommunityPage = new CommunityPage();
             }
             return _existingCommunityPage;
         }

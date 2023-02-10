@@ -23,7 +23,7 @@ namespace WpfPresentation.Management
     /// </summary>
     public partial class ViewKennelPage : Page
     {
-        private MasterManager masterManager = new MasterManager();
+        private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<KennelVM> kennelVMs = null;
         public ViewKennelPage()
         {

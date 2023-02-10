@@ -12,13 +12,14 @@ namespace LogicLayer
 {
     public class MasterManager
     {
+        private static MasterManager _existingMasterManager = null;
         public UsersVM User { get; set; }
         public IKennelManager KennelManager { get; set; }
         public IUsersManager UsersManager { get; set; }
         public IAnimalManager AnimalManager { get; set; }
         public IScheduleManager scheduleManager { get; set; }
 
-        public MasterManager()
+        private MasterManager()
         {
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
@@ -26,6 +27,13 @@ namespace LogicLayer
             scheduleManager = new ScheduleManager();
         }
     
-        
+        public static MasterManager GetMasterManager()
+        {
+            if (_existingMasterManager == null)
+            {
+                _existingMasterManager = new MasterManager();
+            }
+            return _existingMasterManager;
+        }
     }
 }

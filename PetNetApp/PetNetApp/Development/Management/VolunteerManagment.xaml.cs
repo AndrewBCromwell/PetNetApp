@@ -38,7 +38,7 @@ namespace WpfPresentation.Development.Management
     public partial class VolunteerManagment : Page
     {
         private List<UsersVM> _users = null;
-        private MasterManager _mastermanager = new MasterManager();
+        private MasterManager _mastermanager = MasterManager.GetMasterManager();
         public VolunteerManagment()
         {
             InitializeComponent();
