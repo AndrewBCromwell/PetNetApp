@@ -23,7 +23,8 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalPostUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\MedicalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddAnimal_to_kennel_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalTests_SP.sql
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalAnimals_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewTreatment_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE
