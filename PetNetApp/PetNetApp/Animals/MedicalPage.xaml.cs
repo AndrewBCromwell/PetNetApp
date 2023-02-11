@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
 
-namespace WpfPresentation.Development.Animals.Medical
+namespace WpfPresentation.Animals.Medical
 {
     /// <summary>
     /// Interaction logic for MedicalPage.xaml
@@ -38,7 +38,7 @@ namespace WpfPresentation.Development.Animals.Medical
             _manager = manager;
         }
 
-        public static MedicalPage getMedicalPage(MasterManager manager)
+        public static MedicalPage GetMedicalPage(MasterManager manager)
         {
             if (_existingMedicalPage == null)
             {

@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
 using WpfPresentation.Animals;
-using WpfPresentation.Development.Animals.Medical;
+using WpfPresentation.Animals.Medical;
 
 namespace WpfPresentation.Development.Animals
 {
@@ -84,14 +84,14 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
 
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new MedicalNavigationPage(_manager, new Animal() { AnimalId = 100000, AnimalName="Stephen"}));
         }
 
         private void btnMedical_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(MedicalPage.getMedicalPage(_manager));
+            frameAnimals.Navigate(MedicalPage.GetMedicalPage(_manager));
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

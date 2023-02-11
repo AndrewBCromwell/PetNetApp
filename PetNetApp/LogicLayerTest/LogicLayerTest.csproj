@@ -56,6 +56,7 @@
     <Compile Include="KennelManagerTest.cs" />
     <Compile Include="ProcedureManagerTests.cs" />
     <Compile Include="ScheduleManagerTests.cs" />
+    <Compile Include="TestManagerTests.cs" />
     <Compile Include="UsersManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>

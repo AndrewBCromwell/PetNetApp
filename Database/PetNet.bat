@@ -9,6 +9,7 @@ rem sqlcmd -S localhost -E -i SampleData\ASampleFeature_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\AddProcedure_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\AddAnimalUpdate_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\ViewMedicalTests_SD.sql
 
 
 
@@ -21,6 +22,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\EmployeeManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalPostUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\MedicalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddAnimal_to_kennel_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalTests_SP.sql
 
 ECHO .
 ECHO if no errors appear DB was created

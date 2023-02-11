@@ -63,6 +63,9 @@
     <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
       <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
+      <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalPostUpdate.xaml.cs">
       <DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
     <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AnimalMedicalTestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AnimalPostUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

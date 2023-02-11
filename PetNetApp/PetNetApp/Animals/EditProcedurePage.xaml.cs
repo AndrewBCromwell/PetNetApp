@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
 
-namespace WpfPresentation.Development.Animals
+namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for EditProcedurePage.xaml

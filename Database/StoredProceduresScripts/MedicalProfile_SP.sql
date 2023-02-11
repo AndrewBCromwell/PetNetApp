@@ -8,6 +8,9 @@ medical profile and viewing a kennel that an animal is assigned to
 
 /* Select Animal Record by AnimalID */
 /* William Rients */
+USE [PetNet_db_am]
+GO
+
 print '' print '*** creating sp_select_animal_record_by_animal_id'
 GO
 CREATE PROCEDURE [dbo].[sp_select_animal_record_by_animal_id]

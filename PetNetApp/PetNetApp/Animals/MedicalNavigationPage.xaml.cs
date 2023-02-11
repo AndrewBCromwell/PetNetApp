@@ -14,10 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
-using WpfPresentation.Development.Animals.Medical;
-using WpfPresentation.Animals;
+using WpfPresentation.Animals.Medical;
 
-namespace WpfPresentation.Development.Animals
+namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for MedicalNavigationPage.xaml
@@ -91,7 +90,7 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameMedical.Navigate(null);
+            frameMedical.Navigate(AnimalMedicalTestsPage.GetAnimalMedicalTestsPage(_medicalProfileAnimal));
         }
 
         private void btnMedNotes_Click(object sender, RoutedEventArgs e)
@@ -110,7 +109,7 @@ namespace WpfPresentation.Development.Animals
 
         private void btnMedBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(MedicalPage.getMedicalPage(_manager));
+            NavigationService.Navigate(MedicalPage.GetMedicalPage(_manager));
         }
     }
 }

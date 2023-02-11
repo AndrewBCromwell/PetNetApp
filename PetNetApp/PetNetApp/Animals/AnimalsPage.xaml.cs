@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataObjects;
 using LogicLayer;
-using WpfPresentation.Development.Animals.Medical;
+using WpfPresentation.Animals.Medical;
 
 namespace WpfPresentation.Animals
 {
@@ -87,7 +88,7 @@ namespace WpfPresentation.Animals
         private void btnMedical_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(MedicalPage.getMedicalPage(_manager));
+            frameAnimals.Navigate(MedicalPage.GetMedicalPage(_manager));
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 
-namespace WpfPresentation.Development.Animals
+namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for MedProcedurePage.xaml
