@@ -77,7 +77,7 @@
     </Compile>
     <Compile Include="Animals\MedProcedurePage.xaml.cs">
       <DependentUpon>MedProcedurePage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
@@ -115,7 +115,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    
     <Page Include="Animals\AnimalMedicalProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

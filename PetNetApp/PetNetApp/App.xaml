@@ -163,7 +163,8 @@
             <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Border" Color="#FFBFBFBF"/>
             <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Background" Color="Transparent"/>
             <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
-            <CornerRadius x:Key="ComboBox.Static.BorderRadius">10 10 0 0</CornerRadius>
+            <CornerRadius x:Key="ComboBox.Static.BorderRadius">10</CornerRadius>
+            <CornerRadius x:Key="ComboBox.Static.IsDropDownOpen.BorderRadius">10 10 0 0</CornerRadius>
             <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#1C6758"/>
             <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -179,6 +180,9 @@
                                 </Border>
                             </Border>
                             <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="CornerRadius" TargetName="templateRoot" Value="{StaticResource ComboBox.Static.IsDropDownOpen.BorderRadius}"/>
+                                </Trigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
