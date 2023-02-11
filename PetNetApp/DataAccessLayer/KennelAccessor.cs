@@ -12,6 +12,78 @@ namespace DataAccessLayer
 {
     public class KennelAccessor : IKennelAccessor
     {
+
+        public int InsertKennel(Kennel kennel)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_kennel";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int);
+            cmd.Parameters.Add("@KennelName", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("@AnimalTypeId", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@ShelterId"].Value = kennel.ShelterId;
+            cmd.Parameters["@KennelName"].Value = kennel.KennelName;
+            cmd.Parameters["@AnimalTypeId"].Value = kennel.AnimalTypeId;
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+        public List<string> SelectAnimalTypes()
+        {
+            List<string> animalTypes = new List<string>();
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_animal_types";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string animalType = null;
+
+                        animalType = reader.GetString(0);
+
+                        animalTypes.Add(animalType);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return animalTypes;
+        }
+
         /// <summary>
         /// Gwen Arman
         /// Created: 2023/02/01
@@ -82,6 +154,64 @@ namespace DataAccessLayer
                 conn.Close();
             }
             return kennelVMs;
+        }
+
+        public int UpdateKennelStatusByKennelId(int KennelId)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_kennel_status_by_kennelid";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@KennelId", SqlDbType.Int);
+            cmd.Parameters["@KennelId"].Value = KennelId;
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return rows;
+        }
+
+        public int DeleteAnimalKennelingByKennelId(int KennelId)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_delete_animal_kenneling_by_kennelid";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@KennelId", SqlDbType.Int);
+            cmd.Parameters["@KennelId"].Value = KennelId;
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return rows;
         }
     }
 }

@@ -80,7 +80,7 @@ namespace WpfPresentation.Management
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new ViewKennelPage());
+            frameAnimals.Navigate(new ViewKennelPage(_manager));
         }
 
         private void btnVolunteer_Click(object sender, RoutedEventArgs e)

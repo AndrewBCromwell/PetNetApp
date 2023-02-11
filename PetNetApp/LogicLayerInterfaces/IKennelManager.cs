@@ -10,5 +10,9 @@ namespace LogicLayerInterfaces
     public interface IKennelManager
     {
         List<KennelVM> RetrieveKennels(int ShelterId);
+        List<string> RetrieveAnimalTypes();
+        bool AddKennel(Kennel kennel);
+        bool EditKennelStatusByKennelId(int KennelId);
+        bool RemoveAnimalKennlingByKennelId(int KennelId);
     }
 }
