@@ -26,6 +26,7 @@ namespace WpfPresentation.Management
     {
         private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<KennelVM> kennelVMs = null;
+        private List<KennelVM> kennelsToRemove = new List<KennelVM>();
         public ViewKennelPage()
         {
             InitializeComponent();
@@ -33,10 +34,10 @@ namespace WpfPresentation.Management
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            // Replace 100000 with User.Shelter.ShelterId when users are made
+            // Replace 100000 with masterManager.User.Shelter.ShelterId when users are made
             try
             {
-                kennelVMs = masterManager.KennelManager.RetrieveKennels(1);
+                kennelVMs = masterManager.KennelManager.RetrieveKennels(100000);
 
                 for (int i = 0; i < kennelVMs.Count / 4; i++)
                 {
@@ -59,6 +60,7 @@ namespace WpfPresentation.Management
                     }
                     int j = i;
                     kennelUserControl.btnKennel.Click += (obj, arg) => UserControlClick(kennelVMs[j]);
+                    kennelUserControl.btnKennelUserControl.Click += (obj, arg) => KennelUserControlClick(kennelVMs[j], kennelUserControl);
 
                     Grid.SetRow(kennelUserControl, i / 4);
                     Grid.SetColumn(kennelUserControl, i % 4);
@@ -67,9 +69,7 @@ namespace WpfPresentation.Management
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
-               
+                PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
             }
         }
 
@@ -92,11 +92,26 @@ namespace WpfPresentation.Management
             if(kennelVM.Animal != null)
             {
                 MessageBox.Show(kennelVM.KennelName);
-                // Placeholder for ViewIndivisualOccupiedKennel
+                // Placeholder for ViewIndivisualOccupiedKennel and KenOccupancy (Remove Animal)
             } else
             {
                 NavigationService.Navigate(new AssignAnimalToKennel(kennelVM));
             }
+        }
+
+        private void KennelUserControlClick(KennelVM kennelVM, KennelUserControl kennelUserControl)
+        {
+            if (kennelUserControl.grdKennelUserControlBorder.BorderBrush.ToString().Equals("#FF1C6758"))
+            {
+                kennelsToRemove.Add(kennelVM);
+                kennelUserControl.grdKennelUserControlBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(158, 193, 176));
+            } 
+            else
+            {
+                kennelsToRemove.Remove(kennelVM);
+                kennelUserControl.grdKennelUserControlBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(28, 103, 88));
+            }
+
         }
 
         /// <summary>
@@ -121,6 +136,59 @@ namespace WpfPresentation.Management
             kennelUserControl.btnKennel.Content = "Add Animal";
             kennelUserControl.btnKennel.Background = new SolidColorBrush(Color.FromRgb(28, 103, 88));
             kennelUserControl.btnKennel.Foreground = new SolidColorBrush(Color.FromRgb(238, 242, 230));
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddKennelPage(masterManager));
+        }
+
+        private void btnRemoveKennel_Click(object sender, RoutedEventArgs e)
+        {
+            string kennelList = "";
+            if(kennelsToRemove.Count == 0)
+            {
+                PromptWindow.ShowPrompt("Error", "You must select at least one kennel", ButtonMode.Ok);
+                return;
+            }
+            for(int i = 0; i < kennelsToRemove.Count; i++)
+            {
+                kennelList += kennelsToRemove[i] != kennelsToRemove[kennelsToRemove.Count - 1] 
+                    ? kennelsToRemove[i].KennelName + ", " : 
+                    kennelsToRemove.Count != 1 ? "and " + kennelsToRemove[i].KennelName : kennelsToRemove[i].KennelName;
+            }
+            var choice = PromptWindow.ShowPrompt("Are you sure?", "Remove " + kennelList + "?", ButtonMode.YesNo);
+            if (choice == PromptSelection.Yes)
+            {
+
+                for (int i = 0; i < kennelsToRemove.Count; i++)
+                {
+                    if (kennelsToRemove[i].Animal != null)
+                    {
+                        try
+                        {
+                            masterManager.KennelManager.RemoveAnimalKennlingByKennelId(kennelsToRemove[i].KennelId);
+                        }
+                        catch (Exception ex)
+                        {
+                            PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                        }
+                    }
+                    try
+                    {
+                        masterManager.KennelManager.EditKennelStatusByKennelId(kennelsToRemove[i].KennelId);
+                    }
+                    catch (Exception ex)
+                    {
+                        PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                    }
+                }
+                NavigationService.Navigate(new ViewKennelPage());
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

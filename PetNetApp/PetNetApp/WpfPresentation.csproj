@@ -93,6 +93,9 @@
     <Compile Include="Management\ViewAnimalsForKennel.xaml.cs">
       <DependentUpon>ViewAnimalsForKennel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\AddKennelPage.xaml.cs">
+      <DependentUpon>AddKennelPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,10 @@
     <Page Include="Misc\LogInPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\AddKennelPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Misc\UserProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>

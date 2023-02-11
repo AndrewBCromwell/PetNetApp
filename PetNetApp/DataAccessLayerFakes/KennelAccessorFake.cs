@@ -15,6 +15,8 @@ namespace DataAccessLayerFakes
         private List<Animal> fakeAnimals = new List<Animal>();
         private Animal fakeAnimal = new Animal();
         private KennelVM fakeKennelVM = new KennelVM();
+        List<string> fakeAnimalTypes;
+        List<Kennel> fakeKennels = new List<Kennel>();
 
         public KennelAccessorFake()
         {
@@ -104,8 +106,34 @@ namespace DataAccessLayerFakes
                 ShelterName = "Shelter3",
                 //Animal = new Animal()
             });
+
+            fakeAnimalTypes = new List<string>() { "Panda", "Boar", "Fish"};
         }
 
+        public int DeleteAnimalKennelingByKennelId(int KennelId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertKennel(Kennel kennel)
+        {
+            fakeKennels.Add(kennel);
+            int rows = 0;
+
+            for (int i = 0; i < fakeKennels.Count; i++)
+            {
+                if (fakeKennels[i].KennelId == kennel.KennelId)
+                {
+                    rows = 1;
+                }
+            }
+            return rows;
+        }
+
+        public List<string> SelectAnimalTypes()
+        {
+            return fakeAnimalTypes;
+        }
 
         /// <summary>
         /// Gwen Arman
@@ -146,6 +174,22 @@ namespace DataAccessLayerFakes
             List<Animal> animals = null;
             animals = fakeAnimals;
             return animals;
+        }
+
+        public int UpdateKennelStatusByKennelId(int KennelId)
+        {
+            int rows = 0;
+
+            for (int i = 0; i < fakeKennelVMs.Count; i++)
+            {
+                if (fakeKennelVMs[i].KennelId == KennelId)
+                {
+                    fakeKennelVMs[i].KennelActive = false;
+                    rows = 1;
+                }
+                
+            }
+            return rows;
         }
     }
 }

@@ -30,7 +30,8 @@ namespace PetNetApp.Development
 
         public MainWindow()
         {
-            InitializeComponent();            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnDonations, btnManagement };
+            InitializeComponent();
+            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnDonations, btnManagement };
         }
 
         private void btnDonate_Click(object sender, RoutedEventArgs e)
