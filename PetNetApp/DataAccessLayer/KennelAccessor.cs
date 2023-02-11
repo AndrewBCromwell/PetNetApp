@@ -83,5 +83,123 @@ namespace DataAccessLayer
             }
             return kennelVMs;
         }
+
+        public Kennel SelectKennelIdByAnimalId(int AnimalId)
+        {
+            Kennel _kennel = new Kennel();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_kennelId_by_animal_Id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@AnimalId", SqlDbType.Int);
+            cmd.Parameters["@AnimalId"].Value = AnimalId;
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //[KennelId], [AnimalId]
+                        _kennel.KennelId = reader.GetInt32(0);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return _kennel;
+        }
+
+        public int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId)
+        {
+            int result = 0;
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_animal_into_kennel_by_animalId_and_kennelId";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@AnimalId", SqlDbType.Int);
+            cmd.Parameters.Add("@KennelId", SqlDbType.Int);
+            cmd.Parameters["@AnimalId"].Value = AnimalId;
+            cmd.Parameters["@KennelId"].Value = KennelId;
+
+            try
+            {
+                conn.Open();
+
+                result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return result;
+        }
+
+        public List<Animal> SelectAllAnimalsForKennel()
+        {
+            List<Animal> _animalList = new List<Animal>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_animals_without_kennel";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var _animal = new Animal();
+                        _animal.AnimalId = reader.GetInt32(0);
+                        _animal.AnimalName = reader.GetString(1);
+                        _animal.AnimalTypeId = reader.GetString(2);
+                        _animal.AnimalBreedId = reader.GetString(3);
+                        _animal.Personality = reader.GetString(4);
+                        _animal.BroughtIn = reader.GetDateTime(5);
+                        _animal.Description = reader.GetString(6);
+                        _animal.MicrochipNumber = reader.GetString(7);
+                        _animal.Aggressive = reader.GetBoolean(8);
+                        _animal.AggressiveDescription = reader.GetString(9);
+                        _animal.ChildFriendly = reader.GetBoolean(10);
+                        _animal.NeuterStatus = reader.GetBoolean(11);
+                        _animal.Notes = reader.GetString(12);
+                        _animal.AnimalStatusId = reader.GetString(13);
+                        _animalList.Add(_animal);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return _animalList;
+        }
     }
 }

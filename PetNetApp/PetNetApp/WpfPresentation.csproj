@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
+      <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalPostUpdate.xaml.cs">
       <DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
     </Compile>
@@ -80,6 +83,12 @@
     </Compile>
     <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
       <DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\AssignAnimalToKennel.xaml.cs">
+      <DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewAnimalsForKennel.xaml.cs">
+      <DependentUpon>ViewAnimalsForKennel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\ViewKennelPage.xaml.cs">
       <DependentUpon>ViewKennelPage.xaml</DependentUpon>
@@ -103,6 +112,11 @@
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Animals\AnimalPostUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    
+    <Page Include="Animals\AnimalMedicalProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,9 +176,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Management\AssignAnimalToKennel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Management\ManagementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\ViewAnimalsForKennel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Management\SchedulePage.xaml">
       <SubType>Designer</SubType>

@@ -84,7 +84,7 @@ namespace DataAccessLayer
                         medicalRecord.MedicalRecordId = reader.GetInt32(0);
                         medicalRecord.Diagnosis = reader.GetString(1);
                         medicalRecord.QuarantineStatus = reader.GetBoolean(2);
-                        medicalRecord.PrescriptionStatus = reader.GetBoolean(3);
+                        medicalRecord.IsPrescription = reader.GetBoolean(3);
                         medicalRecord.MedicalNotes = reader.GetString(4);
                         medicalRecord.Date = reader.GetDateTime(5);
                         medicalRecords.Add(medicalRecord);

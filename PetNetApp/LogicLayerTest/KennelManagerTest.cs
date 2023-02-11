@@ -28,5 +28,53 @@ namespace LogicLayerTest
 
             Assert.AreEqual(expectedCount, actualCount);
         }
+
+        [TestMethod]
+        public void TestRetrieveAnimalByAnimalId()
+        {
+            //arrange 
+            int animalId = 100000;
+            int expectedShelterId = 100000;
+            int acutalShelterId;
+
+            // act
+            var kennel = kennelManager.RetrieveKennelIdByAnimalId(animalId);
+            acutalShelterId = kennel.KennelId;
+
+            // assert
+            Assert.AreEqual(expectedShelterId, acutalShelterId);
+
+        }
+
+        [TestMethod]
+        public void TestInsertAnimalIntoKennel()
+        {
+            //arrange 
+            int animalId = 100000;
+            int kennelId = 100000;
+
+            // act
+            bool success = kennelManager.AddAnimalIntoKennelByAnimalId(animalId, kennelId);
+            
+
+            // assert
+            Assert.AreEqual(true, success);
+        }
+
+        [TestMethod]
+        public void TestSelectAnimalsForKennel ()
+        {
+            //arrange 
+            int expectedCount = 1;
+            int acutalCount = 0;
+
+            // act
+            var animals = kennelManager.RetrieveAllAnimalsForKennel();
+            acutalCount = animals.Count;
+
+            // assert
+            Assert.AreEqual(expectedCount, acutalCount);
+        }
+
     }
 }

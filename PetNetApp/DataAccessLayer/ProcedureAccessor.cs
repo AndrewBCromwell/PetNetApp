@@ -29,7 +29,7 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@MedicalRecordId", medicalRecordId);
             cmd.Parameters.AddWithValue("@UserId", procedure.UserId);
             cmd.Parameters.AddWithValue("@ProcedureName", procedure.ProcedureName);
-            cmd.Parameters.AddWithValue("@MedicationsAdministered", procedure.MedictationsAdministered);
+            cmd.Parameters.AddWithValue("@MedicationsAdministered", procedure.MedicationsAdministered);
             cmd.Parameters.AddWithValue("@ProcedureNotes", procedure.ProcedureNotes);
             cmd.Parameters.AddWithValue("@ProcedureDate", procedure.ProcedureDate.Date);
             cmd.Parameters.AddWithValue("@ProcedureTime", procedure.ProcedureDate.TimeOfDay);

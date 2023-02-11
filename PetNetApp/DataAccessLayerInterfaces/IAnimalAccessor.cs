@@ -9,9 +9,10 @@ namespace DataAccessLayerInterfaces
 {
     public interface IAnimalAccessor
     {
-        AnimalVM SelectAnimalByAnimalId(int animalId);
+        AnimalVM SelectAnimalByAnimalId(int AnimalId);
         List<Animal> SelectAllAnimals(String animalName);
         List<Animal> SelectAllAnimals();
         List<Animal> SelectAllAnimalsNotInKennel();
+        AnimalVM SelectAnimalMedicalProfileByAnimalId(int AnimalId);
     }
 }

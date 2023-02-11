@@ -88,7 +88,6 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton((Button)sender);
             frameAnimals.Navigate(MedicalPage.getMedicalPage(_manager));
-
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

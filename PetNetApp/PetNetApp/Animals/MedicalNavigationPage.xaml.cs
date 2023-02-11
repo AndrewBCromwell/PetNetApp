@@ -71,7 +71,7 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameMedical.Navigate(null);
+            frameMedical.Navigate(new AnimalMedicalProfile(_medicalProfileAnimal.AnimalId));
         }
 
         private void btnVaccinations_Click(object sender, RoutedEventArgs e)

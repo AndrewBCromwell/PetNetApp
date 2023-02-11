@@ -79,7 +79,7 @@ namespace WpfPresentation.Development.Animals
             procedure.UserId = userId;
             procedure.ProcedureName = txtProcedureName.Text;
             procedure.ProcedureDate = (DateTime)dateProcedurePerformed.SelectedDate;
-            procedure.MedictationsAdministered = txtProcedureMedsAdministered.Text;
+            procedure.MedicationsAdministered = txtProcedureMedsAdministered.Text;
             procedure.ProcedureNotes = txtProcedureNotes.Text;
             if (_forAdd)
             {

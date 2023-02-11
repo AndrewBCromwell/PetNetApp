@@ -12,14 +12,14 @@ namespace DataObjects
         public int MedicalRecordId { get; set; }
         public int UserId { get; set; }
         public string ProcedureName { get; set; }
-        public string MedictationsAdministered { get; set; }
+        public string MedicationsAdministered { get; set; }
         public string ProcedureNotes { get; set; }
         public DateTime ProcedureDate { get; set; }
     }
 
-    public class ProcedureVM
+    public class ProcedureVM : Procedure
     {
         public string SurgeonGivenName { get; set; }
-        public string SurgeonFamileyName { get; set; }
+        public string SurgeonFamilyName { get; set; }
     }
 }

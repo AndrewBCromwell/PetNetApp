@@ -77,5 +77,16 @@ namespace LogicLayer
             return animals;
         }
 
+        public AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId)
+        {
+            try
+            {
+                return _animalAccessor.SelectAnimalMedicalProfileByAnimalId(AnimalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Animal medical profile not found", ex);
+            }
+        }
     }
 }

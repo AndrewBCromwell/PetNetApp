@@ -52,5 +52,43 @@ namespace LogicLayer
             }
                       
         }
+
+        public Kennel RetrieveKennelIdByAnimalId(int AnimalId)
+        {
+            try
+            {
+                return kennelAccessor.SelectKennelIdByAnimalId(AnimalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve kennel", ex);
+            }
+        }
+
+        public bool AddAnimalIntoKennelByAnimalId(int KennelId, int AnimalId)
+        {
+            try
+            {
+                return 0 < kennelAccessor.InsertAnimalIntoKennelByAnimalId(KennelId, AnimalId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Failed to insert animal into kennel", ex);
+            }
+        }
+
+        public List<Animal> RetrieveAllAnimalsForKennel()
+        {
+            try
+            {
+                return kennelAccessor.SelectAllAnimalsForKennel();
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Failed to retrieve animals.", ex);
+            }
+        }
     }
 }
