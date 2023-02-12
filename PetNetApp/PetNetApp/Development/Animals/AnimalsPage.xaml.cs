@@ -83,7 +83,7 @@ namespace WpfPresentation.Development.Animals
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
 
-           frameAnimals.Navigate(new EditDetailAnimalProfile(_manager, _manager.AnimalManager.RetrieveAnimalByAnimalId(100000)));
+           frameAnimals.Navigate(null);
         }
 
         private void btnMedical_Click(object sender, RoutedEventArgs e)

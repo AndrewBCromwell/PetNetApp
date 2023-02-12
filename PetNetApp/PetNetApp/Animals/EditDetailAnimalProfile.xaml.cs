@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfPresentation.Development.Animals
+namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for EditDetailAnimalProfile.xaml

@@ -58,7 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Development\Animals\EditDetailAnimalProfile.xaml.cs">
+    <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\MedicalPage.xaml.cs">
@@ -95,7 +95,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Animals\EditDetailAnimalProfile.xaml">
+    <Page Include="Animals\EditDetailAnimalProfile.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
