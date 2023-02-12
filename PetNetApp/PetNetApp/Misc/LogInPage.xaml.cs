@@ -24,20 +24,19 @@ namespace WpfPresentation.Misc
     public partial class LogInPage : Page
     {
         private static LogInPage _existingLogIn = null;
-        private MasterManager _manager = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
         private MainWindow _mainWindow = null;
 
-        public LogInPage(MasterManager manager)
+        public LogInPage()
         {
             InitializeComponent();
-            _manager = manager;
         }
 
-        public static LogInPage GetLogInPage(MasterManager manager, MainWindow mainWindow)
+        public static LogInPage GetLogInPage(MainWindow mainWindow)
         {
             if (_existingLogIn == null)
             {
-                _existingLogIn = new LogInPage(manager);
+                _existingLogIn = new LogInPage();
             }
 
             _existingLogIn._mainWindow = mainWindow;

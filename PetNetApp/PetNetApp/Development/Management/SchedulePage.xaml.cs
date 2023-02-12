@@ -36,7 +36,7 @@ namespace WpfPresentation.Development.Management
     public partial class SchedulePage : Page
     {
         public DateTime _selectedDate;
-        public MasterManager _masterManager = new MasterManager();
+        public MasterManager _masterManager = MasterManager.GetMasterManager();
         public SchedulePage()
         {
             InitializeComponent();

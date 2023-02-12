@@ -76,10 +76,23 @@ namespace DataAccessLayerFakes
 
         }
 
+        /// <summary>
+        /// Hoang Chu
+        /// Created: 2023/02/01
+        /// 
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <returns>List<Users></returns>
 
         public List<UsersVM> SelectAllEmployees()
         {
-            throw new NotImplementedException();
+            return fakeUsers;
         }
 
         public int AuthenticateUserWithEmailAndPasswordHash(string email, string passwordHash)

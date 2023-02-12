@@ -23,20 +23,18 @@ namespace WpfPresentation.Misc
     public partial class LandingPage : Page
     {
         private static LandingPage _existingLanding = null;
-        private MasterManager _manager = null;
         private MainWindow _mainWindow = null;
 
-        public LandingPage(MasterManager manager)
+        public LandingPage()
         {
             InitializeComponent();
-            _manager = manager;
         }
 
-        public static LandingPage GetLandingPage(MasterManager manager, MainWindow mainWindow)
+        public static LandingPage GetLandingPage(MainWindow mainWindow)
         {
             if (_existingLanding == null)
             {
-                _existingLanding = new LandingPage(manager);
+                _existingLanding = new LandingPage();
             }
 
             _existingLanding._mainWindow = mainWindow;

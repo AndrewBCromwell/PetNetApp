@@ -23,7 +23,7 @@ namespace WpfPresentation.Animals
     /// </summary>
     public partial class AnimalListPage : Page
     {
-        private MasterManager masterManager = new MasterManager();
+        private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<Animal> _animals = null;
 
         public AnimalListPage()

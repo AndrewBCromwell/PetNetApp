@@ -201,5 +201,22 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedCount, actualcount);
         }
 
+        [TestMethod]
+        public void TestRetrieveAnimalMedicalProfileByAnimalId()
+        {
+            //arrange 
+            int animalId = 100000;
+            string expectedAnimalName = "Chip";
+            string actualName;
+
+            // act
+            var animal = _animalManager.RetrieveAnimalMedicalProfileByAnimalId(animalId);
+            actualName = animal.AnimalName;
+
+            // assert
+            Assert.AreEqual(expectedAnimalName, actualName);
+
+        }
+
     }
 }

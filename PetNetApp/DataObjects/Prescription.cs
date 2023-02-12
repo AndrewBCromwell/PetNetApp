@@ -9,7 +9,7 @@ namespace DataObjects
     public class Prescription
     {
         public int PrescriptionId { get; set; }
-        public int MedicalRecord { get; set; }
+        public int MedicalRecordId { get; set; }
         public int UserId { get; set; }
         public string PrescriptionTypeId { get; set; }
         public string PrescriptionName { get; set; }

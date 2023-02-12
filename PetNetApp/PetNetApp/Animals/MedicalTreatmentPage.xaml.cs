@@ -151,7 +151,7 @@ namespace WpfPresentation.Animals
             Label lblPrescriptions = new Label();
             lblPrescriptions.Margin = new Thickness(45, 0, 0, 0);
             lblPrescriptions.VerticalAlignment = VerticalAlignment.Center;
-            lblPrescriptions.Content = "Prescription(s) Required: " + (medicalRecord.PrescriptionStatus ? "Yes" : "No");
+            lblPrescriptions.Content = "Prescription(s) Required: " + (medicalRecord.IsPrescription ? "Yes" : "No");
             Grid.SetRow(lblPrescriptions, 2);
 
             Label lblNotes = new Label();

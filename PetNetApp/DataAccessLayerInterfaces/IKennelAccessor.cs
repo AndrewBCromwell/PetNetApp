@@ -10,5 +10,12 @@ namespace DataAccessLayerInterfaces
     public interface IKennelAccessor
     {
         List<KennelVM> SelectKennels(int ShelterId);
+        List<string> SelectAnimalTypes();
+        int InsertKennel(Kennel kennel);
+        int UpdateKennelStatusByKennelId(int KennelId);
+        int DeleteAnimalKennelingByKennelId(int KennelId);
+        Kennel SelectKennelIdByAnimalId(int AnimalId);
+        int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId);
+        List<Animal> SelectAllAnimalsForKennel();
     }
 }

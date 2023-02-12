@@ -1,17 +1,55 @@
-﻿using DataAccessLayerInterfaces;
-using DataObjects;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataObjects;
+using DataAccessLayerInterfaces;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace DataAccessLayer
 {
     public class MedicalRecordAccessor : IMedicalRecordAccessor
     {
+        public int SelectLastMedicalRecordIdByAnimalId(int animalId)
+        {
+            int medicalRecordId = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_last_medical_record_by_animal_id";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@AnimalId", animalId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    medicalRecordId = reader.GetInt32(0);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return medicalRecordId;
+        }
         public List<MedicalRecordVM> SelectMedicalRecordDiagnosisByAnimalId(int animalId)
         {
             List<MedicalRecordVM> medicalRecords = new List<MedicalRecordVM>();
@@ -46,7 +84,7 @@ namespace DataAccessLayer
                         medicalRecord.MedicalRecordId = reader.GetInt32(0);
                         medicalRecord.Diagnosis = reader.GetString(1);
                         medicalRecord.QuarantineStatus = reader.GetBoolean(2);
-                        medicalRecord.PrescriptionStatus = reader.GetBoolean(3);
+                        medicalRecord.IsPrescription = reader.GetBoolean(3);
                         medicalRecord.MedicalNotes = reader.GetString(4);
                         medicalRecord.Date = reader.GetDateTime(5);
                         medicalRecords.Add(medicalRecord);

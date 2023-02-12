@@ -20,5 +20,6 @@ namespace LogicLayerInterfaces
 
         bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
         List<Animal> RetrieveAllAnimals();
+        AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId);
     }
 }

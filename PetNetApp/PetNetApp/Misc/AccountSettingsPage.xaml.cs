@@ -24,20 +24,19 @@ namespace WpfPresentation.Misc
     public partial class AccountSettingsPage : Page
     {
         private static AccountSettingsPage _existingAccountSettings = null;
-        private MasterManager _manager = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
         private MainWindow _mainWindow = null;
 
-        public AccountSettingsPage(MasterManager manager)
+        public AccountSettingsPage()
         {
             InitializeComponent();
-            _manager = manager;
         }
 
-        public static AccountSettingsPage GetAccountSettingsPage(MasterManager manager, MainWindow mainWindow)
+        public static AccountSettingsPage GetAccountSettingsPage(MainWindow mainWindow)
         {
             if (_existingAccountSettings == null)
             {
-                _existingAccountSettings = new AccountSettingsPage(manager);
+                _existingAccountSettings = new AccountSettingsPage();
             }
 
             _existingAccountSettings._mainWindow = mainWindow;

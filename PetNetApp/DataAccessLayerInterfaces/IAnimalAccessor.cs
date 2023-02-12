@@ -9,7 +9,7 @@ namespace DataAccessLayerInterfaces
 {
     public interface IAnimalAccessor
     {
-        AnimalVM SelectAnimalByAnimalId(int animalId);
+        AnimalVM SelectAnimalByAnimalId(int AnimalId);
         List<Animal> SelectAllAnimals(String animalName);
 
         // For populating edit animal profile combo boxes 
@@ -21,5 +21,6 @@ namespace DataAccessLayerInterfaces
         int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
         List<Animal> SelectAllAnimals();
         List<Animal> SelectAllAnimalsNotInKennel();
+        AnimalVM SelectAnimalMedicalProfileByAnimalId(int AnimalId);
     }
 }

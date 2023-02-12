@@ -27,12 +27,11 @@ namespace PetNetApp
     public partial class MainWindow : Window
     {
         private Button[] _mainTabButtons;
-        private MasterManager _manager = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
 
         public MainWindow()
         {
             InitializeComponent();
-            _manager = new MasterManager();
             _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnDonations, btnManagement };
 
             if (_manager.User == null)
@@ -80,19 +79,19 @@ namespace PetNetApp
         private void btnCommunity_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameMain.Navigate(CommunityPage.GetCommunityPage(_manager));
+            frameMain.Navigate(CommunityPage.GetCommunityPage());
         }
 
         private void btnAnimals_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameMain.Navigate(AnimalsPage.GetAnimalsPage(_manager));
+            frameMain.Navigate(AnimalsPage.GetAnimalsPage());
         }
 
         private void btnManagement_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameMain.Navigate(ManagementPage.GetManagementPage(_manager));
+            frameMain.Navigate(ManagementPage.GetManagementPage());
         }
 
         private void btnDonations_Click(object sender, RoutedEventArgs e)
@@ -107,11 +106,11 @@ namespace PetNetApp
             UnselectAllButtons();
             if (_manager.User == null)
             {
-                frameMain.Navigate(LogInPage.GetLogInPage(_manager, this));
+                frameMain.Navigate(LogInPage.GetLogInPage(this));
             }
             else
             {
-                frameMain.Navigate(UserProfilePage.GetUserProfilePage(_manager, this));
+                frameMain.Navigate(UserProfilePage.GetUserProfilePage(this));
             }
         }
 
@@ -180,11 +179,11 @@ namespace PetNetApp
             if ((string)mnuLogout.Header == "Log In")
             {
                 UnselectAllButtons();
-                frameMain.Navigate(LogInPage.GetLogInPage(_manager, this));
+                frameMain.Navigate(LogInPage.GetLogInPage(this));
             }
             else if ((string)mnuLogout.Header == "Log Out")
             {
-                frameMain.Navigate(LandingPage.GetLandingPage(_manager, this));
+                frameMain.Navigate(LandingPage.GetLandingPage(this));
 
                 _manager.User = null;
                 mnuUser.Header = "Hello, Guest";
@@ -264,22 +263,22 @@ namespace PetNetApp
             UnselectAllButtons();
             if (_manager.User == null)
             {
-                frameMain.Navigate(LogInPage.GetLogInPage(_manager, this));
+                frameMain.Navigate(LogInPage.GetLogInPage(this));
             }
             else
             {
-                frameMain.Navigate(AccountSettingsPage.GetAccountSettingsPage(_manager, this));
+                frameMain.Navigate(AccountSettingsPage.GetAccountSettingsPage(this));
             }
         }
 
         private void btnPetNetLogo_Click(object sender, RoutedEventArgs e)
         {
-            frameMain.Navigate(LandingPage.GetLandingPage(_manager, this));
+            frameMain.Navigate(LandingPage.GetLandingPage(this));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            frameMain.Navigate(LandingPage.GetLandingPage(_manager, this));
+            frameMain.Navigate(LandingPage.GetLandingPage(this));
 
             foreach (var tab in _mainTabButtons)
             {

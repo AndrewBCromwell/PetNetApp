@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataObjects;
 using LogicLayer;
-using WpfPresentation.Development.Animals.Medical;
+using WpfPresentation.Animals.Medical;
 
 namespace WpfPresentation.Animals
 {
@@ -24,21 +25,20 @@ namespace WpfPresentation.Animals
     {
         private static AnimalsPage _existingAnimalsPage = null;
 
-        private MasterManager _manager = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
         private Button[] _animalsTabButtons;
 
-        private AnimalsPage(MasterManager manager)
+        private AnimalsPage()
         {
             InitializeComponent();
-            _manager = manager;
             _animalsTabButtons = new Button[] { btnAdopt, btnFoster, btnSurrender, btnAnimalList, btnMedical };
         }
 
-        public static AnimalsPage GetAnimalsPage(MasterManager manager)
+        public static AnimalsPage GetAnimalsPage()
         {
             if (_existingAnimalsPage == null)
             {
-                _existingAnimalsPage = new AnimalsPage(manager);
+                _existingAnimalsPage = new AnimalsPage();
             }
             return _existingAnimalsPage;
         }
@@ -61,7 +61,7 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new AnimalPostUpdate(100000));
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)
@@ -88,8 +88,7 @@ namespace WpfPresentation.Animals
         private void btnMedical_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(MedicalPage.getMedicalPage(_manager));
-
+            frameAnimals.Navigate(MedicalPage.GetMedicalPage(_manager));
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

@@ -25,6 +25,60 @@ namespace LogicLayer
             kennelAccessor = ka;
         }
 
+        public bool AddKennel(Kennel kennel)
+        {
+            int result = 0;
+            try
+            {
+                result = kennelAccessor.InsertKennel(kennel);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Kennel failed to be added", ex);
+            }
+            return result == 1;
+        }
+
+        public bool EditKennelStatusByKennelId(int KennelId)
+        {
+            int result = 0;
+            try
+            {
+                result = kennelAccessor.UpdateKennelStatusByKennelId(KennelId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Kennel failed to be removed", ex);
+            }
+            return result == 1;
+        }
+
+        public bool RemoveAnimalKennlingByKennelId(int KennelId)
+        {
+            int result = 0;
+            try
+            {
+                result = kennelAccessor.DeleteAnimalKennelingByKennelId(KennelId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to remove an from kennel", ex);
+            }
+            return result == 1;
+        }
+
+        public List<string> RetrieveAnimalTypes()
+        {
+            try
+            {
+                return kennelAccessor.SelectAnimalTypes();
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve animal types", e);
+            }
+        }
+
         /// <summary>
         /// Gwen Arman
         /// Created: 2023/02/01
@@ -51,6 +105,44 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to retrieve kennels", e);
             }
                       
+        }
+
+        public Kennel RetrieveKennelIdByAnimalId(int AnimalId)
+        {
+            try
+            {
+                return kennelAccessor.SelectKennelIdByAnimalId(AnimalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve kennel", ex);
+            }
+        }
+
+        public bool AddAnimalIntoKennelByAnimalId(int KennelId, int AnimalId)
+        {
+            try
+            {
+                return 0 < kennelAccessor.InsertAnimalIntoKennelByAnimalId(KennelId, AnimalId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Failed to insert animal into kennel", ex);
+            }
+        }
+
+        public List<Animal> RetrieveAllAnimalsForKennel()
+        {
+            try
+            {
+                return kennelAccessor.SelectAllAnimalsForKennel();
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Failed to retrieve animals.", ex);
+            }
         }
     }
 }

@@ -1682,7 +1682,7 @@ GO
 print '' print '*** creating table for AnimalUpdates'
 GO
 CREATE TABLE [dbo].[AnimalUpdates] (
-    [AnimalRecordId]        [int]                                   NOT NULL,
+    [AnimalRecordId]        [int]           IDENTITY(100000, 1)     NOT NULL,
     [AnimalId]              [int]                                   NOT NULL,
     [AnimalRecordNotes]     [nvarchar](500)                         NOT NULL,
     [AnimalRecordDate]      [datetime]	DEFAULT GETDATE()           NOT NULL,
@@ -1879,8 +1879,16 @@ INSERT INTO dbo.Animal
 )
 		
 	VALUES
-		('Max', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'15A73', 0, 'Not aggressive', 1, 1, 'No notes')
+		('Fido', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'15A73', 0, 'Not aggressive', 1, 1, 'No notes'),
+		('Donny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'12345dgas', 0, 'Not aggressive', 1, 1, 'No notes'),
+		('Johny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'512314', 0, 'Not aggressive', 1, 1, 'No notes'),
+		('Bonny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'568533', 0, 'Not aggressive', 1, 1, 'No notes'),
+		('Doggy', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		'6868564', 0, 'Not aggressive', 1, 1, 'No notes')
 GO
 
 

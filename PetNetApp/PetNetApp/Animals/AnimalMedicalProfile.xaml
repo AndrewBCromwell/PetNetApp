@@ -1,0 +1,69 @@
+﻿<Page x:Class="WpfPresentation.Animals.AnimalMedicalProfile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.Animals"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AnimalMedicalProfile" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid Background="#eef2e6">
+            <Label x:Name="lblProfileName" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" FontSize="35" FontWeight="Bold">Medical Profile</Label>
+            <Label Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="25">Name</Label>
+            <Label Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="25">Breed</Label>
+            <Label Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="25">Sex</Label>
+            <Label Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="25">Altered</Label>
+            <Label Grid.Row="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="25">ID</Label>
+            <Label Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="25">Notes</Label>
+            <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="right" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="25">Kennel #</Label>
+            <Label Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="right" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="25">Microchip #</Label>
+            <TextBox x:Name="txtAnimalName" Grid.Row="1" Grid.Column="1" Background="White" 
+                     Width="125" Height="45" FontSize="25" HorizontalAlignment="Left" HorizontalContentAlignment="Left"></TextBox>
+            <TextBox x:Name="txtAnimalBreed" Grid.Row="2" Grid.Column="1" FontSize="25" Background="White" 
+                     Width="125" Height="45" HorizontalAlignment="Left" HorizontalContentAlignment="Left"></TextBox>
+            <TextBox x:Name="txtAnimalId" Grid.Row="5" Grid.Column="1" FontSize="15" Background="White" 
+                     Width="125" Height="45" HorizontalAlignment="Left" HorizontalContentAlignment="Left"></TextBox>
+            <TextBox x:Name="txtAnimalNotes" Width="200" Grid.Row="6" Grid.RowSpan="7" Grid.ColumnSpan="2" FontSize="15" 
+                     Background="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="175 60 0 10">
+            </TextBox>
+            <TextBox x:Name="txtAnimalKennelNum" Grid.Row="1" Grid.Column="3" FontSize="15" Background="White" 
+                     Width="125" Height="45" HorizontalAlignment="Left" HorizontalContentAlignment="Left"></TextBox>
+            <TextBox x:Name="txtAnimalMicrochipNum" Grid.Row="2" Grid.Column="3" FontSize="15" Background="White" 
+                     Width="125" Height="45" HorizontalAlignment="Left" HorizontalContentAlignment="Left"></TextBox>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <RadioButton x:Name="rdbAnimalGenderMale" Grid.Row="3" Grid.Column="1" Content="Male" FontSize="25" VerticalContentAlignment="Center"></RadioButton>
+                <RadioButton x:Name="rdbAnimalGenderFemale" Grid.Row="3" Grid.Column="1" Margin="25 0 0 0" Content="Female" FontSize="25" VerticalContentAlignment="Center"></RadioButton>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <RadioButton x:Name="rdbAnimalAlteredYes" Grid.Row="3" Grid.Column="1" Content="Yes" FontSize="25" VerticalContentAlignment="Center"></RadioButton>
+                <RadioButton x:Name="rdbAnimalAlteredNo" Grid.Row="3" Grid.Column="1" Margin="34 0 0 0" Content="No" FontSize="25" VerticalContentAlignment="Center"></RadioButton>
+            </StackPanel>
+            <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Label FontWeight="Bold" FontSize="25">Medicine Schedule</Label>
+                <Image  Height="23" Width="34" Source="/WpfPresentation;component/Images/libraryplus_dark.png" ></Image>
+            </StackPanel>
+            <Image Grid.Row="3" Grid.RowSpan="4" Grid.Column="2"  HorizontalAlignment="Center" Source="/WpfPresentation;component/Images/perfectCAT.png" />
+            <StackPanel Grid.Row="7" Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 0 20 10">
+                <Button x:Name="btnSave" Height="45" Width="85">Save</Button>
+                <Button x:Name="btnEdit" Height="45" Width="85" Margin="20 0 20 0">Edit</Button>
+            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+        </Grid>
+    </Grid>
+</Page>

@@ -17,9 +17,29 @@ namespace DataAccessLayerFakes
         List<string> statuses = new List<string>();
         List<AnimalVM> fakeAnimals = new List<AnimalVM>();
         List<Animal> fakeAnimals1 = new List<Animal>();
+        private AnimalVM fakeAnimalVM = new AnimalVM();
 
         public AnimalAccessorFakes()
         {
+            fakeAnimalVM = new AnimalVM()
+            {
+                AnimalId = 100000,
+                AnimalName = "Chip",
+                AnimalGender = "Male",
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Lab",
+                Personality = "Calm",
+                Description = "Needs Attention",
+                AnimalStatusId = "Healthy",
+                BroughtIn = DateTime.Now,
+                MicrochipNumber = "dog12345",
+                Aggressive = false,
+                AggressiveDescription = "Not Aggressive",
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = "No notes"
+            };
+
             animals.Add(new AnimalVM
             {
                 AnimalName = "Rufus",
@@ -219,6 +239,13 @@ namespace DataAccessLayerFakes
         public List<Animal> SelectAllAnimals(String animalName)
         {
             return animals.Where(a => a.AnimalName == animalName).ToList();
+        }
+
+        public AnimalVM SelectAnimalMedicalProfileByAnimalId(int animalId)
+        {
+            AnimalVM animalVM = null;
+            animalVM = fakeAnimalVM;
+            return animalVM;
         }
 
         public AnimalVM SelectAnimalByAnimalId(int animalId)

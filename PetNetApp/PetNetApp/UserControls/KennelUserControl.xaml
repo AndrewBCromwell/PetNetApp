@@ -14,8 +14,9 @@
                     <RowDefinition Height="300"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label FontSize="43" VerticalContentAlignment="Center" Margin="20, 0" Foreground="#EEF2E6" x:Name="lblKennelName"></Label>
+                <Label FontSize="43" VerticalContentAlignment="Center" Margin="20, 0" Foreground="#EEF2E6"  x:Name="lblKennelName"></Label>
                 <Image Source="..\Images\AnimalImage.png" HorizontalAlignment="Center" Grid.Row="1"></Image>
+                <Button Grid.RowSpan="3" Background="Transparent" BorderBrush="Transparent" x:Name="btnKennelUserControl"></Button>
                 <Button Grid.Row="2" Margin="100, 15" Background="#EEF2E6" Foreground="Black" FontSize="25" x:Name="btnKennel">Info</Button>
             </Grid>
         </Border>
