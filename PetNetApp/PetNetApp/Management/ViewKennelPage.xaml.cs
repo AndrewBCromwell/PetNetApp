@@ -91,7 +91,6 @@ namespace WpfPresentation.Management
         {
             if(kennelVM.Animal != null)
             {
-                MessageBox.Show(kennelVM.KennelName);
                 // Placeholder for ViewIndivisualOccupiedKennel and KenOccupancy (Remove Animal)
             } else
             {
