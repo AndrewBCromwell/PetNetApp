@@ -16,13 +16,12 @@ sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
-rem sqlcmd -S localhost -E -i StoredProcudures\MySampleFeature_SP.sql
-
-rem sqlcmd -S localhost -E -i StoredProcudures\ASampleFeature_SP.sql
+rem sqlcmd -S localhost -E -i StoredProcedures\MySampleFeature_SP.sql
+rem sqlcmd -S localhost -E -i StoredProcedures\ASampleFeature_SP.sql
 
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddProcedure_SP.sql
-sqlcmd -S localhost -E -i StoredProcuduresScripts\AnimalProfile_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EmployeeManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalPostUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\MedicalProfile_SP.sql

@@ -1868,7 +1868,7 @@ GO
 
 
 
-/* Insert Into Animal table stored procedure */
+/* Insert Into Animal table */
 /* Created by Andrew Schneider */
 print '' print '*** adding Animal records (Andrew S.)***'
 GO
