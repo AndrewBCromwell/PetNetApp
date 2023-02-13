@@ -11,7 +11,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\AddProcedure_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\AddAnimalUpdate_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\ViewMedicalTests_SD.sql
 
-sqlcmd -S localhost -E -i SampleData\AnimalProfile_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
 
 
 rem Add your stored procedure scripts to the bottom of this list
@@ -22,7 +22,7 @@ rem sqlcmd -S localhost -E -i StoredProcudures\ASampleFeature_SP.sql
 
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddProcedure_SP.sql
-sqlcmd -S localhost -E -i StoredProcudures\AnimalProfile_SP.sql
+sqlcmd -S localhost -E -i StoredProcuduresScripts\AnimalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EmployeeManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalPostUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\MedicalProfile_SP.sql
