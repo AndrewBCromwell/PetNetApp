@@ -11,7 +11,9 @@
             <RowDefinition MinHeight="85"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="tbPrompt" Text="{Binding PromptText}" HorizontalAlignment="Center" Width="250" Margin="10" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" Foreground="#1C6758"/>
+        <ScrollViewer MaxHeight="600" HorizontalScrollBarVisibility="Disabled" Width="250" Margin="10" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="tbPrompt" Text="{Binding PromptText}" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" Foreground="#1C6758"/>
+        </ScrollViewer>
         <Grid Grid.Row="1" Margin="0 0 0 5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
