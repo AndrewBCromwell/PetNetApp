@@ -1,9 +1,9 @@
-USE [SomeDatabase_db]
+USE [PetNet_db_am]
 GO
 
 /***************************************************************
-I.R. Stoodent
-Created: 2023/01/22
+Gwen Arman
+Created: 2023/02/13
 
 Description:
 File containing the stored procedures for Add_Event use case
