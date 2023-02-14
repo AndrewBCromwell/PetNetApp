@@ -61,7 +61,7 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new AddAnimalDOD513(new Animal() { AnimalId = 100000 }));   // needs selected animal from animal list instead of new Animal()
+            frameAnimals.Navigate(null);
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)

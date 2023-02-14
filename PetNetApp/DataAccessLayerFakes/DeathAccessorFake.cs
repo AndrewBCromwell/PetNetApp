@@ -70,7 +70,6 @@ namespace DataAccessLayerFakes
         public int UpdateAnimalDeath(Death newDeath, Death oldDeath)
         {
             int result = 0;
-            var deaths = _deaths;
 
             var death = _deaths.FirstOrDefault(d => d.DeathId == oldDeath.DeathId);
             if (!death.Equals(null))

@@ -1009,3 +1009,48 @@ INSERT INTO [dbo].[]
 		()
 GO
 
+
+print '' print '*** exec sp_insert_animal_death'
+GO
+EXEC sp_insert_animal_death @UsersId 			= 100000,
+                            @AnimalId 			= 100000,
+                            @DeathDate 			= '2006-12-30 00:38:54.840',
+                            @DeathCause 		= 'death cause',
+                            @DeathDisposal 		= 'death disposal',
+                            @DeathDisposalDate 	= '2006-12-30 00:38:54.840',
+                            @DeathNotes 		= 'death notes';
+GO
+
+
+print '' print '*** exec sp_select_animal_death'
+GO
+EXEC sp_select_animal_death 
+	@AnimalId	=	100000
+GO
+
+
+print '' print '*** exec sp_update_animal_death'
+GO
+EXEC sp_update_animal_death @DeathId				= 100000,
+	                        @AnimalId				= 100000,
+                            @UsersId				= 100000,
+                            
+                            @NewDeathDate 			= '2006-12-30 00:38:54.840',
+                            @NewDeathCause			= 'new death cause',
+                            @NewDeathDisposal		= 'new death disposal',
+                            @NewDeathDisposalDate	= '2006-12-30 00:38:54.840',
+                            @NewDeathNotes			= 'new death notes',
+                            
+                            @OldDeathDate			= '2006-12-30 00:38:54.840',
+                            @OldDeathCause			= 'death cause',
+                            @OldDeathDisposal		= 'death disposal',
+                            @OldDeathDisposalDate	= '2006-12-30 00:38:54.840',
+                            @OldDeathNotes			= 'death notes';
+GO
+
+
+print '' print '*** exec sp_select_animal_death'
+GO
+EXEC sp_select_animal_death 
+	@AnimalId	=	100000
+GO

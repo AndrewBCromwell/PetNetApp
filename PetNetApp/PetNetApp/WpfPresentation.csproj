@@ -58,7 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Development\Animals\AddEditAnimalDeath.xaml">
+    <Page Include="Animals\AddEditAnimalDeath.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,7 +137,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Development\Animals\AddEditAnimalDeath.xaml.cs">
+    <Compile Include="Animals\AddEditAnimalDeath.xaml.cs">
       <DependentUpon>AddEditAnimalDeath.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\AnimalsPage.xaml.cs">

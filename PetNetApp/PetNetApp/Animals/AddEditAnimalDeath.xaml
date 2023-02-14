@@ -1,9 +1,9 @@
-﻿<Page x:Class="WpfPresentation.Development.Animals.AddAnimalDOD513"
+﻿<Page x:Class="WpfPresentation.Animals.AddAnimalDOD513"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfPresentation.Development.Animals"
+      xmlns:local="clr-namespace:WpfPresentation.Animals"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddAnimalDOD513"
@@ -31,7 +31,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label x:Name="lbl_Notes" Grid.Row="0" Content="Notes" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBox x:Name="txt_Notes" Grid.Row="1"/>
+                <TextBox x:Name="txt_Notes" Grid.Row="1" VerticalContentAlignment="Top" MaxLength="500" TextWrapping="Wrap"/>
             </Grid>
             <Grid Margin="10">
                 <Grid.RowDefinitions>
@@ -48,10 +48,10 @@
                 <Label x:Name="lbl_AnimalID" Grid.Row="1" Content="Animal ID:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <Label x:Name="lbl_Cause" Grid.Row="2" Content="Cause of Death:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <Label x:Name="lbl_DOD" Grid.Row="3" Content="Date of Death:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox x:Name="txt_Name" Grid.Row="0" Grid.Column="1" Margin="10" IsEnabled="False"/>
-                <TextBox x:Name="txt_AnimalID" Grid.Row="1" Grid.Column="1" Margin="10" IsEnabled="False"/>
-                <TextBox x:Name="txt_Cause" Grid.Row="2" Grid.Column="1" Margin="10"/>
-                <DatePicker x:Name="date_DOD" Grid.Row="3" Grid.Column="1" Margin="10"/>
+                <TextBox x:Name="txt_Name" Grid.Row="0" Grid.Column="1" Margin="10" IsEnabled="False" MaxHeight="40"/>
+                <TextBox x:Name="txt_AnimalID" Grid.Row="1" Grid.Column="1" Margin="10" IsEnabled="False" MaxHeight="40"/>
+                <TextBox x:Name="txt_Cause" Grid.Row="2" Grid.Column="1" Margin="10" MaxHeight="40"/>
+                <DatePicker x:Name="date_DOD" Grid.Row="3" Grid.Column="1" Margin="10" MaxHeight="40"/>
             </Grid>
         </Grid>
     </Grid>

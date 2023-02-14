@@ -18,13 +18,13 @@ using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
 
-namespace WpfPresentation.Development.Animals
+namespace WpfPresentation.Animals
 {
     public partial class AddAnimalDOD513 : Page
     {
         private DeathVM _death = new DeathVM();
         private MasterManager _masterManager = new MasterManager();
-        private Animal _animal = new Animal();
+        private Animal _animal = new Animal();  // the currently selected animal
         private bool isEditMode = false;
         private DeathVM _oldDeathVM = new DeathVM();
 
@@ -58,19 +58,34 @@ namespace WpfPresentation.Development.Animals
 
         private void populateControls()
         {
-            txt_Name.Text = (_animal.AnimalName == null || _animal.AnimalName.Length == 0) ? "UNKNOWN" : _animal.AnimalName;
-            txt_AnimalID.Text = _animal.AnimalId.Equals(0) ? "UNKNOWN" : _animal.AnimalId.ToString();
+            txt_Name.Text = (_oldDeathVM.AnimalName == null || _oldDeathVM.AnimalName.Length == 0) ?
+                                ((_animal.AnimalName == null || _animal.AnimalName.Length == 0) ? "UNKNOWN" : _animal.AnimalName) :
+                                _oldDeathVM.AnimalName;
+            txt_AnimalID.Text = _animal.AnimalId.Equals(0) ? (_oldDeathVM.AnimalId.Equals(0) ? "UNKNOWN" : _oldDeathVM.AnimalId.ToString()) :
+                                _animal.AnimalId.ToString();
         }
 
         private void setEditMode()
         {
-            _death = _oldDeathVM;
+            // _death = _oldDeathVM; // just creates a pointer instead of a new DeathVM
+            _death.DeathDate = _oldDeathVM.DeathDate;
+            _death.AnimalBreed = _oldDeathVM.AnimalBreed;
+            _death.AnimalGender = _oldDeathVM.AnimalGender;
+            _death.AnimalId = _oldDeathVM.AnimalId;
+            _death.AnimalName = _oldDeathVM.AnimalName;
+            _death.AnimalType = _oldDeathVM.AnimalType;
+            _death.DeathCause = _oldDeathVM.DeathCause;
+            _death.DeathDisposal = _oldDeathVM.DeathDisposal;
+            _death.DeathDisposalDate = _oldDeathVM.DeathDisposalDate;
+            _death.DeathId = _oldDeathVM.DeathId;
+            _death.DeathNotes = _oldDeathVM.DeathNotes;
+
             populateControls();
             isEditMode = true;
             lbl_Title.Content = "Edit Animal Death Record";
-            txt_Cause.Text = _death.DeathCause;
-            date_DOD.SelectedDate = _death.DeathDate;
-            txt_Notes.Text = _death.DeathNotes;
+            txt_Cause.Text = _oldDeathVM.DeathCause;
+            date_DOD.SelectedDate = _oldDeathVM.DeathDate;
+            txt_Notes.Text = _oldDeathVM.DeathNotes;
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
@@ -80,21 +95,15 @@ namespace WpfPresentation.Development.Animals
                 _death.DeathDate = date_DOD.SelectedDate;
                 _death.DeathCause = txt_Cause.Text;
                 _death.DeathNotes = txt_Notes.Text;
-                //_death.AnimalId = _animal.AnimalId;
-                _death.AnimalId = 100000;
+                _death.AnimalId = _animal.AnimalId;
 
                 // need currently signed in user
                 _death.UsersId = 100000;
                 //_death.UsersId = MasterManager.User.UsersId;
 
-                //No field for these in UI?
-                _death.DeathDisposal = "UNKNOWN";
-                _death.DeathDisposalDate = DateTime.Now;
-
-
                 if (_death.DeathDate.Equals(null))
                 {
-                    throw new ApplicationException("Death Date cannot be null.");
+                    throw new ApplicationException("Death Date cannot be empty.");
                 }
 
                 if (_death.DeathCause.Equals(null) || _death.DeathCause.Length < 1 || _death.DeathCause.Length > 100)
@@ -113,12 +122,16 @@ namespace WpfPresentation.Development.Animals
                 }
 
                 bool success = false;
-                if (!isEditMode)
+                if (!isEditMode) // if not in edit mode, create new death record
                 {
+                    //No field for these in UI?
+                    _death.DeathDisposal = "UNKNOWN";
+                    _death.DeathDisposalDate = DateTime.Now;
                     success = _masterManager.DeathManager.AddAnimalDeath(_death);
                 }
-                else if (isEditMode)
+                else if (isEditMode) // if in edit mode, update existing death record
                 {
+
                     success = _masterManager.DeathManager.EditAnimalDeath(_death, _oldDeathVM);
                 }
 
@@ -138,7 +151,6 @@ namespace WpfPresentation.Development.Animals
                 else
                 {
                     retrieveOldDeath();
-                    _oldDeathVM = _death;
                     setEditMode();
                 }
             }
