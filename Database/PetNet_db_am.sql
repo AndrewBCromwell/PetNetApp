@@ -1804,7 +1804,7 @@ GO
 CREATE TABLE [dbo].[Death] (
 	[DeathId]              [int]	        IDENTITY(100000,1)       NOT NULL,
     [UsersId]              [int]            NOT NULL,
-    [AnimalId]             [int]            NOT NULL,
+    [AnimalId]             [int] UNIQUE           NOT NULL,
     [DeathDate]            [datetime]       DEFAULT GETDATE()       NOT NULL,
     [DeathCause]           [nvarchar](100)  NOT NULL,
     [DeathDisposal]        [nvarchar](100)  NOT NULL,

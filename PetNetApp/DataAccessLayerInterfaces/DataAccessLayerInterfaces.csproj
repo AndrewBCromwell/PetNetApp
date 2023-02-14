@@ -44,6 +44,7 @@
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
+    <Compile Include="IDeathAccessor.cs" />
     <Compile Include="IKennelAccessor.cs" />
     <Compile Include="IMedicalRecordAccessor.cs" />
     <Compile Include="IProcedureAccessor.cs" />

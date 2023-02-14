@@ -16,6 +16,8 @@ namespace LogicLayer
         public UsersVM User { get; set; }
         public IKennelManager KennelManager { get; set; }
         public IUsersManager UsersManager { get; set; }
+        public IDeathManager DeathManager { get; set; }
+        
         public IAnimalManager AnimalManager { get; set; }
         public IAnimalUpdatesManager AnimalUpdatesManager { get; set; }
         public IScheduleManager scheduleManager { get; set; }
@@ -25,6 +27,7 @@ namespace LogicLayer
         {
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
+            DeathManager = new DeathManager();
             AnimalManager = new AnimalManager();
             AnimalUpdatesManager = new AnimalUpdatesManager();
             scheduleManager = new ScheduleManager();

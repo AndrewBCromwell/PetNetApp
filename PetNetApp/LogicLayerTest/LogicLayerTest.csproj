@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animals\AnimalDeathTests.cs" />
     <Compile Include="AnimalManagerTests.cs" />
     <Compile Include="AnimalUpdatesTests.cs" />
     <Compile Include="MedicalRecordManagerTests.cs" />

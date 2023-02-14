@@ -9,7 +9,7 @@ namespace DataObjects
     public class Death
     {
         public int DeathId { get; set; }
-        public int UserId { get; set; }
+        public int UsersId { get; set; }
         public int AnimalId { get; set; }
         public DateTime DeathDate { get; set; }
         public string DeathCause { get; set; }

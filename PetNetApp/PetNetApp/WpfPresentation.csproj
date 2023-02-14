@@ -69,6 +69,10 @@
     <Compile Include="Animals\AnimalPostUpdate.xaml.cs">
       <DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AddEditAnimalDeath.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
@@ -241,6 +245,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Animals\AddEditAnimalDeath.xaml.cs">
+      <DependentUpon>AddEditAnimalDeath.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalsPage.xaml.cs">
       <DependentUpon>AnimalsPage.xaml</DependentUpon>
     </Compile>
