@@ -1879,15 +1879,15 @@ INSERT INTO dbo.Animal
 )
 		
 	VALUES
-		('Fido', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		('Max', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
 		'15A73', 0, 'Not aggressive', 1, 1, 'No notes'),
-		('Donny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		('Donny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
 		'12345dgas', 0, 'Not aggressive', 1, 1, 'No notes'),
-		('Johny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		('Johny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Sick', '2023-01-01',
 		'512314', 0, 'Not aggressive', 1, 1, 'No notes'),
-		('Bonny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		('Bonny', 'Female', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
 		'568533', 0, 'Not aggressive', 1, 1, 'No notes'),
-		('Doggy', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Available', '2023-01-01',
+		('Doggy', 'Female', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
 		'6868564', 0, 'Not aggressive', 1, 1, 'No notes')
 GO
 
