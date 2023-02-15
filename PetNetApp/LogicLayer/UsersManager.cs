@@ -59,7 +59,7 @@ namespace LogicLayer
         }
 
 
-         /// Hoang Chu
+        /// Hoang Chu
         /// Created: 2023/02/01
         /// 
         public List<UsersVM> RetriveAllEmployees()
@@ -174,6 +174,42 @@ namespace LogicLayer
             }
 
             return pronouns;
+        }
+
+        public bool DeactivateUserAccount(int UserId)
+        {
+            bool result = false;
+
+            try
+            {
+                result = (1 == _userAccessor.DeactivateUserAccount(UserId));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public bool AddUser(Users user, string Password)
+        {
+            bool result = false;
+
+            Password = HashSha265(Password); 
+
+            try
+            {
+                result = (1 == _userAccessor.CreateNewUser(user, Password));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
     }
 }
