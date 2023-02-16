@@ -49,6 +49,7 @@
     <Compile Include="MedicalRecordAccessor.cs" />
     <Compile Include="ProcedureAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleAccessor.cs" />
     <Compile Include="ScheduleAccessor.cs" />
     <Compile Include="TestAccessor.cs" />
     <Compile Include="UsersAccessor.cs" />

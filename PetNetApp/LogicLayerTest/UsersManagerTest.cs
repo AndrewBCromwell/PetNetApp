@@ -90,5 +90,38 @@ namespace LogicLayerTest
 
         }
 
+        [TestMethod]
+        public void TestSelectUserByUsersId()
+        {
+            //arrange
+            Users expectedUser;
+            expectedUser = new Users()
+            {
+                UsersId = 1000,
+                GivenName = "Stephan",
+                FamilyName = "technowiz",
+                Email = "Stephan@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true
+
+            };
+
+            int usersId = 1000;
+
+            //act
+            var actualUser = _userManager.RetrieveUserByUsersId(usersId);
+
+            //assert
+            Assert.AreEqual(actualUser.GivenName, expectedUser.GivenName);
+            Assert.AreEqual(actualUser.FamilyName, expectedUser.FamilyName);
+            Assert.AreEqual(actualUser.Email, expectedUser.Email);
+            Assert.AreEqual(actualUser.Address, expectedUser.Address);
+            Assert.AreEqual(actualUser.Zipcode, expectedUser.Zipcode);
+            Assert.AreEqual(actualUser.Phone, expectedUser.Phone);
+            Assert.AreEqual(actualUser.Active, expectedUser.Active);
+        }
+
     }
 }
