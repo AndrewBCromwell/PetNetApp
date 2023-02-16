@@ -62,13 +62,14 @@ INSERT INTO [dbo].[Animal]
 		[AnimalStatusId],
 		[RecievedDate],
 		[MicrochipSerialNumber],
-		[Notes]
+		[Notes],
+		[AnimalShelterId]
 		)
 	VALUES
-		("Franny", "Female", "Dog", "Lab", "Healthy", "2022-12-15", "Microchip111111", "Very Cute"), 
-		("Spots", "Female", "Dog", "Lab", "Healthy", "2022-12-01", "Microchip111112", "Lots of spots"), 
-		("Ruffer", "Female", "Dog", "Lab", "Healthy", "2022-12-03", "Microchip111113", "Barks a lot"),
-		("Buddy", "Female", "Dog", "Lab", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise")
+		("Franny", "Female", "Dog", "Lab", "Healthy", "2022-12-15", "Microchip111111", "Very Cute", 100000), 
+		("Spots", "Female", "Dog", "Lab", "Healthy", "2022-12-01", "Microchip111112", "Lots of spots", 100000), 
+		("Ruffer", "Female", "Dog", "Lab", "Healthy", "2022-12-03", "Microchip111113", "Barks a lot", 100000),
+		("Buddy", "Female", "Dog", "Lab", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise", 100000)
 GO
 
 print '' print '*** Creating MedicalRecord name sample data'
