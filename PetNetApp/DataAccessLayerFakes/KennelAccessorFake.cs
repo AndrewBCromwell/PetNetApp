@@ -169,7 +169,7 @@ namespace DataAccessLayerFakes
             return result;
         }
 
-        public List<Animal> SelectAllAnimalsForKennel()
+        public List<Animal> SelectAllAnimalsForKennel(int ShelterId)
         {
             List<Animal> animals = null;
             animals = fakeAnimals;
