@@ -16,7 +16,7 @@
     <Color x:Key="ControlPressedBackgroundColor">#3D8361</Color>
     <Color x:Key="ControlPressedGlyphColor">#EEF2E6</Color>
     <Color x:Key="ControlDisabledGlyphColor">#D6CDA4</Color>
-    <Color x:Key="ControlGlyphColor">#1C6758</Color>
+    <Color x:Key="ControlGlyphColor">#3D8361</Color>
     <Color x:Key="ControlMouseOverGlyphColor">#1C6758</Color>
     <Color x:Key="ControlSelectedGlyphColor">#1C6758</Color>
     <Color x:Key="ControlForegroundColor">#1C6758</Color>
@@ -25,8 +25,13 @@
     <Color x:Key="ControlMultiSelectionSelectedForegroundColor">#EEF2E6</Color>
     <Color x:Key="ControlMultiSelectionSelectedBorderColor">#1C6758</Color>
 
+    <!-- Data Grid Colors -->
+    <Color x:Key="ControlDataGridRowColor">#9ec1b0</Color>
+    <Color x:Key="ControlDataGridAlternateRowColor">#EEEFE1</Color>
+    <Color x:Key="ControlDataGridColumnHeaderBackgroundColor">#1C6758</Color>
+    <Color x:Key="ControlDataGridColumnHeaderForegroundColor">#EEF2E6</Color>
+
     <!-- Old Color Keys -->
-    <Color x:Key="ColorGolden">#D6CDA4</Color>
     <Color x:Key="ColorGreen">#3D8361</Color>
     <Color x:Key="ColorLightGreen">#9EC1B0</Color>
     <Color x:Key="ColorDarkGreen">#1C6758</Color>

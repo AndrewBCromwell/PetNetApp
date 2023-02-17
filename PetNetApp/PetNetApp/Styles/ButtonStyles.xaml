@@ -105,9 +105,9 @@
     <SolidColorBrush x:Key="Button.Static.Background" Color="{StaticResource ColorGreen}"/>
     <SolidColorBrush x:Key="Button.Static.Border" Color="{StaticResource ColorDarkGreen}"/>
     <SolidColorBrush x:Key="Button.Static.Foreground" Color="{StaticResource BackgroundColor}"/>
-    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="{StaticResource ColorLightGreen}"/>
-    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="Button.Pressed.Background" Color="{StaticResource ColorGreen}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="{StaticResource ControlMouseOverBackgroundColor}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="{StaticResource ControlMouseOverBorderColor}"/>
+    <SolidColorBrush x:Key="Button.Pressed.Background" Color="{StaticResource ControlPressedBorderColor}"/>
     <SolidColorBrush x:Key="Button.Pressed.Border" Color="{StaticResource ColorDarkGreen}"/>
     <SolidColorBrush x:Key="Button.Disabled.Background" Color="{StaticResource ColorLightGreen}"/>
     <SolidColorBrush x:Key="Button.Disabled.Border" Color="{StaticResource ColorGreen}"/>
@@ -145,6 +145,57 @@
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Light Green Button Style -->
+    <SolidColorBrush x:Key="LightGreenButton.Static.Background" Color="{StaticResource ColorLightGreen}"/>
+    <SolidColorBrush x:Key="LightGreenButton.Static.Border" Color="{StaticResource ColorDarkGreen}"/>
+    <SolidColorBrush x:Key="LightGreenButton.Static.Foreground" Color="{StaticResource ColorDarkGreen}"/>
+    <SolidColorBrush x:Key="LightGreenButton.MouseOver.Background" Color="{StaticResource ControlBackgroundColor}"/>
+    <SolidColorBrush x:Key="LightGreenButton.MouseOver.Border" Color="{StaticResource ColorGreen}"/>
+    <SolidColorBrush x:Key="LightGreenButton.Pressed.Background" Color="{StaticResource ColorLightGreen}"/>
+    <SolidColorBrush x:Key="LightGreenButton.Pressed.Border" Color="{StaticResource ColorDarkGreen}"/>
+    <SolidColorBrush x:Key="LightGreenButton.Disabled.Background" Color="{StaticResource ControlDisabledBackgroundColor}"/>
+    <SolidColorBrush x:Key="LightGreenButton.Disabled.Border" Color="{StaticResource ControlDisabledBorderColor}"/>
+    <SolidColorBrush x:Key="LightGreenButton.Disabled.Foreground" Color="{StaticResource ControlDisabledGlyphColor}"/>
+    <Style x:Key="rsrcLightGreenButton" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource LightGreenButton.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LightGreenButton.Static.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource LightGreenButton.Static.Foreground}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource LightGreenButton.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource LightGreenButton.MouseOver.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource LightGreenButton.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource LightGreenButton.Pressed.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource LightGreenButton.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource LightGreenButton.Disabled.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource LightGreenButton.Disabled.Foreground}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -212,8 +263,8 @@
     <SolidColorBrush x:Key="SafeButton.Pressed.Background" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="SafeButton.Pressed.Border" Color="{StaticResource ColorDarkGreen}"/>
     <SolidColorBrush x:Key="SafeButton.Disabled.Background" Color="{StaticResource BackgroundColor}"/>
-    <SolidColorBrush x:Key="SafeButton.Disabled.Border" Color="{StaticResource ColorGolden}"/>
-    <SolidColorBrush x:Key="SafeButton.Disabled.Foreground" Color="{StaticResource ColorGolden}"/>
+    <SolidColorBrush x:Key="SafeButton.Disabled.Border" Color="{StaticResource ControlDisabledBorderColor}"/>
+    <SolidColorBrush x:Key="SafeButton.Disabled.Foreground" Color="{StaticResource ControlDisabledGlyphColor}"/>
     <Style x:Key="rsrcSafeButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource SafeButton.Static.Background}"/>

@@ -19,7 +19,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBox Width="150" Height="50"></TextBox>
-        <PasswordBox Width="150" Height="50" Grid.Column="1" Style="{DynamicResource rsrcPasswordBox}"/>
+        <PasswordBox Width="150" Height="50" Grid.Column="1"/>
         <ComboBox Width="150" Height="50" Grid.Column="2">
             <ComboBoxItem Content="Item1"></ComboBoxItem>
             <ComboBoxItem Content="Item1"></ComboBoxItem>
@@ -33,15 +33,17 @@
             <RadioButton Margin="10 0 0 0">Option 2</RadioButton>
         </StackPanel>
         <CheckBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" >CheckBox</CheckBox>
-        <Button Width="150" Height="50" Grid.Row="2" Template="{DynamicResource rsrcContextMenu}">
+        <Button Width="150" Height="50" Grid.Row="2">
             <Button.ContextMenu>
                 <ContextMenu>
-                    <MenuItem>Item1</MenuItem>
-                    <MenuItem>Item2</MenuItem>
-                    <MenuItem>Item3</MenuItem>
+                    <MenuItem Header="Text"/>
+                    <MenuItem Header="Text"/>
+                    <MenuItem Header="Text"/>
+                    <Label Content="Woow"></Label>
                 </ContextMenu>
             </Button.ContextMenu>
             Context
         </Button>
+        <Button Style="{StaticResource rsrcLightGreenButton}" Width="150" Height="50" Grid.Row="2" Grid.Column="1">Woow</Button>
     </Grid>
 </Window>

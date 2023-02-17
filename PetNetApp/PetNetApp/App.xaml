@@ -40,12 +40,13 @@
 
             <!--Default Menu Style-->
             <!--<Style TargetType="ContextMenu" BasedOn="{StaticResource rsrcContextMenu}"/>-->
+            <!--<Style TargetType="MenuItem" BasedOn="{StaticResource rsrcMenuItem}"/>-->
 
             <!--Default TextBox Style-->
             <Style TargetType="TextBox" BasedOn="{StaticResource rsrcTextBox}"/>
 
             <!-- Default Password Box Style -->
-            <!--<Style TargetType="PasswordBox" BasedOn="{StaticResource rsrcPasswordBox}"/>-->
+            <Style TargetType="PasswordBox" BasedOn="{StaticResource rsrcPasswordBox}"/>
 
             <!-- Default Combobox Style -->
             <Style TargetType="ComboBox" BasedOn="{StaticResource rsrcComboBox}"/>
