@@ -61,5 +61,12 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <Style TargetType="{x:Type ContextMenu}" x:Name="MenuStyle" x:Key="rsrcContextMenu">
+        <Setter Property="Background" Value="{StaticResource ContextMenu.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ContextMenu.Static.Border }"/>
+        <Setter Property="Foreground" Value="{StaticResource ContextMenu.Static.Foreground}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
 
 </ResourceDictionary>

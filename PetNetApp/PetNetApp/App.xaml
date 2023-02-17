@@ -39,7 +39,7 @@
             <Style TargetType="DataGridCell" BasedOn="{StaticResource rsrcDataGridCell}"/>
 
             <!--Default Menu Style-->
-            <!--<Style TargetType="ContextMenu" BasedOn="{StaticResource rsrcContextMenu}"/>-->
+            <Style TargetType="ContextMenu" BasedOn="{StaticResource rsrcContextMenu}"/>
             <!--<Style TargetType="MenuItem" BasedOn="{StaticResource rsrcMenuItem}"/>-->
 
             <!--Default TextBox Style-->
