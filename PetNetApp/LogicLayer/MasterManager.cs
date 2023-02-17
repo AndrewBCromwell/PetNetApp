@@ -22,6 +22,7 @@ namespace LogicLayer
         public IAnimalUpdatesManager AnimalUpdatesManager { get; set; }
         public IScheduleManager scheduleManager { get; set; }
         public ITestManager TestManager { get; set; }
+        public ITicketManager TicketManager { get; set; }
 
         private MasterManager()
         {
@@ -32,6 +33,7 @@ namespace LogicLayer
             AnimalUpdatesManager = new AnimalUpdatesManager();
             scheduleManager = new ScheduleManager();
             TestManager = new TestManager();
+            TicketManager = new TicketManager();
         }
     
         public static MasterManager GetMasterManager()

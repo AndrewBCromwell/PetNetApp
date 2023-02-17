@@ -47,7 +47,7 @@ namespace WpfPresentation.Development.Management
 
             if (!animalId.All(char.IsDigit))
             {
-                PromptWindow.ShowPrompt("Error", "Animal Id can only contain numbers", ButtonMode.Ok);
+                PromptWindow.ShowPrompt("Error", "Please select an Animal from the list.", ButtonMode.Ok);
                 txtAnimalID.Focus();
                 return;
             }

@@ -74,7 +74,7 @@ namespace WpfPresentation.Development.Management
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new ViewTicketList());
         }
 
         private void btnKennel_Click(object sender, RoutedEventArgs e)

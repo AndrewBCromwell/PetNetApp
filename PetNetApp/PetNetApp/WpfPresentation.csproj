@@ -55,322 +55,329 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
-	<ItemGroup>
-		<ApplicationDefinition Include="App.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</ApplicationDefinition>
-		<Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
-			<DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
-			<DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\AnimalPostUpdate.xaml.cs">
-			<DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
-		</Compile>
-		<Page Include="Animals\AddEditAnimalDeath.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
-			<DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\MedicalPage.xaml.cs">
-			<DependentUpon>MedicalPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\EditProcedurePage.xaml.cs">
-			<DependentUpon>EditProcedurePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\MedProcedurePage.xaml.cs">
-			<DependentUpon>MedProcedurePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Management\SchedulePage.xaml.cs">
-			<DependentUpon>SchedulePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
-			<DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\AssignAnimalToKennel.xaml.cs">
-			<DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\ViewAnimalsForKennel.xaml.cs">
-			<DependentUpon>ViewAnimalsForKennel.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\AddKennelPage.xaml.cs">
-			<DependentUpon>AddKennelPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\ViewKennelPage.xaml.cs">
-			<DependentUpon>ViewKennelPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\AccountSettingsPage.xaml.cs">
-			<DependentUpon>AccountSettingsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\DeactivateButtonPage.xaml.cs">
-			<DependentUpon>DeactivateButtonPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\LandingPage.xaml.cs">
-			<DependentUpon>LandingPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\LogInPage.xaml.cs">
-			<DependentUpon>LogInPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\SignUp.xaml.cs">
-			<DependentUpon>SignUp.xaml</DependentUpon>
-			</Compile>
-		<Compile Include="Misc\UserProfilePage.xaml.cs">
-			<DependentUpon>UserProfilePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="UserControls\KennelUserControl.xaml.cs">
-			<DependentUpon>KennelUserControl.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="UserControls\AnimalListUserControl.xaml.cs">
-			<DependentUpon>AnimalListUserControl.xaml</DependentUpon>
-		</Compile>
-		<Page Include="Animals\AnimalMedicalTestsPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\AnimalPostUpdate.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\AnimalMedicalProfile.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\AnimalsPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\EditDetailAnimalProfile.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Animals\MedicalPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Animals\MedicalTreatmentPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Misc\DeactivateButtonPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Misc\SignUp.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Styles\ButtonStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\CalendarStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Community\CommunityPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Community\UserManagementPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Community\UsersControl\UCPreviewUser.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Animals\AnimalListPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Development\Animals\AnimalsPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Animals\MedicalNavigationPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\EditProcedurePage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\MedProcedurePage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Development\Community\CommunityPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Development\MainWindow.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Management\AssignAnimalToKennel.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Development\Management\ManagementPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Management\ViewAnimalsForKennel.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Development\Management\SchedulePage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Development\Management\VolunteerManagment.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Misc\AccountSettingsPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Misc\LandingPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Misc\LogInPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Management\AddKennelPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Misc\UserProfilePage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="PromptWindow.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="MainWindow.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Compile Include="Animals\AddEditAnimalDeath.xaml.cs">
-			<DependentUpon>AddEditAnimalDeath.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\AnimalsPage.xaml.cs">
-			<DependentUpon>AnimalsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="App.xaml.cs">
-			<DependentUpon>App.xaml</DependentUpon>
-			<SubType>Code</SubType>
-		</Compile>
-		<Compile Include="Community\CommunityPage.xaml.cs">
-			<DependentUpon>CommunityPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Community\UserManagementPage.xaml.cs">
-			<DependentUpon>UserManagementPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Community\UsersControl\UCPreviewUser.xaml.cs">
-			<DependentUpon>UCPreviewUser.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\AnimalListPage.xaml.cs">
-			<DependentUpon>AnimalListPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Animals\AnimalsPage.xaml.cs">
-			<DependentUpon>AnimalsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\MedicalNavigationPage.xaml.cs">
-			<DependentUpon>MedicalNavigationPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Community\CommunityPage.xaml.cs">
-			<DependentUpon>CommunityPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\MainWindow.xaml.cs">
-			<DependentUpon>MainWindow.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Management\ManagementPage.xaml.cs">
-			<DependentUpon>ManagementPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Management\VolunteerManagment.xaml.cs">
-			<DependentUpon>VolunteerManagment.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="PromptWindow.xaml.cs">
-			<DependentUpon>PromptWindow.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="MainWindow.xaml.cs">
-			<DependentUpon>MainWindow.xaml</DependentUpon>
-			<SubType>Code</SubType>
-		</Compile>
-		<Page Include="Management\ManagementPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Management\ViewKennelPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Styles\CheckBoxStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\Colors.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\ComboBoxStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\ContextMenuStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\Converters.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\DataGridStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\DatePickerStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\LabelStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\PasswordBoxStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\RadioButtonStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\ScrollBarStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\TextBoxStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="UserControls\KennelUserControl.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="UserControls\AnimalListUserControl.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-	</ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
+      <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
+      <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalPostUpdate.xaml.cs">
+      <DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Animals\AddEditAnimalDeath.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
+      <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalPage.xaml.cs">
+      <DependentUpon>MedicalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\EditProcedurePage.xaml.cs">
+      <DependentUpon>EditProcedurePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedProcedurePage.xaml.cs">
+      <DependentUpon>MedProcedurePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\SchedulePage.xaml.cs">
+      <DependentUpon>SchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
+      <DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewTicketList.xaml.cs">
+      <DependentUpon>ViewTicketList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\AssignAnimalToKennel.xaml.cs">
+      <DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewAnimalsForKennel.xaml.cs">
+      <DependentUpon>ViewAnimalsForKennel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\AddKennelPage.xaml.cs">
+      <DependentUpon>AddKennelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewKennelPage.xaml.cs">
+      <DependentUpon>ViewKennelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\AccountSettingsPage.xaml.cs">
+      <DependentUpon>AccountSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\DeactivateButtonPage.xaml.cs">
+      <DependentUpon>DeactivateButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LandingPage.xaml.cs">
+      <DependentUpon>LandingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LogInPage.xaml.cs">
+      <DependentUpon>LogInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\SignUp.xaml.cs">
+      <DependentUpon>SignUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\UserProfilePage.xaml.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\KennelUserControl.xaml.cs">
+      <DependentUpon>KennelUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
+      <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Animals\AnimalMedicalTestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AnimalPostUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AnimalMedicalProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AnimalsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\EditDetailAnimalProfile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\MedicalPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\MedicalTreatmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\ViewTicketList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\DeactivateButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\SignUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CalendarStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\CommunityPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\UserManagementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Community\UsersControl\UCPreviewUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\AnimalListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Animals\AnimalsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\MedicalNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\EditProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\MedProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Community\CommunityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Development\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\AssignAnimalToKennel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\ManagementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\ViewAnimalsForKennel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\VolunteerManagment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\AccountSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\LandingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\LogInPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\AddKennelPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\UserProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PromptWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Animals\AddEditAnimalDeath.xaml.cs">
+      <DependentUpon>AddEditAnimalDeath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalsPage.xaml.cs">
+      <DependentUpon>AnimalsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Community\CommunityPage.xaml.cs">
+      <DependentUpon>CommunityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Community\UserManagementPage.xaml.cs">
+      <DependentUpon>UserManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Community\UsersControl\UCPreviewUser.xaml.cs">
+      <DependentUpon>UCPreviewUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalListPage.xaml.cs">
+      <DependentUpon>AnimalListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Animals\AnimalsPage.xaml.cs">
+      <DependentUpon>AnimalsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalNavigationPage.xaml.cs">
+      <DependentUpon>MedicalNavigationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Community\CommunityPage.xaml.cs">
+      <DependentUpon>CommunityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\ManagementPage.xaml.cs">
+      <DependentUpon>ManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\VolunteerManagment.xaml.cs">
+      <DependentUpon>VolunteerManagment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PromptWindow.xaml.cs">
+      <DependentUpon>PromptWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Management\ManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\ViewKennelPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CheckBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ContextMenuStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGridStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DatePickerStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\LabelStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\PasswordBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\RadioButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ScrollBarStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\KennelUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AnimalListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Management\ManagementPage.xaml.cs">
       <DependentUpon>ManagementPage.xaml</DependentUpon>

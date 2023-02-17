@@ -258,6 +258,7 @@ namespace DataAccessLayer
                         _animal.NeuterStatus = reader.GetBoolean(11);
                         _animal.Notes = reader.GetString(12);
                         _animal.AnimalStatusId = reader.GetString(13);
+                        _animal.AnimalShelterId = reader.GetInt32(14);
                         _animalList.Add(_animal);
                     }
                 }
