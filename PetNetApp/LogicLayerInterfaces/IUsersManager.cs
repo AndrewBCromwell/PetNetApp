@@ -17,5 +17,7 @@ namespace LogicLayerInterfaces
         string HashSha265(string source);
         List<string> RetrieveGenders();
         List<string> RetrievePronouns();
+        bool DeactivateUserAccount(int UserId);
+        bool AddUser(Users user, string password);
     }
 }

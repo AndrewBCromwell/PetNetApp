@@ -16,6 +16,6 @@ namespace DataAccessLayerInterfaces
         int DeleteAnimalKennelingByKennelId(int KennelId);
         Kennel SelectKennelIdByAnimalId(int AnimalId);
         int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId);
-        List<Animal> SelectAllAnimalsForKennel();
+        List<Animal> SelectAllAnimalsForKennel(int ShelterId);
     }
 }

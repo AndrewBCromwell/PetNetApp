@@ -225,7 +225,7 @@ namespace DataAccessLayer
             return result;
         }
 
-        public List<Animal> SelectAllAnimalsForKennel()
+        public List<Animal> SelectAllAnimalsForKennel(int ShelterId)
         {
             List<Animal> _animalList = new List<Animal>();
 
@@ -234,7 +234,7 @@ namespace DataAccessLayer
             var cmdText = "sp_select_all_animals_without_kennel";
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
-
+            cmd.Parameters.AddWithValue("@ShelterId", ShelterId);
             try
             {
                 conn.Open();

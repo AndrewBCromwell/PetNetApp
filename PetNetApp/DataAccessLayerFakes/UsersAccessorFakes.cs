@@ -11,6 +11,7 @@ namespace DataAccessLayerFakes
 {
     public class UsersAccessorFakes : IUsersAccessor
     {
+        private List<Users> _fakeUsers = new List<Users>(); 
         private List<UsersVM> fakeUsers = new List<UsersVM>();
         private List<string> fakePassword = new List<string>();
 
@@ -178,6 +179,27 @@ namespace DataAccessLayerFakes
                 }
             }
             return users;
+        }
+
+       
+        public int DeactivateUserAccount(int UserId)
+        {
+            var matchUsers = fakeUsers.Where(user => user.UsersId == UserId);
+
+            foreach (Users currentUser in matchUsers)
+            {
+                currentUser.Active = false; 
+            }
+
+            return matchUsers.Count(); 
+            
+        }
+
+        public int CreateNewUser(Users user, string PasswordHash)
+        {
+            _fakeUsers.Add(user);
+
+            return _fakeUsers.Count(); 
         }
     }
 }
