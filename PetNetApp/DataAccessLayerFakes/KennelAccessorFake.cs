@@ -17,6 +17,7 @@ namespace DataAccessLayerFakes
         private KennelVM fakeKennelVM = new KennelVM();
         List<string> fakeAnimalTypes;
         List<Kennel> fakeKennels = new List<Kennel>();
+        List<Tuple<Animal, Kennel>> fakeAnimalKenneling = new List<Tuple<Animal, Kennel>>();
 
         public KennelAccessorFake()
         {
@@ -108,11 +109,29 @@ namespace DataAccessLayerFakes
             });
 
             fakeAnimalTypes = new List<string>() { "Panda", "Boar", "Fish"};
+
+            fakeAnimalKenneling.Add(
+                new Tuple<Animal, Kennel>(new Animal(), new Kennel() { KennelId = 1 }
+            ));
+            fakeAnimalKenneling.Add(
+                new Tuple<Animal, Kennel>(new Animal(), new Kennel() { KennelId = 2 }
+            ));
+
+
         }
 
         public int DeleteAnimalKennelingByKennelId(int KennelId)
         {
-            throw new NotImplementedException();
+            int result = fakeAnimalKenneling.Count;
+            for (int i = fakeAnimalKenneling.Count-1; i > -1; i--)
+            {
+                if (fakeAnimalKenneling[i].Item2.KennelId == KennelId)
+                {
+                    fakeAnimalKenneling.Remove(fakeAnimalKenneling[i]);
+                    result -= fakeAnimalKenneling.Count;
+                }
+            }
+            return result;
         }
 
         public int InsertKennel(Kennel kennel)
@@ -169,7 +188,7 @@ namespace DataAccessLayerFakes
             return result;
         }
 
-        public List<Animal> SelectAllAnimalsForKennel()
+        public List<Animal> SelectAllAnimalsForKennel(int ShelterId)
         {
             List<Animal> animals = null;
             animals = fakeAnimals;

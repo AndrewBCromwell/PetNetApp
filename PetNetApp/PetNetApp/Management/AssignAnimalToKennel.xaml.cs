@@ -36,8 +36,8 @@ namespace WpfPresentation.Development.Management
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            lblKennelNumber.Content = "Kennel " + _kennel.KennelId;
-            lblKennelTitle.Content = "Add Animal to Kennel " + _kennel.KennelId;
+            lblKennelNumber.Content = _kennel.KennelName;
+            lblKennelTitle.Content = "Add Animal to " + _kennel.KennelName;
             txtAnimalID.IsEnabled = false;
         }
 
@@ -80,7 +80,7 @@ namespace WpfPresentation.Development.Management
         private void btnViewAnimalList_Click(object sender, RoutedEventArgs e)
         {
             //open window to select an animal
-            var animalListWindow = new ViewAnimalsForKennel();
+            var animalListWindow = new ViewAnimalsForKennel(_kennel);
             animalListWindow.ShowDialog();
 
             //populate text box with animal object selected from list

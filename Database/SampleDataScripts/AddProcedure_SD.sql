@@ -55,21 +55,27 @@ print '' print '*** creating Animal sample data'
 GO 
 INSERT INTO [dbo].[Animal]
 		(
-		[AnimalName],
-		[AnimalGender],
-		[AnimalTypeId],
-		[AnimalBreedId],
-		[AnimalStatusId],
-		[RecievedDate],
-		[MicrochipSerialNumber],
-		[Notes],
+		[AnimalName], 
+		[AnimalGender], 
+		[AnimalTypeId], 
+		[AnimalBreedId], 
+		[Personality], 
+		[Description], 
+		[AnimalStatusId],		
+		[RecievedDate], 
+		[MicrochipSerialNumber], 
+		[Aggressive], 
+		[AggressiveDescription], 
+		[ChildFriendly], 
+		[NeuterStatus], 
+		[Notes], 
 		[AnimalShelterId]
 		)
 	VALUES
-		("Franny", "Female", "Dog", "Lab", "Healthy", "2022-12-15", "Microchip111111", "Very Cute", 100000), 
-		("Spots", "Female", "Dog", "Lab", "Healthy", "2022-12-01", "Microchip111112", "Lots of spots", 100000), 
-		("Ruffer", "Female", "Dog", "Lab", "Healthy", "2022-12-03", "Microchip111113", "Barks a lot", 100000),
-		("Buddy", "Female", "Dog", "Lab", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise", 100000)
+		("Bart", "Female", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "dhqaf2", 0, "Not aggressive", 1, 1, "Very Cute", 100000), 
+		("Spot", "Female", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "afthee", 0, "Not aggressive", 1, 1, "Very Cute", 100000),
+		("Ruffer", "Male", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "yrqwgh", 0, "Not aggressive", 1, 1, "Very Cute", 100000),
+		("Buddy", "Male", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "jdfghjt", 0, "Not aggressive", 1, 1, "Very Cute", 100000)
 GO
 
 print '' print '*** Creating MedicalRecord name sample data'

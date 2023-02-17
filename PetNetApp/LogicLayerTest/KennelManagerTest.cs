@@ -56,20 +56,19 @@ namespace LogicLayerTest
             // act
             bool success = kennelManager.AddAnimalIntoKennelByAnimalId(animalId, kennelId);
             
-
             // assert
             Assert.AreEqual(true, success);
         }
 
         [TestMethod]
-        public void TestSelectAnimalsForKennel ()
+        public void TestSelectAnimalsForKennel()
         {
             //arrange 
             int expectedCount = 1;
             int acutalCount = 0;
 
             // act
-            var animals = kennelManager.RetrieveAllAnimalsForKennel();
+            var animals = kennelManager.RetrieveAllAnimalsForKennel(100000);
             acutalCount = animals.Count;
 
             // assert
@@ -123,7 +122,7 @@ namespace LogicLayerTest
         {
             bool expectedRes = true;
             bool actualRes = false;
-            int kennelId = 100008; 
+            int kennelId = 1; 
 
             actualRes = kennelManager.RemoveAnimalKennlingByKennelId(kennelId);
 

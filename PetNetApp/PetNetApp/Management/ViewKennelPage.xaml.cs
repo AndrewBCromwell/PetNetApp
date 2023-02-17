@@ -34,10 +34,9 @@ namespace WpfPresentation.Management
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            // Replace 100000 with masterManager.User.Shelter.ShelterId when users are made
             try
             {
-                kennelVMs = masterManager.KennelManager.RetrieveKennels(100000);
+                kennelVMs = masterManager.KennelManager.RetrieveKennels(masterManager.User == null ? 100000 : masterManager.User.UsersId);
 
                 for (int i = 0; i < kennelVMs.Count / 4; i++)
                 {
@@ -69,7 +68,7 @@ namespace WpfPresentation.Management
             }
             catch (Exception ex)
             {
-                PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException, ButtonMode.Ok);
             }
         }
 
@@ -103,7 +102,7 @@ namespace WpfPresentation.Management
             if (kennelUserControl.grdKennelUserControlBorder.BorderBrush.ToString().Equals("#FF1C6758"))
             {
                 kennelsToRemove.Add(kennelVM);
-                kennelUserControl.grdKennelUserControlBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(158, 193, 176));
+                kennelUserControl.grdKennelUserControlBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(214, 205, 164));
             } 
             else
             {
@@ -139,7 +138,7 @@ namespace WpfPresentation.Management
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddKennelPage(masterManager));
+            NavigationService.Navigate(new AddKennelPage());
         }
 
         private void btnRemoveKennel_Click(object sender, RoutedEventArgs e)
