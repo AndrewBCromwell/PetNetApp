@@ -33,7 +33,7 @@
             <RadioButton Margin="10 0 0 0">Option 2</RadioButton>
         </StackPanel>
         <CheckBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" >CheckBox</CheckBox>
-        <Button Width="150" Height="50" Grid.Row="2">
+        <Button Width="150" Height="50" Grid.Row="2" Click="Button_Click">
             <Button.ContextMenu>
                 <ContextMenu MaxHeight="200">
                     <MenuItem Header="Text">
@@ -49,12 +49,15 @@
                     <Label Content="Woow"></Label>
                 </ContextMenu>
             </Button.ContextMenu>
-            Context
+            Menu
         </Button>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
             <RadioButton GroupName="2" IsChecked="True" IsEnabled="False">Option 1</RadioButton>
             <RadioButton Margin="10 0 0 0" GroupName="2" IsEnabled="False">Option 2</RadioButton>
         </StackPanel>
         <CheckBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" IsChecked="True" IsEnabled="False">CheckBox</CheckBox>
+        <Button Grid.Column="0" Grid.Row="3" Width="150" Height="50" Style="{StaticResource rsrcSafeButton}">Safe</Button>
+        <Button Grid.Column="1" Grid.Row="3" Width="150" Height="50" Style="{StaticResource rsrcLightGreenButton}">Light Green</Button>
+        <Button Grid.Column="2" Grid.Row="3" Width="150" Height="50" Style="{StaticResource rsrcWarningButton}">Warning</Button>
     </Grid>
 </Window>

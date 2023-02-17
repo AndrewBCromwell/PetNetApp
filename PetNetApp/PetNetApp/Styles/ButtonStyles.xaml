@@ -255,16 +255,16 @@
     </Style>
 
     <!-- Button Safe Style -->
-    <SolidColorBrush x:Key="SafeButton.Static.Background" Color="{StaticResource BackgroundColor}"/>
-    <SolidColorBrush x:Key="SafeButton.Static.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="SafeButton.Static.Foreground" Color="{StaticResource ColorGreen}"/>
-    <SolidColorBrush x:Key="SafeButton.MouseOver.Background" Color="{StaticResource ColorLightGray}"/>
-    <SolidColorBrush x:Key="SafeButton.MouseOver.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="SafeButton.Pressed.Background" Color="{StaticResource BackgroundColor}"/>
-    <SolidColorBrush x:Key="SafeButton.Pressed.Border" Color="{StaticResource ColorDarkGreen}"/>
+    <SolidColorBrush x:Key="SafeButton.Static.Background" Color="{StaticResource ControlBackgroundColor}"/>
+    <SolidColorBrush x:Key="SafeButton.Static.Border" Color="{StaticResource ControlBorderColor}"/>
+    <SolidColorBrush x:Key="SafeButton.Static.Foreground" Color="{StaticResource ControlForegroundColor}"/>
+    <SolidColorBrush x:Key="SafeButton.MouseOver.Background" Color="{StaticResource ControlMouseOverBackgroundColor}"/>
+    <SolidColorBrush x:Key="SafeButton.MouseOver.Border" Color="{StaticResource ControlMouseOverBorderColor}"/>
+    <SolidColorBrush x:Key="SafeButton.Pressed.Background" Color="{StaticResource ControlBackgroundColor}"/>
+    <SolidColorBrush x:Key="SafeButton.Pressed.Border" Color="{StaticResource ControlBorderColor}"/>
     <SolidColorBrush x:Key="SafeButton.Disabled.Background" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="SafeButton.Disabled.Border" Color="{StaticResource ControlDisabledBorderColor}"/>
-    <SolidColorBrush x:Key="SafeButton.Disabled.Foreground" Color="{StaticResource ControlDisabledGlyphColor}"/>
+    <SolidColorBrush x:Key="SafeButton.Disabled.Foreground" Color="{StaticResource ControlDisabledForegroundColor}"/>
     <Style x:Key="rsrcSafeButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource SafeButton.Static.Background}"/>

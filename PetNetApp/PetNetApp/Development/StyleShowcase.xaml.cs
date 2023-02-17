@@ -23,5 +23,10 @@ namespace WpfPresentation.Development
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).ContextMenu.IsOpen = true;
+        }
     }
 }
