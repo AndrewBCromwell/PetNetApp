@@ -36,29 +36,25 @@ namespace WpfPresentation.Development.Community
     /// </remarks>
     public partial class RoleManagementPopup : Window
     {
-        private RoleManager _roleManager = new RoleManager();
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
         private List<Role> _roles = new List<Role>(); //for the role list combo box
         private List<Role> _rolesByUser = new List<Role>(); //user's role list
-        private MasterManager _manager;
         private Users _users;
-
-        //public RoleManagementPopup()
-        //{
-        //    InitializeComponent();
-        //}
 
         public RoleManagementPopup(MasterManager manager, Users user)
         {
             InitializeComponent();
-            this._manager = manager;
+            this._masterManager = manager;
             this._users = user;
         }
 
         private void btn_AddRole_Click(object sender, RoutedEventArgs e)
         {
-            string newRole;
+            Role newUserRole = new Role();
+            bool success = false;
+            newUserRole.RoleId = cboChooseRole.Text;
             //check to see if role selected from combo box
-            if (string.IsNullOrEmpty(cboChooseRole.Text))
+            if (string.IsNullOrEmpty(newUserRole.RoleId))
             {
                 //if no role selected tell user
                 if (PromptWindow.ShowPrompt("Error", "Please select a role to add and try again", ButtonMode.Ok) == PromptSelection.Ok)
@@ -68,19 +64,34 @@ namespace WpfPresentation.Development.Community
             }
             else
             {
-                newRole = cboChooseRole.Text;
-                if (PromptWindow.ShowPrompt("Role to Add", "Click Save to add the role: " + cboChooseRole.Text + " for the user.", ButtonMode.SaveCancel) == PromptSelection.Cancel)
+                //check to see if role list already has role
+                for (int i = 0; i < _rolesByUser.Count(); i++)
+                {
+                    if (_rolesByUser[i].RoleId == newUserRole.RoleId)
+                    {
+                        PromptWindow.ShowPrompt("Error", "User already has the role: " + newUserRole.RoleId + ". Please choose another.", ButtonMode.Ok);
+                        return;
+                    }
+                }
+                if (PromptWindow.ShowPrompt("Role to Add", "Click Save to add the role: " + newUserRole.RoleId + " for the user.", ButtonMode.SaveCancel) == PromptSelection.Cancel)
                 {
                     return;
                 }
             }
-            //check to see if role list already has role
-
-
 
             //add role to list
+            try
+            {
+                success = _masterManager.RoleManager.AddRoleByUsersId(newUserRole, _users.UsersId);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                return;
+            }
 
             //reload role list 
+            PopulateUserRoleGrid();
         }
 
         private void btn_Previous_Click(object sender, RoutedEventArgs e)
@@ -98,9 +109,9 @@ namespace WpfPresentation.Development.Community
 
         private void btn_Finish_Click(object sender, RoutedEventArgs e)
         {
-            if (PromptWindow.ShowPrompt("Save", "Confirm, Finished editing user.", ButtonMode.YesNo) == PromptSelection.Yes)
-            {
-                //save user roles list to database
+            if (PromptWindow.ShowPrompt("Save", "Are you finished editing roles for: " + _users.GivenName + " " + _users.FamilyName + "?", ButtonMode.YesNo) == PromptSelection.Yes)            {
+                //save user roles list to database this is no longer need as the add and remove roles updates the database
+                this.Close();
             }
             else
             {
@@ -140,7 +151,7 @@ namespace WpfPresentation.Development.Community
             // retrieve role list for combo box
             try
             {
-                _roles = _roleManager.RetrieveAllRoles();
+                _roles = _masterManager.RoleManager.RetrieveAllRoles();
                 this.cboChooseRole.ItemsSource = from r in _roles
                                                  orderby r.RoleId
                                                  select r.RoleId;
@@ -159,7 +170,7 @@ namespace WpfPresentation.Development.Community
             //populate data grid
             try
             {
-                _rolesByUser = _roleManager.RetrieveRoleListByUserId(_users.UsersId);
+                _rolesByUser = _masterManager.RoleManager.RetrieveRoleListByUserId(_users.UsersId);
                 datUserRoles.ItemsSource = _rolesByUser;
             }
             catch (Exception ex)

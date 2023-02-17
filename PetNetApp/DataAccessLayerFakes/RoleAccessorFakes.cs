@@ -8,7 +8,7 @@ using DataAccessLayerInterfaces;
 
 namespace DataAccessLayerFakes
 {
-    public class RoleAccessorFake : IRoleAccessor
+    public class RoleAccessorFakes : IRoleAccessor
     {
 
         private List<Role> _fakeRoles = new List<Role>();
@@ -16,7 +16,7 @@ namespace DataAccessLayerFakes
         /// <summary>
         /// This is the list of roles to popluate combo box
         /// </summary>
-        public RoleAccessorFake()
+        public RoleAccessorFakes()
         {
             _fakeRoles.Add(new Role()
             {

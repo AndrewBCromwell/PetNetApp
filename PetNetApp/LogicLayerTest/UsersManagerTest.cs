@@ -77,7 +77,7 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
-        public void TestCreateUser() 
+        public void TestCreateUser()
         {
             //arrage 
             bool actualResult = false;
@@ -86,7 +86,7 @@ namespace LogicLayerTest
             actualResult = _userManager.AddUser(new Users(), "fakePassword");
 
             //assert
-            Assert.IsTrue(actualResult); 
+            Assert.IsTrue(actualResult);
 
         }
 
@@ -122,6 +122,5 @@ namespace LogicLayerTest
             Assert.AreEqual(actualUser.Phone, expectedUser.Phone);
             Assert.AreEqual(actualUser.Active, expectedUser.Active);
         }
-
     }
 }

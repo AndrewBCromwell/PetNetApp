@@ -11,13 +11,12 @@ namespace LogicLayerTest
     [TestClass]
     public class RoleManagerTests
     {
-        IRoleManager roleManager = null;
+        IRoleManager _roleManager = null;
 
         [TestInitialize]
         public void TestSetup()
         {
-            //roleManager = new RoleManager();
-            roleManager = new RoleManager(new RoleAccessorFake());
+            _roleManager = new RoleManager(new RoleAccessorFakes());
         }
 
         [TestMethod]
@@ -28,7 +27,7 @@ namespace LogicLayerTest
             int actualCount;
 
             //act
-            actualCount = roleManager.RetrieveAllRoles().Count;
+            actualCount = _roleManager.RetrieveAllRoles().Count;
 
             //assert
             Assert.AreEqual(expectedCount, actualCount);
@@ -43,7 +42,7 @@ namespace LogicLayerTest
             int usersId = 100001;
 
             //act
-            actualCount = roleManager.RetrieveRoleListByUserId(usersId).Count;
+            actualCount = _roleManager.RetrieveRoleListByUserId(usersId).Count;
 
             //assert
             Assert.AreEqual(expectedCount, actualCount);
@@ -60,11 +59,18 @@ namespace LogicLayerTest
             newRole.RoleId = "Veternarian";
 
             //act
-            actualResult = roleManager.AddRoleByUsersId(newRole, usersId);
+            actualResult = _roleManager.AddRoleByUsersId(newRole, usersId);
 
             //assert
             Assert.IsTrue(actualResult);
         }
+
+        [TestCleanup]
+        public void TestTearDown()
+        {
+            _roleManager = null;
+        }
+
 
     }
 }

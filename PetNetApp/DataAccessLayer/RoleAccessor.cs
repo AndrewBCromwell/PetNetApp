@@ -1,4 +1,4 @@
-﻿using DataAccessLayerInterfaces;
+﻿ using DataAccessLayerInterfaces;
 using DataObjects;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace DataAccessLayer
         /// </remarks>
         /// <param name="role">Role obj to be added</param>
         /// <param name="usersId">UsersId of User getting new role</param>
-        /// <returns>bool for sucess of insert </returns>
+        /// <returns>int for sucess of insert </returns>
         public int InsertRoleByUsersId(Role role, int usersId)
         {
             //throw new NotImplementedException();

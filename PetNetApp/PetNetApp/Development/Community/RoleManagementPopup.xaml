@@ -50,12 +50,12 @@
 
             <DataGrid Grid.Row="2" x:Name="datUserRoles" SelectionMode="Single" IsReadOnly="True" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" Margin="75,0" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Role" Binding="{Binding RoleId}" MinWidth="200"/>
-                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" MinWidth="225"/>
-                    <DataGridTemplateColumn Header="Remove" MinWidth="100" >
+                    <DataGridTextColumn Header="Role" Binding="{Binding RoleId}" Width="2*"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*"/>
+                    <DataGridTemplateColumn Header="Remove" Width="*" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="btn_RemoveRole" Style="{StaticResource ResourceKey=rsrcSafeButton}" Tag="{Binding RoleId}" Margin="0,0,0,0"  BorderBrush="Transparent">X</Button>
+                                <Button Click="btn_RemoveRole" Style="{StaticResource ResourceKey=rsrcSafeButton}" Tag="{Binding RoleId}" Margin="0,0,0,0"  BorderBrush="Transparent" ToolTip="Click To Remove Feature">X</Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

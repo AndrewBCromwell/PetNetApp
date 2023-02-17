@@ -29,7 +29,7 @@ namespace LogicLayer
             bool wasAdded = false;
             try
             {
-                wasAdded = (0 < _roleAccessor.InsertRoleByUsersId(role, usersId));
+                wasAdded = 0 < _roleAccessor.InsertRoleByUsersId(role, usersId);
             }
             catch (Exception ex)
             {
