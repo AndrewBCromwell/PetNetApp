@@ -97,8 +97,8 @@
     <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
       <DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\StyleShowcase.xaml.cs">
-      <DependentUpon>StyleShowcase.xaml</DependentUpon>
+    <Compile Include="Management\ViewTicketList.xaml.cs">
+      <DependentUpon>ViewTicketList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\AssignAnimalToKennel.xaml.cs">
       <DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
@@ -172,7 +172,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\StyleShowcase.xaml">
+    <Page Include="Management\ViewTicketList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,6 +327,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+	  <Compile Include="Development\StyleShowcase.xaml.cs">
+		  <DependentUpon>StyleShowcase.xaml</DependentUpon>
+	  </Compile>
     <Page Include="Management\ManagementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -391,6 +394,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+	  <Page Include="Development\StyleShowcase.xaml">
+		  <SubType>Designer</SubType>
+		  <Generator>MSBuild:Compile</Generator>
+	  </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Management\ManagementPage.xaml.cs">

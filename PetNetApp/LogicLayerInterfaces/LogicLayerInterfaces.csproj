@@ -50,6 +50,7 @@
     <Compile Include="IProcedureManager.cs" />
     <Compile Include="IScheduleManager.cs" />
     <Compile Include="ITestManager.cs" />
+    <Compile Include="ITicketManager.cs" />
     <Compile Include="IUsersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

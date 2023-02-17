@@ -23,6 +23,7 @@ namespace LogicLayer
         public IScheduleManager scheduleManager { get; set; }
         public ITestManager TestManager { get; set; }
         public IImagesManager ImagesManager { get; set; }
+        public ITicketManager TicketManager { get; set; }
         public IProcedureManager procedureManager { get; set; }
         public IMedicalRecordManager medicalRecordManager { get; set; }
 
@@ -36,6 +37,7 @@ namespace LogicLayer
             scheduleManager = new ScheduleManager();
             TestManager = new TestManager();
             ImagesManager = new ImagesManager();
+            TicketManager = new TicketManager();
             procedureManager = new ProcedureManager();
             medicalRecordManager = new MedicalRecordManager();
         }

@@ -15,6 +15,9 @@ sqlcmd -S localhost -E -i SampleDataScripts\ViewAllShelterAnimals.sql
 sqlcmd -S localhost -E -i SampleDataScripts\AnimalKenneling.sql
 sqlcmd -S localhost -E -i SampleDataScripts\MedicalImages_SD.sql
 
+sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\Tickets_SD.sql
+
 sqlcmd -S localhost -E -i SampleDataScripts\EditProcedure_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
@@ -40,6 +43,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\MedicalImages.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertMedicalImage_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalDOD513-514_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewTicketList_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditProcedure_SP.sql
 ECHO .
 ECHO if no errors appear DB was created

@@ -51,6 +51,7 @@
     <Compile Include="IProcedureAccessor.cs" />
     <Compile Include="IScheduleAccessor.cs" />
     <Compile Include="ITestAccessor.cs" />
+    <Compile Include="ITicketAccessor.cs" />
     <Compile Include="IUsersAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
