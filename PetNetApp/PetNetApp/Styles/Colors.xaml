@@ -5,7 +5,8 @@
     <Color x:Key="ControlBackgroundColor">#F6F7F3</Color>
     <Color x:Key="ControlBorderColor">#D6CDA4</Color>
     <Color x:Key="ControlDisabledBorderColor">#D6CDA4</Color>
-    <Color x:Key="ControlDisabledBackgroundColor">#d0d8d4</Color>
+    <Color x:Key="ControlDisabledBackgroundColor">#EEF2E6</Color>
+    <Color x:Key="ControlDisabledForegroundColor">#D6CDA4</Color>
     <Color x:Key="ControlMouseOverBorderColor">#3D8361</Color>
     <Color x:Key="ControlMouseOverBackgroundColor">#9EC1B0</Color>
     <Color x:Key="ControlSelectedBorderColor">#1C6758</Color>

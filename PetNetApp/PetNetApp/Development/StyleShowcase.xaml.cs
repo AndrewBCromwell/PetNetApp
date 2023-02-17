@@ -17,9 +17,9 @@ namespace WpfPresentation.Development
     /// <summary>
     /// Interaction logic for Testing.xaml
     /// </summary>
-    public partial class Testing : Window
+    public partial class StyleShowcase : Window
     {
-        public Testing()
+        public StyleShowcase()
         {
             InitializeComponent();
         }

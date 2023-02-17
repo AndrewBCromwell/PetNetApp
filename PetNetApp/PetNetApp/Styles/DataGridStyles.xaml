@@ -30,12 +30,16 @@
     <SolidColorBrush x:Key="DataGridCell.Selected.Background" Color="{StaticResource ControlMultiSelectionSelectedBackgroundColor }"/>
     <SolidColorBrush x:Key="DataGridCell.Selected.Foreground" Color="{StaticResource ControlMultiSelectionSelectedForegroundColor }"/>
     <SolidColorBrush x:Key="DataGridCell.Selected.Border" Color="{StaticResource ControlMultiSelectionSelectedBorderColor }"/>
+    <SolidColorBrush x:Key="DataGridCell.MouseOver.Border" Color="{StaticResource ControlMouseOverBorderColor }"/>
     <Style TargetType="{x:Type DataGridCell}" x:Key="rsrcDataGridCell">
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{StaticResource DataGridCell.Selected.Background }" />
                 <Setter Property="Foreground" Value="{StaticResource DataGridCell.Selected.Foreground }" />
                 <Setter Property="BorderBrush" Value="{StaticResource DataGridCell.Selected.Border }" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{StaticResource DataGridCell.MouseOver.Border }"/>
             </Trigger>
         </Style.Triggers>
     </Style>

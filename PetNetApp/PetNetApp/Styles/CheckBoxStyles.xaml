@@ -9,6 +9,7 @@
     <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="{StaticResource ControlDisabledBackgroundColor}"/>
     <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="{StaticResource ControlDisabledBorderColor}"/>
     <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="{StaticResource ControlDisabledGlyphColor}"/>
+    <SolidColorBrush x:Key="OptionMark.Disabled.Foreground" Color="{StaticResource ControlDisabledForegroundColor}"/>
     <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="{StaticResource ControlPressedBackgroundColor}"/>
     <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="{StaticResource ControlPressedBorderColor}"/>
     <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="{StaticResource ControlPressedGlyphColor}"/>
@@ -57,6 +58,7 @@
                             <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Border}"/>
                             <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
                             <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+                            <Setter Property="Foreground" Value="{StaticResource OptionMark.Disabled.Foreground}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Background}"/>

@@ -18,6 +18,7 @@
     <SolidColorBrush x:Key="RadioButton.Disabled.Background" Color="{StaticResource ControlDisabledBackgroundColor}"/>
     <SolidColorBrush x:Key="RadioButton.Disabled.Border" Color="{StaticResource ControlDisabledBorderColor}"/>
     <SolidColorBrush x:Key="RadioButton.Disabled.Glyph" Color="{StaticResource ControlDisabledGlyphColor}"/>
+    <SolidColorBrush x:Key="RadioButton.Disabled.Foreground" Color="{StaticResource ControlDisabledForegroundColor}"/>
     <SolidColorBrush x:Key="RadioButton.Pressed.Background" Color="{StaticResource ControlPressedBackgroundColor}"/>
     <SolidColorBrush x:Key="RadioButton.Pressed.Border" Color="{StaticResource ControlPressedBorderColor}"/>
     <SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="{StaticResource ControlPressedGlyphColor}"/>
@@ -61,6 +62,7 @@
                             <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Border}"/>
                             <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Disabled.Glyph}"/>
+                            <Setter Property="Foreground" Value="{StaticResource RadioButton.Disabled.Foreground}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Background}"/>
