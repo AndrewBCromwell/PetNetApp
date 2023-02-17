@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using DataObjects;
+using System.Collections.Generic;
 
 namespace LogicLayerTest
 {
@@ -145,9 +146,188 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
+        public void TestBadZipcodes()
+        {
+            string badZip1 = "123456";
+            string badZip2 = "1234";
+            string badZip3 = "abcde";
+            string badZip4 = "abcdefghj";
+            string badZip5 = "1234567890";
+            string badZip6 = "12345 123";
+            string badZip7 = "12345 1234";
+            string badZip8 = "     ";
+            string badZip9 = "";
+            string badZip10 = null;
+
+            Assert.IsFalse(badZip1.IsValidZipcode());
+            Assert.IsFalse(badZip2.IsValidZipcode());
+            Assert.IsFalse(badZip3.IsValidZipcode());
+            Assert.IsFalse(badZip4.IsValidZipcode());
+            Assert.IsFalse(badZip5.IsValidZipcode());
+            Assert.IsFalse(badZip6.IsValidZipcode());
+            Assert.IsFalse(badZip7.IsValidZipcode());
+            Assert.IsFalse(badZip8.IsValidZipcode());
+            Assert.IsFalse(badZip9.IsValidZipcode());
+            Assert.IsFalse(badZip10.IsValidZipcode());
+        }
+        [TestMethod]
+        public void TestGoodZipcodes()
+        {
+            string goodZip1 = "34567";
+            string goodZip2 = "123456789";
+            string goodZip3 = "96555";
+
+            Assert.IsTrue(goodZip1.IsValidZipcode());
+            Assert.IsTrue(goodZip2.IsValidZipcode());
+            Assert.IsTrue(goodZip3.IsValidZipcode());
+        }
+        
+        [TestMethod]
         public void TestBadShortDescription()
         {
-            string badShortDesc1;
+            string badShortDescription1 = "fgvneggvdiztlrbclfdboykqatoxqdxkajwhpbqyvlfneinbdmbwgdkyzmqhbhzwkmlsvbsdxhtwvvepkndnvkmmbgrcutblncnpwzvtykzsiedgrgkrmqwlwqgjojsbrqgfvtkrxtiptvrxuiwyopwaawnsvzmmxtzdukxjwyutathsdvmhvgpqjxhrwybvlvcvbodpoamvcnzlpdzcwxyuakstpanqzrwkyhpwpzbxzdqmytktlmnzzjqzzkvvecsqyjkqkofdmnperfwryodvzqrtsmfboxvuwuhnewqmptcpkenkbfg";
+            Assert.IsFalse(badShortDescription1.IsValidShortDescription());
+        }
+
+        [TestMethod]
+        public void TestGoodShortDescription()
+        {
+            string goodShortDescription1 = "cbfunsetpxrewoaforrvdvkqhekyuvogxmxgmpuzaijkkypcyptjlqrjzcszuiwxmjzyqgpzktftzhpldydvtnhjogihehtjowodmmgmyoemvfawrfjkcophfijyaymrsxaoquabjsqfacsvvdsfwkuwgfpvjphgdykukzowyouvzungbscrkxgbeoldkbczesokbdpgnqbwmosdzfverfcqdjkwycdzgiblqzpurbfkbpdkftrcpgozms";
+            string goodShortDescription2 = "";
+            string goodShortDescription3 = null;
+            string goodShortDescription4 = "Normal Length with 12933851451!@#$6";
+
+            Assert.IsTrue(goodShortDescription1.IsValidShortDescription());
+            Assert.IsTrue(goodShortDescription2.IsValidShortDescription());
+            Assert.IsTrue(goodShortDescription3.IsValidShortDescription());
+            Assert.IsTrue(goodShortDescription4.IsValidShortDescription());
+        }
+        
+        [TestMethod]
+        public void TestBadLongDescription()
+        {
+            string badLongDescription1 = "fgvneggvdiztlrbclfdboykqatoxqdxkajwhpbqyvlfneinbdmbwgdkyzmqhbhzwkmlsvbsdxhtwvvepkndnvkmmbgrcutblncnpwzvtykzsiedgrgkrmqwlwqgjojsbrqgfvtkrxtiptvrxuiwyopwaawnsvzmmxtzdukxjwyutathsdvmhvgpqjxhrwybvlvcvbodpoamvcnzlpdzcwxyuakstpanqzrwkyhpwpzbxzdqmytktlmnzzjqzzkvvecsqyjkqkofdmnperfwryodvzqrtsmfboxvuwuhnewqmptcpkenkbfgfgvneggvdiztlrbclfdboykqatoxqdxkajwhpbqyvlfneinbdmbwgdkyzmqhbhzwkmlsvbsdxhtwvvepkndnvkmmbgrcutblncnpwzvtykzsiedgrgkrmqwlwqgjojsbrqgfvtkrxtiptvrxuiwyopwaawnsvzmmxtzdukxjwyutathsdvmhvgpqjxhrwy";
+
+            Assert.IsFalse(badLongDescription1.IsValidLongDescription());
+        }
+
+        [TestMethod]
+        public void TestGoodLongDescription()
+        {
+            string goodLongDescription1 = "fgvneggvdiztlrbclfdboykqatoxqdxkajwhpbqyvlfneinbdmbwgdkyzmqhbhzwkmlsvbsdxhtwvvepkndnvkmmbgrcutblncnpwzvtykzsiedgrgkrmqwlwqgjojsbrqgfvtkrxtiptvrxuiwyopwaawnsvzmmxtzdukxjwyutathsdvmhvgpqjxhrwybvlvcvbodpoamvcnzlpdzcwxyuakstpanqzrwkyhpwpzbxzdqmytktlmnzzjqzzkvvecsqyjkqkofdmnperfwryodvzqrtsmfboxvuwuhnewqmptcpkenkbfgfgvneggvdiztlrbclfdboykqatoxqdxkajwhpbqyvlfneinbdmbwgdkyzmqhbhzwkmlsvbsdxhtwvvepkndnvkmmbgrcutblncnpwzvtykzsiedgrgkrmqwlwqgjojsbrqgfvtkrxtiptvrxuiwyopwaawnsvzmmxtzdukxjwyutathsdvmhvgpqjxhrw";
+            string goodLongDescription2 = "";
+            string goodLongDescription3 = null;
+            string goodLongDescription4 = "Normal Length with 12933851451!@#$6";
+
+            Assert.IsTrue(goodLongDescription1.IsValidLongDescription());
+            Assert.IsTrue(goodLongDescription2.IsValidLongDescription());
+            Assert.IsTrue(goodLongDescription3.IsValidLongDescription());
+            Assert.IsTrue(goodLongDescription4.IsValidLongDescription());
+        }
+    
+        [TestMethod]
+        public void TestBadAddresses()
+        {
+            string badAddress1 = "aaaaaaaaaaaassssssssssssdddddddddffffffgggggggggghi";
+            string badAddress2 = "";
+            string badAddress3 = null;
+
+            Assert.IsFalse(badAddress1.IsValidAddress());
+            Assert.IsFalse(badAddress2.IsValidAddress());
+            Assert.IsFalse(badAddress3.IsValidAddress());
+        }
+
+        [TestMethod]
+        public void TestGoodAddresses()
+        {
+            string goodAddress1 = "a";
+            string goodAddress2 = "aaaaaaaaaaaassssssssssssdddddddddffffffggggggggggh";
+            string goodAddress3 = "134 awesomesauce st";
+
+            Assert.IsTrue(goodAddress1.IsValidAddress());
+            Assert.IsTrue(goodAddress2.IsValidAddress());
+            Assert.IsTrue(goodAddress3.IsValidAddress());
+        }
+        [TestMethod]
+        public void TestBadAddresses2()
+        {
+            string badAddress1 = "aaaaaaaaaaaassssssssssssdddddddddffffffgggggggggghi";
+            Assert.IsFalse(badAddress1.IsValidAddress2());
+        }
+
+        [TestMethod]
+        public void TestGoodAddresses2()
+        {
+            string goodAddress4 = "";
+            string goodAddress5 = null;
+            string goodAddress1 = "a";
+            string goodAddress2 = "aaaaaaaaaaaassssssssssssdddddddddffffffggggggggggh";
+            string goodAddress3 = "134 awesomesauce st";
+
+            Assert.IsTrue(goodAddress1.IsValidAddress2());
+            Assert.IsTrue(goodAddress2.IsValidAddress2());
+            Assert.IsTrue(goodAddress3.IsValidAddress2());
+            Assert.IsTrue(goodAddress4.IsValidAddress2());
+            Assert.IsTrue(goodAddress5.IsValidAddress2());
+        }
+
+        [TestMethod]
+        public void TestBadPhoneNumbers()
+        {
+            string badPhone1 = "abcuanmemd";
+            string badPhone2 = "12345678901234";
+            string badPhone3 = "123-456-7890";
+            string badPhone4 = "123 456 7890";
+            string badPhone5 = "abcdefhijk";
+            string badPhone6 = "123456789";
+
+            Assert.IsFalse(badPhone1.IsValidPhone());
+            Assert.IsFalse(badPhone2.IsValidPhone());
+            Assert.IsFalse(badPhone3.IsValidPhone());
+            Assert.IsFalse(badPhone4.IsValidPhone());
+            Assert.IsFalse(badPhone5.IsValidPhone());
+            Assert.IsFalse(badPhone6.IsValidPhone());
+        }
+
+        [TestMethod]
+        public void TestGoodPhoneNumbers()
+        {
+            string goodPhone1 = "1234567890";
+            string goodPhone2 = "12345678910";
+            string goodPhone3 = "1234567890123";
+
+            Assert.IsTrue(goodPhone1.IsValidPhone());
+            Assert.IsTrue(goodPhone2.IsValidPhone());
+            Assert.IsTrue(goodPhone3.IsValidPhone());
+        }
+        [TestMethod]
+        public void TestBadNames()
+        {
+            string badName1 = "aaaaaaaaaaaassssssssssssdddddddddffffffgggggggggghi";
+            string badName2 = "";
+            string badName3 = null;
+
+            Assert.IsFalse(badName1.IsValidName());
+            Assert.IsFalse(badName2.IsValidName());
+            Assert.IsFalse(badName3.IsValidName());
+        }
+
+        [TestMethod]
+        public void TestGoodNames()
+        {
+            string goodName1 = "a";
+            string goodName2 = "alakazam";
+            string goodName3 = "bippitybopity";
+            string goodName4 = "abra kadabra";
+            string goodName5 = "skippedty-bop";
+            string goodName6 = "aaaaaaaaaaaassssssssssssdddddddddffffffggggggggggh";
+
+            Assert.IsTrue(goodName1.IsValidName());
+            Assert.IsTrue(goodName2.IsValidName());
+            Assert.IsTrue(goodName3.IsValidName());
+            Assert.IsTrue(goodName4.IsValidName());
+            Assert.IsTrue(goodName5.IsValidName());
+            Assert.IsTrue(goodName6.IsValidName());
         }
     }
 }
