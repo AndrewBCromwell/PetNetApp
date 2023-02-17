@@ -54,13 +54,12 @@ namespace WpfPresentation.Development.Community
             bool success = false;
             newUserRole.RoleId = cboChooseRole.Text;
             //check to see if role selected from combo box
-            if (string.IsNullOrEmpty(newUserRole.RoleId))
+            if (cboChooseRole.SelectedItem == null)
             {
                 //if no role selected tell user
-                if (PromptWindow.ShowPrompt("Error", "Please select a role to add and try again", ButtonMode.Ok) == PromptSelection.Ok)
-                {
-                    return;
-                }
+                PromptWindow.ShowPrompt("Error", "Please select a role to add and try again", ButtonMode.Ok);
+                return;
+
             }
             else
             {
@@ -77,21 +76,21 @@ namespace WpfPresentation.Development.Community
                 {
                     return;
                 }
+                //add role to list
+                try
+                {
+                    success = _masterManager.RoleManager.AddRoleByUsersId(newUserRole, _users.UsersId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                    return;
+                }
+
+                //reload role list 
+                PopulateUserRoleGrid();
             }
 
-            //add role to list
-            try
-            {
-                success = _masterManager.RoleManager.AddRoleByUsersId(newUserRole, _users.UsersId);
-            }
-            catch (Exception ex)
-            {
-                PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
-                return;
-            }
-
-            //reload role list 
-            PopulateUserRoleGrid();
         }
 
         private void btn_Previous_Click(object sender, RoutedEventArgs e)
@@ -158,6 +157,7 @@ namespace WpfPresentation.Development.Community
                 //                                 select r.RoleId; 
                 this.cboChooseRole.ItemsSource = _roles;
                 cboChooseRole.DisplayMemberPath = "RoleId";
+
             }
             catch (Exception ex)
             {
