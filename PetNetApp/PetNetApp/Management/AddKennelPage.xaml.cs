@@ -22,11 +22,10 @@ namespace WpfPresentation.Management
     /// </summary>
     public partial class AddKennelPage : Page
     {
-        private MasterManager masterManager;
-        public AddKennelPage(MasterManager masterManager)
+        private MasterManager masterManager = MasterManager.GetMasterManager();
+        public AddKennelPage()
         {
             InitializeComponent();
-            this.masterManager = masterManager;
             try
             {
                 var dropDownList = masterManager.KennelManager.RetrieveAnimalTypes();
@@ -53,8 +52,7 @@ namespace WpfPresentation.Management
 
             Kennel kennel = new Kennel();
 
-            // Replace with masterManager.User.Shelter.ShelterId when users are made
-            kennel.ShelterId = 100000;
+            kennel.ShelterId = masterManager.User == null ? 100000 : masterManager.User.UsersId;
             kennel.KennelName = txtKennelName.Text;
             kennel.AnimalTypeId = cbAnimalType.SelectedItem.ToString();
 

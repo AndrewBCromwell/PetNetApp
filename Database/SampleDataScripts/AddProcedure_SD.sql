@@ -10,7 +10,6 @@ Updated: yyyy/mm/dd
 
 Description: 
 ****************************************************************/
-
 USE [PetNet_db_am]
 GO
 
@@ -78,7 +77,7 @@ INSERT INTO [dbo].[Animal]
 		("Buddy", "Male", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "jdfghjt", 0, "Not aggressive", 1, 1, "Very Cute", 100000)
 GO
 
-print '' print '*** Creating MedicalRecord name sample data'
+print '' print '*** Creating MedicalRecord sample data'
 
 GO
 INSERT INTO [dbo].[MedicalRecord]
@@ -89,8 +88,8 @@ INSERT INTO [dbo].[MedicalRecord]
 		[Diagnosis]
 		)
 	VALUES
-		(100000, '20230206 10:10:10 AM', "Notes", "Animal is healthy"),
-		(100001, '20230207 10:10:10 PM', "Notes", "Animal can be adopted"),
-		(100002, '20230208 11:11:11 AM', "No Notes", "More tests needed"),
-		(100003, '20230209 11:11:11 AM', "More Notes", "A cat in disguise")
+		(100001, '20230206 10:10:10 AM', "Notes", "Animal is healthy"),
+		(100002, '20230207 10:10:10 PM', "Notes", "Animal can be adopted"),
+		(100003, '20230208 11:11:11 AM', "No Notes", "More tests needed"),
+		(100004, '20230209 11:11:11 AM', "More Notes", "A cat in disguise")
 GO

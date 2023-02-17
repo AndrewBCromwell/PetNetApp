@@ -122,7 +122,7 @@ namespace LogicLayerTest
         {
             bool expectedRes = true;
             bool actualRes = false;
-            int kennelId = 100008; 
+            int kennelId = 1; 
 
             actualRes = kennelManager.RemoveAnimalKennlingByKennelId(kennelId);
 
