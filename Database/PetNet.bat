@@ -34,6 +34,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\RemoveKennels_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddKennel_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalDOD513-514_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\KenOccupancyUpdate-333_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\RemoveRole-006.sql
 
 ECHO .
 ECHO if no errors appear DB was created
