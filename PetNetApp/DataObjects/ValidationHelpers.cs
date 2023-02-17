@@ -10,13 +10,19 @@ namespace DataObjects
 {
     public static class ValidationHelpers
     {
-        private static Regex _zipcodeRegex = new Regex(@"^(\d{5}|\d{9})$");
-        private static Regex _phoneRegex = new Regex(@"^\d{10,13}$");
-        private static Regex _amountRegex = new Regex(@"^(([1-9]\d{0,4})|0)(\.\d{1,2})?$");
-        private static Regex _emailRegex = new Regex(@"^(?=^.{1,64}@)[a-zA-Z0-9]+([-_\.]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(-?[a-zA-Z0-9]+)*\.[a-zA-Z0-9]{2,}([-\.]?[a-zA-Z0-9]{2,})*$");
-        public static bool IsValidName(this string name)
+        public static Regex ZipcodeRegex { get; private set; } = new Regex(@"^(\d{5}|\d{9})$");
+        public static Regex PhoneRegex { get; private set; } = new Regex(@"^\d{10,13}$");
+        public static Regex AmountRegex { get; private set; } = new Regex(@"^(([1-9]\d{0,4})|0)(\.\d{1,2})?$");
+        public static Regex EmailRegex { get; private set; } = new Regex(@"^(?=^.{1,64}@)[a-zA-Z0-9]+([-_\.]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(-?[a-zA-Z0-9]+)*\.[a-zA-Z0-9]{2,}([-\.]?[a-zA-Z0-9]{2,})*$");
+        public static Regex FirstNameRegex { get; private set; } = new Regex(@"^[a-zA-Z][a-zA-Z0-9\-\. ']*$");
+        public static Regex LastNameRegex { get; private set; } = new Regex(@"^[a-zA-Z]([a-zA-Z\.\- '][a-zA-Z0-9\.\- ']*)?$");
+        public static bool IsValidLastName(this string name)
         {
-            return name != "" && name != null && name.Length <= 50;
+            return name != null && name.Length <= 50 && LastNameRegex.IsMatch(name);
+        }
+        public static bool IsValidFirstName(this string name)
+        {
+            return name != null && name.Length <= 50 && FirstNameRegex.IsMatch(name);
         }
         public static bool IsValidShortDescription(this string description)
         {
@@ -36,19 +42,19 @@ namespace DataObjects
         }
         public static bool IsValidZipcode(this string zipcode)
         {
-            return zipcode != null && _zipcodeRegex.IsMatch(zipcode);
+            return zipcode != null && ZipcodeRegex.IsMatch(zipcode);
         }
         public static bool IsValidEmail(this string email)
         {
-            return email != null && _emailRegex.IsMatch(email) && email.Length <= 254;
+            return email != null && EmailRegex.IsMatch(email) && email.Length <= 254;
         }
         public static bool IsValidPhone(this string phone)
         {
-            return phone != null && _phoneRegex.IsMatch(phone);
+            return phone != null && PhoneRegex.IsMatch(phone);
         }
         public static bool IsValidAmount(this string amount)
         {
-            return amount != null && _amountRegex.IsMatch(amount);
+            return amount != null && AmountRegex.IsMatch(amount);
         }
     }
 }

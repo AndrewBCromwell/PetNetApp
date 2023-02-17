@@ -35,6 +35,8 @@ namespace LogicLayerTest
             string badEmail22 = "abcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijkabcdefghijk@abc.abc";
             string badEmail23 = "abcdefghijkabcdefghijkabcdefghijkabcdefghijcdefghijkabcdefghijk4@abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz.abc";
             string badEmail24 = "abc_abc@--c.abc";
+            string badEmail25 = "normalemai@with space.com";
+            string badEmail26 = "normalemai@with*symbol.com";
 
 
             Assert.IsFalse(badEmail1.IsValidEmail()); 
@@ -61,6 +63,8 @@ namespace LogicLayerTest
             Assert.IsFalse(badEmail22.IsValidEmail());
             Assert.IsFalse(badEmail23.IsValidEmail());
             Assert.IsFalse(badEmail24.IsValidEmail());
+            Assert.IsFalse(badEmail25.IsValidEmail());
+            Assert.IsFalse(badEmail26.IsValidEmail());
         }
 
         [TestMethod]
@@ -301,33 +305,111 @@ namespace LogicLayerTest
             Assert.IsTrue(goodPhone3.IsValidPhone());
         }
         [TestMethod]
-        public void TestBadNames()
+        public void TestBadLastNames()
         {
             string badName1 = "aaaaaaaaaaaassssssssssssdddddddddffffffgggggggggghi";
             string badName2 = "";
             string badName3 = null;
+            string badName4 = "2";
+            string badName5 = "a2";
+            string badName6 = "a2e";
+            string badName7 = "-ae";
+            string badName8 = ".ae";
+            string badName9 = "0ab";
+            string badName10 = "AB@";
+            string badName11 = " bad";
 
-            Assert.IsFalse(badName1.IsValidName());
-            Assert.IsFalse(badName2.IsValidName());
-            Assert.IsFalse(badName3.IsValidName());
+            Assert.IsFalse(badName1.IsValidLastName());
+            Assert.IsFalse(badName2.IsValidLastName());
+            Assert.IsFalse(badName3.IsValidLastName());
+            Assert.IsFalse(badName4.IsValidLastName());
+            Assert.IsFalse(badName5.IsValidLastName());
+            Assert.IsFalse(badName6.IsValidLastName());
+            Assert.IsFalse(badName7.IsValidLastName());
+            Assert.IsFalse(badName8.IsValidLastName());
+            Assert.IsFalse(badName9.IsValidLastName());
+            Assert.IsFalse(badName10.IsValidLastName());
+            Assert.IsFalse(badName11.IsValidLastName());
         }
 
         [TestMethod]
-        public void TestGoodNames()
+        public void TestGoodLastNames()
         {
             string goodName1 = "a";
             string goodName2 = "alakazam";
             string goodName3 = "bippitybopity";
             string goodName4 = "abra kadabra";
             string goodName5 = "skippedty-bop";
-            string goodName6 = "aaaaaaaaaaaassssssssssssdddddddddffffffggggggggggh";
+            string goodName6 = "Ab3";
+            string goodName7 = "a-brian";
+            string goodName8 = "O'Riely";
+            string goodName9 = "aok--bop";
+            string goodName10 = "aaaaaaaaaaaassssssssssssdddddddddffffffggggggggggh";
 
-            Assert.IsTrue(goodName1.IsValidName());
-            Assert.IsTrue(goodName2.IsValidName());
-            Assert.IsTrue(goodName3.IsValidName());
-            Assert.IsTrue(goodName4.IsValidName());
-            Assert.IsTrue(goodName5.IsValidName());
-            Assert.IsTrue(goodName6.IsValidName());
+            Assert.IsTrue(goodName1.IsValidLastName());
+            Assert.IsTrue(goodName2.IsValidLastName());
+            Assert.IsTrue(goodName3.IsValidLastName());
+            Assert.IsTrue(goodName4.IsValidLastName());
+            Assert.IsTrue(goodName5.IsValidLastName());
+            Assert.IsTrue(goodName6.IsValidLastName());
+            Assert.IsTrue(goodName7.IsValidLastName());
+            Assert.IsTrue(goodName8.IsValidLastName());
+            Assert.IsTrue(goodName9.IsValidLastName());
+            Assert.IsTrue(goodName10.IsValidLastName());
+        }
+
+        [TestMethod]
+        public void TestBadFirstNames()
+        {
+            string badName1 = "aaaaaaaaaaaassssssssssssdddddddddffffffgggggggggghi";
+            string badName2 = "";
+            string badName3 = null;
+            string badName4 = "2";
+            string badName7 = "-ae";
+            string badName8 = ".ae";
+            string badName9 = "0ab";
+            string badName10 = "AB@";
+            string badName11 = " bad";
+
+            Assert.IsFalse(badName1.IsValidFirstName());
+            Assert.IsFalse(badName2.IsValidFirstName());
+            Assert.IsFalse(badName3.IsValidFirstName());
+            Assert.IsFalse(badName4.IsValidFirstName());
+            Assert.IsFalse(badName7.IsValidFirstName());
+            Assert.IsFalse(badName8.IsValidFirstName());
+            Assert.IsFalse(badName9.IsValidFirstName());
+            Assert.IsFalse(badName10.IsValidFirstName());
+            Assert.IsFalse(badName11.IsValidFirstName());
+        }
+
+        [TestMethod]
+        public void TestGoodFirstNames()
+        {
+            string goodName1 = "a";
+            string goodName2 = "alakazam";
+            string goodName3 = "bippitybopity";
+            string goodName4 = "abra kadabra";
+            string goodName5 = "skippedty-bop";
+            string goodName6 = "Ab3";
+            string goodName7 = "a-brian";
+            string goodName8 = "O'Riely";
+            string goodName9 = "aok--bop";
+            string goodName10 = "aaaaaaaaaaaassssssssssssdddddddddffffffggggggggggh";
+            string goodName11 = "A2e";
+            string goodName12 = "a0'ben";
+
+            Assert.IsTrue(goodName1.IsValidFirstName());
+            Assert.IsTrue(goodName2.IsValidFirstName());
+            Assert.IsTrue(goodName3.IsValidFirstName());
+            Assert.IsTrue(goodName4.IsValidFirstName());
+            Assert.IsTrue(goodName5.IsValidFirstName());
+            Assert.IsTrue(goodName6.IsValidFirstName());
+            Assert.IsTrue(goodName7.IsValidFirstName());
+            Assert.IsTrue(goodName8.IsValidFirstName());
+            Assert.IsTrue(goodName9.IsValidFirstName());
+            Assert.IsTrue(goodName10.IsValidFirstName());
+            Assert.IsTrue(goodName11.IsValidFirstName());
+            Assert.IsTrue(goodName12.IsValidFirstName());
         }
     }
 }
