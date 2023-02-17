@@ -57,6 +57,7 @@
     <Compile Include="TimeClock.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="Vaccination.cs" />
+    <Compile Include="ValidationHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,7 +10,6 @@ Updated: yyyy/mm/dd
 
 Description: 
 ****************************************************************/
-
 USE [PetNet_db_am]
 GO
 
@@ -55,23 +54,30 @@ print '' print '*** creating Animal sample data'
 GO 
 INSERT INTO [dbo].[Animal]
 		(
-		[AnimalName],
-		[AnimalGender],
-		[AnimalTypeId],
-		[AnimalBreedId],
-		[AnimalStatusId],
-		[RecievedDate],
-		[MicrochipSerialNumber],
-		[Notes]
+		[AnimalName], 
+		[AnimalGender], 
+		[AnimalTypeId], 
+		[AnimalBreedId], 
+		[Personality], 
+		[Description], 
+		[AnimalStatusId],		
+		[RecievedDate], 
+		[MicrochipSerialNumber], 
+		[Aggressive], 
+		[AggressiveDescription], 
+		[ChildFriendly], 
+		[NeuterStatus], 
+		[Notes], 
+		[AnimalShelterId]
 		)
 	VALUES
-		("Franny", "Female", "Dog", "Lab", "Healthy", "2022-12-15", "Microchip111111", "Very Cute"), 
-		("Spots", "Female", "Dog", "Lab", "Healthy", "2022-12-01", "Microchip111112", "Lots of spots"), 
-		("Ruffer", "Female", "Dog", "Lab", "Healthy", "2022-12-03", "Microchip111113", "Barks a lot"),
-		("Buddy", "Female", "Dog", "Lab", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise")
+		("Bart", "Female", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "dhqaf2", 0, "Not aggressive", 1, 1, "Very Cute", 100000), 
+		("Spot", "Female", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "afthee", 0, "Not aggressive", 1, 1, "Very Cute", 100000),
+		("Ruffer", "Male", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "yrqwgh", 0, "Not aggressive", 1, 1, "Very Cute", 100000),
+		("Buddy", "Male", "Dog", "Lab", "Friendly", "Great dog rescued", "Healthy", "2022-12-15", "jdfghjt", 0, "Not aggressive", 1, 1, "Very Cute", 100000)
 GO
 
-print '' print '*** Creating MedicalRecord name sample data'
+print '' print '*** Creating MedicalRecord sample data'
 
 GO
 INSERT INTO [dbo].[MedicalRecord]
@@ -82,8 +88,8 @@ INSERT INTO [dbo].[MedicalRecord]
 		[Diagnosis]
 		)
 	VALUES
-		(100000, '20230206 10:10:10 AM', "Notes", "Animal is healthy"),
-		(100001, '20230207 10:10:10 PM', "Notes", "Animal can be adopted"),
-		(100002, '20230208 11:11:11 AM', "No Notes", "More tests needed"),
-		(100003, '20230209 11:11:11 AM', "More Notes", "A cat in disguise")
+		(100001, '20230206 10:10:10 AM', "Notes", "Animal is healthy"),
+		(100002, '20230207 10:10:10 PM', "Notes", "Animal can be adopted"),
+		(100003, '20230208 11:11:11 AM', "No Notes", "More tests needed"),
+		(100004, '20230209 11:11:11 AM', "More Notes", "A cat in disguise")
 GO

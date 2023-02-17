@@ -58,14 +58,16 @@
             <Label HorizontalAlignment="Center" Width="250" Grid.Row="8" Content="Zipcode" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" Foreground="#FF3D8361" />
             <TextBox Grid.Row="9" x:Name="txtZipCode" Width="250" Height="45" Background="#FFF6F7F3" />
 
-            <ComboBox Grid.Row="5" Grid.Column="1" x:Name="genderSelection" Width="250" Height="46">
+                <Label HorizontalAlignment="Center" Width="250" Grid.Row="4" Grid.Column="1" Content="Gender" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" Foreground="#FF3D8361" />
+                <ComboBox Grid.Row="5" Grid.Column="1" x:Name="genderSelection" Width="250" Height="46">
                 <ComboBoxItem Content="Female"></ComboBoxItem>
                 <ComboBoxItem Content="Male"></ComboBoxItem>
                 <ComboBoxItem Content="Other"></ComboBoxItem>
                 <ComboBoxItem Content="Perfer Not To Say"></ComboBoxItem>
             </ComboBox>
 
-            <ComboBox Grid.Row="7" Grid.Column="1" x:Name="pronounSelection" Width="250" Height="45">
+                <Label HorizontalAlignment="Center" Width="250" Grid.Row="6" Grid.Column="1" Content="Pronouns" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" Foreground="#FF3D8361" />
+                <ComboBox Grid.Row="7" Grid.Column="1" x:Name="pronounSelection" Width="250" Height="45">
                 <ComboBoxItem Content="He/Him"></ComboBoxItem>
                 <ComboBoxItem Content="She/Her"></ComboBoxItem>
                 <ComboBoxItem Content="They/Them"></ComboBoxItem>

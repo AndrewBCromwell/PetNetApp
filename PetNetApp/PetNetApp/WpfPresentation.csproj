@@ -97,6 +97,9 @@
     <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
       <DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\StyleShowcase.xaml.cs">
+      <DependentUpon>StyleShowcase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\AssignAnimalToKennel.xaml.cs">
       <DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\UploadAdditionalFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\StyleShowcase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

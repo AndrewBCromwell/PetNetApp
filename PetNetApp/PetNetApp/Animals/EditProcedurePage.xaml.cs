@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <summary>
+/// Andrew Cromwell
+/// Created: 2023/02/08
+/// 
+/// Interaction logic for EditProcedurePage.xaml
+/// </summary>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,24 +30,70 @@ namespace WpfPresentation.Animals
     public partial class EditProcedurePage : Page
     {
         private Animal _medProcedureAnimal;
-        private int _medicalRecordId;
-        private MedicalRecordManager _medicalRecordManager;
-        private ProcedureManager _procedureManager;
+        private MasterManager _manager;
+        private int _medicalRecordId;        
         private bool _forAdd;
+        private ProcedureVM _oldProcedure;
 
         private int userId = 100000; // This should be related to the logedin user, but login is not available yet, so I am using this to test my code. -Andy 
-        
-        public EditProcedurePage(Animal animal)
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/08
+        /// 
+        /// Constructor that is used when a new procedure is being added
+        /// </summary>
+        /// <param name="animal">the animal that recieved the procedure</param>
+        /// <param name="manager">the MasterManager being used through out the program</param>
+        public EditProcedurePage(Animal animal, MasterManager manager)
         {
             InitializeComponent();
             _forAdd = true;
             _medProcedureAnimal = animal;
-            _medicalRecordManager = new MedicalRecordManager();
-            _procedureManager = new ProcedureManager();
+            _manager = manager;            
             lblEditProcedure.Content = "Add Procedure";
             dateProcedurePerformed.DisplayDateEnd = DateTime.Today;
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/16
+        /// 
+        /// Constructor that is used when a procedure is being edited
+        /// </summary>
+        /// <param name="oldProcedure">the procedure that will be overwriten</param>
+        /// <param name="manager">the MasterManager being used through out the program</param>
+        public EditProcedurePage(ProcedureVM oldProcedure, MasterManager manager)
+        {
+            InitializeComponent();
+            _forAdd = false;
+            _oldProcedure = oldProcedure;
+            _manager = manager;
+            dateProcedurePerformed.DisplayDateEnd = DateTime.Today;
+            txtProcedureName.Text = _oldProcedure.ProcedureName;
+            dateProcedurePerformed.SelectedDate = _oldProcedure.ProcedureDate;
+            txtProcedureMedsAdministered.Text = _oldProcedure.MedicationsAdministered;
+            txtProcedureNotes.Text = _oldProcedure.ProcedureNotes;
+
+            _manager.User = new UsersVM() { UsersId = 5 }; // for testing without login
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/08
+        /// 
+        /// When the save buttton is clicked, the input on the edit procedure page is cheked,
+        /// and if it is acceptable it is saved. If it is a new a new procedure is being added,
+        /// the medical record id of the animal's last medical record is used.
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Andrew Cromwell
+        /// Updated: 2023/02/16 
+        /// Added logic to handle editing an existing procedure record
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMedProcedureEditSave_Click(object sender, RoutedEventArgs e)
         {
             if(txtProcedureName.Text == null || txtProcedureName.Text == "")
@@ -57,7 +110,12 @@ namespace WpfPresentation.Animals
                 return;
             }
 
-            PromptSelection selection = PromptWindow.ShowPrompt("Verify Input", "Verify that the information you entered is correct.", ButtonMode.SaveCancel);
+            string prompt = "Verify that the information you entered is correct.";
+            if (!_forAdd)
+            {
+                prompt += "\nThis will overwrite the existing procedure information";
+            }
+            PromptSelection selection = PromptWindow.ShowPrompt("Verify Input", prompt, ButtonMode.SaveCancel);
             if(selection == PromptSelection.Cancel)
             {
                 return;
@@ -68,7 +126,7 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    procedure.MedicalRecordId = _medicalRecordManager.getLastMedicalRecordIdByAnimalId(_medProcedureAnimal.AnimalId);
+                    procedure.MedicalRecordId = _manager.medicalRecordManager.getLastMedicalRecordIdByAnimalId(_medProcedureAnimal.AnimalId);
                 } 
                 catch (Exception ex)
                 {
@@ -76,7 +134,12 @@ namespace WpfPresentation.Animals
                     return;
                 }
             }
-            procedure.UserId = userId;
+            else
+            {
+                procedure.ProcedureId = _oldProcedure.ProcedureId;
+                procedure.MedicalRecordId = _oldProcedure.MedicalRecordId;
+            }
+            procedure.UserId = _manager.User.UsersId;
             procedure.ProcedureName = txtProcedureName.Text;
             procedure.ProcedureDate = (DateTime)dateProcedurePerformed.SelectedDate;
             procedure.MedicationsAdministered = txtProcedureMedsAdministered.Text;
@@ -85,7 +148,7 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    bool success = _procedureManager.AddProcedureByMedicalRecordId(procedure, procedure.MedicalRecordId);
+                    bool success = _manager.procedureManager.AddProcedureByMedicalRecordId(procedure, procedure.MedicalRecordId);
                     if (success)
                     {
                         PromptWindow.ShowPrompt("Success", "The procedure was saved.", ButtonMode.Ok);
@@ -101,8 +164,29 @@ namespace WpfPresentation.Animals
                 {
                     PromptWindow.ShowPrompt("An Error occurred", ex.Message + "\n" + ex.InnerException, ButtonMode.Ok);
                     return;
+                }                
+            }
+            else
+            {
+                try
+                {
+                    bool success = _manager.procedureManager.EditProcedureByMedicalRecordIdAndProcedureId(procedure, _oldProcedure, procedure.MedicalRecordId);
+                    if (success)
+                    {
+                        PromptWindow.ShowPrompt("Success", "The procedure was saved.", ButtonMode.Ok);
+                        NavigationService.GoBack();
+                    }
+                    else
+                    {
+                        PromptWindow.ShowPrompt("Failure", "The procedure was not saved.", ButtonMode.Ok);
+                        return;
+                    }
                 }
-                
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("An Error occurred", ex.Message + "\n" + ex.InnerException, ButtonMode.Ok);
+                    return;
+                }
             }
             
         }

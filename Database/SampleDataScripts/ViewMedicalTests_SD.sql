@@ -48,11 +48,11 @@ VALUES
 print '' print '*** creating Animal sample data'
 GO 
 INSERT INTO [dbo].[Animal]
-([AnimalName],[AnimalGender],[AnimalTypeId],[AnimalBreedId],[Personality],[Description],[AnimalStatusId],[MicrochipSerialNumber],[Aggressive],[AggressiveDescription],[ChildFriendly],[NeuterStatus],[Notes])
+([AnimalName],[AnimalGender],[AnimalTypeId],[AnimalBreedId],[Personality],[Description],[AnimalStatusId],[MicrochipSerialNumber],[Aggressive],[AggressiveDescription],[ChildFriendly],[NeuterStatus],[Notes], [AnimalShelterId])
 VALUES
-("Fred","Male","Rodent","Rabbit","Friendly","Loves chasing cats","Healthy",'15afg23bd7qrty9',0,"",1,0,"Loves Bubbles"),
-("Xander","Male","Alpacha","Unknown","Friendly","Loves other Alpacha","Healthy",'15afg23bd7qrtz0',0,"",1,0,"Isn't a llama"),
-("Nicholas","Male","Bird","Dragon","Friendly","Best Pokemon Trainer","Healthy",'15afg23bd7qrtz1',0,"",1,0,"Can transform into a human")
+("Fred","Male","Rodent","Rabbit","Friendly","Loves chasing cats","Healthy",'15afg23bd7qrty9',0,"",1,0,"Loves Bubbles", 100000),
+("Xander","Male","Alpacha","Unknown","Friendly","Loves other Alpacha","Healthy",'15afg23bd7qrtz0',0,"",1,0,"Isn't a llama", 100000),
+("Nicholas","Male","Bird","Dragon","Friendly","Best Pokemon Trainer","Healthy",'15afg23bd7qrtz1',0,"",1,0,"Can transform into a human", 100000)
 GO
 
 print '' print '*** creating MedicalRecord sample data'

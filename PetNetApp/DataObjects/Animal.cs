@@ -23,6 +23,7 @@ namespace DataObjects
         public bool NeuterStatus { get; set; }
         public string Notes { get; set; }
         public string AnimalStatusId { get; set; }
+        public int AnimalShelterId { get; set; }
     }
 
     public class AnimalVM : Animal
