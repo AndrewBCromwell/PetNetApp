@@ -9,6 +9,7 @@ namespace DataObjects
     public class Animal
     {
         public int AnimalId { get; set; }
+        // public int AnimalShelterId { get; set; }   // need tp update all access methods
         public string AnimalName { get; set; }
         public string AnimalTypeId { get; set; }
         public string AnimalBreedId { get; set; }

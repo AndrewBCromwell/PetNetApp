@@ -316,7 +316,8 @@ INSERT INTO [dbo].[AnimalStatus]
 		([AnimalStatusId], [AnimalStatusDescription])
 	VALUES
 	('Sick', 'Animal is sick'),
-	('Healthy', 'Animal is healthy')
+	('Healthy', 'Animal is healthy'),
+	('Available', 'Animal is available')
 GO
 /* InventoryChangeReason */
 /* Created by: Matthew Meppelink */
@@ -469,6 +470,7 @@ print '' print '*** creating table for Animal'
 GO
 CREATE TABLE [dbo].[Animal] (
 	[AnimalId]					[int]	IDENTITY(100000,1) 	NOT NULL,
+	[AnimalShelterId]			[int]						NOT NULL,
 	[AnimalName]				[nvarchar](50)				NOT NULL DEFAULT "unamed",
 	[AnimalGender]				[nvarchar](50)				NOT NULL DEFAULT "none",
 	[AnimalTypeId]				[nvarchar](50)				NOT NULL,
@@ -494,6 +496,8 @@ CREATE TABLE [dbo].[Animal] (
 		REFERENCES [dbo].[AnimalBreed]([AnimalBreedId]) on UPDATE CASCADE,
 	CONSTRAINT [fk_Animal_AnimalStatusId]FOREIGN KEY ([AnimalStatusId])
 		REFERENCES [dbo].[AnimalStatus]([AnimalStatusId]) on UPDATE CASCADE,
+	CONSTRAINT [fk_Animal_AnimalShelterId]FOREIGN KEY ([AnimalShelterId])
+		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE,
 	
 	CONSTRAINT [ak_MicrochipSerialNumber] UNIQUE([MicrochipSerialNumber])
 )
@@ -1875,20 +1879,20 @@ GO
 INSERT INTO dbo.Animal
 (	
 	[AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [Personality], [Description], [AnimalStatusId],		
-	[RecievedDate], [MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]					
+	[RecievedDate], [MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId]					
 )
 		
 	VALUES
 		('Max', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'15A73', 0, 'Not aggressive', 1, 1, 'No notes'),
+		'15A73', 0, 'Not aggressive', 1, 1, 'No notes', 100000),
 		('Donny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'12345dgas', 0, 'Not aggressive', 1, 1, 'No notes'),
+		'12345dgas', 0, 'Not aggressive', 1, 1, 'No notes', 100000),
 		('Johny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Sick', '2023-01-01',
-		'512314', 0, 'Not aggressive', 1, 1, 'No notes'),
+		'512314', 0, 'Not aggressive', 1, 1, 'No notes', 100000),
 		('Bonny', 'Female', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'568533', 0, 'Not aggressive', 1, 1, 'No notes'),
+		'568533', 0, 'Not aggressive', 1, 1, 'No notes', 100000),
 		('Doggy', 'Female', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'6868564', 0, 'Not aggressive', 1, 1, 'No notes')
+		'6868564', 0, 'Not aggressive', 1, 1, 'No notes', 100000)
 GO
 
 

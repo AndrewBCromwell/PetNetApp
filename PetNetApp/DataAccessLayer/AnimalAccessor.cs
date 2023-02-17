@@ -405,7 +405,7 @@ namespace DataAccessLayer
             return rows;
         }
 
-        public List<Animal> SelectAllAnimals()
+        public List<Animal> SelectAllAnimals()  // add shelterId
         {
             List<Animal> animals = new List<Animal>();
 
@@ -430,22 +430,16 @@ namespace DataAccessLayer
                         animal.AnimalName = reader.GetString(1);
                         animal.AnimalTypeId = reader.GetString(2);
                         animal.AnimalBreedId = reader.GetString(3);
-                        animal.Personality = reader.GetString(4);
-                        animal.Description = reader.GetString(5);
+                        animal.Personality = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        animal.Description = reader.IsDBNull(5) ? null : reader.GetString(5);
                         animal.AnimalStatusId = reader.GetString(6);
                         animal.BroughtIn = reader.GetDateTime(7);
                         animal.MicrochipNumber = reader.GetString(8);
                         animal.Aggressive = reader.GetBoolean(9);
-                        if (reader.IsDBNull(10))
-                        {
-                            animal.AggressiveDescription = null;
-                        }
+                        animal.AggressiveDescription = reader.IsDBNull(10) ? null : reader.GetString(10);
                         animal.ChildFriendly = reader.GetBoolean(11);
                         animal.NeuterStatus = reader.GetBoolean(12);
-                        if (reader.IsDBNull(13))
-                        {
-                            animal.Notes = null;
-                        }
+                        animal.Notes = reader.IsDBNull(13) ? null : reader.GetString(13);
                         animals.Add(animal);
                     }
                 }

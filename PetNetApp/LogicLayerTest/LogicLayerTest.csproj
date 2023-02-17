@@ -58,6 +58,7 @@
     <Compile Include="ProcedureManagerTests.cs" />
     <Compile Include="ScheduleManagerTests.cs" />
     <Compile Include="TestManagerTests.cs" />
+    <Compile Include="ImagesManagerTests.cs" />
     <Compile Include="UsersManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>
