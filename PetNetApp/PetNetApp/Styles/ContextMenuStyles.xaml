@@ -84,7 +84,7 @@
              Value="True">
                 <Setter TargetName="SubmenuBorder"
               Property="CornerRadius"
-              Value="0,0,4,4" />
+              Value="0,0,5,5" />
                 <Setter TargetName="SubmenuBorder"
               Property="Padding"
               Value="0,0,0,3" />
@@ -268,7 +268,7 @@
              Value="True">
                 <Setter TargetName="SubmenuBorder"
               Property="CornerRadius"
-              Value="4" />
+              Value="5" />
                 <Setter TargetName="SubmenuBorder"
               Property="Padding"
               Value="0,3,0,3" />
@@ -346,7 +346,7 @@
                     Value="0,3,0,3" />
                             <Setter TargetName="Border"
                     Property="CornerRadius"
-                    Value="4" />
+                    Value="5" />
                         </Trigger>
                         <Trigger Property="IsMouseDirectlyOver" Value="False"> <!-- This worked exactly the opposite of what i thought... -->
                             <Setter Property="BorderBrush" TargetName="Border" Value="{StaticResource ContextMenu.MouseOver.Border}"/>
