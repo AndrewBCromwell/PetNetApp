@@ -17,5 +17,6 @@ namespace LogicLayerInterfaces
         bool AddKennel(Kennel kennel);
         bool EditKennelStatusByKennelId(int KennelId);
         bool RemoveAnimalKennlingByKennelId(int KennelId);
+        bool RemoveAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId);
     }
 }

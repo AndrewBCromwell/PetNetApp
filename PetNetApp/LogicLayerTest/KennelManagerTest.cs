@@ -129,5 +129,11 @@ namespace LogicLayerTest
 
             Assert.AreEqual(expectedRes, actualRes);
         }
+
+        [TestMethod]
+        public void RemoveAnimalKennelingByKennelIdAndAnimalId()
+        {
+            Assert.AreEqual(true, kennelManager.RemoveAnimalKennelingByKennelIdAndAnimalId(1, 1));
+        }
     }
 }

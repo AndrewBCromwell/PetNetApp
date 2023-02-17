@@ -191,5 +191,19 @@ namespace DataAccessLayerFakes
             }
             return rows;
         }
+
+        // Created By: Asa Armstrong
+        // Actually removes a Kennel instead of an AnimalKenneling
+        public int DeleteAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId)
+        {
+            int rowsAffected = 0;
+
+            if (fakeKennelVMs.Remove(fakeKennelVMs.FirstOrDefault(k => k.KennelId == kennelId)))
+            {
+                rowsAffected = 1;
+            }
+
+            return rowsAffected;
+        }
     }
 }
