@@ -22,7 +22,7 @@
     <Color x:Key="ControlMouseOverColor">#9EC1B0</Color>
     <Color x:Key="ControlPressedColor">#3D8361</Color>
 
-    <SolidColorBrush x:Key="Calendar.Static.Header.Foreground" Color="{StaticResource ColorLightBackground}"/>
+    <SolidColorBrush x:Key="Calendar.Static.Header.Foreground" Color="{StaticResource BackgroundColor}"/>
     <Color x:Key="GlyphColor">#EEF2E6</Color>
     <Color x:Key="GlyphMouseOver">#9EC1B0</Color>
 
@@ -201,7 +201,7 @@
                                   Storyboard.TargetName="NormalText"
                                   Storyboard.TargetProperty="(TextElement.Foreground).
                       (SolidColorBrush.Color)"
-                                  To="{StaticResource ColorLightBackground}" />
+                                  To="{StaticResource BackgroundColor}" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>

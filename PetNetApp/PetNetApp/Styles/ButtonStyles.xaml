@@ -77,7 +77,6 @@
         <Setter Property="Background" Value="#EEF2E6"/>
     </Style>
 
-
     <!-- Invisible button hover color change for animal list -->
     <Style x:Key="rsrcTransparentButtonHover" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
@@ -105,7 +104,7 @@
     <!-- Button Default Style -->
     <SolidColorBrush x:Key="Button.Static.Background" Color="{StaticResource ColorGreen}"/>
     <SolidColorBrush x:Key="Button.Static.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="Button.Static.Foreground" Color="{StaticResource ColorLightBackground}"/>
+    <SolidColorBrush x:Key="Button.Static.Foreground" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="Button.MouseOver.Background" Color="{StaticResource ColorLightGreen}"/>
     <SolidColorBrush x:Key="Button.MouseOver.Border" Color="{StaticResource ColorDarkGreen}"/>
     <SolidColorBrush x:Key="Button.Pressed.Background" Color="{StaticResource ColorGreen}"/>
@@ -156,14 +155,14 @@
     <!-- Button Warning Style -->
     <SolidColorBrush x:Key="WarningButton.Static.Background" Color="{StaticResource ColorRed}"/>
     <SolidColorBrush x:Key="WarningButton.Static.Border" Color="{StaticResource ColorDarkRed}"/>
-    <SolidColorBrush x:Key="WarningButton.Static.Foreground" Color="{StaticResource ColorLightBackground}"/>
+    <SolidColorBrush x:Key="WarningButton.Static.Foreground" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="WarningButton.MouseOver.Background" Color="{StaticResource ColorDarkRed}"/>
     <SolidColorBrush x:Key="WarningButton.MouseOver.Border" Color="{StaticResource ColorDarkRed}"/>
     <SolidColorBrush x:Key="WarningButton.Pressed.Background" Color="{StaticResource ColorRed}"/>
     <SolidColorBrush x:Key="WarningButton.Pressed.Border" Color="{StaticResource ColorDarkRed}"/>
     <SolidColorBrush x:Key="WarningButton.Disabled.Background" Color="{StaticResource ColorRed}"/>
     <SolidColorBrush x:Key="WarningButton.Disabled.Border" Color="{StaticResource ColorDarkRed}"/>
-    <SolidColorBrush x:Key="WarningButton.Disabled.Foreground" Color="{StaticResource ColorLightBackground}"/>
+    <SolidColorBrush x:Key="WarningButton.Disabled.Foreground" Color="{StaticResource BackgroundColor}"/>
     <Style x:Key="rsrcWarningButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource WarningButton.Static.Background}"/>
@@ -205,14 +204,14 @@
     </Style>
 
     <!-- Button Safe Style -->
-    <SolidColorBrush x:Key="SafeButton.Static.Background" Color="{StaticResource ColorLightBackground}"/>
+    <SolidColorBrush x:Key="SafeButton.Static.Background" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="SafeButton.Static.Border" Color="{StaticResource ColorDarkGreen}"/>
     <SolidColorBrush x:Key="SafeButton.Static.Foreground" Color="{StaticResource ColorGreen}"/>
     <SolidColorBrush x:Key="SafeButton.MouseOver.Background" Color="{StaticResource ColorLightGray}"/>
     <SolidColorBrush x:Key="SafeButton.MouseOver.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="SafeButton.Pressed.Background" Color="{StaticResource ColorLightBackground}"/>
+    <SolidColorBrush x:Key="SafeButton.Pressed.Background" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="SafeButton.Pressed.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="SafeButton.Disabled.Background" Color="{StaticResource ColorLightBackground}"/>
+    <SolidColorBrush x:Key="SafeButton.Disabled.Background" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="SafeButton.Disabled.Border" Color="{StaticResource ColorGolden}"/>
     <SolidColorBrush x:Key="SafeButton.Disabled.Foreground" Color="{StaticResource ColorGolden}"/>
     <Style x:Key="rsrcSafeButton" TargetType="{x:Type Button}">

@@ -1,0 +1,47 @@
+﻿<Window x:Class="WpfPresentation.Development.Testing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPresentation.Development"
+        mc:Ignorable="d"
+        Title="Testing" Height="450" Width="800">
+    <Grid Background="#eef2e6">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox Width="150" Height="50"></TextBox>
+        <PasswordBox Width="150" Height="50" Grid.Column="1" Style="{DynamicResource rsrcPasswordBox}"/>
+        <ComboBox Width="150" Height="50" Grid.Column="2">
+            <ComboBoxItem Content="Item1"></ComboBoxItem>
+            <ComboBoxItem Content="Item1"></ComboBoxItem>
+            <ComboBoxItem Content="Item1"></ComboBoxItem>
+            <ComboBoxItem Content="Item1"></ComboBoxItem>
+            <ComboBoxItem Content="Item1"></ComboBoxItem>
+        </ComboBox>
+        <DatePicker Width="150" Height="50" Grid.Row="1"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <RadioButton>Option 1</RadioButton>
+            <RadioButton Margin="10 0 0 0">Option 2</RadioButton>
+        </StackPanel>
+        <CheckBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" >CheckBox</CheckBox>
+        <Button Width="150" Height="50" Grid.Row="2" Template="{DynamicResource rsrcContextMenu}">
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem>Item1</MenuItem>
+                    <MenuItem>Item2</MenuItem>
+                    <MenuItem>Item3</MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+            Context
+        </Button>
+    </Grid>
+</Window>
