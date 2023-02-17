@@ -5,7 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+/// <summary>
+/// By: Barry Mikulas
+/// Created: 2023/02/11
+/// </summary>
 namespace DataAccessLayerInterfaces
 {
     public interface IRoleAccessor

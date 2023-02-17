@@ -48,6 +48,8 @@ namespace WpfPresentation.Development.Community
             this._users = user;
         }
 
+        /// Barry Mikulas
+        /// Created: 2023/02/15
         private void btn_AddRole_Click(object sender, RoutedEventArgs e)
         {
             Role newUserRole = new Role();
@@ -92,7 +94,8 @@ namespace WpfPresentation.Development.Community
             }
 
         }
-
+        /// Barry Mikulas
+        /// Created: 2023/02/11
         private void btn_Previous_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Previous", "Go to edit user info screen?", ButtonMode.YesNo) == PromptSelection.Yes)
@@ -105,7 +108,8 @@ namespace WpfPresentation.Development.Community
             }
 
         }
-
+        /// Barry Mikulas
+        /// Created: 2023/02/11
         private void btn_Finish_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Save", "Are you finished editing roles for: " + _users.GivenName + " " + _users.FamilyName + "?", ButtonMode.YesNo) == PromptSelection.Yes)
@@ -118,7 +122,8 @@ namespace WpfPresentation.Development.Community
                 //close prompt
             }
         }
-
+        /// Barry Mikulas
+        /// Created: 2023/02/11
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             // verify person wants to close the window
@@ -132,7 +137,10 @@ namespace WpfPresentation.Development.Community
                 this.Close();
             }
         }
-
+        /// Barry Mikulas
+        /// Created: 2023/02/11
+        /// Modified:
+        /// by:
         private void btn_RemoveRole(object sender, RoutedEventArgs e)
         {
             //can get the value of the RoleId from using ((Button)sender).Tag
@@ -146,6 +154,8 @@ namespace WpfPresentation.Development.Community
             }
         }
 
+        /// Barry Mikulas
+        /// Created: 2023/02/11
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // retrieve role list for combo box
@@ -167,6 +177,8 @@ namespace WpfPresentation.Development.Community
             PopulateUserRoleGrid();
         }
 
+        /// Barry Mikulas
+        /// Created: 2023/02/11
         private void PopulateUserRoleGrid()
         {
             //retrieve user's roles

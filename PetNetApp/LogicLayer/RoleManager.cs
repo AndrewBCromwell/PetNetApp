@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace LogicLayer
 {
+    /// <summary>
+    /// By: Barry Mikulas
+    /// Created: 2023/02/11
+    /// </summary>
     public class RoleManager : IRoleManager
     {
         private IRoleAccessor _roleAccessor = null;
@@ -22,7 +26,10 @@ namespace LogicLayer
         {
             _roleAccessor = roleAccessor;
         }
-
+        /// <summary>
+        /// By: Barry Mikulas
+        /// Created: 2023/02/11
+        /// </summary>
         public bool AddRoleByUsersId(Role role, int usersId)
         {
             //throw new NotImplementedException();
@@ -39,7 +46,10 @@ namespace LogicLayer
 
             return wasAdded;
         }
-
+        /// <summary>
+        /// By: Barry Mikulas
+        /// Created: 2023/02/11
+        /// </summary>
         public List<Role> RetrieveAllRoles()
         {
             List<Role> roles = new List<Role>();
@@ -54,7 +64,10 @@ namespace LogicLayer
             return roles;
             //throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// By: Barry Mikulas
+        /// Created: 2023/02/11
+        /// </summary>
         public List<Role> RetrieveRoleListByUserId(int userId)
         {
             List<Role> roles = new List<Role>();

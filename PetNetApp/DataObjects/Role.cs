@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace DataObjects
 {
     /// <summary>
-    /// Created by Barry Mikulas
+    /// By: Barry Mikulas
+    /// Created: 2023/02/11
     /// </summary>
     public class Role
     {

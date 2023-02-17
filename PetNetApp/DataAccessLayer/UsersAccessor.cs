@@ -491,7 +491,6 @@ namespace DataAccessLayer
             return rows;
         }
 
-        // Barry
         /// <summary>
         /// Barry Mikukas
         /// Created: 2023/02/09
@@ -564,7 +563,12 @@ namespace DataAccessLayer
 
             //throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// By: Barry Mikulas
+        /// Created: 2023/02/11
+        /// </summary>
+        /// <param name="UsersId"></param>
+        /// <returns>UsersVM</returns>
         public UsersVM SelectUserByUsersIdWithRoles(int UsersId)
         {
             throw new NotImplementedException();

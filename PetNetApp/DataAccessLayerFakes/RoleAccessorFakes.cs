@@ -10,7 +10,10 @@ namespace DataAccessLayerFakes
 {
     public class RoleAccessorFakes : IRoleAccessor
     {
-
+        /// <summary>
+        /// By: Barry Mikulas
+        /// Created: 2023/02/11
+        /// </summary>
         private List<Role> _fakeRoles = new List<Role>();
 
         /// <summary>
