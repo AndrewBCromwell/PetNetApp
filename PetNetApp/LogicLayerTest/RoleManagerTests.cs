@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 namespace LogicLayerTest
 {
+    //created by Barry Mikulas
     [TestClass]
     public class RoleManagerTests
     {
@@ -19,6 +20,7 @@ namespace LogicLayerTest
             _roleManager = new RoleManager(new RoleAccessorFakes());
         }
 
+        //created by Barry Mikulas
         [TestMethod]
         public void TestReturnsCorrectRoleList()
         {
@@ -33,6 +35,7 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedCount, actualCount);
         }
 
+        //created by Barry Mikulas
         [TestMethod]
         public void TestReturnsCorrectRoleListByUsersId()
         {
@@ -48,6 +51,8 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedCount, actualCount);
         }
 
+
+        //created by Barry Mikulas
         [TestMethod]
         public void TestAddRoleListToUserWorksWithCorrectData()
         {

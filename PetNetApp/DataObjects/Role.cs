@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataObjects
 {
+    /// <summary>
+    /// Created by Barry Mikulas
+    /// </summary>
     public class Role
     {
         public string RoleId { get; set; }

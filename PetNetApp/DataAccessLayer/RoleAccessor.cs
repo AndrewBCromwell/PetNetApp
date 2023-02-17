@@ -112,7 +112,7 @@ namespace DataAccessLayer
                         roles.Add(new Role()
                         {
                             RoleId = reader.GetString(0),
-                            Description = reader.IsDBNull(1) | reader.GetString(1) == "" ? "Description Needed" : reader.GetString(1)
+                            Description = reader.IsDBNull(1) | reader.GetString(1) == "" ? "same as role name" : reader.GetString(1)
                         }); ;
 
                     }

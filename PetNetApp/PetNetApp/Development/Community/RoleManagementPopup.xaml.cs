@@ -109,7 +109,8 @@ namespace WpfPresentation.Development.Community
 
         private void btn_Finish_Click(object sender, RoutedEventArgs e)
         {
-            if (PromptWindow.ShowPrompt("Save", "Are you finished editing roles for: " + _users.GivenName + " " + _users.FamilyName + "?", ButtonMode.YesNo) == PromptSelection.Yes)            {
+            if (PromptWindow.ShowPrompt("Save", "Are you finished editing roles for: " + _users.GivenName + " " + _users.FamilyName + "?", ButtonMode.YesNo) == PromptSelection.Yes)
+            {
                 //save user roles list to database this is no longer need as the add and remove roles updates the database
                 this.Close();
             }
@@ -152,9 +153,11 @@ namespace WpfPresentation.Development.Community
             try
             {
                 _roles = _masterManager.RoleManager.RetrieveAllRoles();
-                this.cboChooseRole.ItemsSource = from r in _roles
-                                                 orderby r.RoleId
-                                                 select r.RoleId;
+                //this.cboChooseRole.ItemsSource = from r in _roles
+                //                                 orderby r.RoleId
+                //                                 select r.RoleId; 
+                this.cboChooseRole.ItemsSource = _roles;
+                cboChooseRole.DisplayMemberPath = "RoleId";
             }
             catch (Exception ex)
             {

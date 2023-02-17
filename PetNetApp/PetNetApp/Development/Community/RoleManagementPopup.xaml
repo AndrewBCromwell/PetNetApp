@@ -16,7 +16,8 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" FontSize="36" x:Name="lbl_Title" Content="Update User Role" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Background="#FF3D8361" Foreground="#FFEEF2E6"/>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <ComboBox x:Name="cboChooseRole" Grid.Row="1" Grid.Column="1" Margin="10"  Width="225" ToolTip="Choose Role" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FF1C6758" Background="#EEEFE1" IsSynchronizedWithCurrentItem="True"/>
+                <!--<ComboBox x:Name="cboChooseRole" Grid.Row="1" Grid.Column="1" Margin="10"  Width="225" ToolTip="Choose Role" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FF1C6758" Background="#EEEFE1" IsSynchronizedWithCurrentItem="True"/>-->
+                <ComboBox x:Name="cboChooseRole" Grid.Row="1" Grid.Column="1" Margin="10"  Width="225" ToolTip="{Binding Path=SelectedItem.Description, RelativeSource={RelativeSource Self}}" IsSynchronizedWithCurrentItem="True"/>
                 <Button Grid.Row="1" x:Name="btn_AddRole" Content="+ Add Role" Margin="10" Width="125" Click="btn_AddRole_Click" Padding="6,3,5,3" Height="41" >
                     <Button.Style >
                         <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=rsrcSafeButton}">

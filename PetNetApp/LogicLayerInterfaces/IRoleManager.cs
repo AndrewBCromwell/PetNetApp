@@ -9,6 +9,7 @@ namespace LogicLayerInterfaces
 {
     public interface IRoleManager
     {
+        // created by Barry Mikulas
         List<Role> RetrieveAllRoles();
         List<Role> RetrieveRoleListByUserId(int usersId);
         bool AddRoleByUsersId(Role role, int usersId);
