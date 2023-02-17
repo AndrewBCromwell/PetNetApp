@@ -410,5 +410,89 @@ namespace DataAccessLayer
             return genders;
         }
 
+        public int CreateNewUser(Users user, string PasswordHash)
+        {
+
+            int rows = 0;
+
+            //connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            //cmdText
+            var cmdText = "sp_insert_new_user";
+
+            //command
+            var cmd = new SqlCommand(cmdText, conn);
+
+            //type
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            //Parameters
+
+            cmd.Parameters.AddWithValue("@GenderId", user.GenderId);
+            cmd.Parameters.AddWithValue("@PronounId", user.PronounId);
+            cmd.Parameters.AddWithValue("@GivenName", user.GivenName);
+            cmd.Parameters.AddWithValue("@FamilyName", user.FamilyName);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@PasswordHash", PasswordHash);
+            cmd.Parameters.AddWithValue("@Zipcode", user.Zipcode);
+            cmd.Parameters.AddWithValue("@Phone", user.Phone);
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+        public int DeactivateUserAccount(int UserId)
+        {
+            int rows = 0;
+
+            DBConnection connectionFactory = new DBConnection();
+
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_deactivate_account";
+
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+            cmd.Parameters["@UsersId"].Value = UserId;
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+       
     }
+
 }
+

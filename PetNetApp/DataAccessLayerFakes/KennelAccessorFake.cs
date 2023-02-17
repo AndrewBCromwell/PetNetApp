@@ -112,7 +112,16 @@ namespace DataAccessLayerFakes
 
         public int DeleteAnimalKennelingByKennelId(int KennelId)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            for(int i = 0; i < fakeKennelVMs.Count; i++)
+            {
+                if (fakeKennelVMs[i].KennelId == KennelId)
+                {
+                    fakeKennelVMs.Remove(fakeKennelVM);
+                    result = 1;
+                }
+            }
+            return result;
         }
 
         public int InsertKennel(Kennel kennel)
@@ -169,7 +178,7 @@ namespace DataAccessLayerFakes
             return result;
         }
 
-        public List<Animal> SelectAllAnimalsForKennel()
+        public List<Animal> SelectAllAnimalsForKennel(int ShelterId)
         {
             List<Animal> animals = null;
             animals = fakeAnimals;

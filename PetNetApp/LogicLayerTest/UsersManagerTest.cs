@@ -59,5 +59,36 @@ namespace LogicLayerTest
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+
+        public void TestDeactivateAccount()
+        {
+            //arrage 
+            int userId = 1000;
+            bool expectedResult = true;
+            bool actualResult = false;
+
+            //act 
+            actualResult = _userManager.DeactivateUserAccount(userId);
+
+            //assert
+            Assert.IsTrue(actualResult);
+        }
+
+        [TestMethod]
+        public void TestCreateUser() 
+        {
+            //arrage 
+            bool actualResult = false;
+
+            //act 
+            actualResult = _userManager.AddUser(new Users(), "fakePassword");
+
+            //assert
+            Assert.IsTrue(actualResult); 
+
+        }
+
     }
 }
