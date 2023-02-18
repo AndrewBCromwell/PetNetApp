@@ -60,5 +60,17 @@ namespace LogicLayerTest
 
             Assert.AreEqual(expectedCount, actualCount);
         }
+
+        [TestMethod]
+        public void UpdateTreatmentByMedicalRecordId()
+        {
+            int animalId = 100000;
+            int expectedResult = 1;
+
+            int actualResult = _medicalRecordManager.UpdateTreatmentByMedicalRecordId(animalId, "New Diagnosis Name", "New Diagnosis Notes");
+
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

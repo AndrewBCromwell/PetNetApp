@@ -1,4 +1,16 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Matthew Meppelink
+/// Created: 2022/02/16
+/// 
+/// Contains code to dynamically create the medical treatment page
+/// 
+/// </summary>
+///
+/// <remarks>
+/// Updater Name
+/// Updated: yyyy/mm/dd
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -25,14 +37,13 @@ namespace WpfPresentation.Animals
         private MedicalRecordManager _medicalRecordManager = null;
         private List<MedicalRecordVM> _medicalRecords = null;
         private Animal _animal = null;
+
         public MedicalTreatmentPage(Animal animal)
         {
             InitializeComponent();
             _medicalRecordManager = new MedicalRecordManager();
             _animal = animal;
         }
-
-
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -41,7 +52,21 @@ namespace WpfPresentation.Animals
             refreshPage();
         }
 
-        private void refreshPage()
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// refreshes the UI elements for each treatment record
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void refreshPage()
         {
             stckMedicalTreatment.Children.Clear();
             try
@@ -56,6 +81,7 @@ namespace WpfPresentation.Animals
                     Label label = new Label();
                     label.Content = "No Diagnosis and Treatment information";
                     label.HorizontalAlignment = HorizontalAlignment.Center;
+                    scrlMedicalTreatment.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
 
                     grid.Children.Add(label);
 
@@ -63,6 +89,7 @@ namespace WpfPresentation.Animals
                 }
                 else
                 {
+                    scrlMedicalTreatment.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
                     foreach (MedicalRecord medicalRecord in _medicalRecords)
                     {
                         createDiagnosisBox(medicalRecord);
@@ -76,6 +103,20 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// dynamically creates individual treatment UI elements 
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        /// <param name="medicalRecord"></param>
         private void createDiagnosisBox(MedicalRecord medicalRecord)
         {
             Grid grid = new Grid();
@@ -163,6 +204,7 @@ namespace WpfPresentation.Animals
             txtBlockNotes.Text = medicalRecord.MedicalNotes;
             txtBlockNotes.Margin = new Thickness(21, 5, 15, 5);
             txtBlockNotes.Background = new SolidColorBrush(Colors.White);
+            txtBlockNotes.TextWrapping = TextWrapping.Wrap;
             Grid.SetRow(txtBlockNotes, 4);
 
             Button btnEdit = new Button();
@@ -199,10 +241,8 @@ namespace WpfPresentation.Animals
 
             btnEdit.Click += (s, e) =>
             {
-
-                // add Edit window to be opened here and remove PromptWindow
-
-                PromptWindow.ShowPrompt("Edit", "TODO", ButtonMode.Ok);
+                EditTreatment editTreatment = new EditTreatment(medicalRecord, this);
+                frmDiagnosisTreatment.Navigate(editTreatment);
             };
 
             stckMedicalTreatment.Children.Add(grid);
@@ -223,5 +263,6 @@ namespace WpfPresentation.Animals
             }
             e.Handled = true;
         }
+
     }
 }
