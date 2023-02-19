@@ -11,5 +11,7 @@ namespace DataAccessLayerInterfaces
     {
         int SelectLastMedicalRecordIdByAnimalId(int animalId);
         List<MedicalRecordVM> SelectMedicalRecordDiagnosisByAnimalId(int animalId);
+
+        int UpdateMedicalTreatmentByMedicalrecordId(int medicalRecordId, string diagnosis, string medicalNotes);
     }
 }
