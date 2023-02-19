@@ -166,3 +166,4 @@ AS
 		AND		@ShelterId = [Animal].[AnimalShelterId]
 	END
 GO
+
