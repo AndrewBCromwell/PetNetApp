@@ -74,6 +74,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_update_animal]
 (
 	@AnimalId					[int],
+	@AnimalShelterId			[int],
 	@OldAnimalName				[nvarchar](50),
 	@OldAnimalGender			[nvarchar](50),
 	@OldAnimalTypeId			[nvarchar](50),
@@ -120,6 +121,7 @@ AS
 				[NeuterStatus]          = @NewNeuterStatus,
 				[Notes]          		= @NewNotes
 		WHERE	[AnimalId] 				= @AnimalId
+		  AND	[AnimalShelterId]		= @AnimalShelterId
 		  AND	[AnimalName] 			= @OldAnimalName
 		  AND	[AnimalGender] 			= @OldAnimalGender
 		  AND	[AnimalTypeId] 			= @OldAnimalTypeId
@@ -137,3 +139,30 @@ AS
 	END
 GO
 
+
+/* SelectAnimalByAnimalId stored procedure */
+/* Created by Andrew Schneider */
+print '' print '*** creating sp_select_animal_by_animalId (Andrew S.)'
+GO
+CREATE PROCEDURE [dbo].[sp_select_animal_by_animalId]
+(
+	@AnimalId			[int],
+	@ShelterId			[int]
+)
+AS
+	BEGIN
+		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalGender], [Animal].[AnimalTypeId], [AnimalBreedId],
+				[Kennel].[KennelName], [Personality], [Description], [Animal].[AnimalStatusId],
+				[AnimalStatus].[AnimalStatusDescription], [RecievedDate], [MicrochipSerialNumber],
+				[Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId]
+		FROM 	[Animal]
+		JOIN 	[AnimalStatus]
+			ON 	[Animal].[AnimalStatusID] = [AnimalStatus].[AnimalStatusID]
+		JOIN 	[AnimalKenneling]
+			ON	[Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
+		JOIN	[Kennel]
+			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
+		WHERE	@AnimalId = [Animal].[AnimalId]
+		AND		@ShelterId = [Animal].[AnimalShelterId]
+	END
+GO

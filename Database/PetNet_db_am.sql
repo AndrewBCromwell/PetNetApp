@@ -1932,35 +1932,6 @@ VALUES
 GO
 
 
-
-
-/* SelectAnimalByAnimalId stored procedure */
-/* Created by Andrew Schneider */
-print '' print '*** creating sp_select_animal_by_animalId (Andrew S.)'
-GO
-CREATE PROCEDURE [dbo].[sp_select_animal_by_animalId]
-(
-	@AnimalId			[int]
-)
-AS
-	BEGIN
-		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalGender], [Animal].[AnimalTypeId], [AnimalBreedId],
-				[Kennel].[KennelName], [Personality], [Description], [Animal].[AnimalStatusId],
-				[AnimalStatus].[AnimalStatusDescription], [RecievedDate], [MicrochipSerialNumber],
-				[Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
-		FROM 	[Animal]
-		JOIN 	[AnimalStatus]
-			ON 	[Animal].[AnimalStatusID] = [AnimalStatus].[AnimalStatusID]
-		JOIN 	[AnimalKenneling]
-			ON	[Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
-		JOIN	[Kennel]
-			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
-		WHERE	@AnimalId = [Animal].[AnimalId]
-	END
-GO
-
-
-
 USE [PetNet_db_am]
 
 DROP PROCEDURE IF EXISTS dbo.sp_select_users_by_roleId;  
