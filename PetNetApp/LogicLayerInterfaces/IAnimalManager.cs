@@ -10,7 +10,7 @@ namespace LogicLayerInterfaces
     public interface IAnimalManager
     {
         List<Animal> RetrieveAllAnimals(String animalName);
-        AnimalVM RetrieveAnimalByAnimalId(int animalId);
+        AnimalVM RetrieveAnimalByAnimalId(int animalId, int shelterId);
 
         // For populating edit animal profile combo boxes 
         List<string> RetrieveAllAnimalBreeds();

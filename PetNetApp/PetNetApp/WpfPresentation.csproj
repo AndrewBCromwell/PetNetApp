@@ -73,7 +73,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
+    <Compile Include="Development\Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\MedicalFilesPage.xaml.cs">
@@ -152,7 +152,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Animals\EditDetailAnimalProfile.xaml">
+    <Page Include="Development\Animals\EditDetailAnimalProfile.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -327,9 +327,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-	  <Compile Include="Development\StyleShowcase.xaml.cs">
-		  <DependentUpon>StyleShowcase.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="Development\StyleShowcase.xaml.cs">
+      <DependentUpon>StyleShowcase.xaml</DependentUpon>
+    </Compile>
     <Page Include="Management\ManagementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -394,10 +394,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-	  <Page Include="Development\StyleShowcase.xaml">
-		  <SubType>Designer</SubType>
-		  <Generator>MSBuild:Compile</Generator>
-	  </Page>
+    <Page Include="Development\StyleShowcase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Management\ManagementPage.xaml.cs">

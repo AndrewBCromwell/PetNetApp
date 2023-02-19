@@ -77,6 +77,7 @@ namespace DataAccessLayerFakes
             fakeAnimals.Add(new AnimalVM
             {
                 AnimalId = 999998,
+                AnimalShelterId = 100000,
                 AnimalName = "Test name 2",
                 AnimalGender = "Test gender 2",
                 AnimalTypeId = "Test type 2",
@@ -248,13 +249,13 @@ namespace DataAccessLayerFakes
             return animalVM;
         }
 
-        public AnimalVM SelectAnimalByAnimalId(int animalId)
+        public AnimalVM SelectAnimalByAnimalId(int animalId, int shelterId)
             {
             AnimalVM animalVM = new AnimalVM();
 
             foreach (AnimalVM fakeAnimal in fakeAnimals)
             {
-                if(fakeAnimal.AnimalId == animalId)
+                if(fakeAnimal.AnimalId == animalId && fakeAnimal.AnimalShelterId == shelterId)
                 {
                     animalVM = fakeAnimal;
                     return animalVM;

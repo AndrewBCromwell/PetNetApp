@@ -9,7 +9,7 @@ namespace DataAccessLayerInterfaces
 {
     public interface IAnimalAccessor
     {
-        AnimalVM SelectAnimalByAnimalId(int AnimalId);
+        AnimalVM SelectAnimalByAnimalId(int animalId, int shelterId);
         List<Animal> SelectAllAnimals(String animalName);
 
         // For populating edit animal profile combo boxes 

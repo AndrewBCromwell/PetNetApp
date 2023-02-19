@@ -38,7 +38,7 @@ namespace LogicLayer
             return animals;
         }
 
-        public AnimalVM RetrieveAnimalByAnimalId(int animalId)
+        public AnimalVM RetrieveAnimalByAnimalId(int animalId, int shelterId)
         {
             /*
                 var fakeAnimal = new AnimalVM();
@@ -48,7 +48,7 @@ namespace LogicLayer
             AnimalVM animalVM = new AnimalVM();
             try
             {
-                animalVM = _animalAccessor.SelectAnimalByAnimalId(animalId);
+                animalVM = _animalAccessor.SelectAnimalByAnimalId(animalId, shelterId);
             }
             catch (Exception ex)
             {

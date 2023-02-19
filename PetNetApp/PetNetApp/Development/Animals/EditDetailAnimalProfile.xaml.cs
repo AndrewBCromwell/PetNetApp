@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfPresentation.Animals
+namespace WpfPresentation.Development.Animals
 {
     /// <summary>
     /// Interaction logic for EditDetailAnimalProfile.xaml
@@ -280,6 +280,7 @@ namespace WpfPresentation.Animals
                     {
                         newAnimal.AnimalName = txtAnimalName.Text;
                         newAnimal.AnimalId = _animalVM.AnimalId;
+                        newAnimal.AnimalShelterId = _animalVM.AnimalShelterId;
                         newAnimal.AnimalTypeId = cmbAnimalTypeId.SelectedItem.ToString();
                         newAnimal.AnimalBreedId = cmbAnimalBreedId.SelectedItem.ToString();
                         newAnimal.AnimalGender = cmbAnimalGender.SelectedItem.ToString();

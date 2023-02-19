@@ -50,11 +50,12 @@ namespace LogicLayerTest
         {
             // Arrange
             const int animalId = 999998;
+            const int shelterId = 100000;
             const string expectedAnimalName = "Test name 2";
             string actualAnimalName = "";
 
             // Act
-            Animal animal = _animalManager.RetrieveAnimalByAnimalId(animalId);
+            Animal animal = _animalManager.RetrieveAnimalByAnimalId(animalId, shelterId);
             actualAnimalName = animal.AnimalName;
 
             // Assert
@@ -125,7 +126,7 @@ namespace LogicLayerTest
         public void TestUpdateAnimalWorksWithCorrectData()
         {
             // Arrange
-            AnimalVM oldAnimal = _animalManager.RetrieveAnimalByAnimalId(999997);
+            AnimalVM oldAnimal = _animalManager.RetrieveAnimalByAnimalId(999997, 100000);
             AnimalVM newAnimal = new AnimalVM
             {
                 AnimalId = 999997,

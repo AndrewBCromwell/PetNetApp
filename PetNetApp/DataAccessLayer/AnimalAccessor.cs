@@ -69,7 +69,7 @@ namespace DataAccessLayer
             return animals;
         }
 
-        public AnimalVM SelectAnimalByAnimalId(int animalId)
+        public AnimalVM SelectAnimalByAnimalId(int animalId, int shelterId)
         {
             AnimalVM animal = new AnimalVM();
 
@@ -106,7 +106,7 @@ namespace DataAccessLayer
                         /*
                          *[AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [KennelName], [Personality],
                          *[Description], [Animal].[AnimalStatusId], [AnimalStatus].[AnimalStatusDescription], [RecievedDate],
-                         *[MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
+                         *[MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [ShelterId]
                         */
 
                         animal.AnimalId = reader.GetInt32(0);
@@ -126,6 +126,7 @@ namespace DataAccessLayer
                         animal.ChildFriendly = reader.GetBoolean(14);
                         animal.NeuterStatus = reader.GetBoolean(15);
                         animal.Notes = reader.GetString(16);
+                        animal.AnimalShelterId = reader.GetInt32(17);
                     }
                 }
             }
@@ -357,6 +358,7 @@ namespace DataAccessLayer
 
             // parameters
             cmd.Parameters.AddWithValue("@AnimalId", oldAnimal.AnimalId);
+            cmd.Parameters.AddWithValue("@AnimalShelterId", oldAnimal.AnimalShelterId);
             cmd.Parameters.AddWithValue("@OldAnimalName", oldAnimal.AnimalName);
             cmd.Parameters.AddWithValue("@OldAnimalGender", oldAnimal.AnimalGender);
             cmd.Parameters.AddWithValue("@OldAnimalTypeId", oldAnimal.AnimalTypeId);
