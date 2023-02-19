@@ -76,6 +76,9 @@
     <Compile Include="Development\Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\EditTreatment.xaml.cs">
+      <DependentUpon>EditTreatment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\MedicalFilesPage.xaml.cs">
       <DependentUpon>MedicalFilesPage.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
     <Page Include="Development\Animals\EditDetailAnimalProfile.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\EditTreatment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\MedicalFilesPage.xaml">
       <SubType>Designer</SubType>

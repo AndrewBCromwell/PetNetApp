@@ -32,6 +32,7 @@ namespace DataAccessLayerFakes
         {
             medicalRecords.Add(new MedicalRecordVM
             {
+                MedicalRecordId = 100000,
                 AnimalId = 100000,
                 Date = DateTime.Now,
                 MedicalNotes = "These are sample medical notes",
@@ -48,6 +49,23 @@ namespace DataAccessLayerFakes
         public List<MedicalRecordVM> SelectMedicalRecordDiagnosisByAnimalId(int animalId)
         {
             return medicalRecords.Where(m => m.AnimalId == animalId).ToList();
+        }
+
+        public int UpdateMedicalTreatmentByMedicalrecordId(int medicalRecordId, string diagnosis, string medicalNotes)
+        {
+            int result = 0;
+
+            for (int i = 0; i < medicalRecords.Count; i++)
+            {
+                if (medicalRecords[i].MedicalRecordId == medicalRecordId)
+                {
+                    medicalRecords[i].Diagnosis = diagnosis;
+                    medicalRecords[i].MedicalNotes = medicalNotes;
+
+                    result++;
+                }
+            }
+            return result;
         }
     }
 }

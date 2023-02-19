@@ -11,5 +11,6 @@ namespace LogicLayerInterfaces
     {
         int getLastMedicalRecordIdByAnimalId(int animalId);
         List<MedicalRecordVM> RetrieveMedicalRecordDiagnosisByAnimalId(int animalId);
+        int UpdateTreatmentByMedicalRecordId(int medicalRecordId, string diagnosis, string medicalNotes);
     }
 }

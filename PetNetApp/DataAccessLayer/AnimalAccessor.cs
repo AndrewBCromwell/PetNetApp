@@ -13,8 +13,22 @@ namespace DataAccessLayer
 {
     public class AnimalAccessor : IAnimalAccessor
     {
-        
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// Selects all animals with a like supplied string
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="animalName">the animal name to search for</param>
+        /// <exception cref="Exception">Update Fails</exception>
+        /// <returns>all animals with like name</returns>
         public List<Animal> SelectAllAnimals(string animalName)
         {
             List<Animal> animals = new List<Animal>();
@@ -51,7 +65,6 @@ namespace DataAccessLayer
                         var animal = new Animal();
                         animal.AnimalId = reader.GetInt32(0);
                         animal.AnimalName = reader.GetString(1);
-                        // needs to be updated if we decide to link the animal table to the image table. to get animal image, left it out because the animal table doesn't have a link to the images table at the time of writing
                         animals.Add(animal);
                     }
                 }
