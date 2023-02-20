@@ -23,6 +23,9 @@
                 <ResourceDictionary Source="/Styles/RadioButtonStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/ScrollBarStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBoxStyles.xaml"/>
+
+                <!-- User Control Style -->
+                <ResourceDictionary Source="/UserControls/PlaceholderTextBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
 

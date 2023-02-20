@@ -59,7 +59,7 @@ namespace WpfPresentation.Animals
             datMedProcedure.ItemsSource = null;
             try
             {
-                _procedures = _manager.procedureManager.GetProceduresByAnimalId(_procedureAnimal.AnimalId);
+                _procedures = _manager.ProcedureManager.GetProceduresByAnimalId(_procedureAnimal.AnimalId);
             } catch(Exception ex)
             {
                 PromptWindow.ShowPrompt("An Error occurred", ex.Message + "\n" + ex.InnerException, ButtonMode.Ok);

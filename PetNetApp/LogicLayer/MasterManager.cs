@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayerFakes;
 
 namespace LogicLayer
 {
@@ -17,29 +18,31 @@ namespace LogicLayer
         public IKennelManager KennelManager { get; set; }
         public IUsersManager UsersManager { get; set; }
         public IDeathManager DeathManager { get; set; }
-        
         public IAnimalManager AnimalManager { get; set; }
         public IAnimalUpdatesManager AnimalUpdatesManager { get; set; }
-        public IScheduleManager scheduleManager { get; set; }
+        public IScheduleManager ScheduleManager { get; set; }
         public ITestManager TestManager { get; set; }
         public IImagesManager ImagesManager { get; set; }
         public ITicketManager TicketManager { get; set; }
-        public IProcedureManager procedureManager { get; set; }
-        public IMedicalRecordManager medicalRecordManager { get; set; }
+        public IProcedureManager ProcedureManager { get; set; }
+        public IMedicalRecordManager MedicalRecordManager { get; set; }
+        public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
 
         private MasterManager()
         {
+            this.User = new UsersVM() { UsersId = 100000, ShelterId = 100000 };
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
             DeathManager = new DeathManager();
             AnimalManager = new AnimalManager();
             AnimalUpdatesManager = new AnimalUpdatesManager();
-            scheduleManager = new ScheduleManager();
+            ScheduleManager = new ScheduleManager();
             TestManager = new TestManager();
             ImagesManager = new ImagesManager();
             TicketManager = new TicketManager();
-            procedureManager = new ProcedureManager();
-            medicalRecordManager = new MedicalRecordManager();
+            ProcedureManager = new ProcedureManager();
+            MedicalRecordManager = new MedicalRecordManager();
+            FundraisingCampaignManager = new FundraisingCampaignManager(new FundraisingCampaignAccessorFakes());
         }
     
         public static MasterManager GetMasterManager()

@@ -48,6 +48,7 @@
     <Compile Include="DeathManager.cs" />
     <Compile Include="AnimalManager.cs" />
     <Compile Include="AnimalUpdatesManager.cs" />
+    <Compile Include="FundraisingCampaignManager.cs" />
     <Compile Include="ImagesManager.cs" />
     <Compile Include="KennelManager.cs" />
     <Compile Include="MasterManager.cs" />
