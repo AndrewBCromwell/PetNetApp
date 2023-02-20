@@ -6,19 +6,8 @@ sqlcmd -S localhost -E -i PetNet_db_am.sql
 rem Add your sample data scripts to the bottom of this list
 rem Follow this example (but without rem):
 rem sqlcmd -S localhost -E -i SampleData\ASampleFeature_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
 
-sqlcmd -S localhost -E -i SampleDataScripts\AddProcedure_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\AddAnimalUpdate_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\ViewMedicalTests_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\ViewAllShelterAnimals.sql
-sqlcmd -S localhost -E -i SampleDataScripts\AnimalKenneling.sql
-sqlcmd -S localhost -E -i SampleDataScripts\MedicalImages_SD.sql
-
-sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\Tickets_SD.sql
-
-sqlcmd -S localhost -E -i SampleDataScripts\EditProcedure_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
