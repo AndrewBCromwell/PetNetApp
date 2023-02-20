@@ -1,4 +1,17 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Andrew Schneider
+/// Created: 2023/02/01
+/// 
+/// Interaction logic for EditDetailAnimalProfile.xaml
+/// </summary>
+///
+/// <remarks>
+/// Updater Name
+/// Updated: yyyy/mm/dd
+/// </remarks>
+/// 
+
+using DataObjects;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -31,10 +44,23 @@ namespace WpfPresentation.Development.Animals
         List<string> _statuses = null;
         List<string> _yesNo = new List<string> { "Yes", "No" };
         DateTime _maxBroughtInDate = DateTime.Now;
-        DateTime _minBroughtInDate = new DateTime(2000,01,01);
-        private Animal _animal = null;
+        DateTime _minBroughtInDate = DateTime.Today - TimeSpan.FromDays(3);
 
-
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/01
+        /// 
+        /// Constructor for building the EditDetailAnimalProfile page
+        /// where the user can view and edit an animal profile record
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="manager">An instance of the master manager</param>
+        /// <param name="animal">Animal clicked on AnimalListUserControl.xaml page</param>
         public EditDetailAnimalProfile(MasterManager manager, AnimalVM animal)
         {
             InitializeComponent();
@@ -50,13 +76,34 @@ namespace WpfPresentation.Development.Animals
         //    _manager = MasterManager.GetMasterManager();
         //}
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/01
+        /// </summary>
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             populateComboBoxes();
             setDetailMode();
         }
-        
-        // Helper methods
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/02
+        /// 
+        /// Helper method for setting the page for viewing (detail mode);
+        /// Changes visibility, enabled, and read only settings for text
+        /// boxes and combo boxes as needed;
+        /// Changes buttons' content property
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void setDetailMode()
         {
             btnEditSave.Content = "Edit";
@@ -88,6 +135,7 @@ namespace WpfPresentation.Development.Animals
             txtKennelName.IsReadOnly = true;
             txtKennelName.IsEnabled = true;
             txtBroughtIn.IsReadOnly = true;
+            txtBroughtIn.IsEnabled = true;
             txtAnimalStatusId.IsReadOnly = true;
             txtDescription.IsReadOnly = true;
             txtPersonality.IsReadOnly = true;
@@ -99,6 +147,21 @@ namespace WpfPresentation.Development.Animals
             txtNotes.IsReadOnly = true;
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/02
+        /// 
+        /// Helper method for setting the page to editing mode;
+        /// Changes visibility, enabled, and read only settings
+        /// for text boxes and combo boxes as needed;
+        /// Changes buttons' content property
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void setEditMode()
         {
             btnEditSave.Content = "Save";
@@ -128,7 +191,8 @@ namespace WpfPresentation.Development.Animals
             txtAnimalGender.IsReadOnly = false;
             txtKennelName.IsReadOnly = true;
             txtKennelName.IsEnabled = false;
-            txtBroughtIn.IsReadOnly = false;
+            txtBroughtIn.IsReadOnly = true;
+            txtBroughtIn.IsEnabled = false;
             txtAnimalStatusId.IsReadOnly = false;
             txtDescription.IsReadOnly = false;
             txtPersonality.IsReadOnly = false;
@@ -140,6 +204,20 @@ namespace WpfPresentation.Development.Animals
             txtNotes.IsReadOnly = false;
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/02
+        /// 
+        /// Helper method for populating values onto the text boxes
+        /// and selecting the combo boxes' selected items using the 
+        /// values stored on the animal object
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void populateControls()
         {
             _toolTip.Content = _animalVM.AnimalStatusDescription;
@@ -173,6 +251,23 @@ namespace WpfPresentation.Development.Animals
             txtNotes.Text = _animalVM.Notes;
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/02
+        /// 
+        /// Helper method for populating the combo boxes with all
+        /// the available data that can be selected when editing
+        /// the animal profile record;
+        /// The _yesNo list is used to present the user with human
+        /// readable Yes/No options that can be coverted to booleans
+        /// in the background
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void populateComboBoxes()
         {
             _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
@@ -202,6 +297,22 @@ namespace WpfPresentation.Development.Animals
                                           select yn;
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/02
+        /// 
+        /// Click event method that performs two different operations
+        /// based on the content property of the button. If "Edit"
+        /// the method setEditMode() is called. If "Save" validation
+        /// checking is performed on the editable fields and an 
+        /// attempt is made to update the animal record in the database.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnEditSave_Click(object sender, RoutedEventArgs e)
         {
             if (btnEditSave.Content.ToString() == "Edit")
@@ -220,36 +331,24 @@ namespace WpfPresentation.Development.Animals
                 else
                 {
                     AnimalVM newAnimal = new AnimalVM();
-                    DateTime broughtInDate = new DateTime();
+
                     bool goodData = true;
 
-                    // Validate date input
+                    // Validate animal name
                     if (goodData)
                     {
-                        if (DateTime.TryParse(txtBroughtIn.Text, out broughtInDate))
+                        if (txtAnimalName.Text.IsValidFirstName())
                         {
-                            if (broughtInDate > _minBroughtInDate && broughtInDate <= _maxBroughtInDate)
-                            {
-                                goodData = true;
-                                newAnimal.BroughtIn = broughtInDate;
-                            }
-                            else
-                            {
-                                goodData = false;
-                                PromptWindow.ShowPrompt("Format Error", "Date cannot be earlier than " + _minBroughtInDate.ToShortDateString() +
-                                                         " or later than " + _maxBroughtInDate.ToShortDateString() + ".", 
-                                                        ButtonMode.Ok);
-                                txtBroughtIn.Focus();
-                                txtBroughtIn.SelectAll();
-                            }
+                            goodData = true;
+                            newAnimal.AnimalName = txtAnimalName.Text;
                         }
                         else
                         {
                             goodData = false;
-                            PromptWindow.ShowPrompt("Format Error", "Date should be in the fromat\ndd/MM/yyyy",
-                                        ButtonMode.Ok);
-                            txtBroughtIn.Focus();
-                            txtBroughtIn.SelectAll();
+                            PromptWindow.ShowPrompt("Format Error", "Animal name must be in proper format.",
+                                                    ButtonMode.Ok);
+                            txtAnimalName.Focus();
+                            txtAnimalName.SelectAll();
                         }
                     }
 
@@ -278,13 +377,13 @@ namespace WpfPresentation.Development.Animals
                     // If validation has passed (goodData is still true) try to update the animal profile record
                     if (goodData)
                     {
-                        newAnimal.AnimalName = txtAnimalName.Text;
                         newAnimal.AnimalId = _animalVM.AnimalId;
                         newAnimal.AnimalShelterId = _animalVM.AnimalShelterId;
                         newAnimal.AnimalTypeId = cmbAnimalTypeId.SelectedItem.ToString();
                         newAnimal.AnimalBreedId = cmbAnimalBreedId.SelectedItem.ToString();
                         newAnimal.AnimalGender = cmbAnimalGender.SelectedItem.ToString();
                         newAnimal.KennelName = txtKennelName.Text;
+                        newAnimal.BroughtIn = _animalVM.BroughtIn;
                         newAnimal.AnimalStatusId = cmbAnimalStatusId.SelectedItem.ToString();
                         newAnimal.Description = txtDescription.Text;
                         newAnimal.Personality = txtPersonality.Text;
@@ -340,6 +439,23 @@ namespace WpfPresentation.Development.Animals
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/03
+        /// 
+        /// Click event method that performs two different operations
+        /// based on the content property of the button. If "Back" 
+        /// the user is navigated back to the page from which they
+        /// came (usually AnimalListUserControl.xaml). If "Cancel" a
+        /// popup is shown to confirm if the user actually intends to
+        /// stop editing without saving changes. 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btn_Back_Click(object sender, RoutedEventArgs e)
         {
             if(btnBack.Content.ToString() == "Back")
@@ -361,6 +477,23 @@ namespace WpfPresentation.Development.Animals
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/03
+        /// 
+        /// Click event method that takes the user to the adoption
+        /// profile of the animal they are currently viewing. If 
+        /// the user is currently editing (btnEditSave content =
+        /// "Save") a popup is shown to confirm if the user actually 
+        /// intends to stop editing and leave the page without saving
+        /// changes. 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnAdoptionProfile_Click(object sender, RoutedEventArgs e)
         {
             if (btnEditSave.Content.ToString() == "Save")
@@ -374,6 +507,22 @@ namespace WpfPresentation.Development.Animals
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/03
+        /// 
+        /// Click event method that takes the user to the kennel page.
+        /// If the user is currently editing (btnEditSave content =
+        /// "Save") a popup is shown to confirm if the user actually 
+        /// intends to stop editing and leave the page without saving
+        /// changes. 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnKennelPage_Click(object sender, RoutedEventArgs e)
         {
             if (btnEditSave.Content.ToString() == "Save")
@@ -387,6 +536,23 @@ namespace WpfPresentation.Development.Animals
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/03
+        /// 
+        /// Click event method that takes the user to the medical 
+        /// profile of the animal they are currently viewing. If
+        /// the user is currently editing (btnEditSave content =
+        /// "Save") a popup is shown to confirm if the user actually 
+        /// intends to stop editing and leave the page without saving
+        /// changes. 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnMedicalProfile_Click(object sender, RoutedEventArgs e)
         {
             if (btnEditSave.Content.ToString() == "Save")

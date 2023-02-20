@@ -237,6 +237,11 @@ namespace DataAccessLayerFakes
 
         }
 
+        public int InsertAnimal(AnimalVM animal)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Animal> SelectAllAnimals(String animalName)
         {
             return animals.Where(a => a.AnimalName == animalName).ToList();
@@ -307,9 +312,9 @@ namespace DataAccessLayerFakes
             return result;
         }
 
-        public List<Animal> SelectAllAnimals()
+        public List<Animal> SelectAllAnimals(int shelterId)
         {
-            return fakeAnimals1;
+            return fakeAnimals1.Where(animal => animal.AnimalShelterId == shelterId).ToList();
 
         }
 
@@ -317,5 +322,7 @@ namespace DataAccessLayerFakes
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }

@@ -9,6 +9,8 @@ namespace DataAccessLayerInterfaces
 {
     public interface IAnimalAccessor
     {
+        int InsertAnimal(AnimalVM animal);
+
         AnimalVM SelectAnimalByAnimalId(int animalId, int shelterId);
         List<Animal> SelectAllAnimals(String animalName);
 
@@ -19,7 +21,7 @@ namespace DataAccessLayerInterfaces
         List<string> SelectAllAnimalStatuses();
 
         int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
-        List<Animal> SelectAllAnimals();
+        List<Animal> SelectAllAnimals(int shelterId);
         List<Animal> SelectAllAnimalsNotInKennel();
         AnimalVM SelectAnimalMedicalProfileByAnimalId(int AnimalId);
     }

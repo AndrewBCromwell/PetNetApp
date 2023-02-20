@@ -24,6 +24,35 @@ namespace LogicLayer
             _animalAccessor = animalAccessor;
         }
 
+        /// <summary>
+        /// John
+        /// Created: N/A
+        /// 
+        /// Adds animal profile record to the database
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Andrew Schneider
+        /// Updated: 2023/02/18
+        /// Added shelter Id
+        /// </remarks>
+        /// <param name="animal">The animal VM object to be added</param>
+        /// <exception cref="ApplicationException">Add Fails</exception>
+        /// <returns>Boolean representing success or failure</returns>
+        public bool AddAnimal(AnimalVM animal)
+        {
+            int result = 0;
+            try
+            {
+                result = _animalAccessor.InsertAnimal(animal);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Animal record failed to be added", ex);
+            }
+            return result == 1;
+        }
+
         public List<Animal> RetrieveAllAnimals(String animalName)
         {
             List<Animal> animals = null;
@@ -38,6 +67,22 @@ namespace LogicLayer
             return animals;
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/02
+        /// 
+        /// Retrieves an animal VM by animal Id and shelter Id
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="animalId">The animal Id of the animal VM to be returned</param>
+        /// <param name="shelterId">The shelter Id of the animal VM to be returned</param>
+        /// <exception cref="ApplicationException">Retrieval Fails</exception>
+        /// <returns>AnimalVM</returns>
         public AnimalVM RetrieveAnimalByAnimalId(int animalId, int shelterId)
         {
             /*
@@ -52,11 +97,26 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Data not found.", ex);
+                throw new ApplicationException("Animal record not found.", ex);
             }
             return animalVM;
             }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/08
+        /// 
+        /// Retrieves all animal breeds to populate add/edit animal profile combo boxes
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param>No parameters</param>
+        /// <exception cref="ApplicationException">Retrieval Fails</exception>
+        /// <returns>A  list of all animal breeds</returns>
         public List<string> RetrieveAllAnimalBreeds()
         {
             //var breeds = new List<string>();
@@ -68,12 +128,27 @@ namespace LogicLayer
             {
                 return _animalAccessor.SelectAllAnimalBreeds();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new ApplicationException("There was an error retrieving breeds.", ex);
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/08
+        /// 
+        /// Retrieves all animal genders to populate add/edit animal profile combo boxes
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param>No parameters</param>
+        /// <exception cref="ApplicationException">Retrieval Fails</exception>
+        /// <returns>A  list of all animal genders</returns>
         public List<string> RetrieveAllAnimalGenders()
         {
             //var genders = new List<string>();
@@ -85,29 +160,27 @@ namespace LogicLayer
             {
                 return _animalAccessor.SelectAllAnimalGenders();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new ApplicationException("There was an error retrieving genders.", ex);
             }
         }
 
-        public List<string> RetrieveAllAnimalTypes()
-        {
-            //var types = new List<string>();
-            //types.Add("Test type 1");
-            //types.Add("Test type 2");
-            //return types;
-
-            try
-            {
-                return _animalAccessor.SelectAllAnimalTypes();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/08
+        /// 
+        /// Retrieves all animal statuses to populate add/edit animal profile combo boxes
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param>No parameters</param>
+        /// <exception cref="ApplicationException">Retrieval Fails</exception>
+        /// <returns>A  list of all animal statuses</returns>
         public List<string> RetrieveAllAnimalStatuses()
         {
             //var statuses = new List<string>();
@@ -119,12 +192,61 @@ namespace LogicLayer
             {
                 return _animalAccessor.SelectAllAnimalStatuses();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new ApplicationException("There was an error retrieving statuses.", ex);
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/08
+        /// 
+        /// Retrieves all animal types to populate add/edit animal profile combo boxes
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param>No parameters</param>
+        /// <exception cref="ApplicationException">Retrieval Fails</exception>
+        /// <returns>A  list of all animal types</returns>
+        public List<string> RetrieveAllAnimalTypes()
+        {
+            //var types = new List<string>();
+            //types.Add("Test type 1");
+            //types.Add("Test type 2");
+            //return types;
+
+            try
+            {
+                return _animalAccessor.SelectAllAnimalTypes();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("There was an error retrieving animal types.", ex);
+            }
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/09
+        /// 
+        /// Edits an animal profile record using an "old" animal VM
+        /// object and a "new" edited animal VM object
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="oldAnimal">AnimalVM object holding old data</param>
+        /// <param name="newAnimal">AnimalVM object holding new edited data</param>
+        /// <exception cref="ApplicationException">Update Fails</exception>
+        /// <returns>Boolean representing success or failure</returns>
         public bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
         {
             try
@@ -133,17 +255,17 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new ApplicationException("An error occurred while updating record.", ex);
             }
         }
 
-        public List<Animal> RetrieveAllAnimals()
+        public List<Animal> RetrieveAllAnimals(int shelterId)
         {
             List<Animal> animals;
 
             try
             {
-                animals = _animalAccessor.SelectAllAnimals();
+                animals = _animalAccessor.SelectAllAnimals(shelterId);
             }
             catch (Exception up)
             {

@@ -9,6 +9,7 @@ namespace LogicLayerInterfaces
 {
     public interface IAnimalManager
     {
+        bool AddAnimal(AnimalVM animal);
         List<Animal> RetrieveAllAnimals(String animalName);
         AnimalVM RetrieveAnimalByAnimalId(int animalId, int shelterId);
 
@@ -19,7 +20,7 @@ namespace LogicLayerInterfaces
         List<string> RetrieveAllAnimalStatuses();
 
         bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
-        List<Animal> RetrieveAllAnimals();
+        List<Animal> RetrieveAllAnimals(int shelterId);
         AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId);
     }
 }

@@ -298,7 +298,7 @@ INSERT INTO [dbo].[AnimalType]
 	VALUES
 	('Dog'),
 	('Cat'),
-	('Snake')	
+	('Snake')
 GO
 /* AnimalStatus */
 /* Created by: Matthew Meppelink */
@@ -355,8 +355,13 @@ VALUES
 ('Lab'), 
 ('Persian'),
 ('Domestic Shorthair'),
+('Calico'),
 ('Parakeet'),
-('German Shepard')
+('Sparrow'),
+('German Shepard'),
+('Python'),
+('Rattle Snake'),
+('Boa Constrictor')
 GO
 
 
