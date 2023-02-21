@@ -1,4 +1,16 @@
-﻿using System;
+﻿/// <summary>
+/// Matthew Meppelink
+/// Created: 2023/02/05
+/// 
+/// Contains code to dynamically create all of the necessary elements
+/// for a view all animals screen.
+/// </summary>
+///
+/// <remarks>
+/// Updater Name
+/// Updated: yyyy/mm/dd
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,9 +73,23 @@ namespace WpfPresentation.Animals.Medical
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "\n\n" + ex.InnerException.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message + "\n" + ex.InnerException.Message, ButtonMode.Ok);
             }
         }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// dynamically creates the ui elements for a passed in animal
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: 2023/02/16 
+        /// removed reduntant code
+        /// </remarks>
+        /// <param name="animal"></param>
         private void createAnimalBox(Animal animal)
         {
             grid = new Grid();
@@ -101,17 +127,28 @@ namespace WpfPresentation.Animals.Medical
 
             button.Click += (s, e) =>
             {
-                int animalId = animal.AnimalId;
-
-
-                // add window to be opened when clicking here, send the AnimalId and animalname or both.
                 NavigationService.Navigate(new MedicalNavigationPage(_manager, animal));
-
-                // MessageBox.Show(animalId.ToString()); // for testing purposes
             };
 
             wrpMedicalAnimalList.Children.Add(grid);
         }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// refreshes the list of animals, passing in a string, animalName,
+        /// to be passed to the logic layer, and eventually data access layer
+        /// to retrieve the necessary data
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        /// <param name="animalName"></param>
         private void refreshListOfAnimals(String animalName)
         {
             try

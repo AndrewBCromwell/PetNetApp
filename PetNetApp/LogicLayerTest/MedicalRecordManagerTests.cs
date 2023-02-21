@@ -16,6 +16,10 @@ namespace LogicLayerTest
             _medicalRecordManager = new MedicalRecordManager(new MedicalRecordAccessorFakes());
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/08
+        /// </summary>
         [TestMethod]
         public void TestSelectLastMedicalRecordIdByAnimalIdReturnsCorrectNumber()
         {
@@ -28,6 +32,10 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedResult, acctualResult);
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/08
+        /// </summary>
         [TestMethod]
         public void TestSelectLastMedicalRecordIdByAnimalIdReturnsZeroIfNoMedicalRecordForAnimal()
         {
@@ -51,6 +59,18 @@ namespace LogicLayerTest
             actualCount = medicalRecords.Count;
 
             Assert.AreEqual(expectedCount, actualCount);
+        }
+
+        [TestMethod]
+        public void UpdateTreatmentByMedicalRecordId()
+        {
+            int animalId = 100000;
+            int expectedResult = 1;
+
+            int actualResult = _medicalRecordManager.UpdateTreatmentByMedicalRecordId(animalId, "New Diagnosis Name", "New Diagnosis Notes");
+
+
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }

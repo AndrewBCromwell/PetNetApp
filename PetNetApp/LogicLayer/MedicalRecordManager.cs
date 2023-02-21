@@ -52,5 +52,19 @@ namespace LogicLayer
             }
             return medicalRecords;
         }
+
+        public int UpdateTreatmentByMedicalRecordId(int medicalRecordId, string diagnosis, string medicalNotes)
+        {
+            int result = 0;
+            try
+            {
+                result = _medicalRecordAccessor.UpdateMedicalTreatmentByMedicalrecordId(medicalRecordId, diagnosis, medicalNotes);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("There was an error updating data", ex);
+            }
+            return result;
+        }
     }
 }

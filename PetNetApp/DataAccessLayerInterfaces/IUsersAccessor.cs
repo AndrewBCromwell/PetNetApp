@@ -20,5 +20,9 @@ namespace DataAccessLayerInterfaces
         // ACCOUNT SETTINGS (Mads)
         List<string> SelectAllPronouns();
         List<string> SelectAllGenders();
+
+        int CreateNewUser(Users user, string PasswordHash);
+
+        int DeactivateUserAccount(int UserId);
     }
 }

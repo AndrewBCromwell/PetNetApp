@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 using PetNetApp;
+using WpfPresentation.Development.Misc;
 
 namespace WpfPresentation.Misc
 {
@@ -174,7 +175,12 @@ namespace WpfPresentation.Misc
             return roles;
         }
 
-    
+        private void btnSignUp_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(SignUp.GetSignUpPage(_manager));
+        }
+
+
     }
 
 }

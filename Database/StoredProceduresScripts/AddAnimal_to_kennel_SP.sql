@@ -28,18 +28,21 @@ AS
 GO
 
 
-
 /* Select All Animals */
 /* William Rients */
 print '' print '*** creating sp_select_all_animals_without_kennel'
 GO
 CREATE PROCEDURE [dbo].[sp_select_all_animals_without_kennel]
+(
+	@ShelterId	[int]
+)
 AS
 	BEGIN
 		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalTypeId], [AnimalBreedId], [Personality], [RecievedDate], [Description],
-				[MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalStatusId]
+				[MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalStatusId], [AnimalShelterId]
 		FROM	[Animal] LEFT JOIN [AnimalKenneling] 
 				ON [Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
 		WHERE 	[AnimalKenneling].[AnimalId] IS NULL
+		AND 	[AnimalShelterId] = @ShelterId
 	END
 GO

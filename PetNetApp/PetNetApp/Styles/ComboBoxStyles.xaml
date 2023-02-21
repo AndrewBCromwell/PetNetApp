@@ -2,45 +2,46 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
 
+    <SolidColorBrush x:Key="ComboBox.Static.Background" Color="{StaticResource ControlBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Foreground" Color="{StaticResource ControlForegroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Border" Color="{StaticResource ControlBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="{StaticResource ControlBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="{StaticResource ControlGlyphColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="{StaticResource ControlBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="{StaticResource ControlMouseOverGlyphColor}"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="{StaticResource ControlBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="{StaticResource ControlMouseOverBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="{StaticResource ControlMouseOverBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="{StaticResource ControlMouseOverBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" Color="{StaticResource ControlMouseOverBackgroundColor}" />
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Border" Color="{StaticResource ControlMouseOverBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="{StaticResource ControlPressedGlyphColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Background" Color="{StaticResource ControlPressedBackgroundColor}" />
+    <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="{StaticResource ControlPressedBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Background" Color="{StaticResource ControlPressedBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Border" Color="{StaticResource ControlPressedBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Background" Color="{StaticResource ControlPressedBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Border" Color="{StaticResource ControlPressedBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Glyph" Color="{StaticResource ControlDisabledGlyphColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="{StaticResource ControlDisabledBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Border" Color="{StaticResource ControlDisabledBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Background" Color="{StaticResource ControlDisabledBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Border" Color="{StaticResource ControlDisabledBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
+    <CornerRadius x:Key="ComboBox.Static.BorderRadius">10</CornerRadius>
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle StrokeDashArray="1 2" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" Margin="2"/>
+                    <Rectangle StrokeDashArray="1 2" StrokeThickness="1" Stroke="{StaticResource ComboBox.Static.Border}" SnapsToDevicePixels="true" Margin="2" RadiusX="10" RadiusY="10"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="ComboBox.Static.Background" Color="{StaticResource ColorLightBackground}"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#D6CDA4"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#1C6758"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="{StaticResource ColorLightBackground}"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#1C6758"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#1C6758"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" Color="{StaticResource ColorLightBackground}" />
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Border" Color="#1C6758"/>
-    <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="#1C6758"/>
-    <SolidColorBrush x:Key="ComboBox.Pressed.Background" Color="{StaticResource ColorLightBackground}" />
-    <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="#1C6758"/>
-    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Border" Color="#1C6758"/>
-    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Background" Color="{StaticResource ColorLightBackground}"/>
-    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Border" Color="#1C6758"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Glyph" Color="#FFBFBFBF"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="#FFF0F0F0"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Border" Color="#FFD9D9D9"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Border" Color="#FFBFBFBF"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
-    <CornerRadius x:Key="ComboBox.Static.BorderRadius">10</CornerRadius>
     <CornerRadius x:Key="ComboBox.Static.IsDropDownOpen.BorderRadius">10 10 0 0</CornerRadius>
-    <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#1C6758"/>
     <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
@@ -150,7 +151,7 @@
                         <ScrollViewer x:Name="DropDownScrollViewer">
                             <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                    <Rectangle x:Name="opaqueRect" Fill="#EEF2E6" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
+                                    <Rectangle x:Name="opaqueRect" Fill="{StaticResource ComboBox.Static.Background}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
                                 </Canvas>
                                 <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </Grid>
@@ -182,7 +183,7 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    <SolidColorBrush x:Key="TextBox.Static.Background" Color="{StaticResource ColorLightBackground}"/>
+    <SolidColorBrush x:Key="TextBox.Static.Background" Color="{StaticResource ControlBackgroundColor}"/>
     <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="AllowDrop" Value="true"/>
@@ -255,7 +256,7 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}"/>
-        <Setter Property="Foreground" Value="#1C6758"/>
+        <Setter Property="Foreground" Value="{StaticResource ComboBox.Static.Foreground}"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -277,17 +278,21 @@
 
 
     <!-- Combobox Item Style -->
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Background" Color="{StaticResource ColorLightGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Background" Color="#3D8361"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Background" Color="{StaticResource ColorLightGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Background" Color="{StaticResource ColorGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewFocus.Border" Color="{StaticResource ColorDarkGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Background" Color="{StaticResource ColorLightGreen}"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="{StaticResource ColorDarkGreen}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Background" Color="{StaticResource ControlMouseOverBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Border" Color="{StaticResource ControlMouseOverBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Background" Color="{StaticResource ControlMultiSelectionSelectedBackgroundColor }"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Foreground" Color="{StaticResource ControlMultiSelectionSelectedForegroundColor }"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Border" Color="{StaticResource ControlMultiSelectionSelectedBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Background" Color="{StaticResource ControlMouseOverBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Border" Color="{StaticResource ControlMultiSelectionSelectedBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Foreground" Color="{StaticResource ControlMultiSelectionSelectedForegroundColor}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Background" Color="{StaticResource ControlMultiSelectionSelectedBackgroundColor }"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Border" Color="{StaticResource ControlMultiSelectionSelectedBorderColor }"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Foreground" Color="{StaticResource ControlMultiSelectionSelectedForegroundColor }"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewFocus.Border" Color="{StaticResource ControlSelectedBorderColor  }"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Background" Color="{StaticResource ControlMouseOverBackgroundColor}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="{StaticResource ControlMouseOverBorderColor}"/>
+    <SolidColorBrush x:Key="ComboBoxItem.Disabled.Foreground" Color="{StaticResource ControlDisabledForegroundColor}"/>
     <Style TargetType="{x:Type ComboBoxItem}" x:Key="rsrcComboBoxItem">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="4,1"/>
@@ -305,7 +310,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{StaticResource ComboBoxItem.Disabled.Foreground}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -324,7 +329,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Background}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Border}"/>
-                            <Setter Property="Foreground" Value="#EEF2E6"/>
+                            <Setter Property="Foreground" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Foreground}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -333,7 +338,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Background}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Border}"/>
-                            <Setter Property="Foreground" Value="#EEF2E6"/>
+                            <Setter Property="Foreground" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Foreground}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -343,7 +348,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedNoFocus.Background}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedNoFocus.Border}"/>
-                            <Setter Property="Foreground" Value="#EEF2E6"/>
+                            <Setter Property="Foreground" Value="{StaticResource ComboBoxItem.ItemsviewSelectedNoFocus.Foreground}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>

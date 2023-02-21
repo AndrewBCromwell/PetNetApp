@@ -176,9 +176,9 @@
                     <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Events" x:Name="btnEvents" Click="btnEvents_Click"/>
                     <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Community" x:Name="btnCommunity" Click="btnCommunity_Click"/>
                     <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Donate" x:Name="btnDonate" Click="btnDonate_Click"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Management" x:Name="btnManagement" Click="btnManagement_Click"/>
-                    <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Donations" x:Name="btnDonations" Click="btnDonations_Click"/>
-                    <Rectangle Width="25"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Management" x:Name="btnManagement" Click="btnManagement_Click"/>
+                <Button Margin="1 5 1 0" Padding="10 5" MinWidth="125" FontSize="16" Style="{StaticResource ResourceKey=rsrcUnselectedTabButton}" Content="Fundraising" x:Name="btnFundraising" Click="btnFundraising_Click"/>
+                <Rectangle Width="25"/>
                 </StackPanel>
         </ScrollViewer>
         <!-- Tab Navigation Buttons -->

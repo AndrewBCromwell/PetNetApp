@@ -27,6 +27,6 @@ namespace DataObjects
         public TestVM Test { get; set; }
         public VaccinationVM Vaccination { get; set; }
         public PrescriptionVM Prescription { get; set; }
-        public string ImageFileName { get; set; }
+        public List<Images> AnimalImages { get; set; }
     }
 }
