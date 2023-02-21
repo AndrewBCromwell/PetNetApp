@@ -44,6 +44,7 @@
     <Compile Include="IDeathManager.cs" />
     <Compile Include="IAnimalManager.cs" />
     <Compile Include="IAnimalUpdatesManager.cs" />
+    <Compile Include="IFundraisingCampaignManager.cs" />
     <Compile Include="IImagesManager.cs" />
     <Compile Include="IKennelManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
