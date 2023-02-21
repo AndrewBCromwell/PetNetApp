@@ -23,11 +23,15 @@ namespace WpfPresentation.Development.Fundraising
     /// </summary>
     public partial class ViewCampaignsPage : Page
     {
-        private static Regex _isDigit = new Regex(@"^\d+$");
-        // setup
         private static ViewCampaignsPage _existingViewCampaignsPage = null;
+
+        // setup
         private string _currentSearchText = "";
         private MasterManager _masterManager = MasterManager.GetMasterManager();
+        private bool _needsReloaded = true;
+        private List<FundraisingCampaign> _fundraisingCampaigns = null;
+        private List<FundraisingCampaign> _filteredFundraisingCampaigns = null;
+        private static Regex _isDigit = new Regex(@"^\d+$");
 
         // page navigation
         private int _currentPage = 1;
@@ -35,11 +39,6 @@ namespace WpfPresentation.Development.Fundraising
         private int _itemsPerPage = 10;
 
 
-
-
-        private bool _needsReloaded = true;
-        private List<FundraisingCampaign> _fundraisingCampaigns = null;
-        private List<FundraisingCampaign> _filteredFundraisingCampaigns = null;
         private ViewCampaignsPage()
         {
             InitializeComponent();
@@ -47,6 +46,12 @@ namespace WpfPresentation.Development.Fundraising
             cbSort.SelectionChanged += comboChanged;
         }
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// Gets the existing CampaignsPage or new if it doesn't exist. Refreshes data but maintains page
+        /// </summary>
         public static ViewCampaignsPage GetViewCampaignsPage()
         {
             if (_existingViewCampaignsPage == null)
@@ -54,7 +59,6 @@ namespace WpfPresentation.Development.Fundraising
                 _existingViewCampaignsPage = new ViewCampaignsPage();
             }
             _existingViewCampaignsPage.LoadFundraisingCampaignData();
-            _existingViewCampaignsPage.UpdateUI();
 
             _existingViewCampaignsPage._needsReloaded = false;
             return _existingViewCampaignsPage;
@@ -70,12 +74,13 @@ namespace WpfPresentation.Development.Fundraising
             try
             {
                 _fundraisingCampaigns = _masterManager.FundraisingCampaignManager.RetrieveAllFundraisingCampaignsByShelterId(_masterManager.User.ShelterId);
-                ApplyFundraisingCampaignFilterAndSort(false);
             }
             catch (ApplicationException ex)
             {
+                _fundraisingCampaigns = new List<FundraisingCampaign>();
                 PromptWindow.ShowPrompt("Error", ex.Message);
             }
+            ApplyFundraisingCampaignFilterAndSort(false);
         }
         private void ApplyFundraisingCampaignFilterAndSort(bool resetPage = true)
         {
@@ -86,7 +91,7 @@ namespace WpfPresentation.Development.Fundraising
                     sortMethod = new Func<FundraisingCampaign, string>(fc => fc.Title);
                     break;
                 case "start date":
-                    sortMethod = new Func<FundraisingCampaign, string>(fc => fc.StartDate.ToString("yyyy MM dd"));
+                    sortMethod = new Func<FundraisingCampaign, string>(fc => fc.StartDate != null ? fc.StartDate.Value.ToString("yyyy MM dd") : "");
                     break;
                 default:
                     sortMethod = new Func<FundraisingCampaign, string>(fc => fc.FundraisingCampaignId.ToString());
@@ -106,11 +111,17 @@ namespace WpfPresentation.Development.Fundraising
                     filterMethod = new Func<FundraisingCampaign, bool>(fc => !fc.Complete);
                     break;
             }
-            
-            _filteredFundraisingCampaigns = _fundraisingCampaigns.Where(filterMethod).Where(fundraisingCampaign => fundraisingCampaign.Title?.IndexOf(_currentSearchText,StringComparison.OrdinalIgnoreCase) >= 0 || fundraisingCampaign.Description?.IndexOf(_currentSearchText,StringComparison.OrdinalIgnoreCase) >= 0).OrderBy(sortMethod).ToList();
+            _filteredFundraisingCampaigns = _fundraisingCampaigns.Where(filterMethod).Where(SearchForTextInFundraisingCampaign).OrderBy(sortMethod).ToList();
             UpdateNavigationInformation();
             _currentPage = resetPage ? 1 : _currentPage > _totalPages ? _totalPages : _currentPage;
             UpdateUI();
+        }
+        private bool SearchForTextInFundraisingCampaign(FundraisingCampaign fundraisingCampaign)
+        {
+                return fundraisingCampaign.Title?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       fundraisingCampaign.Description?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                       (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false) ||
+                       (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false);
         }
         private void UpdateNavigationInformation()
         {
@@ -190,44 +201,39 @@ namespace WpfPresentation.Development.Fundraising
             int i = 0;
             foreach (FundraisingCampaign fundraisingCampaign in _filteredFundraisingCampaigns.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
             {
-                ViewCampaignsFundraisingCampaignUserControl item = new ViewCampaignsFundraisingCampaignUserControl(fundraisingCampaign);
-                if (i % 2 == 0)
-                {
-                    item.container.Background = new SolidColorBrush(Color.FromRgb(61, 131, 97));
-                    item.Foreground = new SolidColorBrush(Color.FromRgb(238, 242, 230));
-                }
-                else
-                {
-                    item.container.Background = new SolidColorBrush(Color.FromRgb(214, 205, 164));
-                    item.Foreground = new SolidColorBrush(Color.FromRgb(28, 103, 88));
-                }
+                ViewCampaignsFundraisingCampaignUserControl item = new ViewCampaignsFundraisingCampaignUserControl(fundraisingCampaign, i % 2 == 0);
+                //if (i % 2 == 0)
+                //{
+                //    item.BackgroundColor = new SolidColorBrush(Color.FromRgb(61, 131, 97));
+                //    item.Foreground = new SolidColorBrush(Color.FromRgb(238, 242, 230));
+                //}
+                //else
+                //{
+                //    item.BackgroundColor = new SolidColorBrush(Color.FromRgb(214, 205, 164));
+                //    item.Foreground = new SolidColorBrush(Color.FromRgb(28, 103, 88));
+                //}
                 i++;
                 stackCampaigns.Children.Add(item);
             }
         }
-
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage++;
             UpdateUI();
         }
-
         private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage--;
             UpdateUI();
         }
-
         private void btnAddCampaign_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
-
         private void btnNavigatePage_Click(object sender, RoutedEventArgs e)
         {
             NavigateToTypedPage();
         }
-
         private void NavigateToTypedPage()
         {
             if (IsValidPage(tbPage.Text))
@@ -240,22 +246,18 @@ namespace WpfPresentation.Development.Fundraising
                 tbPage.Text = _currentPage.ToString();
             }
         }
-
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             TrySearch();
         }
-
         private void comboChanged(object sender, RoutedEventArgs e)
         {
             ApplyFundraisingCampaignFilterAndSort();
         }
-
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             _needsReloaded = true;
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_needsReloaded)
@@ -264,13 +266,11 @@ namespace WpfPresentation.Development.Fundraising
                 _needsReloaded = false;
             }
         }
-
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage = 1;
             UpdateUI();
         }
-
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage = _totalPages;
@@ -288,7 +288,6 @@ namespace WpfPresentation.Development.Fundraising
             }
             return false;
         }
-
         private void tbPage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -296,7 +295,6 @@ namespace WpfPresentation.Development.Fundraising
                 NavigateToTypedPage();
             }
         }
-
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)

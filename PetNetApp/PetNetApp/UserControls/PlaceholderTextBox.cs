@@ -34,8 +34,7 @@ namespace WpfPresentation.UserControls
             get { return (string)GetValue(DefaultTextProperty); }
             set { SetValue(DefaultTextProperty, value); }
         }
-        public static readonly DependencyProperty DefaultTextProperty =
-            DependencyProperty.Register("DefaultText", typeof(string), typeof(PlaceholderTextBox), new PropertyMetadata(string.Empty));
+        public static readonly DependencyProperty DefaultTextProperty = DependencyProperty.Register("DefaultText", typeof(string), typeof(PlaceholderTextBox), new PropertyMetadata(string.Empty));
 
         private static readonly DependencyPropertyKey RemoveDefaultTextKey = DependencyProperty.RegisterReadOnly("RemoveDefaultText", typeof(bool), typeof(PlaceholderTextBox), new FrameworkPropertyMetadata(false));
 
@@ -45,7 +44,5 @@ namespace WpfPresentation.UserControls
         {
             get { return (bool)GetValue(RemoveDefaultTextProperty); }
         }
-
-
     }
 }

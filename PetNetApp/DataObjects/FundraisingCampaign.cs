@@ -10,8 +10,8 @@ namespace DataObjects
     {
         public int FundraisingCampaignId { get; set; }
         public string Title { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public string Description { get; set; }
         public bool Complete { get; set; }
         public int UsersId { get; set; }

@@ -26,13 +26,20 @@ namespace WpfPresentation.Development.Fundraising
 
         private MasterManager _manager = null;
         private Button[] _fundraisingPageButtons;
-        public FundraisingPage(MasterManager manager)
+        private FundraisingPage(MasterManager manager)
         {
             InitializeComponent();
             _manager = manager;
-            _fundraisingPageButtons = new Button[] { btnCampaigns };
+            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations };
         }
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// Returns existing FundraisingPage or new if none exists
+        /// </summary>
+        /// <param name="manager">The existing instance of the master manager that the program is using</param>
         public static FundraisingPage GetFundraisingPage(MasterManager manager)
         {
             if (_existingFundraisingPage == null)
@@ -108,7 +115,6 @@ namespace WpfPresentation.Development.Fundraising
         private void btnCampaigns_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
             frameFundraising.Navigate(ViewCampaignsPage.GetViewCampaignsPage());
         }
 

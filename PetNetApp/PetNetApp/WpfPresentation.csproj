@@ -695,5 +695,9 @@
   <ItemGroup>
     <Resource Include="Images\PlusIcon_light.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\menudark.png" />
+    <Resource Include="Development\Images\menulight.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

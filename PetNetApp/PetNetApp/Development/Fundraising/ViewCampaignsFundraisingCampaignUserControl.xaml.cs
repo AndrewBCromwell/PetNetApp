@@ -21,11 +21,22 @@ namespace WpfPresentation.Development.Fundraising
     /// </summary>
     public partial class ViewCampaignsFundraisingCampaignUserControl : UserControl
     {
+        public static double TitleSectionWidth { get; set; } = 200;
+        public static double StartDateSectionWidth { get; set; } = 200;
         public FundraisingCampaign FundraisingCampaign { get; set; }
-        public SolidColorBrush BackgroundColor { get; set; }
-        public ViewCampaignsFundraisingCampaignUserControl(FundraisingCampaign fundraisingCampaign)
+        public bool UseAlternateColors { get; set; }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// </summary>
+        /// <param name="fundraisingCampaign">The campaign associated with this control</param>
+        /// <param name="useAlternateColors">Whether or not to use the alternate color pattern</param>
+        public ViewCampaignsFundraisingCampaignUserControl(FundraisingCampaign fundraisingCampaign, bool useAlternateColors)
         {
             FundraisingCampaign = fundraisingCampaign;
+            UseAlternateColors = useAlternateColors;
             InitializeComponent();
         }
 

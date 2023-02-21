@@ -30,7 +30,6 @@ namespace LogicLayer
 
         private MasterManager()
         {
-            this.User = new UsersVM() { UsersId = 100000, ShelterId = 100000 };
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
             DeathManager = new DeathManager();
