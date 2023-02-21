@@ -383,9 +383,14 @@ INSERT INTO [dbo].[Animal]
 		(100000, "Franny", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-15", "Microchip111111", "Very Cute"), 
 		(100000, "Spots", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-01", "Microchip111112", "Lots of spots"), 
 		(100000, "Ruffer", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111113", "Barks a lot"),
-		(100001, "Buddy", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise"),
-        (100001, "Buddy Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111115", "A cat in disguise"),
-        (100000, "Ruffer Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111116", "Barks a lot")
+		(100000, "Buddy", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise"),
+        (100000, "Buddy Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111115", "A cat in disguise"),
+        (100000, "Ruffer Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111116", "Barks a lot"),
+		(100000, "Penny", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111117", "A good dog"),
+        (100000, "Chester", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111118", "A good dog"),
+        (100000, "Ghost", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111119", "Doesnt bark a lot"),
+		(100000, "Alexa", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111120", "A good dog"),
+        (100000, "Anna", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111121", "Doesnt bark a lot")
 GO
 
 print '' print '*** Creating Post sample data'
@@ -1045,8 +1050,7 @@ INSERT INTO [dbo].[AnimalKenneling]
 	VALUES
 		(100000, 100000),
 		(100001, 100001),
-		(100008, 100002),
-		(100009, 100003)
+		(100008, 100002)
 GO
 
 print '' print '*** creating Inspection sample data'
