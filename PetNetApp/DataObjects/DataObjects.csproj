@@ -45,6 +45,8 @@
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalUpdates.cs" />
     <Compile Include="Death.cs" />
+    <Compile Include="FundraisingCampaign.cs" />
+    <Compile Include="Images.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Kennel.cs" />
     <Compile Include="Procedure.cs" />
@@ -54,9 +56,11 @@
     <Compile Include="Role.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="Vaccination.cs" />
+    <Compile Include="ValidationHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

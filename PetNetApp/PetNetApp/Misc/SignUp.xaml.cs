@@ -56,7 +56,7 @@ namespace WpfPresentation.Misc
 
             if (email == "")
             {
-                MessageBox.Show("Please enter your email.");
+                PromptWindow.ShowPrompt("Invalid Email","Please enter your email.");
                 txtEmail.Focus();
                 txtEmail.SelectAll();
                 return;
@@ -64,7 +64,7 @@ namespace WpfPresentation.Misc
 
             if (givenName == "" || givenName == null || givenName.Length >= 50)
                 {
-                MessageBox.Show("Please enter a valid first Name.");
+                PromptWindow.ShowPrompt("Invalid Given Name","Please enter a valid first Name.");
                 txtGivenName.Focus();
                 txtGivenName.SelectAll();
                 return; 
@@ -72,7 +72,7 @@ namespace WpfPresentation.Misc
 
             if (familyName == "" || familyName == null || givenName.Length >= 50)
             {
-                MessageBox.Show("Please enter a valid last name.");
+                PromptWindow.ShowPrompt("Invalid Family Name","Please enter a valid last name.");
                 txtFamilyName.Focus();
                 txtFamilyName.SelectAll();
                 return;
@@ -80,7 +80,7 @@ namespace WpfPresentation.Misc
 
             if (phoneNumber.Length != 11)
             {
-                MessageBox.Show("Please enter a valid phone number with area code.");
+                PromptWindow.ShowPrompt("Invalid Phone Number","Please enter a valid phone number with area code.");
                 txtPhone.Focus();
                 txtPhone.SelectAll();
                 return; 
@@ -88,7 +88,7 @@ namespace WpfPresentation.Misc
 
             if (zipCode.Length > 11)
             {
-                MessageBox.Show("Please enter a valid zip code.");
+                PromptWindow.ShowPrompt("Invalid Zipcode","Please enter a valid zip code.");
                 txtZipCode.Focus();
                 txtZipCode.SelectAll();
                 return; 
@@ -96,7 +96,7 @@ namespace WpfPresentation.Misc
 
             if (password == "" || password.Length < 8)
             {
-                MessageBox.Show("Please enter a password with at least 8 characters.");
+                PromptWindow.ShowPrompt("Invalid Password","Please enter a password with at least 8 characters.");
                 txtPassword.Focus();
                 txtPassword.SelectAll();
                 return; 
@@ -104,7 +104,7 @@ namespace WpfPresentation.Misc
 
             if (password != confirmPassword)
             {
-                MessageBox.Show("Please match passwords.");
+                PromptWindow.ShowPrompt("Invalid Password","Please match passwords.");
                 txtPassword.Clear();
                 txtPasswordConfirm.Clear();
                 txtPassword.Focus(); 
@@ -113,14 +113,14 @@ namespace WpfPresentation.Misc
 
             if (genderId == "")
             {
-                MessageBox.Show("Please enter your gender");
+                PromptWindow.ShowPrompt("Invalid Gender","Please enter your gender");
                 genderSelection.Focus();
                 return; 
             }
 
             if (pronounId == "")
             {
-                MessageBox.Show("Please enter your preferred pronouns.");
+                PromptWindow.ShowPrompt("Invalid Pronouns","Please enter your preferred pronouns.");
                 pronounSelection.Focus();
                 return; 
             }
@@ -141,14 +141,14 @@ namespace WpfPresentation.Misc
             {
                 if(manager.UsersManager.AddUser(_user, password))
                 {
-                    MessageBox.Show("Account has been created! Please log in using your new credentials.");
+                    PromptWindow.ShowPrompt("Success","Account has been created! Please log in using your new credentials.");
                     NavigationService.Navigate(new LogInPage());
                    
                 }
             } 
             catch (Exception)
             {
-                MessageBox.Show("Uh oh! Something bad happened. Let's try that again.");
+                PromptWindow.ShowPrompt("Erro","Uh oh! Something bad happened. Let's try that again.");
                 txtPassword.Clear();
                 txtPasswordConfirm.Clear();
                 txtEmail.Clear();
@@ -163,10 +163,10 @@ namespace WpfPresentation.Misc
         }
         private void btnSignUpCancel_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Are you sure? You will lose your progress.", "Really Cancel?",
-                MessageBoxButton.YesNo);
+            var result = PromptWindow.ShowPrompt("Really Cancel?", "Are you sure? You will lose your progress.",
+                ButtonMode.YesNo);
 
-            if (result == MessageBoxResult.Yes)
+            if (result == PromptSelection.Yes)
             {
                 txtPassword.Clear();
                 txtPasswordConfirm.Clear();

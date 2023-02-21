@@ -99,7 +99,7 @@ namespace WpfPresentation.Development.Management
                 // run through the manager to retrieve people scheduled for the day
                 try
                 {
-                    datScheduledPerson.ItemsSource = _masterManager.scheduleManager.RetrieveScheduleByDate(selectedDate);
+                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByDate(selectedDate);
                 }
                 catch (Exception ex)
                 {

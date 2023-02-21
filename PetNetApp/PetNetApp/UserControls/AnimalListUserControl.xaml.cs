@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DataObjects;
+using LogicLayer;
+using PetNetApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,17 +23,21 @@ namespace WpfPresentation.UserControls
     /// </summary>
     public partial class AnimalListUserControl : UserControl
     {
-        public AnimalListUserControl()
+        private AnimalVM _animal = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
+        
+        public AnimalListUserControl(Animal animal)
         {
             InitializeComponent();
+            _animal =_manager.AnimalManager.RetrieveAnimalByAnimalId(animal.AnimalId);
         }
 
         private void btnViewAnimalProfile_Click(object sender, RoutedEventArgs e)
         {
-            // placeholder click for View Animal Profile, delete when ready
-            
-            PromptWindow.ShowPrompt("Animal Profile", "Animal Profile Goes Here");
-            
+
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_manager, _animal));
+
         }
     }
 }

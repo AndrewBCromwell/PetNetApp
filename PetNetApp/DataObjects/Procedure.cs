@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <summary>
+/// Andrew Cromwell
+/// Created: 2023/02/08
+/// 
+/// Class for the creation of Procedure Objects with set data fields
+/// </summary>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -225,7 +225,7 @@ namespace DataAccessLayer
             return result;
         }
 
-        public List<Animal> SelectAllAnimalsForKennel()
+        public List<Animal> SelectAllAnimalsForKennel(int ShelterId)
         {
             List<Animal> _animalList = new List<Animal>();
 
@@ -234,7 +234,7 @@ namespace DataAccessLayer
             var cmdText = "sp_select_all_animals_without_kennel";
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
-
+            cmd.Parameters.AddWithValue("@ShelterId", ShelterId);
             try
             {
                 conn.Open();
@@ -258,6 +258,7 @@ namespace DataAccessLayer
                         _animal.NeuterStatus = reader.GetBoolean(11);
                         _animal.Notes = reader.GetString(12);
                         _animal.AnimalStatusId = reader.GetString(13);
+                        _animal.AnimalShelterId = reader.GetInt32(14);
                         _animalList.Add(_animal);
                     }
                 }

@@ -15,11 +15,14 @@
             <RowDefinition Height="55"></RowDefinition>
         </Grid.RowDefinitions>
 
+
+
         <Label x:Name="lblTreatmentAnimalName" Content="&lt;Animal Name&gt; Diagnosis and treatments" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25"></Label>
         <Label x:Name="lblTreatmentAnimalId" Content="Animal ID #" HorizontalAlignment="Right"></Label>
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Center" Grid.Row="1" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Margin="25,0" VerticalContentAlignment="Stretch">
+        <ScrollViewer x:Name="scrlMedicalTreatment" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Center" Grid.Row="1" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Margin="25,0" VerticalContentAlignment="Stretch">
             <StackPanel x:Name="stckMedicalTreatment" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </ScrollViewer>
 
+        <Frame x:Name="frmDiagnosisTreatment" Grid.RowSpan="3" Margin="10,10,0,0"/>
     </Grid>
 </Page>

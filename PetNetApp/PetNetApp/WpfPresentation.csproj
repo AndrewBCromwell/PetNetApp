@@ -76,6 +76,12 @@
     <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\EditTreatment.xaml.cs">
+      <DependentUpon>EditTreatment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalFilesPage.xaml.cs">
+      <DependentUpon>MedicalFilesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\MedicalPage.xaml.cs">
       <DependentUpon>MedicalPage.xaml</DependentUpon>
     </Compile>
@@ -90,12 +96,36 @@
     </Compile>
     <Compile Include="Development\Community\RoleManagementTemp.xaml.cs">
       <DependentUpon>RoleManagementTemp.xaml</DependentUpon>
+    <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
+      <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
+      <DependentUpon>FundraisingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
+      <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\FundraisingPage.xaml.cs">
+      <DependentUpon>FundraisingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
+      <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewCampaignsPage.xaml.cs">
+      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlaceholderTextBox.cs" />
+    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
+      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
       <DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewTicketList.xaml.cs">
+      <DependentUpon>ViewTicketList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\AssignAnimalToKennel.xaml.cs">
       <DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
@@ -153,6 +183,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Animals\EditTreatment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\MedicalFilesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\MedicalPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,6 +204,39 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Community\RoleManagementTemp.xaml">
+    <Page Include="Animals\UploadAdditionalFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\FundraisingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Development\Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\FundraisingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fundraising\ViewCampaignsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PlaceholderTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\ViewTicketList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -320,6 +391,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Development\StyleShowcase.xaml.cs">
+      <DependentUpon>StyleShowcase.xaml</DependentUpon>
+    </Compile>
     <Page Include="Management\ManagementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -381,6 +455,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\AnimalListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\StyleShowcase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -647,6 +725,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\PlusIcon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\menudark.png" />
+    <Resource Include="Development\Images\menulight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

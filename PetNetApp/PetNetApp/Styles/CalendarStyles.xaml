@@ -3,27 +3,27 @@
     <!-- Calendar Style -->
     <!--https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/calendar-styles-and-templates?view=netframeworkdesktop-4.8 -->
     <!--Control colors.-->
-    <Color x:Key="WindowColor">#FFE8EDF9</Color>
-    <Color x:Key="ContentAreaColorLight">#EEF2E6</Color>
+    <Color x:Key="WindowColor">#F6F7F3</Color>
+    <Color x:Key="ContentAreaColorLight">#F6F7F3</Color>
     <Color x:Key="ContentAreaColorDark">#1C6758</Color>
 
-    <Color x:Key="DisabledControlLightColor">#EEF2E6</Color>
+    <Color x:Key="DisabledControlLightColor">#F6F7F3</Color>
     <Color x:Key="DisabledControlDarkColor">#D6CDA4</Color>
     <Color x:Key="DisabledForegroundColor">#D6CDA4</Color>
 
     <Color x:Key="SelectedBackgroundColor">#3D8361</Color>
     <Color x:Key="SelectedUnfocusedColor">#9EC1B0</Color>
 
-    <Color x:Key="ControlLightColor">#EEF2E6</Color>
+    <Color x:Key="ControlLightColor">#F6F7F3</Color>
     <Color x:Key="ControlMediumColor">#3D8361</Color>
     <Color x:Key="ControlDarkColor">#1C6758</Color>
-    <SolidColorBrush x:Key="Calendar.Static.Blackout" Color="{StaticResource ColorGolden}"/>
+    <SolidColorBrush x:Key="Calendar.Static.Blackout" Color="{StaticResource ControlDisabledGlyphColor}"/>
 
     <Color x:Key="ControlMouseOverColor">#9EC1B0</Color>
     <Color x:Key="ControlPressedColor">#3D8361</Color>
 
-    <SolidColorBrush x:Key="Calendar.Static.Header.Foreground" Color="{StaticResource ColorLightBackground}"/>
-    <Color x:Key="GlyphColor">#EEF2E6</Color>
+    <SolidColorBrush x:Key="Calendar.Static.Header.Foreground" Color="{StaticResource BackgroundColor}"/>
+    <Color x:Key="GlyphColor">#F6F7F3</Color>
     <Color x:Key="GlyphMouseOver">#9EC1B0</Color>
 
     <!--Border colors-->
@@ -201,7 +201,7 @@
                                   Storyboard.TargetName="NormalText"
                                   Storyboard.TargetProperty="(TextElement.Foreground).
                       (SolidColorBrush.Color)"
-                                  To="{StaticResource ColorLightBackground}" />
+                                  To="{StaticResource BackgroundColor}" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -580,7 +580,7 @@
                   BorderThickness="{TemplateBinding BorderThickness}"
                   Background="{TemplateBinding Background}"
                   CornerRadius="10">
-                            <Border BorderBrush="#FFFFFFFF"
+                            <Border BorderBrush="#F6F7F3"
                     BorderThickness="2"
                     CornerRadius="10">
                                 <Grid>

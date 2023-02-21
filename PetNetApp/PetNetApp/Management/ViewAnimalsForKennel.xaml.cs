@@ -22,19 +22,21 @@ namespace WpfPresentation.Development.Management
     public partial class ViewAnimalsForKennel : Window
     {
         private List<Animal> _animals = null;
+        private Kennel _Kennel = null;
         MasterManager _masterManger = MasterManager.GetMasterManager();
         public Animal SelectedAnimal { get; set; }
 
-        public ViewAnimalsForKennel()
+        public ViewAnimalsForKennel(Kennel kennel)
         {
             InitializeComponent();
+            _Kennel = kennel;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                _animals = _masterManger.KennelManager.RetrieveAllAnimalsForKennel();
+                _animals = _masterManger.KennelManager.RetrieveAllAnimalsForKennel(_Kennel.ShelterId);
                 if (_animals.Count > 0)
                 {
                     datAnimals.ItemsSource = _animals;

@@ -30,7 +30,9 @@
         <ComboBox Grid.Row="2" Grid.Column="2" Height="60" Width="250" HorizontalAlignment="Left" 
                   FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="cbAnimalType"></ComboBox>
 
-        <Button Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Width="175" Height="60" FontSize="22" Margin="0,75,0,0" Click="btnSave_Click" x:Name="btnSave">Save</Button>
-        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width="175" Height="60" FontSize="22" Margin="50,75,0,0" Style="{StaticResource ResourceKey=rsrcSafeButton}" Click="btnCancel_Click" x:Name="btnCancel">Cancel</Button>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+            <Button HorizontalAlignment="Right" Width="175" Height="60" FontSize="22" Click="btnSave_Click" Margin="0,25,0,0" x:Name="btnSave">Save</Button>
+            <Button HorizontalAlignment="Left" Width="175" Height="60" FontSize="22" Margin="40,25,0,0" Style="{StaticResource ResourceKey=rsrcSafeButton}" Click="btnCancel_Click" x:Name="btnCancel">Cancel</Button>
+        </StackPanel> 
     </Grid>
 </Page>

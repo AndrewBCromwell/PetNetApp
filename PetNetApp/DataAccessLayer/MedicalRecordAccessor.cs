@@ -50,6 +50,21 @@ namespace DataAccessLayer
 
             return medicalRecordId;
         }
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// Selects all medical records for a specific animal
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="animalId">animal's animalId number</param>
+        /// <exception cref="Exception">Select Fails</exception>
+        /// <returns>All medicalrecord rows where animalId equals the param</returns>
         public List<MedicalRecordVM> SelectMedicalRecordDiagnosisByAnimalId(int animalId)
         {
             List<MedicalRecordVM> medicalRecords = new List<MedicalRecordVM>();
@@ -101,6 +116,67 @@ namespace DataAccessLayer
                 conn.Close();
             }
             return medicalRecords;
+        }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// updates a medicalrecord's treatment and diagnosis by medicalrecordid
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="medicalRecordId">medical record id</param>
+        /// <param name="diagnosis">A name of an animal's diagnosis</param>
+        /// <param name="medicalNotes">Notes about an animal's treatment/diagnosis</param>
+        /// <exception cref="Exception">Update Fails</exception>
+        /// <returns>Rows affected</returns>	
+        public int UpdateMedicalTreatmentByMedicalrecordId(int medicalRecordId, string diagnosis, string medicalNotes)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_update_medical_treatment";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@recordId", SqlDbType.Int);
+            cmd.Parameters.Add("@newDiagnosis", SqlDbType.NVarChar, 250);
+            cmd.Parameters.Add("@newMedicalNotes", SqlDbType.NVarChar, 250);
+
+            cmd.Parameters["@recordId"].Value = medicalRecordId;
+            cmd.Parameters["@newDiagnosis"].Value = diagnosis;
+            cmd.Parameters["@newMedicalNotes"].Value = medicalNotes;
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        rows = cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return rows;
         }
     }
 }

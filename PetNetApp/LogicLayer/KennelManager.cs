@@ -132,11 +132,11 @@ namespace LogicLayer
             }
         }
 
-        public List<Animal> RetrieveAllAnimalsForKennel()
+        public List<Animal> RetrieveAllAnimalsForKennel(int ShelterId)
         {
             try
             {
-                return kennelAccessor.SelectAllAnimalsForKennel();
+                return kennelAccessor.SelectAllAnimalsForKennel(ShelterId);
             }
             catch (Exception ex)
             {
