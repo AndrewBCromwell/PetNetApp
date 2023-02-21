@@ -85,7 +85,7 @@
     <Compile Include="Animals\MedProcedurePage.xaml.cs">
       <DependentUpon>MedProcedurePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Community\RoleManagementPopup.xaml.cs">
+    <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Community\RoleManagementTemp.xaml.cs">
@@ -161,9 +161,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Community\RoleManagementPopup.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Community\RoleManagementPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Development\Community\RoleManagementTemp.xaml">
       <SubType>Designer</SubType>

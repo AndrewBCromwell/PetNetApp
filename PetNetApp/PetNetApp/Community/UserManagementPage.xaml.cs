@@ -116,6 +116,10 @@ namespace WpfPresentation.Community
         private void menuItem_Update_Click()
         {
             MessageBox.Show("Update");
+
+            //need a user object from the update button to launch the role popup
+            //RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_masterManager, users);
+            //roleManagementPopupWindow.ShowDialog();
         }
 
         private void menuItem_Suspend_Click()

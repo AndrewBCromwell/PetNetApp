@@ -66,7 +66,8 @@ namespace WpfPresentation.Development.Community
         private void btnUsers_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameCommunity.Navigate(new RoleManagementTemp(_manager, _manager.UsersManager.RetrieveUserByUsersId(100001)));
+            frameCommunity.Navigate(null);
+            //frameCommunity.Navigate(new RoleManagementTemp(_manager, _manager.UsersManager.RetrieveUserByUsersId(100001)));
             //frameCommunity.Navigate(new AddRole(_manager, _manager.UsersManager.RetrieveUserByUsersId(100001)));
         }
 
