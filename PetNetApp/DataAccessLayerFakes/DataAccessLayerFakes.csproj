@@ -44,12 +44,16 @@
     <Compile Include="DeathAccessorFake.cs" />
     <Compile Include="AnimalAccessorFakes.cs" />
     <Compile Include="AnimalUpdatesFakes.cs" />
-    <Compile Include="ITestAccessorFake.cs" />
+    <Compile Include="FundraisingCampaignAccessorFakes.cs" />
+    <Compile Include="ImagesAccessorFakes.cs" />
+    <Compile Include="TestAccessorFake.cs" />
     <Compile Include="KennelAccessorFake.cs" />
     <Compile Include="MedicalRecordAccessorFakes.cs" />
     <Compile Include="ProcedureAccessorFakes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleAccessorFakes.cs" />
     <Compile Include="ScheduleAccessorFakes.cs" />
+    <Compile Include="TicketAccessorFakes.cs" />
     <Compile Include="UsersAccessorFakes.cs" />
   </ItemGroup>
   <ItemGroup>

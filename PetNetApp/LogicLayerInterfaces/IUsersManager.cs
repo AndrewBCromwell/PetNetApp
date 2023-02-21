@@ -12,6 +12,9 @@ namespace LogicLayerInterfaces
         List<UsersVM> RetrieveUserByRole(string roleId, int shelterId);
         List<UsersVM> RetriveAllEmployees();
 
+        // Barry
+        Users RetrieveUserByUsersId(int UsersId);
+
         // Mads
         UsersVM LoginUser(string email, string password);
         string HashSha265(string source);

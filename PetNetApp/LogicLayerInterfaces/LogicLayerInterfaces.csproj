@@ -44,11 +44,15 @@
     <Compile Include="IDeathManager.cs" />
     <Compile Include="IAnimalManager.cs" />
     <Compile Include="IAnimalUpdatesManager.cs" />
+    <Compile Include="IFundraisingCampaignManager.cs" />
+    <Compile Include="IImagesManager.cs" />
     <Compile Include="IKennelManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
     <Compile Include="IProcedureManager.cs" />
+    <Compile Include="IRoleManager.cs" />
     <Compile Include="IScheduleManager.cs" />
     <Compile Include="ITestManager.cs" />
+    <Compile Include="ITicketManager.cs" />
     <Compile Include="IUsersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

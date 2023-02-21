@@ -14,10 +14,23 @@ namespace DataAccessLayerFakes
         private List<Users> _fakeUsers = new List<Users>(); 
         private List<UsersVM> fakeUsers = new List<UsersVM>();
         private List<string> fakePassword = new List<string>();
+        private Users fakeUser = new Users();
 
 
         public UsersAccessorFakes()
         {
+            fakeUser = new Users()
+            {
+                UsersId = 1000,
+                GivenName = "Stephan",
+                FamilyName = "technowiz",
+                Email = "Stephan@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true
+
+            };
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1000,
@@ -204,6 +217,15 @@ namespace DataAccessLayerFakes
             _fakeUsers.Add(user);
 
             return _fakeUsers.Count(); 
+        }
+        public Users SelectUserByUsersId(int UsersId)
+        {
+            return fakeUser;
+            //throw new NotImplementedException();
+        }
+        public UsersVM SelectUserByUsersIdWithRoles(int UsersId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

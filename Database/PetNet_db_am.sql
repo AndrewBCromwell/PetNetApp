@@ -30,27 +30,7 @@ CREATE TABLE [dbo].[ExpenseCategory]
 )
 GO
 
---print '' print '*** adding ExpenseCategory records ***'
-GO
-INSERT INTO dbo.ExpenseCategory
-		([ExpenseCategoryName])
-	VALUES
-		('Animal food'),
-		('Animal medicine'),
-		('Supplies'),
-		('Payroll'),
-		('Insurance'),
-		('Employee benefit program'),
-		('Rent'),
-		('Utilities'),
-		('Marketing'),
-		('Bank fees'),
-		('Maintenance repairs'),
-		('Legal expenses')
-GO
-		
 /* Job Table */
-
 /* Created by: John */
 print '' print '*** creating table for Job (John)'
 GO
@@ -61,9 +41,6 @@ CREATE TABLE [dbo].[Job] (
 )
 GO
 
-
-
-
 /* Created by: Oleksiy Fedchuk */
 print '' print '*** creating table for TableName Role'
 GO
@@ -73,41 +50,29 @@ CREATE TABLE [dbo].[Role] (
 	CONSTRAINT [pk_RoleId] PRIMARY KEY([RoleId])
 )
 GO
---CREATED BY:: Mads Rhea
+
+-- CREATED BY:: Mads Rhea
 print '' print '*** creating table for Pronoun (Mads)'
 GO
 CREATE TABLE [dbo].[Pronoun] (
-	[PronounId]		[nvarchar](50)		NOT NULL,
-	
+	[PronounId]		[nvarchar](50)		NOT NULL,	
 	CONSTRAINT [pk_PronounId] PRIMARY KEY([PronounId])
 )
 GO
-
---print '' print '*** creating Pronoun test records' 
-GO 
-INSERT INTO [dbo].[Pronoun]
-	([PronounId])
-VALUES 
-('He/Him'),
-('She/Her'),
-('N/A')
-GO
-
-
 
 /* Image table*/
 /* Created by: Andrew Cromwell */
 print '' print '** creating Images table'
 GO
 CREATE TABLE [dbo].[Images] (
-	[ImageId] 		[int] IDENTITY(100000,1)	NOT NULL,
+	[ImageId] 			[int] IDENTITY(100000,1)	NOT NULL,
 	[ImageFileName]		[nvarchar](50)			NOT NULL,
 	CONSTRAINT [pk_ImageId] PRIMARY KEY([ImageId]),
 	CONSTRAINT [ak_ImageFileName] UNIQUE([ImageFileName])
 )
 GO
 
---Created by: Mohmeed Tomsah
+-- Created by: Mohmeed Tomsah
 print '' print '*** creating ReportMessage table ***'
 GO
 CREATE TABLE [dbo].[ReportMessage](
@@ -117,17 +82,7 @@ CREATE TABLE [dbo].[ReportMessage](
 )
 GO
 
-/* Images test records */
---print '' print '*** inserting Images test records'
-GO
-INSERT INTO [dbo].[Images]
-		([ImageFileName])
-	VALUES
-		('NotReal.jpeg'),
-		('Fake.png')
-GO
 /* EventType Table */
-
 /* Created by: John */
 print '' print '*** creating table for EventType(John)'
 GO
@@ -147,46 +102,24 @@ CREATE TABLE [dbo].[ApplicationStatus] (
 )
 GO
 
-/* ApplicationStatus test records */
---print '' print '*** inserting ApplicationStatus test records'
-GO
-INSERT INTO [dbo].[ApplicationStatus]
-		([ApplicationStatusId])
-	VALUES
-		('Approved'),
-		('Denied'),
-		('Pending')
-GO
-
-
 /* HomeOwnership Created by: Asa Armstrong */
 print '' print '*** create HomeOwnership table ***'
 GO
 CREATE TABLE [dbo].[HomeOwnership] (
 	[HomeOwnershipId]		[nvarchar](50) 		NOT NULL,
-	
 	CONSTRAINT [pk_HomeOwnershipId] PRIMARY KEY ([HomeOwnershipId]),
 )
 GO
 
---print '' print '*** adding HomeOwnership records ***'
-GO
-INSERT INTO [dbo].[HomeOwnership]
-		([HomeOwnershipId])
-	VALUES
-		("Own"),
-		("Rent")
-GO
 /*Created By: Zaid Rachman*/
 print '' print '*** Creating HomeType Table' 
 GO
 CREATE TABLE [dbo].[HomeType] (
 	[HomeTypeID]	[nvarchar](50)	NOT NULL
-	
-	
 	CONSTRAINT [pk_HomeTypeId] PRIMARY KEY([HomeTypeId])
 )
 GO
+
 /* BANNED WORD TABLE */
 -- Made 2023/01/27 by: Teft Francisco
 print '' print '*** creating table for banned words'
@@ -196,6 +129,7 @@ CREATE TABLE [dbo].[BannedWord] (
 	CONSTRAINT [pk_BannedWordId] PRIMARY KEY([BannedWordId]),
 )	
 GO
+
 /* DonationFrequency */
 /* Chris D*/
 print '' print '*** creating DonationFrequency'
@@ -216,15 +150,6 @@ CREATE TABLE [dbo].[ContactType] (
 	CONSTRAINT [pk_ContactTypeId] PRIMARY KEY([ContactTypeId] ASC)
 )
 GO
---print '' print '*** Inserting ContactType Records'
-GO
-INSERT INTO [dbo].[ContactType]
-		([ContactTypeId])
-	VALUES
-	('Host'),
-	('Contact'),
-	('Sponsor')	
-GO
 
 /* Prescription Type */
 /* Created by: William Rients */
@@ -234,16 +159,6 @@ CREATE TABLE [dbo].[prescriptionType] (
 	[PrescriptionTypeId]	[nvarchar](50) 	NOT NULL,
 	CONSTRAINT [pk_PrescriptionTypeId] PRIMARY KEY([PrescriptionTypeId])
 )
-GO
-/* Prescription Type test records */
---print '' print '*** inserting prescriptionType test records'
-GO
-INSERT INTO [dbo].[prescriptionType]
-	([PrescriptionTypeId])
-	VALUES
-		('Medication'),
-		('Food'),
-		('Treatment')
 GO
 
 /* Category */
@@ -255,24 +170,7 @@ CREATE TABLE [dbo].[Category] (
 	CONSTRAINT	[pk_Category]	PRIMARY KEY([CategoryID])
 )
 GO
---print '' print '*** Inserting sample Category (Inventory item tagging) records'
-GO
-INSERT INTO [dbo].[Category]
-		([CategoryID])
-	VALUES
-		/* Pet types*/
-		  ('Cat')
-		, ('Dog')
-		, ('Rabbit')
-		, ('Rodent')
-		, ('Bird')
-		, ('Reptile')
-		, ('Turtle')
-		, ('Lizard')
-		/* Generic tags*/
-		, ('Food')
-		, ('Cleaning')
-GO
+
 /* Item table*/
 /* Created by: Andrew Cromwell */
 print '' print '** creating Item table'
@@ -282,6 +180,7 @@ CREATE TABLE [dbo].[Item] (
 	CONSTRAINT [pk_ItemId] PRIMARY KEY([ItemId])
 )
 GO
+
 /* AnimalType */
 /* Created by: Matthew Meppelink */
 print '' print '*** creating table for AnimalType'
@@ -290,16 +189,7 @@ CREATE TABLE [dbo].[AnimalType] (
     [AnimalTypeId]      [nvarchar](50)      NOT NULL,
     CONSTRAINT  [pk_AnimalTypeId] PRIMARY KEY ([AnimalTypeId])   
 )
-/* Created by: Matthew Meppelink */
---print '' print '*** Inserting AnimalType Records'
-GO
-INSERT INTO [dbo].[AnimalType]
-		([AnimalTypeId])
-	VALUES
-	('Dog'),
-	('Cat'),
-	('Snake')	
-GO
+
 /* AnimalStatus */
 /* Created by: Matthew Meppelink */
 print '' print '*** creating table for AnimalStatus'
@@ -309,15 +199,7 @@ CREATE TABLE [dbo].[AnimalStatus] (
     [AnimalStatusDescription]       [nvarchar](50)      NULL,
     CONSTRAINT  [pk_AnimalStatusId] PRIMARY KEY ([AnimalStatusId])
 )
-/* Created by: Matthew Meppelink */
---print '' print '*** Inserting AnimalStatus Records'
-GO
-INSERT INTO [dbo].[AnimalStatus]
-		([AnimalStatusId], [AnimalStatusDescription])
-	VALUES
-	('Sick', 'Animal is sick'),
-	('Healthy', 'Animal is healthy')
-GO
+
 /* InventoryChangeReason */
 /* Created by: Matthew Meppelink */
 print '' print '*** creating table for InventoryChangeReason'
@@ -327,37 +209,17 @@ CREATE TABLE [dbo].[InventoryChangeReason] (
     [ReasonDescription]             [nvarchar](250)     NULL,
     CONSTRAINT  [pk_InventoryChangeReasonId] PRIMARY KEY ([InventoryChangeReasonId])
 )
-/* Created by: Matthew Meppelink */
---print '' print '*** Inserting InventoryChangeReason Records'
-GO
-INSERT INTO [dbo].[InventoryChangeReason]
-		([InventoryChangeReasonId], [ReasonDescription])
-	VALUES
-	('Check-in', 'Item was checked in'),
-	('Check-out', 'Item was checked out')
-GO
+
 /* Created by: Alex Oetken */
 print '' print '*** creating table for AnimalBreed'
 GO
 
 CREATE TABLE [dbo].[AnimalBreed](
 	[AnimalBreedId]	[NVARCHAR](50)	NOT NULL,
+    [AnimalTypeId] [NVARCHAR](50)	NOT NULL,
 	CONSTRAINT [pk_AnimalBreedId]	PRIMARY KEY([AnimalBreedId])
 )
 GO 
-
---print '' print '*** creating AnimalBreed test records' 
-GO 
-INSERT INTO [dbo].[AnimalBreed]
-		([AnimalBreedId])
-VALUES 
-('Lab'), 
-('Persian'),
-('Domestic Shorthair'),
-('Parakeet'),
-('German Shepard')
-GO
-
 
 /* Author:			Gwen Arman */
 print '' print '*** creating Zipcode table'
@@ -389,6 +251,7 @@ CREATE TABLE [dbo].[AppealStatus] (
 	CONSTRAINT [pk_AppealStatusId]		PRIMARY KEY([AppealStatusId])
 )
 GO
+
 /* Created by: Alex Oetken */
 print '' print '*** creating table for Gender'
 GO
@@ -399,18 +262,26 @@ CREATE TABLE [dbo].[Gender](
 )
 GO 
 
---print '' print '*** creating Gender test records' 
-GO 
-INSERT INTO [dbo].[Gender]
-	([GenderId])
-VALUES 
-('Female'), 
-('Male'),
-('Unknown'),
-('Other')
+/* Shelter */
+/* Created by:  Barry Mikulas */
+print '' print '*** Creating Shelter'
+GO
+CREATE TABLE [dbo].[Shelter] (
+	[ShelterId]					[int] IDENTITY(100000, 1) 	NOT NULL,
+	[ShelterName]				[nvarchar](50)				NOT NULL,
+	[Address]					[nvarchar](50)				NOT NULL,
+	[AddressTwo]				[nvarchar](50)				NULL,
+	[Zipcode]					[char](9) 					NOT NULL,
+	[Phone]						[nvarchar](13)				NULL,
+	[Email]						[nvarchar](254)				NULL,
+	[Areasofneed]				[nvarchar](max)				NULL,
+	[ShelterActive]				[bit]	DEFAULT 0			NOT NULL,
+	CONSTRAINT [pk_ShelterInstitutional_ShelterId] PRIMARY KEY([ShelterId]),
+	CONSTRAINT [fk_Shelter_Zipcode] FOREIGN KEY([Zipcode]) REFERENCES [dbo].[Zipcode]([Zipcode])
+)
 GO
 
---CREATED BY:: Mads Rhea
+-- CREATED BY:: Mads Rhea
 print '' print '*** creating table for Users (Mads)'
 GO
 CREATE TABLE [dbo].[Users] (
@@ -436,33 +307,13 @@ CREATE TABLE [dbo].[Users] (
         REFERENCES [Gender]([GenderId]),
 	CONSTRAINT [fk_UsersPronoun_PronounId] FOREIGN KEY ([PronounId])
         REFERENCES [Pronoun]([PronounId]),
+	CONSTRAINT [fk_UsersShelter_ShelterId] FOREIGN KEY ([ShelterId])
+        REFERENCES [Shelter]([ShelterId]),
 	CONSTRAINT [fk_UsersZipcode_Zipcode] FOREIGN KEY ([Zipcode])
         REFERENCES [Zipcode]([Zipcode])
 )
 
 GO
-
-
-
-/* Shelter */
-/* Created by:  Barry Mikulas */
-print '' print '*** Creating Shelter'
-GO
-CREATE TABLE [dbo].[Shelter] (
-	[ShelterId]					[int] IDENTITY(100000, 1) 	NOT NULL,
-	[ShelterName]				[nvarchar](50)				NOT NULL,
-	[Address]					[nvarchar](50)				NOT NULL,
-	[AddressTwo]				[nvarchar](50)				NULL,
-	[Zipcode]					[char](9) 					NOT NULL,
-	[Phone]						[nvarchar](13)				NULL,
-	[Email]						[nvarchar](254)				NULL,
-	[Areasofneed]				[nvarchar](max)				NULL,
-	[ShelterActive]				[bit]	DEFAULT 0			NOT NULL,
-	CONSTRAINT [pk_ShelterInstitutional_ShelterId] PRIMARY KEY([ShelterId]),
-	CONSTRAINT [fk_Shelter_Zipcode] FOREIGN KEY([Zipcode]) REFERENCES [dbo].[Zipcode]([Zipcode])
-)
-GO
-
 
 /* Created by: Nathan */
 print '' print '*** creating table for Animal'
@@ -486,7 +337,6 @@ CREATE TABLE [dbo].[Animal] (
 	[Notes]						[nvarchar](500)				NULL,
 	
 	CONSTRAINT [pk_AnimalId] PRIMARY KEY([AnimalId]),
-	
 	CONSTRAINT [fk_Animal_AnimalGender]FOREIGN KEY ([AnimalGender])
 		REFERENCES [dbo].[Gender]([GenderID]) on UPDATE CASCADE,
 	CONSTRAINT [fk_Animal_AnimalTypeId]FOREIGN KEY ([AnimalTypeId])
@@ -497,14 +347,11 @@ CREATE TABLE [dbo].[Animal] (
 		REFERENCES [dbo].[AnimalStatus]([AnimalStatusId]) on UPDATE CASCADE,
 	CONSTRAINT [fk_Animal_AnimalShelterId]FOREIGN KEY ([AnimalShelterId])
 		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE,
-	
 	CONSTRAINT [ak_MicrochipSerialNumber] UNIQUE([MicrochipSerialNumber])
 )
 GO
 
-
---CREATED BY:: Mads Rhea
-
+-- CREATED BY:: Mads Rhea
 print '' print '*** creating table for Post (Mads)'
 GO
 CREATE TABLE [dbo].[Post] (
@@ -520,7 +367,6 @@ CREATE TABLE [dbo].[Post] (
        REFERENCES [dbo].[Users]([UsersId])
 )
 GO
-
 
 /* Created by: Hoang Chu*/
 print '' print '*** creating table for Event'
@@ -547,7 +393,6 @@ CREATE TABLE [dbo].[Event] (
 		REFERENCES [dbo].[ZipCode]([ZipCode])
 )
 GO
-
 
 /* Created by: Hoang Chu*/
 print '' print '*** creating table for EventUpDate'
@@ -618,26 +463,24 @@ GO
 /* Author:			Gwen Arman */
 CREATE TABLE [dbo].[Suspension] (
 	[SuspensionId]			[int]	IDENTITY(100000,1)	NOT NULL, 
-	[UsersId]               [int]                           NOT NULL,
     [SuspendedUser]			[int]						NOT NULL,
     [SuspendingUser]		[int]						NOT NULL,
     [DateStart] 			[datetime]	DEFAULT GETDATE()	NOT NULL,
     [DaysSuspended] 		[int]						NOT NULL,
     [SuspendReason]			[nvarchar] (500)			NOT NULL,
-    CONSTRAINT	[fk_Suspension_SuspendedUser] FOREIGN KEY ([UsersId])
+    CONSTRAINT	[fk_Suspension_SuspendedUser] FOREIGN KEY ([SuspendedUser])
 		REFERENCES [dbo].[Users]([UsersId]),
-     CONSTRAINT	[fk_Suspension_SuspendingUser] FOREIGN KEY ([UsersId])
+     CONSTRAINT	[fk_Suspension_SuspendingUser] FOREIGN KEY ([SuspendingUser])
 		REFERENCES [dbo].[Users]([UsersId]) ON UPDATE CASCADE,   
 	CONSTRAINT [pk_SuspensionId] PRIMARY KEY([SuspensionId])
 )
 GO
 
---CREATED BY:: Mads Rhea
+-- CREATED BY:: Mads Rhea
 print '' print '*** creating table for Reply (Mads)'
 GO
 CREATE TABLE [dbo].[Reply] (
 	[ReplyId]			[int] IDENTITY(100000,1)	NOT NULL,
-	[UsersId]           [int]                       NOT NULL,
 	[PostId]			[int]						NOT NULL,
 	[ReplyAuthor]		[int]						NOT NULL,
 	[ReplyContent]		[nvarchar](250)				NOT NULL,
@@ -647,7 +490,7 @@ CREATE TABLE [dbo].[Reply] (
 	CONSTRAINT [pk_ReplyId]	PRIMARY KEY ([ReplyId]),
 	CONSTRAINT [fk_ReplyPost_PostId] FOREIGN KEY ([PostId])
         REFERENCES [Post]([PostId]),
-	CONSTRAINT [fk_ReplyUsers_UsersId] FOREIGN KEY ([UsersId])
+	CONSTRAINT [fk_ReplyUsers_UsersId] FOREIGN KEY ([ReplyAuthor])
         REFERENCES [Users]([UsersId])
 )
 GO
@@ -682,11 +525,9 @@ CREATE TABLE [dbo].[BookmarkAnimal] (
 		REFERENCES [dbo].[Users]([UsersId]),
 	CONSTRAINT [fk_BookmarkAnimal_AnimalId]FOREIGN KEY ([AnimalId])
 		REFERENCES [dbo].[Animal]([AnimalId]),
-		
 	CONSTRAINT [pk_BookmarkAnimal] PRIMARY KEY([UsersId], [AnimalId])
 )
 GO
-
 
 /* Created by: Hoang Chu*/
 print '' print '*** creating table for Ticket'
@@ -708,8 +549,7 @@ CREATE TABLE [dbo].[Ticket] (
 )
 GO
 
-
---CREATED BY:: Mads Rhea
+-- CREATED BY:: Mads Rhea
 print '' print '*** creating table for HoursOfOperation (Mads)'
 GO
 CREATE TABLE [dbo].[HoursOfOperation] (
@@ -723,22 +563,25 @@ CREATE TABLE [dbo].[HoursOfOperation] (
 	CONSTRAINT [ak_ShelterDayOfWeek] UNIQUE([ShelterId], [DayOfWeek]),
 	CONSTRAINT [fk_HoursOfOperationShelter_ShelterId] FOREIGN KEY ([ShelterId])
         REFERENCES [Shelter]([ShelterId])
-
 )
 GO
 
 print '' print '*** creating SuspensionAppeal table'
+GO
+
 /* Author:			Gwen Arman */
 CREATE TABLE [dbo].[SuspensionAppeal] (
 	[SuspensionAppealId]	[int]	IDENTITY(100000,1)	NOT NULL, 
     [SuspensionId]			[int]						NOT NULL,
     [AppealStatusId]		[nvarchar](50)				NOT NULL,
     [AssignedAppealUser] 	[int]						NULL,
-    CONSTRAINT	[fk_SuspensionAppeal_SuspendId] FOREIGN KEY ([SuspensionId])
+    CONSTRAINT	[fk_SuspensionAppeal_SuspensionId] FOREIGN KEY ([SuspensionId])
 		REFERENCES [dbo].[Suspension]([SuspensionId]),
      CONSTRAINT	[fk_SuspensionAppeal_AppealStatusId] FOREIGN KEY ([AppealStatusId])
 		REFERENCES [dbo].[AppealStatus]([AppealStatusId]) ON UPDATE CASCADE,   
-	CONSTRAINT [pk_SuspensionAppealId]		PRIMARY KEY([SuspensionAppealId])
+	CONSTRAINT	[fk_SuspensionAppeal_AssignedAppealUser] FOREIGN KEY ([AssignedAppealUser])
+		REFERENCES [dbo].[Users]([UsersId]), 
+	CONSTRAINT [pk_SuspensionAppealId]	PRIMARY KEY([SuspensionAppealId])
 )
 GO
 
@@ -774,10 +617,10 @@ GO
 
 
 /* Created by: Oleksiy Fedchuk  */
-print '' print '*** creating table for TableName FosterRequest'
+print '' print '*** creating table for FosterRequest'
 GO
 CREATE TABLE [dbo].[FosterRequest] (
-	[FosterRequestId]			[int]				NOT NULL,
+	[FosterRequestId]			[int]  IDENTITY(100000,1)	NOT NULL,
 	[FosterRequestShelterId]	[int]				NOT NULL,
 	[FosterRequestUsersId]		[int]				NOT NULL,
 	[FosterRequestMessage]		[nvarchar](500)		NOT NULL,
@@ -785,7 +628,7 @@ CREATE TABLE [dbo].[FosterRequest] (
 		REFERENCES [dbo].[Shelter] ([ShelterId]),
 	CONSTRAINT [fk_Users_FosterRequestUsersId] FOREIGN KEY ([FosterRequestUsersId])
 		REFERENCES [dbo].[Users] ([UsersId]),
-	CONSTRAINT [pk_FosterRequest] PRIMARY KEY ([FosterRequestId])
+	CONSTRAINT [pk_FosterRequest] PRIMARY KEY (FosterRequestId)
 )
 GO
 
@@ -798,7 +641,6 @@ CREATE TABLE [dbo].[Request] (
 	[RequestedByUserId]		[int]						NOT NULL,
 	[RequestDate]			[date]						NOT NULL DEFAULT GETDATE(),
 	[Acknowledged]			[bit]						NULL,
-	
 	CONSTRAINT [pk_RequestId] PRIMARY KEY ([RequestId]),
 	CONSTRAINT [fk_ReceivingShelterId]	FOREIGN KEY ([ReceivingShelterId]) REFERENCES [dbo].[Shelter]([ShelterId]),
 	CONSTRAINT [fk_RequestedByUserId]	FOREIGN KEY ([RequestedByUserId]) REFERENCES [dbo].[Users]([UsersId])
@@ -818,7 +660,7 @@ CREATE TABLE [dbo].[UserRoles] (
 )
 GO
 
---print '' print '*** adding indexes to UsersRoles table (Stephen Jaurigue'
+print '' print '*** creating indexes to UsersRoles (Stephen Jaurigue)'
 GO
 CREATE INDEX ix_UserRoles_RoleId 
 	ON [dbo].[UserRoles] ([RoleId])
@@ -826,12 +668,13 @@ GO
 CREATE INDEX ix_UserRoles_UsersId 
 	ON [dbo].[UserRoles] ([UsersId])
 GO
+
 /* Created by: Chris Dreismeier */
 print '' print '*** creating ScheduledDonation'
 GO
 CREATE TABLE [dbo].[ScheduledDonation] (
-	[ScheduledDonationId]	[int]		IDENTITY(100000,1) 			NOT NULL,
-	[DonationFrequencyId]	[nvarchar](50)							NOT NULL,
+	[ScheduledDonationId]	[int]		IDENTITY(100000,1) 	 		NOT NULL,
+	[DonationFrequencyId]	[nvarchar](50)	DEFAULT 'One time'		NOT NULL,
 	[UsersId]				[int]									NOT NULL,
 	[ShelterId]				[int]									NOT NULL,
 	[Amount]				[DECIMAL](7,2)							NULL,
@@ -840,18 +683,14 @@ CREATE TABLE [dbo].[ScheduledDonation] (
 	[Anonymous]				[bit] 			DEFAULT 0				NOT NULL,
 	[Target]				[nvarchar](225)							NULL,
 	[PaymentMethod]			[nvarchar](50)							NOT NULL,
-	[Frequency]				[nvarchar](50)	DEFAULT 'one-time'		NOT NULL,
 	[StartDate]				[datetime]								NOT NULL,
-	[NextDonationDate]		[datetime]								NOT NULL,
+	[NextDonationDate]		[datetime]								NULL,
 	[Active]				[bit]			DEFAULT 1				NOT NULL,
-	
 	CONSTRAINT [pk_ScheduledDonationId] PRIMARY KEY([ScheduledDonationId]),
 	CONSTRAINT [fk_ScheduledDonation_UserId]		FOREIGN KEY ([UsersID])
 		REFERENCES [dbo].[Users] ([UsersID]),
-		
 	CONSTRAINT [fk_ScheduledDonation_ShelterId]		FOREIGN KEY ([ShelterId])
 		REFERENCES [dbo].[Shelter] ([ShelterId]),
-		
 	CONSTRAINT [fk_ScheduledDonation_Frequency]		FOREIGN KEY ([DonationFrequencyId])
 		REFERENCES [dbo].[DonationFrequency] ([DonationFrequencyId]) ON UPDATE CASCADE
 )
@@ -881,7 +720,7 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 GO
 
 
---print '' print '*** creating FundraisingCampaign indices'
+print '' print '*** creating FundraisingCampaign indices'
 CREATE INDEX ix_FundraisingCampaignUsersId
 	ON [FundraisingCampaign]([UsersId])	
 GO
@@ -907,7 +746,6 @@ CREATE TABLE [dbo].[FundraisingEvent]
 	[CampaignId]			[int]						NULL,
 	[ShelterId]				[int]						NOT NULL,
 	[Title]					[nvarchar](100)				NOT NULL,
-	[EventDate]				[datetime]					NULL,
 	[StartTime]				[datetime]					NULL,
 	[EndTime]				[datetime]					NULL,
 	[Hidden]				[bit]			DEFAULT 0	NOT NULL,
@@ -930,28 +768,22 @@ CREATE TABLE [dbo].[FundraisingEvent]
 )
 GO
 
-
---print '' print '*** creating FundraisingEvent indices'
+print '' print '*** creating FundraisingEvent indices'
 CREATE INDEX ix_FundraisingEventUsersId
 	ON [FundraisingEvent]([UsersId])	
-GO
-CREATE INDEX ix_FundraisingEventEventDate
-	ON [FundraisingEvent]([EventDate])	
 GO
 CREATE INDEX ix_FundraisingEventStartTime
 	ON [FundraisingEvent]([StartTime])
 GO
 
-
-
---Created by: Mohmeed Tomsah
+-- Created by: Mohmeed Tomsah
 print '' print '*** creating Donation table ***'
 GO
 CREATE TABLE [dbo].[Donation](
-	[DonationId]	            [int] IDENTITY(1000000,1) NOT NULL,
+	[DonationId]	            [int] IDENTITY(100000,1) NOT NULL,
 	[UsersId]	                [int]	                      NULL,
 	[ShelterId]	                [int]	                  NOT NULL,
-	[Amount]	                [DECIMAL](30,3)	              NULL,
+	[Amount]	                [decimal](7,2)	              NULL,
 	[Message]	                [nvarchar](255)	              NULL,
 	[Date]	                    [DATE] 	DEFAULT GETDATE()     NULL,
 	[GivenName]	                [nvarchar](50)	              NULL,
@@ -964,16 +796,12 @@ CREATE TABLE [dbo].[Donation](
 	[FundraisingEventId]	    [int]	                      NULL,
 
 	CONSTRAINT [pk_DonationId] PRIMARY KEY([DonationId] ASC),
-	
 	CONSTRAINT [fk_Donation_UsersId] FOREIGN KEY([UsersId])
 	REFERENCES [dbo].[Users]([UsersId]),
-	
 	CONSTRAINT [fk_Donation_ShelterId] FOREIGN KEY([ShelterId])
 	REFERENCES [dbo].[Shelter]([ShelterId]),
-	
 	CONSTRAINT [fk_Donation_ScheduledDonationId] FOREIGN KEY([ScheduledDonationId])
 	REFERENCES [dbo].[ScheduledDonation]([ScheduledDonationId]),
-	
 	CONSTRAINT [fk_Donation_FundraisingEventId] FOREIGN KEY([FundraisingEventId])
 	REFERENCES [dbo].[FundraisingEvent]([FundraisingEventId])
 )
@@ -981,7 +809,6 @@ GO
 
 
 /* InKind */
-
 /* Created by: Chris Dreismeier */
 print '' print '*** creating InKind'
 GO
@@ -989,7 +816,7 @@ CREATE TABLE [dbo].[InKind] (
 	[InKindId]					[int]		IDENTITY(100000,1) 			NOT NULL,
 	[DonationId]				[int]									NOT NULL,
 	[Description]				[NVARCHAR](225)							NOT NULL,
-	[Quantity]					[int]									Not NULL,
+	[Quantity]					[int]									NOT NULL,
 	[Target]					[nvarchar](225)							NULL,
 	[Received]					[bit]		DEFAULT 0					Not NULL,
 	
@@ -1000,7 +827,6 @@ CREATE TABLE [dbo].[InKind] (
 GO
 
 /* DonationAppointment */
-
 /* Created by: Chris Dreismeier */
 print '' print '*** creating DonationAppointment'
 GO
@@ -1025,21 +851,18 @@ print '' print '*** creating table for AnimalAttendingEvent'
 GO
 CREATE TABLE [dbo].[AnimalAttendingEvent] (
 	[AnimalAttendingEventId]	[int]			IDENTITY(100000,1) 	NOT NULL,
-	[AnimalId]					[int]							 	NOT NULL,
-	[EventId]					[int]								NOT NULL,
 	[AnimalAttendingId]			[int]							 	NOT NULL,
 	[EventAttendingId]			[int]							 	NOT NULL,
 	[TimeAdded]					[datetime]		DEFAULT GETDATE()	NOT NULL,
 	[Attending]					[bit]			DEFAULT 1			NOT NULL,
 	CONSTRAINT [pk_AnimalAttendingEventId] PRIMARY KEY([AnimalAttendingEventId]),
 	CONSTRAINT [ak_AnimalAttendingEventId] UNIQUE([AnimalAttendingEventId]),
-	CONSTRAINT [fk_AnimalId] FOREIGN KEY([AnimalId])
+	CONSTRAINT [fk_AnimalAttendingEvent_AnimalAttendingId] FOREIGN KEY([AnimalAttendingId])
 		REFERENCES [dbo].[Animal]([AnimalId]),
-	CONSTRAINT [fk_AnimalAttendingEvent_EventId] FOREIGN KEY([EventId])
+	CONSTRAINT [fk_AnimalAttendingEvent_EventAttendingId] FOREIGN KEY([EventAttendingId])
 		REFERENCES [dbo].[Event]([EventId])
 )
 GO
-
 
 /* This table joins the Item and Category tables */
 /* Created by Brian Collum */
@@ -1071,7 +894,8 @@ CREATE TABLE [dbo].[EventSubscription] (
 	CONSTRAINT [fk_EventSubscription_EventId] FOREIGN KEY([EventId]) REFERENCES [dbo].[Event]([EventId])
 )
 GO
---print '' print '*** adding indexes to EventSubscription table (Barry Mikulas)'
+
+print '' print '*** adding indexes to EventSubscription table (Barry Mikulas)'
 GO
 CREATE INDEX ix_EventSubscription_SubscriberId 
 	ON [dbo].[EventSubscription] ([SubscriberId])
@@ -1081,7 +905,7 @@ CREATE INDEX ix_EventSubscription_EventId
 GO
 
 
-/*Created By: Zaid Rachman*/
+/*Created By: Zaid Rachman */ 
 print '' print '*** Creating Applicant Table' 
 GO
 CREATE TABLE [dbo].[Applicant] (
@@ -1090,7 +914,7 @@ CREATE TABLE [dbo].[Applicant] (
 	[ApplicantGivenName]	[nvarchar](50)				NOT NULL,
 	[ApplicantFamilyName]	[nvarchar](50)				NOT NULL,
 	[ApplicantAddress]		[nvarchar](50)				NOT NULL,
-	[ApplicantAddress2]		[nvarchar](50)				NOT NULL,
+	[ApplicantAddress2]		[nvarchar](50)					NULL,
 	[ApplicantZipCode]		[char](9)					NOT NULL,
 	[ApplicantPhoneNumber]	[nvarchar](13)				NOT NULL,
 	[ApplicantEmail]		[nvarchar](254)				NOT NULL,
@@ -1114,7 +938,7 @@ GO
 
 
 /* Created by: Oleksiy Fedchuk  */
-print '' print '*** creating table for TableName FosterApplication'
+print '' print '*** creating table for FosterApplication'
 GO
 CREATE TABLE [dbo].[FosterApplication] (
 	[FosterApplicationId]			[int]	IDENTITY(100000,1)	NOT NULL,
@@ -1133,7 +957,6 @@ GO
 
 /* FosterApplicationAnimalType table */
 /* Created by: Andrew Cromwell */
-/* this table was not tested because of the forign keys */
 print '' print '** creating FosterApplicationAnimalType table'
 GO
 CREATE TABLE [dbo].[FosterApplicationAnimalType] (
@@ -1147,16 +970,15 @@ CREATE TABLE [dbo].[FosterApplicationAnimalType] (
 )
 GO
 
-
-
 /* Created by: Oleksiy Fedchuk */
-print '' print '*** creating table for TableName FosterRequestResponse'
+print '' print '*** creating table for FosterRequestResponse'
 GO
 CREATE TABLE [dbo].[FosterRequestResponse] (
-	[FosterResponseId]			[int] 				NOT NULL,
+	[FosterResponseId]			[int] IDENTITY(100000,1) NOT NULL,
 	[ApplicantId]				[int]				NOT NULL,
 	[FosterRequestId]			[int]				NOT NULL,
-	[FosterResponseAccepted]	[nvarchar](500),
+	[FosterResponseAccepted]	[bit]     			NOT NULL,
+    [FosterResponseNotes]		[nvarchar](500)		NULL,
 	CONSTRAINT [fk_FosterRequest_FosterRequestId] FOREIGN KEY ([FosterRequestId])
 		REFERENCES [dbo].[FosterRequest] ([FosterRequestId]),
 	CONSTRAINT [fk_FosterRequestResponce_ApplicantId] FOREIGN KEY ([ApplicantId])
@@ -1166,7 +988,7 @@ CREATE TABLE [dbo].[FosterRequestResponse] (
 GO
 
 /* Created by: Oleksiy Fedchuk */
-print '' print '*** creating table for TableName FosterRequestApplicant'
+print '' print '*** creating table for FosterRequestApplicant'
 GO
 CREATE TABLE [dbo].[FosterRequestApplicant] (
 	[FosterRequestId]	[int] 	NOT NULL,
@@ -1179,7 +1001,7 @@ CREATE TABLE [dbo].[FosterRequestApplicant] (
 )
 GO
 
-/* Medical Record */
+/* Medical Record*/
 /* Created by: William Rients */
 print '' print '*** creating table for MedicalRecord'
 GO
@@ -1203,7 +1025,6 @@ GO
 
 CREATE INDEX ix_MedicalRecord_AnimalId
 	ON [dbo].[MedicalRecord] ([AnimalId])
-	
 GO
 
 /*  Created by: Molly Meister*/
@@ -1225,7 +1046,8 @@ CREATE TABLE [dbo].[MedProcedure] (
             REFERENCES [dbo].[Users]([UsersId])
 )
 GO
---print '' print '*** creating MedProcedure_UsersID Index'
+
+print '' print '*** creating MedProcedure_UsersID Index'
 CREATE INDEX ix_MedProcedure_UsersId
     ON [dbo].[MedProcedure]([UsersId])
 GO
@@ -1250,11 +1072,10 @@ CREATE TABLE [dbo].[Test] (
     
 )
 GO
---print '' print '*** creating Test_UsersId Index'
+print '' print '*** creating Test_UsersId Index'
 CREATE INDEX ix_Test_UsersId
     ON [dbo].[Test]([UsersId])
 GO
-
 
 /* Vaccination */
 /* Created by: William Rients */
@@ -1281,7 +1102,6 @@ GO
 
 /* Prescription */
 /* Created by: William Rients */
-
 print '' print '*** creating table for Prescription'
 GO
 CREATE TABLE [dbo].[Prescription] (
@@ -1304,8 +1124,6 @@ CREATE TABLE [dbo].[Prescription] (
 		REFERENCES [dbo].[PrescriptionType] ([PrescriptionTypeId]) ON UPDATE CASCADE,
 	CONSTRAINT [pk_PrescriptionId] PRIMARY KEY ([PrescriptionId])
 )
-
-	
 GO
 
 /* Created by: Nathan */
@@ -1327,7 +1145,7 @@ CREATE TABLE [dbo].[Kennel] (
 		REFERENCES [dbo].[AnimalType]([AnimalTypeId])
 )
 
---print '' print '*** creating indexs for Kennel'
+print '' print '*** creating indexs for Kennel'
 GO
 CREATE INDEX ix_Kennel_KennelActive
 	ON [dbo].[Kennel]([KennelActive])
@@ -1344,7 +1162,6 @@ CREATE TABLE [dbo].[AnimalKenneling] (
 		REFERENCES [dbo].[Kennel]([KennelId]),
 	CONSTRAINT [fk_AnimalKenneling_AnimalId]FOREIGN KEY ([AnimalId])
 		REFERENCES [dbo].[Animal]([AnimalId]),
-		
 	CONSTRAINT [pk_AnimalKenneling] PRIMARY KEY([KennelId], [AnimalId])
 )
 
@@ -1386,9 +1203,7 @@ CREATE TABLE [dbo].[AnimalMedicalImage] (
 )
 GO
 
-
-
---Created by: Mohmeed Tomsah
+-- Created by: Mohmeed Tomsah
 print '' print '*** creating RequestRescourceLine table ***'
 GO
 CREATE TABLE [dbo].[RequestRescourceLine](
@@ -1397,13 +1212,13 @@ CREATE TABLE [dbo].[RequestRescourceLine](
 	[QuantityRequested]	             [int]	                  NOT NULL,
 	[Notes]	                         [nvarchar](1000)	      NOT NULL,
 	
-	CONSTRAINT [pk_RequestRescourceLine_RequestId] PRIMARY KEY([RequestId] ASC),
-		CONSTRAINT [fk_ItemId] FOREIGN KEY([ItemId])
-		REFERENCES [dbo].[Item]([ItemId])
+    CONSTRAINT [fk_RequestRescourceLine_RequestId]	FOREIGN KEY ([RequestId])
+		REFERENCES [dbo].[Request] ([RequestId]),
+	CONSTRAINT [fk_RequestRescourceLine_ItemId]	FOREIGN KEY ([ItemId])
+		REFERENCES [dbo].[Item] ([ItemId]) ON UPDATE CASCADE,
+	CONSTRAINT [pk_RequestRescourceLine_RequestId] PRIMARY KEY([RequestId], [ItemId])
 )
 GO
-
-	
 
 /* CampaignUpdate table */
 /* Created by: Andrew S. */
@@ -1422,12 +1237,10 @@ CREATE TABLE [dbo].[CampaignUpdate]
 )
 GO
 
-
---print '' print '*** creating CampaignUpdate index'
+print '' print '*** creating CampaignUpdate index'
 CREATE INDEX ix_CampaignUpdateCampaignId
 	ON [CampaignUpdate]([CampaignId])	
 GO
-
 
 /* PostReport table */
 /* Created by: Andrew S. */
@@ -1440,23 +1253,26 @@ CREATE TABLE [dbo].[PostReport]
 	[ReportMessageId]	[int]							NOT NULL,
 	[PostReportDate]	[datetime]	DEFAULT	getdate()	NOT NULL,
 	[PostReportActive]	[bit]		DEFAULT 1			NOT NULL,
-	CONSTRAINT [pk_PostReport] PRIMARY KEY ([PostId]),
+    CONSTRAINT [fk_PostReport_PostId] FOREIGN KEY ([PostId])
+		REFERENCES [Post]([PostId]),
 	CONSTRAINT [fk_PostReport_PostReporter] FOREIGN KEY ([PostReporter])
 		REFERENCES [Users]([UsersId]),
 	CONSTRAINT [fk_PostReport_ReportMessageId] FOREIGN KEY ([ReportMessageId]) 
-		REFERENCES [ReportMessage]([ReportMessageId]) ON UPDATE CASCADE
+		REFERENCES [ReportMessage]([ReportMessageId]) ON UPDATE CASCADE,
+	CONSTRAINT [pk_PostReportId] PRIMARY KEY([PostId], [PostReporter])
 )
 GO
+
 /* Reply Report */
 /* Created by: William Rients */
-print '' print '*** creating table for ReplyReports'
+print '' print '*** creating table for ReplyReport'
 GO
 CREATE TABLE [dbo].[ReplyReport] (
 	[ReplyId]				[int]		NOT NUll,
 	[ReplyReporter]			[int]		NOT NULL,
 	[ReportMessageId]		[int]		NOT NULL,
 	[ReplyReportDate]		[datetime]	DEFAULT GETDATE() NOT NULL ,
-	[ReplyReportActive]		[bit]		NOT NULL,
+	[ReplyReportActive]		[bit]		DEFAULT 1	NOT NULL,
 	CONSTRAINT [fk_ReplyReport_ReplyId]	FOREIGN KEY ([ReplyId])
 		REFERENCES [dbo].[Reply] ([ReplyId]),
 	CONSTRAINT [fk_ReplyReport_ReplyReporter] FOREIGN KEY ([ReplyReporter])
@@ -1504,8 +1320,6 @@ CREATE INDEX [ix_PledgeFundraisingEventId]
 	ON [dbo].[Pledge]([FundraisingEventId])
 GO
 
-
-
 /* AdoptionApplication */
 /* Created by: Ethan Kline */
 print '' print '** creating table for AdoptionApplication'
@@ -1514,8 +1328,8 @@ CREATE TABLE [dbo].[AdoptionApplication] (
     [AdoptionApplicationId]    	[int]  IDENTITY(100000,1)     NOT NULL,
     [ApplicantId]    			[int]     NOT NULL,
     [AnimalId]    				[int]     NOT NULL,
-    [ApplicationStatusId]    	[nvarchar](50)     NOT NULL,
-    [AdoptionApplicationDate]   [datetime]     NOT NULL
+    [ApplicationStatusId]    	[nvarchar](50) DEFAULT 'Pending'    NOT NULL,
+    [AdoptionApplicationDate]   [datetime]   DEFAULT GETDATE()  NOT NULL
 
     CONSTRAINT [pk_AdoptionApplication] PRIMARY KEY([AdoptionApplicationId]),
     CONSTRAINT [fk_AdoptionApplication_ApplicantId] FOREIGN KEY ([ApplicantId])
@@ -1526,7 +1340,6 @@ CREATE TABLE [dbo].[AdoptionApplication] (
         REFERENCES [dbo].[Animal] ([AnimalId])
 )
 GO
-
 
 print '' print '*** Creating InstitutionalEntity (Barry Mikulas)'
 GO
@@ -1565,7 +1378,7 @@ CREATE TABLE [dbo].[FundraisingCampaignEntity] (
 )
 GO
 
---print '' print '*** adding indexes to FundraisingCampaignEntity table (Barry Mikulas)'
+print '' print '*** adding indexes to FundraisingCampaignEntity table (Barry Mikulas)'
 GO
 CREATE INDEX ix_FundraisingCampaignEntity_Fundraiser 
 	ON [dbo].[FundraisingCampaignEntity] ([Fundraiser])
@@ -1589,15 +1402,14 @@ CREATE TABLE [dbo].[FundraisingEventEntity] (
 )
 GO
 
---print '' print '*** adding indexes to FundraisingEventEntity table (Barry Mikulas)'
+print '' print '*** adding indexes to FundraisingEventEntity table (Barry Mikulas)'
 GO
 CREATE INDEX ix_FundraisingEventEntity_EventId 
 	ON [dbo].[FundraisingEventEntity] ([EventId])
 GO
 
-
 -- Made 2023/01/27 by: Teft Francisco
-print '' print '*** creating table for inspection image'
+print '' print '*** creating InspectionImage'
 GO
 CREATE TABLE [dbo].[InspectionImage]
 (
@@ -1612,7 +1424,7 @@ CREATE TABLE [dbo].[InspectionImage]
 GO
 
 -- Made 2023/01/27 by: Teft Francisco
-print '' print '*** creating table for adoption placement'
+print '' print '*** creating AdoptionPlacement'
 GO
 CREATE TABLE [dbo].[AdoptionPlacement]
 (
@@ -1631,7 +1443,6 @@ GO
 
 /* ShelterItemTransaction table */
 /* Created by: Andrew Cromwell */
-/* this table was not tested because of the forign keys */
 print '' print '*** creating ShelterItemTransaction table'
 GO
 CREATE TABLE [dbo].[ShelterItemTransaction] (
@@ -1653,9 +1464,10 @@ CREATE TABLE [dbo].[ShelterItemTransaction] (
 		REFERENCES [dbo].[InventoryChangeReason]([InventoryChangeReasonId])
 )
 GO
+
 /* INTAKE LINE TABLE */
 -- Made 2023/01/27 by: Teft Francisco
-print '' print '*** creating table for intake line'
+print '' print '*** creating IntakeLine'
 GO
 CREATE TABLE [dbo].[IntakeLine]
 (
@@ -1733,14 +1545,14 @@ CREATE TABLE [dbo].[FosterPlacementRecord] (
 GO 
 
 /*Created By: Zaid Rachman*/
-print '' print '*** Creating AdoptionApplicationResponse Table' 
+print '' print '*** Creating AdoptionApplicationResponse' 
 GO
 CREATE TABLE [dbo].[AdoptionApplicationResponse] (
-	[AdoptionApplicationResponseId]	[int]				NOT NULL,
+	[AdoptionApplicationResponseId]	[int]	IDENTITY(100000,1)		NOT NULL,
 	[AdoptionApplicationId]			[int]				NOT NULL,
 	[UsersId]						[int]				NOT NULL,
 	[Approved]						[bit]				NOT NULL,
-	[AdoptionApplicationResponseDate] [datetime] 		NOT NULL,
+	[AdoptionApplicationResponseDate] [datetime] DEFAULT GETDATE() 		NOT NULL,
 	[AdoptionApplicationResponseNotes] [nvarchar](500)	NULL
 	
 	CONSTRAINT [fk_AdoptionApplicationResponse_AdoptionApplicationId] FOREIGN KEY ([AdoptionApplicationId])
@@ -1764,20 +1576,21 @@ CREATE TABLE [dbo].[FundraiserVolunteerUser] (
 			REFERENCES [dbo].[Users]([UsersId])
 )
 GO
+
 /* Created by: Stephen Jaurigue */
 print '' print '*** creating table for ShelterExpense (Stephen Jaurigue)'
 GO
 CREATE TABLE [dbo].[ShelterExpense] (
 	[ShelterExpenseId]		[int]	IDENTITY(100000,1) 	NOT NULL,
 	[ShelterId]				[int]						NOT NULL,
-	[CategoryID]			[nvarchar](50)				NOT NULL,
+	[CategoryID]			[int]				NOT NULL,
 	[Year]					[smallint]					NOT NULL,
 	[Amount]				[decimal](7,2)				NOT NULL,
 	CONSTRAINT [pk_ShelterExpenseId] PRIMARY KEY([ShelterExpenseId]),
 	CONSTRAINT [fk_Shelter_ShelterId] FOREIGN KEY ([ShelterId])
 			REFERENCES [dbo].[Shelter]([ShelterId]),
-	CONSTRAINT [fk_Category_CategoryId] FOREIGN KEY ([CategoryId])
-			REFERENCES[dbo].[Category] ([CategoryId]),
+	CONSTRAINT [fk_Category_CategoryId] FOREIGN KEY ([CategoryID])
+			REFERENCES[dbo].[ExpenseCategory] ([ExpenseCategoryId]),
 	CONSTRAINT [ak_ShelterId_and_CategoryId_and_Year] UNIQUE([ShelterId],[CategoryId],[Year])
 )
 GO
@@ -1796,10 +1609,8 @@ CREATE TABLE [dbo].[Schedule] (
         REFERENCES [dbo].[Users]([UsersId]),
     CONSTRAINT     [fk_Schedule_JobId] FOREIGN KEY ([JobId])
         REFERENCES [dbo].[Job]([JobId])
-    
 )
 GO
-
 
 /*  Created by: Molly Meister*/
 print '' print '*** creating table for Death'
@@ -1821,140 +1632,16 @@ CREATE TABLE [dbo].[Death] (
 )
 GO
 
-
-
-
-/*  
-	Project:		PetNet
-	Database Name:	PetNet_db_am
-	Author:			Gwen Arman
-    Description: 	Sprint 1, sample data
-*/
-
-print '' print '*** Using PetNet_db_am'
-USE [PetNet_db_am]
-GO 
-
-/* Source: https://simplemaps.com/data/us-zips */
-print '' print '*** creating Zipcode sample data'
-GO 
-INSERT INTO [dbo].[Zipcode]
-	(
-    [Zipcode],
-    [City],
-    [State],
-    [Latitude],
-    [Longitude]
-    )
-VALUES
-(50001,'Ackworth','Iowa', 41.3669, 93.4727),
-(50002,'Adair','Iowa', 41.5004, 94.6434)
+/*  Created by: Gwen Arman*/
+print '' print '*** creating AnimalImage'
 GO
-
-print '' print '*** creating Shelter sample data'
-GO 
-INSERT INTO [dbo].[Shelter]
-	(
-    [ShelterName],
-    [Address],
-    [Zipcode],
-    [Phone],
-    [Email],
-    [Areasofneed],
-    [ShelterActive]
-    )
-VALUES
-("S1", "111 Shelter Drive", 50001, "123-123-1111", "shelter1@shelter.com", "Animal Food", 1),
-("S2", "112 Shelter Drive", 50002, "123-123-1112", "shelter2@shelter.com", "Animal Medicine", 1),
-("S3", "113 Shelter Drive", 50001, "123-123-1113", "shelter3@shelter.com", "Kitty Litter", 1)
-GO
-
-
-
-/* Insert Into Animal table */
-/* Created by Andrew Schneider */
-print '' print '*** adding Animal records (Andrew S.)***'
-GO
-INSERT INTO dbo.Animal
-(	
-	[AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [Personality], [Description], [AnimalStatusId],		
-	[RecievedDate], [MicrochipSerialNumber], [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId]					
+CREATE TABLE [dbo].[AnimalImage] (
+	[AnimalId]		[int] 		NOT NULL,
+    [ImageId]		[int] 		NOT NULL,
+	CONSTRAINT [fk_AnimalImage_AnimalId] FOREIGN KEY([AnimalId])
+            REFERENCES [dbo].[Animal]([AnimalId]),
+    CONSTRAINT [fk_AnimalImage_ImageId] FOREIGN KEY([ImageId])
+            REFERENCES [dbo].[Images]([ImageId]),
+	CONSTRAINT [pk_AnimalImageId] PRIMARY KEY([AnimalId], [ImageId])
 )
-		
-	VALUES
-		('Max', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'15A73', 0, 'Not aggressive', 1, 1, 'No notes', 100000),
-		('Donny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'12345dgas', 0, 'Not aggressive', 1, 1, 'No notes', 100000),
-		('Johny', 'Male', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Sick', '2023-01-01',
-		'512314', 0, 'Not aggressive', 1, 1, 'No notes', 100000),
-		('Bonny', 'Female', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'568533', 0, 'Not aggressive', 1, 1, 'No notes', 100000),
-		('Doggy', 'Female', 'Dog', 'Lab', 'Friendly', 'Great dog rescued', 'Healthy', '2023-01-01',
-		'6868564', 0, 'Not aggressive', 1, 1, 'No notes', 100000)
 GO
-
-
-
-print '' print '*** creating Kennel sample data'
-GO 
-INSERT INTO [dbo].[Kennel]
-	(
-    [ShelterId],
-    [KennelName],
-    [AnimalTypeId],
-    [KennelSpace],
-    [KennelActive]
-    )
-VALUES
-(100000, "Kennel 1", "Dog", 1, 1),
-(100001, "Kennel 2", "Dog", 1, 1),
-(100002, "Kennel 3", "Dog", 1, 1),
-(100000, "Kennel 4", "Dog", 1, 1),
-(100000, "Kennel 5", "Dog", 1, 1),
-(100000, "Kennel 6", "Dog", 1, 1),
-(100000, "Kennel 7", "Dog", 1, 1),
-(100000, "Kennel 8", "Dog", 1, 1),
-(100000, "Kennel 9", "Dog", 1, 1),
-(100000, "Kennel 10", "Dog", 1, 1)
-GO
-
-print '' print '*** creating AnimalKenneling sample data'
-GO 
-INSERT INTO [dbo].[AnimalKenneling]
-	(
-	[KennelId],
-	[AnimalId]
-    )
-VALUES
-(100000, 100000)
-GO
-
-
-
-
-/* SelectAnimalByAnimalId stored procedure */
-/* Created by Andrew Schneider */
-print '' print '*** creating sp_select_animal_by_animalId (Andrew S.)'
-GO
-CREATE PROCEDURE [dbo].[sp_select_animal_by_animalId]
-(
-	@AnimalId			[int]
-)
-AS
-	BEGIN
-		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalGender], [Animal].[AnimalTypeId], [AnimalBreedId],
-				[Kennel].[KennelName], [Personality], [Description], [Animal].[AnimalStatusId],
-				[AnimalStatus].[AnimalStatusDescription], [RecievedDate], [MicrochipSerialNumber],
-				[Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
-		FROM 	[Animal]
-		JOIN 	[AnimalStatus]
-			ON 	[Animal].[AnimalStatusID] = [AnimalStatus].[AnimalStatusID]
-		JOIN 	[AnimalKenneling]
-			ON	[Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
-		JOIN	[Kennel]
-			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
-		WHERE	@AnimalId = [Animal].[AnimalId]
-	END
-GO
-

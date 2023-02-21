@@ -1,8 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿/// <summary>
+/// Andrew Cromwell
+/// Created: 2023/01/08
+/// 
+/// Class that tests that the ProcedureManager methods work properly.
+/// </summary>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using DataObjects;
 using DataAccessLayerFakes;
 using LogicLayer;
+using System.Collections.Generic;
 
 namespace LogicLayerTest
 {
@@ -17,6 +25,10 @@ namespace LogicLayerTest
             _procedureManager = new ProcedureManager(new ProcedureAccessorFakes());
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/08
+        /// </summary>
         [TestMethod]
         public void TestAddProcedureByMedicalRecordIdReturnsTrueIfProcedureIsSaved()
         {
@@ -31,6 +43,62 @@ namespace LogicLayerTest
             bool result = _procedureManager.AddProcedureByMedicalRecordId(procedure, medicalRecordId);
 
             Assert.IsTrue(result);
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/14
+        /// </summary>
+        [TestMethod]
+        public void TestGetProceduresByAnimalIdReturnsCorectNumberOfProcedures()
+        {
+            int expectedResult = 3;
+            int actualResult = 0;
+            int animalId = 8;
+            List<ProcedureVM> fakeprocedures;
+                        
+            fakeprocedures = _procedureManager.GetProceduresByAnimalId(animalId);
+            actualResult = fakeprocedures.Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/14
+        /// </summary>
+        [TestMethod]
+        public void TestEditProcedureByMedicalRecordIdAndProcedureIdChangesDataCorectly()
+        {
+            Procedure procedure = new Procedure()
+            {
+                ProcedureId = 666,
+                MedicalRecordId = 666,
+                UserId = 666,
+                ProcedureName = "This sould replace the name on one of the fakes",
+                MedicationsAdministered = "some meds were used.",
+                ProcedureNotes = "Notes that override previous notes",
+                ProcedureDate = DateTime.Now
+            };
+            Procedure oldProcedure = new Procedure()
+            {
+                ProcedureId = 666,
+                MedicalRecordId = 666,
+                UserId = 999,
+                ProcedureName = "procedure name",
+                MedicationsAdministered = "some meds were used.",
+                ProcedureNotes = "notes to be overriden",
+                ProcedureDate = DateTime.Parse("2021-01-22")
+            };
+            bool methodResult = false;
+            int animalId = 5;
+            List<ProcedureVM> fakeprocedures;
+            
+            methodResult = _procedureManager.EditProcedureByMedicalRecordIdAndProcedureId(procedure, oldProcedure, procedure.MedicalRecordId);
+            fakeprocedures = _procedureManager.GetProceduresByAnimalId(animalId);
+
+            Assert.IsTrue(methodResult);
+            Assert.AreEqual(fakeprocedures[1].ProcedureName, "This sould replace the name on one of the fakes");
         }
     }
 }

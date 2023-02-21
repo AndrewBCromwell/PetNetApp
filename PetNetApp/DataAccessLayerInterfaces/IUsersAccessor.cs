@@ -26,5 +26,9 @@ namespace DataAccessLayerInterfaces
         int CreateNewUser(Users user, string PasswordHash);
 
         int DeactivateUserAccount(int UserId);
+
+        // Role Mgmt + Add Role
+        Users SelectUserByUsersId(int UsersId);
+        UsersVM SelectUserByUsersIdWithRoles(int UsersId);
     }
 }

@@ -32,6 +32,7 @@ namespace WpfPresentation.Animals
         List<string> _yesNo = new List<string> { "Yes", "No" };
         DateTime _maxBroughtInDate = DateTime.Now;
         DateTime _minBroughtInDate = new DateTime(2000,01,01);
+        private Animal _animal = null;
 
 
         public EditDetailAnimalProfile(MasterManager manager, AnimalVM animal)
@@ -40,6 +41,14 @@ namespace WpfPresentation.Animals
             _manager = manager;
             _animalVM = animal;
         }
+
+        // Molly- come back. Need to get an AnimalVM to pass from AnimalList
+        //public EditDetailAnimalProfile(Animal animal)     
+        //{
+        //    InitializeComponent();
+        //    _animal = animal;
+        //    _manager = MasterManager.GetMasterManager();
+        //}
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
