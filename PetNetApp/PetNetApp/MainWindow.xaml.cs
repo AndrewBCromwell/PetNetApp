@@ -18,6 +18,7 @@ using WpfPresentation.Management;
 using LogicLayer;
 using System.Diagnostics;
 using WpfPresentation.Misc;
+using WpfPresentation.Fundraising;
 
 namespace PetNetApp
 {
@@ -32,7 +33,7 @@ namespace PetNetApp
         public MainWindow()
         {
             InitializeComponent();
-            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnDonations, btnManagement };
+            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnFundraising, btnManagement };
 
             if (_manager.User == null)
             {
@@ -92,13 +93,6 @@ namespace PetNetApp
         {
             ChangeSelectedButton((Button)sender);
             frameMain.Navigate(ManagementPage.GetManagementPage());
-        }
-
-        private void btnDonations_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
@@ -284,6 +278,11 @@ namespace PetNetApp
             {
                 tab.Visibility = Visibility.Hidden;
             }
+        }
+        private void btnFundraising_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameMain.Navigate(FundraisingPage.GetFundraisingPage(_manager));
         }
     }
 }

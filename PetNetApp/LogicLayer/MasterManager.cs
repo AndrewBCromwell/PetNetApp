@@ -30,7 +30,6 @@ namespace LogicLayer
 
         private MasterManager()
         {
-            User = new UsersVM() { UsersId = 100000, ShelterId = 100000 };
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
             DeathManager = new DeathManager();
@@ -42,7 +41,7 @@ namespace LogicLayer
             TicketManager = new TicketManager();
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
-            FundraisingCampaignManager = new FundraisingCampaignManager(new FundraisingCampaignAccessorFakes());
+            FundraisingCampaignManager = new FundraisingCampaignManager();
         }
     
         public static MasterManager GetMasterManager()
