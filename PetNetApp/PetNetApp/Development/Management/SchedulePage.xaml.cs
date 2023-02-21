@@ -75,7 +75,7 @@ namespace WpfPresentation.Development.Management
                 date.SelectedDate = null;
                 try
                 {
-                    datScheduledPerson.ItemsSource = _masterManager.scheduleManager.RetrieveScheduleByUserId(user.UsersId);
+                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByUserId(user.UsersId);
                 }
                 catch (Exception ex)
                 {
@@ -92,7 +92,7 @@ namespace WpfPresentation.Development.Management
                 CboVolunteers.SelectedItem = null;
                 try
                 {
-                    datScheduledPerson.ItemsSource = _masterManager.scheduleManager.RetrieveScheduleByDate((DateTime)date.SelectedDate);
+                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByDate((DateTime)date.SelectedDate);
                 }
                 catch (Exception ex)
                 {
