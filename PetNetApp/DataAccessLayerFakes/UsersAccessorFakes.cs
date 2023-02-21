@@ -21,6 +21,7 @@ namespace DataAccessLayerFakes
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1000,
+                ShelterId = 1,
                 GivenName = "Stephan",
                 FamilyName = "technowiz",
                 Email = "Stephan@company.com",
@@ -33,6 +34,7 @@ namespace DataAccessLayerFakes
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1001,
+                ShelterId = 1,
                 GivenName = "Chris",
                 FamilyName = "Dreismeier",
                 Email = "Chris@company.com",
@@ -45,6 +47,7 @@ namespace DataAccessLayerFakes
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1002,
+                ShelterId = 1,
                 GivenName = "Asa",
                 FamilyName = "arm",
                 Email = "Asa@company.com",
@@ -57,6 +60,7 @@ namespace DataAccessLayerFakes
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1003,
+                ShelterId = 2,
                 GivenName = "Andrew",
                 FamilyName = "bob",
                 Email = "Andrew@company.com",
@@ -164,7 +168,7 @@ namespace DataAccessLayerFakes
             return user;
         }
 
-        public List<UsersVM> SelectUserByRole(string RoleId)
+        public List<UsersVM> SelectUserByRole(string roleId, int shelterId)
         {
             List<UsersVM> users = new List<UsersVM>();
 
@@ -172,7 +176,7 @@ namespace DataAccessLayerFakes
             {
                 foreach (var role in user.Roles)
                 {
-                    if(role == RoleId)
+                    if(role == roleId)
                     {
                         users.Add(user);
                     }

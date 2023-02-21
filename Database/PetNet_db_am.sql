@@ -1958,37 +1958,3 @@ AS
 	END
 GO
 
-
-
-USE [PetNet_db_am]
-
-DROP PROCEDURE IF EXISTS dbo.sp_select_users_by_roleId;  
-GO
-
-
-print '' print '*** creating sp_select_Users_by_RoleId'
-GO
-CREATE PROCEDURE [dbo].[sp_select_users_by_roleId]
-(
-	@RoleId			[NVARCHAR](50)
-)
-AS
-	BEGIN
-		SELECT 	[Users].[UsersId],
-				[GenderId],
-				[PronounId],
-				[ShelterId],
-				[GivenName],
-				[FamilyName],
-				[Email],
-				[Address],
-				[AddressTwo],
-				[Zipcode],
-				[Phone],
-				[CreationDate],
-				[Active],
-				[Suspended]
-		FROM	[Users] Join [UserRoles] on [Users].[UsersId] = [UserRoles].[UsersId] 
-		WHERE	@RoleId = [UserRoles].[RoleId]
-	END
-GO

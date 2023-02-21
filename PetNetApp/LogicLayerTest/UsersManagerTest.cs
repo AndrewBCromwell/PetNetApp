@@ -37,10 +37,11 @@ namespace LogicLayerTest
             // arrange
             const int expectedCount = 3;
             string role = "Volunteer";
+            int shelterId = 1;
             int actualCount = 0;
 
             // act
-            actualCount = _userManager.RetrieveUserByRole(role).Count;
+            actualCount = _userManager.RetrieveUserByRole(role,shelterId).Count;
 
             // assert
             Assert.AreEqual(expectedCount, actualCount);

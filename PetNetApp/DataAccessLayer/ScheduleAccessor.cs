@@ -72,7 +72,75 @@ namespace DataAccessLayer
                         ScheduleVM schedule = new ScheduleVM();
                         schedule.ScheduleId = reader.GetInt32(0);
                         schedule.UserId = reader.GetInt32(1);
-                        schedule.JobId = reader.GetInt32(2);
+                        schedule.JobId = reader.IsDBNull(2) ? null : (int?)reader.GetInt32(2);
+                        schedule.StartTime = reader.GetDateTime(3);
+                        schedule.EndTime = reader.GetDateTime(4);
+                        schedule.GivenName = reader.GetString(5);
+                        schedule.FamilyName = reader.GetString(6);
+                        schedules.Add(schedule);
+                    }
+                }
+                // close reader
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return schedules;
+        }
+
+
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/02/17
+        /// 
+        /// Gets all of the Schedules that for the user passed through
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="userId">The user that you want to see specific schedule</param>
+        /// <exception cref="SQLException">Select fails</exception>
+        /// <returns>List<ScheduleVM></returns>
+        public List<ScheduleVM> SelectScheduleByUser(int userId)
+        {
+            var schedules = new List<ScheduleVM>();
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdtext = "sp_select_schedule_by_userId";
+
+            var cmd = new SqlCommand(cmdtext, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UserId", SqlDbType.Int);
+
+            cmd.Parameters["@UserId"].Value = userId;
+
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute and get a SqlDataReader
+                var reader = cmd.ExecuteReader();
+
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ScheduleVM schedule = new ScheduleVM();
+                        schedule.ScheduleId = reader.GetInt32(0);
+                        schedule.UserId = reader.GetInt32(1);
+                        schedule.JobId = reader.IsDBNull(2) ? null : (int?)reader.GetInt32(2);
                         schedule.StartTime = reader.GetDateTime(3);
                         schedule.EndTime = reader.GetDateTime(4);
                         schedule.GivenName = reader.GetString(5);

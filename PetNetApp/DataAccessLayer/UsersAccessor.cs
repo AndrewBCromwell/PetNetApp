@@ -27,7 +27,7 @@ namespace DataAccessLayer
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <param name="RoleId"></param>
-        public List<UsersVM> SelectUserByRole(string RoleId)
+        public List<UsersVM> SelectUserByRole(string roleId, int shelterId)
         {
             var users = new List<UsersVM>();
 
@@ -40,8 +40,10 @@ namespace DataAccessLayer
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@RoleId", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int);
 
-            cmd.Parameters["@RoleId"].Value = RoleId;
+            cmd.Parameters["@RoleId"].Value = roleId;
+            cmd.Parameters["@ShelterId"].Value = shelterId;
 
             try
             {
@@ -54,25 +56,20 @@ namespace DataAccessLayer
 
                 if (reader.HasRows)
                 {
-                    // most of the time there will be a while loop
-                    // here, we don't need it
-
-                    reader.Read();
-                    // [GivenName], [FamilyName],[UserName],[gender], [Email]
                     while (reader.Read())
                     {
                         UsersVM user = new UsersVM();
                         user.UsersId = reader.GetInt32(0);
                         user.GenderId = reader.GetString(1);
-                        user.PronounId = reader.GetString(2);
-                        user.ShelterId = reader.GetInt32(3);
-                        user.GivenName = reader.GetString(4);
+                        user.PronounId = reader.IsDBNull(2) ? null : reader.GetString(2);
+                        user.ShelterId = reader.IsDBNull(3) ? null : (int?)reader.GetInt32(3);
+                        user.GivenName = reader.IsDBNull(4) ? null : reader.GetString(4);
                         user.FamilyName = reader.GetString(5);
                         user.Email = reader.GetString(6);
-                        user.Address = reader.GetString(7);
-                        user.AddressTwo = reader.GetString(8);
+                        user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
+                        user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
                         user.Zipcode = reader.GetString(9);
-                        user.Phone = reader.GetString(10);
+                        user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                         user.CreationDate = reader.GetDateTime(11);
                         user.Active = reader.GetBoolean(12);
                         user.SuspendEmployee = reader.GetBoolean(13);

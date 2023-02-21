@@ -42,7 +42,7 @@ namespace WpfPresentation.Development.Management
             return _existingManagementPage;
         }
 
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];

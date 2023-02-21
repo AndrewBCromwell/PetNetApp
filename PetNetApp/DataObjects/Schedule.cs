@@ -10,7 +10,7 @@ namespace DataObjects
     {
         public int ScheduleId { get; set; }
         public int UserId { get; set; }
-        public int JobId { get; set; }
+        public int? JobId { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
     }

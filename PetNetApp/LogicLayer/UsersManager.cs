@@ -41,13 +41,13 @@ namespace LogicLayer
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <param name="RoleId"></param>
-        public List<UsersVM> RetrieveUserByRole(string RoleId)
+        public List<UsersVM> RetrieveUserByRole(string roleId, int shelterId)
         {
             List<UsersVM> users = new List<UsersVM>();
 
             try
             {
-                users = _userAccessor.SelectUserByRole(RoleId);
+                users = _userAccessor.SelectUserByRole(roleId,shelterId);
             }
             catch (Exception ex)
             {
