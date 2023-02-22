@@ -100,11 +100,11 @@ namespace WpfPresentation.Animals
             frameMedical.Navigate(AnimalMedicalTestsPage.GetAnimalMedicalTestsPage(_medicalProfileAnimal));
         }
 
-        private void btnMedNotes_Click(object sender, RoutedEventArgs e)
+        private void btnMedNotes_Click(object sender, RoutedEventArgs e) 
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameMedical.Navigate(null);
+            frameMedical.Navigate(new MedicalFilesPage(_medicalProfileAnimal, _manager));
         }
 
         private void btnMedProcedures_Click(object sender, RoutedEventArgs e)

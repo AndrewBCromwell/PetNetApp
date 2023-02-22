@@ -126,7 +126,7 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    procedure.MedicalRecordId = _manager.medicalRecordManager.getLastMedicalRecordIdByAnimalId(_medProcedureAnimal.AnimalId);
+                    procedure.MedicalRecordId = _manager.MedicalRecordManager.getLastMedicalRecordIdByAnimalId(_medProcedureAnimal.AnimalId);
                 } 
                 catch (Exception ex)
                 {
@@ -148,7 +148,7 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    bool success = _manager.procedureManager.AddProcedureByMedicalRecordId(procedure, procedure.MedicalRecordId);
+                    bool success = _manager.ProcedureManager.AddProcedureByMedicalRecordId(procedure, procedure.MedicalRecordId);
                     if (success)
                     {
                         PromptWindow.ShowPrompt("Success", "The procedure was saved.", ButtonMode.Ok);
@@ -170,7 +170,7 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    bool success = _manager.procedureManager.EditProcedureByMedicalRecordIdAndProcedureId(procedure, _oldProcedure, procedure.MedicalRecordId);
+                    bool success = _manager.ProcedureManager.EditProcedureByMedicalRecordIdAndProcedureId(procedure, _oldProcedure, procedure.MedicalRecordId);
                     if (success)
                     {
                         PromptWindow.ShowPrompt("Success", "The procedure was saved.", ButtonMode.Ok);

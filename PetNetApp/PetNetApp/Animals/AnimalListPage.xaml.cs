@@ -23,7 +23,8 @@ namespace WpfPresentation.Animals
     /// </summary>
     public partial class AnimalListPage : Page
     {
-        private MasterManager masterManager = MasterManager.GetMasterManager();
+        private static AnimalListPage _existingAnimalListPage = null;
+        private MasterManager _masterManager = null;
         private List<Animal> _animals = null;
 
         public AnimalListPage()
@@ -31,12 +32,27 @@ namespace WpfPresentation.Animals
             InitializeComponent();
         }
 
+        public AnimalListPage(MasterManager manager)
+        {
+            InitializeComponent();
+            _masterManager = manager;
+        }
+
+        public static AnimalListPage GetAnimalListPage(MasterManager manager)
+        {
+            if (_existingAnimalListPage == null)
+            {
+                _existingAnimalListPage = new AnimalListPage(manager);
+            }
+            return _existingAnimalListPage;
+        }
+
 
         private void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
             try
             {
-                _animals = masterManager.AnimalManager.RetrieveAllAnimals();
+                _animals = _masterManager.AnimalManager.RetrieveAllAnimals();
                 // help from gwen, populate AnimalListPage with user controls
                 for (int i = 0; i < _animals.Count / 4; i++)
                 {
@@ -45,7 +61,7 @@ namespace WpfPresentation.Animals
 
                 for (int i = 0; i < _animals.Count; i++)
                 {
-                    AnimalListUserControl animalListUserControl = new AnimalListUserControl();
+                    AnimalListUserControl animalListUserControl = new AnimalListUserControl(_animals[i]);
                     animalListUserControl.lblAnimalListAnimalName.Content = _animals[i].AnimalName;
                     animalListUserControl.lblAnimalListAnimalID.Content = _animals[i].AnimalId;
 
@@ -58,7 +74,7 @@ namespace WpfPresentation.Animals
             }
             catch (Exception up)
             {
-                MessageBox.Show(up.Message);
+                MessageBox.Show(up.Message + "\n\n" + up.InnerException);
                 return;
             }
 

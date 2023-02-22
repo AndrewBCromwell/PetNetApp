@@ -13,8 +13,22 @@ namespace DataAccessLayer
 {
     public class AnimalAccessor : IAnimalAccessor
     {
-        
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// Selects all animals with a like supplied string
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="animalName">the animal name to search for</param>
+        /// <exception cref="Exception">Update Fails</exception>
+        /// <returns>all animals with like name</returns>
         public List<Animal> SelectAllAnimals(string animalName)
         {
             List<Animal> animals = new List<Animal>();
@@ -51,7 +65,6 @@ namespace DataAccessLayer
                         var animal = new Animal();
                         animal.AnimalId = reader.GetInt32(0);
                         animal.AnimalName = reader.GetString(1);
-                        // needs to be updated if we decide to link the animal table to the image table. to get animal image, left it out because the animal table doesn't have a link to the images table at the time of writing
                         animals.Add(animal);
                     }
                 }
@@ -405,7 +418,7 @@ namespace DataAccessLayer
             return rows;
         }
 
-        public List<Animal> SelectAllAnimals()
+        public List<Animal> SelectAllAnimals()  // add shelterId
         {
             List<Animal> animals = new List<Animal>();
 
@@ -430,22 +443,16 @@ namespace DataAccessLayer
                         animal.AnimalName = reader.GetString(1);
                         animal.AnimalTypeId = reader.GetString(2);
                         animal.AnimalBreedId = reader.GetString(3);
-                        animal.Personality = reader.GetString(4);
-                        animal.Description = reader.GetString(5);
+                        animal.Personality = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        animal.Description = reader.IsDBNull(5) ? null : reader.GetString(5);
                         animal.AnimalStatusId = reader.GetString(6);
                         animal.BroughtIn = reader.GetDateTime(7);
                         animal.MicrochipNumber = reader.GetString(8);
                         animal.Aggressive = reader.GetBoolean(9);
-                        if (reader.IsDBNull(10))
-                        {
-                            animal.AggressiveDescription = null;
-                        }
+                        animal.AggressiveDescription = reader.IsDBNull(10) ? null : reader.GetString(10);
                         animal.ChildFriendly = reader.GetBoolean(11);
                         animal.NeuterStatus = reader.GetBoolean(12);
-                        if (reader.IsDBNull(13))
-                        {
-                            animal.Notes = null;
-                        }
+                        animal.Notes = reader.IsDBNull(13) ? null : reader.GetString(13);
                         animals.Add(animal);
                     }
                 }

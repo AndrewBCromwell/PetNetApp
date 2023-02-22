@@ -11,12 +11,31 @@ namespace DataAccessLayerFakes
     public class RoleAccessorFakes : IRoleAccessor
     {
         List<UserRoles> _userRoles = new List<UserRoles>();
-        
+
+        /// <summary>
+        /// By: Barry Mikulas
+        /// Created: 2023/02/11
+        /// </summary>
+        private List<Role> _fakeRoles = new List<Role>();
+
+        /// <summary>
+        /// This is the list of roles to popluate combo box
+        /// </summary>
         public RoleAccessorFakes()
         {
-            _userRoles.Add(new UserRoles(){ UsersId = 100000, RoleId = "Admin" });
-            _userRoles.Add(new UserRoles(){ UsersId = 100001, RoleId = "Admin" });
-            _userRoles.Add(new UserRoles(){ UsersId = 100000, RoleId = "Vet" });
+            _fakeRoles.Add(new Role()
+            {
+                RoleId = "Admin",
+                Description = "Underpaid serf."
+            });
+            _fakeRoles.Add(new Role()
+            {
+                RoleId = "Volunteer",
+                Description = "Work for free."
+            });
+            _userRoles.Add(new UserRoles() { UsersId = 100000, RoleId = "Admin" });
+            _userRoles.Add(new UserRoles() { UsersId = 100001, RoleId = "Admin" });
+            _userRoles.Add(new UserRoles() { UsersId = 100000, RoleId = "Vet" });
         }
 
         // Created By: Asa Armstrong
@@ -45,5 +64,46 @@ namespace DataAccessLayerFakes
 
             return rowsAffected;
         }
+        
+
+        public int InsertRoleByUsersId(Role role, int usersId)
+        {
+            //throw new NotImplementedException();
+
+            int result = _fakeRoles.Count;
+
+            try
+            {
+                _fakeRoles.Add(new Role()
+                {
+                    RoleId = role.RoleId,
+                    Description = usersId.ToString()
+                });
+                result = _fakeRoles.Count - result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public List<Role> SelectAllRoles()
+        {
+            // red test
+            //throw new NotImplementedException();
+            // green test
+            return _fakeRoles;
+        }
+
+        public List<Role> SelectAllRolesByUserId(int userID)
+        {
+            //red test
+            //throw new NotImplementedException();
+            return _fakeRoles;
+        }
+
     }
 }

@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
 
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Grid.Row="1">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Grid.Row="1" Padding="20, 20, 20, 0" Margin="38, 10, 38, 0" Background="#EEEFE1">
             <Grid x:Name="grdAnimalList" Grid.Row="1" Grid.Column="1" Background="#EEEFE1" Margin="30 0 30 30">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

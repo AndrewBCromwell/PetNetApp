@@ -74,9 +74,19 @@ namespace DataAccessLayerFakes
                     schedules.Add(schedule);
                 }
             }
+            return schedules;
+        }
 
-
-
+        public List<ScheduleVM> SelectScheduleByUser(int userId)
+        {
+            List<ScheduleVM> schedules = new List<ScheduleVM>();
+            foreach (var schedule in fakeSchedules)
+            {
+                if (schedule.UserId == userId)
+                {
+                    schedules.Add(schedule);
+                }
+            }
             return schedules;
         }
     }

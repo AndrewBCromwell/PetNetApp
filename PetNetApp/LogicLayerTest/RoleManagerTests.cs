@@ -49,5 +49,54 @@ namespace LogicLayerTest
         {
             Assert.AreEqual(true, _roleManager.RemoveRoleByUsersIdAndRoleId(100000, "Vet"));
         }
+        //created by Barry Mikulas
+        [TestMethod]
+        public void TestReturnsCorrectRoleList()
+        {
+            //arrange
+            const int expectedCount = 2;
+            int actualCount;
+
+            //act
+            actualCount = _roleManager.RetrieveAllRoles().Count;
+
+            //assert
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+
+        //created by Barry Mikulas
+        [TestMethod]
+        public void TestReturnsCorrectRoleListByUsersId()
+        {
+            //arrange
+            const int expectedCount = 2;
+            int actualCount;
+            int usersId = 100001;
+
+            //act
+            actualCount = _roleManager.RetrieveRoleListByUserId(usersId).Count;
+
+            //assert
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+
+
+        //created by Barry Mikulas
+        [TestMethod]
+        public void TestAddRoleListToUserWorksWithCorrectData()
+        {
+            //arrange
+            bool actualResult;
+            int usersId = 100001;
+            Role newRole = new Role();
+
+            newRole.RoleId = "Veternarian";
+
+            //act
+            actualResult = _roleManager.AddRoleByUsersId(newRole, usersId);
+
+            //assert
+            Assert.IsTrue(actualResult);
+        }
     }
 }

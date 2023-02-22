@@ -38,7 +38,7 @@
         </DataGrid>
 
         <Label FontSize="24" Margin="20,0,0,0">Volunteers</Label>
-        <Button x:Name="btnEditSchedule" Grid.Row="1" Margin="10,55.4,10,10" Grid.Column="1"> Edit Schedule</Button>
+        <Button x:Name="btnEditSchedule" Grid.Row="1" Margin="10,55.4,10,10" Grid.Column="1" Click="btnEditSchedule_Click"> Edit Schedule</Button>
         <Button x:Name="btnEditVolunteer" Grid.Row="1" Margin="10,10.4,10,55" Grid.Column="1">Edit Selected Volunteer</Button>
         <Label x:Name="lblSearch" Grid.Row="2" Grid.Column="1" FontSize="22" Margin="10,0.4,-10,99.6" Grid.RowSpan="2"> Search: </Label>
         <TextBox x:Name="txtboxsearch" Grid.Row="2" Grid.Column="1" Margin="10,55.4,10,10" KeyUp="txtboxsearch_KeyUp"></TextBox>

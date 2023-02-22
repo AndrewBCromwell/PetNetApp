@@ -14,19 +14,39 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="275"/>
-            <ColumnDefinition Width="275"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*" MinWidth="300"/>
         </Grid.ColumnDefinitions>
 
-        <ComboBox x:Name="cboMonth" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="30,10,30,10" SelectionChanged="cboMonth_SelectionChanged"/>
-        <ComboBox x:Name="cboDay" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Margin="30,10,30,10" SelectionChanged="cboDay_SelectionChanged"/>
+        
+        <DatePicker x:Name="date" SelectedDateChanged="date_SelectedDateChanged" Grid.ColumnSpan="1" Margin="100,5,100,5"></DatePicker>
 
-        <DataGrid x:Name="datScheduledPerson"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="20,20,20,20" AutoGenerateColumns="False">
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.RowSpan="3" Grid.Row="1">
+            <ComboBox x:Name="CboVolunteers" SelectionChanged="CboVolunteers_SelectionChanged" Margin="20,20,20,20" Height="40">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="GivenName"/>
+                                    <Binding Path="FamilyName"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"   Click="Button_Click" Margin="70,0,70,0" MaxWidth="150">Clear</Button>
+            <Button Grid.Row="2" Grid.Column="1" Margin="20,20,20,20" Height="40">Add to Schedule</Button>
+            
+        </StackPanel>
+        
+
+        <DataGrid x:Name="datScheduledPerson"  Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="20,20,20,20" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn  Header="Volunteer">
                     <DataGridTextColumn.Binding>
@@ -36,8 +56,8 @@
                         </MultiBinding>
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding StartTime, StringFormat=t}" Header="StartTime" />
-                <DataGridTextColumn Binding="{Binding EndTime, StringFormat=t}" Header="EndTime"/>
+                <DataGridTextColumn Binding="{Binding StartTime}" Header="StartTime" />
+                <DataGridTextColumn Binding="{Binding EndTime}" Header="EndTime"/>
             </DataGrid.Columns>
 
         </DataGrid>
