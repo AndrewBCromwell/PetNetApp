@@ -16,8 +16,8 @@ INSERT INTO [dbo].[Users]
 	[Phone]
     )
 VALUES
-('Male','N/A',100001,'Chris','Dreismeier','Chris@gmail.com','4150 Riverview rd', 50001, '3192948541'),
-('Male','N/A',100001,'Asa','Armstrong','Asa@gmail.com','1234 Chestnut rd', 50001, '3191234321')
+('Male',null,100001,'Chris','Dreismeier','Chris@gmail.com','4150 Riverview rd', 50001, '3192948541'),
+('Male',null,100001,'Asa','Armstrong','Asa@gmail.com','1234 Chestnut rd', 50001, '3191234321')
 GO
 
 print '' print '*** inserting test records job'
@@ -51,19 +51,6 @@ VALUES
 (100001, 100000, '20230218 08:00:00 AM','20230218 06:00:00 PM' )
 GO
 
-
-print '' print '*** inserting Role sample data'
-GO 
-INSERT INTO [dbo].[Role]
-	(		
-	[RoleId],		
-	[Description]
-    )
-VALUES
-('Volunteer', 'does volunteer stuff')
-GO
-
-
 print '' print '*** inserting UserRole sample data'
 GO 
 INSERT INTO [dbo].[UserRoles]
@@ -72,8 +59,6 @@ INSERT INTO [dbo].[UserRoles]
 	[UsersId]
     )
 VALUES
-('Volunteer',100000 ),
-('Volunteer',100001 ),
 ('Volunteer',100002 ),
 ('Volunteer',100003 )
 GO
