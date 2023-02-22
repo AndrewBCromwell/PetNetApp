@@ -15,20 +15,18 @@ using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
 
-namespace WpfPresentation.Development.Management
+namespace WpfPresentation.Management
 {
     /// <summary>
     /// Interaction logic for KenOccupancyUpdate_333.xaml
     /// </summary>
     public partial class KenOccupancyUpdate_333 : Page
     {
-        private Animal _animal = new Animal();
-        private Kennel _kennel = new Kennel();
+        private KennelVM _kennel = new KennelVM();
         private MasterManager _masterManager = MasterManager.GetMasterManager();
 
-        public KenOccupancyUpdate_333(Kennel kennel, Animal animal)
+        public KenOccupancyUpdate_333(KennelVM kennel)
         {
-            _animal = animal;
             _kennel = kennel;
 
             InitializeComponent();
@@ -38,12 +36,10 @@ namespace WpfPresentation.Development.Management
         private void Populate()
         {
             lbl_KennelName.Content = _kennel.KennelName;
-            lbl_AnimalNameTitle.Content = "This is " + _animal.AnimalName + "'s kennel!";
+            lbl_AnimalNameTitle.Content = "This is " + _kennel.Animal.AnimalName + "'s kennel!";
             lbl_Species.Content = _kennel.AnimalTypeId;
-            lbl_Name.Content = _animal.AnimalName;
-            lbl_Intake.Content = _animal.BroughtIn.ToShortDateString();
-            lbl_Occupancy.Content = _kennel.KennelSpace;
-            txt_Notes.Text = "I don't know what notes go here";
+            lbl_Name.Content = _kennel.Animal.AnimalName;
+            lbl_Intake.Content = _kennel.Animal.BroughtIn.ToShortDateString();
         }
 
         private void btn_Remove_Click(object sender, RoutedEventArgs e)
@@ -52,9 +48,10 @@ namespace WpfPresentation.Development.Management
 
             try
             {
-                _masterManager.KennelManager.AddAnimalIntoKennelByAnimalId(100001, 100001);
-                result = _masterManager.KennelManager.RemoveAnimalKennelingByKennelIdAndAnimalId(100001, 100001);
-                // result = _masterManager.KennelManager.RemoveAnimalKennelingByKennelIdAndAnimalId(_kennel.KennelId, _animal.AnimalId);
+                if (PromptSelection.Yes == PromptWindow.ShowPrompt("Remove", "Remove animal from kennel?", ButtonMode.YesNo))
+                {
+                    result = _masterManager.KennelManager.RemoveAnimalKennelingByKennelIdAndAnimalId(_kennel.KennelId, _kennel.Animal.AnimalId);
+                }
             }
             catch (Exception ex)
             {
@@ -64,7 +61,13 @@ namespace WpfPresentation.Development.Management
             if (result)
             {
                 PromptWindow.ShowPrompt("Congrats", "Animal Kenneling removed.", ButtonMode.Ok);
+                NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
             }
+        }
+
+        private void btn_Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
         }
     }
 }

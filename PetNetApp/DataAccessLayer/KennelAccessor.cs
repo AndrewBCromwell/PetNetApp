@@ -137,6 +137,7 @@ namespace DataAccessLayer
                             animal.AnimalName = reader.GetString(5);
                             animal.BroughtIn = reader.GetDateTime(6);
                             animal.Notes = reader.GetString(7);
+                            animal.AnimalId = reader.GetInt32(8);
                         }
                         
 

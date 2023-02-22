@@ -90,7 +90,8 @@ namespace WpfPresentation.Management
         {
             if(kennelVM.Animal != null)
             {
-                // Placeholder for ViewIndivisualOccupiedKennel and KenOccupancy (Remove Animal)
+                // Created by: Asa
+                NavigationService.Navigate(new KenOccupancyUpdate_333(kennelVM));
             } else
             {
                 NavigationService.Navigate(new AssignAnimalToKennel(kennelVM));
