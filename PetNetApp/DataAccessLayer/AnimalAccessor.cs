@@ -244,9 +244,9 @@ namespace DataAccessLayer
         /// <param>No parameters</param>
         /// <exception cref="Exception">Select Fails</exception>
         /// <returns>A  list of all animal breeds</returns>
-        public List<string> SelectAllAnimalBreeds()
+        public Dictionary<string, List<string>> SelectAllAnimalBreeds()
         {
-            List<string> breeds = new List<string>();
+            Dictionary<string, List<string>> breeds = new Dictionary<string, List<string>>();
 
             // connection
             var connectionFactory = new DBConnection();
@@ -275,10 +275,16 @@ namespace DataAccessLayer
                 {
                     while (reader.Read())
                     {
-                        string breed = "";
-                        breed = reader.GetString(0);
-                        breeds.Add(breed);
-                        
+                        string breed = reader.GetString(0);
+                        string animalType = reader.GetString(1);
+                        if (breeds.ContainsKey(animalType))
+                        {
+                            breeds[animalType].Add(breed);
+                        }
+                        else
+                        {
+                            breeds.Add(animalType, new List<string> { breed });
+                        }
                     }
                 }
             }
@@ -658,16 +664,16 @@ namespace DataAccessLayer
                         animalVM.AnimalGender = reader.GetString(2);
                         animalVM.AnimalTypeId = reader.GetString(3);
                         animalVM.AnimalBreedId = reader.GetString(4);
-                        animalVM.Personality = reader.GetString(5);
-                        animalVM.Description = reader.GetString(6);
+                        animalVM.Personality = reader.IsDBNull(5) ? "N/A" : reader.GetString(5);
+                        animalVM.Description = reader.IsDBNull(6) ? "N/A" : reader.GetString(6);
                         animalVM.AnimalStatusId = reader.GetString(7);
                         animalVM.BroughtIn = reader.GetDateTime(8);
-                        animalVM.MicrochipNumber = reader.GetString(9);
+                        animalVM.MicrochipNumber = reader.IsDBNull(9) ? "N/A" : reader.GetString(9);
                         animalVM.Aggressive = reader.GetBoolean(10);
-                        animalVM.AggressiveDescription = reader.GetString(11);
+                        animalVM.AggressiveDescription = reader.IsDBNull(11) ? "N/A" : reader.GetString(11);
                         animalVM.ChildFriendly = reader.GetBoolean(12);
                         animalVM.NeuterStatus = reader.GetBoolean(13);
-                        animalVM.Notes = reader.GetString(14);
+                        animalVM.Notes = reader.IsDBNull(14) ? "N/A" : reader.GetString(14);
                     }
                 }
             }

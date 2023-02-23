@@ -28,7 +28,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfPresentation.Development.Animals
+namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for EditDetailAnimalProfile.xaml
@@ -38,7 +38,7 @@ namespace WpfPresentation.Development.Animals
         private MasterManager _manager = null;
         private AnimalVM _animalVM = null;
         private ToolTip _toolTip = new ToolTip();
-        List<string> _breeds = null;
+        Dictionary<string, List<string>> _breeds = null;
         List<string> _genders = null;
         List<string> _types = null;
         List<string> _statuses = null;
@@ -187,7 +187,7 @@ namespace WpfPresentation.Development.Animals
             txtAnimalId.IsReadOnly = true;
             txtAnimalId.IsEnabled = false;
             txtAnimalTypeId.IsReadOnly = false;
-            txtAnimalBreedId.IsReadOnly = false;
+            txtAnimalBreedId.IsReadOnly = true;
             txtAnimalGender.IsReadOnly = false;
             txtKennelName.IsReadOnly = true;
             txtKennelName.IsEnabled = false;
@@ -198,7 +198,17 @@ namespace WpfPresentation.Development.Animals
             txtPersonality.IsReadOnly = false;
             txtMicrochipNumber.IsReadOnly = false;
             txtAggressive.IsReadOnly = false;
-            txtAggressiveDescription.IsReadOnly = false;
+            if(cmbAggressive.SelectedItem.ToString() == "Yes")
+            {
+                txtAggressiveDescription.IsEnabled = true;
+                txtAggressiveDescription.IsReadOnly = false;
+            }
+            else
+            {
+                txtAggressiveDescription.IsEnabled = false;
+                txtAggressiveDescription.IsReadOnly = true;
+            }
+            
             txtChildFriendly.IsReadOnly = false;
             txtNeuterStatus.IsReadOnly = false;
             txtNotes.IsReadOnly = false;
@@ -271,30 +281,17 @@ namespace WpfPresentation.Development.Animals
         private void populateComboBoxes()
         {
             _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
-            cmbAnimalBreedId.ItemsSource = from breed in _breeds
-                                           orderby breed
-                                           select breed;
-            _genders = _manager.AnimalManager.RetrieveAllAnimalGenders();
-            cmbAnimalGender.ItemsSource = from gender in _genders
-                                          select gender;
+            cmbAnimalBreedId.ItemsSource = _breeds;
             _types = _manager.AnimalManager.RetrieveAllAnimalTypes();
-            cmbAnimalTypeId.ItemsSource = from type in _types
-                                          orderby type
-                                          select type;
-            _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
-            cmbAnimalStatusId.ItemsSource = from status in _statuses
-                                            orderby status
-                                            select status;
+            cmbAnimalTypeId.ItemsSource = _types;
 
-            cmbAggressive.ItemsSource = from yn in _yesNo
-                                        orderby yn descending
-                                        select yn;
-            cmbChildFriendly.ItemsSource = from yn in _yesNo
-                                           orderby yn descending
-                                           select yn;
-            cmbNeuterStatus.ItemsSource = from yn in _yesNo
-                                          orderby yn descending
-                                          select yn;
+            _genders = _manager.AnimalManager.RetrieveAllAnimalGenders();
+            cmbAnimalGender.ItemsSource = _genders;
+            _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
+            cmbAnimalStatusId.ItemsSource = _statuses;
+            cmbAggressive.ItemsSource = _yesNo;
+            cmbChildFriendly.ItemsSource = _yesNo;
+            cmbNeuterStatus.ItemsSource = _yesNo;
         }
 
         /// <summary>
@@ -391,12 +388,14 @@ namespace WpfPresentation.Development.Animals
                         if(cmbAggressive.SelectedItem.ToString() == "Yes")
                         {
                             newAnimal.Aggressive = true;
+                            newAnimal.AggressiveDescription = txtAggressiveDescription.Text;
                         }
                         else
                         {
                             newAnimal.Aggressive = false;
+                            newAnimal.AggressiveDescription = "";
                         }
-                        newAnimal.AggressiveDescription = txtAggressiveDescription.Text;
+                        
                         if (cmbChildFriendly.SelectedItem.ToString() == "Yes")
                         {
                             newAnimal.ChildFriendly = true;
@@ -562,7 +561,36 @@ namespace WpfPresentation.Development.Animals
                 if (result == PromptSelection.Yes)
                 {
                     setDetailMode();
+                    NavigationService nav = NavigationService.GetNavigationService(this);
+                    nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
+                    // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
                 }
+            }
+            else
+            {
+                NavigationService nav = NavigationService.GetNavigationService(this);
+                nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
+               // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
+            }
+        }
+
+        private void cmbAnimalTypeId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cmbAnimalBreedId.ItemsSource = _breeds[cmbAnimalTypeId.SelectedItem.ToString()];
+            cmbAnimalBreedId.IsEnabled = true;
+        }
+
+        private void cmbAggressive_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbAggressive.SelectedItem.ToString() == "Yes")
+            {
+                txtAggressiveDescription.IsEnabled = true;
+                txtAggressiveDescription.IsReadOnly = false;
+            }
+            else
+            {
+                txtAggressiveDescription.IsEnabled = false;
+                txtAggressiveDescription.IsReadOnly = true;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace LogicLayerInterfaces
         AnimalVM RetrieveAnimalByAnimalId(int animalId, int shelterId);
 
         // For populating edit animal profile combo boxes 
-        List<string> RetrieveAllAnimalBreeds();
+        Dictionary<string, List<string>> RetrieveAllAnimalBreeds();
         List<string> RetrieveAllAnimalGenders();
         List<string> RetrieveAllAnimalTypes();
         List<string> RetrieveAllAnimalStatuses();

@@ -22,7 +22,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_select_all_animal_breeds]
 AS
 	BEGIN
-		SELECT [AnimalBreedId]
+		SELECT [AnimalBreedId], [AnimalBreed].[AnimalTypeId]
 		FROM [AnimalBreed]
 	END
 GO

@@ -15,7 +15,7 @@ namespace DataAccessLayerInterfaces
         List<Animal> SelectAllAnimals(String animalName);
 
         // For populating edit animal profile combo boxes 
-        List<string> SelectAllAnimalBreeds();
+        Dictionary<string, List<string>> SelectAllAnimalBreeds();
         List<string> SelectAllAnimalGenders();
         List<string> SelectAllAnimalTypes();
         List<string> SelectAllAnimalStatuses();

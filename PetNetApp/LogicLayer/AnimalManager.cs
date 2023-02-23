@@ -106,7 +106,8 @@ namespace LogicLayer
         /// Andrew Schneider
         /// Created: 2023/02/08
         /// 
-        /// Retrieves all animal breeds to populate add/edit animal profile combo boxes
+        /// Retrieves all animal breeds and their associated animal types to
+        /// populate add/edit animal profile combo boxes
         /// </summary>
         ///
         /// <remarks>
@@ -116,8 +117,8 @@ namespace LogicLayer
         /// </remarks>
         /// <param>No parameters</param>
         /// <exception cref="ApplicationException">Retrieval Fails</exception>
-        /// <returns>A  list of all animal breeds</returns>
-        public List<string> RetrieveAllAnimalBreeds()
+        /// <returns>A dictionary of two strings, the breed and the type</returns>
+        public Dictionary<string, List<string>> RetrieveAllAnimalBreeds()
         {
             //var breeds = new List<string>();
             //breeds.Add("Test breed 1");
