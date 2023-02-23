@@ -27,7 +27,7 @@ namespace DataAccessLayer
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <param name="RoleId"></param>
-        public List<UsersVM> SelectUserByRole(string RoleId)
+        public List<UsersVM> SelectUserByRole(string roleId, int shelterId)
         {
             var users = new List<UsersVM>();
 
@@ -40,8 +40,10 @@ namespace DataAccessLayer
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@RoleId", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int);
 
-            cmd.Parameters["@RoleId"].Value = RoleId;
+            cmd.Parameters["@RoleId"].Value = roleId;
+            cmd.Parameters["@ShelterId"].Value = shelterId;
 
             try
             {
@@ -54,25 +56,20 @@ namespace DataAccessLayer
 
                 if (reader.HasRows)
                 {
-                    // most of the time there will be a while loop
-                    // here, we don't need it
-
-                    reader.Read();
-                    // [GivenName], [FamilyName],[UserName],[gender], [Email]
                     while (reader.Read())
                     {
                         UsersVM user = new UsersVM();
                         user.UsersId = reader.GetInt32(0);
                         user.GenderId = reader.GetString(1);
-                        user.PronounId = reader.GetString(2);
-                        user.ShelterId = reader.GetInt32(3);
-                        user.GivenName = reader.GetString(4);
+                        user.PronounId = reader.IsDBNull(2) ? null : reader.GetString(2);
+                        user.ShelterId = reader.IsDBNull(3) ? null : (int?)reader.GetInt32(3);
+                        user.GivenName = reader.IsDBNull(4) ? null : reader.GetString(4);
                         user.FamilyName = reader.GetString(5);
                         user.Email = reader.GetString(6);
-                        user.Address = reader.GetString(7);
-                        user.AddressTwo = reader.GetString(8);
+                        user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
+                        user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
                         user.Zipcode = reader.GetString(9);
-                        user.Phone = reader.GetString(10);
+                        user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                         user.CreationDate = reader.GetDateTime(11);
                         user.Active = reader.GetBoolean(12);
                         user.SuspendEmployee = reader.GetBoolean(13);
@@ -491,8 +488,91 @@ namespace DataAccessLayer
             return rows;
         }
 
-       
+        /// <summary>
+        /// Barry Mikukas
+        /// Created: 2023/02/09
+        /// 
+        /// 
+        /// </summary>
+        /// Selects users with a given UsersId
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        /// <param usersId="UsersId"></param>
+        public Users SelectUserByUsersId(int UsersId)
+        {
+            var user = new Users();
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdtext = "sp_select_user_by_usersId";
+
+            var cmd = new SqlCommand(cmdtext, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+
+            cmd.Parameters["@UsersId"].Value = UsersId;
+
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute and get a SqlDataReader
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    //// [GivenName], [FamilyName],[UserName],[gender], [Email]
+                    //while (reader.Read())
+                    //{
+                    user.UsersId = reader.GetInt32(0);
+                    user.GenderId = reader.GetString(1);
+                    user.PronounId = reader.GetString(2);
+                    user.ShelterId = reader.GetInt32(3);
+                    user.GivenName = reader.GetString(4);
+                    user.FamilyName = reader.GetString(5);
+                    user.Email = reader.GetString(6);
+                    user.Address = reader.GetString(7);
+                    user.AddressTwo = reader.GetString(8);
+                    user.Zipcode = reader.GetString(9);
+                    user.Phone = reader.GetString(10);
+                    user.CreationDate = reader.GetDateTime(11);
+                    user.Active = reader.GetBoolean(12);
+                    user.SuspendEmployee = reader.GetBoolean(13);
+                    //}
+                }
+                // close reader
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return user;
+
+            //throw new NotImplementedException();
+        }
+        /// <summary>
+        /// By: Barry Mikulas
+        /// Created: 2023/02/11
+        /// </summary>
+        /// <param name="UsersId"></param>
+        /// <returns>UsersVM</returns>
+        public UsersVM SelectUserByUsersIdWithRoles(int UsersId)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
+
+
 

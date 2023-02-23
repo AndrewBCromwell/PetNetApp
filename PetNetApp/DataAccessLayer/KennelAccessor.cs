@@ -137,6 +137,7 @@ namespace DataAccessLayer
                             animal.AnimalName = reader.GetString(5);
                             animal.BroughtIn = reader.GetDateTime(6);
                             animal.Notes = reader.GetString(7);
+                            animal.AnimalId = reader.GetInt32(8);
                         }
                         
 
@@ -331,6 +332,35 @@ namespace DataAccessLayer
                 conn.Close();
             }
             return rows;
+        }
+
+        // Created By: Asa Armstrong
+        public int DeleteAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId)
+        {
+            int rowsAffected = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmdText = "sp_remove_animal_from_animalkenneling_by_kennelId_and_animalId";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@KennelId", kennelId);
+            cmd.Parameters.AddWithValue("@AnimalId", animalId);
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
         }
     }
 }

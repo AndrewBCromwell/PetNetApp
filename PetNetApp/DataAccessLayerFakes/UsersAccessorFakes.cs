@@ -14,13 +14,27 @@ namespace DataAccessLayerFakes
         private List<Users> _fakeUsers = new List<Users>(); 
         private List<UsersVM> fakeUsers = new List<UsersVM>();
         private List<string> fakePassword = new List<string>();
+        private Users fakeUser = new Users();
 
 
         public UsersAccessorFakes()
         {
+            fakeUser = new Users()
+            {
+                UsersId = 1000,
+                GivenName = "Stephan",
+                FamilyName = "technowiz",
+                Email = "Stephan@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true
+
+            };
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1000,
+                ShelterId = 1,
                 GivenName = "Stephan",
                 FamilyName = "technowiz",
                 Email = "Stephan@company.com",
@@ -33,6 +47,7 @@ namespace DataAccessLayerFakes
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1001,
+                ShelterId = 1,
                 GivenName = "Chris",
                 FamilyName = "Dreismeier",
                 Email = "Chris@company.com",
@@ -45,6 +60,7 @@ namespace DataAccessLayerFakes
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1002,
+                ShelterId = 1,
                 GivenName = "Asa",
                 FamilyName = "arm",
                 Email = "Asa@company.com",
@@ -57,6 +73,7 @@ namespace DataAccessLayerFakes
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1003,
+                ShelterId = 2,
                 GivenName = "Andrew",
                 FamilyName = "bob",
                 Email = "Andrew@company.com",
@@ -164,7 +181,7 @@ namespace DataAccessLayerFakes
             return user;
         }
 
-        public List<UsersVM> SelectUserByRole(string RoleId)
+        public List<UsersVM> SelectUserByRole(string roleId, int shelterId)
         {
             List<UsersVM> users = new List<UsersVM>();
 
@@ -172,7 +189,7 @@ namespace DataAccessLayerFakes
             {
                 foreach (var role in user.Roles)
                 {
-                    if(role == RoleId)
+                    if(role == roleId)
                     {
                         users.Add(user);
                     }
@@ -200,6 +217,15 @@ namespace DataAccessLayerFakes
             _fakeUsers.Add(user);
 
             return _fakeUsers.Count(); 
+        }
+        public Users SelectUserByUsersId(int UsersId)
+        {
+            return fakeUser;
+            //throw new NotImplementedException();
+        }
+        public UsersVM SelectUserByUsersIdWithRoles(int UsersId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

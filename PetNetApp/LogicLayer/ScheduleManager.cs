@@ -51,7 +51,7 @@ namespace LogicLayer
         /// Updated: yyyy/mm/dd
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        /// <param name="selectedDate">A description of the parameter that this method takes</param>
+        /// <param name="selectedDate">The date that you want to all people schedules</param>
         /// <exception cref="SQLException">Data failed to be retrieved</exception>
         /// <returns>List of Schedules</returns>	
         public List<ScheduleVM> RetrieveScheduleByDate(DateTime selectedDate)
@@ -60,6 +60,36 @@ namespace LogicLayer
             try
             {
                 schedules = _scheduleAccessor.SelectScheduleByDate(selectedDate);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Error Retrieving schedule data.", ex);
+            }
+            return schedules;
+        }
+
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/02/17
+        /// 
+        /// Retrieves the schedule of the person passed through
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="userId">The Id of the user for whose schedule you looking for</param>
+        /// <exception cref="SQLException">Data failed to be retrieved</exception>
+        /// <returns>List of Schedules</returns>
+        public List<ScheduleVM> RetrieveScheduleByUserId(int userId)
+        {
+            List<ScheduleVM> schedules = null;
+            try
+            {
+                schedules = _scheduleAccessor.SelectScheduleByUser(userId);
             }
             catch (Exception ex)
             {

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
 using WpfPresentation.Management;
+using DataObjects;
 
 namespace WpfPresentation.Development.Management
 {
@@ -42,7 +43,7 @@ namespace WpfPresentation.Development.Management
             return _existingManagementPage;
         }
 
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
@@ -75,6 +76,9 @@ namespace WpfPresentation.Development.Management
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
             frameAnimals.Navigate(new ViewTicketList());
+            /*Kennel kennel = new Kennel() { AnimalTypeId = "Dog", KennelActive = true, KennelId = 100000, KennelName = "Kennel 1", KennelSpace = 1, ShelterId = 100000 };
+            Animal animal = new Animal() { AnimalId = 100000, AnimalName = "Fido" };
+            frameAnimals.Navigate(new KenOccupancyUpdate_333(kennel, animal));*/
         }
 
         private void btnKennel_Click(object sender, RoutedEventArgs e)
