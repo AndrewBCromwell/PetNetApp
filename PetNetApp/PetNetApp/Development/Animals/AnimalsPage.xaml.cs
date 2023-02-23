@@ -85,7 +85,7 @@ namespace WpfPresentation.Development.Animals
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
 
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new AnimalListPage(_manager));
         }
 
         private void btnMedical_Click(object sender, RoutedEventArgs e)

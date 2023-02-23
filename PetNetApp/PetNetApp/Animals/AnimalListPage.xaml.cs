@@ -50,7 +50,7 @@ namespace WpfPresentation.Animals
         {
             try
             {
-                _animals = _masterManager.AnimalManager.RetrieveAllAnimals(_masterManager.User.ShelterId);
+                _animals = _masterManager.AnimalManager.RetrieveAllAnimals(_masterManager.User.ShelterId.Value);
                 // help from gwen, populate AnimalListPage with user controls
                 for (int i = 0; i < _animals.Count / 4; i++)
                 {

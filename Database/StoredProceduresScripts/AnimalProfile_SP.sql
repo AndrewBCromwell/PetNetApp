@@ -118,6 +118,7 @@ AS
 				[MicrochipSerialNumber] = @NewMicrochipSerialNumber,
 				[Aggressive] 			= @NewAggressive,
 				[AggressiveDescription] = @NewAggressiveDescription,
+				[ChildFriendly]			= @NewChildFriendly,
 				[NeuterStatus]          = @NewNeuterStatus,
 				[Notes]          		= @NewNotes
 		WHERE	[AnimalId] 				= @AnimalId
@@ -126,15 +127,21 @@ AS
 		  AND	[AnimalGender] 			= @OldAnimalGender
 		  AND	[AnimalTypeId] 			= @OldAnimalTypeId
 		  AND	[AnimalBreedId] 		= @OldAnimalBreedId
-		  AND	[Personality] 			= @OldPersonality
-		  AND	[Description]			= @OldDescription
+		  AND	([Personality] 			= @OldPersonality
+				OR ([Personality] IS NULL AND @OldPersonality IS NULL))
+		  AND	([Description]			= @OldDescription
+				OR ([Description] IS NULL AND @OldDescription IS NULL))
 		  AND	[AnimalStatusId] 		= @OldAnimalStatusID
 		  AND	[RecievedDate] 			= @OldReceivedDate
-		  AND   [MicrochipSerialNumber] = @OldMicrochipSerialNumber
-		  AND   [Aggressive] 			= @OldAggressive
-		  AND	[AggressiveDescription] = @OldAggressiveDescription
-		  AND   [NeuterStatus]          = @OldNeuterStatus		
-		  AND   [Notes]          		= @OldNotes
+		  AND 	([MicrochipSerialNumber] = @OldMicrochipSerialNumber
+				OR ([MicrochipSerialNumber] IS NULL AND @OldMicrochipSerialNumber IS NULL))
+		  AND 	[Aggressive] 			= @OldAggressive
+		  AND	([AggressiveDescription] = @OldAggressiveDescription
+				OR ([AggressiveDescription] IS NULL AND @OldAggressiveDescription IS NULL))
+		  AND	[ChildFriendly]			= @OldChildFriendly
+		  AND 	[NeuterStatus]          = @OldNeuterStatus		
+		  AND 	([Notes]          		= @OldNotes
+				OR ([Notes] IS NULL AND @OldNotes IS NULL))
 		RETURN @@ROWCOUNT
 	END
 GO

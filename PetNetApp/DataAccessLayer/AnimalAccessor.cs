@@ -200,18 +200,18 @@ namespace DataAccessLayer
                         animal.AnimalGender = reader.GetString(2);
                         animal.AnimalTypeId = reader.GetString(3);
                         animal.AnimalBreedId = reader.GetString(4);
-                        animal.KennelName = reader.IsDBNull(5) ? "Unassigned" : reader.GetString(5);
-                        animal.Personality = reader.IsDBNull(6) ? "N/A" : reader.GetString(6);
-                        animal.Description = reader.IsDBNull(7) ? "N/A" : reader.GetString(7);
+                        animal.KennelName = reader.IsDBNull(5) ? null : reader.GetString(5);
+                        animal.Personality = reader.IsDBNull(6) ? null : reader.GetString(6);
+                        animal.Description = reader.IsDBNull(7) ? null : reader.GetString(7);
                         animal.AnimalStatusId = reader.GetString(8);
-                        animal.AnimalStatusDescription = reader.IsDBNull(9) ? "N/A" : reader.GetString(9);
+                        animal.AnimalStatusDescription = reader.IsDBNull(9) ? null : reader.GetString(9);
                         animal.BroughtIn = reader.GetDateTime(10);
-                        animal.MicrochipNumber = reader.IsDBNull(11) ? "N/A" : reader.GetString(11);
+                        animal.MicrochipNumber = reader.IsDBNull(11) ? null : reader.GetString(11);
                         animal.Aggressive = reader.GetBoolean(12);
-                        animal.AggressiveDescription = reader.IsDBNull(13) ? "N/A" : reader.GetString(13);
+                        animal.AggressiveDescription = reader.IsDBNull(13) ? null : reader.GetString(13);
                         animal.ChildFriendly = reader.GetBoolean(14);
                         animal.NeuterStatus = reader.GetBoolean(15);
-                        animal.Notes = reader.IsDBNull(16) ? "N/A" : reader.GetString(16);
+                        animal.Notes = reader.IsDBNull(16) ? null : reader.GetString(16);
                         animal.AnimalShelterId = reader.GetInt32(17);
                     }
                 }
@@ -532,31 +532,71 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@OldAnimalGender", oldAnimal.AnimalGender);
             cmd.Parameters.AddWithValue("@OldAnimalTypeId", oldAnimal.AnimalTypeId);
             cmd.Parameters.AddWithValue("@OldAnimalBreedId", oldAnimal.AnimalBreedId);
-            cmd.Parameters.AddWithValue("@OldPersonality", oldAnimal.Personality);
-            cmd.Parameters.AddWithValue("@OldDescription", oldAnimal.Description);
             cmd.Parameters.AddWithValue("@OldAnimalStatusId", oldAnimal.AnimalStatusId);
             cmd.Parameters.AddWithValue("@OldReceivedDate", oldAnimal.BroughtIn); // "ReceivedDate" in the DB
-            cmd.Parameters.AddWithValue("@OldMicrochipSerialNumber", oldAnimal.MicrochipNumber);
             cmd.Parameters.AddWithValue("@OldAggressive", oldAnimal.Aggressive);
-            cmd.Parameters.AddWithValue("@OldAggressiveDescription", oldAnimal.AggressiveDescription);
             cmd.Parameters.AddWithValue("@OldChildFriendly", oldAnimal.ChildFriendly);
             cmd.Parameters.AddWithValue("@OldNeuterStatus", oldAnimal.NeuterStatus);
-            cmd.Parameters.AddWithValue("@OldNotes", oldAnimal.Notes);
 
-            cmd.Parameters.AddWithValue("NewAnimalName", newAnimal.AnimalName);
-            cmd.Parameters.AddWithValue("NewAnimalGender", newAnimal.AnimalGender);
-            cmd.Parameters.AddWithValue("NewAnimalTypeId", newAnimal.AnimalTypeId);
-            cmd.Parameters.AddWithValue("NewAnimalBreedId", newAnimal.AnimalBreedId);
-            cmd.Parameters.AddWithValue("NewPersonality", newAnimal.Personality);
-            cmd.Parameters.AddWithValue("NewDescription", newAnimal.Description);
-            cmd.Parameters.AddWithValue("NewAnimalStatusId", newAnimal.AnimalStatusId);
-            cmd.Parameters.AddWithValue("NewReceivedDate", newAnimal.BroughtIn); // "ReceivedDate" in the DB
-            cmd.Parameters.AddWithValue("NewMicrochipSerialNumber", newAnimal.MicrochipNumber);
-            cmd.Parameters.AddWithValue("NewAggressive", newAnimal.Aggressive);
-            cmd.Parameters.AddWithValue("NewAggressiveDescription", newAnimal.AggressiveDescription);
-            cmd.Parameters.AddWithValue("NewChildFriendly", newAnimal.ChildFriendly);
-            cmd.Parameters.AddWithValue("NewNeuterStatus", newAnimal.NeuterStatus);
-            cmd.Parameters.AddWithValue("NewNotes", newAnimal.Notes);
+            if (oldAnimal.Personality == null)
+            {
+                cmd.Parameters.AddWithValue("@OldPersonality", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldPersonality", oldAnimal.Personality);
+            }
+
+            if (oldAnimal.Description == null)
+            {
+                cmd.Parameters.AddWithValue("@OldDescription", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldDescription", oldAnimal.Description);
+            }
+            
+            if (oldAnimal.MicrochipNumber == null)
+            {
+                cmd.Parameters.AddWithValue("@OldMicrochipSerialNumber", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldMicrochipSerialNumber", oldAnimal.MicrochipNumber);
+            }
+            
+            if (oldAnimal.AggressiveDescription == null)
+            {
+                cmd.Parameters.AddWithValue("@OldAggressiveDescription", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldAggressiveDescription", oldAnimal.AggressiveDescription);
+            }
+           
+            if (oldAnimal.Notes == null)
+            {
+                cmd.Parameters.AddWithValue("@OldNotes", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldNotes", oldAnimal.Notes);
+            }
+
+            cmd.Parameters.AddWithValue("@NewAnimalName", newAnimal.AnimalName);
+            cmd.Parameters.AddWithValue("@NewAnimalGender", newAnimal.AnimalGender);
+            cmd.Parameters.AddWithValue("@NewAnimalTypeId", newAnimal.AnimalTypeId);
+            cmd.Parameters.AddWithValue("@NewAnimalBreedId", newAnimal.AnimalBreedId);
+            cmd.Parameters.AddWithValue("@NewPersonality", newAnimal.Personality);
+            cmd.Parameters.AddWithValue("@NewDescription", newAnimal.Description);
+            cmd.Parameters.AddWithValue("@NewAnimalStatusId", newAnimal.AnimalStatusId);
+            cmd.Parameters.AddWithValue("@NewReceivedDate", newAnimal.BroughtIn); // "ReceivedDate" in the DB
+            cmd.Parameters.AddWithValue("@NewMicrochipSerialNumber", newAnimal.MicrochipNumber);
+            cmd.Parameters.AddWithValue("@NewAggressive", newAnimal.Aggressive);
+            cmd.Parameters.AddWithValue("@NewAggressiveDescription", newAnimal.AggressiveDescription);
+            cmd.Parameters.AddWithValue("@NewChildFriendly", newAnimal.ChildFriendly);
+            cmd.Parameters.AddWithValue("@NewNeuterStatus", newAnimal.NeuterStatus);
+            cmd.Parameters.AddWithValue("@NewNotes", newAnimal.Notes);
 
             try
             {
