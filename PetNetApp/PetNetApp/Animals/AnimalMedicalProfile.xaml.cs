@@ -33,7 +33,6 @@ namespace WpfPresentation.Animals
             _animalId = animalId;
         }
 
-
         public void disableControls()
         {
             txtAnimalBreed.IsEnabled = false;

@@ -1,14 +1,24 @@
-/* Created by: Molly Meister */
-USE [PetNet_db_am]
 
-print '' print '*** creating sp_view_all_animals'
+
+/* Created by: Molly Meister */
+/* Edited by: Andrew Schneider (2/19/23) */
+
+USE [PetNet_db_am]
 GO
-CREATE PROCEDURE [dbo].[sp_view_all_animals]
+
+print '' print '*** creating sp_select_all_animals_by_shelter_id'
+
+GO
+CREATE PROCEDURE [dbo].[sp_select_all_animals_by_shelter_id]
+(
+	@AnimalShelterId	[int]
+)
 AS
 	BEGIN
 		SELECT AnimalId, AnimalName, AnimalTypeId, AnimalBreedId, Personality,
 				Description, AnimalStatusId, RecievedDate, MicrochipSerialNumber, Aggressive, 
-				AggressiveDescription, ChildFriendly, NeuterStatus, Notes
+				AggressiveDescription, ChildFriendly, NeuterStatus, Notes, AnimalShelterId
 		FROM Animal
+		WHERE AnimalShelterId = @AnimalShelterId
 	END
 GO

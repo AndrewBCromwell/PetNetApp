@@ -34,10 +34,8 @@ namespace WpfPresentation.UserControls
 
         private void btnViewAnimalProfile_Click(object sender, RoutedEventArgs e)
         {
-
             NavigationService nav = NavigationService.GetNavigationService(this);
-            nav.Navigate(new WpfPresentation.Development.Animals.EditDetailAnimalProfile(_manager, _animal));
-
+            nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_manager, _animal));
         }
     }
 }

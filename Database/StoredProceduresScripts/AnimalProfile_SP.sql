@@ -22,7 +22,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_select_all_animal_breeds]
 AS
 	BEGIN
-		SELECT [AnimalBreedId]
+		SELECT [AnimalBreedId], [AnimalBreed].[AnimalTypeId]
 		FROM [AnimalBreed]
 	END
 GO
@@ -146,8 +146,8 @@ print '' print '*** creating sp_select_animal_by_animalId (Andrew S.)'
 GO
 CREATE PROCEDURE [dbo].[sp_select_animal_by_animalId]
 (
-	@AnimalId			[int],
-	@ShelterId			[int]
+	@AnimalId					[int],
+	@AnimalShelterId			[int]
 )
 AS
 	BEGIN
@@ -158,12 +158,48 @@ AS
 		FROM 	[Animal]
 		JOIN 	[AnimalStatus]
 			ON 	[Animal].[AnimalStatusID] = [AnimalStatus].[AnimalStatusID]
-		JOIN 	[AnimalKenneling]
+		LEFT JOIN 	[AnimalKenneling]
 			ON	[Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
-		JOIN	[Kennel]
+		LEFT JOIN	[Kennel]
 			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
 		WHERE	@AnimalId = [Animal].[AnimalId]
-		AND		@ShelterId = [Animal].[AnimalShelterId]
+		AND		@AnimalShelterId = [Animal].[AnimalShelterId]
 	END
 GO
 
+
+/* InsertAnimal stored procedure */
+/* Created by John */
+print '' print '*** creating sp_insert_animal (John)'
+	GO
+	CREATE PROCEDURE [dbo].[sp_insert_animal]
+	(
+		@AnimalShelterId			[int],
+		@AnimalName					[nvarchar](50),
+		@AnimalGender				[nvarchar](50),
+		@AnimalTypeId				[nvarchar](50),
+		@AnimalBreedId				[nvarchar](50),
+		@Personality				[nvarchar](500),
+		@Description				[nvarchar](500),
+		@AnimalStatusId				[nvarchar](50),
+		@ReceivedDate				[date],
+		@MicrochipSerialNumber		[char](15),
+		@Aggressive					[bit],
+		@AggressiveDescription		[nvarchar](500),
+		@ChildFriendly				[bit],
+		@NeuterStatus				[bit],
+		@Notes						[nvarchar](500)	
+	)
+
+	AS
+		BEGIN
+			INSERT INTO [dbo].[Animal]
+			([AnimalName],[AnimalGender],[AnimalTypeId],[AnimalBreedId],[Personality],[Description]
+				,[AnimalStatusId],[RecievedDate],[MicrochipSerialNumber],[Aggressive]
+				,[AggressiveDescription],[ChildFriendly],[NeuterStatus],[Notes], [AnimalShelterId])
+			VALUES
+			(@AnimalName,@AnimalGender,@AnimalTypeId,@AnimalBreedId,@Personality,@Description
+			,@AnimalStatusId,@ReceivedDate,@MicrochipSerialNumber,@Aggressive
+			,@AggressiveDescription,@ChildFriendly,@NeuterStatus,@Notes, @AnimalShelterId)
+		END
+	GO

@@ -11,7 +11,7 @@ namespace DataAccessLayerFakes
     public class AnimalAccessorFakes : IAnimalAccessor
     {
         List<Animal> animals = new List<Animal>();
-        List<string> breeds = new List<string>();
+        Dictionary<string, List<string>> breeds = new Dictionary<string, List<string>>();
         List<string> genders = new List<string>();
         List<string> types = new List<string>();
         List<string> statuses = new List<string>();
@@ -99,6 +99,7 @@ namespace DataAccessLayerFakes
             fakeAnimals.Add(new AnimalVM
             {
                 AnimalId = 999997,
+                AnimalShelterId = 100000,
                 AnimalName = "Test name 3",
                 AnimalGender = "Test gender 3",
                 AnimalTypeId = "Test type 3",
@@ -120,6 +121,7 @@ namespace DataAccessLayerFakes
             fakeAnimals1.Add(new Animal
             {
                 AnimalId = 100001,
+                AnimalShelterId = 100000,
                 AnimalName = "Remy",
                 Personality = "Gay",
                 Description = "Brown and White",
@@ -138,6 +140,7 @@ namespace DataAccessLayerFakes
             fakeAnimals1.Add(new Animal
             {
                 AnimalId = 100002,
+                AnimalShelterId = 100000,
                 AnimalName = "Jack",
                 Personality = "Nice",
                 Description = "Black and White",
@@ -156,6 +159,7 @@ namespace DataAccessLayerFakes
             fakeAnimals1.Add(new Animal
             {
                 AnimalId = 100002,
+                AnimalShelterId = 100000,
                 AnimalName = "Kyle",
                 Personality = "Mean",
                 Description = "Brown and White",
@@ -174,6 +178,7 @@ namespace DataAccessLayerFakes
             fakeAnimals1.Add(new Animal
             {
                 AnimalId = 100003,
+                AnimalShelterId = 100000,
                 AnimalName = "Kate",
                 Personality = "Gay",
                 Description = "Brown and White",
@@ -192,6 +197,7 @@ namespace DataAccessLayerFakes
             fakeAnimals1.Add(new Animal
             {
                 AnimalId = 100004,
+                AnimalShelterId = 100000,
                 AnimalName = "Matt",
                 Personality = "Gay",
                 Description = "Brown and White",
@@ -210,6 +216,7 @@ namespace DataAccessLayerFakes
             fakeAnimals1.Add(new Animal
             {
                 AnimalId = 100005,
+                AnimalShelterId = 100000,
                 AnimalName = "Gaylord",
                 Personality = "Gay",
                 Description = "Brown and White",
@@ -226,8 +233,8 @@ namespace DataAccessLayerFakes
             });
 
 
-            breeds.Add("Test breed 1");
-            breeds.Add("Test breed 2");
+            breeds.Add("Test breed 1", new List<string> { "Test type 1" });
+            breeds.Add("Test breed 2", new List<string> { "Test type 2" });
             genders.Add("Test gender 1");
             genders.Add("Test gender 2");
             types.Add("Test type 1");
@@ -235,6 +242,21 @@ namespace DataAccessLayerFakes
             statuses.Add("Test status 1");
             statuses.Add("Test status 2");
 
+        }
+
+        public int InsertAnimal(AnimalVM animal)
+        {
+            fakeAnimals.Add(animal);
+            int rows = 0;
+
+            for (int i = 0; i < fakeAnimals.Count; i++)
+            {
+                if (fakeAnimals[i].AnimalId == animal.AnimalId)
+                {
+                    rows = 1;
+                }
+            }
+            return rows;
         }
 
         public List<Animal> SelectAllAnimals(String animalName)
@@ -268,7 +290,7 @@ namespace DataAccessLayerFakes
             return animalVM;
         }
 
-        public List<string> SelectAllAnimalBreeds()
+        public Dictionary<string, List<string>> SelectAllAnimalBreeds()
         {
             return breeds;
         }
@@ -307,9 +329,9 @@ namespace DataAccessLayerFakes
             return result;
         }
 
-        public List<Animal> SelectAllAnimals()
+        public List<Animal> SelectAllAnimals(int shelterId)
         {
-            return fakeAnimals1;
+            return fakeAnimals1.Where(animal => animal.AnimalShelterId == shelterId).ToList();
 
         }
 
@@ -317,5 +339,7 @@ namespace DataAccessLayerFakes
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }
