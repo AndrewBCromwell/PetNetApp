@@ -248,17 +248,8 @@ namespace DataAccessLayer
                         _animal.AnimalName = reader.GetString(1);
                         _animal.AnimalTypeId = reader.GetString(2);
                         _animal.AnimalBreedId = reader.GetString(3);
-                        _animal.Personality = reader.GetString(4);
-                        _animal.BroughtIn = reader.GetDateTime(5);
-                        _animal.Description = reader.GetString(6);
-                        _animal.MicrochipNumber = reader.GetString(7);
-                        _animal.Aggressive = reader.GetBoolean(8);
-                        _animal.AggressiveDescription = reader.GetString(9);
-                        _animal.ChildFriendly = reader.GetBoolean(10);
-                        _animal.NeuterStatus = reader.GetBoolean(11);
-                        _animal.Notes = reader.GetString(12);
-                        _animal.AnimalStatusId = reader.GetString(13);
-                        _animal.AnimalShelterId = reader.GetInt32(14);
+                        _animal.MicrochipNumber = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        _animal.AnimalShelterId = reader.GetInt32(5);
                         _animalList.Add(_animal);
                     }
                 }
