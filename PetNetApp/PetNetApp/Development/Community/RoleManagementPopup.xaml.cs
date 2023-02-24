@@ -146,7 +146,23 @@ namespace WpfPresentation.Development.Community
             //can get the value of the RoleId from using ((Button)sender).Tag
             if (PromptWindow.ShowPrompt("Remove Role?", "Confirm, are you sure you want to remove the role " + ((Button)sender).Tag + "?", ButtonMode.YesNo) == PromptSelection.Yes)
             {
-                //attempt to remove role
+                // Created By: Asa
+                try
+                {
+                    if (_masterManager.RoleManager.RemoveRoleByUsersIdAndRoleId(_users.UsersId, ((Button)sender).Tag.ToString()))
+                    {
+                        PromptWindow.ShowPrompt("Congrats!", "Role Removed");
+                        PopulateUserRoleGrid();
+                    }
+                    else
+                    {
+                        throw new ApplicationException("Role not removed.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", "" + ex.Message);
+                }
             }
             else
             {

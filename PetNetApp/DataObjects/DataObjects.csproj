@@ -55,9 +55,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Schedule.cs" />
+    <Compile Include="Shelter.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />
+    <Compile Include="UserRoles.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="Vaccination.cs" />
     <Compile Include="ValidationHelpers.cs" />

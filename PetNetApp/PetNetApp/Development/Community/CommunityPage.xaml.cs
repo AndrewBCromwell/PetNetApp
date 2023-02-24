@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using WpfPresentation.Community;
 
 namespace WpfPresentation.Development.Community
 {
@@ -66,8 +67,10 @@ namespace WpfPresentation.Development.Community
         private void btnUsers_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            
-            frameCommunity.Navigate(new RoleManagementTemp(_manager, _manager.UsersManager.RetrieveUserByUsersId(100001)));
+
+            frameCommunity.Navigate(new UserManagementPage());
+
+            //frameCommunity.Navigate(new RoleManagementTemp(_manager, _manager.UsersManager.RetrieveUserByUsersId(100001)));
         }
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)

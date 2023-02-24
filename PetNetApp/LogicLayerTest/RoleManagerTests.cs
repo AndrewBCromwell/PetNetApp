@@ -1,18 +1,19 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using LogicLayer;
-using LogicLayerInterfaces;
+using System.Collections.Generic;
+using System.Text;
+using DataAccessLayerInterfaces;
 using DataAccessLayerFakes;
 using DataObjects;
-using System.Collections.Generic;
+using LogicLayer;
+using LogicLayerInterfaces;
 
 namespace LogicLayerTest
 {
-    //created by Barry Mikulas
     [TestClass]
     public class RoleManagerTests
     {
-        IRoleManager _roleManager = null;
+        private IRoleManager _roleManager = null;
 
         [TestInitialize]
         public void TestSetup()
@@ -20,6 +21,34 @@ namespace LogicLayerTest
             _roleManager = new RoleManager(new RoleAccessorFakes());
         }
 
+        [TestCleanup]
+        public void TestTearDown()
+        {
+            _roleManager = null;
+        }
+
+        // Created By: Asa Armstrong
+        [TestMethod]
+        public void TestRemoveRoleByUsersIdAndRoleIdPassRemoving1OfManyAdmin()
+        {
+            Assert.AreEqual(true, _roleManager.RemoveRoleByUsersIdAndRoleId(100000, "Admin"));
+        }
+
+        // Created By: Asa Armstrong
+        [TestMethod]
+        [ExpectedException(typeof(ApplicationException), "Cannot remove the last 'Admin' Role.")]
+        public void TestRemoveRoleByUsersIdAndRoleIdRemoving1Of1AdminThrowsException()
+        {
+            _roleManager.RemoveRoleByUsersIdAndRoleId(100000, "Admin");
+            _roleManager.RemoveRoleByUsersIdAndRoleId(100001, "Admin");
+        }
+
+        // Created By: Asa Armstrong
+        [TestMethod]
+        public void TestRemoveRoleByUsersIdAndRoleIdPassRemovingNonAdminRoleId()
+        {
+            Assert.AreEqual(true, _roleManager.RemoveRoleByUsersIdAndRoleId(100000, "Vet"));
+        }
         //created by Barry Mikulas
         [TestMethod]
         public void TestReturnsCorrectRoleList()
@@ -69,13 +98,5 @@ namespace LogicLayerTest
             //assert
             Assert.IsTrue(actualResult);
         }
-
-        [TestCleanup]
-        public void TestTearDown()
-        {
-            _roleManager = null;
-        }
-
-
     }
 }

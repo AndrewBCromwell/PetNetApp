@@ -29,15 +29,13 @@ namespace WpfPresentation.UserControls
         public AnimalListUserControl(Animal animal)
         {
             InitializeComponent();
-            _animal =_manager.AnimalManager.RetrieveAnimalByAnimalId(animal.AnimalId);
+            _animal =_manager.AnimalManager.RetrieveAnimalByAnimalId(animal.AnimalId, animal.AnimalShelterId);
         }
 
         private void btnViewAnimalProfile_Click(object sender, RoutedEventArgs e)
         {
-
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_manager, _animal));
-
         }
     }
 }

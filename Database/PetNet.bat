@@ -8,9 +8,7 @@ rem Follow this example (but without rem):
 rem sqlcmd -S localhost -E -i SampleData\ASampleFeature_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
 
-sqlcmd -S localhost -E -i SampleDataScripts\ScheduleData_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\RoleManagement_SD.sql
-
+sqlcmd -S localhost -E -i SampleDataScripts\Vaccination_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -43,8 +41,18 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddRole_to_User_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\RoleManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewTicketList_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditProcedure_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\KenOccupancyUpdate-333_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\RemoveRole-006_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditTreatment_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddVaccination_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddMedicalRecord_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVaccinationByAnimalId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewUsersByUsersId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditVaccination_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingCampaigns_SP.sql
+
+sqlcmd -S localhost -E -i StoredProceduresScripts\Shelter_Stored_Procedures.sql
+
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

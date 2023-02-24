@@ -54,7 +54,9 @@
     <Compile Include="RoleAccessorFakes.cs" />
     <Compile Include="ScheduleAccessorFakes.cs" />
     <Compile Include="TicketAccessorFakes.cs" />
+    <Compile Include="ShelterAccessorFakes.cs" />
     <Compile Include="UsersAccessorFakes.cs" />
+    <Compile Include="VaccinationAccessorFake.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerInterfaces\DataAccessLayerInterfaces.csproj">

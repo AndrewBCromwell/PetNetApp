@@ -63,7 +63,7 @@ namespace LogicLayer
                 }
             } catch(Exception ex)
             {
-                throw new ApplicationException("An error occored. The procedure was not saved.", ex);
+                throw new ApplicationException("An error occurred. The procedure was not saved.", ex);
             }
             return success;
             
@@ -95,7 +95,7 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("An error occored. The procedure was not saved.", ex);
+                throw new ApplicationException("An error occurred. The procedure was not saved.", ex);
             }
             return success;
         }
@@ -115,7 +115,7 @@ namespace LogicLayer
                 procedures = _procedureAccessor.SelectProceduresByAnimalId(animalId);
             } catch(Exception ex)
             {
-                throw new ApplicationException("An error occored. The procedures could not be retreived.", ex);
+                throw new ApplicationException("An error occurred. The procedures could not be retreived.", ex);
             }
             return procedures;
         }

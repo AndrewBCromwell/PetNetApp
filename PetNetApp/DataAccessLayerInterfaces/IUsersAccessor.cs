@@ -27,6 +27,8 @@ namespace DataAccessLayerInterfaces
 
         int DeactivateUserAccount(int UserId);
 
+        // Zaid
+        List<UsersVM> SelectUsersByUsersId(int usersId);
         // Role Mgmt + Add Role
         Users SelectUserByUsersId(int UsersId);
         UsersVM SelectUserByUsersIdWithRoles(int UsersId);

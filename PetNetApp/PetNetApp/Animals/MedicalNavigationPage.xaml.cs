@@ -50,8 +50,28 @@ namespace WpfPresentation.Animals
             _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
             _medicalProfileAnimal = animal;
             displayMedProfileAnimalName();
+
+            LoadMedicalProfileTab();
         }
 
+        /// <summary>
+        /// Andrew & Barry
+        /// Created: 2023/02/21
+        /// 
+        /// Helper method that allows the medical navigation page to
+        /// load defaulted to the Medical Profile tab
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void LoadMedicalProfileTab()
+        {
+            ChangeSelectedButton(btnMedProfile);
+            frameMedical.Navigate(new AnimalMedicalProfile(_medicalProfileAnimal.AnimalId));
+        }
 
         private void displayMedProfileAnimalName()
         {
@@ -84,7 +104,7 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameMedical.Navigate(null);
+            frameMedical.Navigate(new VaccinationsPage(_medicalProfileAnimal));
         }
 
         private void btnTreatment_Click(object sender, RoutedEventArgs e)
