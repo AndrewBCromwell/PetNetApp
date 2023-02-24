@@ -27,12 +27,12 @@
                  FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="txtKennelName"></TextBox>
         
         <Label HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" Margin="0, 0, 50, 0" Grid.Row="2">Animal Type</Label>
-        <ComboBox Grid.Row="2" Grid.Column="2" Height="60" Width="250" HorizontalAlignment="Left" 
-                  FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="cbAnimalType"></ComboBox>
+        <ComboBox Grid.Row="2" Grid.Column="2" Height="60" Width="250"  HorizontalAlignment="Left" 
+                  FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="cbAnimalType" MaxHeight="150"></ComboBox>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
-            <Button HorizontalAlignment="Right" Width="175" Height="60" FontSize="22" Click="btnSave_Click" Margin="0,25,0,0" x:Name="btnSave">Save</Button>
-            <Button HorizontalAlignment="Left" Width="175" Height="60" FontSize="22" Margin="40,25,0,0" Style="{StaticResource ResourceKey=rsrcSafeButton}" Click="btnCancel_Click" x:Name="btnCancel">Cancel</Button>
+            <Button HorizontalAlignment="Right" Width="175" Height="60" FontSize="22" Click="btnSave_Click" Margin="0,75,0,0" x:Name="btnSave">Save</Button>
+            <Button HorizontalAlignment="Left" Width="175" Height="60" FontSize="22" Margin="40,75,0,0" Style="{StaticResource ResourceKey=rsrcSafeButton}" Click="btnCancel_Click" x:Name="btnCancel">Cancel</Button>
         </StackPanel> 
     </Grid>
 </Page>
