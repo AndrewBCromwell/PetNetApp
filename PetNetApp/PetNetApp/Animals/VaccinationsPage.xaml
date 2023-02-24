@@ -59,7 +59,7 @@
                   FontSize="12" Margin="10" Padding="3" Grid.Row="3" Grid.ColumnSpan="6" MouseDoubleClick="datVaccinations_MouseDoubleClick" HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Vaccine Name" Binding="{Binding VaccineName}" Width="3*"/>
-                <DataGridTextColumn Header="Date Administered" Binding="{Binding VaccineAdminsterDate, StringFormat=\{0:dd/MM/yyyy\}}" Width="1*"/>
+                <DataGridTextColumn Header="Date Administered" Binding="{Binding VaccineAdminsterDate, StringFormat=\{0:MM/dd/yyyy\}}" Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
         <!--Grid Row 4-->
