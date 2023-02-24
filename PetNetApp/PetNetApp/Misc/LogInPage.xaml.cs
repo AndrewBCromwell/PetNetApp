@@ -98,7 +98,6 @@ namespace WpfPresentation.Misc
             }
             catch (Exception up)
             {
-                throw up;
                 ChangeErrorText(up.Message, up.InnerException.Message);
                 ErrorLoading(true);
             }
