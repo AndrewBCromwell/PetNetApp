@@ -54,9 +54,17 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         public static ViewCampaignsPage GetViewCampaignsPage()
         {
+            // Way to check if the user has the correct roles
+            List<string> rolesWithAccess = new List<string>() { "Admin","Manager", "Marketing" };
+            if (!MasterManager.GetMasterManager().User.Roles.Exists(role => rolesWithAccess.Contains(role)))
+            {
+                PromptWindow.ShowPrompt("Inproper Permissions", "You do not have permissions to access this");
+                return null;
+            }
             if (_existingViewCampaignsPage == null)
             {
                 _existingViewCampaignsPage = new ViewCampaignsPage();
+                MasterManager.GetMasterManager().UserLogout += () => _existingViewCampaignsPage = null;
             }
             _existingViewCampaignsPage.LoadFundraisingCampaignData();
 
@@ -202,16 +210,6 @@ namespace WpfPresentation.Fundraising
             foreach (FundraisingCampaign fundraisingCampaign in _filteredFundraisingCampaigns.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
             {
                 ViewCampaignsFundraisingCampaignUserControl item = new ViewCampaignsFundraisingCampaignUserControl(fundraisingCampaign, i % 2 == 0);
-                //if (i % 2 == 0)
-                //{
-                //    item.BackgroundColor = new SolidColorBrush(Color.FromRgb(61, 131, 97));
-                //    item.Foreground = new SolidColorBrush(Color.FromRgb(238, 242, 230));
-                //}
-                //else
-                //{
-                //    item.BackgroundColor = new SolidColorBrush(Color.FromRgb(214, 205, 164));
-                //    item.Foreground = new SolidColorBrush(Color.FromRgb(28, 103, 88));
-                //}
                 i++;
                 stackCampaigns.Children.Add(item);
             }

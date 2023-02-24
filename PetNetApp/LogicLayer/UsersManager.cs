@@ -128,17 +128,20 @@ namespace LogicLayer
                     {
                         throw new ApplicationException("Unable to load roles for user.", up);
                     }
-
+                    if (user.Roles.Count == 0)
+                    {
+                        throw new ApplicationException("You don't have permissions to use this application");
+                    }
                 }
                 else
                 {
-                    throw new ApplicationException("User not found.");
+                    throw new ApplicationException("Bad username or password.");
                 }
 
             }
             catch (Exception up)
             {
-                throw new ApplicationException("Bad username or password.", up);
+                throw new ApplicationException("Something went wrong logging you in.", up);
             }
 
             return user;

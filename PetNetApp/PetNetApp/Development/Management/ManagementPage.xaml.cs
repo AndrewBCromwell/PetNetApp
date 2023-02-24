@@ -30,7 +30,6 @@ namespace WpfPresentation.Development.Management
         {
             InitializeComponent();
             _manager = manager;
-            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnShelters, btnTickets, btnVolunteer };
         }
 
         public static ManagementPage GetManagementPage(MasterManager manager)
@@ -54,13 +53,6 @@ namespace WpfPresentation.Development.Management
             {
                 button.Style = (Style)Application.Current.Resources["rsrcUnselectedButton"];
             }
-        }
-
-        private void btnShelters_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
         }
 
         private void btnInventory_Click(object sender, RoutedEventArgs e)

@@ -14,7 +14,26 @@ namespace LogicLayer
     public class MasterManager
     {
         private static MasterManager _existingMasterManager = null;
-        public UsersVM User { get; set; }
+        private UsersVM _user;
+        public UsersVM User
+        {
+            get => _user;
+            set
+            {
+                _user = value;
+                if (value == null)
+                {
+                    OnUserLogout();
+                }
+                else
+                {
+                    OnUserLogin();
+                }
+            }
+        }
+        public delegate void UserChangedAction();
+        public event UserChangedAction UserLogout;
+        public event UserChangedAction UserLogin;
         public IKennelManager KennelManager { get; set; }
         public IUsersManager UsersManager { get; set; }
         public IDeathManager DeathManager { get; set; }
@@ -41,7 +60,7 @@ namespace LogicLayer
             TicketManager = new TicketManager();
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
-            FundraisingCampaignManager = new FundraisingCampaignManager();
+            FundraisingCampaignManager = new FundraisingCampaignManager(new FundraisingCampaignAccessorFakes());
         }
     
         public static MasterManager GetMasterManager()
@@ -51,6 +70,16 @@ namespace LogicLayer
                 _existingMasterManager = new MasterManager();
             }
             return _existingMasterManager;
+        }
+        protected virtual void OnUserLogout()
+        {
+            UserChangedAction handler = UserLogout;
+            handler?.Invoke();
+        }
+        protected virtual void OnUserLogin()
+        {
+            UserChangedAction handler = UserLogin;
+            handler?.Invoke();
         }
     }
 }

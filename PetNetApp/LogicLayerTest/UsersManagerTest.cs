@@ -66,7 +66,6 @@ namespace LogicLayerTest
         {
             //arrage 
             int userId = 1000;
-            bool expectedResult = true;
             bool actualResult = false;
 
             //act 

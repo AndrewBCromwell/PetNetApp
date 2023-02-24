@@ -27,11 +27,6 @@ namespace WpfPresentation.Animals
         private MasterManager _masterManager = null;
         private List<Animal> _animals = null;
 
-        public AnimalListPage()
-        {
-            InitializeComponent();
-        }
-
         public AnimalListPage(MasterManager manager)
         {
             InitializeComponent();

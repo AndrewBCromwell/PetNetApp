@@ -31,11 +31,8 @@ namespace WpfPresentation.Animals
     {
         private Animal _medProcedureAnimal;
         private MasterManager _manager;
-        private int _medicalRecordId;        
         private bool _forAdd;
         private ProcedureVM _oldProcedure;
-
-        private int userId = 100000; // This should be related to the logedin user, but login is not available yet, so I am using this to test my code. -Andy 
 
         /// <summary>
         /// Andrew Cromwell

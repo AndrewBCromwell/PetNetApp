@@ -720,5 +720,9 @@
     <Resource Include="Development\Images\menudark.png" />
     <Resource Include="Development\Images\menulight.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\petnetLogo_hover.png" />
+    <Resource Include="Images\threedots_hover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfPresentation.Animals"
+      xmlns:uc="clr-namespace:WpfPresentation.UserControls"
       mc:Ignorable="d" d:DesignWidth="700"
       Title="AnimalPostUpdate" Height="590.387" Loaded="Page_Loaded">
 
@@ -25,25 +26,30 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Image Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Source="../Images/usericondark.png"/>
-                    <TextBox x:Name="tbxAnimalPostUpdate" Grid.Row="0" Grid.Column="1" Text="Enter your note here." Margin="0 8 0 0" Background="#D6CDA4" KeyDown="tbxAnimalPostUpdate_KeyDown">
-                        
-                    </TextBox>
+                    <uc:PlaceholderTextBox x:Name="tbxAnimalPostUpdate" Grid.Row="0" Grid.Column="1" DefaultText="Enter your note here." Margin="0 8 0 0" Background="#D6CDA4" KeyDown="tbxAnimalPostUpdate_KeyDown"/>
                     <!--Send Button-->
                     <Button x:Name="btnPostComment" Grid.Column="3" Width="40" Height="40" Click="btnPostComment_Click" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0 10 10 0">
                         <Button.Style>
-                            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="../Images/senddark.png" Stretch="Uniform"/>
+                                    </Setter.Value>
+                                </Setter>
                                 <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="False">
-                                        <Setter Property="Background">
-                                            <Setter.Value>
-                                                <ImageBrush ImageSource="../Images/senddark.png" Stretch="Uniform"/>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Trigger>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background">
                                             <Setter.Value>
-                                                <ImageBrush ImageSource="../../Images/senddark.png" Stretch="Uniform"/>
+                                                <ImageBrush ImageSource="../Images/senddark.png" Stretch="Uniform" />
                                             </Setter.Value>
                                         </Setter>
                                     </Trigger>

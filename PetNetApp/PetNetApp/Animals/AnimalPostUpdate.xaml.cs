@@ -52,20 +52,18 @@ namespace WpfPresentation.Animals
                     {
                         if (_masterManager.AnimalUpdatesManager.AddAnimalUpdatesByAnimalId(_animalId, animalRecordNotes))
                         {
-                            PromptWindow.ShowPrompt("", "Update Note Success.");
-                            tbxAnimalPostUpdate.Text = "Enter your note here.";
+                            tbxAnimalPostUpdate.Text = "";
                             LoadAnimalNote();
                         }
                     }
                     catch (Exception ex)
                     {
-                        PromptWindow.ShowPrompt("Error", "Failed to Update Note");
+                        PromptWindow.ShowPrompt("Error", ex.Message);
                     }
                 }
                 else
                 {
-                    PromptWindow.ShowPrompt("Cancel", "Cancel update animal post");
-                    tbxAnimalPostUpdate.Text = "Enter your note here.";
+                    tbxAnimalPostUpdate.Text = "";
                 }
             }
         }
@@ -84,7 +82,7 @@ namespace WpfPresentation.Animals
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
 
             return result;

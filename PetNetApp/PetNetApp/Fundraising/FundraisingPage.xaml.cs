@@ -26,6 +26,17 @@ namespace WpfPresentation.Fundraising
 
         private MasterManager _manager = null;
         private Button[] _fundraisingPageButtons;
+        static FundraisingPage()
+        {
+            MasterManager manager = MasterManager.GetMasterManager();
+            manager.UserLogin += () => _existingFundraisingPage?.ShowButtonsByRole();
+            manager.UserLogout += () =>
+            {
+                _existingFundraisingPage?.HideAllButtons();
+                _existingFundraisingPage?.frameFundraising.Navigate(null);
+            };
+        }
+
         private FundraisingPage(MasterManager manager)
         {
             InitializeComponent();
@@ -45,6 +56,7 @@ namespace WpfPresentation.Fundraising
             if (_existingFundraisingPage == null)
             {
                 _existingFundraisingPage = new FundraisingPage(manager);
+                _existingFundraisingPage.ShowButtonsByRole();
             }
             return _existingFundraisingPage;
         }
@@ -123,6 +135,37 @@ namespace WpfPresentation.Fundraising
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
             frameFundraising.Navigate(null);
+        }
+
+        public void HideAllButtons()
+        {
+            UnselectAllButtons();
+            foreach (Button btn in _fundraisingPageButtons)
+            {
+                btn.Visibility = Visibility.Collapsed;
+            }
+        }
+        public void ShowButtonsByRole()
+        {
+            HideAllButtons();
+            ShowCampaignsButtonByRole();
+            ShowDonationsButtonByRole();
+        }
+        public void ShowCampaignsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing"};
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnCampaigns.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowDonationsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnDonations.Visibility = Visibility.Visible;
+            }
         }
     }
 }

@@ -32,8 +32,6 @@ namespace WpfPresentation.Animals
         List<string> _yesNo = new List<string> { "Yes", "No" };
         DateTime _maxBroughtInDate = DateTime.Now;
         DateTime _minBroughtInDate = new DateTime(2000,01,01);
-        private Animal _animal = null;
-
 
         public EditDetailAnimalProfile(MasterManager manager, AnimalVM animal)
         {

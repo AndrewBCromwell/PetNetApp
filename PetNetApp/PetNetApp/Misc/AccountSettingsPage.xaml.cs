@@ -46,7 +46,16 @@ namespace WpfPresentation.Misc
 
         private void cmboGender_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> genders = _manager.UsersManager.RetrieveGenders();
+            List<string> genders;
+            try
+            {
+                 genders = _manager.UsersManager.RetrieveGenders();
+            }
+            catch(Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+                return;
+            }
 
             foreach (var gender in genders)
             {
@@ -56,7 +65,16 @@ namespace WpfPresentation.Misc
 
         private void cmboPronoun_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> pronouns = _manager.UsersManager.RetrievePronouns();
+            List<string> pronouns;
+            try
+            {
+                pronouns = _manager.UsersManager.RetrievePronouns();
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+                return;
+            }
 
             foreach (var pronoun in pronouns)
             {

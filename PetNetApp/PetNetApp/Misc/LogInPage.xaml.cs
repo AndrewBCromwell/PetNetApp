@@ -26,21 +26,18 @@ namespace WpfPresentation.Misc
     {
         private static LogInPage _existingLogIn = null;
         private MasterManager _manager = MasterManager.GetMasterManager();
-        private MainWindow _mainWindow = null;
 
         public LogInPage()
         {
             InitializeComponent();
         }
 
-        public static LogInPage GetLogInPage(MainWindow mainWindow)
+        public static LogInPage GetLogInPage()
         {
             if (_existingLogIn == null)
             {
                 _existingLogIn = new LogInPage();
             }
-
-            _existingLogIn._mainWindow = mainWindow;
 
             return _existingLogIn;
         }
@@ -90,16 +87,12 @@ namespace WpfPresentation.Misc
             try
             {
                 _manager.User = _manager.UsersManager.LoginUser(email, password);
-                MessageBox.Show("Welcome back, " + _manager.User.GivenName + "\n\nYou're signed in as " + RoleBuilder(_manager.User));
-                _mainWindow.mnuUser.Header = "Hello, " + _manager.User.GivenName;
-                _mainWindow.mnuLogout.Header = "Log Out";
-                NavigationService.Navigate(null);
-                _mainWindow.ShowButtonsByRole();
+                PromptWindow.ShowPrompt("Hello","Welcome back, " + _manager.User.GivenName + "\n\nYou're signed in as " + RoleBuilder(_manager.User));
                 
             }
             catch (Exception up)
             {
-                ChangeErrorText("Email / Password is not valid.", "Please enter a valid email / password.");
+                ChangeErrorText(up.Message, up.InnerException.Message);
                 ErrorLoading(true);
             }
         }

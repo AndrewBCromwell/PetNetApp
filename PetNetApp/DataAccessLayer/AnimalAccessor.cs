@@ -128,17 +128,17 @@ namespace DataAccessLayer
                         animal.AnimalTypeId = reader.GetString(3);
                         animal.AnimalBreedId = reader.GetString(4);
                         animal.KennelName = reader.GetString(5);
-                        animal.Personality = reader.GetString(6);
-                        animal.Description = reader.GetString(7);
+                        animal.Personality = reader.IsDBNull(6) ? null : reader.GetString(6);
+                        animal.Description = reader.IsDBNull(7) ? null : reader.GetString(7);
                         animal.AnimalStatusId = reader.GetString(8);
                         animal.AnimalStatusDescription = reader.GetString(9);
                         animal.BroughtIn = reader.GetDateTime(10);
-                        animal.MicrochipNumber = reader.GetString(11);
+                        animal.MicrochipNumber = reader.IsDBNull(11) ? null : reader.GetString(11);
                         animal.Aggressive = reader.GetBoolean(12);
-                        animal.AggressiveDescription = reader.GetString(13);
+                        animal.AggressiveDescription = reader.IsDBNull(13) ? null : reader.GetString(13);
                         animal.ChildFriendly = reader.GetBoolean(14);
                         animal.NeuterStatus = reader.GetBoolean(15);
-                        animal.Notes = reader.GetString(16);
+                        animal.Notes = reader.IsDBNull(16) ? null : reader.GetString(16);
                     }
                 }
             }
@@ -503,16 +503,16 @@ namespace DataAccessLayer
                         animalVM.AnimalGender = reader.GetString(2);
                         animalVM.AnimalTypeId = reader.GetString(3);
                         animalVM.AnimalBreedId = reader.GetString(4);
-                        animalVM.Personality = reader.GetString(5);
-                        animalVM.Description = reader.GetString(6);
+                        animalVM.Personality = reader.IsDBNull(5) ? null : reader.GetString(5);
+                        animalVM.Description = reader.IsDBNull(6) ? null : reader.GetString(6);
                         animalVM.AnimalStatusId = reader.GetString(7);
                         animalVM.BroughtIn = reader.GetDateTime(8);
-                        animalVM.MicrochipNumber = reader.GetString(9);
+                        animalVM.MicrochipNumber = reader.IsDBNull(9) ? null : reader.GetString(9);
                         animalVM.Aggressive = reader.GetBoolean(10);
-                        animalVM.AggressiveDescription = reader.GetString(11);
+                        animalVM.AggressiveDescription = reader.IsDBNull(11) ? null : reader.GetString(11);
                         animalVM.ChildFriendly = reader.GetBoolean(12);
                         animalVM.NeuterStatus = reader.GetBoolean(13);
-                        animalVM.Notes = reader.GetString(14);
+                        animalVM.Notes = reader.IsDBNull(14) ? null : reader.GetString(14);
                     }
                 }
             }

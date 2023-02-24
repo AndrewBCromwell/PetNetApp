@@ -59,7 +59,7 @@ namespace WpfPresentation.Animals
                 lblProfileName.Content = _animalVM.AnimalName + "'s Medical Profile";
                 txtAnimalBreed.Text = _animalVM.AnimalBreedId;
                 txtAnimalId.Text = _animalVM.AnimalId.ToString();
-                txtAnimalMicrochipNum.Text = _animalVM.MicrochipNumber.ToString();
+                txtAnimalMicrochipNum.Text = _animalVM.MicrochipNumber;
                 txtAnimalName.Text = _animalVM.AnimalName;
                 txtAnimalNotes.Text = _animalVM.Notes;
                 txtAnimalKennelNum.Text = _kennel.KennelId.ToString();

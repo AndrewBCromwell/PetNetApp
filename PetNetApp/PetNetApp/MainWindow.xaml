@@ -97,12 +97,33 @@
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="btnPetNetLogo" Grid.Column="0" Margin="24,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#00000000" Panel.ZIndex="1" Width="200" Height="70" Click="btnPetNetLogo_Click">
-                <Button.Foreground>
-                    <ImageBrush Stretch="Uniform"/>
-                </Button.Foreground>
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/petnetLogo.png" Stretch="Uniform"/>
-                </Button.Background>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/petnetLogo.png" Stretch="Uniform"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="Images/petnetLogo_hover.png" Stretch="Uniform"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
             <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Width="35" Height="35" Margin="3" BorderBrush="Transparent" Style="{StaticResource ResourceKey=rsrcNotifications}" x:Name="btnNotification" Click="btnNotification_Click">

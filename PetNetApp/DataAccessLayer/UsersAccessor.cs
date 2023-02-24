@@ -301,10 +301,6 @@ namespace DataAccessLayer
                         roles.Add(reader.GetString(0));
                     }
                 }
-                else
-                {
-                    throw new ArgumentException("Cannot retrieve roles.");
-                }
 
                 reader.Close();
             }
