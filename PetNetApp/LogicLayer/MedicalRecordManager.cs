@@ -24,7 +24,7 @@ namespace LogicLayer
             _medicalRecordAccessor = medicalRecordAccessor;
         }
 
-        public int getLastMedicalRecordIdByAnimalId(int animalId)
+        public int RetrieveLastMedicalRecordIdByAnimalId(int animalId)
         {
             int medicalRecordId = 0;
             try

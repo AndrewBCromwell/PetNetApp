@@ -27,7 +27,7 @@ namespace LogicLayerTest
             int animalId = 51;
             int acctualResult;
 
-            acctualResult = _medicalRecordManager.getLastMedicalRecordIdByAnimalId(animalId);
+            acctualResult = _medicalRecordManager.RetrieveLastMedicalRecordIdByAnimalId(animalId);
 
             Assert.AreEqual(expectedResult, acctualResult);
         }
@@ -43,7 +43,7 @@ namespace LogicLayerTest
             int animalId = 49;
             int acctualResult;
 
-            acctualResult = _medicalRecordManager.getLastMedicalRecordIdByAnimalId(animalId);
+            acctualResult = _medicalRecordManager.RetrieveLastMedicalRecordIdByAnimalId(animalId);
 
             Assert.AreEqual(expectedResult, acctualResult);
         }
