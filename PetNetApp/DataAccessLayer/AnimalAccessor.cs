@@ -616,21 +616,6 @@ namespace DataAccessLayer
             return rows;
         }
 
-        /// <summary>
-        /// Molly Meister
-        /// Created: 2023/02/05
-        /// 
-        /// Selects all animals in a shelter
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Andrew Schneider
-        /// Updated: 2023/02/18
-        /// example: added shelter id
-        /// </remarks>
-        /// <param name='shelterId'>the id of the shelter the user is registered to</param>
-        /// <exception cref='Exception'>Select Fails</exception>
-        /// <returns>List of animals</returns>
         public List<Animal> SelectAllAnimals(int shelterId)  // add shelterId
         {
             List<Animal> animals = new List<Animal>();
