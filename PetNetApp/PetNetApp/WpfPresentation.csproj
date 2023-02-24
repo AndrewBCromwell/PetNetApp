@@ -130,6 +130,9 @@
     <Compile Include="Management\KenOccupancyUpdate-333.xaml.cs">
       <DependentUpon>KenOccupancyUpdate-333.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\VolunteerInfoPage.xaml.cs">
+      <DependentUpon>VolunteerInfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Shelters\AlterShelter.xaml.cs">
       <DependentUpon>AlterShelter.xaml</DependentUpon>
     </Compile>
@@ -140,9 +143,9 @@
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlaceholderTextBox.cs" />
-	  <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
-		  <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
+      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
@@ -189,7 +192,7 @@
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Animals\AddEditVaccinationsPage.xaml">
-    <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="Development\Shelters\AlterShelter.xaml.cs">
@@ -210,9 +213,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
-		<SubType>Designer</SubType>
-		<Generator>MSBuild:Compile</Generator>
-	</Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -297,6 +300,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Management\VolunteerInfoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Shelters\AlterShelter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -314,7 +321,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
-    <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\ViewTicketList.xaml">

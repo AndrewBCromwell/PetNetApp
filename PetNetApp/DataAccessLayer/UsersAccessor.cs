@@ -639,8 +639,48 @@ namespace DataAccessLayer
         {
             throw new NotImplementedException();
         }
-               
+
+        
+        // Teft Francisco
+        public int UpdateUserActive(int userId, bool active)
+        {
+            int rows;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_update_user_active_by_user_id";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+            cmd.Parameters["@UsersId"].Value = userId;
+            cmd.Parameters.Add("@Active", SqlDbType.Int);
+            cmd.Parameters["@Active"].Value = active;
+
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
+
     }
+
+
 
 }
 

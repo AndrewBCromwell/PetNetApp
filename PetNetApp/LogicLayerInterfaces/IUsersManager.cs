@@ -25,5 +25,22 @@ namespace LogicLayerInterfaces
 
         // Zaid Rachman
         List<UsersVM> RetrieveUsersByUsersId(int usersId);
+
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/02/14
+        /// 
+        /// 
+        /// </summary>
+        /// Retrieves a users with given usersId
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        /// <param userId="UsersId"></param>
+        /// <param active="Active"></param
+        int EditUserActive(int userId, bool active);
     }
 }
