@@ -247,5 +247,44 @@ namespace DataAccessLayerFakes
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/14/02
+        /// 
+        /// Updates a user's active status with their user ID and active status as a boolean.
+        /// </summary>
+        ///
+        /// <remarks>
+        ///
+        /// </remarks>
+        public int UpdateUserActive(int userId, bool active)
+        {
+            int result = 0;
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                if (fakeUser.UsersId == userId)
+                {
+                    if (active == false)
+                    {
+                        fakeUser.Active = false;
+                        result = 1;
+                        return result;
+                    }
+                    else
+                    {
+                        fakeUser.Active = true;
+                        result = 1;
+                        return result;
+                    }
+                }
+                if (fakeUser == null)
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            return result;
+        }
     }
 }

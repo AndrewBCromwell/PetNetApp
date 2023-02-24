@@ -33,8 +33,9 @@ namespace WpfPresentation.Development.Management
     /// 
     /// 
     /// <remarks>
-    /// Updater Name
-    /// Updated: yyyy/mm/dd
+    /// Teft Francisco
+    /// Updated: 2023/2/24
+    /// Added navigation methods to the "Edit Volunteer Information" button.
     /// </remarks>
     public partial class VolunteerManagment : Page
     {
@@ -91,6 +92,19 @@ namespace WpfPresentation.Development.Management
                 PromptWindow.ShowPrompt("No User Selected", "There is no user selected");
             }
             
+        }
+
+        private void btnEditVolunteer_Click(object sender, RoutedEventArgs e)
+        {
+            if (datVolunteer.SelectedItem != null)
+            {
+                // This needs to nagivate to VolunteerInfoPage.xaml but is within the development folder.
+                NavigationService.Navigate(new WpfPresentation.Management.VolunteerInfoPage((UsersVM)datVolunteer.SelectedItem));
+            }
+            else
+            {
+                MessageBox.Show("You must select a user to edit their information!", "No user selected.", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

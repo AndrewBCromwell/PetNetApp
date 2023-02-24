@@ -141,5 +141,20 @@ namespace LogicLayerTest
             Assert.AreEqual(actualUser.Phone, expectedUser.Phone);
             Assert.AreEqual(actualUser.Active, expectedUser.Active);
         }
+
+        [TestMethod]
+        public void TestEditUserActive()
+        {
+            // Arrange
+            int rowsAffected;
+
+            // Act
+            rowsAffected = _userManager.EditUserActive(1001, false);
+
+            int expectedRowResult = 1;
+
+            // Assert
+            Assert.AreEqual(rowsAffected, expectedRowResult);
+        }
     }
 }

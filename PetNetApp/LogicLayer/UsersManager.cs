@@ -259,5 +259,22 @@ namespace LogicLayer
 
         }
 
+        // Teft Francisco
+        public int EditUserActive(int userId, bool active)
+        {
+            int result = 0;
+            try
+            {
+                if (1 == _userAccessor.UpdateUserActive(userId, active))
+                {
+                    result = 1;
+                }
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("An error has occured", e);
+            }
+        }
     }
 }
