@@ -282,8 +282,9 @@ INSERT INTO [dbo].[Zipcode]
 		[Longitude]
 		)
 	VALUES
-		(50001,'Ackworth','Iowa', 41.3669, 93.4727),
-		(50002,'Adair','Iowa', 41.5004, 94.6434)
+		("50001",'Ackworth','Iowa', 41.3669, 93.4727),
+		("50002",'Adair','Iowa', 41.5004, 94.6434),
+        ("52404", "Cedar Rapids", "Iowa", "41.9779", "91.6656")
 GO
 
 print '' print '*** creating TicketStatus sample data'

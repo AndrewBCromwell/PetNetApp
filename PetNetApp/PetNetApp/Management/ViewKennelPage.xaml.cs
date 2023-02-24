@@ -36,7 +36,7 @@ namespace WpfPresentation.Management
         {
             try
             {
-                kennelVMs = masterManager.KennelManager.RetrieveKennels(masterManager.User == null ? 100000 : masterManager.User.ShelterId.Value);
+                kennelVMs = masterManager.KennelManager.RetrieveKennels(masterManager.User.ShelterId.Value);
 
                 for (int i = 0; i < kennelVMs.Count / 4; i++)
                 {
