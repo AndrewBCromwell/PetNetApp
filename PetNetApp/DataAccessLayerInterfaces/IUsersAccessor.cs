@@ -10,6 +10,14 @@ namespace DataAccessLayerInterfaces
     public interface IUsersAccessor
     {
         List<UsersVM> SelectUserByRole(string RoleId);
+
+        /// <summary>
+        ///  /// Hoang Chu
+        /// Created: 2023/02/17
+        /// 
+        /// Select all employess
+        /// </summary>
+        /// <returns></returns>
         List<UsersVM> SelectAllEmployees();
 
         // LOG IN (Mads)

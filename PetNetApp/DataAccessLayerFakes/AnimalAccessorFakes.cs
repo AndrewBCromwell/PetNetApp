@@ -237,5 +237,20 @@ namespace DataAccessLayerFakes
         {
             throw new NotImplementedException();
         }
+
+        public AnimalVM SelectAnimalAdoptableProfile(int animalId)
+        {
+            AnimalVM animalVM = new AnimalVM();
+
+            foreach (AnimalVM animal in fakeAnimals)
+            {
+                if (animal.AnimalId == animalId)
+                {
+                    animalVM = animal;
+                }
+            }
+
+            return animalVM;
+        }
     }
 }

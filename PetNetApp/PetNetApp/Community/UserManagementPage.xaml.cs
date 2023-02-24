@@ -90,7 +90,6 @@ namespace WpfPresentation.Community
                             menuItemActivate.Click += (object1, args) => menuItem_Activate_Click();
                             ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemActivate);
                         }
-                        
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu.IsOpen = true;
                         return;
                     };
@@ -135,7 +134,20 @@ namespace WpfPresentation.Community
         // End menu item click
 
 
-
+        /// <summary>
+        /// Hoang Chu
+        /// Created: 2023/02/12
+        /// 
+        /// </summary>
+        /// Show up the users list when the page is loaded
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_employeeList == null)

@@ -60,9 +60,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Animals\AnimalPostUpdate.xaml.cs">
-      <DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
@@ -74,7 +71,10 @@
     </Compile>
     <Compile Include="Animals\MedProcedurePage.xaml.cs">
       <DependentUpon>MedProcedurePage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
+    <Compile Include="Animals\ViewAdoptableAnimalProfile.xaml.cs">
+      <DependentUpon>ViewAdoptableAnimalProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
@@ -102,10 +102,6 @@
     <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Animals\AnimalPostUpdate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Animals\AnimalsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\MedProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ViewAdoptableAnimalProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -525,6 +525,34 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\PlusIcon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\application_light.png" />
+    <Resource Include="Development\Images\cards_light.png" />
+    <Resource Include="Development\Images\download_light.png" />
+    <Resource Include="Development\Images\heart_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Animals\AnimalImages\dogPic1.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic2.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic3.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic4.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Animals\AnimalImages\dogPic6.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic7.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Animals\AnimalImages\dogPic1.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic2.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic3.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic4.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic5.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic6.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic7.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic8.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

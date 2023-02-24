@@ -14,9 +14,6 @@ Description:
 USE [PetNet_db_am]
 GO
 
-DROP PROCEDURE IF EXISTS dbo.sp_select_users_by_roleId;  
-GO
-
 print '' print '*** creating sp_select_all_employees (Hoang Chu)'
 GO
 CREATE PROCEDURE [dbo].[sp_select_all_employees]

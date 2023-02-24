@@ -19,6 +19,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddProcedure_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\EmployeeManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalPostUpdate_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAdoptableAnimalProfile_SP.sql
 
 ECHO .
 ECHO if no errors appear DB was created
