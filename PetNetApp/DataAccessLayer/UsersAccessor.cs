@@ -10,6 +10,17 @@ using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
+    /// <summary>
+    /// Mads Rhea
+    /// Created: 2023/01/27
+    /// 
+    /// Accessor for all tables relating to Users.
+    /// </summary>
+    ///
+    /// <remarks>
+    /// Updater Name
+    /// Updated: yyyy/mm/dd
+    /// </remarks>
     public class UsersAccessor : IUsersAccessor
     {
 
@@ -171,7 +182,11 @@ namespace DataAccessLayer
             return employeeList;
         }
 
-        // Mads
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Confirms if given Email and PasswordHash match a User within the Users table.
+        /// </summary>
+        /// <returns>int</returns>
         public int AuthenticateUserWithEmailAndPasswordHash(string email, string passwordHash)
         {
             int result = 0;
@@ -209,6 +224,11 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Returns user from the Users table based off of matching email.
+        /// </summary>
+        /// <returns>UsersVM</returns>
         public UsersVM SelectUserByEmail(string email)
         {
 
@@ -268,6 +288,11 @@ namespace DataAccessLayer
             return user;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Returns all roles connected to the UsersId in the UserRoles table.
+        /// </summary>
+        /// <returns>List of strings</returns>
         public List<string> SelectRolesByUserID(int userId)
         {
             List<string> roles = new List<string>();
@@ -317,6 +342,11 @@ namespace DataAccessLayer
             return roles;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Returns all PronounId values from Pronoun table.
+        /// </summary>
+        /// <returns>List of strings</returns>
         public List<string> SelectAllPronouns()
         {
             List<string> pronouns = new List<string>();
@@ -362,6 +392,11 @@ namespace DataAccessLayer
             return pronouns;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Returns all GenderId values from Gender table.
+        /// </summary>
+        /// <returns>List of strings</returns>
         public List<string> SelectAllGenders()
         {
             List<string> genders = new List<string>();
@@ -407,6 +442,11 @@ namespace DataAccessLayer
             return genders;
         }
 
+        /// <summary>
+        /// [Alex Oetken - 2023/02/??]
+        /// Injects new user into the Users table.
+        /// </summary>
+        /// <returns>int</returns>
         public int CreateNewUser(Users user, string PasswordHash)
         {
 
@@ -454,6 +494,11 @@ namespace DataAccessLayer
             return rows;
         }
 
+        /// <summary>
+        /// [Alex Oetken - 2023/02/??]
+        /// Updates User active status to false based on UserId.
+        /// </summary>
+        /// <returns>int</returns>
         public int DeactivateUserAccount(int UserId)
         {
             int rows = 0;
@@ -678,6 +723,153 @@ namespace DataAccessLayer
             return rows;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Injects updated user info into the Users table where the UsersId, GivenName, FamilyName, GenderId, PronounId, Address, AddressTwo, Phone, and Zipcode match.
+        /// </summary>
+        /// <returns>int</returns>
+        public int UpdateUserDetails(Users oldUser, Users updatedUser)
+        {
+            
+
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_user_details";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UsersId", oldUser.UsersId);
+            cmd.Parameters.AddWithValue("@OldGivenName", oldUser.GivenName);
+            cmd.Parameters.AddWithValue("@OldFamilyName", oldUser.FamilyName);
+            cmd.Parameters.AddWithValue("@OldGenderId", oldUser.GenderId);
+            cmd.Parameters.AddWithValue("@OldPronounId", oldUser.PronounId);
+            cmd.Parameters.AddWithValue("@OldAddress", oldUser.Address);
+            cmd.Parameters.AddWithValue("@OldAddressTwo", oldUser.AddressTwo);
+            cmd.Parameters.AddWithValue("@OldPhone", oldUser.Phone);
+            cmd.Parameters.AddWithValue("@OldZipcode", oldUser.Zipcode);
+
+            cmd.Parameters.Add("@NewGivenName", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@NewGivenName"].Value = updatedUser.GivenName;
+            cmd.Parameters.Add("@NewFamilyName", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@NewFamilyName"].Value = updatedUser.FamilyName;
+            cmd.Parameters.Add("@NewGenderId", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@NewGenderId"].Value = updatedUser.GenderId;
+            cmd.Parameters.Add("@NewPronounId", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@NewPronounId"].Value = updatedUser.PronounId;
+            cmd.Parameters.Add("@NewAddress", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@NewAddress"].Value = updatedUser.Address;
+            cmd.Parameters.Add("@NewAddressTwo", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@NewAddressTwo"].Value = updatedUser.AddressTwo;
+            cmd.Parameters.Add("@NewPhone", SqlDbType.NVarChar, 13);
+            cmd.Parameters["@NewPhone"].Value = updatedUser.Phone;
+            cmd.Parameters.Add("@NewZipcode", SqlDbType.Char, 9);
+            cmd.Parameters["@NewZipcode"].Value = updatedUser.Zipcode;
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+
+        }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Injects updated PasswordHash into Users table where the Email and old PasswordHash match.
+        /// </summary>
+        /// <returns>int</returns>
+        public int UpdatePasswordHash(string email, string oldPasswordHash, string newPasswordHash)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            string cmdText = "sp_update_passwordHash";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("@OldPasswordHash", SqlDbType.NVarChar, 100);
+            cmd.Parameters.Add("@NewPasswordHash", SqlDbType.NVarChar, 100);
+
+            cmd.Parameters["@Email"].Value = email;
+            cmd.Parameters["@OldPasswordHash"].Value = oldPasswordHash;
+            cmd.Parameters["@NewPasswordHash"].Value = newPasswordHash;
+
+            try
+            {
+                conn.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception up)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            
+            }
+
+            return rowsAffected;
+        }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/02/24]
+        /// Updates User email in the Users table.
+        /// </summary>
+        /// <returns>int</returns>
+        public int UpdateUserEmail(string oldEmail, string newEmail, string passwordHash)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            string cmdText = "sp_update_user_email";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@OldEmail", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("@NewEmail", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("@PasswordHash", SqlDbType.NVarChar, 100);
+
+            cmd.Parameters["@OldEmail"].Value = oldEmail;
+            cmd.Parameters["@NewEmail"].Value = newEmail;
+            cmd.Parameters["@PasswordHash"].Value = passwordHash;
+
+            try
+            {
+                conn.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception up)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
     }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetNetApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,43 +13,40 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using LogicLayer;
-using DataObjects;
-using PetNetApp;
 
 namespace WpfPresentation.Misc
 {
     /// <summary>
     /// Mads Rhea
-    /// Created: 2023/02/05
+    /// Created: 2023/02/24
     /// 
-    /// Placeholder for the "User Profile" page.
+    /// WPF for the body section of the "Landing Page" (user logged out)
     /// </summary>
     ///
     /// <remarks>
     /// Updater Name
     /// Updated: yyyy/mm/dd
     /// </remarks>
-    public partial class UserProfilePage : Page
+    public partial class LandingBodyLoggedOutPage : Page
     {
-        private static UserProfilePage _existingProfilePage = null;
         private MainWindow _mainWindow = null;
+        private static LandingBodyLoggedOutPage _existingLandingBodyLoggedOut = null;
 
-        public UserProfilePage()
+        public LandingBodyLoggedOutPage()
         {
             InitializeComponent();
         }
 
-        public static UserProfilePage GetUserProfilePage(MainWindow mainWindow)
+        public static LandingBodyLoggedOutPage GetLandingBodyLoggedOutPage(MainWindow mainWindow)
         {
-            if (_existingProfilePage == null)
+            if (_existingLandingBodyLoggedOut == null)
             {
-                _existingProfilePage = new UserProfilePage();
+                _existingLandingBodyLoggedOut = new LandingBodyLoggedOutPage();
             }
 
-            _existingProfilePage._mainWindow = mainWindow;
+            _existingLandingBodyLoggedOut._mainWindow = mainWindow;
 
-            return _existingProfilePage;
+            return _existingLandingBodyLoggedOut;
         }
     }
 }

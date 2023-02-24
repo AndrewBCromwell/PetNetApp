@@ -130,6 +130,9 @@
     <Compile Include="Management\VolunteerInfoPage.xaml.cs">
       <DependentUpon>VolunteerInfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Misc\UserDetailsPage.xaml.cs">
+      <DependentUpon>UserDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Shelters\AlterShelter.xaml.cs">
       <DependentUpon>AlterShelter.xaml</DependentUpon>
     </Compile>
@@ -140,9 +143,6 @@
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlaceholderTextBox.cs" />
-    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
-      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Animals\ViewAdoptableAnimalProfile.xaml.cs">
       <DependentUpon>ViewAdoptableAnimalProfile.xaml</DependentUpon>
     </Compile>
@@ -179,6 +179,15 @@
     <Compile Include="Misc\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Misc\AccountInfoPage.xaml.cs">
+      <DependentUpon>AccountInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LandingBodyLoggedInPage.xaml.cs">
+      <DependentUpon>LandingBodyLoggedInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LandingBodyLoggedOutPage.xaml.cs">
+      <DependentUpon>LandingBodyLoggedOutPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Misc\LogInPage.xaml.cs">
       <DependentUpon>LogInPage.xaml</DependentUpon>
     </Compile>
@@ -211,15 +220,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Animals\AnimalMedicalTestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\AccountInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\DeactivateButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\LandingBodyLoggedInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\LandingBodyLoggedOutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\SignUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Development\Shelters\ShelterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,6 +332,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Misc\UserDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Shelters\AlterShelter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -326,14 +359,6 @@
     <Page Include="Management\ViewTicketList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Misc\DeactivateButtonPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Misc\SignUp.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ButtonStyles.xaml">
       <SubType>Designer</SubType>
@@ -601,9 +626,11 @@
     <Folder Include="Development\Donate\" />
     <Folder Include="Development\Donations\" />
     <Folder Include="Development\Events\" />
+    <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
     <Folder Include="Donations\" />
     <Folder Include="Events\" />
+    <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\petnetLogo.png">
@@ -846,6 +873,22 @@
   <ItemGroup>
     <Resource Include="Development\Images\menudark.png" />
     <Resource Include="Development\Images\menulight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Placeholder\bannerImage_1.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_10.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_2.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_3.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_4.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_5.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_6.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_7.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_8.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrowleftDark.png" />
+    <Resource Include="Images\arrowRightDark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

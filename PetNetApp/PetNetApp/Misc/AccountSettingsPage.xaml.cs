@@ -15,17 +15,27 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 using PetNetApp;
+using WpfPresentation.Community;
 
 namespace WpfPresentation.Misc
 {
     /// <summary>
-    /// Interaction logic for AccountSettingsPage.xaml
+    /// Mads Rhea
+    /// Created: 2023/02/05
+    /// 
+    /// WPF for "Account Settings" frame and navigational buttons.
     /// </summary>
+    ///
+    /// <remarks>
+    /// Updater Name
+    /// Updated: yyyy/mm/dd
+    /// </remarks>
     public partial class AccountSettingsPage : Page
     {
         private static AccountSettingsPage _existingAccountSettings = null;
         private MasterManager _manager = MasterManager.GetMasterManager();
         private MainWindow _mainWindow = null;
+
 
         public AccountSettingsPage()
         {
@@ -44,36 +54,36 @@ namespace WpfPresentation.Misc
             return _existingAccountSettings;
         }
 
-        private void cmboGender_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<string> genders = _manager.UsersManager.RetrieveGenders();
-
-            foreach (var gender in genders)
-            {
-                cmboGender.Items.Add(gender);
-            }
-        }
-
-        private void cmboPronoun_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<string> pronouns = _manager.UsersManager.RetrievePronouns();
-
-            foreach (var pronoun in pronouns)
-            {
-                cmboPronoun.Items.Add(pronoun);
-            }
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            txtGivenName.Text = _manager.User.GivenName;
-            txtFamilyName.Text = _manager.User.FamilyName;
-            cmboGender.SelectedItem = _manager.User.GenderId;
-            cmboPronoun.SelectedItem = _manager.User.PronounId;
-            txtAddress.Text = _manager.User.Address;
-            txtAddressTwo.Text = _manager.User.AddressTwo;
-            txtPhone.Text = _manager.User.Phone;
-            txtZipcode.Text = _manager.User.Zipcode;
+            frameAccountSettings.Navigate(UserDetailsPage.GetUserDetailsPage(_mainWindow));
         }
+
+        private void btnUserDetails_Click(object sender, RoutedEventArgs e)
+        {
+            frameAccountSettings.Navigate(UserDetailsPage.GetUserDetailsPage(_mainWindow));
+        }
+
+        private void btnAccountInfo_Click(object sender, RoutedEventArgs e)
+        {
+            frameAccountSettings.Navigate(AccountInfoPage.GetAccountInfoPage(_mainWindow));
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            frameAccountSettings.Navigate(DeactivateButtonPage.GetDeactivateButtonPage(_mainWindow));
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you'd like to log out?\n\nYou may lose any changes you've made.", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                _mainWindow.UpdateOnLogOut();
+
+            }
+
+        }
+
     }
 }
