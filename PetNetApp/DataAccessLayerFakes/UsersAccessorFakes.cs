@@ -218,6 +218,26 @@ namespace DataAccessLayerFakes
 
             return _fakeUsers.Count(); 
         }
+
+        /// <summary>
+        /// Zaid Rachman
+        /// Created:2023/02/15
+        /// 
+        /// Used to check if the user exists in the database.
+        /// </summary>
+        /// <returns>List<Users></returns>
+        public List<UsersVM> SelectUsersByUsersId(int usersId)
+        {
+            List<UsersVM> userfakes = new List<UsersVM>();
+            foreach (UsersVM fakeUser in fakeUsers)
+            {
+                if (usersId == fakeUser.UsersId)
+                {
+                    userfakes.Add(fakeUser);
+                }
+            }
+            return userfakes;
+        }
         public Users SelectUserByUsersId(int UsersId)
         {
             return fakeUser;

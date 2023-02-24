@@ -30,6 +30,19 @@ namespace WpfPresentation.Development.Management
             InitializeComponent();
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When page loads, a list of tickets is
+        /// retrieved and the data grid is populated
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -50,11 +63,37 @@ namespace WpfPresentation.Development.Management
             }
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When search box is selected, 
+        /// "Search..." is removed
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
         {
             txtSearch.Text = "";
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When search box is not focused,
+        /// "Search..." is placed in the search box
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
         {
             txtSearch.Text = "Search...";

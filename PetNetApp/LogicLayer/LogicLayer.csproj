@@ -61,6 +61,7 @@
     <Compile Include="TestManager.cs" />
     <Compile Include="TicketManager.cs" />
     <Compile Include="UsersManager.cs" />
+    <Compile Include="VaccinationManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerFakes\DataAccessLayerFakes.csproj">

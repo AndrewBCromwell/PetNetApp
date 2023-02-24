@@ -55,6 +55,7 @@
     <Compile Include="ITestManager.cs" />
     <Compile Include="ITicketManager.cs" />
     <Compile Include="IUsersManager.cs" />
+    <Compile Include="IVaccinationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

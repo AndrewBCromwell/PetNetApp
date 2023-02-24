@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animals\AddEditVaccinationsPage.xaml.cs">
+      <DependentUpon>AddEditVaccinationsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
       <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,9 @@
     <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
       <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\VaccinationsPage.xaml.cs">
+      <DependentUpon>VaccinationsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
       <DependentUpon>FundraisingPage.xaml</DependentUpon>
     </Compile>
@@ -134,9 +140,9 @@
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlaceholderTextBox.cs" />
-    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
-      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
-    </Compile>
+	  <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
+		  <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+	  </Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
@@ -182,6 +188,10 @@
     <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AddEditVaccinationsPage.xaml">
+    <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Compile Include="Development\Shelters\AlterShelter.xaml.cs">
       <DependentUpon>AlterShelter.xaml</DependentUpon>
     </Compile>
@@ -200,9 +210,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+		<SubType>Designer</SubType>
+		<Generator>MSBuild:Compile</Generator>
+	</Page>
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -259,6 +269,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Animals\VaccinationsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Fundraising\FundraisingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -300,7 +314,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
-      <SubType>Designer</SubType>
+    <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\ViewTicketList.xaml">

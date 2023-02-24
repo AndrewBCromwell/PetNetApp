@@ -23,6 +23,23 @@ namespace DataAccessLayerInterfaces
         int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
         List<Animal> SelectAllAnimals(int shelterId);
         List<Animal> SelectAllAnimalsNotInKennel();
+
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/10
+        /// 
+        /// Selects a specific animalVM model by animal Id
+        /// for the medical profile
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="animalId">int for the animal</param>
+        /// <exception cref="Exception">No animal is retrived with that Id</exception>
+        /// <returns>AnimalVM object</returns>	
         AnimalVM SelectAnimalMedicalProfileByAnimalId(int AnimalId);
     }
 }

@@ -9,7 +9,7 @@ namespace LogicLayerInterfaces
 {
     public interface IMedicalRecordManager
     {
-        int getLastMedicalRecordIdByAnimalId(int animalId);
+        int RetrieveLastMedicalRecordIdByAnimalId(int animalId);
         List<MedicalRecordVM> RetrieveMedicalRecordDiagnosisByAnimalId(int animalId);
         int UpdateTreatmentByMedicalRecordId(int medicalRecordId, string diagnosis, string medicalNotes);
     }
