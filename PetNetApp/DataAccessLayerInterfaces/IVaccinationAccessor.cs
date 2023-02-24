@@ -1,4 +1,16 @@
-﻿using System;
+﻿/// <summary>
+/// Zaid Rachman
+/// Created: 2023/02/09
+/// 
+/// Vaccination Accessor Interface for the VaccinationAccessor
+/// 
+/// </summary>
+///
+/// <remarks>
+/// Updater Name
+/// Updated: yyyy/mm/dd
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +21,49 @@ namespace DataAccessLayerInterfaces
 {
     public interface IVaccinationAccessor
     {
+        /// <summary>
+        /// Zaid Rachman
+        /// 2023/02/09
+        /// 
+        /// Inserts new vaccination. Takes in a Vaccination object and animalId as input
+        /// return the number of rows updated
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// </summary>
+        /// <param name="vaccination"></param>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
         int InsertVaccination(Vaccination vaccination, int animalId);
+
+        /// <summary>
+        /// Zaid Rachman
+        /// 2023/02/09
+        /// 
+        /// Retrieves a list of vaccinations by animal Id. Takes in an animal Id as a parameter
+        /// returns list of Vaccination objects
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// </summary>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
         List<Vaccination> SelectVaccinationsByAnimalId(int animalId);
+
+        /// <summary>
+        /// Zaid Rachman
+        /// 2023/02/09
+        /// Updates Vaccination object. Takes in oldVaccination and newVaccination objects as parameters.
+        /// returns the number of rows updated
+        /// </summary>
+        /// <param name="oldVaccination"></param>
+        /// <param name="newVaccination"></param>
+        /// <returns></returns>
         int UpdateVaccination(Vaccination oldVaccination, Vaccination newVaccination);
     }
 }
