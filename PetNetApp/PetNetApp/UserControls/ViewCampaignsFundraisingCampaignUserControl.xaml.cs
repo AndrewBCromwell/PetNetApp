@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 
-namespace WpfPresentation.Fundraising
+namespace WpfPresentation.UserControls
 {
     /// <summary>
     /// Interaction logic for ViewCampaignsFundraisingCampaignUserControl.xaml
@@ -40,69 +40,26 @@ namespace WpfPresentation.Fundraising
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Stephen Jaurigue
-        /// Created: 2023/02/23
-        /// 
-        /// Opens the context menu on normal click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).ContextMenu.IsOpen = true;
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Stephen Jaurigue: Placeholder for Edit Campaign
-        /// </remarks>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void menuEdit_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("Edit", "Editing " + FundraisingCampaign.Title);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Stephen Jaurigue: Placeholder for View Campaign
-        /// </remarks>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
 
         private void menuView_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("View", "Viewing " + FundraisingCampaign.Title);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Stephen Jaurigue: Placeholder for Delete Campaign
-        /// </remarks>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
         private void menuDelete_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("Delete", "Are you sure you want to delete " + FundraisingCampaign.Title+"?",ButtonMode.DeleteCancel);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Stephen Jaurigue: Placeholder for Update Campaign
-        /// </remarks>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void menuUpdate_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("Update", "Updating " + FundraisingCampaign.Title);

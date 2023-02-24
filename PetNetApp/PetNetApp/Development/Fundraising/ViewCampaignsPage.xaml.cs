@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.UserControls;
 
 namespace WpfPresentation.Development.Fundraising
 {
@@ -202,16 +203,6 @@ namespace WpfPresentation.Development.Fundraising
             foreach (FundraisingCampaign fundraisingCampaign in _filteredFundraisingCampaigns.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
             {
                 ViewCampaignsFundraisingCampaignUserControl item = new ViewCampaignsFundraisingCampaignUserControl(fundraisingCampaign, i % 2 == 0);
-                //if (i % 2 == 0)
-                //{
-                //    item.BackgroundColor = new SolidColorBrush(Color.FromRgb(61, 131, 97));
-                //    item.Foreground = new SolidColorBrush(Color.FromRgb(238, 242, 230));
-                //}
-                //else
-                //{
-                //    item.BackgroundColor = new SolidColorBrush(Color.FromRgb(214, 205, 164));
-                //    item.Foreground = new SolidColorBrush(Color.FromRgb(28, 103, 88));
-                //}
                 i++;
                 stackCampaigns.Children.Add(item);
             }
