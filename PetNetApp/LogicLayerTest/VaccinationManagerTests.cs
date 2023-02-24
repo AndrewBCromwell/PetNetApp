@@ -1,12 +1,24 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿/// <summary>
+/// Zaid Rachman
+/// Created: 2023/02/09
+/// 
+/// Unit test class for the logic in VaccinationManager
+/// 
+/// </summary>
+///
+/// <remarks>
+/// Updater Name
+/// Updated: yyyy/mm/dd
+/// </remarks>
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using LogicLayer;
 using DataAccessLayerFakes;
 using DataObjects;
 using System.Collections.Generic;
-
 namespace LogicLayerTest
 {
+    
     [TestClass]
     public class VaccinationManagerTests
     {

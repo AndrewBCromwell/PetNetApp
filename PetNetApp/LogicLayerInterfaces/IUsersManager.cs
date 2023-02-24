@@ -24,6 +24,24 @@ namespace LogicLayerInterfaces
         bool AddUser(Users user, string password);
 
         // Zaid Rachman
+
+        /// <summary>
+        /// 
+        /// Zaid Rachman
+        /// Created: 2023/02/15
+        /// Retrieves list of users by userId
+        /// Used to see if user exists.
+        /// 
+        /// 
+        /// </summary>
+        ///  <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// 
+        /// <param name="usersId"></param>
+        /// <returns></returns>
         List<UsersVM> RetrieveUsersByUsersId(int usersId);
     }
 }
