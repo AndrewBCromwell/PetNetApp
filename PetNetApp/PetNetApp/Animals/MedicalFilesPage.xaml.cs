@@ -18,8 +18,16 @@ using System.Windows.Shapes;
 namespace WpfPresentation.Animals
 {
     /// <summary>
-    /// Interaction logic for MedicalFilesPage.xaml
+    /// Molly Meister
+    /// Created: 2023/02/13
+    /// 
     /// </summary>
+    /// Page for additional medical file upload (images)
+    ///
+    /// <remarks>
+    /// Updater Name
+    /// Updated: yyyy/mm/dd 
+    /// </remarks>
     public partial class MedicalFilesPage : Page
     {
         private Animal _animal = null;
@@ -40,17 +48,36 @@ namespace WpfPresentation.Animals
             
         }
 
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/02/13
+        /// 
+        /// </summary>
+        /// to upload a new file
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// </remarks>
         private void btnAddFile_Click(object sender, RoutedEventArgs e)
         {
             var uploadAdditionalFileWindow = new UploadAdditionalFileWindow(_animal, _manager);
             uploadAdditionalFileWindow.Owner = Window.GetWindow(this);
             uploadAdditionalFileWindow.ShowDialog();
-            NavigationService.Navigate(new MedicalFilesPage(_animal, _manager));
-            
-            
-            
+            NavigationService.Navigate(new MedicalFilesPage(_animal, _manager));  
         }
 
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/02/13
+        /// 
+        /// </summary>
+        /// to populate the datagrid with existing files to view a list
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// </remarks>
         private void PopulatePage()
         {
             if (_imagesList == null || _imagesList.Count == 0)
@@ -59,10 +86,16 @@ namespace WpfPresentation.Animals
                 {
                     lblNoFiles.Visibility = Visibility.Hidden;
                     _imagesList = _manager.ImagesManager.RetrieveImagesByAnimalId(_animal.AnimalId);
-                    datAdditionalFiles.ItemsSource = _imagesList;
-                    datAdditionalFiles.Columns[0].Header = "Image ID";
-                    datAdditionalFiles.Columns[1].Header = "Image File Name";
-
+                    if(_imagesList.Count == 0)
+                    {
+                        datAdditionalFiles.Visibility = Visibility.Hidden;
+                        lblAdditionalFiles.Content = "No Files Available";
+                    } else
+                    {
+                        datAdditionalFiles.ItemsSource = _imagesList;
+                        datAdditionalFiles.Columns[0].Header = "Image ID";
+                        datAdditionalFiles.Columns[1].Header = "Image File Name";
+                    }
                 }
                 catch (Exception ex)
                 {
