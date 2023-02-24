@@ -48,6 +48,7 @@
     <Compile Include="IMedicalRecordManager.cs" />
     <Compile Include="IProcedureManager.cs" />
     <Compile Include="IScheduleManager.cs" />
+    <Compile Include="IShelterManager.cs" />
     <Compile Include="ITestManager.cs" />
     <Compile Include="IUsersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
