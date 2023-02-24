@@ -48,7 +48,7 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Kennel failed to be removed", ex);
+                throw new ApplicationException("Kennel failed to be edited", ex);
             }
             return result == 1;
         }
@@ -62,7 +62,7 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Failed to remove an from kennel", ex);
+                throw new ApplicationException("Failed to remove animal from kennel", ex);
             }
             return result == 1;
         }
@@ -142,6 +142,19 @@ namespace LogicLayer
             {
 
                 throw new ApplicationException("Failed to retrieve animals.", ex);
+            }
+        }
+
+        // Created By: Asa Armstrong
+        public bool RemoveAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId)
+        {
+            try
+            {
+                return (0 < kennelAccessor.DeleteAnimalKennelingByKennelIdAndAnimalId(kennelId, animalId));
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Could not delete animal kenneling.", ex);
             }
         }
     }

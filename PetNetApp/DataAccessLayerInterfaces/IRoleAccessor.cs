@@ -13,6 +13,8 @@ namespace DataAccessLayerInterfaces
 {
     public interface IRoleAccessor
     {
+        // Created By: Asa Armstrong
+        int DeleteRoleByUsersIdAndRoleId(int usersId, string roleId);
         List<Role> SelectAllRoles();
         List<Role> SelectAllRolesByUserId(int userID);
         int InsertRoleByUsersId(Role role, int usersId);

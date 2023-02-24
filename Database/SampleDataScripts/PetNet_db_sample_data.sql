@@ -360,7 +360,8 @@ INSERT INTO [dbo].[Users]
 		("Unknown", "They/Them", "100000", "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 207", '50001', "3195943138"),
 		("Male", "He/Him", "100000", "Stephen", "Jaurigue", "stephenjaurigue@company.com", "123 Kirkwood Parkway", "Apt 210", "50001", "3195555555"),
 		("Female", "She/Her", "100000", "Molly", "Meister", "mollymeister@company.com", "456 Kirkwood Parkway", "Apt 256", "50001", "3196666666"),
-		('Male', 'He/Him', '100001', 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777')
+		('Male', 'He/Him', '100001', 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777'),
+		("Male", "He/Him", "100000", "Barry", "Mikulas", "bmikulas@company.com", "2 Kirkwood Parkway", "Apt 4", '50001', "3198675309")
 GO
 
 print '' print '*** creating Animal sample data'

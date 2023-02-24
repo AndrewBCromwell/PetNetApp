@@ -8,12 +8,8 @@ rem Follow this example (but without rem):
 rem sqlcmd -S localhost -E -i SampleData\ASampleFeature_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
 
-sqlcmd -S localhost -E -i SampleDataScripts\AddAnimalUpdate_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\ViewMedicalTests_SD.sql
-
-sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\ScheduleData_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\RoleManagement_SD.sql
+
 
 
 rem Add your stored procedure scripts to the bottom of this list
@@ -47,8 +43,11 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddRole_to_User_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\RoleManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewTicketList_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditProcedure_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\KenOccupancyUpdate-333_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\RemoveRole-006_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditTreatment_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingCampaigns_SP.sql
+
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

@@ -1645,3 +1645,4 @@ CREATE TABLE [dbo].[AnimalImage] (
 	CONSTRAINT [pk_AnimalImageId] PRIMARY KEY([AnimalId], [ImageId])
 )
 GO
+

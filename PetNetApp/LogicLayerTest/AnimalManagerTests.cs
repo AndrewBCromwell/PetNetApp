@@ -50,11 +50,12 @@ namespace LogicLayerTest
         {
             // Arrange
             const int animalId = 999998;
+            const int shelterId = 100000;
             const string expectedAnimalName = "Test name 2";
             string actualAnimalName = "";
 
             // Act
-            Animal animal = _animalManager.RetrieveAnimalByAnimalId(animalId);
+            Animal animal = _animalManager.RetrieveAnimalByAnimalId(animalId, shelterId);
             actualAnimalName = animal.AnimalName;
 
             // Assert
@@ -125,10 +126,11 @@ namespace LogicLayerTest
         public void TestUpdateAnimalWorksWithCorrectData()
         {
             // Arrange
-            AnimalVM oldAnimal = _animalManager.RetrieveAnimalByAnimalId(999997);
+            AnimalVM oldAnimal = _animalManager.RetrieveAnimalByAnimalId(999997, 100000);
             AnimalVM newAnimal = new AnimalVM
             {
                 AnimalId = 999997,
+                AnimalShelterId = 100000,
                 AnimalName = "Test name 3",
                 AnimalGender = "Test gender 3",
                 AnimalTypeId = "Test type 3",
@@ -161,6 +163,7 @@ namespace LogicLayerTest
             AnimalVM badAnimal = new AnimalVM
             {
                 AnimalId = 899997,
+                AnimalShelterId = 100000,
                 AnimalName = "Test name 3",
                 AnimalGender = "Test gender 3",
                 AnimalTypeId = "Test type 3",
@@ -192,10 +195,11 @@ namespace LogicLayerTest
         {
             // arrange
             const int expectedCount = 6;
+            int shelterId = 100000;
             int actualcount = 0;
 
             // act
-            actualcount = _animalManager.RetrieveAllAnimals().Count;
+            actualcount = _animalManager.RetrieveAllAnimals(shelterId).Count;
 
             // assert 
             Assert.AreEqual(expectedCount, actualcount);
@@ -216,6 +220,37 @@ namespace LogicLayerTest
             // assert
             Assert.AreEqual(expectedAnimalName, actualName);
 
+        }
+
+        [TestMethod]
+        public void TestAddAnimal()
+        {
+            // arrange
+            AnimalVM animal = new AnimalVM()
+            {
+                AnimalId = 899997,
+                AnimalShelterId = 100000,
+                AnimalName = "Test name 3",
+                AnimalGender = "Test gender 3",
+                AnimalTypeId = "Test type 3",
+                AnimalBreedId = "Test breed 3",
+                KennelName = "Test kennel 1",
+                Personality = "Test personality 3",
+                Description = "Test description 3",
+                AnimalStatusId = "Test status 3",
+                AnimalStatusDescription = "Test status description 3",
+                BroughtIn = DateTime.Parse("2023-06-03"),
+                MicrochipNumber = "Test SN",
+                Aggressive = false,
+                AggressiveDescription = "Not aggressive",
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = "new notes"
+            };
+
+            bool actualResult = _animalManager.AddAnimal(animal);
+
+            Assert.IsTrue(actualResult);
         }
 
     }

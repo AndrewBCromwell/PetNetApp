@@ -58,6 +58,7 @@
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />
+    <Compile Include="UserRoles.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="Vaccination.cs" />
     <Compile Include="ValidationHelpers.cs" />
