@@ -19,6 +19,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\Tickets_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\EditProcedure_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\Vaccination_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -45,6 +46,12 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalDOD513-514_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewTicketList_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditProcedure_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditTreatment_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddVaccination_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddMedicalRecord_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVaccinationByAnimalId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewUsersByUsersId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditVaccination_SP.sql
+
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

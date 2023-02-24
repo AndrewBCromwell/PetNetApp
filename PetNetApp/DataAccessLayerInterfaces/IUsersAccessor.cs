@@ -24,5 +24,8 @@ namespace DataAccessLayerInterfaces
         int CreateNewUser(Users user, string PasswordHash);
 
         int DeactivateUserAccount(int UserId);
+
+        // Zaid
+        List<UsersVM> SelectUsersByUsersId(int usersId);
     }
 }

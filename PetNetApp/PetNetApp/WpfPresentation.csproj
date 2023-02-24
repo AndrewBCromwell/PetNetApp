@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animals\AddEditVaccinationsPage.xaml.cs">
+      <DependentUpon>AddEditVaccinationsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
       <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,9 @@
     </Compile>
     <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
       <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\VaccinationsPage.xaml.cs">
+      <DependentUpon>VaccinationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
@@ -139,6 +145,10 @@
     <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AddEditVaccinationsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\UploadAdditionalFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\VaccinationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

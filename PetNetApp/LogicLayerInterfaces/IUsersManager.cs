@@ -19,5 +19,8 @@ namespace LogicLayerInterfaces
         List<string> RetrievePronouns();
         bool DeactivateUserAccount(int UserId);
         bool AddUser(Users user, string password);
+
+        // Zaid Rachman
+        List<UsersVM> RetrieveUserByUsersId(int usersId);
     }
 }

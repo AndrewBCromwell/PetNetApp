@@ -53,6 +53,7 @@
     <Compile Include="ScheduleAccessorFakes.cs" />
     <Compile Include="TicketAccessorFakes.cs" />
     <Compile Include="UsersAccessorFakes.cs" />
+    <Compile Include="VaccinationAccessorFake.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerInterfaces\DataAccessLayerInterfaces.csproj">

@@ -90,5 +90,23 @@ namespace LogicLayerTest
 
         }
 
+        /// <summary>
+        /// Zaid Rachman
+        /// 2023/02/15
+        /// 
+        /// Tests SelectUsersByUsersId by inputing a sample usersId
+        /// </summary>
+        [TestMethod]
+        /*This test method is used to test if the user exists*/
+        public void TestSelectUsersByUsersId()
+        {
+            int sampleId = 1000;
+            int expectedResult = 1;
+
+            int actualResult = _userManager.RetrieveUserByUsersId(sampleId).Count;
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
     }
 }

@@ -491,7 +491,82 @@ namespace DataAccessLayer
             return rows;
         }
 
-       
+        /// <summary>
+        /// Zaid Rachman
+        /// 2023/02/15
+        /// 
+        /// Selects users by users Id
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<UsersVM> SelectUsersByUsersId(int usersId)
+        {
+            List<UsersVM> users = new List<UsersVM>();
+            //connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            //command text
+            var cmdText = "sp_select_users_by_users_id";
+            //command
+            var cmd = new SqlCommand(cmdText, conn);
+            //Command Type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+
+            cmd.Parameters["@UsersId"].Value = usersId;
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute and get a SqlDataReader
+                var reader = cmd.ExecuteReader();
+
+
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+
+                        UsersVM user = new UsersVM();
+                        user.UsersId = reader.GetInt32(0); users.Add(user);
+                        user.GenderId = reader.GetString(1);
+                        user.PronounId = reader.IsDBNull(2) ? null : reader.GetString(2);
+                        user.ShelterId = reader.IsDBNull(3) ? null : (int?)reader.GetInt32(3);
+                        user.GivenName = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        user.FamilyName = reader.GetString(5);
+                        user.Email = reader.GetString(6);
+                        //user.PasswordHash = reader.GetString(7);
+                        user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
+                        user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
+                        user.Zipcode = reader.GetString(10);
+                        user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
+                        user.CreationDate = reader.GetDateTime(12);
+                        user.Active = reader.GetBoolean(13);
+                        user.SuspendEmployee = reader.GetBoolean(14);
+                        users.Add(user);
+
+                    }
+
+
+
+                }
+                // close reader
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return users;
+
+
+        }
+
+
     }
 
 }

@@ -211,5 +211,20 @@ namespace LogicLayer
 
             return result;
         }
+
+        public List<UsersVM> RetrieveUserByUsersId(int usersId)
+        {
+            List<UsersVM> usersList = new List<UsersVM>();
+
+            try
+            {
+                usersList = _userAccessor.SelectUsersByUsersId(usersId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("User not found", ex);
+            }
+            return usersList;
+        }
     }
 }
