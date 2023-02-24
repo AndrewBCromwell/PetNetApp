@@ -23,7 +23,7 @@ namespace LogicLayerInterfaces
     public interface IProcedureManager
     {
         bool AddProcedureByMedicalRecordId(Procedure procedure, int medicalRecordId);
-        bool EditProcedureByMedicalRecordIdAndProcedureId(Procedure procedure, Procedure oldProcedure, int medicalRecordId);
-        List<ProcedureVM> GetProceduresByAnimalId(int animalId);
+        bool EditProcedureByProcedureId(Procedure procedure, Procedure oldProcedure);
+        List<ProcedureVM> RetrieveProceduresByAnimalId(int animalId);
     }
 }

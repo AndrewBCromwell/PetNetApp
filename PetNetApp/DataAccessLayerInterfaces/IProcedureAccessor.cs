@@ -23,7 +23,7 @@ namespace DataAccessLayerInterfaces
     public interface IProcedureAccessor
     {
         int InsetProcedureByMedicalRecordId(Procedure procedure, int medicalRecordId);
-        int UpdateProcedureByMedicalRecordIdAndProcedureId(Procedure procedure, Procedure oldProcedure, int medicalRecordId);
+        int UpdateProcedureByProcedureId(Procedure procedure, Procedure oldProcedure);
         List<ProcedureVM> SelectProceduresByAnimalId(int animalId);
     }
 }

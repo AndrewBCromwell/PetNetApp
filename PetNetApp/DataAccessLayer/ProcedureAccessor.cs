@@ -160,7 +160,7 @@ namespace DataAccessLayer
         /// <param name="medicalRecordId">id of the medical record that the procedure belongs to</param>
         /// <exception cref="SQLException">Update Fails</exception>
         /// <returns>rows efected</returns>
-        public int UpdateProcedureByMedicalRecordIdAndProcedureId(Procedure procedure, Procedure oldProcedure, int medicalRecordId)
+        public int UpdateProcedureByProcedureId(Procedure procedure, Procedure oldProcedure)
         {
             int rows = 0;
 

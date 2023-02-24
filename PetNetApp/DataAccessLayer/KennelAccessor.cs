@@ -12,7 +12,6 @@ namespace DataAccessLayer
 {
     public class KennelAccessor : IKennelAccessor
     {
-
         public int InsertKennel(Kennel kennel)
         {
             int rows = 0;
@@ -84,21 +83,6 @@ namespace DataAccessLayer
             return animalTypes;
         }
 
-        /// <summary>
-        /// Gwen Arman
-        /// Created: 2023/02/01
-        /// 
-        /// Methods retrieves kennels from the database with the associated shelter id
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="ShelterId">A description of the parameter that this method takes</param>
-        /// <exception cref="SQLException"></exception>
-        /// <returns>List<KennelVM></returns>
         public List<KennelVM> SelectKennels(int ShelterId)
         {
             List<KennelVM> kennelVMs = new List<KennelVM>();
