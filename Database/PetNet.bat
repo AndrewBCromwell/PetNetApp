@@ -10,7 +10,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\Vaccination_SD.sql
 
-sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
+rem sqlcmd -S localhost -E -i SampleDataScripts\AnimalProfile_SD.sql
 
 
 rem Add your stored procedure scripts to the bottom of this list

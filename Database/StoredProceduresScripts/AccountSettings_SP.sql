@@ -87,24 +87,6 @@ print '' print '*** creating [SP_SELECT_ALL_PRONOUNS]'
 			END
 		GO
 
-/********************************/
-
-print '' print '***creating sp_deactivate_account'
-GO
-CREATE PROCEDURE [dbo].[sp_deactivate_account]
-(
-  @UsersID  [int]
-)
-AS
-  BEGIN
-    UPDATE [Users]
-    SET [Active] = 0
-    WHERE @UsersId = [UsersId]
-    AND [Active] = 1
-  END
-GO
-
-/********************************/
 
 print '' print '*** creating sp_update_passwordHash'
 GO

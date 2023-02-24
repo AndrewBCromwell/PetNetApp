@@ -49,20 +49,3 @@ AS
 		WHERE	@UsersId = [UsersId]
 	END
 GO
-
-
-/********************************/
-
-print '' print '*** creating [SP_SELECT_USER_BY_EMAIL]'
-        GO
-        CREATE PROCEDURE [dbo].[sp_select_user_by_email]
-        (
-            @Email          [nvarchar](100)
-        )
-        AS
-            BEGIN
-                SELECT  [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName], [Email], [Address], [AddressTwo], [Zipcode], [Phone], [Active], [Suspended]
-                FROM    [Users]
-                WHERE   @Email = [Email]
-            END
-        GO
