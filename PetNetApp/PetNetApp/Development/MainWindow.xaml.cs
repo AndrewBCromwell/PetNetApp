@@ -33,15 +33,15 @@ namespace PetNetApp.Development
         public MainWindow()
         {
             InitializeComponent();
-            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnManagement, btnFundraising };
+            _mainTabButtons = new Button[] { btnAnimals, btnCommunity,/* btnDonate,*/ btnEvents, btnShelters, btnManagement, btnFundraising };
         }
 
-        private void btnDonate_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
-        }
+        //private void btnDonate_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ChangeSelectedButton((Button)sender);
+        //    // replace with page name and then delete comment
+        //    frameMain.Navigate(null);
+        //}
 
         private void ChangeSelectedButton(Button selectedButton)
         {

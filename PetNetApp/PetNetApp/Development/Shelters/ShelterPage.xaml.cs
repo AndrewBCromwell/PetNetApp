@@ -32,6 +32,8 @@ namespace WpfPresentation.Development.Shelters
         private Button[] _shelterTabButtons;
         private MasterManager _manager = null;
 
+
+
         public ShelterPage(MasterManager manager)
         {
             InitializeComponent();

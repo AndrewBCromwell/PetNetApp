@@ -54,7 +54,7 @@ namespace PetNetApp
                 mnuUser.Header = "Hello, Guest";
                 mnuLogout.Header = "Log In";
             };
-            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnFundraising, btnManagement };
+            _mainTabButtons = new Button[] { btnAnimals, btnCommunity/*, btnDonate*/, btnEvents, btnShelters, btnFundraising, btnManagement };
             if (_manager.User == null)
             {
                 mnuLogout.Header = "Log In";
@@ -205,7 +205,7 @@ namespace PetNetApp
                     CreationDate = DateTime.Now,
                     Active = true,
                     Address = "Somewhere over the rainbow",
-                    Roles = new List<string>() { "Maintenance" },
+                    Roles = new List<string>() { "Admin" },
                     AddressTwo = "",
                     Email = "awesome@awesome.com",
                     GenderId = "Male",
@@ -229,7 +229,7 @@ namespace PetNetApp
             {
                 ShowAnimalsButtonByRoles();
                 ShowCommunityButtonByRoles();
-                ShowDonateButtonByRoles();
+                //ShowDonateButtonByRoles();
                 ShowEventsButtonByRoles();
                 ShowFundraisingButtonByRoles();
                 ShowManagementButtonByRoles();
@@ -252,14 +252,14 @@ namespace PetNetApp
                 btnCommunity.Visibility = Visibility.Visible;
             }
         }
-        private void ShowDonateButtonByRoles() // Not a desktop thing?
-        {
-            string[] allowedRoles = { "Admin", "Manager", "Marketting" };
-            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
-            {
-                btnDonate.Visibility = Visibility.Visible;
-            }
-        }
+        //private void ShowDonateButtonByRoles() // Not a desktop thing?
+        //{
+        //    string[] allowedRoles = { "Admin", "Manager", "Marketting" };
+        //    if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+        //    {
+        //        btnDonate.Visibility = Visibility.Visible;
+        //    }
+        //}
         private void ShowEventsButtonByRoles()
         {
             string[] allowedRoles = { "Admin", "Manager", "Marketing", "Marketing"};

@@ -17,8 +17,8 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                 <Rectangle Width="25"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Shelter" x:Name="btnShelter" Click="btnShelter_Click" />
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Rescues" x:Name="btnRescue" />
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Animal Control" x:Name="btnAnimalControl" />
+                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Rescues" x:Name="btnRescue" Click="btnRescue_Click"/>
+                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Animal Control" x:Name="btnAnimalControl" Click="btnAnimalControl_Click" />
                 <Rectangle Width="25"/>
             </StackPanel>
         </ScrollViewer>

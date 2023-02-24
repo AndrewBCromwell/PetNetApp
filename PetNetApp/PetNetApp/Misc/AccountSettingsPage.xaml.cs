@@ -84,6 +84,10 @@ namespace WpfPresentation.Misc
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            // 2 lines added by Stephen Jaurigue, when exiting and reentering the editaccount page the lists would get longer and longer
+            cmboGender.Items.Clear();
+            cmboPronoun.Items.Clear();
+
             txtGivenName.Text = _manager.User.GivenName;
             txtFamilyName.Text = _manager.User.FamilyName;
             cmboGender.SelectedItem = _manager.User.GenderId;

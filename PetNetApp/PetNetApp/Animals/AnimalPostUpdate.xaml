@@ -49,7 +49,7 @@
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background">
                                             <Setter.Value>
-                                                <ImageBrush ImageSource="../Images/senddark.png" Stretch="Uniform" />
+                                                <ImageBrush ImageSource="../Images/send_hover.png" Stretch="Uniform" />
                                             </Setter.Value>
                                         </Setter>
                                     </Trigger>
