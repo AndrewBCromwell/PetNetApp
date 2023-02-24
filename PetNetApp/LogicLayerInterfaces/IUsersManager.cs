@@ -24,6 +24,6 @@ namespace LogicLayerInterfaces
         bool AddUser(Users user, string password);
 
         // Zaid Rachman
-        List<UsersVM> RetrieveUserByUsersId(int usersId);
+        List<UsersVM> RetrieveUsersByUsersId(int usersId);
     }
 }

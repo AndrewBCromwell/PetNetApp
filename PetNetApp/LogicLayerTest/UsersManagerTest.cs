@@ -104,7 +104,7 @@ namespace LogicLayerTest
             int sampleId = 1000;
             int expectedResult = 1;
 
-            int actualResult = _userManager.RetrieveUserByUsersId(sampleId).Count;
+            int actualResult = _userManager.RetrieveUsersByUsersId(sampleId).Count;
             Assert.AreEqual(expectedResult, actualResult);
 
         }

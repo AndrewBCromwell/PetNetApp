@@ -212,7 +212,7 @@ namespace LogicLayer
             return result;
         }
 
-        public List<UsersVM> RetrieveUserByUsersId(int usersId)
+        public List<UsersVM> RetrieveUsersByUsersId(int usersId)
         {
             List<UsersVM> usersList = new List<UsersVM>();
 

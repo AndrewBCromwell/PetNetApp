@@ -237,6 +237,7 @@ namespace DataAccessLayerFakes
                 }
             }
             return userfakes;
+        }
         public Users SelectUserByUsersId(int UsersId)
         {
             return fakeUser;

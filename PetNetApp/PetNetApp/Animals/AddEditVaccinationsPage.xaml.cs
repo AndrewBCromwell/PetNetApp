@@ -128,7 +128,7 @@ namespace WpfPresentation.Animals
                 //Validation
                 if (dpDateAdministered.Text == "")
                 {
-                    MessageBox.Show("Please enter the date");
+                    PromptWindow.ShowPrompt("Date Error", "Please enter the date");
                     dpDateAdministered.Focus();
                     return;
                 }
@@ -138,12 +138,12 @@ namespace WpfPresentation.Animals
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Please Enter a Valid User ID");
+                    PromptWindow.ShowPrompt("Date Error", "Please Enter a Valid User ID");
                     return;
                 }
                 //This if statement calls "RetrieveUserByUsersId" and returns a list of users that matches the Id
                 //If it returns 0, the user doesn't exist
-                if (_usersManager.RetrieveUserByUsersId(usersId).Count == 0)
+                if (_usersManager.RetrieveUsersByUsersId(usersId).Count == 0)
                 {
                     PromptWindow.ShowPrompt("User Error", "User cannot be found.");
                     return;
@@ -212,42 +212,41 @@ namespace WpfPresentation.Animals
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Please Enter a Valid User ID");
+                    PromptWindow.ShowPrompt("Date Error", "Please Enter a Valid User ID");
                     return;
                 }
-                if (_usersManager.RetrieveUserByUsersId(usersId).Count == 0)
+                if (_usersManager.RetrieveUsersByUsersId(usersId).Count == 0)
                 {
-
-                    MessageBox.Show("User not found");
+                    PromptWindow.ShowPrompt("Date Error", "User not found");
                     return;
                 }
 
                 if (txtVaccineName.Text == "")
                 {
-                    MessageBox.Show("Please Enter the Vaccine's Name");
+                    PromptWindow.ShowPrompt("Date Error", "Please Enter the Vaccine's Name");
                     txtVaccineName.Focus();
                     return;
                 }
                 if (txtVaccineName.Text == "")
                 {
-                    MessageBox.Show("Please Enter the ID of who gave the vaccine");
+                    PromptWindow.ShowPrompt("Date Error", "Please Enter the ID of who gave the vaccine");
                     txtUsersId.Focus();
                     return;
                 }
                 if (txtVaccineName.Text == "")
                 {
-                    MessageBox.Show("Please Enter the date the vaccine was given");
+                    PromptWindow.ShowPrompt("Date Error", "Please Enter the date the vaccine was given");
                     dpDateAdministered.Focus();
                     return;
                 }
                 if (datePicker.SelectedDate > DateTime.Now)
                 {
-                    MessageBox.Show("Date adminstered cannot be in the future.");
+                    PromptWindow.ShowPrompt("Date Error", "Date adminstered cannot be in the future.");
                     return;
                 }
                 if (datePicker.SelectedDate == null)
                 {
-                    MessageBox.Show("Date must be input.");
+                    PromptWindow.ShowPrompt("Date Error", "Please put in the date vaccine was administered.");
                     return;
                 }
 

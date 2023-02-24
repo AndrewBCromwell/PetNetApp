@@ -140,8 +140,9 @@
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlaceholderTextBox.cs" />
-    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
-      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+	  <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
+		  <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+	  </Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
@@ -209,6 +210,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
+		<SubType>Designer</SubType>
+		<Generator>MSBuild:Compile</Generator>
+	</Page>
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
