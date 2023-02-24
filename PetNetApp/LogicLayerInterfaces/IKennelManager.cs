@@ -12,7 +12,7 @@ namespace LogicLayerInterfaces
         List<KennelVM> RetrieveKennels(int ShelterId);
         Kennel RetrieveKennelIdByAnimalId(int AnimalId);
         bool AddAnimalIntoKennelByAnimalId(int KennelId, int AnimalId);
-        List<Animal> RetrieveAllAnimalsForKennel(int ShelterId);
+        List<Animal> RetrieveAllAnimalsForKennel(int ShelterId, string AnimalTypeId);
         List<string> RetrieveAnimalTypes();
         bool AddKennel(Kennel kennel);
         bool EditKennelStatusByKennelId(int KennelId);
