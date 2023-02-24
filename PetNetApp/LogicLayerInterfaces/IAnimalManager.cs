@@ -22,5 +22,7 @@ namespace LogicLayerInterfaces
         bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
         List<Animal> RetrieveAllAnimals(int shelterId);
         AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId);
+
+        AnimalVM RetriveAnimalAdoptableProfile(int animalId);
     }
 }

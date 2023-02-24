@@ -195,30 +195,16 @@ namespace PetNetApp
         {
             if (_manager.User == null)
             {
-                //frameMain.Navigate(LogInPage.GetLogInPage());
-                _manager.User = new UsersVM()
-                {
-                    UsersId = 100000,
-                    ShelterId = 100000,
-                    FamilyName = "Jaurigue",
-                    GivenName = "Stephen",
-                    CreationDate = DateTime.Now,
-                    Active = true,
-                    Address = "Somewhere over the rainbow",
-                    Roles = new List<string>() { "Vet" },
-                    AddressTwo = "",
-                    Email = "awesome@awesome.com",
-                    GenderId = "Male",
-                    PronounId = "He/Him",
-                    Phone = "1234567890",
-                    Zipcode = "50246"
-                };
+                frameMain.Navigate(LogInPage.GetLogInPage());
             }
             else
             {
-                frameMain.Navigate(LandingPage.GetLandingPage(this));
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Stop);
 
-                _manager.User = null;
+                if (result == MessageBoxResult.Yes)
+                {
+                    _manager.User = null;
+                }
             }
         }
 
@@ -302,7 +288,7 @@ namespace PetNetApp
             }
             else
             {
-                frameMain.Navigate(AccountSettingsPage.GetAccountSettingsPage(this));
+                frameMain.Navigate(AccountSettingsPage.GetAccountSettingsPage());
             }
         }
 

@@ -25,6 +25,16 @@ namespace DataAccessLayerInterfaces
         List<Animal> SelectAllAnimalsNotInKennel();
 
         /// <summary>
+        /// Hoang Chu
+        /// Created: 2023/02/17
+        /// 
+        /// Select Animal Adoptable Profile
+        /// </summary>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
+        AnimalVM SelectAnimalAdoptableProfile(int animalId);
+
+        /// <summary>
         /// William Rients
         /// Created: 2023/02/10
         /// 

@@ -302,5 +302,20 @@ namespace LogicLayer
                 throw new ApplicationException("Animal medical profile not found", ex);
             }
         }
+        public AnimalVM RetriveAnimalAdoptableProfile(int animalId)
+        {
+            AnimalVM animalVM;
+
+            try
+            {
+                animalVM = _animalAccessor.SelectAnimalAdoptableProfile(animalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Data not found.", ex);
+            }
+
+            return animalVM;
+        }
     }
 }

@@ -19,8 +19,16 @@ using PetNetApp;
 namespace WpfPresentation.Misc
 {
     /// <summary>
-    /// Interaction logic for UserProfilePage.xaml
+    /// Mads Rhea
+    /// Created: 2023/02/05
+    /// 
+    /// Placeholder for the "User Profile" page.
     /// </summary>
+    ///
+    /// <remarks>
+    /// Updater Name
+    /// Updated: yyyy/mm/dd
+    /// </remarks>
     public partial class UserProfilePage : Page
     {
         private static UserProfilePage _existingProfilePage = null;

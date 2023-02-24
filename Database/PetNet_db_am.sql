@@ -1541,6 +1541,7 @@ CREATE TABLE [dbo].[FosterPlacementRecord] (
 	CONSTRAINT [fk_FosterPlacement.FosterPlacementId] FOREIGN KEY ([FosterPlacementId])
 		REFERENCES [dbo].[FosterPlacement]([FosterPlacementId]),
 	CONSTRAINT [pk_FosterPlacementRecordId]	PRIMARY KEY([FosterPlacementRecordId])
+	
 )
 GO 
 
@@ -1554,7 +1555,7 @@ CREATE TABLE [dbo].[AdoptionApplicationResponse] (
 	[Approved]						[bit]				NOT NULL,
 	[AdoptionApplicationResponseDate] [datetime] DEFAULT GETDATE() 		NOT NULL,
 	[AdoptionApplicationResponseNotes] [nvarchar](500)	NULL
-	
+
 	CONSTRAINT [fk_AdoptionApplicationResponse_AdoptionApplicationId] FOREIGN KEY ([AdoptionApplicationId])
 		REFERENCES [dbo].[AdoptionApplication]([AdoptionApplicationId]),
 	CONSTRAINT [fk_AdoptionApplicationResponse_Users] FOREIGN KEY  ([UsersId])

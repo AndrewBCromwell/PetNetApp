@@ -69,9 +69,6 @@
     <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
       <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Animals\AnimalPostUpdate.xaml.cs">
-      <DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
-    </Compile>
     <Page Include="Animals\AddEditAnimalDeath.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,6 +124,12 @@
     <Compile Include="Management\KenOccupancyUpdate-333.xaml.cs">
       <DependentUpon>KenOccupancyUpdate-333.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\VolunteerInfoPage.xaml.cs">
+      <DependentUpon>VolunteerInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\UserDetailsPage.xaml.cs">
+      <DependentUpon>UserDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Shelters\AlterShelter.xaml.cs">
       <DependentUpon>AlterShelter.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,9 @@
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlaceholderTextBox.cs" />
+    <Compile Include="Animals\ViewAdoptableAnimalProfile.xaml.cs">
+      <DependentUpon>ViewAdoptableAnimalProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
       <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
     </Compile>
@@ -170,6 +176,15 @@
     <Compile Include="Misc\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Misc\AccountInfoPage.xaml.cs">
+      <DependentUpon>AccountInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LandingBodyLoggedInPage.xaml.cs">
+      <DependentUpon>LandingBodyLoggedInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LandingBodyLoggedOutPage.xaml.cs">
+      <DependentUpon>LandingBodyLoggedOutPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Misc\LogInPage.xaml.cs">
       <DependentUpon>LogInPage.xaml</DependentUpon>
     </Compile>
@@ -202,19 +217,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Shelters\ShelterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Shelters\ShelterVMListUI.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Animals\AnimalPostUpdate.xaml">
+    <Page Include="Misc\AccountInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\DeactivateButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\LandingBodyLoggedInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\LandingBodyLoggedOutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\SignUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Development\Shelters\ShelterPage.xaml">
+		<SubType>Designer</SubType>
+		<Generator>MSBuild:Compile</Generator>
+	</Page>
+    <Page Include="Development\Shelters\ShelterVMListUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -290,6 +321,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Management\VolunteerInfoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\UserDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Shelters\AlterShelter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -313,14 +352,6 @@
     <Page Include="Management\ViewTicketList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Misc\DeactivateButtonPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Misc\SignUp.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ButtonStyles.xaml">
       <SubType>Designer</SubType>
@@ -359,6 +390,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\MedProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ViewAdoptableAnimalProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -584,9 +619,11 @@
     <Folder Include="Development\Donate\" />
     <Folder Include="Development\Donations\" />
     <Folder Include="Development\Events\" />
+    <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
     <Folder Include="Donations\" />
     <Folder Include="Events\" />
+    <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\petnetLogo.png">
@@ -799,8 +836,52 @@
     <Resource Include="Images\PlusIcon_light.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Development\Images\application_light.png" />
+    <Resource Include="Development\Images\cards_light.png" />
+    <Resource Include="Development\Images\download_light.png" />
+    <Resource Include="Development\Images\heart_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Animals\AnimalImages\dogPic1.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic2.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic3.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic4.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Animals\AnimalImages\dogPic6.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic7.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Animals\AnimalImages\dogPic1.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic2.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic3.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic4.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic5.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic6.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic7.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic8.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Development\Images\menudark.png" />
     <Resource Include="Development\Images\menulight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Placeholder\bannerImage_1.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_10.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_2.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_3.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_4.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_5.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_6.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_7.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_8.jpg" />
+    <Resource Include="Images\Placeholder\bannerImage_9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrowleftDark.png" />
+    <Resource Include="Images\arrowRightDark.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\petnetLogo_hover.png" />

@@ -15,13 +15,21 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 using PetNetApp;
-using WpfPresentation.Development.Misc;
+using WpfPresentation.Development;
 
 namespace WpfPresentation.Misc
 {
     /// <summary>
-    /// Interaction logic for LogInPage.xaml
+    /// Mads Rhea
+    /// Created: 2023/01/27
+    /// 
+    /// WPF for the Log-In page.
     /// </summary>
+    ///
+    /// <remarks>
+    /// Updater Name
+    /// Updated: yyyy/mm/dd
+    /// </remarks>
     public partial class LogInPage : Page
     {
         private static LogInPage _existingLogIn = null;
@@ -101,37 +109,26 @@ namespace WpfPresentation.Misc
         {
             txtEmail.Text = "";
             txtPassword.Password = "";
+            rowError.Height = new GridLength(1);
+
+            txtEmail.Focus();
         }
 
         private void ErrorLoading(bool onOff)
         {
             if (onOff)
             {
-                // hide elements
-                lblWelcomeBack.Visibility = Visibility.Hidden;
-                lblPleaseLogin.Visibility = Visibility.Hidden;
-                rectHeader.Visibility = Visibility.Hidden;
-
                 // show elements
-                lblWelcomeBackError.Visibility = Visibility.Visible;
-                lblPleaseLoginError.Visibility = Visibility.Visible;
-                rectHeaderError.Visibility = Visibility.Visible;
                 lblErrorErr.Visibility = Visibility.Visible;
                 lblErrorHelp.Visibility = Visibility.Visible;
+                rowError.Height = new GridLength(50);
             }
             else
             {
                 // hide elements
-                lblWelcomeBack.Visibility = Visibility.Visible;
-                lblPleaseLogin.Visibility = Visibility.Visible;
-                rectHeader.Visibility = Visibility.Visible;
-
-                // show elements
-                lblWelcomeBackError.Visibility = Visibility.Hidden;
-                lblPleaseLoginError.Visibility = Visibility.Hidden;
-                rectHeaderError.Visibility = Visibility.Hidden;
                 lblErrorErr.Visibility = Visibility.Hidden;
                 lblErrorHelp.Visibility = Visibility.Hidden;
+                rowError.Height = new GridLength(15);
             }
         }
 
@@ -170,10 +167,24 @@ namespace WpfPresentation.Misc
 
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(SignUp.GetSignUpPage(_manager));
+            NavigationService.Navigate(SignUp.GetSignUpPage());
         }
 
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
 
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogIn_Click(sender, e);
+            }
+        }
     }
 
 }

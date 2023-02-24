@@ -21,26 +21,36 @@ using WpfPresentation.Misc;
 namespace WpfPresentation.Misc
 {
     /// <summary>
-    /// Interaction logic for SignUp.xaml
+    /// Created By: Alex Oetken [2023/02/15]
+    /// 
+    /// Last Updated By: Mads Rhea [2023/02/19]
+    /// 
+    /// Notes: -
     /// </summary>
     public partial class SignUp : Page
     {
-        private static SignUp _signUp = null;
+        private static SignUp _existingSignUp = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
         private Users _user = null;
-        private MasterManager manager = null; 
-        
+        private const string COMBOBOX_PLACEHOLDER_TEXT = "---";
 
-        public SignUp(MasterManager manager)
+
+        public SignUp()
         {
-            this.manager = manager;
             InitializeComponent();
         }
 
-        public static SignUp GetSignUpPage(MasterManager manager)
+        public static SignUp GetSignUpPage()
         {
-           _signUp = new SignUp(manager);
-            return _signUp; 
+            if (_existingSignUp == null)
+            {
+                _existingSignUp = new SignUp();
+            }
+
+            return _existingSignUp;
         }
+
+
 
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
@@ -111,14 +121,14 @@ namespace WpfPresentation.Misc
                 return; 
             }
 
-            if (genderId == "")
+            if (genderId == COMBOBOX_PLACEHOLDER_TEXT)
             {
                 PromptWindow.ShowPrompt("Invalid Gender","Please enter your gender");
                 genderSelection.Focus();
                 return; 
             }
 
-            if (pronounId == "")
+            if (pronounId == COMBOBOX_PLACEHOLDER_TEXT)
             {
                 PromptWindow.ShowPrompt("Invalid Pronouns","Please enter your preferred pronouns.");
                 pronounSelection.Focus();
@@ -139,7 +149,7 @@ namespace WpfPresentation.Misc
 
             try
             {
-                if(manager.UsersManager.AddUser(_user, password))
+                if(_manager.UsersManager.AddUser(_user, password))
                 {
                     PromptWindow.ShowPrompt("Success","Account has been created! Please log in using your new credentials.");
                     NavigationService.Navigate(new LogInPage());
@@ -181,6 +191,31 @@ namespace WpfPresentation.Misc
             else
             {
                 
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // 4 lines added by Stephen Jaurigue
+            genderSelection.Items.Clear();
+            pronounSelection.Items.Clear();
+            genderSelection.Items.Add(new ComboBoxItem() { Content = COMBOBOX_PLACEHOLDER_TEXT, IsEnabled = false });
+            pronounSelection.Items.Add(new ComboBoxItem() { Content = COMBOBOX_PLACEHOLDER_TEXT, IsEnabled = false });
+
+            List<string> genders = _manager.UsersManager.RetrieveGenders();
+            List<string> pronouns = _manager.UsersManager.RetrievePronouns();
+
+            genderSelection.SelectedIndex = 0;
+            pronounSelection.SelectedIndex = 0;
+
+            foreach (var gender in genders)
+            {
+                genderSelection.Items.Add(gender);
+            }
+
+            foreach(var pronoun in pronouns)
+            {
+                pronounSelection.Items.Add(pronoun);
             }
         }
     }
