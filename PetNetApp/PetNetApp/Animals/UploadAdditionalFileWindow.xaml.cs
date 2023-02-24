@@ -17,6 +17,9 @@ using System.Windows.Shapes;
 
 namespace WpfPresentation.Animals
 {
+    /// <summary>
+    /// Interaction logic for UploadAdditionalFileWindow.xaml
+    /// </summary>
     public partial class UploadAdditionalFileWindow : Window
     {
         private Animal _animal = null;
@@ -29,17 +32,6 @@ namespace WpfPresentation.Animals
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Molly Meister
-        /// Created: 2023/02/13
-        /// 
-        /// </summary>
-        /// Opens flle dialog to select an image file to upload
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// </remarks>
         private void btnBrowseFiles_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog _fileDialog = new Microsoft.Win32.OpenFileDialog();
@@ -64,17 +56,6 @@ namespace WpfPresentation.Animals
             this.Close();
         }
 
-        /// <summary>
-        /// Molly Meister
-        /// Created: 2023/02/13
-        /// 
-        /// </summary>
-        /// passes selected filename to ImagesManager and recieves a response
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// </remarks>
         private void btnUploadFile_Click(object sender, RoutedEventArgs e)
         {
             string fileName = txtFileUpload.Text;

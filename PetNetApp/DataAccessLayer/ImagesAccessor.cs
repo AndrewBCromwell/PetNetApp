@@ -12,22 +12,6 @@ namespace DataAccessLayer
 {
     public class ImagesAccessor : IImagesAccessor
     {
-        /// <summary>
-        /// Molly Meister
-        /// Created: 2023/02/13
-        /// 
-        /// Inserts a new medical image for an animal
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updated By: 
-        /// Updated: yyyy/mm/dd
-        /// 
-        /// </remarks>
-        /// <param name='animalId'>the id of the animal</param>
-        /// <param name='imageFileName'>file name of the image being uploaded</param>
-        /// <exception cref='Exception'>Insert Fails</exception>
-        /// <returns>rows affected</returns>
         public int InsertMedicalImageByAnimalId(int animalId, string imageFileName)
         {
             int rows = 0;
@@ -64,21 +48,6 @@ namespace DataAccessLayer
             return rows;
         }
 
-        /// <summary>
-        /// Molly Meister
-        /// Created: 2023/02/13
-        /// 
-        /// Gets medical images for an animal
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updated By: 
-        /// Updated: yyyy/mm/dd
-        /// 
-        /// </remarks>
-        /// <param name='animalId'>the id of the animal</param>
-        /// <exception cref='Exception'>Select Fails</exception>
-        /// <returns>List of images</returns>
         public List<Images> SelectImagesByAnimalId(int animalId)
         {
             List<Images> images = new List<Images>();
