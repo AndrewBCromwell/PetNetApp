@@ -79,21 +79,6 @@ namespace LogicLayer
             }
         }
 
-        /// <summary>
-        /// Gwen Arman
-        /// Created: 2023/02/01
-        /// 
-        /// Methods rewraps SelectKennels method
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="ShelterId">A description of the parameter that this method takes</param>
-        /// <exception cref="ApplicationException"></exception>
-        /// <returns>List<KennelVM></returns>
         public List<KennelVM> RetrieveKennels(int ShelterId)
         {
             try
