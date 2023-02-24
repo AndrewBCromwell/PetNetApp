@@ -704,16 +704,16 @@ namespace DataAccessLayer
                         animalVM.AnimalGender = reader.GetString(2);
                         animalVM.AnimalTypeId = reader.GetString(3);
                         animalVM.AnimalBreedId = reader.GetString(4);
-                        animalVM.Personality = reader.IsDBNull(5) ? "N/A" : reader.GetString(5);
-                        animalVM.Description = reader.IsDBNull(6) ? "N/A" : reader.GetString(6);
+                        animalVM.Personality = reader.IsDBNull(5) ? null : reader.GetString(5);
+                        animalVM.Description = reader.IsDBNull(6) ? null : reader.GetString(6);
                         animalVM.AnimalStatusId = reader.GetString(7);
                         animalVM.BroughtIn = reader.GetDateTime(8);
-                        animalVM.MicrochipNumber = reader.IsDBNull(9) ? "N/A" : reader.GetString(9);
+                        animalVM.MicrochipNumber = reader.IsDBNull(9) ? null : reader.GetString(9);
                         animalVM.Aggressive = reader.GetBoolean(10);
-                        animalVM.AggressiveDescription = reader.IsDBNull(11) ? "N/A" : reader.GetString(11);
+                        animalVM.AggressiveDescription = reader.IsDBNull(11) ? null : reader.GetString(11);
                         animalVM.ChildFriendly = reader.GetBoolean(12);
                         animalVM.NeuterStatus = reader.GetBoolean(13);
-                        animalVM.Notes = reader.IsDBNull(14) ? "N/A" : reader.GetString(14);
+                        animalVM.Notes = reader.IsDBNull(14) ? null : reader.GetString(14);
                     }
                 }
             }
