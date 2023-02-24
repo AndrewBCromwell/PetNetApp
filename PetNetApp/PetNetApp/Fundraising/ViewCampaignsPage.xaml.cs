@@ -81,7 +81,7 @@ namespace WpfPresentation.Fundraising
         {
             try
             {
-                _fundraisingCampaigns = _masterManager.FundraisingCampaignManager.RetrieveAllFundraisingCampaignsByShelterId(_masterManager.User.ShelterId);
+                _fundraisingCampaigns = _masterManager.FundraisingCampaignManager.RetrieveAllFundraisingCampaignsByShelterId((int)_masterManager.User.ShelterId);
             }
             catch (ApplicationException ex)
             {

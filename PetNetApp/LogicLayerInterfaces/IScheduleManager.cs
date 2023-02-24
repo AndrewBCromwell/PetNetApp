@@ -10,5 +10,6 @@ namespace LogicLayerInterfaces
     public interface IScheduleManager
     {
         List<ScheduleVM> RetrieveScheduleByDate(DateTime selectedDate);
+        List<ScheduleVM> RetrieveScheduleByUserId(int userId);
     }
 }

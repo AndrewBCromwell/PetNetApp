@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
+using PetNetApp.Development;
 
 namespace WpfPresentation.Development.Management
 {
@@ -42,10 +43,14 @@ namespace WpfPresentation.Development.Management
         public VolunteerManagment()
         {
             InitializeComponent();
-            
+            // uncomment when login is made
+            //int shelterId = _mastermanager.User.ShelterId;
+            int shelterId = 100000;
+
+
             try
             {
-                _users = _mastermanager.UsersManager.RetrieveUserByRole("Volunteer");
+                _users = _mastermanager.UsersManager.RetrieveUserByRole("Volunteer",shelterId);
                 datVolunteer.ItemsSource = _users;
             }
             catch (Exception ex)
@@ -70,6 +75,22 @@ namespace WpfPresentation.Development.Management
 
 
             datVolunteer.ItemsSource = filtered;
+        }
+
+        private void btnEditSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            UsersVM user = (UsersVM)datVolunteer.SelectedItem;
+            if(datVolunteer.SelectedItem != null)
+            {
+                NavigationService.Navigate(new SchedulePage(user));
+                var page = ManagementPage.GetManagementPage(_mastermanager);
+                page.ChangeSelectedButton(page.btnSchedule);
+            }
+            else
+            {
+                PromptWindow.ShowPrompt("No User Selected", "There is no user selected");
+            }
+            
         }
     }
 }

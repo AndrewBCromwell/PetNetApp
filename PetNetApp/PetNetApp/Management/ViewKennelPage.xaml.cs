@@ -36,7 +36,7 @@ namespace WpfPresentation.Management
         {
             try
             {
-                kennelVMs = masterManager.KennelManager.RetrieveKennels(masterManager.User == null ? 100000 : masterManager.User.UsersId);
+                kennelVMs = masterManager.KennelManager.RetrieveKennels(masterManager.User == null ? 100000 : masterManager.User.ShelterId.Value);
 
                 for (int i = 0; i < kennelVMs.Count / 4; i++)
                 {
@@ -90,7 +90,8 @@ namespace WpfPresentation.Management
         {
             if(kennelVM.Animal != null)
             {
-                // Placeholder for ViewIndivisualOccupiedKennel and KenOccupancy (Remove Animal)
+                // Created by: Asa
+                NavigationService.Navigate(new KenOccupancyUpdate_333(kennelVM));
             } else
             {
                 NavigationService.Navigate(new AssignAnimalToKennel(kennelVM));
@@ -155,8 +156,8 @@ namespace WpfPresentation.Management
                     ? kennelsToRemove[i].KennelName + ", " : 
                     kennelsToRemove.Count != 1 ? "and " + kennelsToRemove[i].KennelName : kennelsToRemove[i].KennelName;
             }
-            var choice = PromptWindow.ShowPrompt("Are you sure?", "Remove " + kennelList + "?", ButtonMode.YesNo);
-            if (choice == PromptSelection.Yes)
+
+            if (PromptWindow.ShowPrompt("Are you sure?", "Remove " + kennelList + "?", ButtonMode.YesNo) == PromptSelection.Yes)
             {
 
                 for (int i = 0; i < kennelsToRemove.Count; i++)
@@ -169,7 +170,7 @@ namespace WpfPresentation.Management
                         }
                         catch (Exception ex)
                         {
-                            PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                            PromptWindow.ShowPrompt("Error", ex.Message);
                         }
                     }
                     try
@@ -178,7 +179,7 @@ namespace WpfPresentation.Management
                     }
                     catch (Exception ex)
                     {
-                        PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                        PromptWindow.ShowPrompt("Error", ex.Message);
                     }
                 }
                 NavigationService.Navigate(new ViewKennelPage());

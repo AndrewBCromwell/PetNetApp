@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using WpfPresentation.Animals;
 using WpfPresentation.Community;
 using WpfPresentation.Management;
+using WpfPresentation.Shelters;
 using LogicLayer;
 using System.Diagnostics;
 using WpfPresentation.Misc;
@@ -89,8 +90,7 @@ namespace PetNetApp
         private void btnShelters_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
+            frameMain.Navigate(ShelterPage.GetShelterPage(_manager));
         }
 
         private void btnEvents_Click(object sender, RoutedEventArgs e)

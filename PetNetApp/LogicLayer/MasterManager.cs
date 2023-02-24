@@ -41,6 +41,7 @@ namespace LogicLayer
         public IAnimalUpdatesManager AnimalUpdatesManager { get; set; }
         public IScheduleManager ScheduleManager { get; set; }
         public ITestManager TestManager { get; set; }
+        public IRoleManager RoleManager { get; set; }
         public IImagesManager ImagesManager { get; set; }
         public ITicketManager TicketManager { get; set; }
         public IProcedureManager ProcedureManager { get; set; }
@@ -56,6 +57,7 @@ namespace LogicLayer
             AnimalUpdatesManager = new AnimalUpdatesManager();
             ScheduleManager = new ScheduleManager();
             TestManager = new TestManager();
+            RoleManager = new RoleManager();
             ImagesManager = new ImagesManager();
             TicketManager = new TicketManager();
             ProcedureManager = new ProcedureManager();

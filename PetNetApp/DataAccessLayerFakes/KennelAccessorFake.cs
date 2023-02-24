@@ -188,7 +188,7 @@ namespace DataAccessLayerFakes
             return result;
         }
 
-        public List<Animal> SelectAllAnimalsForKennel(int ShelterId)
+        public List<Animal> SelectAllAnimalsForKennel(int ShelterId, string AnimalTypeId)
         {
             List<Animal> animals = null;
             animals = fakeAnimals;
@@ -209,6 +209,20 @@ namespace DataAccessLayerFakes
                 
             }
             return rows;
+        }
+
+        // Created By: Asa Armstrong
+        // Actually removes a Kennel instead of an AnimalKenneling
+        public int DeleteAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId)
+        {
+            int rowsAffected = 0;
+
+            if (fakeKennelVMs.Remove(fakeKennelVMs.FirstOrDefault(k => k.KennelId == kennelId)))
+            {
+                rowsAffected = 1;
+            }
+
+            return rowsAffected;
         }
     }
 }

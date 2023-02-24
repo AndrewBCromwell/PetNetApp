@@ -27,6 +27,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using DataObjects;
 
 namespace WpfPresentation.Development.Management
 {
@@ -40,72 +41,76 @@ namespace WpfPresentation.Development.Management
         public SchedulePage()
         {
             InitializeComponent();
-            populateMonthandDay();
+            loadCmbBox();
+        }
+
+        public SchedulePage(UsersVM user)
+        {
+            InitializeComponent();
+            loadCmbBox();
+            CboVolunteers.SelectedValue = user.UsersId;
+            populateDatGridByUserId(user);
+        }
+
+        private void loadCmbBox()
+        {
             
+            try
+            {
+                CboVolunteers.ItemsSource = _masterManager.UsersManager.RetrieveUserByRole("Volunteer",100000);
+                CboVolunteers.SelectedValuePath = "UsersId";
+            }
+            catch (Exception ex)
+            {
 
+                PromptWindow.ShowPrompt("Error", ex.Message);
+            }
+            
         }
 
-        private void populateMonthandDay()
+        private void populateDatGridByUserId(UsersVM user)
         {
-            // creating a list of months to populate the combobox
-            List<string> MonthsFull = new List<string>
+            if (CboVolunteers.SelectedItem != null)
             {
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-            };
-            cboMonth.ItemsSource = MonthsFull;    
-        }
-
-        private void cboMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // clean up UI when changed month and clear selections
-            cboDay.SelectedItem = 1;
-            cboDay.Items.Clear();
-            datScheduledPerson.ItemsSource = null;
-
-            string selectedMonth = (string)cboMonth.SelectedItem;
-            int month;
-
-            if (!selectedMonth.Equals(""))
-            {
-                month = DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CurrentCulture).Month;
-                for (int i = 1; i <= DateTime.DaysInMonth(DateTime.Now.Year, month); i++)
+                date.SelectedDate = null;
+                try
                 {
-                    cboDay.Items.Add(i.ToString());
+                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByUserId(user.UsersId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message);
                 }
             }
         }
 
-        private void cboDay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cboDay.SelectedItem != null && cboMonth.SelectedItem != null) // check to make that the selected data isnt null after cleanup
+            
+            if ( date.SelectedDate != null)
             {
-                // get all of the user input from the page
-                string selectedMonth = (string)cboMonth.SelectedItem;
-                int selectedMonthNum = DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CurrentCulture).Month;
-                int selectedDay = Convert.ToInt32(cboDay.SelectedItem);
-                DateTime selectedDate = new DateTime(DateTime.Now.Year, selectedMonthNum, selectedDay);
-
-                // run through the manager to retrieve people scheduled for the day
+                CboVolunteers.SelectedItem = null;
                 try
                 {
-                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByDate(selectedDate);
+                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByDate((DateTime)date.SelectedDate);
                 }
                 catch (Exception ex)
                 {
-                    PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);                
+                    PromptWindow.ShowPrompt("Error", ex.Message);
                 }
-            }  
+            }
+        }
+
+        private void CboVolunteers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UsersVM user = (UsersVM)CboVolunteers.SelectedItem;
+            populateDatGridByUserId(user);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CboVolunteers.SelectedItem = null;
+            datScheduledPerson.ItemsSource = null;
         }
     }
 }

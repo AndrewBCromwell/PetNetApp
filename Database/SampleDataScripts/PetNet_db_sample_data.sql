@@ -237,7 +237,8 @@ INSERT INTO [dbo].[AnimalStatus]
 		)
 	VALUES
 		('Sick', 'Animal is sick'),
-        ('Healthy', 'Animal is healthy')
+        ('Healthy', 'Animal is healthy'),
+        ('Deceased', 'Animal is no longer with us')
 GO
 
 
@@ -357,10 +358,13 @@ INSERT INTO [dbo].[Users]
 		[Phone]
 		)
     VALUES
-		("Unknown", "They/Them", "100000", "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 207", '50001', "3195943138"),
-		("Male", "He/Him", "100000", "Stephen", "Jaurigue", "stephenjaurigue@company.com", "123 Kirkwood Parkway", "Apt 210", "50001", "3195555555"),
-		("Female", "She/Her", "100000", "Molly", "Meister", "mollymeister@company.com", "456 Kirkwood Parkway", "Apt 256", "50001", "3196666666"),
-		('Male', 'He/Him', '100001', 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777')
+		("Unknown", "They/Them", 100000, "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 207", '50001', "3195943138"),
+		("Male", "He/Him", 100000, "Stephen", "Jaurigue", "stephenjaurigue@company.com", "123 Kirkwood Parkway", "Apt 210", "50001", "3195555555"),
+		('Female', "She/Her", 100000, "Molly", "Meister", "mollymeister@company.com", "456 Kirkwood Parkway", "Apt 256", "50001", "3196666666"),
+		('Male', 'He/Him', 100001, 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777'),
+		('Male', "He/Him", 100000, "Barry", "Mikulas", "bmikulas@company.com", "2 Kirkwood Parkway", "Apt 4", '50001', "3198675309"),
+        ('Male', "He/Him", 100001, 'Chris','Dreismeier','Chris@gmail.com','4150 Riverview rd', "Apt 16", 50001, '3192948541'),
+		('Male', "He/Him", 100001, 'Asa','Armstrong','Asa@gmail.com','1234 Chestnut rd', "Apt 420", 50001, '3191234321')
 GO
 
 print '' print '*** creating Animal sample data'
@@ -383,9 +387,20 @@ INSERT INTO [dbo].[Animal]
 		(100000, "Franny", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-15", "Microchip111111", "Very Cute"), 
 		(100000, "Spots", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-01", "Microchip111112", "Lots of spots"), 
 		(100000, "Ruffer", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111113", "Barks a lot"),
-		(100001, "Buddy", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise"),
-        (100001, "Buddy Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111115", "A cat in disguise"),
-        (100000, "Ruffer Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111116", "Barks a lot")
+		(100000, "Buddy", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise"),
+        (100000, "Buddy Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Deceased", "2022-12-03", "Microchip111115", "A cat in disguise"),
+        (100000, "Ruffer Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Deceased", "2022-12-03", "Microchip111116", "Barks a lot"),
+		(100000, "Penny", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111117", "A good dog"),
+        (100000, "Chester", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111118", "A good dog"),
+        (100000, "Ghost", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111119", "Doesnt bark a lot"),
+		(100000, "Alexa", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111120", "A good dog"),
+        (100000, "Anna", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111121", "Doesnt bark a lot"),
+        (100000, "Purrfect", "Male", "Cat", "Persian", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111122", "Purrs a lot"),
+		(100000, "Mittens", "Male", "Cat", "Persian", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111123", "Well behaved"),
+        (100000, "Annie", "Male", "Cat", "Persian", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111124", "Very polite"),
+        (100000, "Slithers", "Male", "Snake", "Viper", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111125", "Ssssss a lot"),
+		(100000, "Leo", "Male", "Snake", "Viper", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111126", "Well behaved"),
+        (100000, "Lucy", "Female", "Snake", "Rattlesnake", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111127", "Oddly cute")
 GO
 
 print '' print '*** Creating Post sample data'
@@ -676,7 +691,10 @@ INSERT INTO [dbo].[UserRoles]
         ('Inspector', 100000),
         ('Volunteer', 100001),
         ('Vet', 100002),
-        ('Inspector', 100003)
+        ('Inspector', 100003),
+        ('Admin', 100004),
+        ('Volunteer', 100005),
+        ('Volunteer', 100006)
         
 GO
 
@@ -1045,8 +1063,7 @@ INSERT INTO [dbo].[AnimalKenneling]
 	VALUES
 		(100000, 100000),
 		(100001, 100001),
-		(100008, 100002),
-		(100009, 100003)
+		(100008, 100002)
 GO
 
 print '' print '*** creating Inspection sample data'
@@ -1388,9 +1405,17 @@ INSERT INTO [dbo].[Schedule]
         [EndTime]
 		)
 	VALUES
-		(100000, 100000, GETDATE(), DATEADD(day, 4, getdate())),
-        (100001, 100000, GETDATE(), DATEADD(day, 4, getdate())),
-        (100001, 100000, GETDATE(), DATEADD(day, 4, getdate()))
+		(100000, 100000, GETDATE(), DATEADD(day, 1, getdate())),
+        (100001, 100000, GETDATE(), DATEADD(day, 1, getdate())),
+        (100002, 100000, GETDATE(), DATEADD(day, 1, getdate())),
+        (100000, 100000, '20230215 08:00:00 AM','20230215 06:00:00 PM' ),
+		(100000, 100000, '20230216 08:00:00 AM','20230216 06:00:00 PM' ),
+		(100000, 100000, '20230217 08:00:00 AM','20230217 06:00:00 PM' ),
+		(100000, 100000, '20230218 08:00:00 AM','20230218 06:00:00 PM' ),
+		(100001, 100000, '20230215 08:00:00 AM','20230215 06:00:00 PM' ),
+		(100001, 100000, '20230216 08:00:00 AM','20230216 06:00:00 PM' ),
+		(100001, 100000, '20230217 08:00:00 AM','20230217 06:00:00 PM' ),
+		(100001, 100000, '20230218 08:00:00 AM','20230218 06:00:00 PM' )
 GO
 
 print '' print '*** creating Death sample data'

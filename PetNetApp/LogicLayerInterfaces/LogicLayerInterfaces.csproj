@@ -49,7 +49,9 @@
     <Compile Include="IKennelManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
     <Compile Include="IProcedureManager.cs" />
+    <Compile Include="IRoleManager.cs" />
     <Compile Include="IScheduleManager.cs" />
+    <Compile Include="IShelterManager.cs" />
     <Compile Include="ITestManager.cs" />
     <Compile Include="ITicketManager.cs" />
     <Compile Include="IUsersManager.cs" />

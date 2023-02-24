@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using WpfPresentation.Community.UsersControl;
 using LogicLayer;
 using DataObjects;
+using WpfPresentation.Development.Community;
 
 namespace WpfPresentation.Community
 {
@@ -68,7 +69,7 @@ namespace WpfPresentation.Community
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu = new ContextMenu();
                         MenuItem menuItemUpdate = new MenuItem()
                         { Header = "Update"};
-                        menuItemUpdate.Click += (object1, args) => menuItem_Update_Click();
+                        menuItemUpdate.Click += (object1, args) => menuItem_Update_Click(user);
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemUpdate);
 
                         MenuItem menuItemSuspend = new MenuItem()
@@ -113,9 +114,13 @@ namespace WpfPresentation.Community
         }
 
         // MenuItem Click
-        private void menuItem_Update_Click()
+        private void menuItem_Update_Click(Users user)
         {
-            MessageBox.Show("Update");
+            //MessageBox.Show("Update");
+
+            //need a user object from the update button to launch the role popup
+            RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_masterManager, user);
+            roleManagementPopupWindow.ShowDialog();
         }
 
         private void menuItem_Suspend_Click()
