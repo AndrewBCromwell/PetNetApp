@@ -12,11 +12,16 @@ namespace LogicLayerInterfaces
         List<UsersVM> RetrieveUserByRole(string RoleId);
         List<UsersVM> RetriveAllEmployees();
 
-        // Mads
+        // Mads Rhea
         UsersVM LoginUser(string email, string password);
-        string HashSha265(string source);
+        string HashSha256(string source);
         List<string> RetrieveGenders();
         List<string> RetrievePronouns();
+        bool EditUserDetails(Users oldUser, Users updatedUser);
+        bool ResetPassword(string email, string oldPassword, string newPassword);
+        bool UpdateEmail(string oldEmail, string newEmail, string passwordHash);
+
+        // Alex Oetken
         bool DeactivateUserAccount(int UserId);
         bool AddUser(Users user, string password);
     }

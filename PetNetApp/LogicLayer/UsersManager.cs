@@ -12,6 +12,18 @@ using System.Security.Cryptography;
 
 namespace LogicLayer
 {
+    /// <summary>
+    /// Mads Rhea
+    /// Created: 2023/01/27
+    /// 
+    /// Logic layer manager for Users.
+    /// </summary>
+    ///
+    /// <remarks>
+    /// Updater Name
+    /// Updated: yyyy/mm/dd
+    /// </remarks>
+
     public class UsersManager : IUsersManager
     {
         IUsersAccessor _userAccessor = null;
@@ -58,10 +70,10 @@ namespace LogicLayer
             return users;
         }
 
-
         /// Hoang Chu
         /// Created: 2023/02/01
-        /// 
+        ///         
+        /// <returns>List<Users></returns>
         public List<UsersVM> RetriveAllEmployees()
         {
             List<UsersVM> employeeList = null;
@@ -77,12 +89,13 @@ namespace LogicLayer
 
             return employeeList;
         }
-        /// <returns>List<Users></returns>
 
-        // Mads Rhea
-        // Created: 2023_02_10
-
-        public string HashSha265(string source)
+        /// <summary>
+        /// [Mads Rhea - 2023/02/10]
+        /// Converts string into a HashSha256
+        /// </summary>
+        /// <returns>string</returns>
+        public string HashSha256(string source)
         {
             string result = "";
 
@@ -110,13 +123,18 @@ namespace LogicLayer
             return result;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/10]
+        /// Passes Email and Password and returns a UsersVM if values match a record found within the Users table.
+        /// </summary>
+        /// <returns>UsersVM</returns>
         public UsersVM LoginUser(string email, string password)
         {
             UsersVM user = null;
 
             try
             {
-                password = HashSha265(password);
+                password = HashSha256(password);
                 if (1 == _userAccessor.AuthenticateUserWithEmailAndPasswordHash(email, password))
                 {
                     user = _userAccessor.SelectUserByEmail(email);
@@ -144,6 +162,11 @@ namespace LogicLayer
             return user;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/10]
+        /// Returns all entries from Gender table.
+        /// </summary>
+        /// <returns>List of strings</returns>
         public List<string> RetrieveGenders()
         {
             List<string> genders = new List<string>();
@@ -160,6 +183,11 @@ namespace LogicLayer
             return genders;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/10]
+        /// Returns all entries from Pronoun table.
+        /// </summary>
+        /// <returns>List of strings</returns>
         public List<string> RetrievePronouns()
         {
             List<string> pronouns = new List<string>();
@@ -176,6 +204,56 @@ namespace LogicLayer
             return pronouns;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/10]
+        /// Injects updated User details into the Users table.
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool EditUserDetails(Users oldUser, Users updatedUser)
+        {
+            bool result = false;
+
+            try
+            {
+                result = 1 == _userAccessor.UpdateUserDetails(oldUser, updatedUser);
+            }
+            catch (Exception up)
+            {
+
+                throw up;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/02/10]
+        /// Injects updated User Password into the Users table.
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool ResetPassword(string email, string oldPassword, string newPassword)
+        {
+            bool result = false;
+
+            try
+            {
+                result = 1 == _userAccessor.UpdatePasswordHash(email, HashSha256(oldPassword), HashSha256(newPassword));
+
+            }
+            catch (Exception up)
+            {
+
+                throw;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// [Alex Oetken - 2023/02/??]
+        /// Updates User in the Users table to inactive.
+        /// </summary>
+        /// <returns>int</returns>
         public bool DeactivateUserAccount(int UserId)
         {
             bool result = false;
@@ -193,11 +271,16 @@ namespace LogicLayer
             return result;
         }
 
+        /// <summary>
+        /// [Alex Oetken - 2023/02/??]
+        /// Injects new User into the Users table.
+        /// </summary>
+        /// <returns>int</returns>
         public bool AddUser(Users user, string Password)
         {
             bool result = false;
 
-            Password = HashSha265(Password); 
+            Password = HashSha256(Password);
 
             try
             {
@@ -207,6 +290,31 @@ namespace LogicLayer
             {
 
                 throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/02/24]
+        /// Updates User email in the Users table.
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool UpdateEmail(string oldEmail, string newEmail, string passwordHash)
+        {
+            bool result = false;
+
+            passwordHash = HashSha256(passwordHash);
+            if (1 == _userAccessor.AuthenticateUserWithEmailAndPasswordHash(oldEmail, passwordHash))
+            {
+                try
+                {
+                    result = 1 == _userAccessor.UpdateUserEmail(oldEmail, newEmail, passwordHash);
+                }
+                catch (Exception up)
+                {
+                    throw new ApplicationException("Unable to update user email.", up);
+                }
             }
 
             return result;

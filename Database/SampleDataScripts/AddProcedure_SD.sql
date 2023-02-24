@@ -23,13 +23,15 @@ INSERT INTO [dbo].[Pronoun]
 	VALUES
 		("They/Them"),
 		("He/She"),
+		("He/Him"),
+		("She/Her"),
 		("He/They"),
 		("She/They"),
 		("Any/All"),
 		('Other')
 GO
 
-print '' print '*** creating test data for Users '
+print '' print '*** creating test data for Users'
 GO
 INSERT INTO [dbo].[Users]
 		(
@@ -45,10 +47,12 @@ INSERT INTO [dbo].[Users]
 		[Phone]
 		)
     VALUES
-		("Unknown", "He/She", 100000, "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 207", '50001', "3195943138"),
+		("Unknown", "He/She", 100000, "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 206", '50001', "3195943138"),
 		("Male", "He/Him", 100000, "Stephen", "Jaurigue", "stephenjaurigue@company.com", "123 Kirkwood Parkway", "Apt 210", "50001", "3195555555"),
 		("Female", "She/Her", 100000, "Molly", "Meister", "mollymeister@company.com", "456 Kirkwood Parkway", "Apt 256", "50001", "3196666666"),
-		('Male', 'He/Him', 100000, 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777')
+		('Male', 'He/Him', 100000, 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777'),
+		("Unknown", "He/She", 100000, "Alex", "Oetken", "alexoetken@company.com", "811 Kirkwood Parkway", "Apt 108", '50001', "3195943138"),
+		("Unknown", "Any/All", 100000, "Please dont", "delete me", "test@company.com", "420 Kirkwood Parkway", "Apt 420", "50001", "3193193193")
 GO
 
 print '' print '*** creating Animal sample data'

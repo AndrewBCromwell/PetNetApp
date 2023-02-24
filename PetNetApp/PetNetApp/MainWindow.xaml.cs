@@ -183,12 +183,12 @@ namespace PetNetApp
             }
             else if ((string)mnuLogout.Header == "Log Out")
             {
-                frameMain.Navigate(LandingPage.GetLandingPage(this));
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Stop);
 
-                _manager.User = null;
-                mnuUser.Header = "Hello, Guest";
-                mnuLogout.Header = "Log In";
-
+                if (result == MessageBoxResult.Yes)
+                {
+                    UpdateOnLogOut();
+                }
             }
         }
 
@@ -284,6 +284,15 @@ namespace PetNetApp
             {
                 tab.Visibility = Visibility.Hidden;
             }
+        }
+
+        public void UpdateOnLogOut()
+        {
+            frameMain.Navigate(LandingPage.GetLandingPage(this));
+
+            _manager.User = null;
+            mnuUser.Header = "Hello, Guest";
+            mnuLogout.Header = "Log In";
         }
     }
 }

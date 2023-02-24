@@ -83,18 +83,6 @@ CREATE TABLE [dbo].[Pronoun] (
 )
 GO
 
---print '' print '*** creating Pronoun test records' 
-GO 
-INSERT INTO [dbo].[Pronoun]
-	([PronounId])
-VALUES 
-('He/Him'),
-('She/Her'),
-('N/A')
-GO
-
-
-
 /* Image table*/
 /* Created by: Andrew Cromwell */
 print '' print '** creating Images table'
