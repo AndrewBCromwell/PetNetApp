@@ -205,7 +205,7 @@ namespace PetNetApp
                     CreationDate = DateTime.Now,
                     Active = true,
                     Address = "Somewhere over the rainbow",
-                    Roles = new List<string>() { "Admin" },
+                    Roles = new List<string>() { "Vet" },
                     AddressTwo = "",
                     Email = "awesome@awesome.com",
                     GenderId = "Male",

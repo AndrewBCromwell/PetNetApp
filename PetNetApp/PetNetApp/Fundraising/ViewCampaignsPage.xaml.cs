@@ -71,12 +71,24 @@ namespace WpfPresentation.Fundraising
             _existingViewCampaignsPage._needsReloaded = false;
             return _existingViewCampaignsPage;
         }
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/24
+        /// 
+        /// Calls the methods to change navigation buttons and show the appropriate campaigns for the selected page
+        /// </summary>
         private void UpdateUI()
         {
             PopulateNavigationButtons();
             PopulateCampaignList();
         }
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/24
+        /// 
+        /// Loads the Fundraising campaigns for the shelter of the logged in user and runs the method to filter and sort
+        /// </summary>
         private void LoadFundraisingCampaignData()
         {
             try
@@ -90,6 +102,15 @@ namespace WpfPresentation.Fundraising
             }
             ApplyFundraisingCampaignFilterAndSort(false);
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/24
+        /// 
+        /// Takes the loaded Fundraising Campaign list and applies filters and sorts it, then updates the navigation
+        /// information and finally updates the UI
+        /// </summary>
+        /// <param name="resetPage"></param>
         private void ApplyFundraisingCampaignFilterAndSort(bool resetPage = true)
         {
             Func<FundraisingCampaign, string> sortMethod = null;
@@ -124,6 +145,15 @@ namespace WpfPresentation.Fundraising
             _currentPage = resetPage ? 1 : _currentPage > _totalPages ? _totalPages : _currentPage;
             UpdateUI();
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/24
+        /// 
+        /// Takes a fundraising campaign and returns true if it contains the search text in its start date, end date, description, or title (case insensitive)
+        /// </summary>
+        /// <param name="fundraisingCampaign"></param>
+        /// <returns>Wether there is any matching data to the Current Search Text</returns>
         private bool SearchForTextInFundraisingCampaign(FundraisingCampaign fundraisingCampaign)
         {
                 return fundraisingCampaign.Title?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
@@ -131,10 +161,25 @@ namespace WpfPresentation.Fundraising
                        (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false) ||
                        (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false);
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Updates the total pages needed for all the campaigns
+        /// </summary>
         private void UpdateNavigationInformation()
         {
             _totalPages = (_filteredFundraisingCampaigns.Count - 1) / _itemsPerPage + 1;
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/02/23
+        /// 
+        /// Updates the controls at the bottom of the page to appear and dissapear as needed.
+        /// Also generates the numbered buttons for navigation
+        /// </summary>
         private void PopulateNavigationButtons()
         {
             btnPreviousPage.Visibility = _currentPage == 1 ? Visibility.Collapsed : Visibility.Visible;
@@ -188,11 +233,26 @@ namespace WpfPresentation.Fundraising
             }
 
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Changes the active page to the page number and updates the UI
+        /// </summary>
+        /// <param name="page"></param>
         private void NavigateToPage(int page)
         {
             _currentPage = page;
             UpdateUI();
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Shows the selected pages fundraising campaigns or a message if there are now campaigns
+        /// </summary>
         private void PopulateCampaignList()
         {
             stackCampaigns.Children.Clear();
@@ -214,24 +274,70 @@ namespace WpfPresentation.Fundraising
                 stackCampaigns.Children.Add(item);
             }
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Goes to the next page and updates the UI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage++;
             UpdateUI();
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Goes to the previous page and updates the UI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage--;
             UpdateUI();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stephen Jaurigue:
+        /// Prepared for the add campaign button
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddCampaign_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Navigates to the page indicated by the user in the page number textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNavigatePage_Click(object sender, RoutedEventArgs e)
         {
             NavigateToTypedPage();
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Navigates to the page indicated by the user in the page number textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NavigateToTypedPage()
         {
             if (IsValidPage(tbPage.Text))
@@ -244,18 +350,54 @@ namespace WpfPresentation.Fundraising
                 tbPage.Text = _currentPage.ToString();
             }
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Searches for campaigns with the typed text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             TrySearch();
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Updates the display to be in the new selected order and resets the page back to the beginning
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboChanged(object sender, RoutedEventArgs e)
         {
             ApplyFundraisingCampaignFilterAndSort();
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Changes the Needs Loaded indicator to say that the page needs reloaded when the user refocuses
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             _needsReloaded = true;
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Loads the data for the campaigns if they haven't already been loaded and don't need reloaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_needsReloaded)
@@ -264,16 +406,43 @@ namespace WpfPresentation.Fundraising
                 _needsReloaded = false;
             }
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Navigates to the first page and updates the UI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage = 1;
             UpdateUI();
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Navigates to the last page and updates the UI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage = _totalPages;
             UpdateUI();
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Makes sure the typed page is only digits and is within the range of pages
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         private bool IsValidPage(string page)
         {
             if (page.Length < 8 && _isDigit.IsMatch(page))
@@ -286,6 +455,15 @@ namespace WpfPresentation.Fundraising
             }
             return false;
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Navigates to the typed page on enter pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbPage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -293,6 +471,15 @@ namespace WpfPresentation.Fundraising
                 NavigateToTypedPage();
             }
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Searches for the text inside the campaigns on enter key pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -300,6 +487,13 @@ namespace WpfPresentation.Fundraising
                 TrySearch();
             }
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// If the text has changed since last search, searches for the new text
+        /// </summary>
         private void TrySearch()
         {
             string newSearchText = tbSearch.Text.ToLower().Trim();
