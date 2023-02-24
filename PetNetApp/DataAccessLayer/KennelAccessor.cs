@@ -177,7 +177,7 @@ namespace DataAccessLayer
                 {
                     while (reader.Read())
                     {
-                        //[KennelId], [AnimalId]
+                        //[KennelId]
                         _kennel.KennelId = reader.GetInt32(0);
                     }
                 }
@@ -195,6 +195,7 @@ namespace DataAccessLayer
             return _kennel;
         }
 
+        
         public int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId)
         {
             int result = 0;
