@@ -124,6 +124,15 @@
     <Compile Include="Management\KenOccupancyUpdate-333.xaml.cs">
       <DependentUpon>KenOccupancyUpdate-333.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Shelters\AlterShelter.xaml.cs">
+      <DependentUpon>AlterShelter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shelters\ShelterPage.xaml.cs">
+      <DependentUpon>ShelterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shelters\ShelterVMListUI.xaml.cs">
+      <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PlaceholderTextBox.cs" />
     <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
       <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
@@ -173,6 +182,27 @@
     <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Shelters\AlterShelter.xaml.cs">
+      <DependentUpon>AlterShelter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Shelters\ShelterPage.xaml.cs">
+      <DependentUpon>ShelterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
+      <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Development\Shelters\AlterShelter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Shelters\ShelterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Shelters\ShelterVMListUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,6 +280,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Management\KenOccupancyUpdate-333.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shelters\AlterShelter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shelters\ShelterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shelters\ShelterVMListUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -535,11 +577,9 @@
     <Folder Include="Development\Donate\" />
     <Folder Include="Development\Donations\" />
     <Folder Include="Development\Events\" />
-    <Folder Include="Development\Shelters\" />
     <Folder Include="Donate\" />
     <Folder Include="Donations\" />
     <Folder Include="Events\" />
-    <Folder Include="Shelters\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\petnetLogo.png">

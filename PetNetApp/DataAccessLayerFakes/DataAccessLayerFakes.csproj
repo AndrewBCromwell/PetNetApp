@@ -54,6 +54,7 @@
     <Compile Include="RoleAccessorFakes.cs" />
     <Compile Include="ScheduleAccessorFakes.cs" />
     <Compile Include="TicketAccessorFakes.cs" />
+    <Compile Include="ShelterAccessorFakes.cs" />
     <Compile Include="UsersAccessorFakes.cs" />
   </ItemGroup>
   <ItemGroup>
