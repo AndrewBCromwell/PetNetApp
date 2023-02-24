@@ -1,4 +1,19 @@
-﻿using System;
+﻿/// <summary>
+/// Zaid Rachman
+/// Created: 2023/02/09
+/// 
+/// Logic layer for VaccinationManager.
+/// Methods:
+/// AddVaccination
+/// EditVaccination
+/// RetrieveVaccinationsByAnimalId
+/// </summary>
+///
+/// <remarks>
+/// Updater Name
+/// Updated: yyyy/mm/dd
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,18 @@
-﻿using System;
+﻿/// <summary>
+/// Zaid Rachman
+/// Created: 2023/02/11
+/// 
+/// 
+/// Interaction logic for AddEditVaccinationsPage.xaml
+/// User interface for Creating and Editing Vaccination Records
+/// 
+/// </summary>
+///
+/// <remarks>
+/// Updater Name
+/// Updated: yyyy/mm/dd
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +33,8 @@ using System.Text.RegularExpressions;
 namespace WpfPresentation.Animals
 {
     /// <summary>
+    /// Zaid Rachman
+    /// Created: 2023/02/11
     /// Interaction logic for AddEditVaccinationsPage.xaml
     /// </summary>
     public partial class AddEditVaccinationsPage : Page
@@ -31,7 +47,14 @@ namespace WpfPresentation.Animals
 
 
 
-        //This method is called when the user wants to add a Vaccine
+
+        /// <summary>
+        /// Zaid Rachman
+        /// Created: 2023/02/11
+        /// 
+        /// This constructor method is called when the user wants to add a Vaccine
+        /// </summary>
+        /// <param name="animal"></param>
         public AddEditVaccinationsPage(Animal animal)
         {
             _addMode = true;
@@ -40,7 +63,15 @@ namespace WpfPresentation.Animals
             setAddMode();
         }
 
-        //This method is called when the user wants to edit a vaccine
+
+        /// <summary>
+        /// Zaid Rachman
+        /// Created: 2023/02/11
+        /// 
+        /// This method is called when the user wants to edit a vaccine
+        /// </summary>
+        /// <param name="vaccination"></param>
+        /// <param name="animal"></param>
         public AddEditVaccinationsPage(Vaccination vaccination, Animal animal)
         {
             _addMode = false;
@@ -266,12 +297,26 @@ namespace WpfPresentation.Animals
 
         } //End of btnSave
 
-        //Goes back to Vaccination list
+        /// <summary>
+        /// Zaid Rachman
+        /// 2023/02/11
+        /// 
+        /// Returns user back to Vaccination Page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new VaccinationsPage(_currentAnimal));
         }
-
+        /// <summary>
+        /// Zaid Rachman
+        /// 2023/02/23
+        /// 
+        /// Uses a Regex for the UsersId input. This makes restricts users to only use numbers when inputing the Id.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtUsersId_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

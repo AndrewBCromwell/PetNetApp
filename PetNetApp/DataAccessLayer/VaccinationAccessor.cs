@@ -1,4 +1,20 @@
-﻿using System;
+﻿/// <summary>
+/// Zaid Rachman
+/// Created: 2023/02/09
+/// 
+/// Data access layer for Vaccination
+/// Methods:
+/// InsertVaccination
+/// SelectVaccinationByAnimalId
+/// UpdateVaccination
+///
+/// </summary>
+///
+/// <remarks>
+/// Updater Name
+/// Updated: yyyy/mm/dd
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
