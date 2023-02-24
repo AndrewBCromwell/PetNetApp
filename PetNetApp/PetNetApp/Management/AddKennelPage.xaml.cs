@@ -52,7 +52,7 @@ namespace WpfPresentation.Management
 
             Kennel kennel = new Kennel();
 
-            kennel.ShelterId = masterManager.User == null ? 100000 : masterManager.User.UsersId;
+            kennel.ShelterId = masterManager.User == null ? 100000 : masterManager.User.ShelterId.Value;
             kennel.KennelName = txtKennelName.Text;
             kennel.AnimalTypeId = cbAnimalType.SelectedItem.ToString();
 
@@ -63,7 +63,7 @@ namespace WpfPresentation.Management
             }
             catch (Exception ex)
             {
-                PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
         }
 
@@ -71,12 +71,12 @@ namespace WpfPresentation.Management
         {
             if (txtKennelName.Text.Equals("") || cbAnimalType.SelectedItem == null)
             {
-                PromptWindow.ShowPrompt("Error", "Please fill out all fields", ButtonMode.Ok);
+                PromptWindow.ShowPrompt("Error", "Please fill out all fields");
                 return false;
             }
             if (txtKennelName.Text.Length > 50)
             {
-                PromptWindow.ShowPrompt("Error", "Kennel Name can not be longer than 50 characters", ButtonMode.Ok);
+                PromptWindow.ShowPrompt("Error", "Kennel Name can not be longer than 50 characters");
                 return false;
             }
             return true;

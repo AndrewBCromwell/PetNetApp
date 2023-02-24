@@ -10,5 +10,6 @@ namespace DataAccessLayerInterfaces
     public interface IScheduleAccessor
     {
         List<ScheduleVM> SelectScheduleByDate(DateTime selectedDate);
+        List<ScheduleVM> SelectScheduleByUser(int userId);
     }
 }

@@ -9,8 +9,11 @@ namespace LogicLayerInterfaces
 {
     public interface IUsersManager
     {
-        List<UsersVM> RetrieveUserByRole(string RoleId);
+        List<UsersVM> RetrieveUserByRole(string roleId, int shelterId);
         List<UsersVM> RetriveAllEmployees();
+
+        // Barry
+        Users RetrieveUserByUsersId(int UsersId);
 
         // Mads
         UsersVM LoginUser(string email, string password);

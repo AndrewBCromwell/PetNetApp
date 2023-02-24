@@ -76,6 +76,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Development\Animals\AddAnimalPage.xaml.cs">
+      <DependentUpon>AddAnimalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Animals\AddAnimalSecondPage.xaml.cs">
+      <DependentUpon>AddAnimalSecondPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
@@ -94,12 +100,48 @@
     <Compile Include="Animals\MedProcedurePage.xaml.cs">
       <DependentUpon>MedProcedurePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Community\RoleManagementPopup.xaml.cs">
+      <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Community\RoleManagementTemp.xaml.cs">
+      <DependentUpon>RoleManagementTemp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
       <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\VaccinationsPage.xaml.cs">
       <DependentUpon>VaccinationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
+      <DependentUpon>FundraisingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
+      <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\FundraisingPage.xaml.cs">
+      <DependentUpon>FundraisingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
+      <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewCampaignsPage.xaml.cs">
+      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\KenOccupancyUpdate-333.xaml.cs">
+      <DependentUpon>KenOccupancyUpdate-333.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shelters\AlterShelter.xaml.cs">
+      <DependentUpon>AlterShelter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shelters\ShelterPage.xaml.cs">
+      <DependentUpon>ShelterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shelters\ShelterVMListUI.xaml.cs">
+      <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlaceholderTextBox.cs" />
+    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
+      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
@@ -146,9 +188,27 @@
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Animals\AddEditVaccinationsPage.xaml">
+    <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Development\Shelters\AlterShelter.xaml.cs">
+      <DependentUpon>AlterShelter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Shelters\ShelterPage.xaml.cs">
+      <DependentUpon>ShelterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
+      <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Development\Shelters\AlterShelter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Development\Shelters\ShelterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Shelters\ShelterVMListUI.xaml">
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +222,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\AnimalsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Animals\AddAnimalPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Animals\AddAnimalSecondPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,12 +253,64 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Development\Community\RoleManagementPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Community\RoleManagementTemp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\UploadAdditionalFileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\VaccinationsPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\FundraisingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Development\Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\FundraisingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fundraising\ViewCampaignsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\KenOccupancyUpdate-333.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shelters\AlterShelter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shelters\ShelterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shelters\ShelterVMListUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PlaceholderTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
+    <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\ViewTicketList.xaml">
@@ -467,11 +587,9 @@
     <Folder Include="Development\Donate\" />
     <Folder Include="Development\Donations\" />
     <Folder Include="Development\Events\" />
-    <Folder Include="Development\Shelters\" />
     <Folder Include="Donate\" />
     <Folder Include="Donations\" />
     <Folder Include="Events\" />
-    <Folder Include="Shelters\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\petnetLogo.png">
@@ -682,6 +800,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\PlusIcon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\menudark.png" />
+    <Resource Include="Development\Images\menulight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -58,5 +58,21 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedCount, actualCount);
 
         }
+
+        [TestMethod]
+        public void TestRetrieveScheduleByUserId()
+        {
+            // arrange
+            const int expectedCount = 3;
+            int userId = 100000;
+            int actualCount = 0;
+
+            // act
+            actualCount = _scheduleManager.RetrieveScheduleByUserId(userId).Count;
+
+            // assert
+            Assert.AreEqual(expectedCount, actualCount);
+
+        }
     }
 }

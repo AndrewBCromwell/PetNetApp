@@ -41,13 +41,13 @@ namespace LogicLayer
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <param name="RoleId"></param>
-        public List<UsersVM> RetrieveUserByRole(string RoleId)
+        public List<UsersVM> RetrieveUserByRole(string roleId, int shelterId)
         {
             List<UsersVM> users = new List<UsersVM>();
 
             try
             {
-                users = _userAccessor.SelectUserByRole(RoleId);
+                users = _userAccessor.SelectUserByRole(roleId,shelterId);
             }
             catch (Exception ex)
             {
@@ -226,5 +226,38 @@ namespace LogicLayer
             }
             return usersList;
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/09
+        /// 
+        /// 
+        /// </summary>
+        /// Retrieves a users with given usersId
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        /// <param usersId="UsersId"></param>
+        /// 
+        public Users RetrieveUserByUsersId(int UsersId)
+        {
+            //throw new NotImplementedException();
+
+            Users _user = new Users();
+            try
+            {
+                _user = _userAccessor.SelectUserByUsersId(UsersId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Data not found", ex);
+            }
+            return _user;
+
+        }
+
     }
 }

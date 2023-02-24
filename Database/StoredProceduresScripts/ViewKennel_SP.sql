@@ -23,7 +23,7 @@ Create procedure [dbo].[sp_select_kennels]
 AS
 	BEGIN
 		Select 	[Kennel].[KennelId], [ShelterId], [KennelName], [Kennel].[AnimalTypeId], [KennelActive], [AnimalName],
-				[RecievedDate], [Notes]
+				[RecievedDate], [Notes], [AnimalKenneling].[AnimalId]
         From	[Kennel] left join [AnimalKenneling]
 					on [Kennel].[KennelId] = [AnimalKenneling].[KennelId]
 				left join [Animal]

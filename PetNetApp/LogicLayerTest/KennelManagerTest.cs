@@ -68,7 +68,7 @@ namespace LogicLayerTest
             int acutalCount = 0;
 
             // act
-            var animals = kennelManager.RetrieveAllAnimalsForKennel(100000);
+            var animals = kennelManager.RetrieveAllAnimalsForKennel(100000, "Cat");
             acutalCount = animals.Count;
 
             // assert
@@ -127,6 +127,13 @@ namespace LogicLayerTest
             actualRes = kennelManager.RemoveAnimalKennlingByKennelId(kennelId);
 
             Assert.AreEqual(expectedRes, actualRes);
+        }
+
+        // Created by: Asa
+        [TestMethod]
+        public void RemoveAnimalKennelingByKennelIdAndAnimalId()
+        {
+            Assert.AreEqual(true, kennelManager.RemoveAnimalKennelingByKennelIdAndAnimalId(1, 1));
         }
     }
 }

@@ -137,6 +137,7 @@ namespace DataAccessLayer
                             animal.AnimalName = reader.GetString(5);
                             animal.BroughtIn = reader.GetDateTime(6);
                             animal.Notes = reader.GetString(7);
+                            animal.AnimalId = reader.GetInt32(8);
                         }
                         
 
@@ -225,7 +226,7 @@ namespace DataAccessLayer
             return result;
         }
 
-        public List<Animal> SelectAllAnimalsForKennel(int ShelterId)
+        public List<Animal> SelectAllAnimalsForKennel(int ShelterId, string AnimalTypeId)
         {
             List<Animal> _animalList = new List<Animal>();
 
@@ -235,6 +236,8 @@ namespace DataAccessLayer
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ShelterId", ShelterId);
+            cmd.Parameters.AddWithValue("@AnimalTypeId", AnimalTypeId);
+
             try
             {
                 conn.Open();
@@ -248,17 +251,8 @@ namespace DataAccessLayer
                         _animal.AnimalName = reader.GetString(1);
                         _animal.AnimalTypeId = reader.GetString(2);
                         _animal.AnimalBreedId = reader.GetString(3);
-                        _animal.Personality = reader.GetString(4);
-                        _animal.BroughtIn = reader.GetDateTime(5);
-                        _animal.Description = reader.GetString(6);
-                        _animal.MicrochipNumber = reader.GetString(7);
-                        _animal.Aggressive = reader.GetBoolean(8);
-                        _animal.AggressiveDescription = reader.GetString(9);
-                        _animal.ChildFriendly = reader.GetBoolean(10);
-                        _animal.NeuterStatus = reader.GetBoolean(11);
-                        _animal.Notes = reader.GetString(12);
-                        _animal.AnimalStatusId = reader.GetString(13);
-                        _animal.AnimalShelterId = reader.GetInt32(14);
+                        _animal.MicrochipNumber = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        _animal.AnimalShelterId = reader.GetInt32(5);
                         _animalList.Add(_animal);
                     }
                 }
@@ -331,6 +325,35 @@ namespace DataAccessLayer
                 conn.Close();
             }
             return rows;
+        }
+
+        // Created By: Asa Armstrong
+        public int DeleteAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId)
+        {
+            int rowsAffected = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmdText = "sp_remove_animal_from_animalkenneling_by_kennelId_and_animalId";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@KennelId", kennelId);
+            cmd.Parameters.AddWithValue("@AnimalId", animalId);
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
         }
     }
 }

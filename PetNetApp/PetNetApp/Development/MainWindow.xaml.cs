@@ -15,8 +15,10 @@ using System.Windows.Shapes;
 using WpfPresentation.Development.Animals;
 using WpfPresentation.Development.Community;
 using WpfPresentation.Development.Management;
+using WpfPresentation.Development.Shelters;
 using LogicLayer;
 using System.Diagnostics;
+using WpfPresentation.Development.Fundraising;
 
 namespace PetNetApp.Development
 {
@@ -31,7 +33,7 @@ namespace PetNetApp.Development
         public MainWindow()
         {
             InitializeComponent();
-            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnDonations, btnManagement };
+            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnManagement, btnFundraising };
         }
 
         private void btnDonate_Click(object sender, RoutedEventArgs e)
@@ -58,8 +60,8 @@ namespace PetNetApp.Development
         private void btnShelters_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
+            
+            frameMain.Navigate(ShelterPage.GetShelterPage(_manager));
         }
 
         private void btnEvents_Click(object sender, RoutedEventArgs e)
@@ -85,13 +87,6 @@ namespace PetNetApp.Development
         {
             ChangeSelectedButton((Button)sender);
             frameMain.Navigate(ManagementPage.GetManagementPage(_manager));
-        }
-
-        private void btnDonations_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
@@ -158,6 +153,12 @@ namespace PetNetApp.Development
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
             btnMenu.ContextMenu.IsOpen = true;
+        }
+
+        private void btnFundraising_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameMain.Navigate(FundraisingPage.GetFundraisingPage(_manager));
         }
     }
 }

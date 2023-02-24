@@ -90,6 +90,7 @@ namespace WpfPresentation.Animals
             if (_animal != null && _needsReloaded)
             {
                 LoadAnimalTestData();
+                _needsReloaded = false;
             }
         }
 
