@@ -9,6 +9,14 @@ namespace DataAccessLayerInterfaces
 {
     public interface IUsersAccessor
     {
+
+        /// <summary>
+        ///  /// Hoang Chu
+        /// Created: 2023/02/17
+        /// 
+        /// Select all employess
+        /// </summary>
+        /// <returns></returns>
         // Volunteer(Chris)
         List<UsersVM> SelectUserByRole(string roleId, int shelterId);
 

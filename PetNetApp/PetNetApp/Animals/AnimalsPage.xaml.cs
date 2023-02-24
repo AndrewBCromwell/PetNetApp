@@ -61,14 +61,14 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new AnimalPostUpdate(100000));
+            frameAnimals.Navigate(null);
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new ViewAdoptableAnimalProfile(100000));
         }
 
         private void btnSurrender_Click(object sender, RoutedEventArgs e)

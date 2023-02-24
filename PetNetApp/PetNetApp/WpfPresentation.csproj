@@ -69,9 +69,6 @@
     <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
       <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Animals\AnimalPostUpdate.xaml.cs">
-      <DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
-    </Compile>
     <Page Include="Animals\AddEditAnimalDeath.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,9 +137,12 @@
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlaceholderTextBox.cs" />
-	  <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
-		  <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
+      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\ViewAdoptableAnimalProfile.xaml.cs">
+      <DependentUpon>ViewAdoptableAnimalProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
@@ -189,7 +189,7 @@
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Animals\AddEditVaccinationsPage.xaml">
-    <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="Development\Shelters\AlterShelter.xaml.cs">
@@ -210,14 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
-		<SubType>Designer</SubType>
-		<Generator>MSBuild:Compile</Generator>
-	</Page>
-    <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Animals\AnimalPostUpdate.xaml">
+    <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,7 +310,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
-    <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\ViewTicketList.xaml">
@@ -366,6 +362,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\MedProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ViewAdoptableAnimalProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -804,6 +804,34 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\PlusIcon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\application_light.png" />
+    <Resource Include="Development\Images\cards_light.png" />
+    <Resource Include="Development\Images\download_light.png" />
+    <Resource Include="Development\Images\heart_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Animals\AnimalImages\dogPic1.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic2.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic3.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic4.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Animals\AnimalImages\dogPic6.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic7.jpg" />
+    <Resource Include="Development\Animals\AnimalImages\dogPic8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Animals\AnimalImages\dogPic1.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic2.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic3.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic4.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic5.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic6.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic7.jpg" />
+    <Resource Include="Animals\AnimalImages\dogPic8.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Development\Images\menudark.png" />
