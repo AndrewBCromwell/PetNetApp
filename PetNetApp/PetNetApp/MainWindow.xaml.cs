@@ -21,6 +21,7 @@ using System.Diagnostics;
 using WpfPresentation.Misc;
 using WpfPresentation.Fundraising;
 using DataObjects;
+using WpfPresentation;
 
 namespace PetNetApp
 {
@@ -199,9 +200,9 @@ namespace PetNetApp
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Stop);
+                PromptSelection result = PromptWindow.ShowPrompt("Log Out", "Are you sure you want to log out?", ButtonMode.YesNo);
 
-                if (result == MessageBoxResult.Yes)
+                if (result == PromptSelection.Yes)
                 {
                     _manager.User = null;
                 }

@@ -222,7 +222,7 @@ namespace WpfPresentation.Animals
                 {
                     //MessageBox.Show(ex.Message); 
                     //We have this in case something completely unexpected happens
-                    MessageBox.Show("An Error has occured. Please make sure to fill out all information correctly");
+                    PromptWindow.ShowPrompt("Error", "An Error has occured. Please make sure to fill out all information correctly");
                     return;
 
                 }

@@ -246,7 +246,7 @@ namespace LogicLayer
             catch (Exception up)
             {
 
-                throw;
+                throw new ApplicationException("Incorrect password", up);
             }
 
             return result;

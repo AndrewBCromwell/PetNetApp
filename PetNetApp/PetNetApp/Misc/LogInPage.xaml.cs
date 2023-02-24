@@ -54,10 +54,8 @@ namespace WpfPresentation.Misc
         {
             string email = txtEmail.Text;
             string password = txtPassword.Password;
-            int emailAt = email.Count(f => f == '@');
-            int emailPeriod = email.Count(f => f == '.');
 
-            if (emailAt < 1 || emailPeriod < 1)
+            if (!email.IsValidEmail())
             {
                 ErrorLoading(true);
                 ChangeErrorText("Email is not valid.", "Please enter a valid email.");
@@ -100,6 +98,7 @@ namespace WpfPresentation.Misc
             }
             catch (Exception up)
             {
+                throw up;
                 ChangeErrorText(up.Message, up.InnerException.Message);
                 ErrorLoading(true);
             }

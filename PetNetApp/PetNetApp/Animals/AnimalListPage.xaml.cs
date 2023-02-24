@@ -69,7 +69,7 @@ namespace WpfPresentation.Animals
             }
             catch (Exception up)
             {
-                MessageBox.Show(up.Message + "\n\n" + up.InnerException);
+                PromptWindow.ShowPrompt("Error", up.Message + "\n\n" + up.InnerException);
                 return;
             }
 

@@ -261,18 +261,35 @@ namespace DataAccessLayer
                         UsersId = reader.GetInt32(0),
                         GenderId = reader.GetString(1),
                         PronounId = reader.GetString(2),
-                        ShelterId = reader.GetInt32(3),
+                        // nullable
                         GivenName = reader.GetString(4),
                         FamilyName = reader.GetString(5),
                         Email = reader.GetString(6),
                         Address = reader.GetString(7),
-                        AddressTwo = reader.GetString(8),
+                        // nullable
                         Zipcode = reader.GetString(9),
                         Phone = reader.GetString(10),
-                        Active = reader.GetBoolean(11),
-                        SuspendEmployee = reader.GetBoolean(12),
+                        CreationDate = reader.GetDateTime(11),
+                        Active = reader.GetBoolean(12),
+                        SuspendEmployee = reader.GetBoolean(13),
                         Roles = new List<string>()
                     };
+                    if (reader.IsDBNull(3))
+                    {
+                        user.ShelterId = null;
+                    }
+                    else
+                    {
+                        user.ShelterId = reader.GetInt32(3);
+                    }
+                    if (reader.IsDBNull(8))
+                    {
+                        user.ShelterId = null;
+                    }
+                    else
+                    {
+                        user.AddressTwo = reader.GetString(8);
+                    }
                 }
                 reader.Close();
             }

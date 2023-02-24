@@ -26,7 +26,7 @@ CREATE PROCEDURE [dbo].[sp_select_user_by_user_id](
 AS
 	BEGIN
     SELECT [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName], [Email],
-				[PasswordHash], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], [Active], [Suspended]
+ [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], [Active], [Suspended]
 	FROM [Users]
 	WHERE [UsersId] = @UsersId
 	END
@@ -41,8 +41,7 @@ CREATE PROCEDURE [dbo].[sp_select_user_by_email](
 )
 AS
 	BEGIN
-    SELECT [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName], [Email],
-				[PasswordHash], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], [Active], [Suspended]
+    SELECT [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName], [Email], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], [Active], [Suspended]
 	FROM [Users]
 	WHERE [Email] = @Email
 	END
@@ -103,7 +102,7 @@ CREATE PROCEDURE [dbo].[sp_select_users_by_active_status](
 AS
 	BEGIN
     SELECT [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName], [Email],
-				[PasswordHash], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], [Active], [Suspended]
+ [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], [Active], [Suspended]
 	FROM [Users]
 	WHERE [Active] = @Active
 	END

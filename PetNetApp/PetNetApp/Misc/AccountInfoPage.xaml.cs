@@ -1,4 +1,5 @@
-﻿using LogicLayer;
+﻿using DataObjects;
+using LogicLayer;
 using PetNetApp;
 using System;
 using System.Collections.Generic;
@@ -59,14 +60,14 @@ namespace WpfPresentation.Misc
 
             if (oldPassword == "")
             {
-                MessageBox.Show("You must confirm your old password.", "Password Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                PromptWindow.ShowPrompt("Error", "You must confirm your old password.");
                 txtOldPassword.Focus();
                 return;
             }
 
             if (newPassword == "")
             {
-                MessageBox.Show("You must enter a new password.", "Password Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                PromptWindow.ShowPrompt("Error", "You must enter a new password.");
                 txtNewPassword.Focus();
 
                 return;
@@ -74,7 +75,7 @@ namespace WpfPresentation.Misc
 
             if (newPassword == oldPassword)
             {
-                MessageBox.Show("This matches a password previously used.\n\nPlease choose a different password.", "Password Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                PromptWindow.ShowPrompt("Password Error", "This matches a password previously used.\n\nPlease choose a different password.");
                 txtNewPassword.Clear();
                 txtConfirmPassword.Clear();
                 txtNewPassword.Focus();
@@ -84,7 +85,7 @@ namespace WpfPresentation.Misc
 
             if (confirmPassword == "")
             {
-                MessageBox.Show("You did not confirm your new password.\n\nPlease confirm before continuing.", "Password Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                PromptWindow.ShowPrompt("Password Error", "You did not confirm your new password.\n\nPlease confirm before continuing.");
                 txtConfirmPassword.Focus();
 
                 return;
@@ -92,7 +93,7 @@ namespace WpfPresentation.Misc
 
             if (newPassword != confirmPassword)
             {
-                MessageBox.Show("Passwords do not match.\n\nPlease try again.", "Password Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                PromptWindow.ShowPrompt("Password Error", "Passwords do not match.\n\nPlease try again.");
                 txtNewPassword.Clear();
                 txtConfirmPassword.Clear();
                 txtNewPassword.Focus();
@@ -102,20 +103,12 @@ namespace WpfPresentation.Misc
 
             try
             {
-
-                if (_manager.UsersManager.ResetPassword(_manager.User.Email, oldPassword, newPassword))
-                {
-                    MessageBox.Show("Password was reset!", "Success!", MessageBoxButton.OK);
-                    RefreshOnAccountUpdate();
-                }
-                else
-                {
-                    throw new ApplicationException("Password reset failed.\n\nPlease try again later.");
-                }
+                PromptWindow.ShowPrompt("Success", "Password was reset!");
+                RefreshOnAccountUpdate();
             }
             catch (Exception up)
             {
-                throw;
+                PromptWindow.ShowPrompt("Error", up.Message);
             }
 
             Keyboard.ClearFocus();
@@ -126,12 +119,10 @@ namespace WpfPresentation.Misc
         {
             string email = txtNewEmail.Text;
             string password = passConfirmEmail.Password;
-            int emailAt = email.Count(f => f == '@');
-            int emailPeriod = email.Count(f => f == '.');
 
-            if (emailAt < 1 || emailPeriod < 1)
+            if (!email.IsValidEmail())
             {
-                MessageBox.Show("Please enter a valid Email.", "Email Error", MessageBoxButton.OK);
+                PromptWindow.ShowPrompt("EmailError", "Please enter a valid Email.");
                 txtNewEmail.SelectAll();
                 txtNewEmail.Focus();
                 return;
@@ -139,7 +130,7 @@ namespace WpfPresentation.Misc
 
             if (email == _manager.User.Email)
             {
-                MessageBox.Show("Email is the same as your current email.\n\nPlease enter a different email if you wish to change it.", "Email Error", MessageBoxButton.OK);
+                PromptWindow.ShowPrompt("Email Error", "Email is the same as your current email.\n\nPlease enter a different email if you wish to change it.");
                 txtNewEmail.SelectAll();
                 txtNewEmail.Focus();
                 return;
@@ -147,7 +138,7 @@ namespace WpfPresentation.Misc
 
             if (password == "" || password == null)
             {
-                MessageBox.Show("Password cannot be left empty.\n\nPlease enter your password.", "Password Error", MessageBoxButton.OK);
+                PromptWindow.ShowPrompt("Password Error", "Password cannot be left empty.\n\nPlease enter your password.");
                 passConfirmEmail.Focus();
                 return;
             }
@@ -156,20 +147,20 @@ namespace WpfPresentation.Misc
             {
                 if (_manager.UsersManager.UpdateEmail(_manager.User.Email, email, password))
                 {
-                    MessageBox.Show("Email was updated!", "Success!", MessageBoxButton.OK);
+                    PromptWindow.ShowPrompt("Success", "Email was updated!");
                     lblCurrentEmail.Content = "Current Email: " + email;
                     RefreshOnAccountUpdate();
                 }
                 else
                 {
-                    MessageBox.Show("Password was incorrect.\n\nPlease retype your password and try again.", "Password Error", MessageBoxButton.OK);
+                    PromptWindow.ShowPrompt("Password Error", "Password was incorrect.\n\nPlease retype your password and try again.");
                     passConfirmEmail.Clear();
                     passConfirmEmail.Focus();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("An error has occured.\n\nPlease try again later.", "Error", MessageBoxButton.OK);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
 
             Keyboard.ClearFocus();

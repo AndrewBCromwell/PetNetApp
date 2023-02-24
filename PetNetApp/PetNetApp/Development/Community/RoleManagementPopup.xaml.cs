@@ -187,7 +187,7 @@ namespace WpfPresentation.Development.Community
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
 
             PopulateUserRoleGrid();

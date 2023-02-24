@@ -79,7 +79,7 @@ namespace WpfPresentation.Misc
                txtPhone.Text == _manager.User.Phone &&
                txtZipcode.Text == _manager.User.Zipcode)
             {
-                MessageBox.Show("You haven't changed anything!", "Hey!", MessageBoxButton.OK);
+                PromptWindow.ShowPrompt("Hey", "You haven't changed anything!");
             }
             else
             {
@@ -101,14 +101,14 @@ namespace WpfPresentation.Misc
                 {
                     if (_manager.UsersManager.EditUserDetails(_manager.User, user))
                     {
-                        MessageBox.Show("Profile successfully updated!", "Success!", MessageBoxButton.OK);
+                        PromptWindow.ShowPrompt("Success", "Profile successfully updated!");
                         LoadUserDetails();
                     }
 
                 }
                 catch (Exception up)
                 {
-                    MessageBox.Show(up.Message);
+                    PromptWindow.ShowPrompt("Error", up.Message);
                 }
             }
 

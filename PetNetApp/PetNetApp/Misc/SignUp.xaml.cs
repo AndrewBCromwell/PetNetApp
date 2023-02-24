@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.Misc;
+using DataObjects;
 
 namespace WpfPresentation.Misc
 {
@@ -64,7 +65,7 @@ namespace WpfPresentation.Misc
             string genderId = genderSelection.Text;
             string pronounId = pronounSelection.Text;
 
-            if (email == "")
+            if (!email.IsValidEmail())
             {
                 PromptWindow.ShowPrompt("Invalid Email","Please enter your email.");
                 txtEmail.Focus();
@@ -72,7 +73,7 @@ namespace WpfPresentation.Misc
                 return;
             }
 
-            if (givenName == "" || givenName == null || givenName.Length >= 50)
+            if (!givenName.IsValidFirstName())
                 {
                 PromptWindow.ShowPrompt("Invalid Given Name","Please enter a valid first Name.");
                 txtGivenName.Focus();
@@ -80,7 +81,7 @@ namespace WpfPresentation.Misc
                 return; 
             }
 
-            if (familyName == "" || familyName == null || givenName.Length >= 50)
+            if (!familyName.IsValidLastName())
             {
                 PromptWindow.ShowPrompt("Invalid Family Name","Please enter a valid last name.");
                 txtFamilyName.Focus();
@@ -88,7 +89,7 @@ namespace WpfPresentation.Misc
                 return;
             }
 
-            if (phoneNumber.Length != 11)
+            if (!phoneNumber.IsValidPhone())
             {
                 PromptWindow.ShowPrompt("Invalid Phone Number","Please enter a valid phone number with area code.");
                 txtPhone.Focus();
@@ -96,7 +97,7 @@ namespace WpfPresentation.Misc
                 return; 
             }
 
-            if (zipCode.Length > 11)
+            if (!zipCode.IsValidZipcode())
             {
                 PromptWindow.ShowPrompt("Invalid Zipcode","Please enter a valid zip code.");
                 txtZipCode.Focus();

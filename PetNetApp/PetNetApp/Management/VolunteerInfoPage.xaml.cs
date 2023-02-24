@@ -113,11 +113,11 @@ namespace WpfPresentation.Management
         {
             if (_user.SuspendEmployee == false)
             {
-                MessageBoxResult result = MessageBox.Show("Do you want to suspend this user?", "Suspend user?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                PromptSelection result = PromptWindow.ShowPrompt("Suspend User?", "Do you want to suspend this user?", ButtonMode.YesNo);
                 // Navigate to the same page to reload the UI.
                 NavigationService.Navigate(new VolunteerInfoPage(_user));
 
-                if (result == MessageBoxResult.Yes)
+                if (result == PromptSelection.Yes)
                 {
                     // Not implemented; enter your method here and call the reloadUI and Navigation methods to make sure the UI reflects changes made.
                 }
@@ -132,9 +132,9 @@ namespace WpfPresentation.Management
                 if (_user.Active == true)
                 {
                     // If user is active give option to deactivate.
-                    MessageBoxResult result = MessageBox.Show("Do you want to deactivate this user?", "Deactivate user?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    PromptSelection result = PromptWindow.ShowPrompt("Deactivate User?", "Do you want to deactivate this user?", ButtonMode.YesNo);
 
-                    if (result == MessageBoxResult.Yes)
+                    if (result == PromptSelection.Yes)
                     {
                         _mastermanager.UsersManager.EditUserActive(_user.UsersId, false);
                     }
@@ -143,9 +143,9 @@ namespace WpfPresentation.Management
                 else
                 {
                     // If user is NOT active give option to activate.
-                    MessageBoxResult result = MessageBox.Show("Do you want to reactivate this user?", "Reactivate user?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    PromptSelection result = PromptWindow.ShowPrompt("Reactive User?", "Do you want to reactivate this user?", ButtonMode.YesNo);
 
-                    if (result == MessageBoxResult.Yes)
+                    if (result == PromptSelection.Yes)
                     {
                         _mastermanager.UsersManager.EditUserActive(_user.UsersId, true);
                     }
@@ -154,7 +154,7 @@ namespace WpfPresentation.Management
             catch (Exception ex)
             {
 
-                MessageBox.Show("There has been an error:" + ex, "An error has occured.", MessageBoxButton.OK, MessageBoxImage.Error);             
+                PromptWindow.ShowPrompt("Error", "There has been an error:" + ex);             
             }
             // The current select_user_by_user_id stored procedure returns a normal Users object and NOT a UsersVM object, making it incompatibile.
             // Therefore we need to use the method to select a list of UsersVM and choose the user we need.

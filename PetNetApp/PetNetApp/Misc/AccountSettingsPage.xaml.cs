@@ -72,8 +72,8 @@ namespace WpfPresentation.Misc
         }
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you'd like to log out?\n\nYou may lose any changes you've made.", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
+            PromptSelection result = PromptWindow.ShowPrompt("Are you sure", "Are you sure you'd like to log out?\n\nYou may lose any changes you've made.", ButtonMode.YesNo);
+            if (result == PromptSelection.Yes)
             {
                 _manager.User = null;
             }

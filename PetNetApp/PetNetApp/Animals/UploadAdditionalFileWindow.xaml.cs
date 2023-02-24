@@ -79,7 +79,7 @@ namespace WpfPresentation.Animals
             }
             catch (Exception up)
             {
-                MessageBox.Show("Image add failed. \n\n" + up.InnerException.Message);
+                PromptWindow.ShowPrompt("Error", "Image add failed. \n\n" + up.InnerException.Message);
             }
         }
     }

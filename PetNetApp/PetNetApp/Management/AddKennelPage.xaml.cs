@@ -52,7 +52,7 @@ namespace WpfPresentation.Management
 
             Kennel kennel = new Kennel();
 
-            kennel.ShelterId = masterManager.User == null ? 100000 : masterManager.User.ShelterId.Value;
+            kennel.ShelterId = masterManager.User.ShelterId.Value;
             kennel.KennelName = txtKennelName.Text;
             kennel.AnimalTypeId = cbAnimalType.SelectedItem.ToString();
 

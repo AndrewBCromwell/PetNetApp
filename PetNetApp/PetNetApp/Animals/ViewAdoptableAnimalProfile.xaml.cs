@@ -257,7 +257,7 @@ namespace WpfPresentation.Animals
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
 
             return result;

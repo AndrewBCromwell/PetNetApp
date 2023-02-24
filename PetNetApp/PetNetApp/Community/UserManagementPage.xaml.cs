@@ -169,7 +169,7 @@ namespace WpfPresentation.Community
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + "\n\n" + ex.InnerException);
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException);
                 }
             }
         }

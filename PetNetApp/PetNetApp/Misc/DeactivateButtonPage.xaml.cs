@@ -51,27 +51,23 @@ namespace WpfPresentation.Misc
 
         private void DeactivateButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Are you sure? This action cannot be undone.", "Deactivate Account?",
-                MessageBoxButton.YesNo);
+            var result = PromptWindow.ShowPrompt("Deactivate Account", "Are you sure? This action cannot be undone.", ButtonMode.YesNo);
 
-            if (result == MessageBoxResult.Yes)
+            if (result == PromptSelection.Yes)
             {
                 try
                 {
                     if (_manager.UsersManager.DeactivateUserAccount(_manager.User.UsersId))
                     {
-                        MessageBox.Show("Account has been deactivated!");
+                        PromptWindow.ShowPrompt("Success", "Account has been deactivated!");
                         _manager.User = null;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    PromptWindow.ShowPrompt("Error", ex.Message);
 
                 }
-            } else if (result == MessageBoxResult.No)
-            {
-                
             }
         }
 
