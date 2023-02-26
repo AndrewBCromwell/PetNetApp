@@ -177,7 +177,7 @@ namespace DataAccessLayer
                 {
                     try
                     {
-                        File.Delete(fullImagePath + image.ImageId);
+                        DeleteImageByImages(image);
                     }
                     catch 
                     {
@@ -292,6 +292,19 @@ namespace DataAccessLayer
             });
 
             return rows;
+        }
+
+        public int DeleteImageByImages(Images images)
+        {
+            try
+            {
+                File.Delete(fullImagePath + images.ImageId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return 1;
         }
     }
 }

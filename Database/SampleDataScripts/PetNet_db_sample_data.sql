@@ -39,12 +39,16 @@ INSERT INTO [dbo].[Role]
 		[Description]
 		)
 	VALUES
-		('Volunteer','Someone helping our the shelters'),
         ('Admin','Someone who oversees Petnet'),
-        ('Vet','Animal doctor'),
-        ('Manager','Someone who oversees specific parts of shelters'),
         ('Employee','A worker'),
-        ('Inspector', 'Someone who inspects')
+		('Helpdesk', 'Someone who assists with PetNet app use'),
+        ('Inspector', 'Someone who inspects'),
+        ('Manager','Someone who oversees specific parts of shelters'),
+		('Marketing','Someone who oversees marketing for the shelter'),
+        ('Maintenance','Someone who oversees shelter facilities'),
+		('Moderator','Someone who oversees shelter forums'),		
+        ('Vet','Animal doctor'),
+		('Volunteer','Someone helping our the shelters')
 GO
 
 print '' print '*** creating Pronoun test records' 

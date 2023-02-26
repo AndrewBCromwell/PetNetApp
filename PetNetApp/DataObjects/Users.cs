@@ -21,7 +21,7 @@ namespace DataObjects
         public string Phone { get; set; }
         public DateTime CreationDate { get; set; }
         public bool Active { get; set; }
-        public bool SuspendEmployee { get; set; }
+        public bool Suspend { get; set; }
     }
 
     public class UsersVM : Users

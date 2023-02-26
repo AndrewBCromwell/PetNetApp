@@ -54,6 +54,16 @@ namespace DataAccessLayerInterfaces
         List<Images> SelectMedicalImagesByAnimalId(int animalId);
 
         /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/26
+        /// 
+        /// Deletes the selected image from the images directory
+        /// </summary>
+        /// <param name="images">image to delete</param>
+        /// <returns>number of successful deletions</returns>
+        int DeleteImageByImages(Images images);
+
+        /// <summary>
         /// Molly Meister
         /// Created: 2023/02/18
         /// 

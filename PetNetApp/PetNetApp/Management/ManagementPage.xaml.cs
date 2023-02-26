@@ -141,7 +141,8 @@ namespace WpfPresentation.Management
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameManagement.Navigate(null);
+            frameManagement.Navigate(new Development.Management.VolunteerManagment());
+            
         }
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {

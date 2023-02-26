@@ -387,5 +387,25 @@ namespace LogicLayer
 
             return result;
         }
+
+        /// <summary>
+        /// [Barry Mikulas - 2023/02/26]
+        /// Sets user suspend status to true
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool SuspendUserAccount(int UserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// [Barry Mikulas - 2023/02/26]
+        /// Sets user suspend status to false
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool UnSuspendUserAccount(int UserId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

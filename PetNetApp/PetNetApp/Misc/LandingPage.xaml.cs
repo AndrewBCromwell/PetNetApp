@@ -40,15 +40,13 @@ namespace WpfPresentation.Misc
         {
             InitializeComponent();
             BannerImageLinks();
-            //UpdateLandingPageBody();
         }
 
         public static LandingPage GetLandingPage(MainWindow mainWindow)
         {
-            if (_existingLanding == null)
-            {
-                _existingLanding = new LandingPage();
-            }
+           
+            _existingLanding = new LandingPage();
+
 
             _existingLanding._mainWindow = mainWindow;
 
@@ -63,16 +61,16 @@ namespace WpfPresentation.Misc
         {
             bannerImages = new List<string>()
             {
-                "../Images/Placeholder/bannerImage_1.jpg",
-                "../Images/Placeholder/bannerImage_2.jpg",
-                "../Images/Placeholder/bannerImage_3.jpg",
-                "../Images/Placeholder/bannerImage_4.jpg",
-                "../Images/Placeholder/bannerImage_5.jpg",
-                "../Images/Placeholder/bannerImage_6.jpg",
-                "../Images/Placeholder/bannerImage_7.jpg",
-                "../Images/Placeholder/bannerImage_8.jpg",
-                "../Images/Placeholder/bannerImage_9.jpg",
-                "../Images/Placeholder/bannerImage_10.jpg"
+                "../../Images/Placeholder/bannerImage_1.jpg",
+                "../../Images/Placeholder/bannerImage_2.jpg",
+                "../../Images/Placeholder/bannerImage_3.jpg",
+                "../../Images/Placeholder/bannerImage_4.jpg",
+                "../../Images/Placeholder/bannerImage_5.jpg",
+                "../../Images/Placeholder/bannerImage_6.jpg",
+                "../../Images/Placeholder/bannerImage_7.jpg",
+                "../../Images/Placeholder/bannerImage_8.jpg",
+                "../../Images/Placeholder/bannerImage_9.jpg",
+                "../../Images/Placeholder/bannerImage_10.jpg"
             };
 
             Uri imageUri = null;
@@ -171,16 +169,5 @@ namespace WpfPresentation.Misc
             rectRightArrow.Height = canvasBanner.ActualHeight;
         }
 
-        //private void UpdateLandingPageBody()
-        //{ 
-        //    if ((string)_mainWindow.mnuLogout.Header == "Log In")
-        //    {
-        //        frameLandingPage.Navigate(LandingBodyLoggedOutPage.GetLandingBodyLoggedOutPage(_mainWindow));
-        //    }
-        //    else
-        //    {
-        //        frameLandingPage.Navigate(LandingBodyLoggedInPage.GetLandingBodyLoggedInPage(_mainWindow));
-        //    }
-        //}
     }
 }

@@ -103,6 +103,11 @@ namespace DataAccessLayerFakes
 
         }
 
+        public int DeleteImageByImages(Images images)
+        {
+            return stephenFakeImages.Remove(images) ? 1 : 0;
+        }
+
         public Images InsertImageByUri(string imageUri)
         {
             string fileName = imageUri.Substring((imageUri.LastIndexOf("/") > 0 ? imageUri.LastIndexOf("/") : imageUri.LastIndexOf("\\")) + 1);

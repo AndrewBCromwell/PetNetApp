@@ -22,16 +22,6 @@ namespace LogicLayer
         {
             _imagesAccessor = imagesAccessor;
         }
-        //public BitmapImage AddAndRetrieveImageByUri(string imageUri)
-        //{
-        //    BitmapImage addedImage = null;
-        //    Images image = null;
-
-        //    image = AddImageByUri(imageUri);
-        //    addedImage = RetrieveImageByImages(image);
-
-        //    return addedImage;
-        //}
 
         public List<Images> AddImagesByUris(IEnumerable<string> imageUris)
         {
