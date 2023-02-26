@@ -82,7 +82,7 @@ namespace WpfPresentation.Community
                         { Header = "Suspend" };
                         MenuItem menuItemUnsuspend = new MenuItem()
                         { Header = "Unsuspend" };
-                        if (!user.SuspendEmployee) //show suspend menu item if user not suspended
+                        if (!user.Suspend) //show suspend menu item if user not suspended
                         {
                             menuItemSuspend.Click += (object1, args) => menuItem_Suspend_Click(user);
                             ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemSuspend);

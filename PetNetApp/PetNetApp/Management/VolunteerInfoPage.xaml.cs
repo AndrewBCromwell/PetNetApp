@@ -73,7 +73,7 @@ namespace WpfPresentation.Management
             }
 
             // Check to see if user is already suspended:
-            if (_user.SuspendEmployee == true)
+            if (_user.Suspend == true)
             {
                 
                 // Deactivate and hide the Activate/Deactivate button:
@@ -121,7 +121,7 @@ namespace WpfPresentation.Management
         /// </remarks>
         private void btnSuspendUser_Click(object sender, RoutedEventArgs e)
         {
-            if (_user.SuspendEmployee == false)
+            if (_user.Suspend == false)
             {
                 SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_mastermanager, _user);
                 suspendUserPopup.ShowDialog();

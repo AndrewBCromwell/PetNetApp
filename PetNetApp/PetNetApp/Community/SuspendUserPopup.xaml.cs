@@ -45,7 +45,7 @@ namespace WpfPresentation.Community
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //populate window based on user's suspend status
-            if (!_users.SuspendEmployee)
+            if (!_users.Suspend)
             {
                 lblSuspendUserTitle.Content = "Suspend User";
                 txtSuspendUserMessage.Text = "Are you sure you want to suspend \n" + _users.GivenName + " " + _users.FamilyName + "?";

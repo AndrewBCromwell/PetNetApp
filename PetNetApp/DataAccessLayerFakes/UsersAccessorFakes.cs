@@ -44,7 +44,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52411",
                 Phone = "319-123-1325",
                 Active = true,
-                SuspendEmployee = false
+                Suspend = false
             };
             fakeUsers.Add(new UsersVM()
             {
@@ -57,7 +57,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52411",
                 Phone = "319-123-1325",
                 Active = true,
-                SuspendEmployee = false,
+                Suspend = false,
                 Roles = new List<string>()
             }) ;
             fakeUsers.Add(new UsersVM()
@@ -71,7 +71,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52411",
                 Phone = "319-789-1325",
                 Active = true,
-                SuspendEmployee = false,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -85,7 +85,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "12345",
                 Phone = "319-567-1325",
                 Active = true,
-                SuspendEmployee = false,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -99,7 +99,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "54321",
                 Phone = "319-321-1325",
                 Active = true,
-                SuspendEmployee = false,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -112,7 +112,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52240",
                 Phone = "319-594-3138",
                 Active = true,
-                SuspendEmployee = false,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -125,7 +125,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52404",
                 Phone = "319-111-2222",
                 Active = true,
-                SuspendEmployee = false,
+                Suspend = false,
                 Roles = new List<string>()
             });
 
@@ -184,7 +184,7 @@ namespace DataAccessLayerFakes
             {
                 if (fakeUsers[i].Email == email)
                 {
-                    if (fakePassword[0] == passwordHash && fakeUsers[i].Active && !fakeUsers[i].SuspendEmployee)
+                    if (fakePassword[0] == passwordHash && fakeUsers[i].Active && !fakeUsers[i].Suspend)
                     {
                         numAuthenticated += 1;
                     }
