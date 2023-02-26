@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.Community;
 
 namespace WpfPresentation.Management
 {
@@ -109,19 +110,27 @@ namespace WpfPresentation.Management
             // Not implemented; enter your method here. According to the UI design this would use the "frameVolunteerDetails" frame.
         }
 
+        /// <summary>
+        /// Created by Teft Francisco
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Modified by Barry Mikulas
+        /// Date: 2023/02/26
+        /// added the call to the suspendUserPopup page
+        /// </remarks>
         private void btnSuspendUser_Click(object sender, RoutedEventArgs e)
         {
             if (_user.SuspendEmployee == false)
             {
-                PromptSelection result = PromptWindow.ShowPrompt("Suspend User?", "Do you want to suspend this user?", ButtonMode.YesNo);
-                // Navigate to the same page to reload the UI.
-                NavigationService.Navigate(new VolunteerInfoPage(_user));
-
-                if (result == PromptSelection.Yes)
-                {
-                    // Not implemented; enter your method here and call the reloadUI and Navigation methods to make sure the UI reflects changes made.
-                }
+                SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_mastermanager, _user);
+                suspendUserPopup.ShowDialog();
+                //popup not needed as suspend handles this
+                //if (PromptWindow.ShowPrompt("Suspend User?", "Do you want to suspend this user?", ButtonMode.YesNo) == PromptSelection.Yes) { }
             }
+
+            // Navigate to the same page to reload the UI.
+            NavigationService.Navigate(new VolunteerInfoPage(_user));
         }
 
         private void btnDeactivateUser_Click(object sender, RoutedEventArgs e)

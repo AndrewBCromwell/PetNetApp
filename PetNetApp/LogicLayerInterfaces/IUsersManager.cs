@@ -12,8 +12,24 @@ namespace LogicLayerInterfaces
         List<UsersVM> RetrieveUserByRole(string roleId, int shelterId);
         List<UsersVM> RetriveAllEmployees();
 
-        // Barry
+        // Barry Mikulas
         Users RetrieveUserByUsersId(int UsersId);
+        /// <summary>
+        /// created 02/26/2023
+        /// created by Barry Mikulas
+        /// Sets user account suspend status to true
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns>bool of success status</returns>
+        bool SuspendUserAccount(int UserId);
+        /// <summary>
+        /// created 02/26/2023
+        /// created by Barry Mikulas
+        /// Sets user account suspend status to false
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns>bool of success status</returns>
+        bool UnSuspendUserAccount(int UserId);
 
         // Mads
         UsersVM LoginUser(string email, string password);

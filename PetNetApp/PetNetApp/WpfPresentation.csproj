@@ -73,6 +73,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Community\SuspendUserPopup.xaml.cs">
+      <DependentUpon>SuspendUserPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Animals\AddAnimalPage.xaml.cs">
       <DependentUpon>AddAnimalPage.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,10 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
+    <Page Include="Community\SuspendUserPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Shelters\AlterShelter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -242,9 +249,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Development\Shelters\ShelterPage.xaml">
-		<SubType>Designer</SubType>
-		<Generator>MSBuild:Compile</Generator>
-	</Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
