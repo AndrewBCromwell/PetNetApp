@@ -17,7 +17,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.Misc;
-using DataObjects;
 
 namespace WpfPresentation.Misc
 {

@@ -73,6 +73,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
+      <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Animals\AddAnimalPage.xaml.cs">
       <DependentUpon>AddAnimalPage.xaml</DependentUpon>
     </Compile>
@@ -102,9 +105,6 @@
     </Compile>
     <Compile Include="Development\Community\RoleManagementTemp.xaml.cs">
       <DependentUpon>RoleManagementTemp.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
-      <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\VaccinationsPage.xaml.cs">
       <DependentUpon>VaccinationsPage.xaml</DependentUpon>
@@ -213,6 +213,10 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\UploadAdditionalFileWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Development\Shelters\AlterShelter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -242,9 +246,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Development\Shelters\ShelterPage.xaml">
-		<SubType>Designer</SubType>
-		<Generator>MSBuild:Compile</Generator>
-	</Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -290,10 +294,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Community\RoleManagementTemp.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Animals\UploadAdditionalFileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

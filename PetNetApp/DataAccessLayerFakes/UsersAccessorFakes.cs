@@ -106,7 +106,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52240",
                 Phone = "319-594-3138",
                 Active = true,
-                Roles = new List<string>()
+                Roles = new List<string>() { "Admin" }
             });
             fakeUsers.Add(new UsersVM()
             {
@@ -239,7 +239,7 @@ namespace DataAccessLayerFakes
                 if (fakeUser.Email == email)
                 {
                     user = fakeUser;
-                    user.Roles = new List<string>();
+                    user.Roles = SelectRolesByUserID(fakeUser.UsersId);
                     break;
                 }
 

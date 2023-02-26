@@ -2,9 +2,11 @@
 using DataObjects;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace DataAccessLayerFakes
 {
@@ -12,30 +14,31 @@ namespace DataAccessLayerFakes
     {
         List<Images> fakeImages = new List<Images>();
         List<MedicalRecordVM> fakeMedicalRecords = new List<MedicalRecordVM>();
+        List<Images> stephenFakeImages = new List<Images>();
 
         public ImagesAccessorFakes()
         {
             fakeImages.Add(new Images 
             {
-               ImageId = 200000,
+               ImageId = "unique-1",
                ImageFileName = "oreo_arm_scratch.png"
             });
 
             fakeImages.Add(new Images
             {
-                ImageId = 200001,
+                ImageId = "unique-2",
                 ImageFileName = "orea_scratch_healing.png"
             });
 
             fakeImages.Add(new Images
             {
-                ImageId = 200002,
+                ImageId = "unique-3",
                 ImageFileName = "frank_mites.jpeg"
             });
 
             fakeImages.Add(new Images
             {
-                ImageId = 200003,
+                ImageId = "unique-4",
                 ImageFileName = "frank_mites2.jpeg"
             });
 
@@ -99,11 +102,33 @@ namespace DataAccessLayerFakes
             });
 
         }
+
+        public Images InsertImageByUri(string imageUri)
+        {
+            string fileName = imageUri.Substring((imageUri.LastIndexOf("/") > 0 ? imageUri.LastIndexOf("/") : imageUri.LastIndexOf("\\")) + 1);
+            Images image = new Images() { ImageFileName = fileName, ImageId = Guid.NewGuid().ToString() };
+            stephenFakeImages.Add(image);
+            return image;
+        }
+
+        public List<Images> InsertImagesByUris(IEnumerable<string> imageUris)
+        {
+            List<Images> newImages = new List<Images>();
+            foreach (string imageUri in imageUris)
+            {
+                string fileName = imageUri.Substring((imageUri.LastIndexOf("/") > 0 ? imageUri.LastIndexOf("/") : imageUri.LastIndexOf("\\")) + 1);
+                Images image = new Images() { ImageFileName = fileName, ImageId = Guid.NewGuid().ToString() };
+                stephenFakeImages.Add(image);
+                newImages.Add(image);
+            }
+            return newImages;
+        }
+
         public int InsertMedicalImageByAnimalId(int animalId, string imageFileName)
         {
             int rows = 0;
             Images _image = new Images();
-            _image.ImageId = 6;
+            _image.ImageId = "unique-15";
             _image.ImageFileName = imageFileName;
 
             for (int i = 0; i < fakeMedicalRecords.Count; i++)
@@ -118,7 +143,30 @@ namespace DataAccessLayerFakes
             return rows;
         }
 
-        public List<Images> SelectImagesByAnimalId(int animalId)
+        public int InsertMedicalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames)
+        {
+            int rows = 0;
+            List<Images> newImages = new List<Images>();
+            foreach (string imageFileName in imageFileNames)
+            {
+                Images _image = new Images();
+                _image.ImageId = "unique-15";
+                _image.ImageFileName = imageFileName;
+                newImages.Add(_image);
+                stephenFakeImages.Add(_image);
+                fakeMedicalRecords.Where(rec => rec.AnimalId == animalId).ToList().ForEach(rec => rec.AnimalImages.Add(_image));
+                rows++;
+            }
+            fakeMedicalRecords.First(record => record.AnimalId == animalId).AnimalImages.Concat(newImages);
+            return rows;
+        }
+
+        public BitmapImage SelectImageByImages(Images images)
+        {
+            return new BitmapImage();
+        }
+
+        public List<Images> SelectMedicalImagesByAnimalId(int animalId)
         {
             //var animalImages = fakeMedicalRecords.Where((x) => x.AnimalId == animalId && x.Images).Select((x) => x.AnimalImages);
             //return fakeImages.Where((x) => animalImages
