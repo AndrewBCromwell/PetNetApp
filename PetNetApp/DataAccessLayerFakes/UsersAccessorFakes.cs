@@ -121,11 +121,15 @@ namespace DataAccessLayerFakes
                 Roles = new List<string>()
             });
 
-
+            //one user test requires 3 volunteers - if more volunteer roles are added if will cause it to fail -  barry
             fakeUsers[0].Roles.Add("Volunteer");
             fakeUsers[1].Roles.Add("Volunteer");
             fakeUsers[2].Roles.Add("Volunteer");
             fakeUsers[3].Roles.Add("Admin");
+            fakeUsers[4].Roles.Add("Helpdesk"); 
+            fakeUsers[4].Roles.Add("Marketing");
+            fakeUsers[5].Roles.Add("Vet");
+            fakeUsers[5].Roles.Add("Maintenance");
 
             fakePassword.Add("9c9064c59f1ffa2e174ee754d2979be80dd30db552ec03e7e327e9b1a4bd594e");
 
@@ -239,7 +243,8 @@ namespace DataAccessLayerFakes
                 if (fakeUser.Email == email)
                 {
                     user = fakeUser;
-                    user.Roles = new List<string>();
+                    user.Roles = fakeUser.Roles;
+                    //user.Roles = new List<string>();
                     break;
                 }
 
