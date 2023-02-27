@@ -112,6 +112,9 @@
     <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
       <DependentUpon>FundraisingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Fundraising\ViewDonationsPage.xaml.cs">
+      <DependentUpon>ViewDonationsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Development\Fundraising\ViewDonationsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Misc\AccountInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -242,9 +249,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Development\Shelters\ShelterPage.xaml">
-		<SubType>Designer</SubType>
-		<Generator>MSBuild:Compile</Generator>
-	</Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -122,7 +122,7 @@ namespace WpfPresentation.Development.Fundraising
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameFundraising.Navigate(null);
+            frameFundraising.Navigate(ViewDonationsPage.ExistingDonationPage);
         }
     }
 }
