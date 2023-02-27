@@ -332,7 +332,7 @@ CREATE TABLE [dbo].[Animal] (
 	[MicrochipSerialNumber]		[char](15)					NULL,
 	[Aggressive]				[bit]						NOT NULL DEFAULT 0,
 	[AggressiveDescription]		[nvarchar](500)				NULL,
-	[ChildFriendly]				[bit]						NOT NULL DEFAULT 0,
+	[ChildFriendly]				[bit]						NOT NULL DEFAULT 1,
 	[NeuterStatus]				[bit]						NOT NULL DEFAULT 0,
 	[Notes]						[nvarchar](500)				NULL,
 	

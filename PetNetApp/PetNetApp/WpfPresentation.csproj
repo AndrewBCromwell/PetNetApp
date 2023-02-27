@@ -904,5 +904,13 @@
   <ItemGroup>
     <Resource Include="Images\send_hover.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NullImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BrokenImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
