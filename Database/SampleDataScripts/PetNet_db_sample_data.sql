@@ -1048,8 +1048,8 @@ INSERT INTO [dbo].[Kennel]
 		)
 	VALUES
 		(100000, "Kennel 1", "Dog", 1, 1),
-		(100001, "Kennel 2", "Dog", 1, 1),
-		(100002, "Kennel 3", "Dog", 1, 1),
+		(100000, "Kennel 2", "Dog", 1, 1),
+		(100000, "Kennel 3", "Dog", 1, 1),
 		(100000, "Kennel 4", "Dog", 1, 1),
 		(100000, "Kennel 5", "Dog", 1, 1),
 		(100000, "Kennel 6", "Dog", 1, 1),
