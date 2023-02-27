@@ -83,7 +83,7 @@ namespace DataAccessLayer
                         user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                         user.CreationDate = reader.GetDateTime(11);
                         user.Active = reader.GetBoolean(12);
-                        user.SuspendEmployee = reader.GetBoolean(13);
+                        user.Suspend = reader.GetBoolean(13);
                         users.Add(user);
                     }
 
@@ -165,7 +165,7 @@ namespace DataAccessLayer
                     user.Phone = reader.GetString(10);
                     user.CreationDate = reader.GetDateTime(11);
                     user.Active = reader.GetBoolean(12);
-                    user.SuspendEmployee = reader.GetBoolean(13);
+                    user.Suspend = reader.GetBoolean(13);
 
                     employeeList.Add(user);
                 }
@@ -271,7 +271,7 @@ namespace DataAccessLayer
                         Phone = reader.GetString(10),
                         CreationDate = reader.GetDateTime(11),
                         Active = reader.GetBoolean(12),
-                        SuspendEmployee = reader.GetBoolean(13),
+                        Suspend = reader.GetBoolean(13),
                         Roles = new List<string>()
                     };
                     if (reader.IsDBNull(3))
@@ -600,7 +600,7 @@ namespace DataAccessLayer
                         user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                         user.CreationDate = reader.GetDateTime(12);
                         user.Active = reader.GetBoolean(13);
-                        user.SuspendEmployee = reader.GetBoolean(14);
+                        user.Suspend = reader.GetBoolean(14);
                         users.Add(user);
 
                     }
@@ -672,7 +672,7 @@ namespace DataAccessLayer
                     user.Phone = reader.GetString(10);
                     user.CreationDate = reader.GetDateTime(11);
                     user.Active = reader.GetBoolean(12);
-                    user.SuspendEmployee = reader.GetBoolean(13);
+                    user.Suspend = reader.GetBoolean(13);
                     //}
                               }
                 // close reader
@@ -831,7 +831,7 @@ namespace DataAccessLayer
             }
             catch (Exception up)
             {
-                throw;
+                throw up;
             }
             finally
             {
@@ -874,7 +874,7 @@ namespace DataAccessLayer
             }
             catch (Exception up)
             {
-                throw;
+                throw up;
             }
             finally
             {

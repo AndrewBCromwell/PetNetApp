@@ -17,8 +17,10 @@ namespace DataAccessLayerFakes
     /// </summary>
     ///
     /// <remarks>
-    /// Updater Name
-    /// Updated: yyyy/mm/dd
+    /// Updater Barry Mikulas
+    /// Updated: 02/26/2023
+    /// Added SuspendEmployee = false, to users
+    /// Also added roles to all users in fakeUsers
     /// </remarks>
     public class UsersAccessorFakes : IUsersAccessor
     {
@@ -41,8 +43,8 @@ namespace DataAccessLayerFakes
                 Address = "4150 riverview road",
                 Zipcode = "52411",
                 Phone = "319-123-1325",
-                Active = true
-
+                Active = true,
+                Suspend = false
             };
             fakeUsers.Add(new UsersVM()
             {
@@ -55,6 +57,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52411",
                 Phone = "319-123-1325",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             }) ;
             fakeUsers.Add(new UsersVM()
@@ -68,6 +71,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52411",
                 Phone = "319-789-1325",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -81,6 +85,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "12345",
                 Phone = "319-567-1325",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -94,6 +99,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "54321",
                 Phone = "319-321-1325",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -106,6 +112,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52240",
                 Phone = "319-594-3138",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -118,14 +125,19 @@ namespace DataAccessLayerFakes
                 Zipcode = "52404",
                 Phone = "319-111-2222",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             });
 
-
+            //one user test requires 3 volunteers - if more volunteer roles are added if will cause it to fail -  barry
             fakeUsers[0].Roles.Add("Volunteer");
             fakeUsers[1].Roles.Add("Volunteer");
             fakeUsers[2].Roles.Add("Volunteer");
             fakeUsers[3].Roles.Add("Admin");
+            fakeUsers[4].Roles.Add("Helpdesk"); 
+            fakeUsers[4].Roles.Add("Marketing");
+            fakeUsers[5].Roles.Add("Vet");
+            fakeUsers[5].Roles.Add("Maintenance");
 
             fakePassword.Add("9c9064c59f1ffa2e174ee754d2979be80dd30db552ec03e7e327e9b1a4bd594e");
 
@@ -172,7 +184,7 @@ namespace DataAccessLayerFakes
             {
                 if (fakeUsers[i].Email == email)
                 {
-                    if (fakePassword[0] == passwordHash && fakeUsers[i].Active && !fakeUsers[i].SuspendEmployee)
+                    if (fakePassword[0] == passwordHash && fakeUsers[i].Active && !fakeUsers[i].Suspend)
                     {
                         numAuthenticated += 1;
                     }
@@ -239,7 +251,7 @@ namespace DataAccessLayerFakes
                 if (fakeUser.Email == email)
                 {
                     user = fakeUser;
-                    user.Roles = new List<string>();
+                    user.Roles = SelectRolesByUserID(fakeUser.UsersId);
                     break;
                 }
 

@@ -62,13 +62,13 @@ GO
 
 /* Image table*/
 /* Created by: Andrew Cromwell */
+/* Updated by: Stephen Jaurigue */
 print '' print '** creating Images table'
 GO
 CREATE TABLE [dbo].[Images] (
-	[ImageId] 			[int] IDENTITY(100000,1)	NOT NULL,
+	[ImageId] 			[nvarchar](36) 			NOT NULL,
 	[ImageFileName]		[nvarchar](50)			NOT NULL,
 	CONSTRAINT [pk_ImageId] PRIMARY KEY([ImageId]),
-	CONSTRAINT [ak_ImageFileName] UNIQUE([ImageFileName])
 )
 GO
 
@@ -736,13 +736,14 @@ GO
 
 /* FundraisingEvent table */
 /* Created by: Andrew S. */
+/* Update by: Stephen Jaurigue */
 print '' print '*** creating FundraisingEvent table'
 GO
 CREATE TABLE [dbo].[FundraisingEvent]
 (
 	[FundraisingEventId]	[int]	IDENTITY(100000,1)	NOT NULL,
 	[UsersId]				[int]						NOT NULL,
-	[ImageId]				[int]						NULL,
+	[ImageId]				[nvarchar](36)				NULL,
 	[CampaignId]			[int]						NULL,
 	[ShelterId]				[int]						NOT NULL,
 	[Title]					[nvarchar](100)				NOT NULL,
@@ -1190,10 +1191,11 @@ GO
 
 /* Animal Medical Image */
 /* Created by: William Rients */
+/* Updated by: Stephen Jaurigue */
 print '' print '*** creating table for AnimalMedicalImage'
 GO
 CREATE TABLE [dbo].[AnimalMedicalImage] (
-	[ImageId]				[int]		NOT NULL,						
+	[ImageId]				[nvarchar](36)		NOT NULL,						
 	[MedicalRecordId]		[int]		NOT NULL,
 	CONSTRAINT [fk_AnimalMedicalImage_ImageId]	FOREIGN KEY ([ImageId])
 		REFERENCES [dbo].[Images] ([ImageId]),
@@ -1409,12 +1411,13 @@ CREATE INDEX ix_FundraisingEventEntity_EventId
 GO
 
 -- Made 2023/01/27 by: Teft Francisco
+/* Updated by: Stephen Jaurigue */
 print '' print '*** creating InspectionImage'
 GO
 CREATE TABLE [dbo].[InspectionImage]
 (
 	[InspectionId] 				[int] 			NOT NULL,
-    [ImageId]		 			[int] 			NOT NULL,
+    [ImageId]		 			[nvarchar](36)	NOT NULL,
     CONSTRAINT [pk_InspectionImage] PRIMARY KEY ([InspectionId], [ImageId]),
     CONSTRAINT [fk_InspectionImage_InspectionId] FOREIGN KEY ([InspectionId])
 		REFERENCES [dbo].[Inspection] ([InspectionId]),
@@ -1634,11 +1637,12 @@ CREATE TABLE [dbo].[Death] (
 GO
 
 /*  Created by: Gwen Arman*/
+/* Updated by: Stephen Jaurigue */
 print '' print '*** creating AnimalImage'
 GO
 CREATE TABLE [dbo].[AnimalImage] (
-	[AnimalId]		[int] 		NOT NULL,
-    [ImageId]		[int] 		NOT NULL,
+	[AnimalId]		[int] 			NOT NULL,
+    [ImageId]		[nvarchar](36)	NOT NULL,
 	CONSTRAINT [fk_AnimalImage_AnimalId] FOREIGN KEY([AnimalId])
             REFERENCES [dbo].[Animal]([AnimalId]),
     CONSTRAINT [fk_AnimalImage_ImageId] FOREIGN KEY([ImageId])

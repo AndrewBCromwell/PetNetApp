@@ -44,7 +44,6 @@ namespace LogicLayer
                     shelterName == null || shelterName.Equals("")
                     || address == null || address.Equals("")
                     || zipCode == null || zipCode.Equals("")
-                    || shelterActive == null
                     ))
                 {
                     result = _shelterAccessor.InsertShelter(shelterName, address, addressTwo, zipCode, phone, email, areasOfNeed, shelterActive);
