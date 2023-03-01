@@ -133,8 +133,7 @@ namespace WpfPresentation.Fundraising
         private void btnDonations_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-
-            frameFundraising.Navigate(null);
+            frameFundraising.Navigate(Development.Fundraising.ViewDonationsPage.ExistingDonationPage);
         }
 
         public void HideAllButtons()

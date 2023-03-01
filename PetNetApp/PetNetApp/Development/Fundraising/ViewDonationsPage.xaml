@@ -6,9 +6,20 @@
       xmlns:local="clr-namespace:WpfPresentation.Fundraising"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ViewDonationsPage">
+      Title="ViewDonationsPage" Loaded="Page_Loaded">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label VerticalAlignment="Center" FontSize="25" Margin="30 0 0 0">Donations</Label>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Width="150" Height="50" Margin="0 0 20 0" x:Name="btnReport">Generate Report</Button>
+            <Button Width="150" Height="50" Margin="20 0 20 0" x:Name="btnFilterDonations">Filter Donations</Button>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" Margin="20 0">
+            <StackPanel x:Name="spDonations"></StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

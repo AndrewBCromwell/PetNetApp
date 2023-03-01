@@ -121,7 +121,6 @@ namespace WpfPresentation.Development.Fundraising
         private void btnDonations_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
             frameFundraising.Navigate(ViewDonationsPage.ExistingDonationPage);
         }
     }
