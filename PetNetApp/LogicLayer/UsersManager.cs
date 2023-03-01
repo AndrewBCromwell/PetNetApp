@@ -395,7 +395,20 @@ namespace LogicLayer
         /// <returns>bool</returns>
         public bool SuspendUserAccount(int UserId)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            bool result = false;
+
+            try
+            {
+                result = 1 == _userAccessor.UpdateUserSuspend(UserId, true);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -403,9 +416,40 @@ namespace LogicLayer
         /// Sets user suspend status to false
         /// </summary>
         /// <returns>bool</returns>
-        public bool UnSuspendUserAccount(int UserId)
+        public bool UnsuspendUserAccount(int UserId)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            try
+            {
+                result = 1 == _userAccessor.UpdateUserSuspend(UserId, false);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+            //throw new NotImplementedException();
+        }
+
+        public int RetrieveCountActiveUnsuspendUserAccountsByRoleId(string RoleId)
+        {
+            int usersIdCount = 0;
+            try
+            {
+                usersIdCount = _userAccessor.SelectCountActiveUnsuspendedUsersByRole(RoleId);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return usersIdCount;
+            // return 2; //green test
+            //throw new NotImplementedException(); //red test
         }
     }
 }
