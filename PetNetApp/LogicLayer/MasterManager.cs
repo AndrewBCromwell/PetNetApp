@@ -47,7 +47,7 @@ namespace LogicLayer
         public IProcedureManager ProcedureManager { get; set; }
         public IMedicalRecordManager MedicalRecordManager { get; set; }
         public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
-        public IImagesManager ImageManager { get; set; }
+
 
         private MasterManager()
         {
@@ -64,7 +64,24 @@ namespace LogicLayer
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
             FundraisingCampaignManager = new FundraisingCampaignManager();
-            ImageManager = new ImagesManager();
+            ImagesManager = new ImagesManager();
+
+            //for testing from dev page
+/*            User = new UsersVM()
+            {
+                UsersId = 100004,
+                ShelterId = 100000,
+                GivenName = "Barry",
+                FamilyName = "Mikulas",
+                Email = "bmikulas@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true,
+                Suspend = false,
+                Roles = new List<string>() { "Admin"}
+            };
+*/
         }
     
         public static MasterManager GetMasterManager()

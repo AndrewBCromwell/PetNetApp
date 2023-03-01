@@ -29,7 +29,15 @@ namespace LogicLayerInterfaces
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns>bool of success status</returns>
-        bool UnSuspendUserAccount(int UserId);
+        bool UnsuspendUserAccount(int UserId);
+        /// <summary>
+        /// created 02/26/2023
+        /// created by Barry Mikulas
+        /// Returns count of active\unsuspended users for a given role type
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns>int</returns>
+        int RetrieveCountActiveUnsuspendUserAccountsByRoleId(string RoleId);
 
         // Mads
         UsersVM LoginUser(string email, string password);
