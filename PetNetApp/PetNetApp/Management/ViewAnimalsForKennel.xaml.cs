@@ -32,11 +32,24 @@ namespace WpfPresentation.Development.Management
             _Kennel = kennel;
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When window loads, a data grid is
+        /// populated with animals available for kenneling
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                _animals = _masterManger.KennelManager.RetrieveAllAnimalsForKennel(_Kennel.ShelterId);
+                _animals = _masterManger.KennelManager.RetrieveAllAnimalsForKennel(_Kennel.ShelterId, _Kennel.AnimalTypeId);
                 if (_animals.Count > 0)
                 {
                     datAnimals.ItemsSource = _animals;
@@ -55,6 +68,20 @@ namespace WpfPresentation.Development.Management
                 
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When double clicking a specific row,
+        /// that animal is selected to be assigned 
+        /// to a kennel
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void datAnimals_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             SelectedAnimal = (Animal)(datAnimals.SelectedItem);

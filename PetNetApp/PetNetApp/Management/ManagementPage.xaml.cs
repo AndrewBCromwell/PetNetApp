@@ -25,27 +25,93 @@ namespace WpfPresentation.Management
 
         private MasterManager _manager = MasterManager.GetMasterManager();
         private Button[] _managementPageButtons;
+
+        static ManagementPage()
+        {
+            MasterManager manager = MasterManager.GetMasterManager();
+            manager.UserLogin += () => _existingManagementPage?.ShowButtonsByRole();
+            manager.UserLogout += () =>
+            {
+                _existingManagementPage?.HideAllButtons();
+                _existingManagementPage?.frameManagement.Navigate(null);
+            };
+        }
         public ManagementPage()
         {
             InitializeComponent();
-            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnShelters, btnTickets, btnVolunteer };
+            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
         }
-
+        public void HideAllButtons()
+        {
+            UnselectAllButtons();
+            foreach (Button btn in _managementPageButtons)
+            {
+                btn.Visibility = Visibility.Collapsed;
+            }
+        }
+        public void ShowButtonsByRole()
+        {
+            HideAllButtons();
+            ShowInventoryButtonByRole();
+            ShowKennelButtonByRole();
+            ShowScheduleButtonByRole();
+            ShowTicketsButtonByRole();
+            ShowVolunteerButtonByRole();
+        }
+        public void ShowInventoryButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnInventory.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowKennelButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnKennel.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowTicketsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Helpdesk", "Maintenance" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnTickets.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowVolunteerButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnVolunteer.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowScheduleButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Employee" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnSchedule.Visibility = Visibility.Visible;
+            }
+        }
         public static ManagementPage GetManagementPage()
         {
             if (_existingManagementPage == null)
             {
                 _existingManagementPage = new ManagementPage();
+                _existingManagementPage.ShowButtonsByRole();
             }
             return _existingManagementPage;
         }
-
         private void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
         }
-
         private void UnselectAllButtons()
         {
             foreach (Button button in _managementPageButtons)
@@ -53,50 +119,37 @@ namespace WpfPresentation.Management
                 button.Style = (Style)Application.Current.Resources["rsrcUnselectedButton"];
             }
         }
-
-        private void btnShelters_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
-        }
-
         private void btnInventory_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameManagement.Navigate(null);
         }
-
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameManagement.Navigate(null);
         }
-
         private void btnKennel_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new ViewKennelPage());
+            frameManagement.Navigate(new ViewKennelPage());
         }
-
         private void btnVolunteer_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameManagement.Navigate(new Development.Management.VolunteerManagment());
+            
         }
-
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameManagement.Navigate(null);
         }
-
-
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;
@@ -110,8 +163,7 @@ namespace WpfPresentation.Management
             }
             e.Handled = true;
         }
-
-        private void svManagementPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
+         private void svManagementPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             UpdateScrollButtons();
         }
@@ -135,17 +187,13 @@ namespace WpfPresentation.Management
                 btnScrollLeft.Visibility = Visibility.Visible;
             }
         }
-
         private void btnScrollRight_Click(object sender, RoutedEventArgs e)
         {
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset + 130);
         }
-
         private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
         {
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
-
-       
     }
 }

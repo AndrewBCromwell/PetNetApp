@@ -7,19 +7,27 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MedicalFilesPage" Loaded="Page_Loaded_1">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Label x:Name="lblAdditionalFiles" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Additional Files</Label>
-        
-        <DataGrid x:Name="datAdditionalFiles" Grid.Row="1" IsReadOnly="True" Margin="75, 0, 75, 0" BorderBrush="Transparent"></DataGrid>
+
+        <DataGrid x:Name="datAdditionalFiles" Grid.Row="1" IsReadOnly="True" Margin="75, 0, 75, 0" BorderBrush="Transparent" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseEnter" Handler="DataGridRow_MouseEnter"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ImageFileName}" Header="Image Name" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <Label x:Name="lblNoFiles" Grid.Row="1" FontSize="16"></Label>
-        <Button x:Name="btnAddFile" Grid.Row="2" Width="100" Click="btnAddFile_Click">Add</Button>
+        <Button x:Name="btnAddFile" Grid.Row="2" Width="100" Click="btnAddFile_Click" Margin="10" Height="40">Add</Button>
         
     </Grid>
 </Page>

@@ -14,7 +14,26 @@ namespace LogicLayer
     public class MasterManager
     {
         private static MasterManager _existingMasterManager = null;
-        public UsersVM User { get; set; }
+        private UsersVM _user;
+        public UsersVM User
+        {
+            get => _user;
+            set
+            {
+                _user = value;
+                if (value == null)
+                {
+                    OnUserLogout();
+                }
+                else
+                {
+                    OnUserLogin();
+                }
+            }
+        }
+        public delegate void UserChangedAction();
+        public event UserChangedAction UserLogout;
+        public event UserChangedAction UserLogin;
         public IKennelManager KennelManager { get; set; }
         public IUsersManager UsersManager { get; set; }
         public IDeathManager DeathManager { get; set; }
@@ -28,6 +47,7 @@ namespace LogicLayer
         public IProcedureManager ProcedureManager { get; set; }
         public IMedicalRecordManager MedicalRecordManager { get; set; }
         public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
+        public IImagesManager ImageManager { get; set; }
 
         private MasterManager()
         {
@@ -44,6 +64,7 @@ namespace LogicLayer
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
             FundraisingCampaignManager = new FundraisingCampaignManager();
+            ImageManager = new ImagesManager();
         }
     
         public static MasterManager GetMasterManager()
@@ -53,6 +74,16 @@ namespace LogicLayer
                 _existingMasterManager = new MasterManager();
             }
             return _existingMasterManager;
+        }
+        protected virtual void OnUserLogout()
+        {
+            UserChangedAction handler = UserLogout;
+            handler?.Invoke();
+        }
+        protected virtual void OnUserLogin()
+        {
+            UserChangedAction handler = UserLogin;
+            handler?.Invoke();
         }
     }
 }

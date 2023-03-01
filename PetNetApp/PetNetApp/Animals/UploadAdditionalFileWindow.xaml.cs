@@ -1,5 +1,6 @@
 ﻿using DataObjects;
 using LogicLayer;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +19,14 @@ using System.Windows.Shapes;
 namespace WpfPresentation.Animals
 {
     /// <summary>
-    /// Interaction logic for UploadAdditionalFileWindow.xaml
+    /// Interaction logic for UploadAdditionalFileWindowNew.xaml
     /// </summary>
     public partial class UploadAdditionalFileWindow : Window
     {
         private Animal _animal = null;
         private MasterManager _manager = MasterManager.GetMasterManager();
+        private bool _imageSelected = false;
+        private OpenFileDialog _fileDialog = new OpenFileDialog();
 
         public UploadAdditionalFileWindow(Animal animal, MasterManager masterManager)
         {
@@ -34,20 +37,27 @@ namespace WpfPresentation.Animals
 
         private void btnBrowseFiles_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog _fileDialog = new Microsoft.Win32.OpenFileDialog();
+            _fileDialog.Filter = "Images|*.png;*.jpg;*.gif;*.jpeg;*.tiff;*.tif;*.webp;*.wav;*.bmp;*.exif";
+            _fileDialog.Multiselect = true;
 
-            //_fileDialog.DefaultExt = ".png";
-            _fileDialog.Filter = "JPG (*.jpg,*.jpeg)|*.jpg;*.jpeg|PNG (*.png)|*.png";
-
-            bool? result = _fileDialog.ShowDialog();
-
-
-            // Get the selected file name and display in a TextBox 
-            if (result == true)
+            _imageSelected = _fileDialog.ShowDialog() == true;
+            if (_imageSelected == true)
             {
-                // Open document 
-                string filename = _fileDialog.SafeFileName;
-                txtFileUpload.Text = filename;
+                try
+                {
+                    imgSelectedImage.Source = new BitmapImage(new Uri(_fileDialog.FileName));
+                    string filename = _fileDialog.SafeFileName;
+                    txtFileUpload.Text = filename;
+                }
+                catch
+                {
+                    PromptWindow.ShowPrompt("Error", "Not a valid image");
+                }
+            }
+            else
+            {
+                txtFileUpload.Text = "";
+                imgSelectedImage.Source = null;
             }
         }
 
@@ -58,28 +68,30 @@ namespace WpfPresentation.Animals
 
         private void btnUploadFile_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = txtFileUpload.Text;
-            if(fileName == "")
+            if (_imageSelected)
             {
-                PromptWindow.ShowPrompt("Error", "You must select a file to upload.");
-                return;
-            }
-
-            try
-            {
-                if (_manager.ImagesManager.AddMedicalImageByAnimalId(_animal.AnimalId, fileName))
+                try
                 {
-                    PromptWindow.ShowPrompt("Success", "Image added!");
+                    if (_fileDialog.SafeFileNames.Length > 1)
+                    {
+                        _manager.ImageManager.AddMedicalImagesByAnimalId(_animal.AnimalId, _fileDialog.FileNames);
+                        PromptWindow.ShowPrompt("Success", "Images Added");
+                    }
+                    else
+                    {
+                        _manager.ImageManager.AddMedicalImageByAnimalId(_animal.AnimalId, _fileDialog.FileName);
+                        PromptWindow.ShowPrompt("Success", "Image Added");
+                    }
                     this.Close();
                 }
-                else
+                catch (Exception ex)
                 {
-                    PromptWindow.ShowPrompt("Error", "Image failed to add.");
+                    PromptWindow.ShowPrompt("Error", ex.Message);
                 }
             }
-            catch (Exception up)
+            else
             {
-                MessageBox.Show("Image add failed. \n\n" + up.InnerException.Message);
+                PromptWindow.ShowPrompt("Sorry", "Please select an image first");
             }
         }
     }

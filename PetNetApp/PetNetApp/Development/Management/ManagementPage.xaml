@@ -16,7 +16,6 @@
         <ScrollViewer x:Name="svManagementPageTabs" Background="#6A9F83" Grid.Row="0" HorizontalScrollBarVisibility="Hidden" Height="40" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" ScrollChanged="svManagementPageTabs_ScrollChanged">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                 <Rectangle Width="25"/>
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Shelters" x:Name="btnShelters" Click="btnShelters_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Inventory" x:Name="btnInventory" Click="btnInventory_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Tickets" x:Name="btnTickets" Click="btnTickets_Click" />
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Kennel" x:Name="btnKennel" Click="btnKennel_Click"/>

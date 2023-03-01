@@ -136,5 +136,16 @@ namespace DataObjects
         {
             return amount != null && AmountRegex.IsMatch(amount);
         }
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/02/23
+        /// 
+        /// Confirms shelter name is not null, blank, or greater than the nvarchar(50) limit
+        /// </summary>
+        /// <returns>Whether the string is a valid shelter name</returns>
+        public static bool IsValidShelterName(this string shelterName)
+        {
+            return shelterName != "" && shelterName != null && shelterName.Length <= 50;
+        }
     }
 }

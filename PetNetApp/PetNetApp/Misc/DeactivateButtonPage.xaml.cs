@@ -1,5 +1,6 @@
 ﻿using DataObjects;
 using LogicLayer;
+using PetNetApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,44 +16,64 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfPresentation.Development.Misc
+namespace WpfPresentation.Misc
 {
     /// <summary>
-    /// Interaction logic for DeactivateButton.xaml
+    /// Alex Oetken
+    /// Created: 2023/02/05
+    /// 
+    /// WPF for deactivate button page within "Account Settings"
     /// </summary>
-    public partial class DeactivateButton : Page
+    ///
+    /// <remarks>
+    /// Updater Name
+    /// Updated: yyyy/mm/dd
+    /// </remarks>
+    public partial class DeactivateButtonPage : Page
     {
-        private MasterManager _manager = MasterManager.GetMasterManager(); 
-        private Users _user = new Users();
+        private static DeactivateButtonPage _existingDeactivateButton = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
 
-        public DeactivateButton()
+        public DeactivateButtonPage()
         {
             InitializeComponent();
         }
 
+        public static DeactivateButtonPage GetDeactivateButtonPage()
+        {
+            if (_existingDeactivateButton == null)
+            {
+                _existingDeactivateButton = new DeactivateButtonPage();
+            }
+
+            return _existingDeactivateButton;
+        }
+
         private void DeactivateButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Are you sure? This action cannot be undone.", "Deactivate Account?",
-                MessageBoxButton.YesNo);
+            var result = PromptWindow.ShowPrompt("Deactivate Account", "Are you sure? This action cannot be undone.", ButtonMode.YesNo);
 
-            if (result == MessageBoxResult.Yes)
+            if (result == PromptSelection.Yes)
             {
                 try
                 {
-                    if (_manager.UsersManager.DeactivateUserAccount(_user.UsersId))
+                    if (_manager.UsersManager.DeactivateUserAccount(_manager.User.UsersId))
                     {
-                        MessageBox.Show("Account has been deactivated!");
+                        PromptWindow.ShowPrompt("Success", "Account has been deactivated!");
+                        _manager.User = null;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    PromptWindow.ShowPrompt("Error", ex.Message);
 
                 }
-            } else if (result == MessageBoxResult.No)
-            {
-                
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtblkDeactivateWarning.Text = "WARNING: Clicking the button below will deactivate your account!\nThe only way you can get your account back is having an admin reactivate it for you.\n\nBE SURE THIS IS WHAT YOU WANT TO DO BEFORE PROCEEDING.";
         }
     }
 }

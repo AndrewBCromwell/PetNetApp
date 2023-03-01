@@ -15,32 +15,37 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 using PetNetApp;
-using WpfPresentation.Development.Misc;
+using WpfPresentation.Development;
 
 namespace WpfPresentation.Misc
 {
     /// <summary>
-    /// Interaction logic for LogInPage.xaml
+    /// Mads Rhea
+    /// Created: 2023/01/27
+    /// 
+    /// WPF for the Log-In page.
     /// </summary>
+    ///
+    /// <remarks>
+    /// Updater Name
+    /// Updated: yyyy/mm/dd
+    /// </remarks>
     public partial class LogInPage : Page
     {
         private static LogInPage _existingLogIn = null;
         private MasterManager _manager = MasterManager.GetMasterManager();
-        private MainWindow _mainWindow = null;
 
         public LogInPage()
         {
             InitializeComponent();
         }
 
-        public static LogInPage GetLogInPage(MainWindow mainWindow)
+        public static LogInPage GetLogInPage()
         {
             if (_existingLogIn == null)
             {
                 _existingLogIn = new LogInPage();
             }
-
-            _existingLogIn._mainWindow = mainWindow;
 
             return _existingLogIn;
         }
@@ -49,10 +54,8 @@ namespace WpfPresentation.Misc
         {
             string email = txtEmail.Text;
             string password = txtPassword.Password;
-            int emailAt = email.Count(f => f == '@');
-            int emailPeriod = email.Count(f => f == '.');
 
-            if (emailAt < 1 || emailPeriod < 1)
+            if (!email.IsValidEmail())
             {
                 ErrorLoading(true);
                 ChangeErrorText("Email is not valid.", "Please enter a valid email.");
@@ -90,16 +93,12 @@ namespace WpfPresentation.Misc
             try
             {
                 _manager.User = _manager.UsersManager.LoginUser(email, password);
-                MessageBox.Show("Welcome back, " + _manager.User.GivenName + "\n\nYou're signed in as " + RoleBuilder(_manager.User));
-                _mainWindow.mnuUser.Header = "Hello, " + _manager.User.GivenName;
-                _mainWindow.mnuLogout.Header = "Log Out";
-                NavigationService.Navigate(null);
-                _mainWindow.ShowButtonsByRole();
+                PromptWindow.ShowPrompt("Hello","Welcome back, " + _manager.User.GivenName + "\n\nYou're signed in as " + RoleBuilder(_manager.User));
                 
             }
             catch (Exception up)
             {
-                ChangeErrorText("Email / Password is not valid.", "Please enter a valid email / password.");
+                ChangeErrorText(up.Message, up.InnerException.Message);
                 ErrorLoading(true);
             }
         }
@@ -108,37 +107,26 @@ namespace WpfPresentation.Misc
         {
             txtEmail.Text = "";
             txtPassword.Password = "";
+            rowError.Height = new GridLength(1);
+
+            txtEmail.Focus();
         }
 
         private void ErrorLoading(bool onOff)
         {
             if (onOff)
             {
-                // hide elements
-                lblWelcomeBack.Visibility = Visibility.Hidden;
-                lblPleaseLogin.Visibility = Visibility.Hidden;
-                rectHeader.Visibility = Visibility.Hidden;
-
                 // show elements
-                lblWelcomeBackError.Visibility = Visibility.Visible;
-                lblPleaseLoginError.Visibility = Visibility.Visible;
-                rectHeaderError.Visibility = Visibility.Visible;
                 lblErrorErr.Visibility = Visibility.Visible;
                 lblErrorHelp.Visibility = Visibility.Visible;
+                rowError.Height = new GridLength(50);
             }
             else
             {
                 // hide elements
-                lblWelcomeBack.Visibility = Visibility.Visible;
-                lblPleaseLogin.Visibility = Visibility.Visible;
-                rectHeader.Visibility = Visibility.Visible;
-
-                // show elements
-                lblWelcomeBackError.Visibility = Visibility.Hidden;
-                lblPleaseLoginError.Visibility = Visibility.Hidden;
-                rectHeaderError.Visibility = Visibility.Hidden;
                 lblErrorErr.Visibility = Visibility.Hidden;
                 lblErrorHelp.Visibility = Visibility.Hidden;
+                rowError.Height = new GridLength(15);
             }
         }
 
@@ -177,10 +165,24 @@ namespace WpfPresentation.Misc
 
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(SignUp.GetSignUpPage(_manager));
+            NavigationService.Navigate(SignUp.GetSignUpPage());
         }
 
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
 
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogIn_Click(sender, e);
+            }
+        }
     }
 
 }

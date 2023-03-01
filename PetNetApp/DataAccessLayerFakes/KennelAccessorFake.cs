@@ -29,7 +29,7 @@ namespace DataAccessLayerFakes
                 KennelActive = true,
                 AnimalTypeId = "Dog",
                 ShelterName = "Shelter1",
-                Animal = new Animal()
+                Animal = new AnimalVM()
             };
 
             fakeAnimal = new Animal()
@@ -85,7 +85,7 @@ namespace DataAccessLayerFakes
                 KennelActive = true,
                 AnimalTypeId = "Dog",
                 ShelterName = "Shelter1",
-                Animal = new Animal()
+                Animal = new AnimalVM()
             });
             fakeKennelVMs.Add(new KennelVM
             {
@@ -95,7 +95,7 @@ namespace DataAccessLayerFakes
                 KennelActive = true,
                 AnimalTypeId = "Dog",
                 ShelterName = "Shelter2",
-                Animal = new Animal()
+                Animal = new AnimalVM()
             });
             fakeKennelVMs.Add(new KennelVM
             {
@@ -188,7 +188,7 @@ namespace DataAccessLayerFakes
             return result;
         }
 
-        public List<Animal> SelectAllAnimalsForKennel(int ShelterId)
+        public List<Animal> SelectAllAnimalsForKennel(int ShelterId, string AnimalTypeId)
         {
             List<Animal> animals = null;
             animals = fakeAnimals;

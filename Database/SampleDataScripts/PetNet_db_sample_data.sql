@@ -39,12 +39,16 @@ INSERT INTO [dbo].[Role]
 		[Description]
 		)
 	VALUES
-		('Volunteer','Someone helping our the shelters'),
         ('Admin','Someone who oversees Petnet'),
-        ('Vet','Animal doctor'),
-        ('Manager','Someone who oversees specific parts of shelters'),
         ('Employee','A worker'),
-        ('Inspector', 'Someone who inspects')
+		('Helpdesk', 'Someone who assists with PetNet app use'),
+        ('Inspector', 'Someone who inspects'),
+        ('Manager','Someone who oversees specific parts of shelters'),
+		('Marketing','Someone who oversees marketing for the shelter'),
+        ('Maintenance','Someone who oversees shelter facilities'),
+		('Moderator','Someone who oversees shelter forums'),		
+        ('Vet','Animal doctor'),
+		('Volunteer','Someone helping our the shelters')
 GO
 
 print '' print '*** creating Pronoun test records' 
@@ -57,31 +61,32 @@ VALUES
 	('They/Them')
 GO
 
+/* Update by: Stephen Jaurigue" */
 print '' print '*** inserting Images test records'
 GO
 INSERT INTO [dbo].[Images]
 		(
-		[ImageFileName]
+		[ImageId],[ImageFileName]
 		)
 	VALUES
-		('MedicalImage1.png'),
-        ('MedicalImage2.png'),
-        ('MedicalImage3.png'),
-        ('MedicalImage4.png'),
-        ('MedicalImage5.png'),
-        ('MedicalImage6.png'),
-        ('InspectionImage1.png'),
-        ('InspectionImage2.png'),
-        ('InspectionImage3.png'),
-        ('InspectionImage4.png'),
-        ('InspectionImage5.png'),
-        ('InspectionImage6.png'),
-        ('AnimalImage1.png'),
-        ('AnimalImage2.png'),
-        ('AnimalImage3.png'),
-        ('AnimalImage4.png'),
-        ('AnimalImage5.png'),
-        ('AnimalImage6.png')
+		('314a2539-5dee-40ce-ac5b-026d53750c80','MedicalImage1.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c81','MedicalImage2.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c82','MedicalImage3.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c83','MedicalImage4.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c84','MedicalImage5.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c85','MedicalImage6.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c86','InspectionImage1.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c87','InspectionImage2.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c88','InspectionImage3.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c89','InspectionImage4.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c90','InspectionImage5.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c91','InspectionImage6.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c92','AnimalImage1.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c93','AnimalImage2.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c94','AnimalImage3.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c95','AnimalImage4.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c96','AnimalImage5.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c97','AnimalImage6.png')
         
 GO
 
@@ -237,7 +242,8 @@ INSERT INTO [dbo].[AnimalStatus]
 		)
 	VALUES
 		('Sick', 'Animal is sick'),
-        ('Healthy', 'Animal is healthy')
+        ('Healthy', 'Animal is healthy'),
+        ('Deceased', 'Animal is no longer with us')
 GO
 
 
@@ -281,8 +287,9 @@ INSERT INTO [dbo].[Zipcode]
 		[Longitude]
 		)
 	VALUES
-		(50001,'Ackworth','Iowa', 41.3669, 93.4727),
-		(50002,'Adair','Iowa', 41.5004, 94.6434)
+		("50001",'Ackworth','Iowa', 41.3669, 93.4727),
+		("50002",'Adair','Iowa', 41.5004, 94.6434),
+        ("52404", "Cedar Rapids", "Iowa", "41.9779", "91.6656")
 GO
 
 print '' print '*** creating TicketStatus sample data'
@@ -357,10 +364,13 @@ INSERT INTO [dbo].[Users]
 		[Phone]
 		)
     VALUES
-		("Unknown", "They/Them", "100000", "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 207", '50001', "3195943138"),
-		("Male", "He/Him", "100000", "Stephen", "Jaurigue", "stephenjaurigue@company.com", "123 Kirkwood Parkway", "Apt 210", "50001", "3195555555"),
-		("Female", "She/Her", "100000", "Molly", "Meister", "mollymeister@company.com", "456 Kirkwood Parkway", "Apt 256", "50001", "3196666666"),
-		('Male', 'He/Him', '100001', 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777')
+		("Unknown", "They/Them", 100000, "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 207", '50001', "3195943138"),
+		("Male", "He/Him", 100000, "Stephen", "Jaurigue", "stephenjaurigue@company.com", "123 Kirkwood Parkway", "Apt 210", "50001", "3195555555"),
+		('Female', "She/Her", 100000, "Molly", "Meister", "mollymeister@company.com", "456 Kirkwood Parkway", "Apt 256", "50001", "3196666666"),
+		('Male', 'He/Him', 100001, 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777'),
+		('Male', "He/Him", 100000, "Barry", "Mikulas", "bmikulas@company.com", "2 Kirkwood Parkway", "Apt 4", '50001', "3198675309"),
+        ('Male', "He/Him", 100001, 'Chris','Dreismeier','Chris@gmail.com','4150 Riverview rd', "Apt 16", 50001, '3192948541'),
+		('Male', "He/Him", 100001, 'Asa','Armstrong','Asa@gmail.com','1234 Chestnut rd', "Apt 420", 50001, '3191234321')
 GO
 
 print '' print '*** creating Animal sample data'
@@ -384,13 +394,19 @@ INSERT INTO [dbo].[Animal]
 		(100000, "Spots", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-01", "Microchip111112", "Lots of spots"), 
 		(100000, "Ruffer", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111113", "Barks a lot"),
 		(100000, "Buddy", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111114", "A cat in disguise"),
-        (100000, "Buddy Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111115", "A cat in disguise"),
-        (100000, "Ruffer Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111116", "Barks a lot"),
+        (100000, "Buddy Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Deceased", "2022-12-03", "Microchip111115", "A cat in disguise"),
+        (100000, "Ruffer Senior", "Female", "Dog", "Lab", "Happy", "A good pet", "Deceased", "2022-12-03", "Microchip111116", "Barks a lot"),
 		(100000, "Penny", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111117", "A good dog"),
         (100000, "Chester", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111118", "A good dog"),
         (100000, "Ghost", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111119", "Doesnt bark a lot"),
 		(100000, "Alexa", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111120", "A good dog"),
-        (100000, "Anna", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111121", "Doesnt bark a lot")
+        (100000, "Anna", "Female", "Dog", "Lab", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111121", "Doesnt bark a lot"),
+        (100000, "Purrfect", "Male", "Cat", "Persian", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111122", "Purrs a lot"),
+		(100000, "Mittens", "Male", "Cat", "Persian", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111123", "Well behaved"),
+        (100000, "Annie", "Male", "Cat", "Persian", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111124", "Very polite"),
+        (100000, "Slithers", "Male", "Snake", "Viper", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111125", "Ssssss a lot"),
+		(100000, "Leo", "Male", "Snake", "Viper", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111126", "Well behaved"),
+        (100000, "Lucy", "Female", "Snake", "Rattlesnake", "Happy", "A good pet", "Healthy", "2022-12-03", "Microchip111127", "Oddly cute")
 GO
 
 print '' print '*** Creating Post sample data'
@@ -681,7 +697,10 @@ INSERT INTO [dbo].[UserRoles]
         ('Inspector', 100000),
         ('Volunteer', 100001),
         ('Vet', 100002),
-        ('Inspector', 100003)
+        ('Inspector', 100003),
+        ('Admin', 100004),
+        ('Volunteer', 100005),
+        ('Volunteer', 100006)
         
 GO
 
@@ -1029,8 +1048,8 @@ INSERT INTO [dbo].[Kennel]
 		)
 	VALUES
 		(100000, "Kennel 1", "Dog", 1, 1),
-		(100001, "Kennel 2", "Dog", 1, 1),
-		(100002, "Kennel 3", "Dog", 1, 1),
+		(100000, "Kennel 2", "Dog", 1, 1),
+		(100000, "Kennel 3", "Dog", 1, 1),
 		(100000, "Kennel 4", "Dog", 1, 1),
 		(100000, "Kennel 5", "Dog", 1, 1),
 		(100000, "Kennel 6", "Dog", 1, 1),
@@ -1078,12 +1097,12 @@ INSERT INTO [dbo].[AnimalMedicalImage]
 		[MedicalRecordId]
 		)
 	VALUES
-		(100000, 100000),
-        (100001, 100001),
-        (100002, 100002),
-        (100003, 100003),
-        (100004, 100004),
-        (100005, 100005)
+		('314a2539-5dee-40ce-ac5b-026d53750c80', 100000),
+        ('314a2539-5dee-40ce-ac5b-026d53750c81', 100001),
+        ('314a2539-5dee-40ce-ac5b-026d53750c82', 100002),
+        ('314a2539-5dee-40ce-ac5b-026d53750c83', 100003),
+        ('314a2539-5dee-40ce-ac5b-026d53750c84', 100004),
+        ('314a2539-5dee-40ce-ac5b-026d53750c85', 100005)
 GO
 
 print '' print '*** creating RequestRescourceLine sample data'
@@ -1225,12 +1244,12 @@ INSERT INTO [dbo].[InspectionImage]
 		[ImageId]
 		)
 	VALUES
-		(100000, 100006),
-        (100001, 100007),
-        (100002, 100008),
-        (100000, 100009),
-        (100001, 100010),
-        (100002, 100011)
+		(100000, '314a2539-5dee-40ce-ac5b-026d53750c86'),
+        (100001, '314a2539-5dee-40ce-ac5b-026d53750c87'),
+        (100002, '314a2539-5dee-40ce-ac5b-026d53750c88'),
+        (100000, '314a2539-5dee-40ce-ac5b-026d53750c89'),
+        (100001, '314a2539-5dee-40ce-ac5b-026d53750c90'),
+        (100002, '314a2539-5dee-40ce-ac5b-026d53750c91')
 GO
 
 print '' print '*** creating AdoptionPlacement sample data'
@@ -1392,9 +1411,17 @@ INSERT INTO [dbo].[Schedule]
         [EndTime]
 		)
 	VALUES
-		(100000, 100000, GETDATE(), DATEADD(day, 4, getdate())),
-        (100001, 100000, GETDATE(), DATEADD(day, 4, getdate())),
-        (100001, 100000, GETDATE(), DATEADD(day, 4, getdate()))
+		(100000, 100000, GETDATE(), DATEADD(day, 1, getdate())),
+        (100001, 100000, GETDATE(), DATEADD(day, 1, getdate())),
+        (100002, 100000, GETDATE(), DATEADD(day, 1, getdate())),
+        (100000, 100000, '20230215 08:00:00 AM','20230215 06:00:00 PM' ),
+		(100000, 100000, '20230216 08:00:00 AM','20230216 06:00:00 PM' ),
+		(100000, 100000, '20230217 08:00:00 AM','20230217 06:00:00 PM' ),
+		(100000, 100000, '20230218 08:00:00 AM','20230218 06:00:00 PM' ),
+		(100001, 100000, '20230215 08:00:00 AM','20230215 06:00:00 PM' ),
+		(100001, 100000, '20230216 08:00:00 AM','20230216 06:00:00 PM' ),
+		(100001, 100000, '20230217 08:00:00 AM','20230217 06:00:00 PM' ),
+		(100001, 100000, '20230218 08:00:00 AM','20230218 06:00:00 PM' )
 GO
 
 print '' print '*** creating Death sample data'
@@ -1421,10 +1448,10 @@ INSERT INTO [dbo].[AnimalImage]
         [ImageId]
 		)
 	VALUES
-		(100000, 100012),
-        (100001, 100013),
-        (100002, 100014),
-        (100003, 100015),
-        (100004, 100016),
-        (100005, 100017)
+		(100000, '314a2539-5dee-40ce-ac5b-026d53750c92'),
+        (100001, '314a2539-5dee-40ce-ac5b-026d53750c93'),
+        (100002, '314a2539-5dee-40ce-ac5b-026d53750c94'),
+        (100003, '314a2539-5dee-40ce-ac5b-026d53750c95'),
+        (100004, '314a2539-5dee-40ce-ac5b-026d53750c96'),
+        (100005, '314a2539-5dee-40ce-ac5b-026d53750c97')
 GO

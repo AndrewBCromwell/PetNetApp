@@ -124,6 +124,7 @@ namespace WpfPresentation.Development.Community
         }
         /// Barry Mikulas
         /// Created: 2023/02/11
+        /// Prompts user for confirmation of cancelation, closes window if confirmed
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             // verify person wants to close the window
@@ -187,7 +188,7 @@ namespace WpfPresentation.Development.Community
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
 
             PopulateUserRoleGrid();

@@ -30,8 +30,8 @@ namespace WpfPresentation.Development.Management
         public ManagementPage(MasterManager manager)
         {
             InitializeComponent();
+            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
             _manager = manager;
-            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnShelters, btnTickets, btnVolunteer };
         }
 
         public static ManagementPage GetManagementPage(MasterManager manager)
@@ -57,13 +57,6 @@ namespace WpfPresentation.Development.Management
             }
         }
 
-        private void btnShelters_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
-        }
-
         private void btnInventory_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
@@ -74,11 +67,7 @@ namespace WpfPresentation.Development.Management
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
             frameAnimals.Navigate(new ViewTicketList());
-            /*Kennel kennel = new Kennel() { AnimalTypeId = "Dog", KennelActive = true, KennelId = 100000, KennelName = "Kennel 1", KennelSpace = 1, ShelterId = 100000 };
-            Animal animal = new Animal() { AnimalId = 100000, AnimalName = "Fido" };
-            frameAnimals.Navigate(new KenOccupancyUpdate_333(kennel, animal));*/
         }
 
         private void btnKennel_Click(object sender, RoutedEventArgs e)

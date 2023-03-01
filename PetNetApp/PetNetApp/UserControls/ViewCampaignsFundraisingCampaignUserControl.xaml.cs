@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 
-namespace WpfPresentation.Development.Fundraising
+namespace WpfPresentation.UserControls
 {
     /// <summary>
     /// Interaction logic for ViewCampaignsFundraisingCampaignUserControl.xaml
