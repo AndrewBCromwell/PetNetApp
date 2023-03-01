@@ -127,7 +127,7 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Failed to insert animal into kennel</exception>
         /// <returns>Rows affected</returns>
         int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId);
-        List<Animal> SelectAllAnimalsForKennel(int ShelterId);
+        // List<Animal> SelectAllAnimalsForKennel(int ShelterId);
         
         /// <summary>
         /// William Rients
