@@ -604,7 +604,7 @@ namespace DataAccessLayer
                         users.Add(user);
 
                     }
-                              }
+                }
                 // close reader
                 reader.Close();
             }
@@ -616,7 +616,7 @@ namespace DataAccessLayer
 
 
         }
-            
+
         /// Barry Mikukas
         /// Created: 2023/02/09
         /// 
@@ -674,13 +674,13 @@ namespace DataAccessLayer
                     user.Active = reader.GetBoolean(12);
                     user.Suspend = reader.GetBoolean(13);
                     //}
-                              }
+                }
                 // close reader
                 reader.Close();
             }
             catch (Exception ex)
             {
-                 throw ex;
+                throw ex;
             }
 
             return user;
@@ -698,7 +698,7 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        
+
         // Teft Francisco
         public int UpdateUserActive(int userId, bool active)
         {
@@ -743,7 +743,7 @@ namespace DataAccessLayer
         /// <returns>int</returns>
         public int UpdateUserDetails(Users oldUser, Users updatedUser)
         {
-            
+
 
             int rows = 0;
 
@@ -836,7 +836,7 @@ namespace DataAccessLayer
             finally
             {
                 conn.Close();
-            
+
             }
 
             return rowsAffected;
@@ -882,6 +882,98 @@ namespace DataAccessLayer
             }
 
             return rowsAffected;
+        }
+
+        /// <summary>
+        /// [Barry Mikulas - 2023/02/26]
+        /// Updates User suspended status to value sent in.
+        /// </summary>
+        /// <returns>int # records updated</returns>
+
+        public int UpdateUserSuspend(int usersId, bool suspend)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            string cmdText = "sp_update_user_suspend_by_user_id";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+            cmd.Parameters.Add("@Suspended", SqlDbType.Bit);
+
+            cmd.Parameters["@UsersId"].Value = usersId;
+            cmd.Parameters["@Suspended"].Value = suspend;
+
+            try
+            {
+                conn.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+            // throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// [Barry Mikulas - 2023/02/26]
+        /// Returns the count of active, unsuspended accounts by roleId
+        /// Used initially to check to get number of Admin roles are active, unsuspended
+        /// </summary>
+        /// <returns>int # of usersId matching criteria</returns>
+        public int SelectCountActiveUnsuspendedUsersByRole(string roleId)
+        {
+
+            int roleCount = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            string cmdText = "sp_select_count_active_unsuspended_users_by_roleId";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@RoleId", SqlDbType.NVarChar, 50);
+
+            cmd.Parameters["@RoleId"].Value = roleId;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader .Read();
+                    roleCount = reader.GetInt32(0);
+                    
+                }
+                // close reader
+                reader.Close();
+
+            }
+            catch (Exception up)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return roleCount;
+            // throw new NotImplementedException();
         }
     }
 

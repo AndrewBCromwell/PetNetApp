@@ -63,6 +63,21 @@ namespace LogicLayer
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
             FundraisingCampaignManager = new FundraisingCampaignManager(new FundraisingCampaignAccessorFakes());
+            //for testing from dev page
+            User = new UsersVM()
+            {
+                UsersId = 100004,
+                ShelterId = 100000,
+                GivenName = "Barry",
+                FamilyName = "Mikulas",
+                Email = "bmikulas@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true,
+                Suspend = false,
+                Roles = new List<string>() { "Admin"}
+            };
         }
     
         public static MasterManager GetMasterManager()

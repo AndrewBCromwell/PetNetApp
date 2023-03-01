@@ -24,7 +24,7 @@ namespace DataAccessLayerFakes
     /// </remarks>
     public class UsersAccessorFakes : IUsersAccessor
     {
-        private List<Users> _fakeUsers = new List<Users>(); 
+        private List<Users> _fakeUsers = new List<Users>();
         private List<UsersVM> fakeUsers = new List<UsersVM>();
         private List<string> fakePassword = new List<string>();
         private List<string> fakeGenders = new List<string>();
@@ -59,7 +59,7 @@ namespace DataAccessLayerFakes
                 Active = true,
                 Suspend = false,
                 Roles = new List<string>()
-            }) ;
+            });
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1001,
@@ -113,7 +113,7 @@ namespace DataAccessLayerFakes
                 Phone = "319-594-3138",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>()
+                Roles = new List<string>() { "Helpdesk", "Marketing", "Admin" }
             });
             fakeUsers.Add(new UsersVM()
             {
@@ -125,19 +125,15 @@ namespace DataAccessLayerFakes
                 Zipcode = "52404",
                 Phone = "319-111-2222",
                 Active = true,
-                Suspend = false,
-                Roles = new List<string>()
+                Suspend = true,
+                Roles = new List<string>() { "Vet", "Maintenance", "Admin" }
             });
 
-            //one user test requires 3 volunteers - if more volunteer roles are added if will cause it to fail -  barry
+            //one user test requires 3 volunteers - if more volunteer roles are added if will cause it to fail -  Barry
             fakeUsers[0].Roles.Add("Volunteer");
+            fakeUsers[0].Roles.Add("Admin");
             fakeUsers[1].Roles.Add("Volunteer");
             fakeUsers[2].Roles.Add("Volunteer");
-            fakeUsers[3].Roles.Add("Admin");
-            fakeUsers[4].Roles.Add("Helpdesk"); 
-            fakeUsers[4].Roles.Add("Marketing");
-            fakeUsers[5].Roles.Add("Vet");
-            fakeUsers[5].Roles.Add("Maintenance");
 
             fakePassword.Add("9c9064c59f1ffa2e174ee754d2979be80dd30db552ec03e7e327e9b1a4bd594e");
 
@@ -277,11 +273,11 @@ namespace DataAccessLayerFakes
 
             foreach (Users currentUser in matchUsers)
             {
-                currentUser.Active = false; 
+                currentUser.Active = false;
             }
 
-            return matchUsers.Count(); 
-            
+            return matchUsers.Count();
+
         }
 
         /// <summary>
@@ -293,7 +289,7 @@ namespace DataAccessLayerFakes
         {
             _fakeUsers.Add(user);
 
-            return _fakeUsers.Count(); 
+            return _fakeUsers.Count();
         }
 
         /// <summary>
@@ -385,7 +381,7 @@ namespace DataAccessLayerFakes
             {
                 foreach (var role in user.Roles)
                 {
-                    if(role == roleId)
+                    if (role == roleId)
                     {
                         users.Add(user);
                     }
@@ -488,6 +484,72 @@ namespace DataAccessLayerFakes
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created:2023/02/26
+        /// 
+        /// suspend or unsuspend user - returns number of records update
+        /// </summary>
+        /// <param name="suspend">if true set suspend to true, otherwise false</param>
+        /// <param name="usersId"></param>
+        /// <returns>int</returns>
+        public int UpdateUserSuspend(int usersId, bool suspend)
+        {
+            int result = 0;
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                if (fakeUser.UsersId == usersId)
+                {
+                    if (suspend == false)
+                    {
+                        fakeUser.Suspend = false;
+                        result = 1;
+                        return result;
+                    }
+                    else
+                    {
+                        fakeUser.Suspend = true;
+                        result = 1;
+                        return result;
+                    }
+                }
+                if (fakeUser == null)
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            return result;
+
+            // return 1; green test
+            //throw new NotImplementedException();
+        }
+
+        public int SelectCountActiveUnsuspendedUsersByRole(string roleId)
+        {
+            int result = 0;
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                //make sure user is active and not suspended
+                if (fakeUser.Active && !fakeUser.Suspend)
+                {
+                    if (fakeUser.Roles.Contains(roleId))
+                    {
+                        result++;
+                        continue;
+                    }
+                }
+                if (fakeUser == null)
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            return result;
+            //return 2; // green test
+            //throw new NotImplementedException(); // red test
         }
     }
 }

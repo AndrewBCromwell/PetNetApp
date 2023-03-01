@@ -28,6 +28,7 @@ namespace WpfPresentation.Community
         private MasterManager _masterManager = MasterManager.GetMasterManager();
 
         List<UsersVM> _employeeList = null;
+
         public UserManagementPage()
         {
             InitializeComponent();
@@ -131,9 +132,6 @@ namespace WpfPresentation.Community
         // MenuItem Click
         private void menuItem_Update_Click(Users user)
         {
-            //MessageBox.Show("Update");
-
-            //need a user object from the update button to launch the role popup
             RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_masterManager, user);
             roleManagementPopupWindow.ShowDialog();
         }
@@ -148,6 +146,7 @@ namespace WpfPresentation.Community
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_masterManager, user);
             //SuspendUserPopup suspendUserPopup = new SuspendUserPopup();
             suspendUserPopup.ShowDialog();
+            NavigationService.Navigate(new UserManagementPage());
         }
 
         /// <summary>
@@ -161,6 +160,7 @@ namespace WpfPresentation.Community
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_masterManager, user);
             //SuspendUserPopup suspendUserPopup = new SuspendUserPopup();
             suspendUserPopup.ShowDialog();
+            NavigationService.Navigate(new  UserManagementPage());
         }
 
         private void menuItem_Deactivate_Click()
