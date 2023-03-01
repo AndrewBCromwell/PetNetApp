@@ -35,5 +35,6 @@ namespace DataObjects
         public string AnimalBreedDescription { get; set; }
         public List<MedicalRecord> MedicalNotes { get; set; }
         public DeathVM AnimalDeath { get; set; }
+        public List<Images> AnimalImages { get; set; }
     }
 }

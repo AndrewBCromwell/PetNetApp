@@ -105,7 +105,10 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         KennelVM kennelVM = new KennelVM();
-                        Animal animal = new Animal();
+                        AnimalVM animal = new AnimalVM();
+                        List<Images> animalImages = new List<Images>();
+                        Images image = new Images();
+                        animal.AnimalImages = animalImages;
 
                         kennelVM.KennelId = reader.GetInt32(0);
                         kennelVM.ShelterId = reader.GetInt32(1);
@@ -113,7 +116,7 @@ namespace DataAccessLayer
                         kennelVM.AnimalTypeId = reader.GetString(3);
                         kennelVM.KennelActive = reader.GetBoolean(4);
                         
-                        if(reader.IsDBNull(5) || reader.IsDBNull(6) || reader.IsDBNull(7))
+                        if(reader.IsDBNull(8))
                         {
                             animal = null;
                         } else
@@ -124,6 +127,15 @@ namespace DataAccessLayer
                             animal.AnimalId = reader.GetInt32(8);
                         }
                         
+                        if(reader.IsDBNull(9))
+                        {
+                            image = null;
+                        } else
+                        {
+                            image.ImageId = reader.GetString(9);
+                            image.ImageFileName = reader.GetString(10);
+                            animal.AnimalImages.Add(image);
+                        }
 
                         kennelVM.Animal = animal;
                         kennelVMs.Add(kennelVM);

@@ -247,8 +247,7 @@ namespace DataAccessLayerFakes
                 if (fakeUser.Email == email)
                 {
                     user = fakeUser;
-                    user.Roles = fakeUser.Roles;
-                    //user.Roles = new List<string>();
+                    user.Roles = SelectRolesByUserID(fakeUser.UsersId);
                     break;
                 }
 

@@ -79,7 +79,7 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new ViewAdoptableAnimalProfile(100000));
+            frameAnimals.Navigate(null);
         }
 
         private void btnSurrender_Click(object sender, RoutedEventArgs e)

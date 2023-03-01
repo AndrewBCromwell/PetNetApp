@@ -61,31 +61,32 @@ VALUES
 	('They/Them')
 GO
 
+/* Update by: Stephen Jaurigue" */
 print '' print '*** inserting Images test records'
 GO
 INSERT INTO [dbo].[Images]
 		(
-		[ImageFileName]
+		[ImageId],[ImageFileName]
 		)
 	VALUES
-		('MedicalImage1.png'),
-        ('MedicalImage2.png'),
-        ('MedicalImage3.png'),
-        ('MedicalImage4.png'),
-        ('MedicalImage5.png'),
-        ('MedicalImage6.png'),
-        ('InspectionImage1.png'),
-        ('InspectionImage2.png'),
-        ('InspectionImage3.png'),
-        ('InspectionImage4.png'),
-        ('InspectionImage5.png'),
-        ('InspectionImage6.png'),
-        ('AnimalImage1.png'),
-        ('AnimalImage2.png'),
-        ('AnimalImage3.png'),
-        ('AnimalImage4.png'),
-        ('AnimalImage5.png'),
-        ('AnimalImage6.png')
+		('314a2539-5dee-40ce-ac5b-026d53750c80','MedicalImage1.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c81','MedicalImage2.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c82','MedicalImage3.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c83','MedicalImage4.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c84','MedicalImage5.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c85','MedicalImage6.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c86','InspectionImage1.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c87','InspectionImage2.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c88','InspectionImage3.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c89','InspectionImage4.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c90','InspectionImage5.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c91','InspectionImage6.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c92','AnimalImage1.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c93','AnimalImage2.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c94','AnimalImage3.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c95','AnimalImage4.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c96','AnimalImage5.png'),
+        ('314a2539-5dee-40ce-ac5b-026d53750c97','AnimalImage6.png')
         
 GO
 
@@ -1048,8 +1049,8 @@ INSERT INTO [dbo].[Kennel]
 		)
 	VALUES
 		(100000, "Kennel 1", "Dog", 1, 1),
-		(100001, "Kennel 2", "Dog", 1, 1),
-		(100002, "Kennel 3", "Dog", 1, 1),
+		(100000, "Kennel 2", "Dog", 1, 1),
+		(100000, "Kennel 3", "Dog", 1, 1),
 		(100000, "Kennel 4", "Dog", 1, 1),
 		(100000, "Kennel 5", "Dog", 1, 1),
 		(100000, "Kennel 6", "Dog", 1, 1),
@@ -1097,12 +1098,12 @@ INSERT INTO [dbo].[AnimalMedicalImage]
 		[MedicalRecordId]
 		)
 	VALUES
-		(100000, 100000),
-        (100001, 100001),
-        (100002, 100002),
-        (100003, 100003),
-        (100004, 100004),
-        (100005, 100005)
+		('314a2539-5dee-40ce-ac5b-026d53750c80', 100000),
+        ('314a2539-5dee-40ce-ac5b-026d53750c81', 100001),
+        ('314a2539-5dee-40ce-ac5b-026d53750c82', 100002),
+        ('314a2539-5dee-40ce-ac5b-026d53750c83', 100003),
+        ('314a2539-5dee-40ce-ac5b-026d53750c84', 100004),
+        ('314a2539-5dee-40ce-ac5b-026d53750c85', 100005)
 GO
 
 print '' print '*** creating RequestRescourceLine sample data'
@@ -1244,12 +1245,12 @@ INSERT INTO [dbo].[InspectionImage]
 		[ImageId]
 		)
 	VALUES
-		(100000, 100006),
-        (100001, 100007),
-        (100002, 100008),
-        (100000, 100009),
-        (100001, 100010),
-        (100002, 100011)
+		(100000, '314a2539-5dee-40ce-ac5b-026d53750c86'),
+        (100001, '314a2539-5dee-40ce-ac5b-026d53750c87'),
+        (100002, '314a2539-5dee-40ce-ac5b-026d53750c88'),
+        (100000, '314a2539-5dee-40ce-ac5b-026d53750c89'),
+        (100001, '314a2539-5dee-40ce-ac5b-026d53750c90'),
+        (100002, '314a2539-5dee-40ce-ac5b-026d53750c91')
 GO
 
 print '' print '*** creating AdoptionPlacement sample data'
@@ -1448,10 +1449,10 @@ INSERT INTO [dbo].[AnimalImage]
         [ImageId]
 		)
 	VALUES
-		(100000, 100012),
-        (100001, 100013),
-        (100002, 100014),
-        (100003, 100015),
-        (100004, 100016),
-        (100005, 100017)
+		(100000, '314a2539-5dee-40ce-ac5b-026d53750c92'),
+        (100001, '314a2539-5dee-40ce-ac5b-026d53750c93'),
+        (100002, '314a2539-5dee-40ce-ac5b-026d53750c94'),
+        (100003, '314a2539-5dee-40ce-ac5b-026d53750c95'),
+        (100004, '314a2539-5dee-40ce-ac5b-026d53750c96'),
+        (100005, '314a2539-5dee-40ce-ac5b-026d53750c97')
 GO
