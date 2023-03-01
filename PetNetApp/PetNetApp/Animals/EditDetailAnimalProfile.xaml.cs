@@ -281,7 +281,6 @@ namespace WpfPresentation.Animals
         private void populateComboBoxes()
         {
             _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
-            cmbAnimalBreedId.ItemsSource = _breeds;
             _types = _manager.AnimalManager.RetrieveAllAnimalTypes();
             cmbAnimalTypeId.ItemsSource = _types;
 
@@ -430,7 +429,6 @@ namespace WpfPresentation.Animals
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(ex);
                             PromptWindow.ShowPrompt("Error", "Update failed.\n" + ex, ButtonMode.Ok);
                         }
                     }
@@ -574,12 +572,41 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/22
+        /// 
+        /// Helper method that links the breeds and types combo
+        /// boxes so that when an animal type is selected only
+        /// breeds of that type are available in the breeds box
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void cmbAnimalTypeId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cmbAnimalBreedId.ItemsSource = _breeds[cmbAnimalTypeId.SelectedItem.ToString()];
             cmbAnimalBreedId.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/22
+        /// 
+        /// Helper method that links the Aggressive combo box with
+        /// the Aggressive Description textbox, so that a description
+        /// can only be entered if "Yes" has been selected in the combo
+        /// box.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void cmbAggressive_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbAggressive.SelectedItem.ToString() == "Yes")

@@ -177,6 +177,7 @@ GO
 
 /* InsertAnimal stored procedure */
 /* Created by John */
+/* Updated by Andrew S. */
 print '' print '*** creating sp_insert_animal (John)'
 	GO
 	CREATE PROCEDURE [dbo].[sp_insert_animal]
@@ -189,7 +190,6 @@ print '' print '*** creating sp_insert_animal (John)'
 		@Personality				[nvarchar](500),
 		@Description				[nvarchar](500),
 		@AnimalStatusId				[nvarchar](50),
-		@ReceivedDate				[date],
 		@MicrochipSerialNumber		[char](15),
 		@Aggressive					[bit],
 		@AggressiveDescription		[nvarchar](500),
@@ -201,12 +201,12 @@ print '' print '*** creating sp_insert_animal (John)'
 	AS
 		BEGIN
 			INSERT INTO [dbo].[Animal]
-			([AnimalName],[AnimalGender],[AnimalTypeId],[AnimalBreedId],[Personality],[Description]
-				,[AnimalStatusId],[RecievedDate],[MicrochipSerialNumber],[Aggressive]
-				,[AggressiveDescription],[ChildFriendly],[NeuterStatus],[Notes], [AnimalShelterId])
+			([AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId], [Personality], [Description]
+			, [AnimalStatusId], [MicrochipSerialNumber], [Aggressive]
+			, [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId])
 			VALUES
-			(@AnimalName,@AnimalGender,@AnimalTypeId,@AnimalBreedId,@Personality,@Description
-			,@AnimalStatusId,@ReceivedDate,@MicrochipSerialNumber,@Aggressive
-			,@AggressiveDescription,@ChildFriendly,@NeuterStatus,@Notes, @AnimalShelterId)
+			(@AnimalName, @AnimalGender, @AnimalTypeId, @AnimalBreedId, @Personality, @Description
+			, @AnimalStatusId, @MicrochipSerialNumber, @Aggressive, @AggressiveDescription, @ChildFriendly
+			, @NeuterStatus, @Notes, @AnimalShelterId)
 		END
-	GO
+	GO	

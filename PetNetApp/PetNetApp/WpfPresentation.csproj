@@ -76,9 +76,6 @@
     <Compile Include="Development\Animals\AddAnimalPage.xaml.cs">
       <DependentUpon>AddAnimalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Animals\AddAnimalSecondPage.xaml.cs">
-      <DependentUpon>AddAnimalSecondPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
       <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
     </Compile>
@@ -190,10 +187,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Animals\AddAnimalPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Animals\AddAnimalSecondPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

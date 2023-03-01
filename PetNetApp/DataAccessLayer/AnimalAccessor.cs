@@ -13,21 +13,6 @@ namespace DataAccessLayer
 {
     public class AnimalAccessor : IAnimalAccessor
     {
-        /// <summary>
-        /// John
-        /// Created: N/A
-        /// 
-        /// Inserts animal profile record into the database
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Andrew Schneider
-        /// Updated: 2023/02/19
-        /// Added shelter Id
-        /// </remarks>
-        /// <param name="animal">The animal object to be added</param>
-        /// <exception cref="Exception">Insert Fails</exception>
-        /// <returns>Rows affected</returns>
         public int InsertAnimal(AnimalVM animal)
         {
             int rows = 0;
@@ -43,16 +28,57 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@AnimalGender", animal.AnimalGender);
             cmd.Parameters.AddWithValue("@AnimalTypeId", animal.AnimalTypeId);
             cmd.Parameters.AddWithValue("@AnimalBreedId", animal.AnimalBreedId);
-            cmd.Parameters.AddWithValue("@Personality", animal.Personality);
-            cmd.Parameters.AddWithValue("@Description", animal.Description);
             cmd.Parameters.AddWithValue("@AnimalStatusId", animal.AnimalStatusId);
-            cmd.Parameters.AddWithValue("@RecievedDate", animal.BroughtIn);
-            cmd.Parameters.AddWithValue("@MicrochipSerialNumber", animal.MicrochipNumber);
+           // cmd.Parameters.AddWithValue("@RecievedDate", animal.BroughtIn);
             cmd.Parameters.AddWithValue("@Aggressive", animal.Aggressive);
-            cmd.Parameters.AddWithValue("@AggressiveDescription", animal.AggressiveDescription);
             cmd.Parameters.AddWithValue("@ChildFriendly", animal.ChildFriendly);
             cmd.Parameters.AddWithValue("@NeuterStatus", animal.NeuterStatus);
-            cmd.Parameters.AddWithValue("@Notes", animal.Notes);
+
+            if (animal.Personality == null)
+            {
+                cmd.Parameters.AddWithValue("@Personality", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Personality", animal.Personality);
+            }
+
+            if (animal.Description == null)
+            {
+                cmd.Parameters.AddWithValue("@Description", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Description", animal.Description);
+            }
+
+            if (animal.MicrochipNumber == null)
+            {
+                cmd.Parameters.AddWithValue("@MicrochipSerialNumber", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@MicrochipSerialNumber", animal.MicrochipNumber);
+            }
+
+            if (animal.AggressiveDescription == null)
+            {
+                cmd.Parameters.AddWithValue("@AggressiveDescription", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@AggressiveDescription", animal.AggressiveDescription);
+            }
+
+            if (animal.Notes == null)
+            {
+                cmd.Parameters.AddWithValue("@Notes", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Notes", animal.Notes);
+            }
+
             try
             {
                 conn.Open();
@@ -138,22 +164,6 @@ namespace DataAccessLayer
             return animals;
         }
 
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/01
-        /// 
-        /// Selects an animal VM by animal Id and shelter Id
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="animalId">The animal Id of the animal VM to be returned</param>
-        /// <param name="shelterId">The shelter Id of the animal VM to be returned</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>AnimalVM</returns>
         public AnimalVM SelectAnimalByAnimalId(int animalId, int shelterId)
         {
             AnimalVM animal = new AnimalVM();
@@ -228,22 +238,7 @@ namespace DataAccessLayer
 
             return animal;
         }
-
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Selects all animal breeds to populate add/edit animal profile combo boxes
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param>No parameters</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>A  list of all animal breeds</returns>
+       
         public Dictionary<string, List<string>> SelectAllAnimalBreeds()
         {
             Dictionary<string, List<string>> breeds = new Dictionary<string, List<string>>();
@@ -299,21 +294,6 @@ namespace DataAccessLayer
             return breeds;
         }
 
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Selects all animal genders to populate add/edit animal profile combo boxes
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param>No parameters</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>A  list of all animal genders</returns>
         public List<string> SelectAllAnimalGenders()
         {
             List<string> genders = new List<string>();
@@ -362,22 +342,7 @@ namespace DataAccessLayer
             }
             return genders;
         }
-
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Selects all animal statuses to populate add/edit animal profile combo boxes
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param>No parameters</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>A  list of all animal statuses</returns>
+       
         public List<string> SelectAllAnimalStatuses()
         {
             List<string> statuses = new List<string>();
@@ -426,22 +391,7 @@ namespace DataAccessLayer
             }
             return statuses;
         }
-
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Selects all animal types to populate add/edit animal profile combo boxes
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param>No parameters</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>A  list of all animal types</returns>
+       
         public List<string> SelectAllAnimalTypes()
         {
             List<string> types = new List<string>();
@@ -491,23 +441,6 @@ namespace DataAccessLayer
             return types;
         }
 
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Updates an animal profile record using an "old" animal VM
-        /// object and a "new" edited animal VM object
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="oldAnimal">AnimalVM object holding old data</param>
-        /// <param name="newAnimal">AnimalVM object holding new edited data</param>
-        /// <exception cref="Exception">Update Fails</exception>
-        /// <returns>Rows edited</returns>
         public int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
         {
             int rows = 0;
