@@ -22,12 +22,16 @@ Create procedure [dbo].[sp_select_kennels]
 )
 AS
 	BEGIN
-		Select 	[Kennel].[KennelId], [ShelterId], [KennelName], [Kennel].[AnimalTypeId], [KennelActive], [AnimalName],
-				[RecievedDate], [Notes], [AnimalKenneling].[AnimalId]
+		Select 	DISTINCT [Kennel].[KennelId], [ShelterId], [KennelName], [Kennel].[AnimalTypeId], [KennelActive], [AnimalName],
+				[RecievedDate], [Notes], [AnimalKenneling].[AnimalId], [Images].[ImageId], [Images].[ImageFileName]
         From	[Kennel] left join [AnimalKenneling]
 					on [Kennel].[KennelId] = [AnimalKenneling].[KennelId]
 				left join [Animal]
 					on [AnimalKenneling].[AnimalId] = [Animal].[AnimalId]
+				left join [AnimalImage] 
+					on [AnimalKenneling].[AnimalId] = [AnimalImage].[AnimalId]
+				left join [Images]
+					on [AnimalImage].[ImageId] = [Images].[ImageId]
 		Where	@ShelterId = [ShelterId] AND [KennelActive] = 1
 		
     END

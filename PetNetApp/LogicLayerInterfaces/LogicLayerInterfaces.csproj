@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,9 +52,11 @@
     <Compile Include="IProcedureManager.cs" />
     <Compile Include="IRoleManager.cs" />
     <Compile Include="IScheduleManager.cs" />
+    <Compile Include="IShelterManager.cs" />
     <Compile Include="ITestManager.cs" />
     <Compile Include="ITicketManager.cs" />
     <Compile Include="IUsersManager.cs" />
+    <Compile Include="IVaccinationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

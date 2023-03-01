@@ -9,11 +9,26 @@ using DataObjects;
 
 namespace DataAccessLayerFakes
 {
+    /// <summary>
+    /// Mads Rhea
+    /// Created: 2023/01/27
+    /// 
+    /// Data Access Layer Fakes made for methods in the UsersAccessor.
+    /// </summary>
+    ///
+    /// <remarks>
+    /// Updater Barry Mikulas
+    /// Updated: 02/26/2023
+    /// Added SuspendEmployee = false, to users
+    /// Also added roles to all users in fakeUsers
+    /// </remarks>
     public class UsersAccessorFakes : IUsersAccessor
     {
-        private List<Users> _fakeUsers = new List<Users>(); 
+        private List<Users> _fakeUsers = new List<Users>();
         private List<UsersVM> fakeUsers = new List<UsersVM>();
         private List<string> fakePassword = new List<string>();
+        private List<string> fakeGenders = new List<string>();
+        private List<string> fakePronouns = new List<string>();
         private Users fakeUser = new Users();
 
 
@@ -28,8 +43,8 @@ namespace DataAccessLayerFakes
                 Address = "4150 riverview road",
                 Zipcode = "52411",
                 Phone = "319-123-1325",
-                Active = true
-
+                Active = true,
+                Suspend = false
             };
             fakeUsers.Add(new UsersVM()
             {
@@ -42,8 +57,9 @@ namespace DataAccessLayerFakes
                 Zipcode = "52411",
                 Phone = "319-123-1325",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
-            }) ;
+            });
             fakeUsers.Add(new UsersVM()
             {
                 UsersId = 1001,
@@ -55,6 +71,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "52411",
                 Phone = "319-789-1325",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -68,6 +85,7 @@ namespace DataAccessLayerFakes
                 Zipcode = "12345",
                 Phone = "319-567-1325",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             });
             fakeUsers.Add(new UsersVM()
@@ -81,16 +99,53 @@ namespace DataAccessLayerFakes
                 Zipcode = "54321",
                 Phone = "319-321-1325",
                 Active = true,
+                Suspend = false,
                 Roles = new List<string>()
             });
+            fakeUsers.Add(new UsersVM()
+            {
+                UsersId = 999995,
+                GivenName = "Mads",
+                FamilyName = "Rhea",
+                Email = "mads@company.com",
+                Address = "3763 lacina drive",
+                Zipcode = "52240",
+                Phone = "319-594-3138",
+                Active = true,
+                Suspend = false,
+                Roles = new List<string>() { "Helpdesk", "Marketing", "Admin" }
+            });
+            fakeUsers.Add(new UsersVM()
+            {
+                UsersId = 999994,
+                GivenName = "Alex",
+                FamilyName = "Oetken",
+                Email = "alex@company.com",
+                Address = "811 Kirkwood Parkway",
+                Zipcode = "52404",
+                Phone = "319-111-2222",
+                Active = true,
+                Suspend = true,
+                Roles = new List<string>() { "Vet", "Maintenance", "Admin" }
+            });
 
-
+            //one user test requires 3 volunteers - if more volunteer roles are added if will cause it to fail -  Barry
             fakeUsers[0].Roles.Add("Volunteer");
+            fakeUsers[0].Roles.Add("Admin");
             fakeUsers[1].Roles.Add("Volunteer");
             fakeUsers[2].Roles.Add("Volunteer");
-            fakeUsers[3].Roles.Add("Admin");
 
             fakePassword.Add("9c9064c59f1ffa2e174ee754d2979be80dd30db552ec03e7e327e9b1a4bd594e");
+
+            fakeGenders.Add("Male");
+            fakeGenders.Add("Female");
+            fakeGenders.Add("Other");
+            fakeGenders.Add("Prefer not to disclose.");
+
+            fakePronouns.Add("He/Him");
+            fakePronouns.Add("She/Her");
+            fakePronouns.Add("They/Them");
+            fakePronouns.Add("Any/All");
 
         }
 
@@ -107,12 +162,16 @@ namespace DataAccessLayerFakes
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <returns>List<Users></returns>
-
         public List<UsersVM> SelectAllEmployees()
         {
             return fakeUsers;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Tests to see if method can successfully find and return a user based on email and passwordHash.
+        /// </summary>
+        /// <returns>int</returns>
         public int AuthenticateUserWithEmailAndPasswordHash(string email, string passwordHash)
         {
             int numAuthenticated = 0;
@@ -121,7 +180,7 @@ namespace DataAccessLayerFakes
             {
                 if (fakeUsers[i].Email == email)
                 {
-                    if (fakePassword[i] == passwordHash && fakeUsers[i].Active && !fakeUsers[i].SuspendEmployee)
+                    if (fakePassword[0] == passwordHash && fakeUsers[i].Active && !fakeUsers[i].Suspend)
                     {
                         numAuthenticated += 1;
                     }
@@ -131,16 +190,32 @@ namespace DataAccessLayerFakes
             return numAuthenticated;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Tests to see if method successfully returns all items from fakeGenders.
+        /// </summary>
+        /// <returns>List of strings</returns>
         public List<string> SelectAllGenders()
         {
-            throw new NotImplementedException();
+            return fakeGenders;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Tests to see if method successfully returns all items from fakePronouns.
+        /// </summary>
+        /// <returns>List of strings</returns>
         public List<string> SelectAllPronouns()
         {
-            throw new NotImplementedException();
+            return fakePronouns;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Tests to see if roles can be selected by UsersId
+        /// </summary>
+        /// 
+        /// <returns> List of strings </returns>
         public List<string> SelectRolesByUserID(int userId)
         {
             List<string> roles = new List<string>();
@@ -158,6 +233,11 @@ namespace DataAccessLayerFakes
             return roles;
         }
 
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Tests to see if SelectUserByEmail successfully selects a user by their email.
+        /// </summary>
+        /// <returns>UsersVM</returns>
         public UsersVM SelectUserByEmail(string email)
         {
             UsersVM user = new UsersVM();
@@ -167,7 +247,7 @@ namespace DataAccessLayerFakes
                 if (fakeUser.Email == email)
                 {
                     user = fakeUser;
-                    user.Roles = new List<string>();
+                    user.Roles = SelectRolesByUserID(fakeUser.UsersId);
                     break;
                 }
 
@@ -181,6 +261,117 @@ namespace DataAccessLayerFakes
             return user;
         }
 
+        /// <summary>
+        /// [Alex Oetken - 2023/02/??]
+        /// Tests to see if the method successfully deactivates a user.
+        /// </summary>
+        /// <returns>int</returns>
+        public int DeactivateUserAccount(int UserId)
+        {
+            var matchUsers = fakeUsers.Where(user => user.UsersId == UserId);
+
+            foreach (Users currentUser in matchUsers)
+            {
+                currentUser.Active = false;
+            }
+
+            return matchUsers.Count();
+
+        }
+
+        /// <summary>
+        /// [Alex Oetken - 2023/02/??]
+        /// Tests to see if the method successfully injects a new user into the Users table.
+        /// </summary>
+        /// <returns>int</returns>
+        public int CreateNewUser(Users user, string PasswordHash)
+        {
+            _fakeUsers.Add(user);
+
+            return _fakeUsers.Count();
+        }
+
+        /// <summary>
+        /// NEEDS TESTING
+        /// [Mads Rhea - 2023/02/??]
+        /// Tests to see if UpdateUserDetails successfully updates a varity of user details.
+        /// </summary>
+        /// <returns>int</returns>
+        public int UpdateUserDetails(Users oldUser, Users updatedUser)
+        {
+            int rowsAffected = 0;
+
+            for (int i = 0; i < fakeUsers.Count; i++)
+            {
+                int index = -1;
+                if (fakeUsers[i].GivenName == oldUser.GivenName &&
+                    fakeUsers[i].FamilyName == oldUser.FamilyName &&
+                    fakeUsers[i].GenderId == oldUser.GenderId &&
+                    fakeUsers[i].PronounId == oldUser.PronounId &&
+                    fakeUsers[i].Address == oldUser.Address &&
+                    fakeUsers[i].AddressTwo == oldUser.AddressTwo &&
+                    fakeUsers[i].Phone == oldUser.Phone &&
+                    fakeUsers[i].Zipcode == oldUser.Zipcode)
+                {
+                    index = i;
+
+                    fakeUsers[i].GivenName = updatedUser.GivenName;
+                    fakeUsers[i].FamilyName = updatedUser.FamilyName;
+                    fakeUsers[i].GenderId = updatedUser.GenderId;
+                    fakeUsers[i].PronounId = updatedUser.PronounId;
+                    fakeUsers[i].Address = updatedUser.Address;
+                    fakeUsers[i].AddressTwo = updatedUser.AddressTwo;
+                    fakeUsers[i].Phone = updatedUser.Phone;
+                    fakeUsers[i].Zipcode = updatedUser.Zipcode;
+
+                    rowsAffected += 1;
+                }
+            }
+
+            return rowsAffected;
+        }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/02/15]
+        /// Tests to see if the method successfully updates the password hash.
+        /// </summary>
+        /// <returns>int</returns>
+        public int UpdatePasswordHash(string email, string oldPasswordHash, string newPasswordHash)
+        {
+            int rowsAffected = 0;
+
+            for (int i = 0; i < fakeUsers.Count; i++)
+            {
+                int index = -1;
+                if (fakeUsers[i].Email == email)
+                {
+                    index = i;
+
+                    if (fakePassword[index] == oldPasswordHash)
+                    {
+                        fakePassword[index] = newPasswordHash;
+                        rowsAffected += 1;
+                    }
+                }
+            }
+
+            return rowsAffected;
+        }
+
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/03/02
+        /// 
+        /// Selects all users with a certain role
+        /// </summary>
+        /// 
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="RoleId"></param>
         public List<UsersVM> SelectUserByRole(string roleId, int shelterId)
         {
             List<UsersVM> users = new List<UsersVM>();
@@ -189,7 +380,7 @@ namespace DataAccessLayerFakes
             {
                 foreach (var role in user.Roles)
                 {
-                    if(role == roleId)
+                    if (role == roleId)
                     {
                         users.Add(user);
                     }
@@ -198,25 +389,52 @@ namespace DataAccessLayerFakes
             return users;
         }
 
-       
-        public int DeactivateUserAccount(int UserId)
+        /// <summary>
+        /// NEEDS TESTING
+        /// [Mads Rhea - 2023/02/23]
+        /// Tests to see if the method successfully updates the users email.
+        /// </summary>
+        /// <returns>int</returns>
+        public int UpdateUserEmail(string oldEmail, string newEmail, string passwordHash)
         {
-            var matchUsers = fakeUsers.Where(user => user.UsersId == UserId);
+            int rowsAffected = 0;
 
-            foreach (Users currentUser in matchUsers)
+            for (int i = 0; i < fakeUsers.Count; i++)
             {
-                currentUser.Active = false; 
+                int index = -1;
+                if (fakeUsers[i].Email == oldEmail)
+                {
+                    index = i;
+
+                    if (fakePassword[index] == passwordHash)
+                    {
+                        fakePassword[index] = newEmail;
+                        rowsAffected += 1;
+                    }
+                }
             }
 
-            return matchUsers.Count(); 
-            
+            return rowsAffected;
         }
 
-        public int CreateNewUser(Users user, string PasswordHash)
+        /// <summary>
+        /// Zaid Rachman
+        /// Created:2023/02/15
+        /// 
+        /// Used to check if the user exists in the database.
+        /// </summary>
+        /// <returns>List<Users></returns>
+        public List<UsersVM> SelectUsersByUsersId(int usersId)
         {
-            _fakeUsers.Add(user);
-
-            return _fakeUsers.Count(); 
+            List<UsersVM> userfakes = new List<UsersVM>();
+            foreach (UsersVM fakeUser in fakeUsers)
+            {
+                if (usersId == fakeUser.UsersId)
+                {
+                    userfakes.Add(fakeUser);
+                }
+            }
+            return userfakes;
         }
         public Users SelectUserByUsersId(int UsersId)
         {
@@ -226,6 +444,111 @@ namespace DataAccessLayerFakes
         public UsersVM SelectUserByUsersIdWithRoles(int UsersId)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/14/02
+        /// 
+        /// Updates a user's active status with their user ID and active status as a boolean.
+        /// </summary>
+        ///
+        /// <remarks>
+        ///
+        /// </remarks>
+        public int UpdateUserActive(int userId, bool active)
+        {
+            int result = 0;
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                if (fakeUser.UsersId == userId)
+                {
+                    if (active == false)
+                    {
+                        fakeUser.Active = false;
+                        result = 1;
+                        return result;
+                    }
+                    else
+                    {
+                        fakeUser.Active = true;
+                        result = 1;
+                        return result;
+                    }
+                }
+                if (fakeUser == null)
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created:2023/02/26
+        /// 
+        /// suspend or unsuspend user - returns number of records update
+        /// </summary>
+        /// <param name="suspend">if true set suspend to true, otherwise false</param>
+        /// <param name="usersId"></param>
+        /// <returns>int</returns>
+        public int UpdateUserSuspend(int usersId, bool suspend)
+        {
+            int result = 0;
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                if (fakeUser.UsersId == usersId)
+                {
+                    if (suspend == false)
+                    {
+                        fakeUser.Suspend = false;
+                        result = 1;
+                        return result;
+                    }
+                    else
+                    {
+                        fakeUser.Suspend = true;
+                        result = 1;
+                        return result;
+                    }
+                }
+                if (fakeUser == null)
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            return result;
+
+            // return 1; green test
+            //throw new NotImplementedException();
+        }
+
+        public int SelectCountActiveUnsuspendedUsersByRole(string roleId)
+        {
+            int result = 0;
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                //make sure user is active and not suspended
+                if (fakeUser.Active && !fakeUser.Suspend)
+                {
+                    if (fakeUser.Roles.Contains(roleId))
+                    {
+                        result++;
+                        continue;
+                    }
+                }
+                if (fakeUser == null)
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            return result;
+            //return 2; // green test
+            //throw new NotImplementedException(); // red test
         }
     }
 }

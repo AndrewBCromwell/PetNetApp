@@ -36,7 +36,7 @@ namespace WpfPresentation.Management
         {
             try
             {
-                kennelVMs = masterManager.KennelManager.RetrieveKennels(masterManager.User == null ? 100000 : masterManager.User.UsersId);
+                kennelVMs = masterManager.KennelManager.RetrieveKennels(masterManager.User.ShelterId.Value);
 
                 for (int i = 0; i < kennelVMs.Count / 4; i++)
                 {
@@ -55,6 +55,19 @@ namespace WpfPresentation.Management
                     }
                     else
                     {
+                        if(kennelVMs[i].Animal.AnimalImages.Count != 0)
+                        {
+                            try
+                            {
+                                kennelUserControl.imgAnimalDisplay.Source = masterManager.ImagesManager.RetrieveImageByImages(kennelVMs[i].Animal.AnimalImages[0]);
+                            }
+                            catch (Exception)
+                            {
+                                BitmapImage brokenImage = new BitmapImage(new Uri("..\\Images\\BrokenImage.png", UriKind.Relative));
+                                kennelUserControl.imgAnimalDisplay.Source = brokenImage;
+                            }
+                        }
+                        
                         kennelUserControl.lblKennelName.Content += kennelVMs[i].Animal.AnimalName;
                     }
                     int j = i;
@@ -156,8 +169,8 @@ namespace WpfPresentation.Management
                     ? kennelsToRemove[i].KennelName + ", " : 
                     kennelsToRemove.Count != 1 ? "and " + kennelsToRemove[i].KennelName : kennelsToRemove[i].KennelName;
             }
-            var choice = PromptWindow.ShowPrompt("Are you sure?", "Remove " + kennelList + "?", ButtonMode.YesNo);
-            if (choice == PromptSelection.Yes)
+
+            if (PromptWindow.ShowPrompt("Are you sure?", "Remove " + kennelList + "?", ButtonMode.YesNo) == PromptSelection.Yes)
             {
 
                 for (int i = 0; i < kennelsToRemove.Count; i++)
@@ -170,7 +183,7 @@ namespace WpfPresentation.Management
                         }
                         catch (Exception ex)
                         {
-                            PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                            PromptWindow.ShowPrompt("Error", ex.Message);
                         }
                     }
                     try
@@ -179,7 +192,7 @@ namespace WpfPresentation.Management
                     }
                     catch (Exception ex)
                     {
-                        PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                        PromptWindow.ShowPrompt("Error", ex.Message);
                     }
                 }
                 NavigationService.Navigate(new ViewKennelPage());

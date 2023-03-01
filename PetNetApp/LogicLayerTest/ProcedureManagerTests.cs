@@ -57,7 +57,7 @@ namespace LogicLayerTest
             int animalId = 8;
             List<ProcedureVM> fakeprocedures;
                         
-            fakeprocedures = _procedureManager.GetProceduresByAnimalId(animalId);
+            fakeprocedures = _procedureManager.RetrieveProceduresByAnimalId(animalId);
             actualResult = fakeprocedures.Count;
 
             Assert.AreEqual(expectedResult, actualResult);
@@ -68,7 +68,7 @@ namespace LogicLayerTest
         /// Created: 2023/02/14
         /// </summary>
         [TestMethod]
-        public void TestEditProcedureByMedicalRecordIdAndProcedureIdChangesDataCorectly()
+        public void TestEditProcedureByProcedureIdChangesDataCorectly()
         {
             Procedure procedure = new Procedure()
             {
@@ -94,8 +94,8 @@ namespace LogicLayerTest
             int animalId = 5;
             List<ProcedureVM> fakeprocedures;
             
-            methodResult = _procedureManager.EditProcedureByMedicalRecordIdAndProcedureId(procedure, oldProcedure, procedure.MedicalRecordId);
-            fakeprocedures = _procedureManager.GetProceduresByAnimalId(animalId);
+            methodResult = _procedureManager.EditProcedureByProcedureId(procedure, oldProcedure);
+            fakeprocedures = _procedureManager.RetrieveProceduresByAnimalId(animalId);
 
             Assert.IsTrue(methodResult);
             Assert.AreEqual(fakeprocedures[1].ProcedureName, "This sould replace the name on one of the fakes");

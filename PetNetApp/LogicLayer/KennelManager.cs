@@ -48,7 +48,7 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Kennel failed to be removed", ex);
+                throw new ApplicationException("Kennel failed to be edited", ex);
             }
             return result == 1;
         }
@@ -62,7 +62,7 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Failed to remove an from kennel", ex);
+                throw new ApplicationException("Failed to remove animal from kennel", ex);
             }
             return result == 1;
         }
@@ -79,21 +79,6 @@ namespace LogicLayer
             }
         }
 
-        /// <summary>
-        /// Gwen Arman
-        /// Created: 2023/02/01
-        /// 
-        /// Methods rewraps SelectKennels method
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="ShelterId">A description of the parameter that this method takes</param>
-        /// <exception cref="ApplicationException"></exception>
-        /// <returns>List<KennelVM></returns>
         public List<KennelVM> RetrieveKennels(int ShelterId)
         {
             try
@@ -107,6 +92,21 @@ namespace LogicLayer
                       
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/10
+        /// 
+        /// Selects a specific kennel with an AnimalId
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="AnimalId">int for the the specific kennel</param>
+        /// <exception cref="Exception">No kennel is retrived witht that AnimalId</exception>
+        /// <returns>Kennel Object</returns>	
         public Kennel RetrieveKennelIdByAnimalId(int AnimalId)
         {
             try
@@ -119,6 +119,22 @@ namespace LogicLayer
             }
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/10
+        /// 
+        /// Inserts an animal into a specific kennel
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="KennelId">int for the the specific kennel</param>
+        /// /// <param name="AnimalId">int for the the specific animal</param>
+        /// <exception cref="Exception">Failed to insert animal into kennel</exception>
+        /// <returns>Bool if animal was assigned to a kennel</returns>
         public bool AddAnimalIntoKennelByAnimalId(int KennelId, int AnimalId)
         {
             try
@@ -132,11 +148,28 @@ namespace LogicLayer
             }
         }
 
-        public List<Animal> RetrieveAllAnimalsForKennel(int ShelterId)
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/10
+        /// 
+        /// Gets a list of animals available to 
+        /// be assigned to a kennel
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="ShelterId">int for the the specific shelter</param>
+        /// /// <param name="AnimalTypeId">string for the the specific type of animal</param>
+        /// <exception cref="Exception">Failed to retrived a list of animals</exception>
+        /// <returns>List of animals</returns>
+        public List<Animal> RetrieveAllAnimalsForKennel(int ShelterId, string AnimalTypeId)
         {
             try
             {
-                return kennelAccessor.SelectAllAnimalsForKennel(ShelterId);
+                return kennelAccessor.SelectAllAnimalsForKennel(ShelterId, AnimalTypeId);
             }
             catch (Exception ex)
             {

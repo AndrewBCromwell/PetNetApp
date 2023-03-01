@@ -1,8 +1,10 @@
 ﻿using DataAccessLayerFakes;
+using DataObjects;
 using LogicLayer;
 using LogicLayerInterfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace LogicLayerTest
 {
@@ -30,7 +32,7 @@ namespace LogicLayerTest
             int animalId = 5;
             int actualResult = 0;
 
-            actualResult = _imagesManager.RetrieveImagesByAnimalId(animalId).Count;
+            actualResult = _imagesManager.RetrieveMedicalImagesByAnimalId(animalId).Count;
 
             Assert.AreEqual(expectedResult, actualResult);
 
@@ -46,7 +48,59 @@ namespace LogicLayerTest
 
             Assert.AreEqual(expectedResult, actualResult);
 
-  
+
+        }
+
+        [TestMethod]
+        public void AddImagesByUris()
+        {
+            List<string> newUris = new List<string>() { @"C:\images\image.png", @"C:/images/image2.png" };
+            int expectedResult = newUris.Count;
+            int actualResult = 0;
+
+            List<Images> newImages = _imagesManager.AddImagesByUris(newUris);
+            actualResult = newImages.Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void AddImageByUri()
+        {
+            string newUri = @"C:\images\image.png";
+            int expectedResult = 1;
+            int actualResult = 0;
+
+            Images newImage = _imagesManager.AddImageByUri(newUri);
+            actualResult = newImage != null ? 1 : 0;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestRetrieveMedicalImagesByAnimalId()
+        {
+            int animalId = 1;
+            int expectedResult = 1;
+            int actualResult = 0;
+
+            actualResult = _imagesManager.RetrieveMedicalImagesByAnimalId(animalId).Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void AddMedicalImagesByAnimalId()
+        {
+            int animalId = 1;
+            List<string> newUris = new List<string>() { @"C:\images\image.png", @"C:/images/image2.png" };
+            int expectedResult = _imagesManager.RetrieveMedicalImagesByAnimalId(animalId).Count + newUris.Count;
+            int actualResult = 0;
+
+            _imagesManager.AddMedicalImagesByAnimalId(animalId, newUris);
+            actualResult = _imagesManager.RetrieveMedicalImagesByAnimalId(animalId).Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }

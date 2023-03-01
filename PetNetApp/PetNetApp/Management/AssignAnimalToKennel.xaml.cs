@@ -33,7 +33,19 @@ namespace WpfPresentation.Development.Management
             _kennel = kennel;
         }
 
-
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When page loads, kennel name is added to
+        /// header of page and text box is disabled
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             lblKennelNumber.Content = _kennel.KennelName;
@@ -41,6 +53,19 @@ namespace WpfPresentation.Development.Management
             txtAnimalID.IsEnabled = false;
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When button is clicked, animal is assigned to
+        /// specific kennel
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string animalId = txtAnimalID.Text;
@@ -77,6 +102,19 @@ namespace WpfPresentation.Development.Management
 
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When clicked, a window opens with a data grid
+        /// of animals that can be assigned to a kennel
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnViewAnimalList_Click(object sender, RoutedEventArgs e)
         {
             //open window to select an animal
@@ -98,11 +136,35 @@ namespace WpfPresentation.Development.Management
             
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// Goes back to list of kennels page
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnGoBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ViewKennelPage());
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// Goes back to list of kennels page
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Question", "Go back?", ButtonMode.YesNo) == PromptSelection.Yes)

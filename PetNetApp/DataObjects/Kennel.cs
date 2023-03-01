@@ -19,6 +19,6 @@ namespace DataObjects
     public class KennelVM : Kennel
     {
         public string ShelterName { get; set; }
-        public Animal Animal { get; set; }
+        public AnimalVM Animal { get; set; }
     }
 }

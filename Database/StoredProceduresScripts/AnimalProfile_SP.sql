@@ -22,7 +22,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_select_all_animal_breeds]
 AS
 	BEGIN
-		SELECT [AnimalBreedId]
+		SELECT [AnimalBreedId], [AnimalBreed].[AnimalTypeId]
 		FROM [AnimalBreed]
 	END
 GO
@@ -74,6 +74,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_update_animal]
 (
 	@AnimalId					[int],
+	@AnimalShelterId			[int],
 	@OldAnimalName				[nvarchar](50),
 	@OldAnimalGender			[nvarchar](50),
 	@OldAnimalTypeId			[nvarchar](50),
@@ -117,23 +118,95 @@ AS
 				[MicrochipSerialNumber] = @NewMicrochipSerialNumber,
 				[Aggressive] 			= @NewAggressive,
 				[AggressiveDescription] = @NewAggressiveDescription,
+				[ChildFriendly]			= @NewChildFriendly,
 				[NeuterStatus]          = @NewNeuterStatus,
 				[Notes]          		= @NewNotes
 		WHERE	[AnimalId] 				= @AnimalId
+		  AND	[AnimalShelterId]		= @AnimalShelterId
 		  AND	[AnimalName] 			= @OldAnimalName
 		  AND	[AnimalGender] 			= @OldAnimalGender
 		  AND	[AnimalTypeId] 			= @OldAnimalTypeId
 		  AND	[AnimalBreedId] 		= @OldAnimalBreedId
-		  AND	[Personality] 			= @OldPersonality
-		  AND	[Description]			= @OldDescription
+		  AND	([Personality] 			= @OldPersonality
+				OR ([Personality] IS NULL AND @OldPersonality IS NULL))
+		  AND	([Description]			= @OldDescription
+				OR ([Description] IS NULL AND @OldDescription IS NULL))
 		  AND	[AnimalStatusId] 		= @OldAnimalStatusID
 		  AND	[RecievedDate] 			= @OldReceivedDate
-		  AND   [MicrochipSerialNumber] = @OldMicrochipSerialNumber
-		  AND   [Aggressive] 			= @OldAggressive
-		  AND	[AggressiveDescription] = @OldAggressiveDescription
-		  AND   [NeuterStatus]          = @OldNeuterStatus		
-		  AND   [Notes]          		= @OldNotes
+		  AND 	([MicrochipSerialNumber] = @OldMicrochipSerialNumber
+				OR ([MicrochipSerialNumber] IS NULL AND @OldMicrochipSerialNumber IS NULL))
+		  AND 	[Aggressive] 			= @OldAggressive
+		  AND	([AggressiveDescription] = @OldAggressiveDescription
+				OR ([AggressiveDescription] IS NULL AND @OldAggressiveDescription IS NULL))
+		  AND	[ChildFriendly]			= @OldChildFriendly
+		  AND 	[NeuterStatus]          = @OldNeuterStatus		
+		  AND 	([Notes]          		= @OldNotes
+				OR ([Notes] IS NULL AND @OldNotes IS NULL))
 		RETURN @@ROWCOUNT
 	END
 GO
 
+
+/* SelectAnimalByAnimalId stored procedure */
+/* Created by Andrew Schneider */
+print '' print '*** creating sp_select_animal_by_animalId (Andrew S.)'
+GO
+CREATE PROCEDURE [dbo].[sp_select_animal_by_animalId]
+(
+	@AnimalId					[int],
+	@AnimalShelterId			[int]
+)
+AS
+	BEGIN
+		SELECT	[Animal].[AnimalId], [AnimalName], [AnimalGender], [Animal].[AnimalTypeId], [AnimalBreedId],
+				[Kennel].[KennelName], [Personality], [Description], [Animal].[AnimalStatusId],
+				[AnimalStatus].[AnimalStatusDescription], [RecievedDate], [MicrochipSerialNumber],
+				[Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId]
+		FROM 	[Animal]
+		JOIN 	[AnimalStatus]
+			ON 	[Animal].[AnimalStatusID] = [AnimalStatus].[AnimalStatusID]
+		LEFT JOIN 	[AnimalKenneling]
+			ON	[Animal].[AnimalId] = [AnimalKenneling].[AnimalId]
+		LEFT JOIN	[Kennel]
+			ON	[AnimalKenneling].[KennelId] = [Kennel].[KennelId]
+		WHERE	@AnimalId = [Animal].[AnimalId]
+		AND		@AnimalShelterId = [Animal].[AnimalShelterId]
+	END
+GO
+
+
+/* InsertAnimal stored procedure */
+/* Created by John */
+print '' print '*** creating sp_insert_animal (John)'
+	GO
+	CREATE PROCEDURE [dbo].[sp_insert_animal]
+	(
+		@AnimalShelterId			[int],
+		@AnimalName					[nvarchar](50),
+		@AnimalGender				[nvarchar](50),
+		@AnimalTypeId				[nvarchar](50),
+		@AnimalBreedId				[nvarchar](50),
+		@Personality				[nvarchar](500),
+		@Description				[nvarchar](500),
+		@AnimalStatusId				[nvarchar](50),
+		@ReceivedDate				[date],
+		@MicrochipSerialNumber		[char](15),
+		@Aggressive					[bit],
+		@AggressiveDescription		[nvarchar](500),
+		@ChildFriendly				[bit],
+		@NeuterStatus				[bit],
+		@Notes						[nvarchar](500)	
+	)
+
+	AS
+		BEGIN
+			INSERT INTO [dbo].[Animal]
+			([AnimalName],[AnimalGender],[AnimalTypeId],[AnimalBreedId],[Personality],[Description]
+				,[AnimalStatusId],[RecievedDate],[MicrochipSerialNumber],[Aggressive]
+				,[AggressiveDescription],[ChildFriendly],[NeuterStatus],[Notes], [AnimalShelterId])
+			VALUES
+			(@AnimalName,@AnimalGender,@AnimalTypeId,@AnimalBreedId,@Personality,@Description
+			,@AnimalStatusId,@ReceivedDate,@MicrochipSerialNumber,@Aggressive
+			,@AggressiveDescription,@ChildFriendly,@NeuterStatus,@Notes, @AnimalShelterId)
+		END
+	GO

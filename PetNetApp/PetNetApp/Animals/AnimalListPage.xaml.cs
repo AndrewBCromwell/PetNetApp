@@ -27,10 +27,6 @@ namespace WpfPresentation.Animals
         private MasterManager _masterManager = null;
         private List<Animal> _animals = null;
 
-        public AnimalListPage()
-        {
-            InitializeComponent();
-        }
 
         public AnimalListPage(MasterManager manager)
         {
@@ -47,12 +43,11 @@ namespace WpfPresentation.Animals
             return _existingAnimalListPage;
         }
 
-
         private void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
             try
             {
-                _animals = _masterManager.AnimalManager.RetrieveAllAnimals();
+                _animals = _masterManager.AnimalManager.RetrieveAllAnimals(_masterManager.User.ShelterId.Value);
                 // help from gwen, populate AnimalListPage with user controls
                 for (int i = 0; i < _animals.Count / 4; i++)
                 {
@@ -61,11 +56,11 @@ namespace WpfPresentation.Animals
 
                 for (int i = 0; i < _animals.Count; i++)
                 {
-                    AnimalListUserControl animalListUserControl = new AnimalListUserControl(_animals[i]);
-                    animalListUserControl.lblAnimalListAnimalName.Content = _animals[i].AnimalName;
-                    animalListUserControl.lblAnimalListAnimalID.Content = _animals[i].AnimalId;
-
                     int j = i;
+                    AnimalListUserControl animalListUserControl = new AnimalListUserControl(_animals[j]);
+                    animalListUserControl.lblAnimalListAnimalName.Content = _animals[j].AnimalName;
+                    animalListUserControl.lblAnimalListAnimalID.Content = _animals[j].AnimalId;
+                    
 
                     Grid.SetRow(animalListUserControl, i / 4);
                     Grid.SetColumn(animalListUserControl, i % 4);
@@ -74,7 +69,7 @@ namespace WpfPresentation.Animals
             }
             catch (Exception up)
             {
-                MessageBox.Show(up.Message + "\n\n" + up.InnerException);
+                PromptWindow.ShowPrompt("Error", up.Message + "\n\n" + up.InnerException);
                 return;
             }
 

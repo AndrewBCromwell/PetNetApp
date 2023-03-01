@@ -68,7 +68,7 @@ namespace LogicLayerTest
             int acutalCount = 0;
 
             // act
-            var animals = kennelManager.RetrieveAllAnimalsForKennel(100000);
+            var animals = kennelManager.RetrieveAllAnimalsForKennel(100000, "Cat");
             acutalCount = animals.Count;
 
             // assert

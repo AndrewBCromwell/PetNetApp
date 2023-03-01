@@ -15,10 +15,13 @@ using System.Windows.Shapes;
 using WpfPresentation.Animals;
 using WpfPresentation.Community;
 using WpfPresentation.Management;
+using WpfPresentation.Shelters;
 using LogicLayer;
 using System.Diagnostics;
 using WpfPresentation.Misc;
 using WpfPresentation.Fundraising;
+using DataObjects;
+using WpfPresentation;
 
 namespace PetNetApp
 {
@@ -33,13 +36,35 @@ namespace PetNetApp
         public MainWindow()
         {
             InitializeComponent();
-            _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnDonate, btnEvents, btnShelters, btnFundraising, btnManagement };
+            // Remove navigation shortcuts
+            NavigationCommands.BrowseBack.InputGestures.Clear();
+            NavigationCommands.BrowseForward.InputGestures.Clear();
 
+            // things to do when someone logs in
+            _manager.UserLogin += () =>
+            {
+                ShowButtonsByRole();
+                mnuUser.Header = "Hello, " + _manager.User.GivenName;
+                mnuLogout.Header = "Log Out";
+                frameMain.Navigate(null);
+            };
+            // things to do when someone logs out
+            _manager.UserLogout += () =>
+            {
+                HideAllButtons();
+                mnuUser.Header = "Hello, Guest";
+                mnuLogout.Header = "Log In";
+            };
+            _mainTabButtons = new Button[] { btnAnimals, btnCommunity/*, btnDonate*/, btnEvents, btnShelters, btnFundraising, btnManagement };
             if (_manager.User == null)
             {
                 mnuLogout.Header = "Log In";
             }
-
+            else
+            {
+                mnuLogout.Header = "Log Out";
+            }
+            ShowButtonsByRole();
         }
 
         private void btnDonate_Click(object sender, RoutedEventArgs e)
@@ -66,8 +91,7 @@ namespace PetNetApp
         private void btnShelters_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
+            frameMain.Navigate(ShelterPage.GetShelterPage(_manager));
         }
 
         private void btnEvents_Click(object sender, RoutedEventArgs e)
@@ -100,7 +124,7 @@ namespace PetNetApp
             UnselectAllButtons();
             if (_manager.User == null)
             {
-                frameMain.Navigate(LogInPage.GetLogInPage(this));
+                frameMain.Navigate(LogInPage.GetLogInPage());
             }
             else
             {
@@ -170,85 +194,89 @@ namespace PetNetApp
 
         private void mnuLogout_Click(object sender, RoutedEventArgs e)
         {
-            if ((string)mnuLogout.Header == "Log In")
+            if (_manager.User == null)
             {
-                UnselectAllButtons();
-                frameMain.Navigate(LogInPage.GetLogInPage(this));
+                frameMain.Navigate(LogInPage.GetLogInPage());
             }
-            else if ((string)mnuLogout.Header == "Log Out")
+            else
             {
-                frameMain.Navigate(LandingPage.GetLandingPage(this));
+                PromptSelection result = PromptWindow.ShowPrompt("Log Out", "Are you sure you want to log out?", ButtonMode.YesNo);
 
-                _manager.User = null;
-                mnuUser.Header = "Hello, Guest";
-                mnuLogout.Header = "Log In";
-
+                if (result == PromptSelection.Yes)
+                {
+                    _manager.User = null;
+                }
             }
         }
 
         public void ShowButtonsByRole()
         {
-            foreach (var role in _manager.User.Roles)
+            HideAllButtons();
+            if (_manager.User != null)
             {
-                switch (role)
-                {
-                    case "Admin":
-                        // Unhide ALL things
-                        break;
-
-                    case "Adoption":
-                        // Unhide adopter perks
-                        break;
-
-                    case "Donation":
-                        // Unhide Donation perks
-                        break;
-
-                    case "Fosterer":
-                        // Unhide Fosterer Abilities
-                        break;
-
-                    case "Fundraising":
-                        // Unhide Kennel subtabs
-                        break;
-
-                    case "Intake":
-                        // Unhide Intake privledges
-                        break;
-
-                    case "Inventory":
-                        // Unhide Inventory subtabs
-                        break;
-
-                    case "Kennel":
-                        // Unhide Kennel subtabs
-                        break;
-
-                    case "Medical":
-                        // Unhide manager tabs
-                        break;
-
-                    case "Public Relations":
-                        // Unhide given volunteer tabs
-                        break;
-
-                    case "Social":
-
-                        break;
-
-                    case "Surrender":
-                        break;
-
-                    case "Volunteer":
-                        break;
-
-                    case "Home Inspector":
-                        break;
-
-                    default:
-                        // unhide User tabs (Animals,   
-                        break;
-                }
+                ShowAnimalsButtonByRoles();
+                ShowCommunityButtonByRoles();
+                //ShowDonateButtonByRoles();
+                ShowEventsButtonByRoles();
+                ShowFundraisingButtonByRoles();
+                ShowManagementButtonByRoles();
+                ShowSheltersButtonByRoles();
+            }
+        }
+        private void ShowAnimalsButtonByRoles()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Employee", "Vet" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnAnimals.Visibility = Visibility.Visible;
+            }
+        }
+        private void ShowCommunityButtonByRoles()
+        {
+            string[] allowedRoles = {"Admin", "Manager", "Moderator", "Helpdesk" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnCommunity.Visibility = Visibility.Visible;
+            }
+        }
+        //private void ShowDonateButtonByRoles() // Not a desktop thing?
+        //{
+        //    string[] allowedRoles = { "Admin", "Manager", "Marketting" };
+        //    if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+        //    {
+        //        btnDonate.Visibility = Visibility.Visible;
+        //    }
+        //}
+        private void ShowEventsButtonByRoles()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing", "Marketing"};
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnEvents.Visibility = Visibility.Visible;
+            }
+        }
+        private void ShowSheltersButtonByRoles()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnShelters.Visibility = Visibility.Visible;
+            }
+        }
+        private void ShowFundraisingButtonByRoles()
+        {
+            string[] allowedRoles = { "Admin", "Manager","Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnFundraising.Visibility = Visibility.Visible;
+            }
+        }
+        private void ShowManagementButtonByRoles()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Helpdesk", "Employee", "Maintenance" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnManagement.Visibility = Visibility.Visible;
             }
         }
 
@@ -257,11 +285,11 @@ namespace PetNetApp
             UnselectAllButtons();
             if (_manager.User == null)
             {
-                frameMain.Navigate(LogInPage.GetLogInPage(this));
+                frameMain.Navigate(LogInPage.GetLogInPage());
             }
             else
             {
-                frameMain.Navigate(AccountSettingsPage.GetAccountSettingsPage(this));
+                frameMain.Navigate(AccountSettingsPage.GetAccountSettingsPage());
             }
         }
 
@@ -273,10 +301,13 @@ namespace PetNetApp
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             frameMain.Navigate(LandingPage.GetLandingPage(this));
-
+        }
+        private void HideAllButtons()
+        {
+            UnselectAllButtons();
             foreach (var tab in _mainTabButtons)
             {
-                tab.Visibility = Visibility.Hidden;
+                tab.Visibility = Visibility.Collapsed;
             }
         }
         private void btnFundraising_Click(object sender, RoutedEventArgs e)

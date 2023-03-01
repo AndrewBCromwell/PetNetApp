@@ -33,8 +33,9 @@ namespace WpfPresentation.Development.Management
     /// 
     /// 
     /// <remarks>
-    /// Updater Name
-    /// Updated: yyyy/mm/dd
+    /// Teft Francisco
+    /// Updated: 2023/2/24
+    /// Added navigation methods to the "Edit Volunteer Information" button.
     /// </remarks>
     public partial class VolunteerManagment : Page
     {
@@ -43,20 +44,15 @@ namespace WpfPresentation.Development.Management
         public VolunteerManagment()
         {
             InitializeComponent();
-            // uncomment when login is made
-            //int shelterId = _mastermanager.User.ShelterId;
-            int shelterId = 100000;
-
-
             try
             {
-                _users = _mastermanager.UsersManager.RetrieveUserByRole("Volunteer",shelterId);
+                _users = _mastermanager.UsersManager.RetrieveUserByRole("Volunteer" ,_mastermanager.User.ShelterId.Value);
                 datVolunteer.ItemsSource = _users;
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
             
         }
@@ -91,6 +87,19 @@ namespace WpfPresentation.Development.Management
                 PromptWindow.ShowPrompt("No User Selected", "There is no user selected");
             }
             
+        }
+
+        private void btnEditVolunteer_Click(object sender, RoutedEventArgs e)
+        {
+            if (datVolunteer.SelectedItem != null)
+            {
+                // This needs to nagivate to VolunteerInfoPage.xaml but is within the development folder.
+                NavigationService.Navigate(new WpfPresentation.Management.VolunteerInfoPage((UsersVM)datVolunteer.SelectedItem));
+            }
+            else
+            {
+                PromptWindow.ShowPrompt("Error", "You must select a user to edit their information!");
+            }
         }
     }
 }

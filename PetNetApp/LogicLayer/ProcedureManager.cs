@@ -63,7 +63,7 @@ namespace LogicLayer
                 }
             } catch(Exception ex)
             {
-                throw new ApplicationException("An error occored. The procedure was not saved.", ex);
+                throw new ApplicationException("An error occurred. The procedure was not saved.", ex);
             }
             return success;
             
@@ -79,16 +79,15 @@ namespace LogicLayer
         /// </summary>
         /// <param name="procedure">the procedure to replace the old procedure in the db</param>
         /// <param name="oldProcedure">the procedure to be overwriten</param>
-        /// <param name="medicalRecordId">the id of the medical record associated with the procedure</param>
         /// <exception cref="ApplicationException">Update Fails</exception>
         /// <returns>Rows affected</returns>
-        public bool EditProcedureByMedicalRecordIdAndProcedureId(Procedure procedure, Procedure oldProcedure, int medicalRecordId)
+        public bool EditProcedureByProcedureId(Procedure procedure, Procedure oldProcedure)
         {
             bool success = false;
             int expectedRowsAffected = 1;
             try
             {
-                int result = _procedureAccessor.UpdateProcedureByMedicalRecordIdAndProcedureId(procedure, oldProcedure, medicalRecordId);
+                int result = _procedureAccessor.UpdateProcedureByProcedureId(procedure, oldProcedure);
                 if(result == expectedRowsAffected)
                 {
                     success = true;
@@ -96,7 +95,7 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("An error occored. The procedure was not saved.", ex);
+                throw new ApplicationException("An error occurred. The procedure was not saved.", ex);
             }
             return success;
         }
@@ -108,7 +107,7 @@ namespace LogicLayer
         /// <param name="animalId">the id of the animal to return the procedure records of</param>
         /// <exception cref="ApplicationException">Faild to retrieve procedures</exception>
         /// <returns>List of the procedures associated with the animal</returns>
-        public List<ProcedureVM> GetProceduresByAnimalId(int animalId)
+        public List<ProcedureVM> RetrieveProceduresByAnimalId(int animalId)
         {
             List<ProcedureVM> procedures = new List<ProcedureVM>();
             try
@@ -116,7 +115,7 @@ namespace LogicLayer
                 procedures = _procedureAccessor.SelectProceduresByAnimalId(animalId);
             } catch(Exception ex)
             {
-                throw new ApplicationException("An error occored. The procedures could not be retreived.", ex);
+                throw new ApplicationException("An error occurred. The procedures could not be retreived.", ex);
             }
             return procedures;
         }

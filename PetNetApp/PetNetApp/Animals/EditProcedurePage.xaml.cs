@@ -31,11 +31,8 @@ namespace WpfPresentation.Animals
     {
         private Animal _medProcedureAnimal;
         private MasterManager _manager;
-        private int _medicalRecordId;        
         private bool _forAdd;
         private ProcedureVM _oldProcedure;
-
-        private int userId = 100000; // This should be related to the logedin user, but login is not available yet, so I am using this to test my code. -Andy 
 
         /// <summary>
         /// Andrew Cromwell
@@ -53,6 +50,8 @@ namespace WpfPresentation.Animals
             _manager = manager;            
             lblEditProcedure.Content = "Add Procedure";
             dateProcedurePerformed.DisplayDateEnd = DateTime.Today;
+
+            _manager.User = new UsersVM() { UsersId = 100000 }; // for testing without login
         }
 
         /// <summary>
@@ -75,7 +74,7 @@ namespace WpfPresentation.Animals
             txtProcedureMedsAdministered.Text = _oldProcedure.MedicationsAdministered;
             txtProcedureNotes.Text = _oldProcedure.ProcedureNotes;
 
-            _manager.User = new UsersVM() { UsersId = 5 }; // for testing without login
+            _manager.User = new UsersVM() { UsersId = 100000 }; // for testing without login
         }
 
         /// <summary>
@@ -126,7 +125,7 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    procedure.MedicalRecordId = _manager.MedicalRecordManager.getLastMedicalRecordIdByAnimalId(_medProcedureAnimal.AnimalId);
+                    procedure.MedicalRecordId = _manager.MedicalRecordManager.RetrieveLastMedicalRecordIdByAnimalId(_medProcedureAnimal.AnimalId);
                 } 
                 catch (Exception ex)
                 {
@@ -170,7 +169,7 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    bool success = _manager.ProcedureManager.EditProcedureByMedicalRecordIdAndProcedureId(procedure, _oldProcedure, procedure.MedicalRecordId);
+                    bool success = _manager.ProcedureManager.EditProcedureByProcedureId(procedure, _oldProcedure);
                     if (success)
                     {
                         PromptWindow.ShowPrompt("Success", "The procedure was saved.", ButtonMode.Ok);
