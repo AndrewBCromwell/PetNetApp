@@ -139,19 +139,19 @@ namespace WpfPresentation.Development.Community
         }
         /// Barry Mikulas
         /// Created: 2023/02/11
-        /// Modified:
-        /// by:
+        /// Modified: 2023/03/01
+        /// by: Asa Armstrong
         private void btn_RemoveRole(object sender, RoutedEventArgs e)
         {
             //can get the value of the RoleId from using ((Button)sender).Tag
             if (PromptWindow.ShowPrompt("Remove Role?", "Confirm, are you sure you want to remove the role " + ((Button)sender).Tag + "?", ButtonMode.YesNo) == PromptSelection.Yes)
             {
-                // Created By: Asa
+                // Created By: Asa Armstrong
                 try
                 {
                     if (_masterManager.RoleManager.RemoveRoleByUsersIdAndRoleId(_users.UsersId, ((Button)sender).Tag.ToString()))
                     {
-                        PromptWindow.ShowPrompt("Congrats!", "Role Removed");
+                        PromptWindow.ShowPrompt("Congrats!", "Role Removed.");
                         PopulateUserRoleGrid();
                     }
                     else
@@ -163,6 +163,7 @@ namespace WpfPresentation.Development.Community
                 {
                     PromptWindow.ShowPrompt("Error", "" + ex.Message);
                 }
+                // End of Asa Armstrong's UC
             }
             else
             {

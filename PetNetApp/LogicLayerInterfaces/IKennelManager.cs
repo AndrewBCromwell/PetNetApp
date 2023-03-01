@@ -17,6 +17,22 @@ namespace LogicLayerInterfaces
         bool AddKennel(Kennel kennel);
         bool EditKennelStatusByKennelId(int KennelId);
         bool RemoveAnimalKennlingByKennelId(int KennelId);
+        /// <summary>
+        /// Asa Armstrong
+        /// Created: 2023/02/24
+        /// 
+        /// Removes the Animal Kenneling record to remove the animal from the kennel.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Asa Armstrong
+        /// Updated: 2023/02/24
+        /// Added Comment.
+        /// </remarks>
+        /// <param name="kennelId">kennelId</param>
+        /// <param name="animalId">animalId</param>
+        /// <exception cref="SQLException">Delete fails.</exception>
+        /// <returns>True if the record was removed</returns>
         bool RemoveAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId);
     }
 }

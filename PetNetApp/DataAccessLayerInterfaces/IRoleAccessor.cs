@@ -13,7 +13,22 @@ namespace DataAccessLayerInterfaces
 {
     public interface IRoleAccessor
     {
-        // Created By: Asa Armstrong
+        /// <summary>
+        /// Asa Armstrong
+        /// Created: 2023/02/24
+        /// 
+        /// Deletes the role assigned to a user by the user's Id and role's Id.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Asa Armstrong
+        /// Updated: 2023/02/24
+        /// Added Comment.
+        /// </remarks>
+        /// <param name="usersId">usersId</param>
+        /// <param name="roleId">roleId</param>
+        /// <exception cref="SQLException">Delete fails.</exception>
+        /// <returns>Rows edited</returns>
         int DeleteRoleByUsersIdAndRoleId(int usersId, string roleId);
         List<Role> SelectAllRoles();
         List<Role> SelectAllRolesByUserId(int userID);
