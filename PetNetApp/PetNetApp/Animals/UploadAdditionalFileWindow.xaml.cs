@@ -74,12 +74,12 @@ namespace WpfPresentation.Animals
                 {
                     if (_fileDialog.SafeFileNames.Length > 1)
                     {
-                        _manager.ImageManager.AddMedicalImagesByAnimalId(_animal.AnimalId, _fileDialog.FileNames);
+                        _manager.ImagesManager.AddMedicalImagesByAnimalId(_animal.AnimalId, _fileDialog.FileNames);
                         PromptWindow.ShowPrompt("Success", "Images Added");
                     }
                     else
                     {
-                        _manager.ImageManager.AddMedicalImageByAnimalId(_animal.AnimalId, _fileDialog.FileName);
+                        _manager.ImagesManager.AddMedicalImageByAnimalId(_animal.AnimalId, _fileDialog.FileName);
                         PromptWindow.ShowPrompt("Success", "Image Added");
                     }
                     this.Close();

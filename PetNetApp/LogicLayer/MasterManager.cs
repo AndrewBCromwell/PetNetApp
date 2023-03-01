@@ -47,7 +47,7 @@ namespace LogicLayer
         public IProcedureManager ProcedureManager { get; set; }
         public IMedicalRecordManager MedicalRecordManager { get; set; }
         public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
-        public IImagesManager ImageManager { get; set; }
+
 
         private MasterManager()
         {
@@ -63,11 +63,10 @@ namespace LogicLayer
             TicketManager = new TicketManager();
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
-            FundraisingCampaignManager = new FundraisingCampaignManager(new FundraisingCampaignAccessorFakes());
             FundraisingCampaignManager = new FundraisingCampaignManager();
-            ImageManager = new ImagesManager();
+            ImagesManager = new ImagesManager();
 
-                        //for testing from dev page
+            //for testing from dev page
 /*            User = new UsersVM()
             {
                 UsersId = 100004,
