@@ -53,6 +53,7 @@
     <Compile Include="IRoleAccessor.cs" />
     <Compile Include="IScheduleAccessor.cs" />
     <Compile Include="IShelterAccessor.cs" />
+    <Compile Include="IShelterItemTransactionAccessor.cs" />
     <Compile Include="ITestAccessor.cs" />
     <Compile Include="ITicketAccessor.cs" />
     <Compile Include="IUsersAccessor.cs" />

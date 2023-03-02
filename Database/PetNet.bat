@@ -50,7 +50,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVaccinationByAnimalId_SP.s
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewUsersByUsersId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditVaccination_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingCampaigns_SP.sql
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewChangesToInventoryData_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Shelter_Stored_Procedures.sql
 
 ECHO .

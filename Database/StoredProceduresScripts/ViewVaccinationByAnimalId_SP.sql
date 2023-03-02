@@ -20,7 +20,7 @@ AS
 		JOIN [MedicalRecord]
 			ON [Vaccination].[medicalRecordId] = [MedicalRecord].[medicalRecordId]
 		WHERE [medicalRecord].[AnimalId] = @AnimalId
-		AND	  [medicalRecord].[Vaccination] = 1
+		-- AND	  [medicalRecord].[Vaccination] = 1
 		
 	END
 GO

@@ -67,5 +67,13 @@ namespace DataAccessLayerFakes
             }
             return result;
         }
+
+        public int InsertMedicalRecord(MedicalRecordVM medicalRecord)
+        {
+            int medicalRecordId = 0;
+            medicalRecords.Add(medicalRecord);
+            medicalRecordId = medicalRecord.MedicalRecordId;
+            return medicalRecordId;
+        }
     }
 }

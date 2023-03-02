@@ -28,6 +28,7 @@ namespace LogicLayer
         public IProcedureManager ProcedureManager { get; set; }
         public IMedicalRecordManager MedicalRecordManager { get; set; }
         public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
+        public IShelterItemTransactionManager ShelterItemTransactionManager { get; set; }
 
         private MasterManager()
         {
@@ -44,6 +45,7 @@ namespace LogicLayer
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
             FundraisingCampaignManager = new FundraisingCampaignManager();
+            ShelterItemTransactionManager = new ShelterItemTransactionManager();
         }
     
         public static MasterManager GetMasterManager()

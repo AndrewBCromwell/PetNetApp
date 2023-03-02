@@ -35,8 +35,6 @@ namespace WpfPresentation.Animals
         private bool _forAdd;
         private ProcedureVM _oldProcedure;
 
-        private int userId = 100000; // This should be related to the logedin user, but login is not available yet, so I am using this to test my code. -Andy 
-
         /// <summary>
         /// Andrew Cromwell
         /// Created: 2023/02/08
@@ -53,8 +51,6 @@ namespace WpfPresentation.Animals
             _manager = manager;            
             lblEditProcedure.Content = "Add Procedure";
             dateProcedurePerformed.DisplayDateEnd = DateTime.Today;
-
-            _manager.User = new UsersVM() { UsersId = 100000 }; // for testing without login
         }
 
         /// <summary>
@@ -76,8 +72,6 @@ namespace WpfPresentation.Animals
             dateProcedurePerformed.SelectedDate = _oldProcedure.ProcedureDate;
             txtProcedureMedsAdministered.Text = _oldProcedure.MedicationsAdministered;
             txtProcedureNotes.Text = _oldProcedure.ProcedureNotes;
-
-            _manager.User = new UsersVM() { UsersId = 100000 }; // for testing without login
         }
 
         /// <summary>
@@ -85,8 +79,9 @@ namespace WpfPresentation.Animals
         /// Created: 2023/02/08
         /// 
         /// When the save buttton is clicked, the input on the edit procedure page is cheked,
-        /// and if it is acceptable it is saved. If it is a new a new procedure is being added,
-        /// the medical record id of the animal's last medical record is used.
+        /// and if it is acceptable it is saved. If it is a new procedure being added,
+        /// the medical record id of the animal's last medical record is used. If the animal
+        /// does not have a MedicalRecord one will be created for it
         /// </summary>
         /// 
         /// <remarks>
@@ -132,8 +127,14 @@ namespace WpfPresentation.Animals
                 } 
                 catch (Exception ex)
                 {
-                    PromptWindow.ShowPrompt("An Error occurred", ex.Message + "\n" + ex.InnerException, ButtonMode.Ok);
-                    return;
+                    try
+                    {
+                        MedicalRecordVM medicalRecord = new MedicalRecordVM() { AnimalId = _medProcedureAnimal.AnimalId };
+                        procedure.MedicalRecordId = _manager.MedicalRecordManager.AddMedicalRecord(medicalRecord);
+                    }catch(Exception ex2)
+                    {
+                        PromptWindow.ShowPrompt("An Error occurred", ex2.Message + "\n" + ex.InnerException, ButtonMode.Ok);
+                    }
                 }
             }
             else
