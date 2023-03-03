@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
 
         
-        <DatePicker x:Name="date" SelectedDateChanged="date_SelectedDateChanged" Grid.ColumnSpan="1" Margin="100,5,100,5"></DatePicker>
+        <DatePicker x:Name="date" Grid.ColumnSpan="1" Margin="100,5,100,5" SelectedDateChanged="date_SelectedDateChanged"></DatePicker>
 
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.RowSpan="3" Grid.Row="1">
             <ComboBox x:Name="CboVolunteers" SelectionChanged="CboVolunteers_SelectionChanged" Margin="20,20,20,20" Height="40">
@@ -40,15 +40,15 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"   Click="Button_Click" Margin="70,0,70,0" MaxWidth="150">Clear</Button>
-            <Button Grid.Row="2" Grid.Column="1" Margin="20,20,20,20" Height="40">Add to Schedule</Button>
-            
+            <Button x:Name="btnClear" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"   Click="btnClear_Click" Margin="70,0,70,0" MaxWidth="150">Clear</Button>
+            <Button x:Name="btnAddSchedule" Grid.Row="2" Grid.Column="1" Margin="20,20,20,20" Height="40" Click="btnAddSchedule_Click">Add to Schedule</Button>
+            <Button x:Name="btnEditSchedule" Grid.Row="2" Grid.Column="1" Margin="20,20,20,20" Height="40">Edit Schedule</Button>
         </StackPanel>
         
 
         <DataGrid x:Name="datScheduledPerson"  Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="20,20,20,20" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn  Header="Volunteer">
+                <DataGridTextColumn  Header="Volunteer" Width="*">
                     <DataGridTextColumn.Binding>
                         <MultiBinding StringFormat="{}{0} {1}">
                             <Binding Path="GivenName" />
@@ -56,8 +56,8 @@
                         </MultiBinding>
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding StartTime}" Header="StartTime" />
-                <DataGridTextColumn Binding="{Binding EndTime}" Header="EndTime"/>
+                <DataGridTextColumn Binding="{Binding StartTime}" Header="StartTime" Width="*"/>
+                <DataGridTextColumn Binding="{Binding EndTime}" Header="EndTime" Width="*"/>
             </DataGrid.Columns>
 
         </DataGrid>

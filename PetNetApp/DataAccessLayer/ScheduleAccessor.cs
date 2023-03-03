@@ -24,22 +24,41 @@ namespace DataAccessLayer
 {
     public class ScheduleAccessor : IScheduleAccessor
     {
+        public int InsertSchedulebyUserid(ScheduleVM scheduleVM)
+        {
+            int rowsAffected = 0;
 
-        /// <summary>
-        /// Chris Dreismeier
-        /// Created: 2023/02/09
-        /// 
-        /// Gets all people who are scheduled on the date passed through
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="selectedDate">date the user selected to see who is scheduled that day</param>
-        /// <exception cref="SQLException">Select fails</exception>
-        /// <returns>List<ScheduleVM></returns>
+            var conn = new DBConnection().GetConnection();
+
+            var cmdText = "sp_insert_schedule";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+            cmd.Parameters.Add("@StartTime", SqlDbType.DateTime);
+            cmd.Parameters.Add("@EndTime", SqlDbType.DateTime);
+
+            cmd.Parameters["@UsersId"].Value = scheduleVM.UserId;
+            cmd.Parameters["@StartTime"].Value = scheduleVM.StartTime;
+            cmd.Parameters["@EndTime"].Value = scheduleVM.EndTime;
+
+            try
+            {
+                conn.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
         public List<ScheduleVM> SelectScheduleByDate(DateTime selectedDate)
         {
             var schedules = new List<ScheduleVM>();
@@ -91,23 +110,6 @@ namespace DataAccessLayer
 
             return schedules;
         }
-
-
-        /// <summary>
-        /// Chris Dreismeier
-        /// Created: 2023/02/17
-        /// 
-        /// Gets all of the Schedules that for the user passed through
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="userId">The user that you want to see specific schedule</param>
-        /// <exception cref="SQLException">Select fails</exception>
-        /// <returns>List<ScheduleVM></returns>
         public List<ScheduleVM> SelectScheduleByUser(int userId)
         {
             var schedules = new List<ScheduleVM>();

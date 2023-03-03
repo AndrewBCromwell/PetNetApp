@@ -64,6 +64,18 @@ namespace DataAccessLayerFakes
             });
 
         }
+
+        public int InsertSchedulebyUserid(ScheduleVM scheduleVM)
+        {
+            int result = fakeSchedules.Count();
+
+            fakeSchedules.Add(scheduleVM);
+
+            result = fakeSchedules.Count() - result;
+            
+            return result;
+        }
+
         public List<ScheduleVM> SelectScheduleByDate(DateTime selectedDate)
         {
             List<ScheduleVM> schedules = new List<ScheduleVM>();

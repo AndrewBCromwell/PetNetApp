@@ -1,738 +1,761 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>{78640225-77F2-41C1-BB8D-A5B581979AA2}</ProjectGuid>
-		<OutputType>WinExe</OutputType>
-		<RootNamespace>WpfPresentation</RootNamespace>
-		<AssemblyName>WpfPresentation</AssemblyName>
-		<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-		<FileAlignment>512</FileAlignment>
-		<ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-		<WarningLevel>4</WarningLevel>
-		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-		<Deterministic>true</Deterministic>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<PlatformTarget>AnyCPU</PlatformTarget>
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<PlatformTarget>AnyCPU</PlatformTarget>
-		<DebugType>pdbonly</DebugType>
-		<Optimize>true</Optimize>
-		<OutputPath>bin\Release\</OutputPath>
-		<DefineConstants>TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<PropertyGroup>
-		<ApplicationIcon>logo.ico</ApplicationIcon>
-	</PropertyGroup>
-	<ItemGroup>
-		<Reference Include="PresentationFramework.Aero2" />
-		<Reference Include="System" />
-		<Reference Include="System.Data" />
-		<Reference Include="System.Windows.Forms" />
-		<Reference Include="System.Xml" />
-		<Reference Include="Microsoft.CSharp" />
-		<Reference Include="System.Core" />
-		<Reference Include="System.Xml.Linq" />
-		<Reference Include="System.Data.DataSetExtensions" />
-		<Reference Include="System.Net.Http" />
-		<Reference Include="System.Xaml">
-			<RequiredTargetFramework>4.0</RequiredTargetFramework>
-		</Reference>
-		<Reference Include="WindowsBase" />
-		<Reference Include="PresentationCore" />
-		<Reference Include="PresentationFramework" />
-	</ItemGroup>
-	<ItemGroup>
-		<ApplicationDefinition Include="App.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</ApplicationDefinition>
-		<Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
-			<DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
-			<DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\AnimalPostUpdate.xaml.cs">
-			<DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
-		</Compile>
-		<Page Include="Animals\AddEditAnimalDeath.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
-			<DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\EditTreatment.xaml.cs">
-			<DependentUpon>EditTreatment.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\MedicalFilesPage.xaml.cs">
-			<DependentUpon>MedicalFilesPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\MedicalPage.xaml.cs">
-			<DependentUpon>MedicalPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\EditProcedurePage.xaml.cs">
-			<DependentUpon>EditProcedurePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\MedProcedurePage.xaml.cs">
-			<DependentUpon>MedProcedurePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Community\RoleManagementPopup.xaml.cs">
-			<DependentUpon>RoleManagementPopup.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Community\RoleManagementTemp.xaml.cs">
-			<DependentUpon>RoleManagementTemp.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
-			<DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
-			<DependentUpon>FundraisingPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
-			<DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Fundraising\FundraisingPage.xaml.cs">
-			<DependentUpon>FundraisingPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
-			<DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Fundraising\ViewCampaignsPage.xaml.cs">
-			<DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="UserControls\PlaceholderTextBox.cs" />
-		<Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
-			<DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Development\Management\SchedulePage.xaml.cs">
-			<DependentUpon>SchedulePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
-			<DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\ViewTicketList.xaml.cs">
-			<DependentUpon>ViewTicketList.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\AssignAnimalToKennel.xaml.cs">
-			<DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\ViewAnimalsForKennel.xaml.cs">
-			<DependentUpon>ViewAnimalsForKennel.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\AddKennelPage.xaml.cs">
-			<DependentUpon>AddKennelPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Management\ViewKennelPage.xaml.cs">
-			<DependentUpon>ViewKennelPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\AccountSettingsPage.xaml.cs">
-			<DependentUpon>AccountSettingsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\DeactivateButtonPage.xaml.cs">
-			<DependentUpon>DeactivateButtonPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\LandingPage.xaml.cs">
-			<DependentUpon>LandingPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\LogInPage.xaml.cs">
-			<DependentUpon>LogInPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\SignUp.xaml.cs">
-			<DependentUpon>SignUp.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Misc\UserProfilePage.xaml.cs">
-			<DependentUpon>UserProfilePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="UserControls\KennelUserControl.xaml.cs">
-			<DependentUpon>KennelUserControl.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="UserControls\AnimalListUserControl.xaml.cs">
-			<DependentUpon>AnimalListUserControl.xaml</DependentUpon>
-		</Compile>
-		<Page Include="Animals\AnimalMedicalTestsPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\AnimalPostUpdate.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\AnimalMedicalProfile.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\AnimalsPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\EditDetailAnimalProfile.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Animals\EditTreatment.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\MedicalFilesPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Animals\MedicalPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Page Include="Animals\MedicalTreatmentPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Development\Community\RoleManagementPopup.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Development\Community\RoleManagementTemp.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-			<Page Include="Animals\UploadAdditionalFileWindow.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Development\Fundraising\FundraisingPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Development\Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Fundraising\FundraisingPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Fundraising\ViewCampaignsPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="UserControls\PlaceholderTextBox.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Management\ViewTicketList.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Misc\DeactivateButtonPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Misc\SignUp.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Styles\ButtonStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\CalendarStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Community\CommunityPage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Community\UserManagementPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Community\UsersControl\UCPreviewUser.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Animals\AnimalListPage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Development\Animals\AnimalsPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Animals\MedicalNavigationPage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Animals\EditProcedurePage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Animals\MedProcedurePage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Development\Community\CommunityPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Development\MainWindow.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Management\AssignAnimalToKennel.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Development\Management\ManagementPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Management\ViewAnimalsForKennel.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Development\Management\SchedulePage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Development\Management\VolunteerManagment.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Misc\AccountSettingsPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Misc\LandingPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Misc\LogInPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Management\AddKennelPage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Misc\UserProfilePage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="PromptWindow.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="MainWindow.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Compile Include="Animals\AddEditAnimalDeath.xaml.cs">
-				<DependentUpon>AddEditAnimalDeath.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Animals\AnimalsPage.xaml.cs">
-				<DependentUpon>AnimalsPage.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="App.xaml.cs">
-				<DependentUpon>App.xaml</DependentUpon>
-				<SubType>Code</SubType>
-			</Compile>
-			<Compile Include="Community\CommunityPage.xaml.cs">
-				<DependentUpon>CommunityPage.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Community\UserManagementPage.xaml.cs">
-				<DependentUpon>UserManagementPage.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Community\UsersControl\UCPreviewUser.xaml.cs">
-				<DependentUpon>UCPreviewUser.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Animals\AnimalListPage.xaml.cs">
-				<DependentUpon>AnimalListPage.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Development\Animals\AnimalsPage.xaml.cs">
-				<DependentUpon>AnimalsPage.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Animals\MedicalNavigationPage.xaml.cs">
-				<DependentUpon>MedicalNavigationPage.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Development\Community\CommunityPage.xaml.cs">
-				<DependentUpon>CommunityPage.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Development\MainWindow.xaml.cs">
-				<DependentUpon>MainWindow.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Development\Management\ManagementPage.xaml.cs">
-				<DependentUpon>ManagementPage.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="Development\Management\VolunteerManagment.xaml.cs">
-				<DependentUpon>VolunteerManagment.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="PromptWindow.xaml.cs">
-				<DependentUpon>PromptWindow.xaml</DependentUpon>
-			</Compile>
-			<Compile Include="MainWindow.xaml.cs">
-				<DependentUpon>MainWindow.xaml</DependentUpon>
-				<SubType>Code</SubType>
-			</Compile>
-			<Compile Include="Development\StyleShowcase.xaml.cs">
-				<DependentUpon>StyleShowcase.xaml</DependentUpon>
-			</Compile>
-			<Page Include="Management\ManagementPage.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Management\ViewKennelPage.xaml">
-				<Generator>MSBuild:Compile</Generator>
-				<SubType>Designer</SubType>
-			</Page>
-			<Page Include="Styles\CheckBoxStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\Colors.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\ComboBoxStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\ContextMenuStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\Converters.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\DataGridStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\DatePickerStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\LabelStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\PasswordBoxStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\RadioButtonStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\ScrollBarStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Styles\TextBoxStyles.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="UserControls\KennelUserControl.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="UserControls\AnimalListUserControl.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-			<Page Include="Development\StyleShowcase.xaml">
-				<SubType>Designer</SubType>
-				<Generator>MSBuild:Compile</Generator>
-			</Page>
-		</ItemGroup>
-	<ItemGroup>
-		<Compile Include="Management\ManagementPage.xaml.cs">
-			<DependentUpon>ManagementPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Properties\AssemblyInfo.cs">
-			<SubType>Code</SubType>
-		</Compile>
-		<Compile Include="Properties\Resources.Designer.cs">
-			<AutoGen>True</AutoGen>
-			<DesignTime>True</DesignTime>
-			<DependentUpon>Resources.resx</DependentUpon>
-		</Compile>
-		<Compile Include="Properties\Settings.Designer.cs">
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Settings.settings</DependentUpon>
-			<DesignTimeSharedInput>True</DesignTimeSharedInput>
-		</Compile>
-		<EmbeddedResource Include="Properties\Resources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-		<None Include="Properties\Settings.settings">
-			<Generator>SettingsSingleFileGenerator</Generator>
-			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
-		</None>
-	</ItemGroup>
-	<ItemGroup>
-		<None Include="App.config" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\DataObjects\DataObjects.csproj">
-			<Project>{5f873a2c-b117-4b22-88c8-bc29b3acba2e}</Project>
-			<Name>DataObjects</Name>
-		</ProjectReference>
-		<ProjectReference Include="..\LogicLayerInterfaces\LogicLayerInterfaces.csproj">
-			<Project>{3f5e4460-f710-4b9a-85a4-cc30109ad376}</Project>
-			<Name>LogicLayerInterfaces</Name>
-		</ProjectReference>
-		<ProjectReference Include="..\LogicLayer\LogicLayer.csproj">
-			<Project>{bbe0fac3-fcec-449c-b337-6c81a6225159}</Project>
-			<Name>LogicLayer</Name>
-		</ProjectReference>
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Development\Donate\" />
-		<Folder Include="Development\Donations\" />
-		<Folder Include="Development\Events\" />
-		<Folder Include="Development\Shelters\" />
-		<Folder Include="Donate\" />
-		<Folder Include="Donations\" />
-		<Folder Include="Events\" />
-		<Folder Include="Shelters\" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\petnetLogo.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\abstract-user-flat-4.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\menuIcon.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\bell.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\bell_hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\menuIcon_hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\user_hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\bell_notification.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\bell_notification_hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\LeftArrow.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\LeftArrow_Hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\RightArrow.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\RightArrow_Hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="logo.ico" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\abstract-user-flat-4.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\bell.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\bell_hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\bell_notification.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\bell_notification_hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\LeftArrow.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\LeftArrow_Hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\menuIcon.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\menuIcon_hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\petnetLogo.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\RightArrow.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\RightArrow_Hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\user_hover.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\pharmacy_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\notes_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\needle_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\clipboard_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\beaker_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\ambulance_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\libraryplus_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\arrow_left3_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\PlusIcon.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\AnimalImage.png" />
-		<Resource Include="Images\threedots.png" />
-		<Resource Include="Images\usericondark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\threedots.png" />
-		<Resource Include="Development\Images\usericondark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\sampleDogImage.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\txtSearch.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\ambulance_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\arrow_left3_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\beaker_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\clipboard_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\libraryplus_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\needle_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\notes_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\pharmacy_dark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\perfectCAT.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\perfectCAT.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\cameradark.png" />
-		<Resource Include="Development\Images\emoticonhappydark.png" />
-		<Resource Include="Development\Images\senddark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\cameradark.png" />
-		<Resource Include="Images\emoticonhappydark.png" />
-		<Resource Include="Images\senddark.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Images\PlusIcon_light.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Development\Images\menudark.png" />
-		<Resource Include="Development\Images\menulight.png" />
-	</ItemGroup>
-	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78640225-77F2-41C1-BB8D-A5B581979AA2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WpfPresentation</RootNamespace>
+    <AssemblyName>WpfPresentation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
+      <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
+      <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalPostUpdate.xaml.cs">
+      <DependentUpon>AnimalPostUpdate.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Animals\AddEditAnimalDeath.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
+      <DependentUpon>EditDetailAnimalProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\EditTreatment.xaml.cs">
+      <DependentUpon>EditTreatment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalFilesPage.xaml.cs">
+      <DependentUpon>MedicalFilesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalPage.xaml.cs">
+      <DependentUpon>MedicalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\EditProcedurePage.xaml.cs">
+      <DependentUpon>EditProcedurePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedProcedurePage.xaml.cs">
+      <DependentUpon>MedProcedurePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Community\RoleManagementPopup.xaml.cs">
+      <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Community\RoleManagementTemp.xaml.cs">
+      <DependentUpon>RoleManagementTemp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
+      <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
+      <DependentUpon>FundraisingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
+      <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\AddEditSchedule.xaml.cs">
+      <DependentUpon>AddEditSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\FundraisingPage.xaml.cs">
+      <DependentUpon>FundraisingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
+      <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewCampaignsPage.xaml.cs">
+      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlaceholderTextBox.cs" />
+    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
+      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\SchedulePage.xaml.cs">
+      <DependentUpon>SchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
+      <DependentUpon>MedicalTreatmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewTicketList.xaml.cs">
+      <DependentUpon>ViewTicketList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\AssignAnimalToKennel.xaml.cs">
+      <DependentUpon>AssignAnimalToKennel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewAnimalsForKennel.xaml.cs">
+      <DependentUpon>ViewAnimalsForKennel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\AddKennelPage.xaml.cs">
+      <DependentUpon>AddKennelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewKennelPage.xaml.cs">
+      <DependentUpon>ViewKennelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\AccountSettingsPage.xaml.cs">
+      <DependentUpon>AccountSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\DeactivateButtonPage.xaml.cs">
+      <DependentUpon>DeactivateButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LandingPage.xaml.cs">
+      <DependentUpon>LandingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\LogInPage.xaml.cs">
+      <DependentUpon>LogInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\SignUp.xaml.cs">
+      <DependentUpon>SignUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\UserProfilePage.xaml.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\KennelUserControl.xaml.cs">
+      <DependentUpon>KennelUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
+      <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Animals\AnimalMedicalTestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AnimalPostUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AnimalMedicalProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AnimalsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\EditDetailAnimalProfile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\EditTreatment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\MedicalFilesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\MedicalPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\MedicalTreatmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Community\RoleManagementPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Community\RoleManagementTemp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\UploadAdditionalFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\FundraisingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Development\Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\AddEditSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\FundraisingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fundraising\ViewCampaignsFundraisingCampaignUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fundraising\ViewCampaignsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PlaceholderTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\ViewTicketList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\DeactivateButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\SignUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CalendarStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\CommunityPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\UserManagementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Community\UsersControl\UCPreviewUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\AnimalListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Animals\AnimalsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\MedicalNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\EditProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\MedProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Community\CommunityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Development\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\AssignAnimalToKennel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\ManagementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\ViewAnimalsForKennel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\VolunteerManagment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\AccountSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\LandingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Misc\LogInPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\AddKennelPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Misc\UserProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PromptWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Animals\AddEditAnimalDeath.xaml.cs">
+      <DependentUpon>AddEditAnimalDeath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalsPage.xaml.cs">
+      <DependentUpon>AnimalsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Community\CommunityPage.xaml.cs">
+      <DependentUpon>CommunityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Community\UserManagementPage.xaml.cs">
+      <DependentUpon>UserManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Community\UsersControl\UCPreviewUser.xaml.cs">
+      <DependentUpon>UCPreviewUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AnimalListPage.xaml.cs">
+      <DependentUpon>AnimalListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Animals\AnimalsPage.xaml.cs">
+      <DependentUpon>AnimalsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalNavigationPage.xaml.cs">
+      <DependentUpon>MedicalNavigationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Community\CommunityPage.xaml.cs">
+      <DependentUpon>CommunityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\ManagementPage.xaml.cs">
+      <DependentUpon>ManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\VolunteerManagment.xaml.cs">
+      <DependentUpon>VolunteerManagment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PromptWindow.xaml.cs">
+      <DependentUpon>PromptWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Development\StyleShowcase.xaml.cs">
+      <DependentUpon>StyleShowcase.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Management\ManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\ViewKennelPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CheckBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ContextMenuStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGridStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DatePickerStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\LabelStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\PasswordBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\RadioButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ScrollBarStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\KennelUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AnimalListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\StyleShowcase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Management\ManagementPage.xaml.cs">
+      <DependentUpon>ManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataObjects\DataObjects.csproj">
+      <Project>{5f873a2c-b117-4b22-88c8-bc29b3acba2e}</Project>
+      <Name>DataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicLayerInterfaces\LogicLayerInterfaces.csproj">
+      <Project>{3f5e4460-f710-4b9a-85a4-cc30109ad376}</Project>
+      <Name>LogicLayerInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicLayer\LogicLayer.csproj">
+      <Project>{bbe0fac3-fcec-449c-b337-6c81a6225159}</Project>
+      <Name>LogicLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Development\Donate\" />
+    <Folder Include="Development\Donations\" />
+    <Folder Include="Development\Events\" />
+    <Folder Include="Development\Shelters\" />
+    <Folder Include="Donate\" />
+    <Folder Include="Donations\" />
+    <Folder Include="Events\" />
+    <Folder Include="Shelters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\petnetLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\abstract-user-flat-4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\menuIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bell.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bell_hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menuIcon_hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\user_hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bell_notification.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bell_notification_hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LeftArrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\LeftArrow_Hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\RightArrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\RightArrow_Hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\abstract-user-flat-4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\bell.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\bell_hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\bell_notification.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\bell_notification_hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\LeftArrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\LeftArrow_Hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\menuIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\menuIcon_hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\petnetLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\RightArrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\RightArrow_Hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\user_hover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\pharmacy_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\notes_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\needle_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\clipboard_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\beaker_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\ambulance_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\libraryplus_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\arrow_left3_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PlusIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AnimalImage.png" />
+    <Resource Include="Images\threedots.png" />
+    <Resource Include="Images\usericondark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\threedots.png" />
+    <Resource Include="Development\Images\usericondark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\sampleDogImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\txtSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ambulance_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_left3_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\beaker_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\clipboard_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\libraryplus_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\needle_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\notes_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pharmacy_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\perfectCAT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\perfectCAT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\cameradark.png" />
+    <Resource Include="Development\Images\emoticonhappydark.png" />
+    <Resource Include="Development\Images\senddark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cameradark.png" />
+    <Resource Include="Images\emoticonhappydark.png" />
+    <Resource Include="Images\senddark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PlusIcon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Development\Images\menudark.png" />
+    <Resource Include="Development\Images\menulight.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

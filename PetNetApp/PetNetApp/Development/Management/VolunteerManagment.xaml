@@ -24,7 +24,7 @@
 
         <DataGrid x:Name="datVolunteer" Grid.Row="1" Grid.RowSpan="4" Margin="20,0.4,0.4,20" AutoGenerateColumns="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn  Header="Volunteer">
+                <DataGridTextColumn  Header="Volunteer" Width="*">
                     <DataGridTextColumn.Binding>
                         <MultiBinding StringFormat="{}{0} {1}">
                             <Binding Path="GivenName" />
@@ -32,8 +32,8 @@
                         </MultiBinding>
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Phone}" Header="Phone"/>
-                <DataGridTextColumn Binding="{Binding Address}" Header="Address"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Phone" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Address}" Header="Address" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
