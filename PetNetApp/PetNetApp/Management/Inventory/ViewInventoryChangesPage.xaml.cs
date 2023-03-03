@@ -23,7 +23,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 
-namespace WpfPresentation.Development.Management.Inventory
+namespace WpfPresentation.Management.Inventory
 {
     /// <summary>
     /// Interaction logic for ViewInventoryChangesPage.xaml
@@ -40,38 +40,6 @@ namespace WpfPresentation.Development.Management.Inventory
             _manager = manager;
         }
 
-        /// <summary>
-        /// Your Name
-        /// Created: 2023/02/28
-        /// 
-        /// Retrieves ShelterItemTransactionVMs and sends each to DisplayInventoryChangeRecord.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            stpInventroyItemTransactionList.Children.Clear();
-            _shelterItemTransactions = _manager.ShelterItemTransactionManager.RetrieveInventoryTransactionByShelterId(55);
-            int index = 0;
-            if(_shelterItemTransactions.Count != 0)
-            {
-                foreach(ShelterItemTransactionVM transaction in _shelterItemTransactions)
-                {
-                    DisplayInventoryChangeRecord(transaction, index);
-                    index++;
-                }
-            }
-            else
-            {
-                Label lblNoTransactions = new Label();
-                lblNoTransactions.VerticalContentAlignment = VerticalAlignment.Center;
-                lblNoTransactions.HorizontalContentAlignment = HorizontalAlignment.Center;
-                lblNoTransactions.FontSize = 20;
-                lblNoTransactions.Content = "no changes have been made in the past month";
-                stpInventroyItemTransactionList.Children.Add(lblNoTransactions);                
-            }
-            
-        }
 
         /// <summary>
         /// Your Name
@@ -87,7 +55,7 @@ namespace WpfPresentation.Development.Management.Inventory
 
             string transactionTag;
             transactionTag = transaction.GivenName + " " + transaction.FamilyName + " ";
-            if(transaction.InventoryChangeReasonId.ToLower() == "check-in")
+            if (transaction.InventoryChangeReasonId.ToLower() == "check-in")
             {
                 transactionTag = transactionTag + "checked-in ";
             }
@@ -108,7 +76,7 @@ namespace WpfPresentation.Development.Management.Inventory
 
             var bc = new BrushConverter();
             if (index % 2 == 0)
-            {                
+            {
                 lblTransaction.Background = (Brush)bc.ConvertFrom("#3D8361");
             }
             else
@@ -123,6 +91,45 @@ namespace WpfPresentation.Development.Management.Inventory
             lblTransaction.Height = 50;
 
             stpInventroyItemTransactionList.Children.Add(lblTransaction);
+        }
+
+        /// <summary>
+        /// Your Name
+        /// Created: 2023/02/28
+        /// 
+        /// Retrieves ShelterItemTransactionVMs and sends each to DisplayInventoryChangeRecord.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            stpInventroyItemTransactionList.Children.Clear();
+            try
+            {
+                _shelterItemTransactions = _manager.ShelterItemTransactionManager.RetrieveInventoryTransactionByShelterId((int)_manager.User.ShelterId);
+            }catch(Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message + "\n" + ex.InnerException.Message, ButtonMode.Ok);
+            }
+            _shelterItemTransactions = _manager.ShelterItemTransactionManager.RetrieveInventoryTransactionByShelterId((int)_manager.User.ShelterId);
+            int index = 0;
+            if (_shelterItemTransactions.Count != 0)
+            {
+                foreach (ShelterItemTransactionVM transaction in _shelterItemTransactions)
+                {
+                    DisplayInventoryChangeRecord(transaction, index);
+                    index++;
+                }
+            }
+            else
+            {
+                Label lblNoTransactions = new Label();
+                lblNoTransactions.VerticalContentAlignment = VerticalAlignment.Center;
+                lblNoTransactions.HorizontalContentAlignment = HorizontalAlignment.Center;
+                lblNoTransactions.FontSize = 20;
+                lblNoTransactions.Content = "no changes have been made in the past month";
+                stpInventroyItemTransactionList.Children.Add(lblNoTransactions);
+            }
         }
     }
 }

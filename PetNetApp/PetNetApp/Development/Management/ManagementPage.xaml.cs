@@ -63,7 +63,7 @@ namespace WpfPresentation.Development.Management
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
 
-            frameAnimals.Navigate(new ViewInventoryChangesPage(_manager));
+            frameManagement.Navigate(new ViewInventoryChangesPage(_manager));
 
         }
 

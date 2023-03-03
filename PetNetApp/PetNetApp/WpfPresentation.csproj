@@ -115,6 +115,9 @@
     <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
       <DependentUpon>FundraisingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\ViewInventoryChangesPage.xaml.cs">
+      <DependentUpon>ViewInventoryChangesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
@@ -219,15 +222,15 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Page Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Shelters\AlterShelter.xaml">
-=======
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Community\SuspendUserPopup.xaml">
->>>>>>> origin/main
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,18 +238,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Development\Shelters\AlterShelter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-<<<<<<< HEAD
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-=======
->>>>>>> origin/main
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -271,10 +271,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Development\Shelters\ShelterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Shelters\ShelterVMListUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -371,13 +367,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
-<<<<<<< HEAD
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Management\ViewTicketList.xaml">
-=======
->>>>>>> origin/main
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
