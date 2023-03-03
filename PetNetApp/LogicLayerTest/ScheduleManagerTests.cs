@@ -74,5 +74,22 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedCount, actualCount);
 
         }
+
+        [TestMethod]
+        public void TestAddSchedule()
+        {
+            // arrange
+            ScheduleVM scheduleVM = new ScheduleVM();
+            scheduleVM.UserId = 100000;
+            scheduleVM.StartTime = DateTime.Now;
+            scheduleVM.EndTime = DateTime.Now.AddHours(10);
+
+            // act
+            bool success = _scheduleManager.AddSchedulebyUserId(scheduleVM);
+
+            // assert
+            Assert.AreEqual(true, success);
+
+        }
     }
 }

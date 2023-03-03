@@ -41,18 +41,18 @@ namespace WpfPresentation.Development.Management
         public SchedulePage()
         {
             InitializeComponent();
-            loadCmbBox();
+            LoadCmbBox();
         }
 
         public SchedulePage(UsersVM user)
         {
             InitializeComponent();
-            loadCmbBox();
+            LoadCmbBox();
             CboVolunteers.SelectedValue = user.UsersId;
-            populateDatGridByUserId(user);
+            PopulateDatGridByUserId(user);
         }
 
-        private void loadCmbBox()
+        private void LoadCmbBox()
         {
             
             try
@@ -67,8 +67,7 @@ namespace WpfPresentation.Development.Management
             }
             
         }
-
-        private void populateDatGridByUserId(UsersVM user)
+        private void PopulateDatGridByUserId(UsersVM user)
         {
             if (CboVolunteers.SelectedItem != null)
             {
@@ -83,7 +82,6 @@ namespace WpfPresentation.Development.Management
                 }
             }
         }
-
         private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             
@@ -100,17 +98,36 @@ namespace WpfPresentation.Development.Management
                 }
             }
         }
-
         private void CboVolunteers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UsersVM user = (UsersVM)CboVolunteers.SelectedItem;
-            populateDatGridByUserId(user);
+            PopulateDatGridByUserId(user);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             CboVolunteers.SelectedItem = null;
             datScheduledPerson.ItemsSource = null;
+        }
+        private void btnAddSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            UsersVM selectedUser = (UsersVM)CboVolunteers.SelectedItem;
+
+            if(CboVolunteers.SelectedItem == null)
+            {
+                PromptWindow.ShowPrompt("Error", "No user selected \n please select a user.");
+
+            }
+            else
+            {
+                var addEditSchedule = new AddEditSchedule(selectedUser);
+                addEditSchedule.Owner = Window.GetWindow(this);
+                if ((bool)addEditSchedule.ShowDialog())
+                {
+                    PopulateDatGridByUserId(selectedUser);
+                }
+
+            }
+            
         }
     }
 }

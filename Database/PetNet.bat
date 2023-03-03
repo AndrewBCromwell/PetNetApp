@@ -36,6 +36,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalDOD513-514_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_user_by_roleId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_date_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_userId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddSchedule_SP.sql
+
+
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_user_creation.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddRole_to_User_SP.sql
 
