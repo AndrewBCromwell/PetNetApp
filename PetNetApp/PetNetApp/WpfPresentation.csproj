@@ -118,6 +118,12 @@
     <Compile Include="Management\Inventory\ViewInventoryChangesPage.xaml.cs">
       <DependentUpon>ViewInventoryChangesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fundraising\ViewDonationsPage.xaml.cs">
+      <DependentUpon>ViewDonationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DonationUserControl.xaml.cs">
+      <DependentUpon>DonationUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
@@ -246,6 +252,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fundraising\ViewDonationsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -325,6 +335,10 @@
     <Page Include="Development\Fundraising\FundraisingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\DonationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml">
       <SubType>Designer</SubType>

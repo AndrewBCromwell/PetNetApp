@@ -48,6 +48,7 @@ namespace LogicLayer
         public IMedicalRecordManager MedicalRecordManager { get; set; }
         public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
         public IShelterItemTransactionManager ShelterItemTransactionManager { get; set; }
+        public IDonationManager DonationManager { get; set; }
 
 
         private MasterManager()
@@ -67,6 +68,7 @@ namespace LogicLayer
             FundraisingCampaignManager = new FundraisingCampaignManager();
             ShelterItemTransactionManager = new ShelterItemTransactionManager();
             ImagesManager = new ImagesManager();
+            DonationManager = new DonationManager();
 
             //for testing from dev page
 /*            User = new UsersVM()
