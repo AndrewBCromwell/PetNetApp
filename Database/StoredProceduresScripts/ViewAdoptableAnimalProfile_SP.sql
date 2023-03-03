@@ -3,7 +3,7 @@ Hoang Chu
 Created: 2023/02/16
 
 Description:
-File containing the stored procedures for Add_Event use case
+File containing the stored procedures for ViewAdoptableAnimalProfile use case
 **************************************************************
 <Updater Name>
 Updated: yyyy/mm/dd

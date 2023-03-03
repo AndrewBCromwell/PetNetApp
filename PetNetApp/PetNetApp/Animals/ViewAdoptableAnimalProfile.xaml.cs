@@ -159,7 +159,16 @@ namespace WpfPresentation.Animals
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            animalVM = _masterManager.AnimalManager.RetriveAnimalAdoptableProfile(_animalId);
+
+            try
+            {
+                animalVM = _masterManager.AnimalManager.RetriveAnimalAdoptableProfile(_animalId);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Can not get the data. \n\n" + ex.Message);
+            }
+            
             DisplayAnimalProfile();
             GetImageFile();
             LoadImage();

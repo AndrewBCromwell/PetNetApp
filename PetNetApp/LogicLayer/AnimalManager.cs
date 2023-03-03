@@ -317,5 +317,38 @@ namespace LogicLayer
 
             return animalVM;
         }
+
+        public List<AnimalVM> RetriveAdoptedAnimalByUserId(int userId)
+        {
+            List<AnimalVM> animals;
+
+            try
+            {
+                animals = _animalAccessor.SelectAdoptedAnimalByUserId(userId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Data not found.", ex);
+            }
+
+            return animals;
+        }
+
+        public FosterPlacementRecord RetriveFosterPlacementRecordNotes(int animalId)
+        {
+            FosterPlacementRecord fosterPlacementRecord;
+
+            try
+            {
+                fosterPlacementRecord = _animalAccessor.SelectFosterPlacementRecordNotes(animalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Data not found.",ex);
+            }
+
+            return fosterPlacementRecord;
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace WpfPresentation.Community
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameCommunity.Navigate(null);
+            frameCommunity.Navigate(new ViewUpdateFromFosterProfile(100000));
         }
 
         private void btnUsers_Click(object sender, RoutedEventArgs e)

@@ -109,6 +109,12 @@
     <Compile Include="Animals\VaccinationsPage.xaml.cs">
       <DependentUpon>VaccinationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Community\UCAdoptedAnimal.xaml.cs">
+      <DependentUpon>UCAdoptedAnimal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Community\ViewUpdateFromFosterProfile.xaml.cs">
+      <DependentUpon>ViewUpdateFromFosterProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
       <DependentUpon>FundraisingPage.xaml</DependentUpon>
     </Compile>
@@ -207,6 +213,14 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
+    <Page Include="Community\UCAdoptedAnimal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\ViewUpdateFromFosterProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Shelters\AlterShelter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

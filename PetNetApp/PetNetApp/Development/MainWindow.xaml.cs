@@ -43,7 +43,7 @@ namespace PetNetApp.Development
             frameMain.Navigate(null);
         }
 
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Resources["rsrcSelectedTabButton"];

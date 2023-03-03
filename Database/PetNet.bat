@@ -9,6 +9,7 @@ rem sqlcmd -S localhost -E -i SampleData\ASampleFeature_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\Vaccination_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -55,6 +56,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ReactivateAccount_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\Shelter_Stored_Procedures.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAdoptableAnimalProfile_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewUpdatesFromFosterProfile_SP.sql
 
 ECHO .
 ECHO if no errors appear DB was created
