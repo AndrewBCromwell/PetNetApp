@@ -35,15 +35,39 @@ namespace WpfPresentation.Animals
         private MasterManager _manager = null;
         private Button[] _medicalTabButtons;
 
+        private Page _returnPage = null;
+
         public MedicalNavigationPage(MasterManager manager, Animal animal)
         {
             InitializeComponent();
             _manager = manager;
             _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
             _medicalProfileAnimal = animal;
+            _returnPage = MedicalPage.GetMedicalPage(_manager);
             displayMedProfileAnimalName();
 
             // modified by Stephen: Modified the MedicalNavigationPage to show Profile by default
+            btnMedProfile_Click(this, new RoutedEventArgs());
+        }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/28
+        /// 
+        /// Overloaded constructor for when this page needs to navigate to a different page than the usual
+        /// </summary>
+        /// <param name="manager">existing instance of the master manager</param>
+        /// <param name="animal"> the animal to view medical details about</param>
+        /// <param name="returnPage">the page to return to when the back button is pressed</param>
+        public MedicalNavigationPage(MasterManager manager, Animal animal, Page returnPage)
+        {
+            InitializeComponent();
+            _manager = manager;
+            _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
+            _medicalProfileAnimal = animal;
+            _returnPage = returnPage;
+            displayMedProfileAnimalName();
+
             btnMedProfile_Click(this, new RoutedEventArgs());
         }
 
@@ -106,9 +130,17 @@ namespace WpfPresentation.Animals
             frameMedical.Navigate(new MedProcedurePage(_medicalProfileAnimal, _manager));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Changed this to return to the page in the _returnPage variable so that this page can navigate back to different pages
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMedBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(MedicalPage.GetMedicalPage(_manager));
+            NavigationService.Navigate(_returnPage);
         }
     }
 }

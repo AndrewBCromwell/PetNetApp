@@ -121,32 +121,32 @@ namespace WpfPresentation.Management
         }
         private void btnInventory_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnInventory);
             // replace with page name and then delete comment
             frameManagement.Navigate(null);
         }
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnTickets);
             // replace with page name and then delete comment
             frameManagement.Navigate(null);
         }
         private void btnKennel_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnKennel);
             // replace with page name and then delete comment
             frameManagement.Navigate(new ViewKennelPage());
         }
         private void btnVolunteer_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnVolunteer);
             // replace with page name and then delete comment
             frameManagement.Navigate(new Development.Management.VolunteerManagment());
             
         }
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnSchedule);
             // replace with page name and then delete comment
             frameManagement.Navigate(null);
         }
