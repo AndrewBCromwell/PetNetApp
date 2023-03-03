@@ -22,6 +22,16 @@ namespace WpfPresentation.Community
     public partial class CommunityPage : Page
     {
         private static CommunityPage _existingCommunityPage = null;
+        static CommunityPage()
+        {
+            MasterManager manager = MasterManager.GetMasterManager();
+            manager.UserLogin += () => _existingCommunityPage?.ShowButtonsByRole();
+            manager.UserLogout += () =>
+            {
+                _existingCommunityPage?.HideAllButtons();
+                _existingCommunityPage?.frameCommunity.Navigate(null);
+            };
+        }
 
         private Button[] _communityTabButtons;
         private MasterManager _manager = MasterManager.GetMasterManager();
@@ -31,12 +41,12 @@ namespace WpfPresentation.Community
             InitializeComponent();
             _communityTabButtons = new Button[] { btnAbout, btnForum, btnUsers };
         }
-
         public static CommunityPage GetCommunityPage()
         {
             if (_existingCommunityPage == null)
             {
                 _existingCommunityPage = new CommunityPage();
+                _existingCommunityPage.ShowButtonsByRole();
             }
             return _existingCommunityPage;
         }
@@ -65,7 +75,6 @@ namespace WpfPresentation.Community
         private void btnUsers_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
             frameCommunity.Navigate(new UserManagementPage());
         }
 
@@ -123,6 +132,45 @@ namespace WpfPresentation.Community
         private void svCommunityPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             UpdateScrollButtons();
+        }
+        public void HideAllButtons()
+        {
+            UnselectAllButtons();
+            foreach (Button btn in _communityTabButtons)
+            {
+                btn.Visibility = Visibility.Collapsed;
+            }
+        }
+        public void ShowButtonsByRole()
+        {
+            HideAllButtons();
+            ShowAboutButtonByRole();
+            ShowForumButtonByRole();
+            ShowUsersButtonByRole();
+        }
+        public void ShowAboutButtonByRole()
+        {
+            //string[] allowedRoles = { "Admin", "Manager", "Volunteer", "Employee", "Maintenance" };
+            //if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            //{
+                btnAbout.Visibility = Visibility.Visible;
+            //}
+        }
+        public void ShowForumButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Helpdesk", "Moderator" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnForum.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowUsersButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnUsers.Visibility = Visibility.Visible;
+            }
         }
     }
 }

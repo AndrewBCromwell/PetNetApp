@@ -31,7 +31,6 @@ namespace WpfPresentation.Animals
     {
         private Animal _medProcedureAnimal;
         private MasterManager _manager;
-        private int _medicalRecordId;        
         private bool _forAdd;
         private ProcedureVM _oldProcedure;
 

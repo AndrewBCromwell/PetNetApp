@@ -14,7 +14,26 @@ namespace LogicLayer
     public class MasterManager
     {
         private static MasterManager _existingMasterManager = null;
-        public UsersVM User { get; set; }
+        private UsersVM _user;
+        public UsersVM User
+        {
+            get => _user;
+            set
+            {
+                _user = value;
+                if (value == null)
+                {
+                    OnUserLogout();
+                }
+                else
+                {
+                    OnUserLogin();
+                }
+            }
+        }
+        public delegate void UserChangedAction();
+        public event UserChangedAction UserLogout;
+        public event UserChangedAction UserLogin;
         public IKennelManager KennelManager { get; set; }
         public IUsersManager UsersManager { get; set; }
         public IDeathManager DeathManager { get; set; }
@@ -29,6 +48,7 @@ namespace LogicLayer
         public IMedicalRecordManager MedicalRecordManager { get; set; }
         public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
         public IShelterItemTransactionManager ShelterItemTransactionManager { get; set; }
+
 
         private MasterManager()
         {
@@ -46,6 +66,25 @@ namespace LogicLayer
             MedicalRecordManager = new MedicalRecordManager();
             FundraisingCampaignManager = new FundraisingCampaignManager();
             ShelterItemTransactionManager = new ShelterItemTransactionManager();
+            ImagesManager = new ImagesManager();
+
+            //for testing from dev page
+/*            User = new UsersVM()
+            {
+                UsersId = 100004,
+                ShelterId = 100000,
+                GivenName = "Barry",
+                FamilyName = "Mikulas",
+                Email = "bmikulas@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true,
+                Suspend = false,
+                Roles = new List<string>() { "Admin"}
+            };
+*/
+
         }
     
         public static MasterManager GetMasterManager()
@@ -55,6 +94,16 @@ namespace LogicLayer
                 _existingMasterManager = new MasterManager();
             }
             return _existingMasterManager;
+        }
+        protected virtual void OnUserLogout()
+        {
+            UserChangedAction handler = UserLogout;
+            handler?.Invoke();
+        }
+        protected virtual void OnUserLogin()
+        {
+            UserChangedAction handler = UserLogin;
+            handler?.Invoke();
         }
     }
 }

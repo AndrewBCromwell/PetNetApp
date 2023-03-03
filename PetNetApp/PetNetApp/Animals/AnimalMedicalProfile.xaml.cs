@@ -33,6 +33,18 @@ namespace WpfPresentation.Animals
             _animalId = animalId;
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// Sets all of the controls to be read only
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         public void disableControls()
         {
             txtAnimalBreed.IsEnabled = false;
@@ -48,6 +60,19 @@ namespace WpfPresentation.Animals
             btnSave.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/17
+        /// 
+        /// When loaded, disableControls() is called and
+        /// all animals information populates the text boxes
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             disableControls();
@@ -58,7 +83,7 @@ namespace WpfPresentation.Animals
                 lblProfileName.Content = _animalVM.AnimalName + "'s Medical Profile";
                 txtAnimalBreed.Text = _animalVM.AnimalBreedId;
                 txtAnimalId.Text = _animalVM.AnimalId.ToString();
-                txtAnimalMicrochipNum.Text = _animalVM.MicrochipNumber.ToString();
+                txtAnimalMicrochipNum.Text = _animalVM.MicrochipNumber;
                 txtAnimalName.Text = _animalVM.AnimalName;
                 txtAnimalNotes.Text = _animalVM.Notes;
                 txtAnimalKennelNum.Text = _kennel.KennelId.ToString();

@@ -32,8 +32,6 @@ namespace WpfPresentation.Animals
         {
             InitializeComponent();
             _masterManager = manager;
-            // delete later
-            manager.User = new UsersVM() { ShelterId = 100000 };
         }
 
         public static AnimalListPage GetAnimalListPage(MasterManager manager)
@@ -44,7 +42,6 @@ namespace WpfPresentation.Animals
             }
             return _existingAnimalListPage;
         }
-
 
         private void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
@@ -72,7 +69,7 @@ namespace WpfPresentation.Animals
             }
             catch (Exception up)
             {
-                MessageBox.Show(up.Message + "\n\n" + up.InnerException);
+                PromptWindow.ShowPrompt("Error", up.Message + "\n\n" + up.InnerException);
                 return;
             }
 

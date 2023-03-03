@@ -32,6 +32,17 @@ namespace WpfPresentation.Shelters
         private Button[] _shelterTabButtons;
         private MasterManager _manager = null;
 
+        static ShelterPage()
+        {
+            MasterManager manager = MasterManager.GetMasterManager();
+            manager.UserLogin += () => _existingShelterPage?.ShowButtonsByRole();
+            manager.UserLogout += () =>
+            {
+                _existingShelterPage?.HideAllButtons();
+                _existingShelterPage?.frameShelter.Navigate(null);
+            };
+        }
+
         public ShelterPage(MasterManager manager)
         {
             InitializeComponent();
@@ -44,8 +55,48 @@ namespace WpfPresentation.Shelters
             if (_existingShelterPage == null)
             {
                 _existingShelterPage = new ShelterPage(manager);
+                _existingShelterPage.ShowButtonsByRole();
             }
             return _existingShelterPage;
+        }
+        public void HideAllButtons()
+        {
+            UnselectAllButtons();
+            foreach (Button btn in _shelterTabButtons)
+            {
+                btn.Visibility = Visibility.Collapsed;
+            }
+        }
+        public void ShowButtonsByRole()
+        {
+            HideAllButtons();
+            ShowShelterButtonByRole();
+            ShowRescueButtonByRole();
+            ShowAnimalControlButtonByRole();
+        }
+        public void ShowShelterButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnShelter.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowRescueButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnRescue.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowAnimalControlButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnAnimalControl.Visibility = Visibility.Visible;
+            }
         }
 
         private void ChangeSelectedButton(Button selectedButton)

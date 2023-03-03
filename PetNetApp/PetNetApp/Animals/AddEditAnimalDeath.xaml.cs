@@ -1,5 +1,15 @@
-﻿// Created by Asa Armstrong
-// Created on 2023/02/02
+﻿/// <summary>
+/// Asa Armstrong
+/// Created: 2023/02/02
+/// 
+/// WPF UI logic for adding and editing Animal Deaths.
+/// </summary>
+///
+/// <remarks>
+/// Asa Armstrong
+/// Updated: 2023/03/01
+/// Added Comments.
+/// </remarks>
 
 using System;
 using System.Collections.Generic;

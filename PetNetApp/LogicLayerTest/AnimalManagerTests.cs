@@ -253,5 +253,16 @@ namespace LogicLayerTest
             Assert.IsTrue(actualResult);
         }
 
+        [TestMethod]
+        public void TestSelectAnimalAdoptableProfile()
+        {
+            string expectedResult = "Test name 1";
+            string actualRessult = "";
+
+            actualRessult = _animalManager.RetriveAnimalAdoptableProfile(999999).AnimalName;
+
+            Assert.AreEqual(expectedResult, actualRessult);
+        }
+
     }
 }

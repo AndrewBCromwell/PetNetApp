@@ -38,6 +38,14 @@ namespace WpfPresentation.Animals
         {
             SelectTest((Test)dgTests.SelectedItem);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stephen Jaurigue: Setup for view test
+        /// </remarks>
+        /// <param name="selectedTest">The test currently selected in the datagrid</param>
         private void SelectTest(Test selectedTest)
         {
             if (selectedTest != null)
@@ -46,6 +54,16 @@ namespace WpfPresentation.Animals
                 PromptWindow.ShowPrompt(selectedTest.TestName, selectedTest.TestNotes);
             }
         }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Returns the existing AnimalMedicalTestPage with newly loaded data for the new animal
+        /// or a new page if one hasn't been created
+        /// </summary>
+        /// <param name="animal">The animal to load data for</param>
+        /// <returns></returns>
         public static AnimalMedicalTestsPage GetAnimalMedicalTestsPage(Animal animal)
         {
             if (_existingAnimalMedicalTestsPage == null)
@@ -58,6 +76,13 @@ namespace WpfPresentation.Animals
             return _existingAnimalMedicalTestsPage;
         }
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// Gets the previously viewed AnimalMedicalTestsPage
+        /// </summary>
+        /// <returns>Previously existing AnimalMedicalTestsPage</returns>
         public static AnimalMedicalTestsPage GetLastViewedAnimalMedicalTestsPage()
         {
             if (_existingAnimalMedicalTestsPage == null)

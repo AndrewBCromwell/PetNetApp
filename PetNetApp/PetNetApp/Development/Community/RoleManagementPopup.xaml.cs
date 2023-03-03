@@ -30,8 +30,8 @@ namespace WpfPresentation.Development.Community
     /// Window for managing a single user's roles.
     /// 
     /// <remarks>
-    /// Updater Name
-    /// Updated: yyyy/mm/dd
+    /// Updater Barry Mikulas
+    /// Updated: 2023/02/26
     /// 
     /// </remarks>
     public partial class RoleManagementPopup : Window
@@ -124,6 +124,7 @@ namespace WpfPresentation.Development.Community
         }
         /// Barry Mikulas
         /// Created: 2023/02/11
+        /// Prompts user for confirmation of cancelation, closes window if confirmed
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             // verify person wants to close the window
@@ -139,19 +140,31 @@ namespace WpfPresentation.Development.Community
         }
         /// Barry Mikulas
         /// Created: 2023/02/11
-        /// Modified:
-        /// by:
+        /// Modified: 2023/03/01
+        /// by: Asa Armstrong
         private void btn_RemoveRole(object sender, RoutedEventArgs e)
         {
             //can get the value of the RoleId from using ((Button)sender).Tag
-            if (PromptWindow.ShowPrompt("Remove Role?", "Confirm, are you sure you want to remove the role " + ((Button)sender).Tag + "?", ButtonMode.YesNo) == PromptSelection.Yes)
+            string roleId = "";
+          
+            if (sender.GetType().ToString() == "System.Windows.Controls.MenuItem")
             {
-                // Created By: Asa
+                var selectedRole = (Role)(datUserRoles.SelectedItem);
+                roleId = selectedRole.RoleId;
+            }
+            else
+            {
+                roleId = ((Button)sender).Tag.ToString();
+            }
+            
+            if (PromptWindow.ShowPrompt("Remove Role?", "Confirm, are you sure you want to remove the role " + roleId + "?", ButtonMode.YesNo) == PromptSelection.Yes)
+            {
+                // Created By: Asa Armstrong
                 try
                 {
-                    if (_masterManager.RoleManager.RemoveRoleByUsersIdAndRoleId(_users.UsersId, ((Button)sender).Tag.ToString()))
+                    if (_masterManager.RoleManager.RemoveRoleByUsersIdAndRoleId(_users.UsersId, roleId))
                     {
-                        PromptWindow.ShowPrompt("Congrats!", "Role Removed");
+                        PromptWindow.ShowPrompt("Congrats!", "Role Removed.");
                         PopulateUserRoleGrid();
                     }
                     else
@@ -163,6 +176,7 @@ namespace WpfPresentation.Development.Community
                 {
                     PromptWindow.ShowPrompt("Error", "" + ex.Message);
                 }
+                // End of Asa Armstrong's UC
             }
             else
             {
@@ -187,7 +201,7 @@ namespace WpfPresentation.Development.Community
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
 
             PopulateUserRoleGrid();
@@ -208,6 +222,16 @@ namespace WpfPresentation.Development.Community
             {
                 throw ex;
             }
+        }
+
+        private void btnCloseWindowX_Click(object sender, RoutedEventArgs e)
+        {
+            btn_Cancel_Click(sender, e);
+        }
+
+        private void contextRemoveRole_Click(object sender, RoutedEventArgs e)
+        {
+            btn_RemoveRole(sender, e);
         }
     }
 }

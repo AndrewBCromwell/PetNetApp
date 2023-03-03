@@ -20,19 +20,3 @@ AS
 		RETURN @@ROWCOUNT
 	END
 GO
-
-/*
-print '' print '*** INSERT'
-GO
-INSERT INTO AnimalKenneling (KennelId, AnimalId)
-VALUES (100001, 100001)
-GO
-
-
-print '' print '*** exec'
-GO
-EXEC sp_remove_animal_from_animalkenneling_by_kennelId_and_animalId
-@KennelId = 100001,
-@AnimalId = 100001
-GO
-*/

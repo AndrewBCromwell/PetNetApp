@@ -12,7 +12,6 @@ namespace DataAccessLayer
 {
     public class KennelAccessor : IKennelAccessor
     {
-
         public int InsertKennel(Kennel kennel)
         {
             int rows = 0;
@@ -84,21 +83,6 @@ namespace DataAccessLayer
             return animalTypes;
         }
 
-        /// <summary>
-        /// Gwen Arman
-        /// Created: 2023/02/01
-        /// 
-        /// Methods retrieves kennels from the database with the associated shelter id
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="ShelterId">A description of the parameter that this method takes</param>
-        /// <exception cref="SQLException"></exception>
-        /// <returns>List<KennelVM></returns>
         public List<KennelVM> SelectKennels(int ShelterId)
         {
             List<KennelVM> kennelVMs = new List<KennelVM>();
@@ -121,7 +105,10 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         KennelVM kennelVM = new KennelVM();
-                        Animal animal = new Animal();
+                        AnimalVM animal = new AnimalVM();
+                        List<Images> animalImages = new List<Images>();
+                        Images image = new Images();
+                        animal.AnimalImages = animalImages;
 
                         kennelVM.KennelId = reader.GetInt32(0);
                         kennelVM.ShelterId = reader.GetInt32(1);
@@ -129,7 +116,7 @@ namespace DataAccessLayer
                         kennelVM.AnimalTypeId = reader.GetString(3);
                         kennelVM.KennelActive = reader.GetBoolean(4);
                         
-                        if(reader.IsDBNull(5) || reader.IsDBNull(6) || reader.IsDBNull(7))
+                        if(reader.IsDBNull(8))
                         {
                             animal = null;
                         } else
@@ -140,6 +127,15 @@ namespace DataAccessLayer
                             animal.AnimalId = reader.GetInt32(8);
                         }
                         
+                        if(reader.IsDBNull(9))
+                        {
+                            image = null;
+                        } else
+                        {
+                            image.ImageId = reader.GetString(9);
+                            image.ImageFileName = reader.GetString(10);
+                            animal.AnimalImages.Add(image);
+                        }
 
                         kennelVM.Animal = animal;
                         kennelVMs.Add(kennelVM);
@@ -177,7 +173,7 @@ namespace DataAccessLayer
                 {
                     while (reader.Read())
                     {
-                        //[KennelId], [AnimalId]
+                        //[KennelId]
                         _kennel.KennelId = reader.GetInt32(0);
                     }
                 }
@@ -195,6 +191,7 @@ namespace DataAccessLayer
             return _kennel;
         }
 
+        
         public int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId)
         {
             int result = 0;
