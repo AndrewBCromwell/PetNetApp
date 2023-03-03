@@ -121,7 +121,7 @@ namespace WpfPresentation.Development.Fundraising
         private void btnDonations_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameFundraising.Navigate(ViewDonationsPage.ExistingDonationPage);
+            frameFundraising.Navigate(WpfPresentation.Fundraising.ViewDonationsPage.ExistingDonationPage);
         }
     }
 }

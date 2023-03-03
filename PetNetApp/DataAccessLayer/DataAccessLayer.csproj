@@ -47,6 +47,7 @@
     <Compile Include="AnimalUpdatesAccessor.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="DeathAccessor.cs" />
+    <Compile Include="DonationAccessor.cs" />
     <Compile Include="FundraisingCampaignAccessor.cs" />
     <Compile Include="ImagesAccessor.cs" />
     <Compile Include="KennelAccessor.cs" />

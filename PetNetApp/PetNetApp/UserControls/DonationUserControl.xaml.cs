@@ -22,14 +22,15 @@ namespace WpfPresentation.UserControls
     public partial class DonationUserControl : UserControl
     {
         public Donation Donation { get; set; }
-        public DonationUserControl(Donation donation, bool isEven)
+        public DonationUserControl(Donation donation, bool isOdd)
         {
             Donation = donation;
             InitializeComponent();
-            if (isEven)
+            if (isOdd)
             {
                 UpdateAlternativeTheme();
             }
+            lblMessageContent.Content = Donation.Message.Length > 30 ? Donation.Message.Substring(0, 30) + "..." : Donation.Message;
         }
 
         public void UpdateAlternativeTheme()

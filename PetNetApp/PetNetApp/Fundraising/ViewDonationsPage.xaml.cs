@@ -1,4 +1,5 @@
 ﻿using DataObjects;
+using LogicLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.UserControls;
 
-namespace WpfPresentation.Development.Fundraising
+namespace WpfPresentation.Fundraising
 {
     /// <summary>
     /// Interaction logic for ViewDonationsPage.xaml
     /// </summary>
     public partial class ViewDonationsPage : Page
     {
+        private MasterManager masterManager = MasterManager.GetMasterManager();
         private static ViewDonationsPage existingViewDonationsPage = null;
+        private List<DonationVM> donationVMs = null;
 
         public static ViewDonationsPage ExistingDonationPage 
         {
@@ -44,28 +47,25 @@ namespace WpfPresentation.Development.Fundraising
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //Donation donation = new Donation()
-            //{
-            //    DonationId = 1,
-            //    ShelterId = 1,
-            //    HasInKindDonation = false,
-            //    Anonymous = false,
-            //    Target = "",
-            //    PaymentMethod = "",
-            //    ScheduledDonationId = 1,
-            //    FundraisingEventId = 1,
-            //    GivenName = "Gwen",
-            //    FamilyName = "Arman",
-            //    Amount = 99.99M,
-            //    DateDonated = DateTime.Today,
-            //    Message = "I donated today"
-            //};
-            //DonationUserControl donationUserControl = new DonationUserControl(donation, false);
-            //DonationUserControl donationUserControl2 = new DonationUserControl(donation, true);
-            //DonationUserControl donationUserControl3 = new DonationUserControl(donation, false);
-            //spDonations.Children.Add(donationUserControl);
-            //spDonations.Children.Add(donationUserControl2);
-            //spDonations.Children.Add(donationUserControl3);
+            spDonations.Children.Clear();
+
+            try
+            {
+                donationVMs = masterManager.DonationManager.RetrieveDonationsByShelterId(masterManager.User.ShelterId.Value);
+
+                for (int i = 0; i < donationVMs.Count; i++)
+                {
+                    donationVMs[i].GivenName = donationVMs[i].UserId != null ? donationVMs[i].User.GivenName : donationVMs[i].GivenName;
+                    donationVMs[i].FamilyName = donationVMs[i].UserId != null ? donationVMs[i].User.FamilyName : donationVMs[i].FamilyName;
+                    DonationUserControl donationUserControl = new DonationUserControl(donationVMs[i], i % 2 == 1);
+
+                    spDonations.Children.Add(donationUserControl);
+                }
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+            }
         }
     }
 }

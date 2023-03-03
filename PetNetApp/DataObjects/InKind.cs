@@ -13,6 +13,6 @@ namespace DataObjects
         public string Description { get; set; }
         public int Quanity { get; set; }
         public string Target { get; set; }
-        public DateTime Recieved { get; set; }
+        public bool Recieved { get; set; }
     }
 }

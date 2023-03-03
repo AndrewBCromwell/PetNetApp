@@ -13,7 +13,7 @@ namespace DataObjects
         public int ShelterId { get; set; }
         public decimal? Amount { get; set; }
         public string Message { get; set; }
-        public DateTime DateDonated { get; set; }
+        public DateTime? DateDonated { get; set; }
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
         public bool HasInKindDonation { get; set; }
@@ -27,5 +27,6 @@ namespace DataObjects
     public class DonationVM : Donation
     {
         public List<InKind> InKindList { get; set; }
+        public Users User { get; set; }
     }
 }

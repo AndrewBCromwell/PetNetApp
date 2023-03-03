@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfPresentation.Development.Fundraising.ViewDonationsPage"
+﻿<Page x:Class="WpfPresentation.Fundraising.ViewDonationsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,10 +15,10 @@
         </Grid.RowDefinitions>
         <Label VerticalAlignment="Center" FontSize="25" Margin="30 0 0 0">Donations</Label>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Width="150" Height="50" Margin="0 0 20 0" x:Name="btnReport">Generate Report</Button>
-            <Button Width="150" Height="50" Margin="20 0 20 0" x:Name="btnFilterDonations">Filter Donations</Button>
+            <Button Width="150" Height="50" Margin="0 0 10 0" x:Name="btnReport">Generate Report</Button>
+            <Button Width="150" Height="50" Margin="10 0 20 0" x:Name="btnFilterDonations">Filter Donations</Button>
         </StackPanel>
-        <ScrollViewer Grid.Row="1" Margin="20 0">
+        <ScrollViewer Grid.Row="1" Margin="20 0 20 20">
             <StackPanel x:Name="spDonations"></StackPanel>
         </ScrollViewer>
     </Grid>
