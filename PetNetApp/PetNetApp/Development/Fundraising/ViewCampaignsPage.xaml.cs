@@ -30,8 +30,8 @@ namespace WpfPresentation.Development.Fundraising
         private string _currentSearchText = "";
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private bool _needsReloaded = true;
-        private List<FundraisingCampaign> _fundraisingCampaigns = null;
-        private List<FundraisingCampaign> _filteredFundraisingCampaigns = null;
+        private List<FundraisingCampaignVM> _fundraisingCampaigns = null;
+        private List<FundraisingCampaignVM> _filteredFundraisingCampaigns = null;
         private static Regex _isDigit = new Regex(@"^\d+$");
 
         // page navigation
@@ -78,14 +78,14 @@ namespace WpfPresentation.Development.Fundraising
             }
             catch (ApplicationException ex)
             {
-                _fundraisingCampaigns = new List<FundraisingCampaign>();
+                _fundraisingCampaigns = new List<FundraisingCampaignVM>();
                 PromptWindow.ShowPrompt("Error", ex.Message);
             }
             ApplyFundraisingCampaignFilterAndSort(false);
         }
         private void ApplyFundraisingCampaignFilterAndSort(bool resetPage = true)
         {
-            Func<FundraisingCampaign, string> sortMethod = null;
+            Func<FundraisingCampaignVM, string> sortMethod = null;
             switch (((string)((ComboBoxItem)cbSort.SelectedValue).Content).ToLower())
             {
                 case "title":
@@ -98,7 +98,7 @@ namespace WpfPresentation.Development.Fundraising
                     sortMethod = new Func<FundraisingCampaign, string>(fc => fc.FundraisingCampaignId.ToString());
                     break;
             }
-            Func<FundraisingCampaign,bool> filterMethod = null;
+            Func<FundraisingCampaignVM,bool> filterMethod = null;
             switch (((string)((ComboBoxItem)cbFilter.SelectedValue).Content).ToLower())
             {
                 case "completed":
@@ -117,12 +117,14 @@ namespace WpfPresentation.Development.Fundraising
             _currentPage = resetPage ? 1 : _currentPage > _totalPages ? _totalPages : _currentPage;
             UpdateUI();
         }
-        private bool SearchForTextInFundraisingCampaign(FundraisingCampaign fundraisingCampaign)
+        private bool SearchForTextInFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
         {
-                return fundraisingCampaign.Title?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       fundraisingCampaign.Description?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false) ||
-                       (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false);
+            return fundraisingCampaign.Title?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    fundraisingCampaign.Description?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false) ||
+                    (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false) ||
+                    (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("M/d/yyyy").Contains(_currentSearchText) : false) ||
+                    (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("M/d/yyyy").Contains(_currentSearchText) : false);
         }
         private void UpdateNavigationInformation()
         {
@@ -200,7 +202,7 @@ namespace WpfPresentation.Development.Fundraising
                 nothingToShowMessage.Visibility = Visibility.Collapsed;
             }
             int i = 0;
-            foreach (FundraisingCampaign fundraisingCampaign in _filteredFundraisingCampaigns.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
+            foreach (FundraisingCampaignVM fundraisingCampaign in _filteredFundraisingCampaigns.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
             {
                 ViewCampaignsFundraisingCampaignUserControl item = new ViewCampaignsFundraisingCampaignUserControl(fundraisingCampaign, i % 2 == 0);
                 i++;
@@ -219,7 +221,7 @@ namespace WpfPresentation.Development.Fundraising
         }
         private void btnAddCampaign_Click(object sender, RoutedEventArgs e)
         {
-            
+            NavigationService.Navigate(AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage());
         }
         private void btnNavigatePage_Click(object sender, RoutedEventArgs e)
         {

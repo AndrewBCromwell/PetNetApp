@@ -23,7 +23,7 @@ namespace WpfPresentation.UserControls
     {
         public static double TitleSectionWidth { get; set; } = 200;
         public static double StartDateSectionWidth { get; set; } = 200;
-        public FundraisingCampaign FundraisingCampaign { get; set; }
+        public FundraisingCampaignVM FundraisingCampaign { get; set; }
         public bool UseAlternateColors { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace WpfPresentation.UserControls
         /// </summary>
         /// <param name="fundraisingCampaign">The campaign associated with this control</param>
         /// <param name="useAlternateColors">Whether or not to use the alternate color pattern</param>
-        public ViewCampaignsFundraisingCampaignUserControl(FundraisingCampaign fundraisingCampaign, bool useAlternateColors)
+        public ViewCampaignsFundraisingCampaignUserControl(FundraisingCampaignVM fundraisingCampaign, bool useAlternateColors)
         {
             FundraisingCampaign = fundraisingCampaign;
             UseAlternateColors = useAlternateColors;
@@ -47,12 +47,12 @@ namespace WpfPresentation.UserControls
 
         private void menuEdit_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("Edit", "Editing " + FundraisingCampaign.Title);
+            NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetEditFundraisingCampaignPage(FundraisingCampaign));
         }
 
         private void menuView_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("View", "Viewing " + FundraisingCampaign.Title);
+            NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetViewFundraisingCampaignPage(FundraisingCampaign));
         }
 
         private void menuDelete_Click(object sender, RoutedEventArgs e)

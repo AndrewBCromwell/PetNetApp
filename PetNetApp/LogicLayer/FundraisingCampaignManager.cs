@@ -36,9 +36,38 @@ namespace LogicLayer
         {
             _fundraisingCampaignAccessor = fundraisingCampaignAccessor;
         }
-        public List<FundraisingCampaign> RetrieveAllFundraisingCampaignsByShelterId(int shelterId)
+
+        public bool AddFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
         {
-            List<FundraisingCampaign> campaigns = null;
+            bool success = false;
+            try
+            {
+                success = _fundraisingCampaignAccessor.InsertFundraisingCampaign(fundraisingCampaign) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to add the new FundraisingCampaign", ex);
+            }
+            return success;
+        }
+
+        public bool EditFundraisingCampaign(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM)
+        {
+            bool success = false;
+            try
+            {
+                success = _fundraisingCampaignAccessor.UpdateFundraisingCampaign(oldFundraisingCampaignVM, newFundraisingCampaignVM) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to add the new FundraisingCampaign", ex);
+            }
+            return success;
+        }
+
+        public List<FundraisingCampaignVM> RetrieveAllFundraisingCampaignsByShelterId(int shelterId)
+        {
+            List<FundraisingCampaignVM> campaigns = null;
             try
             {
                 campaigns = _fundraisingCampaignAccessor.SelectAllFundraisingCampaignsByShelterId(shelterId);

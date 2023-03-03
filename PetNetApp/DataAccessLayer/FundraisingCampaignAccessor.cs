@@ -12,9 +12,10 @@ namespace DataAccessLayer
 {
     public class FundraisingCampaignAccessor : IFundraisingCampaignAccessor
     {
-        public List<FundraisingCampaign> SelectAllFundraisingCampaignsByShelterId(int shelterId)
+ 
+        public List<FundraisingCampaignVM> SelectAllFundraisingCampaignsByShelterId(int shelterId)
         {
-            List<FundraisingCampaign> fundraisingCampaigns = new List<FundraisingCampaign>();
+            List<FundraisingCampaignVM> fundraisingCampaigns = new List<FundraisingCampaignVM>();
 
             var connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
@@ -37,7 +38,7 @@ namespace DataAccessLayer
                     {
                         while (reader.Read())
                         {
-                            fundraisingCampaigns.Add(new FundraisingCampaign()
+                            fundraisingCampaigns.Add(new FundraisingCampaignVM()
                             {
                                 FundraisingCampaignId = reader.GetInt32(0),
                                 UsersId = reader.GetInt32(1),
@@ -46,7 +47,8 @@ namespace DataAccessLayer
                                 StartDate = reader.IsDBNull(4) ? new DateTime?() : reader.GetDateTime(4),
                                 EndDate = reader.IsDBNull(5) ? new DateTime?() : reader.GetDateTime(5),
                                 Description = reader.IsDBNull(6) ? null : reader.GetString(6),
-                                Complete = reader.GetBoolean(7)
+                                Complete = reader.GetBoolean(7),
+                                Sponsors = new List<Sponsor>()
                             });
                         }
                     }
@@ -63,5 +65,15 @@ namespace DataAccessLayer
             }
             return fundraisingCampaigns;
         }
+
+        public int UpdateFundraisingCampaign(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM)
+        {
+            throw new NotImplementedException();
+        }
+        public int InsertFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

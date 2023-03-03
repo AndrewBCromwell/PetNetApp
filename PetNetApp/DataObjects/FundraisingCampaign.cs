@@ -20,7 +20,29 @@ namespace DataObjects
 
     public class FundraisingCampaignVM : FundraisingCampaign
     {
+        public List<Sponsor> Sponsors { get; set; }
         //public List<CampaignUpdate> CampaignUpdates { get; set; }
         //public List<FundraisingEvent> FundraisingEventList { get; set; }
+    }
+
+    public static class FundraisingCampaignExtensions
+    {
+        public static FundraisingCampaignVM Copy(this FundraisingCampaignVM fundraisingCampaignVM)
+        {
+            FundraisingCampaignVM copy = new FundraisingCampaignVM()
+            {
+                FundraisingCampaignId = fundraisingCampaignVM.FundraisingCampaignId,
+                ShelterId = fundraisingCampaignVM.ShelterId,
+                UsersId = fundraisingCampaignVM.UsersId,
+                Title = fundraisingCampaignVM.Title,
+                Description = fundraisingCampaignVM.Description,
+                Complete = fundraisingCampaignVM.Complete,
+                StartDate = fundraisingCampaignVM.StartDate,
+                EndDate = fundraisingCampaignVM.EndDate,
+                Sponsors = fundraisingCampaignVM.Sponsors.ToList()
+            };
+
+            return copy;
+        }
     }
 }

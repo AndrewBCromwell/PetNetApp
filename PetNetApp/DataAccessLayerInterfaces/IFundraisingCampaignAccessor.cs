@@ -19,6 +19,18 @@ namespace DataAccessLayerInterfaces
         /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
         /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
-        List<FundraisingCampaign> SelectAllFundraisingCampaignsByShelterId(int shelterId);
+        List<FundraisingCampaignVM> SelectAllFundraisingCampaignsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/03/02
+        /// 
+        /// A method to create a new fundraising campaign for this shelter
+        /// </summary>
+        /// <param name="fundraisingCampaign"></param>
+        /// <returns>Total Number of Rows affected</returns>
+        int InsertFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
+
+        int UpdateFundraisingCampaign(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM);
     }
 }

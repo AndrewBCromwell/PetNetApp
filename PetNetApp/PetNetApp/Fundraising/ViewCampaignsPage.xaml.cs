@@ -30,8 +30,8 @@ namespace WpfPresentation.Fundraising
         private string _currentSearchText = "";
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private bool _needsReloaded = true;
-        private List<FundraisingCampaign> _fundraisingCampaigns = null;
-        private List<FundraisingCampaign> _filteredFundraisingCampaigns = null;
+        private List<FundraisingCampaignVM> _fundraisingCampaigns = null;
+        private List<FundraisingCampaignVM> _filteredFundraisingCampaigns = null;
         private static Regex _isDigit = new Regex(@"^\d+$");
 
         // page navigation
@@ -98,7 +98,7 @@ namespace WpfPresentation.Fundraising
             }
             catch (ApplicationException ex)
             {
-                _fundraisingCampaigns = new List<FundraisingCampaign>();
+                _fundraisingCampaigns = new List<FundraisingCampaignVM>();
                 PromptWindow.ShowPrompt("Error", ex.Message);
             }
             ApplyFundraisingCampaignFilterAndSort(false);
@@ -114,31 +114,31 @@ namespace WpfPresentation.Fundraising
         /// <param name="resetPage"></param>
         private void ApplyFundraisingCampaignFilterAndSort(bool resetPage = true)
         {
-            Func<FundraisingCampaign, string> sortMethod = null;
+            Func<FundraisingCampaignVM, string> sortMethod = null;
             switch (((string)((ComboBoxItem)cbSort.SelectedValue).Content).ToLower())
             {
                 case "title":
-                    sortMethod = new Func<FundraisingCampaign, string>(fc => fc.Title);
+                    sortMethod = new Func<FundraisingCampaignVM, string>(fc => fc.Title);
                     break;
                 case "start date":
-                    sortMethod = new Func<FundraisingCampaign, string>(fc => fc.StartDate != null ? fc.StartDate.Value.ToString("yyyy MM dd") : "");
+                    sortMethod = new Func<FundraisingCampaignVM, string>(fc => fc.StartDate != null ? fc.StartDate.Value.ToString("yyyy MM dd") : "");
                     break;
                 default:
-                    sortMethod = new Func<FundraisingCampaign, string>(fc => fc.FundraisingCampaignId.ToString());
+                    sortMethod = new Func<FundraisingCampaignVM, string>(fc => fc.FundraisingCampaignId.ToString());
                     break;
             }
-            Func<FundraisingCampaign,bool> filterMethod = null;
+            Func<FundraisingCampaignVM,bool> filterMethod = null;
             switch (((string)((ComboBoxItem)cbFilter.SelectedValue).Content).ToLower())
             {
                 case "completed":
-                    filterMethod = new Func<FundraisingCampaign, bool>(fc => fc.Complete);
+                    filterMethod = new Func<FundraisingCampaignVM, bool>(fc => fc.Complete);
                     break;
                 case "both":
-                    filterMethod = new Func<FundraisingCampaign, bool>(fc => true);
+                    filterMethod = new Func<FundraisingCampaignVM, bool>(fc => true);
                     break;
                 case "ongoing":
                 default:
-                    filterMethod = new Func<FundraisingCampaign, bool>(fc => !fc.Complete);
+                    filterMethod = new Func<FundraisingCampaignVM, bool>(fc => !fc.Complete);
                     break;
             }
             _filteredFundraisingCampaigns = _fundraisingCampaigns.Where(filterMethod).Where(SearchForTextInFundraisingCampaign).OrderBy(sortMethod).ToList();
@@ -157,10 +157,12 @@ namespace WpfPresentation.Fundraising
         /// <returns>Wether there is any matching data to the Current Search Text</returns>
         private bool SearchForTextInFundraisingCampaign(FundraisingCampaign fundraisingCampaign)
         {
-                return fundraisingCampaign.Title?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       fundraisingCampaign.Description?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false) ||
-                       (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false);
+            return fundraisingCampaign.Title?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    fundraisingCampaign.Description?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false) ||
+                    (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("MM/dd/yyyy").Contains(_currentSearchText) : false) ||
+                    (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("M/d/yyyy").Contains(_currentSearchText) : false) ||
+                    (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("M/d/yyyy").Contains(_currentSearchText) : false);
         }
 
         /// <summary>
@@ -268,7 +270,7 @@ namespace WpfPresentation.Fundraising
                 nothingToShowMessage.Visibility = Visibility.Collapsed;
             }
             int i = 0;
-            foreach (FundraisingCampaign fundraisingCampaign in _filteredFundraisingCampaigns.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
+            foreach (FundraisingCampaignVM fundraisingCampaign in _filteredFundraisingCampaigns.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
             {
                 ViewCampaignsFundraisingCampaignUserControl item = new ViewCampaignsFundraisingCampaignUserControl(fundraisingCampaign, i % 2 == 0);
                 i++;
