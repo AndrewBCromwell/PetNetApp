@@ -44,20 +44,15 @@ namespace WpfPresentation.Development.Management
         public VolunteerManagment()
         {
             InitializeComponent();
-            // uncomment when login is made
-            //int shelterId = _mastermanager.User.ShelterId;
-            int shelterId = 100000;
-
-
             try
             {
-                _users = _mastermanager.UsersManager.RetrieveUserByRole("Volunteer",shelterId);
+                _users = _mastermanager.UsersManager.RetrieveUserByRole("Volunteer" ,_mastermanager.User.ShelterId.Value);
                 datVolunteer.ItemsSource = _users;
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
             
         }
@@ -103,7 +98,7 @@ namespace WpfPresentation.Development.Management
             }
             else
             {
-                MessageBox.Show("You must select a user to edit their information!", "No user selected.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                PromptWindow.ShowPrompt("Error", "You must select a user to edit their information!");
             }
         }
     }

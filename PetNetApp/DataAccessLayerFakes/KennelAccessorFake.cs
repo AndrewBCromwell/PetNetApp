@@ -29,7 +29,7 @@ namespace DataAccessLayerFakes
                 KennelActive = true,
                 AnimalTypeId = "Dog",
                 ShelterName = "Shelter1",
-                Animal = new Animal()
+                Animal = new AnimalVM()
             };
 
             fakeAnimal = new Animal()
@@ -85,7 +85,7 @@ namespace DataAccessLayerFakes
                 KennelActive = true,
                 AnimalTypeId = "Dog",
                 ShelterName = "Shelter1",
-                Animal = new Animal()
+                Animal = new AnimalVM()
             });
             fakeKennelVMs.Add(new KennelVM
             {
@@ -95,7 +95,7 @@ namespace DataAccessLayerFakes
                 KennelActive = true,
                 AnimalTypeId = "Dog",
                 ShelterName = "Shelter2",
-                Animal = new Animal()
+                Animal = new AnimalVM()
             });
             fakeKennelVMs.Add(new KennelVM
             {

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.Community;
 
 namespace WpfPresentation.Management
 {
@@ -31,6 +32,8 @@ namespace WpfPresentation.Management
     /// 
     /// 
     /// <remarks>
+    /// Updated by Barry Mikulas - 2023/02/26
+    /// Updated button for role management to open role management window
     /// </remarks>
     public partial class VolunteerInfoPage : Page
     {
@@ -54,13 +57,13 @@ namespace WpfPresentation.Management
             txtUserName.Text = _user.GivenName + " " + _user.FamilyName;
             txtPronouns.Text = _user.PronounId;
             txtUserGender.Text = _user.GenderId;
-            
+
             // Check if already deactivated:
             if (_user.Active == false)
             {
                 // If no; Make sure button is enabled and displays the option to reactivate.
                 btnDeactivateUser.IsEnabled = true;
-                btnDeactivateUser.Visibility = Visibility.Visible;        
+                btnDeactivateUser.Visibility = Visibility.Visible;
                 btnDeactivateUser.Content = "Reactivate User";
             }
             else
@@ -72,20 +75,22 @@ namespace WpfPresentation.Management
             }
 
             // Check to see if user is already suspended:
-            if (_user.SuspendEmployee == true)
+            // Barry 2023/02/27
+            // changed to not have suspend status change active status button
+            if (_user.Suspend == true)
             {
-                
+
                 // Deactivate and hide the Activate/Deactivate button:
-                btnDeactivateUser.IsEnabled = false;
-                btnDeactivateUser.Visibility = Visibility.Hidden;
+                //btnDeactivateUser.IsEnabled = false;
+                //btnDeactivateUser.Visibility = Visibility.Hidden;
                 // Change button to show unsuspension option:
                 btnSuspendUser.Content = "Unsuspend User";
             }
             else
             {
                 // Activate and show the Activate/Deactivate button:
-                btnDeactivateUser.IsEnabled = true;
-                btnDeactivateUser.Visibility = Visibility.Visible;
+                //btnDeactivateUser.IsEnabled = true;
+                //btnDeactivateUser.Visibility = Visibility.Visible;
                 // Change button to show suspension option:
                 btnSuspendUser.Content = "Suspend User";
             }
@@ -103,25 +108,35 @@ namespace WpfPresentation.Management
         private void btnRoleManagement_Click(object sender, RoutedEventArgs e)
         {
             // Not implemented; enter your method here. According to the UI design this would use the "frameVolunteerDetails" frame.
+            Development.Community.RoleManagementPopup roleManagementPopupWindow = new Development.Community.RoleManagementPopup(_mastermanager, _user);
+            roleManagementPopupWindow.ShowDialog();
         }
         private void btnKeyManagement_Click(object sender, RoutedEventArgs e)
         {
             // Not implemented; enter your method here. According to the UI design this would use the "frameVolunteerDetails" frame.
         }
 
+        /// <summary>
+        /// Created by Teft Francisco
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Modified by Barry Mikulas
+        /// Date: 2023/02/26
+        /// added the call to the suspendUserPopup page
+        /// </remarks>
         private void btnSuspendUser_Click(object sender, RoutedEventArgs e)
         {
-            if (_user.SuspendEmployee == false)
+            SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_mastermanager, _user);
+            bool result = (bool)suspendUserPopup.ShowDialog();
+            // update _user object suspend status status if suspendPopup returns true
+            if (result)
             {
-                MessageBoxResult result = MessageBox.Show("Do you want to suspend this user?", "Suspend user?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                // Navigate to the same page to reload the UI.
-                NavigationService.Navigate(new VolunteerInfoPage(_user));
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    // Not implemented; enter your method here and call the reloadUI and Navigation methods to make sure the UI reflects changes made.
-                }
+                _user.Suspend = !_user.Suspend;
             }
+
+            // Navigate to the same page to reload the UI.
+            NavigationService.Navigate(new VolunteerInfoPage(_user));
         }
 
         private void btnDeactivateUser_Click(object sender, RoutedEventArgs e)
@@ -132,9 +147,9 @@ namespace WpfPresentation.Management
                 if (_user.Active == true)
                 {
                     // If user is active give option to deactivate.
-                    MessageBoxResult result = MessageBox.Show("Do you want to deactivate this user?", "Deactivate user?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    PromptSelection result = PromptWindow.ShowPrompt("Deactivate User?", "Do you want to deactivate this user?", ButtonMode.YesNo);
 
-                    if (result == MessageBoxResult.Yes)
+                    if (result == PromptSelection.Yes)
                     {
                         _mastermanager.UsersManager.EditUserActive(_user.UsersId, false);
                     }
@@ -143,9 +158,9 @@ namespace WpfPresentation.Management
                 else
                 {
                     // If user is NOT active give option to activate.
-                    MessageBoxResult result = MessageBox.Show("Do you want to reactivate this user?", "Reactivate user?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    PromptSelection result = PromptWindow.ShowPrompt("Reactive User?", "Do you want to reactivate this user?", ButtonMode.YesNo);
 
-                    if (result == MessageBoxResult.Yes)
+                    if (result == PromptSelection.Yes)
                     {
                         _mastermanager.UsersManager.EditUserActive(_user.UsersId, true);
                     }
@@ -154,7 +169,7 @@ namespace WpfPresentation.Management
             catch (Exception ex)
             {
 
-                MessageBox.Show("There has been an error:" + ex, "An error has occured.", MessageBoxButton.OK, MessageBoxImage.Error);             
+                PromptWindow.ShowPrompt("Error", "There has been an error:" + ex);
             }
             // The current select_user_by_user_id stored procedure returns a normal Users object and NOT a UsersVM object, making it incompatibile.
             // Therefore we need to use the method to select a list of UsersVM and choose the user we need.
@@ -169,6 +184,6 @@ namespace WpfPresentation.Management
             NavigationService.Navigate(new Development.Management.VolunteerManagment());
         }
 
-        
+
     }
 }

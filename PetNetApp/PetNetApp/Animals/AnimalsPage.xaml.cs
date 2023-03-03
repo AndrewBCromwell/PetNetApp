@@ -28,6 +28,16 @@ namespace WpfPresentation.Animals
         private MasterManager _manager = MasterManager.GetMasterManager();
         private Button[] _animalsTabButtons;
 
+        static AnimalsPage()
+        {
+            MasterManager manager = MasterManager.GetMasterManager();
+            manager.UserLogin += () => _existingAnimalsPage?.ShowButtonsByRole();
+            manager.UserLogout += () =>
+            {
+                _existingAnimalsPage?.HideAllButtons();
+                _existingAnimalsPage?.frameAnimals.Navigate(null);
+            };
+        }
         private AnimalsPage()
         {
             InitializeComponent();
@@ -39,6 +49,7 @@ namespace WpfPresentation.Animals
             if (_existingAnimalsPage == null)
             {
                 _existingAnimalsPage = new AnimalsPage();
+                _existingAnimalsPage.ShowButtonsByRole();
             }
             return _existingAnimalsPage;
         }
@@ -59,35 +70,35 @@ namespace WpfPresentation.Animals
 
         private void btnAdopt_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnAdopt);
             // replace with page name and then delete comment
             frameAnimals.Navigate(null);
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnFoster);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new ViewAdoptableAnimalProfile(100000));
+            frameAnimals.Navigate(null);
         }
 
         private void btnSurrender_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnSurrender);
             // replace with page name and then delete comment
             frameAnimals.Navigate(null);
         }
 
         private void btnAnimalList_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnAnimalList);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new AnimalListPage(_manager));
         }
 
         private void btnMedical_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnMedical);
             frameAnimals.Navigate(MedicalPage.GetMedicalPage(_manager));
         }
 
@@ -138,6 +149,63 @@ namespace WpfPresentation.Animals
         private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
         {
             svAnimalTabs.ScrollToHorizontalOffset(svAnimalTabs.HorizontalOffset - 130);
+        }
+        public void HideAllButtons()
+        {
+            UnselectAllButtons();
+            foreach (Button btn in _animalsTabButtons)
+            {
+                btn.Visibility = Visibility.Collapsed;
+            }
+        }
+        public void ShowButtonsByRole()
+        {
+            HideAllButtons();
+            ShowAdoptButtonByRole();
+            ShowAnimalListButtonByRole();
+            ShowFosterButtonByRole();
+            ShowMedicalButtonByRole();
+            ShowSurrenderButtonByRole();
+        }
+        public void ShowAdoptButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Employee" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnAdopt.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowAnimalListButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Vet","Employee" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnAnimalList.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowFosterButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Employee" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnFoster.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowMedicalButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager","Vet" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnMedical.Visibility = Visibility.Visible;
+            }
+        }
+        public void ShowSurrenderButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" , "Employee" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnSurrender.Visibility = Visibility.Visible;
+            }
         }
     }
 }

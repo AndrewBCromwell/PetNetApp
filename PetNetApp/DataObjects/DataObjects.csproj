@@ -45,7 +45,6 @@
     <Compile Include="Death.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalUpdates.cs" />
-    <Compile Include="Death.cs" />
     <Compile Include="FosterPlacement.cs" />
     <Compile Include="FosterPlacementRecord.cs" />
     <Compile Include="FundraisingCampaign.cs" />

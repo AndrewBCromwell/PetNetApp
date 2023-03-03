@@ -229,7 +229,7 @@ namespace WpfPresentation.Animals
                     }
                     catch (Exception ex)
                     {
-                        PromptWindow.ShowPrompt("Error", "Failed to Update Note");
+                        PromptWindow.ShowPrompt("Error", ex.Message);
                     }
                 }
                 else
@@ -266,7 +266,7 @@ namespace WpfPresentation.Animals
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
 
             return result;

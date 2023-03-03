@@ -29,3 +29,22 @@ AS
         WHERE [AnimalId] = @AnimalId			
 	END
 GO
+
+USE [PetNet_db_am]
+GO
+
+print '' print '*** creating sp_select_animal_image_by_animalId (Hoang Chu)'
+GO
+CREATE PROCEDURE [dbo].[sp_select_animal_image_by_animalId]
+(
+    @AnimalId                   [int]
+)
+AS
+	BEGIN
+		SELECT [Image].[ImageId], [Image].[ImageFileName]
+        FROM [Image]
+        JOIN [AnimalImage]
+        ON [Image].[ImageId] = [AnimalImage].[ImageId]
+        WHERE [AnimalImage].[AnimalId] = @AnimalId			
+	END
+GO

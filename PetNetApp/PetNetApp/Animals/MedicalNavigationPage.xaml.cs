@@ -30,18 +30,12 @@ namespace WpfPresentation.Animals
     /// </summary>
     public partial class MedicalNavigationPage : Page
     {
-        private static MedicalNavigationPage _existingMedicalNavigationPage = null;
-
         private Animal _medicalProfileAnimal = null;
-        // the page needs to have an animal associated with it for the Use Cases it relates to 
-        // too work properly. However, that can not happen until there is a way to select an animal.
-
-        // private static int CURRENTANIMALISNULL = -1
 
         private MasterManager _manager = null;
         private Button[] _medicalTabButtons;
 
-
+        private Page _returnPage = null;
 
         public MedicalNavigationPage(MasterManager manager, Animal animal)
         {
@@ -49,35 +43,38 @@ namespace WpfPresentation.Animals
             _manager = manager;
             _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
             _medicalProfileAnimal = animal;
+            _returnPage = MedicalPage.GetMedicalPage(_manager);
             displayMedProfileAnimalName();
 
-            LoadMedicalProfileTab();
+            // modified by Stephen: Modified the MedicalNavigationPage to show Profile by default
+            btnMedProfile_Click(this, new RoutedEventArgs());
         }
 
         /// <summary>
-        /// Andrew & Barry
-        /// Created: 2023/02/21
+        /// Stephen Jaurigue
+        /// Created: 2023/02/28
         /// 
-        /// Helper method that allows the medical navigation page to
-        /// load defaulted to the Medical Profile tab
+        /// Overloaded constructor for when this page needs to navigate to a different page than the usual
         /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        private void LoadMedicalProfileTab()
+        /// <param name="manager">existing instance of the master manager</param>
+        /// <param name="animal"> the animal to view medical details about</param>
+        /// <param name="returnPage">the page to return to when the back button is pressed</param>
+        public MedicalNavigationPage(MasterManager manager, Animal animal, Page returnPage)
         {
-            ChangeSelectedButton(btnMedProfile);
-            frameMedical.Navigate(new AnimalMedicalProfile(_medicalProfileAnimal.AnimalId));
+            InitializeComponent();
+            _manager = manager;
+            _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
+            _medicalProfileAnimal = animal;
+            _returnPage = returnPage;
+            displayMedProfileAnimalName();
+
+            btnMedProfile_Click(this, new RoutedEventArgs());
         }
 
         private void displayMedProfileAnimalName()
         {
             this.lblMedProfileAnimal.Content = _medicalProfileAnimal.AnimalName;
         }
-
 
         private void ChangeSelectedButton(Button selectedButton)
         {
@@ -95,7 +92,7 @@ namespace WpfPresentation.Animals
 
         private void btnMedProfile_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnMedProfile);
             // replace with page name and then delete comment
             frameMedical.Navigate(new AnimalMedicalProfile(_medicalProfileAnimal.AnimalId));
         }
@@ -123,20 +120,27 @@ namespace WpfPresentation.Animals
         private void btnMedNotes_Click(object sender, RoutedEventArgs e) 
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMedical.Navigate(new MedicalFilesPage(_medicalProfileAnimal, _manager));
+                frameMedical.Navigate(new MedicalFilesPage(_medicalProfileAnimal, _manager));
         }
 
         private void btnMedProcedures_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnMedProcedures);
             // replace with page name and then delete comment
             frameMedical.Navigate(new MedProcedurePage(_medicalProfileAnimal, _manager));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Changed this to return to the page in the _returnPage variable so that this page can navigate back to different pages
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMedBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(MedicalPage.GetMedicalPage(_manager));
+            NavigationService.Navigate(_returnPage);
         }
     }
 }

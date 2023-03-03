@@ -12,14 +12,43 @@ namespace LogicLayerInterfaces
         List<UsersVM> RetrieveUserByRole(string roleId, int shelterId);
         List<UsersVM> RetriveAllEmployees();
 
-        // Barry
+        // Barry Mikulas
         Users RetrieveUserByUsersId(int UsersId);
+        /// <summary>
+        /// created 02/26/2023
+        /// created by Barry Mikulas
+        /// Sets user account suspend status to true
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns>bool of success status</returns>
+        bool SuspendUserAccount(int UserId);
+        /// <summary>
+        /// created 02/26/2023
+        /// created by Barry Mikulas
+        /// Sets user account suspend status to false
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns>bool of success status</returns>
+        bool UnsuspendUserAccount(int UserId);
+        /// <summary>
+        /// created 02/26/2023
+        /// created by Barry Mikulas
+        /// Returns count of active\unsuspended users for a given role type
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns>int</returns>
+        int RetrieveCountActiveUnsuspendUserAccountsByRoleId(string RoleId);
 
         // Mads
         UsersVM LoginUser(string email, string password);
-        string HashSha265(string source);
+        string HashSha256(string source);
         List<string> RetrieveGenders();
         List<string> RetrievePronouns();
+        bool EditUserDetails(Users oldUser, Users updatedUser);
+        bool ResetPassword(string email, string oldPassword, string newPassword);
+        bool UpdateEmail(string oldEmail, string newEmail, string passwordHash);
+
+        // Alex Oetken
         bool DeactivateUserAccount(int UserId);
         bool AddUser(Users user, string password);
 

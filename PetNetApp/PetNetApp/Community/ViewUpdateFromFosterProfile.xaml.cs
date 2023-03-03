@@ -61,9 +61,8 @@ namespace WpfPresentation.Community
 
         private void ViewAnimalProfile_MouseClick(int animalId)
         {
-            PromptWindow.ShowPrompt("Message", "Animal Profile");
-            PetNetApp.Development.MainWindow window = 
-                PetNetApp.Development.MainWindow.GetWindow(this) as PetNetApp.Development.MainWindow;
+            PetNetApp.MainWindow window = 
+                PetNetApp.MainWindow.GetWindow(this) as PetNetApp.MainWindow;
             AnimalsPage animalsPage = AnimalsPage.GetAnimalsPage();
             window.frameMain.Navigate(animalsPage);
             window.ChangeSelectedButton(window.btnAnimals);
