@@ -13,10 +13,9 @@
             <RowDefinition Height="75"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label HorizontalAlignment="Left" Margin="30,15" FontSize="26" x:Name="txtKennelTitle">All Kennels</Label>
+        <Label HorizontalAlignment="Left" Margin="30,15" FontSize="25" x:Name="txtKennelTitle">All Kennels</Label>
         <Button HorizontalAlignment="Right" Width="150" Margin="200, 15" x:Name="btnAddKennel" Click="btnAdd_Click">Add Kennel</Button>
         <Button HorizontalAlignment="Right" Width="150" Margin="30, 15" x:Name="btnRemoveKennel" Click="btnRemoveKennel_Click">Remove Kennel</Button>
-        <!--<Image Source="../../Images/PlusIcon.png" HorizontalAlignment="Right" Margin="30, 10"></Image>-->
 
         <ScrollViewer Grid.Row="1" x:Name="svKennel" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
             <Grid x:Name="grdKennel">

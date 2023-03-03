@@ -46,6 +46,7 @@
     <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IDeathAccessor.cs" />
+    <Compile Include="IDonationAccessor.cs" />
     <Compile Include="IFundraisingCampaignAccessor.cs" />
     <Compile Include="IImagesAccessor.cs" />
     <Compile Include="IKennelAccessor.cs" />

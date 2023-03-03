@@ -45,6 +45,7 @@
     <Compile Include="DeathAccessorFake.cs" />
     <Compile Include="AnimalAccessorFakes.cs" />
     <Compile Include="AnimalUpdatesFakes.cs" />
+    <Compile Include="DonationAccessorFake.cs" />
     <Compile Include="FundraisingCampaignAccessorFakes.cs" />
     <Compile Include="ImagesAccessorFakes.cs" />
     <Compile Include="ShelterItemTransactionAccessorFakes.cs" />

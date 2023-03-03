@@ -276,21 +276,21 @@ INSERT INTO [dbo].[AnimalBreed]
 GO
 
 
-ECHO *print '' print '*** creating Zipcode sample data'
-ECHO GO 
-ECHO INSERT INTO [dbo].[Zipcode]
-ECHO 		(
-ECHO 		[Zipcode],
-ECHO 		[City],
-ECHO 		[State],
-REM 		[Latitude],
-REM 		[Longitude]
-REM 		)
-REM	VALUES
-REM 		("50001",'Ackworth','Iowa', 41.3669, 93.4727),
-REM 		("50002",'Adair','Iowa', 41.5004, 94.6434),
-REM         ("52404", "Cedar Rapids", "Iowa", "41.9779", "91.6656")
-REM GO
+-- ECHO print '' print '*** creating Zipcode sample data'
+-- ECHO GO 
+-- ECHO INSERT INTO [dbo].[Zipcode]
+-- ECHO 		(
+-- ECHO 		[Zipcode],
+-- ECHO 		[City],
+-- ECHO 		[State],
+-- REM 		[Latitude],
+-- REM 		[Longitude]
+-- REM 		)
+-- REM	VALUES
+-- REM 		("50001",'Ackworth','Iowa', 41.3669, 93.4727),
+-- REM 		("50002",'Adair','Iowa', 41.5004, 94.6434),
+-- REM         ("52404", "Cedar Rapids", "Iowa", "41.9779", "91.6656")
+-- REM GO
 
 
 print '' print '*** creating TicketStatus sample data'
