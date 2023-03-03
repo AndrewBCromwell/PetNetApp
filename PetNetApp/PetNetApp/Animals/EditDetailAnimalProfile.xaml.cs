@@ -80,6 +80,8 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/01
         /// </summary>
+        /// <remarks>
+        /// Added a line of code to change the selected UI buttons when this page loads in case something returns to it(MedicalNavigationPage)
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -87,6 +89,10 @@ namespace WpfPresentation.Animals
         {
             populateComboBoxes();
             setDetailMode();
+            var mainWindow = PetNetApp.MainWindow.GetWindow(this) as PetNetApp.MainWindow;
+            mainWindow.ChangeSelectedButton(mainWindow.btnAnimals);
+            var animalsPage = AnimalsPage.GetAnimalsPage();
+            animalsPage.ChangeSelectedButton(animalsPage.btnAnimalList);
         }
 
         /// <summary>
@@ -274,14 +280,14 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Stephen Jaurigue
+        /// Updated: 2023/02/28 
+        /// Fixed a problem where the breeds list was getting set to the dictionary items
+        /// instead of being left blank until a type was selected
         /// </remarks>
         private void populateComboBoxes()
         {
             _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
-            cmbAnimalBreedId.ItemsSource = _breeds;
             _types = _manager.AnimalManager.RetrieveAllAnimalTypes();
             cmbAnimalTypeId.ItemsSource = _types;
 
@@ -451,18 +457,15 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Stephen Jaurigue
+        /// Updated: 2023/02/28 
+        /// Fixed a problem where the user returns to this page after navigating somewhere else that the back button doesn't go to the AnimalListPage
         /// </remarks>
         private void btn_Back_Click(object sender, RoutedEventArgs e)
         {
             if(btnBack.Content.ToString() == "Back")
             {
-                if (NavigationService.CanGoBack)
-                {
-                    NavigationService.GoBack();
-                }
+                NavigationService.Navigate(AnimalListPage.GetAnimalListPage(_manager));
             }
             // If button text is not "Back" then it is "Cancel" and we need to prompt the user for confirmation
             else
@@ -548,9 +551,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Stephen Jaurigue
+        /// Updated: 2023/02/28 
+        /// Fixed a problem where medical page back feature wouldn't return to the animal profile page
         /// </remarks>
         private void btnMedicalProfile_Click(object sender, RoutedEventArgs e)
         {
@@ -561,16 +564,18 @@ namespace WpfPresentation.Animals
                 if (result == PromptSelection.Yes)
                 {
                     setDetailMode();
-                    NavigationService nav = NavigationService.GetNavigationService(this);
-                    nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
+                    NavigationService.Navigate(new MedicalNavigationPage(_manager, _animalVM,this));
+                    var animalsPage = AnimalsPage.GetAnimalsPage();
+                    animalsPage.ChangeSelectedButton(animalsPage.btnMedical);
                     // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
                 }
             }
             else
             {
-                NavigationService nav = NavigationService.GetNavigationService(this);
-                nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
-               // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
+                NavigationService.Navigate(new MedicalNavigationPage(_manager, _animalVM,this));
+                var animalsPage = AnimalsPage.GetAnimalsPage();
+                animalsPage.ChangeSelectedButton(animalsPage.btnMedical);
+                // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
             }
         }
 

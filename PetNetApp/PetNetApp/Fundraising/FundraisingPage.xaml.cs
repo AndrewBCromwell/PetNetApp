@@ -126,13 +126,13 @@ namespace WpfPresentation.Fundraising
 
         private void btnCampaigns_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnCampaigns);
             frameFundraising.Navigate(ViewCampaignsPage.GetViewCampaignsPage());
         }
 
         private void btnDonations_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnDonations);
             // replace with page name and then delete comment
             frameFundraising.Navigate(null);
         }
