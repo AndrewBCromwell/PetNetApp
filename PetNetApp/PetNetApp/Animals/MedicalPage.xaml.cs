@@ -125,6 +125,13 @@ namespace WpfPresentation.Animals.Medical
 
             button.Content = animal.AnimalName;
 
+            image.Cursor = Cursors.Hand;
+
+            image.MouseLeftButtonDown += (s, e) =>
+            {
+                NavigationService.Navigate(new MedicalNavigationPage(_manager, animal));
+            };
+
             button.Click += (s, e) =>
             {
                 NavigationService.Navigate(new MedicalNavigationPage(_manager, animal));

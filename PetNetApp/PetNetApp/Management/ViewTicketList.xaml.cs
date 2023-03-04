@@ -78,7 +78,10 @@ namespace WpfPresentation.Development.Management
         /// </remarks>
         private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
         {
-            txtSearch.Text = "";
+            if(txtSearch.Text == "" || txtSearch.Text == "Search...")
+            {
+                txtSearch.Text = "";
+            }
         }
 
         /// <summary>
@@ -96,7 +99,103 @@ namespace WpfPresentation.Development.Management
         /// </remarks>
         private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
         {
-            txtSearch.Text = "Search...";
+            if(txtSearch.Text == "")
+            {
+                txtSearch.Text = "Search...";
+            }
+        }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/03/01
+        /// 
+        /// refreshes the list of tickets with the passed in list of
+        /// TicketVM
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: 
+        /// </remarks>
+        private void refreshTickets(List<TicketVM> ticketVM)
+        {
+            datTickList.ItemsSource = ticketVM;
+        }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/03/01
+        /// 
+        /// calls one of two refreshTickets methods based on the content of txtSearch
+        /// 
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: 
+        /// </remarks>
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Return)
+            {
+                if (txtSearch.Text.Length != 0)
+                {
+                    refreshTickets(searchResults(_ticketVMs));
+                }
+                else
+                {
+                    refreshTickets(_ticketVMs);
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/03/01
+        /// 
+        /// searches the provided list of TicketVM for the provided search query
+        /// in txtSearch
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: 
+        /// </remarks>
+        private List<TicketVM> searchResults(List<TicketVM> tickets)
+        {
+            List<TicketVM> ticketVM = new List<TicketVM>();
+
+            foreach(TicketVM ticket in tickets)
+            {
+                // implements similar functionality to the sql "like" keyword.
+                if (ticket.TicketTitle.IndexOf(txtSearch.Text, 0, StringComparison.OrdinalIgnoreCase) != -1)
+                {
+                    ticketVM.Add(ticket);
+                }
+
+            }
+
+            return ticketVM;
+        }
+
+        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text.Length != 0 && txtSearch.Text != "Search...")
+            {
+                refreshTickets(searchResults(_ticketVMs));
+            }
+            else
+            {
+                refreshTickets(_ticketVMs);
+            }
         }
     }
 }

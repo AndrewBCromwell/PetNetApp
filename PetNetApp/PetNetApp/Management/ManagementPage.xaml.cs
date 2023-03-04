@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using WpfPresentation.Development.Management;
 using WpfPresentation.Management.Inventory;
 
 namespace WpfPresentation.Management
@@ -129,8 +130,7 @@ namespace WpfPresentation.Management
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnTickets);
-            // replace with page name and then delete comment
-            frameManagement.Navigate(null);
+            frameManagement.Navigate(new ViewTicketList());
         }
         private void btnKennel_Click(object sender, RoutedEventArgs e)
         {

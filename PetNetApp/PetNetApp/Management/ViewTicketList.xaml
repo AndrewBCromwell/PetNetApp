@@ -35,8 +35,8 @@
             </DataGrid>
             <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel>
-                    <TextBox x:Name="txtSearch" Margin="0 10 0 5" Height="35" Text="Search..." GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" ></TextBox>
-                    <Button x:Name="btnConfirm" Margin="5 0 5 5" Height="35">Confirm</Button>
+                    <TextBox x:Name="txtSearch" Margin="0 10 0 5" Height="35" Text="Search..." GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" KeyDown="txtSearch_KeyDown" ></TextBox>
+                    <Button x:Name="btnConfirm" Margin="5 0 5 5" Height="35" Click="btnConfirm_Click">Confirm</Button>
                     <Button x:Name="btnSortBy" Margin="5 0 5 5" Height="35">Sort By:</Button>
                     <Button x:Name="btnNewTicket" Margin="5 0 5 5" Height="50">Open new Ticket...</Button>
                 </StackPanel>
