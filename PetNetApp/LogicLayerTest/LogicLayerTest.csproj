@@ -64,6 +64,8 @@
     <Compile Include="ShelterManagerTests.cs" />
     <Compile Include="ImagesManagerTests.cs" />
     <Compile Include="TicketManagerTests.cs" />
+    <Compile Include="DonationManagerTests.cs" />
+    <Compile Include="ShelterItemTransactionManagerTests.cs" />
     <Compile Include="VaccinationManagerTests.cs" />
     <Compile Include="FundraisingCampaignManagerTests.cs" />
     <Compile Include="ValidationiHelpersTests.cs" />

@@ -44,8 +44,10 @@
     <Compile Include="Death.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalUpdates.cs" />
+    <Compile Include="Donation.cs" />
     <Compile Include="FundraisingCampaign.cs" />
     <Compile Include="Images.cs" />
+    <Compile Include="InKind.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Kennel.cs" />
     <Compile Include="Procedure.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="Role.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Shelter.cs" />
+    <Compile Include="ShelterItemTransaction.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />

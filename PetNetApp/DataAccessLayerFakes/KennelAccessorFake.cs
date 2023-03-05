@@ -10,14 +10,14 @@ namespace DataAccessLayerFakes
 {
     public class KennelAccessorFake : IKennelAccessor
     {
-        List<KennelVM> fakeKennelVMs = new List<KennelVM>();
+        private List<KennelVM> fakeKennelVMs = new List<KennelVM>();
         private Kennel fakeKennel = new Kennel();
         private List<Animal> fakeAnimals = new List<Animal>();
         private Animal fakeAnimal = new Animal();
         private KennelVM fakeKennelVM = new KennelVM();
-        List<string> fakeAnimalTypes;
-        List<Kennel> fakeKennels = new List<Kennel>();
-        List<Tuple<Animal, Kennel>> fakeAnimalKenneling = new List<Tuple<Animal, Kennel>>();
+        private List<string> fakeAnimalTypes;
+        private List<Kennel> fakeKennels = new List<Kennel>();
+        private List<Tuple<Animal, Kennel>> fakeAnimalKenneling = new List<Tuple<Animal, Kennel>>();
 
         public KennelAccessorFake()
         {

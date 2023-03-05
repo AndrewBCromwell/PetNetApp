@@ -11,9 +11,9 @@ CREATE PROCEDURE [dbo].[sp_insert_medical_record]
 AS
 	BEGIN
 		INSERT INTO [dbo].[MedicalRecord]
-			([AnimalId],[MedicalNotes],[Vaccination],[Diagnosis])
+			([AnimalId],[MedicalNotes],[Diagnosis])
 		VALUES
-			(@AnimalId,'Empty', 1, 'Empty')
+			(@AnimalId,'Empty','Empty')
 			SELECT SCOPE_IDENTITY()
 	END
 GO

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using WpfPresentation.Development.Management;
+using WpfPresentation.Management.Inventory;
 
 namespace WpfPresentation.Management
 {
@@ -121,32 +123,32 @@ namespace WpfPresentation.Management
         }
         private void btnInventory_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnInventory);
             // replace with page name and then delete comment
-            frameManagement.Navigate(null);
+            frameManagement.Navigate(new ViewInventoryChangesPage(_manager));
         }
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnTickets);
             // replace with page name and then delete comment
             frameManagement.Navigate(new ViewTicketList(_manager));
         }
         private void btnKennel_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnKennel);
             // replace with page name and then delete comment
             frameManagement.Navigate(new ViewKennelPage());
         }
         private void btnVolunteer_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnVolunteer);
             // replace with page name and then delete comment
             frameManagement.Navigate(new Development.Management.VolunteerManagment());
             
         }
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnSchedule);
             // replace with page name and then delete comment
             frameManagement.Navigate(null);
         }

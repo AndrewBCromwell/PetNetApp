@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using WpfPresentation.Management;
 using DataObjects;
+using WpfPresentation.Development.Management.Inventory;
 
 namespace WpfPresentation.Development.Management
 {
@@ -61,7 +62,9 @@ namespace WpfPresentation.Development.Management
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameManagement.Navigate(null);
+
+            frameManagement.Navigate(new ViewInventoryChangesPage(_manager));
+
         }
 
         private void btnTickets_Click(object sender, RoutedEventArgs e)
