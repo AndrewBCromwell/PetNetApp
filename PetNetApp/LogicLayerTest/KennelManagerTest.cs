@@ -50,14 +50,16 @@ namespace LogicLayerTest
         public void TestInsertAnimalIntoKennel()
         {
             //arrange 
-            int animalId = 100000;
+            bool expected = true;
+            bool actual = false;
             int kennelId = 100000;
+            int animalId = 100000;
 
             // act
-            bool success = kennelManager.AddAnimalIntoKennelByAnimalId(animalId, kennelId);
-            
+            actual = kennelManager.AddAnimalIntoKennelByAnimalId(kennelId, animalId);
+
             // assert
-            Assert.AreEqual(true, success);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]

@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfPresentation.Development.Management.ViewTicketList"
+﻿<Page x:Class="WpfPresentation.Management.ViewTicketList"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -38,7 +38,7 @@
                     <TextBox x:Name="txtSearch" Margin="0 10 0 5" Height="35" Text="Search..." GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" ></TextBox>
                     <Button x:Name="btnConfirm" Margin="5 0 5 5" Height="35">Confirm</Button>
                     <Button x:Name="btnSortBy" Margin="5 0 5 5" Height="35">Sort By:</Button>
-                    <Button x:Name="btnNewTicket" Margin="5 0 5 5" Height="50">Open new Ticket...</Button>
+                    <Button x:Name="btnNewTicket" Margin="5 0 5 5" Height="50" Click="btnNewTicket_Click">Open new Ticket...</Button>
                 </StackPanel>
             </Grid>
         </Grid>

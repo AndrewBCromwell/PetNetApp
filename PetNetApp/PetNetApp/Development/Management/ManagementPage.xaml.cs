@@ -67,7 +67,7 @@ namespace WpfPresentation.Development.Management
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameManagement.Navigate(new ViewTicketList());
+            frameManagement.Navigate(new ViewTicketList(_manager));
         }
 
         private void btnKennel_Click(object sender, RoutedEventArgs e)

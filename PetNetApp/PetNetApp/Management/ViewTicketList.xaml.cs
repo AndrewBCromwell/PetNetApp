@@ -14,20 +14,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.Development.Management;
 
-namespace WpfPresentation.Development.Management
+namespace WpfPresentation.Management
 {
     /// <summary>
     /// Interaction logic for ViewTicketList.xaml
     /// </summary>
     public partial class ViewTicketList : Page
     {
-        private MasterManager _manager = MasterManager.GetMasterManager();
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
         private List<TicketVM> _ticketVMs = null;
 
-        public ViewTicketList()
+        public ViewTicketList(MasterManager manager)
         {
             InitializeComponent();
+            _masterManager = manager;
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace WpfPresentation.Development.Management
         {
             try
             {
-                _ticketVMs = _manager.TicketManager.RetrieveAllTickets();
+                _ticketVMs = _masterManager.TicketManager.RetrieveAllTickets();
                 if (_ticketVMs.Count > 0)
                 {
                     datTickList.ItemsSource = _ticketVMs;
@@ -97,6 +99,24 @@ namespace WpfPresentation.Development.Management
         private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
         {
             txtSearch.Text = "Search...";
+        }
+
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/03/03
+        /// 
+        /// When button is clicked,
+        /// create a ticket page is opened
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void btnNewTicket_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CreateNewTicket(_masterManager));
         }
     }
 }

@@ -584,15 +584,16 @@ INSERT INTO [dbo].[Ticket]
 		(
 		[UsersId],
 		[TicketStatusId],
-        [TicketTitle]
+        [TicketTitle],
+		[TicketContext]
 		)
 	VALUES
-		(100000, 'Open', "My petnet stopped working"),
-		(100001, 'Open', "My petnet wont load animals"),
-		(100002, 'Open', "How do I use a computer?"),
-        (100000, 'Closed', "My keyboard wont type"),
-		(100001, 'Closed', "My page isnt loading"),
-		(100003, 'Open', "How do I use a computer?")
+		(100000, 'Open', "My petnet stopped working", "I do not know how to use this app."),
+		(100001, 'Open', "My petnet wont load animals", "I think there may be too many animals loading."),
+		(100002, 'Open', "How do I use a computer?", "I can't find the on button."),
+        (100000, 'Closed', "My keyboard wont type", "There are keys missing from my keyboard."),
+		(100001, 'Closed', "My page isnt loading", "I have been waiting for the page to load all day."),
+		(100003, 'Open', "How do I use a computer?", "My computer makes a loud noise when it is running.")
         
 GO
 

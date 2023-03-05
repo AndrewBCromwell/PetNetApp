@@ -49,6 +49,15 @@ namespace DataAccessLayerFakes
             });
         }
 
+        public int InsertTicket(int UserId, string TicketStatusId, string TicketTitle, string TicketContext)
+        {
+            int result = 0;
+            int existing = fakeTickVMs.Count;
+            fakeTickVMs.Add(fakeTicketVM);
+            result = fakeTickVMs.Count - existing;
+            return result;
+        }
+
         public List<TicketVM> SelectAllTickets()
         {
             return fakeTickVMs;
