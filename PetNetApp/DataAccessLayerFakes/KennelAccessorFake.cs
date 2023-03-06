@@ -182,10 +182,21 @@ namespace DataAccessLayerFakes
 
         public int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId)
         {
-            int result = fakeKennelVMs.Count();
-            fakeKennelVMs.Add(fakeKennelVM);
-            result = fakeKennelVMs.Count() - result;
+            int result = fakeAnimalKenneling.Count;
+            for (int i = 0; i < fakeAnimalKenneling.Count; i++)
+            {
+                if (fakeAnimalKenneling[i].Item2.KennelId == KennelId)
+                {
+                    fakeAnimalKenneling.Add(fakeAnimalKenneling[i]);
+                    result += fakeAnimalKenneling.Count;
+                }
+            }
             return result;
+
+            //int result = fakeKennelVMs.Count();
+            //fakeKennelVMs.Add(fakeKennelVM);
+            //result = fakeKennelVMs.Count() - result;
+            //return result;
         }
 
         public List<Animal> SelectAllAnimalsForKennel(int ShelterId, string AnimalTypeId)

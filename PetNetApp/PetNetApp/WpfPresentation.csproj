@@ -124,6 +124,9 @@
     <Compile Include="UserControls\DonationUserControl.xaml.cs">
       <DependentUpon>DonationUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\CreateNewTicket.xaml.cs">
+      <DependentUpon>CreateNewTicket.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
@@ -245,6 +248,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Development\Shelters\ShelterVMListUI.xaml">
+	</Page>
+    <Page Include="Management\CreateNewTicket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
