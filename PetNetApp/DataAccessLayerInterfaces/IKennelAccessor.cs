@@ -127,7 +127,8 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Failed to insert animal into kennel</exception>
         /// <returns>Rows affected</returns>
         int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId);
-
+        // List<Animal> SelectAllAnimalsForKennel(int ShelterId);
+        
         /// <summary>
         /// William Rients
         /// Created: 2023/02/10
@@ -146,6 +147,23 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Failed to retrived a list of animals</exception>
         /// <returns>List of animals</returns>
         List<Animal> SelectAllAnimalsForKennel(int ShelterId, string AnimalTypeId);
+
+        /// <summary>
+        /// Asa Armstrong
+        /// Created: 2023/02/24
+        /// 
+        /// Deletes the Animal Kenneling record to remove the animal from the kennel.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Asa Armstrong
+        /// Updated: 2023/02/24
+        /// Added Comment.
+        /// </remarks>
+        /// <param name="kennelId">kennelId</param>
+        /// <param name="animalId">animalId</param>
+        /// <exception cref="SQLException">Delete fails.</exception>
+        /// <returns>Rows edited</returns>
         int DeleteAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId);
     }
 }

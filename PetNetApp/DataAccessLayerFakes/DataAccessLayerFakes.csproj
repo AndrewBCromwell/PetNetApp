@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,8 +45,10 @@
     <Compile Include="DeathAccessorFake.cs" />
     <Compile Include="AnimalAccessorFakes.cs" />
     <Compile Include="AnimalUpdatesFakes.cs" />
+    <Compile Include="DonationAccessorFake.cs" />
     <Compile Include="FundraisingCampaignAccessorFakes.cs" />
     <Compile Include="ImagesAccessorFakes.cs" />
+    <Compile Include="ShelterItemTransactionAccessorFakes.cs" />
     <Compile Include="TestAccessorFake.cs" />
     <Compile Include="KennelAccessorFake.cs" />
     <Compile Include="MedicalRecordAccessorFakes.cs" />

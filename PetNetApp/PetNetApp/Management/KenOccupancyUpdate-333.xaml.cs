@@ -1,4 +1,17 @@
-﻿using System;
+﻿/// <summary>
+/// Asa Armstrong
+/// Created: 2023/02/16
+/// 
+/// WPF UI logic for removing an AnimalKenneling record.
+/// </summary>
+///
+/// <remarks>
+/// Asa Armstrong
+/// Updated: 2023/03/01
+/// Added Comments.
+/// </remarks>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +30,6 @@ using LogicLayer;
 
 namespace WpfPresentation.Management
 {
-    /// <summary>
-    /// Interaction logic for KenOccupancyUpdate_333.xaml
-    /// </summary>
     public partial class KenOccupancyUpdate_333 : Page
     {
         private KennelVM _kennel = new KennelVM();

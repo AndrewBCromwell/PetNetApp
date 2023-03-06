@@ -8,7 +8,7 @@ namespace DataObjects
 {
     public class Images
     {
-        public int ImageId { get; set; }
+        public string ImageId { get; set; }
         public string ImageFileName { get; set; }
     }
 }

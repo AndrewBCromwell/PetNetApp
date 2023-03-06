@@ -28,6 +28,6 @@
             <Button Width="20" Margin="2 0 0 0" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="35" x:Name="btnScrollLeft"  Style="{StaticResource ResourceKey=rsrcLeftScroll}" Click="btnScrollLeft_Click"/>
             <Button Width="20" Margin="0 0 2 0" HorizontalAlignment="Right" VerticalAlignment="Center" Height="35" x:Name="btnScrollRight" Style="{StaticResource ResourceKey=rsrcRightScroll}"  Click="btnScrollRight_Click"/>
         </Grid>
-        <Frame x:Name="frameAnimals" Grid.Row="2"></Frame>
+        <Frame x:Name="frameManagement" Grid.Row="2"></Frame>
     </Grid>
 </Page>

@@ -24,20 +24,24 @@ namespace LogicLayer
             _ticketAccessor = ticketAccessor;
         }
 
-        /// <summary>
-        /// William Rients
-        /// Created: 2023/02/17
-        /// 
-        /// Selects a list of tickets
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <exception cref="Exception">No tickets to be selected</exception>
-        /// <returns>List of ticket objects</returns>	
+        public bool CreateNewTicket(int UserId, string TicketStatusId, string TicketTitle, string TicketContext)
+        {
+            bool result = false;
+
+            try
+            {
+                if (0 < _ticketAccessor.InsertTicket(UserId, TicketStatusId, TicketTitle, TicketContext))
+                {
+                    result = true;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to create new ticket.", e);
+            }
+            return result;
+        }
+
         public List<TicketVM> RetrieveAllTickets()
         {
             try

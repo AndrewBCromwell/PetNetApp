@@ -76,6 +76,9 @@
     <Compile Include="Community\SuspendUserPopup.xaml.cs">
       <DependentUpon>SuspendUserPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
+      <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Animals\AddAnimalPage.xaml.cs">
       <DependentUpon>AddAnimalPage.xaml</DependentUpon>
     </Compile>
@@ -106,17 +109,29 @@
     <Compile Include="Development\Community\RoleManagementTemp.xaml.cs">
       <DependentUpon>RoleManagementTemp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
-      <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Animals\VaccinationsPage.xaml.cs">
       <DependentUpon>VaccinationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
       <DependentUpon>FundraisingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\ViewInventoryChangesPage.xaml.cs">
+      <DependentUpon>ViewInventoryChangesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewDonationsPage.xaml.cs">
+      <DependentUpon>ViewDonationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DonationUserControl.xaml.cs">
+      <DependentUpon>DonationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\CreateNewTicket.xaml.cs">
+      <DependentUpon>CreateNewTicket.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml.cs">
+      <DependentUpon>ViewInventoryChangesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\FundraisingPage.xaml.cs">
       <DependentUpon>FundraisingPage.xaml</DependentUpon>
@@ -216,7 +231,7 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
-    <Page Include="Community\SuspendUserPopup.xaml">
+    <Page Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,7 +239,29 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Community\SuspendUserPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\UploadAdditionalFileWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Development\Shelters\ShelterVMListUI.xaml">
+	</Page>
+    <Page Include="Management\CreateNewTicket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewDonationsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -249,10 +286,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Development\Shelters\ShelterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Shelters\ShelterVMListUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,10 +333,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Animals\UploadAdditionalFileWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Animals\VaccinationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -311,6 +340,10 @@
     <Page Include="Development\Fundraising\FundraisingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\DonationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml">
       <SubType>Designer</SubType>
@@ -896,6 +929,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\send_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NullImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BrokenImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

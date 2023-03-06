@@ -24,6 +24,21 @@ namespace LogicLayer
             _medicalRecordAccessor = medicalRecordAccessor;
         }
 
+        public int AddMedicalRecord(MedicalRecordVM medicalRecord)
+        {
+            int medicalRecordId = 0;
+            try
+            {
+                medicalRecordId = _medicalRecordAccessor.InsertMedicalRecord(medicalRecord);
+
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occored. The medical record could not be created.", ex);
+            }
+            return medicalRecordId;
+        }
+
         public int RetrieveLastMedicalRecordIdByAnimalId(int animalId)
         {
             int medicalRecordId = 0;

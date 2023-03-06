@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +46,7 @@
     <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IDeathAccessor.cs" />
+    <Compile Include="IDonationAccessor.cs" />
     <Compile Include="IFundraisingCampaignAccessor.cs" />
     <Compile Include="IImagesAccessor.cs" />
     <Compile Include="IKennelAccessor.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="IRoleAccessor.cs" />
     <Compile Include="IScheduleAccessor.cs" />
     <Compile Include="IShelterAccessor.cs" />
+    <Compile Include="IShelterItemTransactionAccessor.cs" />
     <Compile Include="ITestAccessor.cs" />
     <Compile Include="ITicketAccessor.cs" />
     <Compile Include="IUsersAccessor.cs" />

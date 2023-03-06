@@ -15,7 +15,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_select_all_tickets]
 AS
 	BEGIN
-		SELECT [TicketTitle], [Ticket].[UsersId], [TicketStatusId], [TicketId], [TicketDate], [TicketActive], [Users].[Email]
+		SELECT [TicketTitle], [TicketContext], [Ticket].[UsersId], [TicketStatusId], [TicketId], [TicketDate], [TicketActive], [Users].[Email]
 		FROM [Ticket] JOIN [Users]
 		ON	 [Ticket].[UsersId] = [Users].[UsersId]
 	END

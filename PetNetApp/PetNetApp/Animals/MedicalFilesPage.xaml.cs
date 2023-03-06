@@ -25,10 +25,14 @@ namespace WpfPresentation.Animals
         private Animal _animal = null;
         private List<Images> _imagesList;
         private MasterManager _manager = MasterManager.GetMasterManager();
+        private ToolTip _rowImageTooltip;
+        private Image _rowTooltipImage = new Image() { MaxHeight = 500, MaxWidth = 500, Stretch = Stretch.Uniform, StretchDirection = StretchDirection.Both };
 
 
         public MedicalFilesPage(Animal animal, MasterManager masterManager)
         {
+            _rowImageTooltip = new ToolTip();
+            _rowImageTooltip.Content = _rowTooltipImage;
             _animal = animal;
             _manager = masterManager;
             InitializeComponent();
@@ -37,7 +41,6 @@ namespace WpfPresentation.Animals
         private void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
             PopulatePage();
-            
         }
 
         private void btnAddFile_Click(object sender, RoutedEventArgs e)
@@ -51,6 +54,8 @@ namespace WpfPresentation.Animals
             
         }
 
+
+
         private void PopulatePage()
         {
             if (_imagesList == null || _imagesList.Count == 0)
@@ -58,16 +63,28 @@ namespace WpfPresentation.Animals
                 try
                 {
                     lblNoFiles.Visibility = Visibility.Hidden;
-                    _imagesList = _manager.ImagesManager.RetrieveImagesByAnimalId(_animal.AnimalId);
+                    _imagesList = _manager.ImagesManager.RetrieveMedicalImagesByAnimalId(_animal.AnimalId);
                     datAdditionalFiles.ItemsSource = _imagesList;
-                    datAdditionalFiles.Columns[0].Header = "Image ID";
-                    datAdditionalFiles.Columns[1].Header = "Image File Name";
 
                 }
                 catch (Exception ex)
                 {
                     PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
                 }
+            }
+        }
+
+        private void DataGridRow_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var row = e.Source as DataGridRow;
+            try
+            {
+                _rowTooltipImage.Source = _manager.ImagesManager.RetrieveImageByImages((Images)row.Item);
+                row.ToolTip = _rowImageTooltip;
+            }
+            catch (Exception ex)
+            {
+                row.ToolTip = ex.Message;
             }
         }
     }
