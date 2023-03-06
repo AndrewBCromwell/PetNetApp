@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayerInterfaces", "Log
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayerTest", "LogicLayerTest\LogicLayerTest.csproj", "{3B59A94D-2B24-45F7-B5AA-5076C67A7251}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCPresentaion", "MVCPresentaion\MVCPresentaion.csproj", "{DC4F1495-01D6-472B-8F33-12FBDDAF4002}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCPresentation", "MVCPresentation\MVCPresentation.csproj", "{DC4F1495-01D6-472B-8F33-12FBDDAF4002}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
