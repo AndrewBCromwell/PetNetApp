@@ -45,6 +45,7 @@ namespace WpfPresentation.Animals
         List<string> _yesNo = new List<string> { "Yes", "No" };
         DateTime _maxBroughtInDate = DateTime.Now;
         DateTime _minBroughtInDate = DateTime.Today - TimeSpan.FromDays(3);
+        private List<Images> _imagesList = null;
 
         /// <summary>
         /// Andrew Schneider
@@ -87,6 +88,7 @@ namespace WpfPresentation.Animals
         {
             populateComboBoxes();
             setDetailMode();
+            populateImage();
         }
 
         /// <summary>
@@ -291,6 +293,52 @@ namespace WpfPresentation.Animals
             cmbAggressive.ItemsSource = _yesNo;
             cmbChildFriendly.ItemsSource = _yesNo;
             cmbNeuterStatus.ItemsSource = _yesNo;
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/06
+        /// 
+        /// Helper method for populating the animal image
+        /// If no image is available a label becomes 
+        /// visible alerting the user to this fact.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void populateImage()
+        {
+            if (_imagesList == null || _imagesList.Count == 0)
+            {
+                try
+                {
+                    _imagesList = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(_animalVM.AnimalId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                }
+            }
+
+            if(_imagesList.Count == 0)
+            {
+                lblNoImage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                try
+                {
+                    imgAnimal.Source = _manager.ImagesManager.RetrieveImageByImages(_imagesList[0]);
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                }
+            }
         }
 
         /// <summary>
@@ -529,6 +577,8 @@ namespace WpfPresentation.Animals
                 if (result == PromptSelection.Yes)
                 {
                     setDetailMode();
+                    NavigationService nav = NavigationService.GetNavigationService(this);
+                    nav.Navigate(new WpfPresentation.Management.ViewKennelPage());
                 }
             }
         }
@@ -561,7 +611,6 @@ namespace WpfPresentation.Animals
                     setDetailMode();
                     NavigationService nav = NavigationService.GetNavigationService(this);
                     nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
-                    // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
                 }
             }
             else

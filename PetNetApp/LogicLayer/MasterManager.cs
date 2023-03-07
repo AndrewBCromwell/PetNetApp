@@ -42,12 +42,11 @@ namespace LogicLayer
         public IScheduleManager ScheduleManager { get; set; }
         public ITestManager TestManager { get; set; }
         public IRoleManager RoleManager { get; set; }
-        public IImagesManager ImagesManager { get; set; }
         public ITicketManager TicketManager { get; set; }
         public IProcedureManager ProcedureManager { get; set; }
         public IMedicalRecordManager MedicalRecordManager { get; set; }
         public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
-        public IImagesManager ImageManager { get; set; }
+        public IImagesManager ImagesManager { get; set; }
 
         private MasterManager()
         {
@@ -59,12 +58,12 @@ namespace LogicLayer
             ScheduleManager = new ScheduleManager();
             TestManager = new TestManager();
             RoleManager = new RoleManager();
-            ImagesManager = new ImagesManager();
             TicketManager = new TicketManager();
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
             FundraisingCampaignManager = new FundraisingCampaignManager();
-            ImageManager = new ImagesManager();
+            ImagesManager = new ImagesManager();
+            User = new UsersVM() { ShelterId = 100000, UsersId = 100000 };
         }
     
         public static MasterManager GetMasterManager()

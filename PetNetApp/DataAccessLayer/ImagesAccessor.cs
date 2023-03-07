@@ -306,5 +306,86 @@ namespace DataAccessLayer
             }
             return 1;
         }
+
+        public List<Images> SelectAnimalImagesByAnimalId(int animalId)
+        {
+            List<Images> images = new List<Images>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_animal_profile_images_by_animal_id";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@AnimalId", SqlDbType.Int);
+            cmd.Parameters["@AnimalId"].Value = animalId;
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var image = new Images();
+                        image.ImageId = reader.GetString(0);
+                        image.ImageFileName = reader.GetString(1);
+                        if(image.ImageId != "")
+                        {
+                            images.Add(image);
+                        }
+                    }
+                }
+            }
+            catch (Exception up)
+            {
+
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return images;
+        }
+
+        public int InsertAnimalImageByAnimalId(int animalId, string imageFileName)
+        {
+            int rows = 0;
+
+            Images image = InsertImageByUriAndLink(imageFileName, (conn, trans, imageId) =>
+            {
+                var cmdText = "sp_insert_animal_profile_images_by_animal_id";
+                var cmd = new SqlCommand(cmdText, conn, trans);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@AnimalId", SqlDbType.Int).Value = animalId;
+                cmd.Parameters.Add("@ImageId", SqlDbType.NVarChar, 36).Value = imageId;
+
+                rows = cmd.ExecuteNonQuery();
+            });
+
+            return rows;
+        }
+
+        public int InsertAnimalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames)
+        {
+            int rows = 0;
+
+            List<Images> images = InsertImagesByUrisAndLink(imageFileNames, (conn, trans, imageId) =>
+            {
+                var cmdText = "sp_insert_animal_profile_images_by_animal_id";
+                var cmd = new SqlCommand(cmdText, conn, trans);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@AnimalId", SqlDbType.Int).Value = animalId;
+                cmd.Parameters.Add("@ImageId", SqlDbType.NVarChar, 36).Value = imageId;
+
+                rows += cmd.ExecuteNonQuery();
+            });
+
+            return rows;
+        }
     }
 }

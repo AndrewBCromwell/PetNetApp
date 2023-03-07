@@ -26,16 +26,20 @@ namespace LogicLayer
        
         public bool AddAnimal(AnimalVM animal)
         {
-            int result = 0;
+            int id = 0;
             try
             {
-                result = _animalAccessor.InsertAnimal(animal);
+                id = _animalAccessor.InsertAnimal(animal);
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Animal record failed to be added", ex);
             }
-            return result == 1;
+            if(id != 0)
+            {
+                animal.AnimalId = id;
+            }
+            return id != 0;
         }
 
         public List<Animal> RetrieveAllAnimals(String animalName)

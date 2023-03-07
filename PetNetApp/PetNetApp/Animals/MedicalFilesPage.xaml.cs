@@ -50,11 +50,7 @@ namespace WpfPresentation.Animals
             uploadAdditionalFileWindow.ShowDialog();
             NavigationService.Navigate(new MedicalFilesPage(_animal, _manager));
             
-            
-            
         }
-
-
 
         private void PopulatePage()
         {
@@ -79,7 +75,7 @@ namespace WpfPresentation.Animals
             var row = e.Source as DataGridRow;
             try
             {
-                _rowTooltipImage.Source = _manager.ImageManager.RetrieveImageByImages((Images)row.Item);
+                _rowTooltipImage.Source = _manager.ImagesManager.RetrieveImageByImages((Images)row.Item);
                 row.ToolTip = _rowImageTooltip;
             }
             catch (Exception ex)

@@ -1,4 +1,19 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Andrew S.
+/// Created: 2023/03/04
+/// 
+/// Interaction logic for UploadAdditionalImageWindow.xaml
+/// This window was copied from UploadAdditionalFileWindow
+/// created by Molly. The only change is the methods called
+/// from the Upload button click handler.
+/// </summary>
+///
+/// <remarks>
+/// Updater name:
+/// Updated date:
+/// </remarks>
+
+using DataObjects;
 using LogicLayer;
 using Microsoft.Win32;
 using System;
@@ -19,19 +34,19 @@ using System.Windows.Shapes;
 namespace WpfPresentation.Animals
 {
     /// <summary>
-    /// Interaction logic for UploadAdditionalFileWindowNew.xaml
+    /// Interaction logic for UploadAdditionalImageWindowNew.xaml
     /// </summary>
-    public partial class UploadAdditionalFileWindow : Window
+    public partial class UploadAdditionalImageWindow : Window
     {
         private Animal _animal = null;
-        private MasterManager _manager = MasterManager.GetMasterManager();
+        private MasterManager _manager = null;
         private bool _imageSelected = false;
         private OpenFileDialog _fileDialog = new OpenFileDialog();
 
-        public UploadAdditionalFileWindow(Animal animal, MasterManager masterManager)
+        public UploadAdditionalImageWindow(Animal animal, MasterManager manager)
         {
             _animal = animal;
-            _manager = masterManager;
+            _manager = manager;
             InitializeComponent();
         }
 
@@ -74,12 +89,12 @@ namespace WpfPresentation.Animals
                 {
                     if (_fileDialog.SafeFileNames.Length > 1)
                     {
-                        _manager.ImagesManager.AddMedicalImagesByAnimalId(_animal.AnimalId, _fileDialog.FileNames);
+                        _manager.ImagesManager.AddAnimalImagesByAnimalId(_animal.AnimalId, _fileDialog.FileNames);
                         PromptWindow.ShowPrompt("Success", "Images Added");
                     }
                     else
                     {
-                        _manager.ImagesManager.AddMedicalImageByAnimalId(_animal.AnimalId, _fileDialog.FileName);
+                        _manager.ImagesManager.AddAnimalImageByAnimalId(_animal.AnimalId, _fileDialog.FileName);
                         PromptWindow.ShowPrompt("Success", "Image Added");
                     }
                     this.Close();
@@ -96,3 +111,4 @@ namespace WpfPresentation.Animals
         }
     }
 }
+

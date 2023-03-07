@@ -33,11 +33,14 @@ namespace WpfPresentation.Development.Animals
     public partial class AddAnimalPage : Page
     {
         private MasterManager _manager = null;
-        Dictionary<string, List<string>> _breeds = null;
-        List<string> _genders = null;
-        List<string> _types = null;
-        List<string> _statuses = null;
-        List<string> _yesNo = new List<string> { "Yes", "No" };
+        private AnimalVM _newAnimal = null;
+        private Dictionary<string, List<string>> _breeds = null;
+        private List<string> _genders = null;
+        private List<string> _types = null;
+        private List<string> _statuses = null;
+        private List<string> _kennels = null;
+        private List<string> _yesNo = new List<string> { "Yes", "No" };
+        private List<Images> _imagesList;
 
         /// <summary>
         /// Andrew Schneider
@@ -55,8 +58,8 @@ namespace WpfPresentation.Development.Animals
         /// <param name="manager">An instance of the master manager</param>
         public AddAnimalPage(MasterManager manager)
         {
-            InitializeComponent();
             _manager = manager;
+            InitializeComponent();
         }
 
         /// <summary>
@@ -72,14 +75,6 @@ namespace WpfPresentation.Development.Animals
             dpReceivedDate.IsEnabled = false;
             populateComboBoxes();
             wpAnimalImages.Children.Clear();
-            for (int i = 0; i < 20; i++)
-            {
-                var button = new Button();
-                button.Width = 300;
-                button.Height = 200;
-                button.Content = "Button " + i;
-                wpAnimalImages.Children.Add(button);
-            }
         }
 
         /// <summary>
@@ -109,6 +104,7 @@ namespace WpfPresentation.Development.Animals
             cmbAnimalGender.ItemsSource = _genders;
             _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
             cmbAnimalStatusId.ItemsSource = _statuses;
+           // _kennels = _manager
             cmbAggressive.ItemsSource = _yesNo;
             cmbChildFriendly.ItemsSource = _yesNo;
             cmbNeuterStatus.ItemsSource = _yesNo;
@@ -129,117 +125,126 @@ namespace WpfPresentation.Development.Animals
         /// </remarks>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-        
-            if (txtAnimalName.Text == "" || cmbAnimalTypeId.SelectedItem == null || cmbAnimalBreedId.SelectedItem == null ||
-                cmbAnimalGender.SelectedItem == null || cmbAnimalStatusId.SelectedItem == null || cmbAggressive.SelectedItem == null ||
-                cmbChildFriendly.SelectedItem == null || cmbNeuterStatus.SelectedItem == null)
+            if (btnSave.Content.ToString() == "Edit")
             {
-                PromptWindow.ShowPrompt("Error", "Please enter all fields.", ButtonMode.Ok);
+                NavigationService nav = NavigationService.GetNavigationService(this);
+                nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_manager, _newAnimal));
             }
             else
             {
-                AnimalVM newAnimal = new AnimalVM();
 
-                bool goodData = true;
+                _newAnimal = new AnimalVM();
 
-                // Validate animal name
-                if (goodData)
+                if (txtAnimalName.Text == "" || cmbAnimalTypeId.SelectedItem == null || cmbAnimalBreedId.SelectedItem == null ||
+                    cmbAnimalGender.SelectedItem == null || cmbAnimalStatusId.SelectedItem == null || cmbAggressive.SelectedItem == null ||
+                    cmbChildFriendly.SelectedItem == null || cmbNeuterStatus.SelectedItem == null)
                 {
-                    if (txtAnimalName.Text.IsValidFirstName())
-                    {
-                        goodData = true;
-                        newAnimal.AnimalName = txtAnimalName.Text;
-                    }
-                    else
-                    {
-                        goodData = false;
-                        PromptWindow.ShowPrompt("Format Error", "Animal name must be in proper format.",
-                                                ButtonMode.Ok);
-                        txtAnimalName.Focus();
-                        txtAnimalName.SelectAll();
-                    }
+                    PromptWindow.ShowPrompt("Error", "Please enter all fields.", ButtonMode.Ok);
                 }
-
-                // Validate microchip number length
-                if (goodData)
+                else
                 {
-                    // Check if anything has been entered (it's nullable so it could be left blank)
-                    if (txtMicrochipNumber.Text.Length > 0)
+
+                    bool goodData = true;
+
+                    // Validate animal name
+                    if (goodData)
                     {
-                        // Check if input will work with the database datatype
-                        if (txtMicrochipNumber.Text.Length > 15)
-                        {
-                            goodData = false;
-                            PromptWindow.ShowPrompt("Data Error", "Microchip number can only be\n15 characters long.",
-                                                    ButtonMode.Ok);
-                            txtMicrochipNumber.Focus();
-                            txtMicrochipNumber.SelectAll();
-                        }
-                        else
+                        if (txtAnimalName.Text.IsValidFirstName())
                         {
                             goodData = true;
-                        }
-                    }
-                }
-
-                // If validation has passed (goodData is still true) try to update the animal profile record
-                if (goodData)
-                {
-                    newAnimal.AnimalShelterId = _manager.User.ShelterId.Value;
-                    newAnimal.AnimalTypeId = cmbAnimalTypeId.SelectedItem.ToString();
-                    newAnimal.AnimalBreedId = cmbAnimalBreedId.SelectedItem.ToString();
-                    newAnimal.AnimalGender = cmbAnimalGender.SelectedItem.ToString();
-                    newAnimal.AnimalStatusId = cmbAnimalStatusId.SelectedItem.ToString();
-                    newAnimal.Description = txtDescription.Text;
-                    newAnimal.Personality = txtPersonality.Text;
-                    newAnimal.MicrochipNumber = txtMicrochipNumber.Text;
-                    
-                    if (cmbAggressive.SelectedItem.ToString() == "Yes")
-                    {
-                        newAnimal.Aggressive = true;
-                        newAnimal.AggressiveDescription = txtAggressiveDescription.Text;
-                    }
-                    else
-                    {
-                        newAnimal.Aggressive = false;
-                        newAnimal.AggressiveDescription = "";
-                    }
-
-                    if (cmbChildFriendly.SelectedItem.ToString() == "Yes")
-                    {
-                        newAnimal.ChildFriendly = true;
-                    }
-                    else
-                    {
-                        newAnimal.ChildFriendly = false;
-                    }
-                    if (cmbNeuterStatus.SelectedItem.ToString() == "Yes")
-                    {
-                        newAnimal.NeuterStatus = true;
-                    }
-                    else
-                    {
-                        newAnimal.NeuterStatus = false;
-                    }
-                    newAnimal.Notes = txtNotes.Text;
-
-                    try
-                    {
-                        if (_manager.AnimalManager.AddAnimal(newAnimal))
-                        {
-                            // success
-                            PromptWindow.ShowPrompt("Success", "Animal record has been updated", ButtonMode.Ok);
-                            NavigationService nav = NavigationService.GetNavigationService(this);
-                            nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_manager, newAnimal));
+                            _newAnimal.AnimalName = txtAnimalName.Text;
                         }
                         else
                         {
-                            PromptWindow.ShowPrompt("Error", "An error occured.\nPlease try again.", ButtonMode.Ok);
+                            goodData = false;
+                            PromptWindow.ShowPrompt("Format Error", "Animal name must be in proper format.",
+                                                    ButtonMode.Ok);
+                            txtAnimalName.Focus();
+                            txtAnimalName.SelectAll();
                         }
                     }
-                    catch (Exception ex)
+
+                    // Validate microchip number length
+                    if (goodData)
                     {
-                        PromptWindow.ShowPrompt("Error", "Saving new record failed.\n" + ex, ButtonMode.Ok);
+                        // Check if anything has been entered (it's nullable so it could be left blank)
+                        if (txtMicrochipNumber.Text.Length > 0)
+                        {
+                            // Check if input will work with the database datatype
+                            if (txtMicrochipNumber.Text.Length > 15)
+                            {
+                                goodData = false;
+                                PromptWindow.ShowPrompt("Data Error", "Microchip number can only be\n15 characters long.",
+                                                        ButtonMode.Ok);
+                                txtMicrochipNumber.Focus();
+                                txtMicrochipNumber.SelectAll();
+                            }
+                            else
+                            {
+                                goodData = true;
+                            }
+                        }
+                    }
+
+                    // If validation has passed (goodData is still true) try to update the animal profile record
+                    if (goodData)
+                    {
+                        _newAnimal.AnimalShelterId = _manager.User.ShelterId.Value;
+                        _newAnimal.AnimalTypeId = cmbAnimalTypeId.SelectedItem.ToString();
+                        _newAnimal.AnimalBreedId = cmbAnimalBreedId.SelectedItem.ToString();
+                        _newAnimal.AnimalGender = cmbAnimalGender.SelectedItem.ToString();
+                        _newAnimal.AnimalStatusId = cmbAnimalStatusId.SelectedItem.ToString();
+                        _newAnimal.Description = txtDescription.Text;
+                        _newAnimal.Personality = txtPersonality.Text;
+                        _newAnimal.MicrochipNumber = txtMicrochipNumber.Text;
+
+                        if (cmbAggressive.SelectedItem.ToString() == "Yes")
+                        {
+                            _newAnimal.Aggressive = true;
+                            _newAnimal.AggressiveDescription = txtAggressiveDescription.Text;
+                        }
+                        else
+                        {
+                            _newAnimal.Aggressive = false;
+                            _newAnimal.AggressiveDescription = "";
+                        }
+
+                        if (cmbChildFriendly.SelectedItem.ToString() == "Yes")
+                        {
+                            _newAnimal.ChildFriendly = true;
+                        }
+                        else
+                        {
+                            _newAnimal.ChildFriendly = false;
+                        }
+                        if (cmbNeuterStatus.SelectedItem.ToString() == "Yes")
+                        {
+                            _newAnimal.NeuterStatus = true;
+                        }
+                        else
+                        {
+                            _newAnimal.NeuterStatus = false;
+                        }
+                        _newAnimal.Notes = txtNotes.Text;
+
+                        try
+                        {
+                            if (_manager.AnimalManager.AddAnimal(_newAnimal))
+                            {
+                                // success
+                                PromptWindow.ShowPrompt("Success", "Animal record has been created", ButtonMode.Ok);
+                                SetEditMode();
+                            }
+                            else
+                            {
+                                PromptWindow.ShowPrompt("Error", "An error occured.\nPlease try again.", ButtonMode.Ok);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            PromptWindow.ShowPrompt("Error", "Saving new record failed.\n" + ex, ButtonMode.Ok);
+                            
+                        }
                     }
                 }
             }
@@ -317,5 +322,112 @@ namespace WpfPresentation.Development.Animals
                 txtAggressiveDescription.Text = "";
             }
         }
+
+        // Methods for adding and displaying animal images
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/28
+        /// 
+        /// Helper method for setting the page to "Edit" mode -
+        /// this is the mode after the "Save" button has been
+        /// clicked to save the initial record and return an
+        /// animal Id and the user is ready to add images. We
+        /// have to get an Id for the new animal before we can
+        /// save images to the record
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void SetEditMode()
+        {
+            btnSave.Content = "Edit";
+            txtAnimalName.IsEnabled = false;
+            cmbAnimalTypeId.IsEnabled = false;
+            cmbAnimalBreedId.IsEnabled = false;
+            cmbAnimalGender.IsEnabled = false;
+            cmbNeuterStatus.IsEnabled = false;
+            cmbAnimalStatusId.IsEnabled = false;
+            txtMicrochipNumber.IsEnabled = false;
+            txtDescription.IsEnabled = false;
+            txtPersonality.IsEnabled = false;
+            cmbAggressive.IsEnabled = false;
+            txtAggressiveDescription.IsEnabled = false;
+            cmbChildFriendly.IsEnabled = false;
+            txtNotes.IsEnabled = false;
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/28
+        /// 
+        /// Click event method for the "Add Images" button.
+        /// Checks to see if page has been saved (to return
+        /// an animal Id) and then creates an instance of
+        /// UploadAdditionalImageWindow where the user can
+        /// add images.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void btnAddImages_Click(object sender, RoutedEventArgs e)
+        {
+            if(btnSave.Content.ToString() == "Save")
+            {
+                PromptWindow.ShowPrompt("Error", "Please save animal record\nbefore adding photos.", ButtonMode.Ok);
+            }
+            else
+            {
+                var uploadAdditionalFileWindow = new WpfPresentation.Animals.UploadAdditionalImageWindow(_newAnimal, _manager);
+                uploadAdditionalFileWindow.Owner = Window.GetWindow(this);
+                uploadAdditionalFileWindow.ShowDialog();
+                populateImages();
+            }
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/27
+        /// 
+        /// Helper method to display images that have been
+        /// added to the animal profiel record using
+        /// UploadAdditionalImageWindow.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void populateImages()
+        {
+            if (_imagesList == null || _imagesList.Count == 0)
+            {
+                try
+                {
+                    _imagesList = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(_newAnimal.AnimalId);
+
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                }
+            }
+
+            foreach (var image in _imagesList)
+            {
+                Image viewableImage = new Image();
+                viewableImage.Margin = new Thickness(10, 0, 10, 0);
+                viewableImage.Stretch = Stretch.Uniform;
+                viewableImage.StretchDirection = StretchDirection.Both;
+                viewableImage.Source = _manager.ImagesManager.RetrieveImageByImages(image);
+                wpAnimalImages.Children.Add(viewableImage);
+            }
+        }   
     }
 }

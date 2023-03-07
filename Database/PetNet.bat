@@ -16,7 +16,7 @@ rem sqlcmd -S localhost -E -i StoredProcedures\ASampleFeature_SP.sql
 
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddProcedure_SP.sql
-sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalProfile_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddAnimalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EmployeeManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalPostUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\MedicalProfile_SP.sql
@@ -25,6 +25,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalTests_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalAnimals_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewTreatment_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewKennel_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAnimalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\RemoveKennels_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddKennel_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAllShelterAnimals_SP.sql
@@ -43,6 +44,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\EditProcedure_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\KenOccupancyUpdate-333_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\RemoveRole-006_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditTreatment_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditAnimalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddVaccination_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddMedicalRecord_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVaccinationByAnimalId_SP.sql

@@ -15,7 +15,7 @@ namespace DataAccessLayer
     {
         public int InsertAnimal(AnimalVM animal)
         {
-            int rows = 0;
+            int id = 0;
 
             DBConnection factory = new DBConnection();
             var conn = factory.GetConnection();
@@ -29,7 +29,6 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@AnimalTypeId", animal.AnimalTypeId);
             cmd.Parameters.AddWithValue("@AnimalBreedId", animal.AnimalBreedId);
             cmd.Parameters.AddWithValue("@AnimalStatusId", animal.AnimalStatusId);
-           // cmd.Parameters.AddWithValue("@RecievedDate", animal.BroughtIn);
             cmd.Parameters.AddWithValue("@Aggressive", animal.Aggressive);
             cmd.Parameters.AddWithValue("@ChildFriendly", animal.ChildFriendly);
             cmd.Parameters.AddWithValue("@NeuterStatus", animal.NeuterStatus);
@@ -82,7 +81,7 @@ namespace DataAccessLayer
             try
             {
                 conn.Open();
-                var reader = cmd.ExecuteNonQuery();
+                id = Convert.ToInt32(cmd.ExecuteScalar());
             }
             catch (Exception ex)
             {
@@ -93,7 +92,7 @@ namespace DataAccessLayer
             {
                 conn.Close();
             }
-            return rows;
+            return id;
         }
 
         /// <summary>
