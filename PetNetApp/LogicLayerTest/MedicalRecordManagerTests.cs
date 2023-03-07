@@ -2,6 +2,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using LogicLayer;
 using DataAccessLayerFakes;
+using DataObjects;
+using System.Collections.Generic;
 
 namespace LogicLayerTest
 {
@@ -71,6 +73,31 @@ namespace LogicLayerTest
 
 
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/27
+        /// </summary>
+        [TestMethod]
+        public void TestAddMedicalRecordAddsMedicalRecordReturningMedicalRecordId()
+        {
+            int returnedValue = 0;
+            int actualMedicalRecordId = 56;
+            int animalId = 3;
+            MedicalRecordVM medicalRecord = new MedicalRecordVM()
+            {
+                MedicalRecordId = actualMedicalRecordId,
+                AnimalId = animalId
+            };
+            List<MedicalRecordVM> recordsReturned;
+            int recordsReturnedExpectedCount = 1;
+
+            returnedValue = _medicalRecordManager.AddMedicalRecord(medicalRecord);
+            recordsReturned = _medicalRecordManager.RetrieveMedicalRecordDiagnosisByAnimalId(animalId);
+
+            Assert.AreEqual(actualMedicalRecordId, returnedValue);
+            Assert.AreEqual(recordsReturnedExpectedCount, recordsReturned.Count);
         }
     }
 }

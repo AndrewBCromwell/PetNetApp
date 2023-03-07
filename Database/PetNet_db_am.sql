@@ -537,6 +537,7 @@ CREATE TABLE [dbo].[Ticket] (
 	[UsersId]					[int]							 	NOT NULL,
 	[TicketStatusId]			[nvarchar](50)						NOT NULL, 
 	[TicketTitle]				[nvarchar](500)						NOT NULL,
+	[TicketContext]				[nvarchar](500)						NOT NULL,
 	[TicketDate]				[datetime]		DEFAULT GETDATE()	NOT NULL,
 	[TicketActive]				[bit]			DEFAULT 1			NOT NULL,
 	CONSTRAINT [pk_TicketId] PRIMARY KEY([TicketId]),

@@ -10,7 +10,7 @@ namespace DataAccessLayerInterfaces
     public interface IUsersAccessor
     {
 
-        
+
         // Volunteer(Chris)
         List<UsersVM> SelectUserByRole(string roleId, int shelterId);
 
@@ -56,8 +56,46 @@ namespace DataAccessLayerInterfaces
 
         // Zaid
         List<UsersVM> SelectUsersByUsersId(int usersId);
-        // Role Mgmt + Add Role
-        Users SelectUserByUsersId(int UsersId);
-        UsersVM SelectUserByUsersIdWithRoles(int UsersId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/12
+        /// 
+        /// Takes a usersId and returns a users object
+        /// </summary>
+        /// <param name="usersId">The userId being retrieved</param>
+        /// <returns>Users object</returns>
+        Users SelectUserByUsersId(int usersId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/12
+        /// 
+        /// Takes a usersId and returns a users object
+        /// </summary>
+        /// <param name="usersId">The userId being retrieved</param>
+        /// <returns>UsersVM object</returns>
+        UsersVM SelectUserByUsersIdWithRoles(int usersId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/26
+        /// 
+        /// Takes a usersId and changes the suspend status to the value of suspend parameter
+        /// </summary>
+        /// <param name="usersId">The userId being updated</param>
+        /// <param name="suspend">True if suspending, false if unsuspending</param>
+        /// <returns>int count of updated users - should be 1</returns>
+        int UpdateUserSuspend(int usersId, bool suspend);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/26
+        /// 
+        /// Takes a roleId and counts the number active, unsuspended accounts with that roleId
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns>int count of accounts</returns>
+        int SelectCountActiveUnsuspendedUsersByRole(string roleId);
     }
 }

@@ -35,6 +35,8 @@ namespace WpfPresentation
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            btn1.IsDefault = true;
+            btn2.IsCancel = true;
             switch(ButtonMode)
             {
                 case ButtonMode.YesNo:
@@ -98,6 +100,9 @@ namespace WpfPresentation
                 case ButtonMode.SaveCancel:
                 case ButtonMode.DeleteCancel:
                     PromptSelection = PromptSelection.Cancel;
+                    break;
+                case ButtonMode.Ok:
+                    PromptSelection = PromptSelection.Ok;
                     break;
                 default:
                     PromptSelection = PromptSelection.Cancel;

@@ -276,21 +276,22 @@ INSERT INTO [dbo].[AnimalBreed]
 GO
 
 
-print '' print '*** creating Zipcode sample data'
-GO 
-INSERT INTO [dbo].[Zipcode]
-		(
-		[Zipcode],
-		[City],
-		[State],
-		[Latitude],
-		[Longitude]
-		)
-	VALUES
-		("50001",'Ackworth','Iowa', 41.3669, 93.4727),
-		("50002",'Adair','Iowa', 41.5004, 94.6434),
-        ("52404", "Cedar Rapids", "Iowa", "41.9779", "91.6656")
-GO
+-- ECHO print '' print '*** creating Zipcode sample data'
+-- ECHO GO 
+-- ECHO INSERT INTO [dbo].[Zipcode]
+-- ECHO 		(
+-- ECHO 		[Zipcode],
+-- ECHO 		[City],
+-- ECHO 		[State],
+-- REM 		[Latitude],
+-- REM 		[Longitude]
+-- REM 		)
+-- REM	VALUES
+-- REM 		("50001",'Ackworth','Iowa', 41.3669, 93.4727),
+-- REM 		("50002",'Adair','Iowa', 41.5004, 94.6434),
+-- REM         ("52404", "Cedar Rapids", "Iowa", "41.9779", "91.6656")
+-- REM GO
+
 
 print '' print '*** creating TicketStatus sample data'
 GO
@@ -583,15 +584,16 @@ INSERT INTO [dbo].[Ticket]
 		(
 		[UsersId],
 		[TicketStatusId],
-        [TicketTitle]
+        [TicketTitle],
+		[TicketContext]
 		)
 	VALUES
-		(100000, 'Open', "My petnet stopped working"),
-		(100001, 'Open', "My petnet wont load animals"),
-		(100002, 'Open', "How do I use a computer?"),
-        (100000, 'Closed', "My keyboard wont type"),
-		(100001, 'Closed', "My page isnt loading"),
-		(100003, 'Open', "How do I use a computer?")
+		(100000, 'Open', "My petnet stopped working", "I do not know how to use this app."),
+		(100001, 'Open', "My petnet wont load animals", "I think there may be too many animals loading."),
+		(100002, 'Open', "How do I use a computer?", "I can't find the on button."),
+        (100000, 'Closed', "My keyboard wont type", "There are keys missing from my keyboard."),
+		(100001, 'Closed', "My page isnt loading", "I have been waiting for the page to load all day."),
+		(100003, 'Open', "How do I use a computer?", "My computer makes a loud noise when it is running.")
         
 GO
 

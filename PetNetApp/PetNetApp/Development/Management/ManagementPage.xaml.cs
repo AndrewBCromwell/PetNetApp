@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using WpfPresentation.Management;
 using DataObjects;
+using WpfPresentation.Development.Management.Inventory;
 
 namespace WpfPresentation.Development.Management
 {
@@ -61,33 +62,35 @@ namespace WpfPresentation.Development.Management
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+
+            frameManagement.Navigate(new ViewInventoryChangesPage(_manager));
+
         }
 
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(new ViewTicketList());
+            frameManagement.Navigate(new ViewTicketList(_manager));
         }
 
         private void btnKennel_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameAnimals.Navigate(new ViewKennelPage());
+            frameManagement.Navigate(new ViewKennelPage());
         }
 
         private void btnVolunteer_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new VolunteerManagment());
+            frameManagement.Navigate(new VolunteerManagment());
         }
 
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new SchedulePage());
+            frameManagement.Navigate(new SchedulePage());
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

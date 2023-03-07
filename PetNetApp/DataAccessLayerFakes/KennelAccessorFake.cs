@@ -10,14 +10,14 @@ namespace DataAccessLayerFakes
 {
     public class KennelAccessorFake : IKennelAccessor
     {
-        List<KennelVM> fakeKennelVMs = new List<KennelVM>();
+        private List<KennelVM> fakeKennelVMs = new List<KennelVM>();
         private Kennel fakeKennel = new Kennel();
         private List<Animal> fakeAnimals = new List<Animal>();
         private Animal fakeAnimal = new Animal();
         private KennelVM fakeKennelVM = new KennelVM();
-        List<string> fakeAnimalTypes;
-        List<Kennel> fakeKennels = new List<Kennel>();
-        List<Tuple<Animal, Kennel>> fakeAnimalKenneling = new List<Tuple<Animal, Kennel>>();
+        private List<string> fakeAnimalTypes;
+        private List<Kennel> fakeKennels = new List<Kennel>();
+        private List<Tuple<Animal, Kennel>> fakeAnimalKenneling = new List<Tuple<Animal, Kennel>>();
 
         public KennelAccessorFake()
         {
@@ -182,10 +182,21 @@ namespace DataAccessLayerFakes
 
         public int InsertAnimalIntoKennelByAnimalId(int KennelId, int AnimalId)
         {
-            int result = fakeKennelVMs.Count();
-            fakeKennelVMs.Add(fakeKennelVM);
-            result = fakeKennelVMs.Count() - result;
+            int result = fakeAnimalKenneling.Count;
+            for (int i = 0; i < fakeAnimalKenneling.Count; i++)
+            {
+                if (fakeAnimalKenneling[i].Item2.KennelId == KennelId)
+                {
+                    fakeAnimalKenneling.Add(fakeAnimalKenneling[i]);
+                    result += fakeAnimalKenneling.Count;
+                }
+            }
             return result;
+
+            //int result = fakeKennelVMs.Count();
+            //fakeKennelVMs.Add(fakeKennelVM);
+            //result = fakeKennelVMs.Count() - result;
+            //return result;
         }
 
         public List<Animal> SelectAllAnimalsForKennel(int ShelterId, string AnimalTypeId)

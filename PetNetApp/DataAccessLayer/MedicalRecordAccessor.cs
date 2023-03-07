@@ -178,5 +178,59 @@ namespace DataAccessLayer
             }
             return rows;
         }
+
+        public int InsertMedicalRecord(MedicalRecordVM medicalRecord)
+        {
+            int newRecordId;
+            //connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            //Transaction
+            SqlTransaction trans = null;
+            //command texts
+            var cmdTextAddMedicalRecord = "sp_insert_medical_record";
+            var cmdTextAddVaccination = "sp_insert_vaccination";
+
+            try
+            {
+                //Open the connection
+                conn.Open();
+                // begin the transaction
+                trans = conn.BeginTransaction();
+
+                //command
+                SqlCommand cmdAddMedicalRecord = new SqlCommand(cmdTextAddMedicalRecord, conn, trans);
+                cmdAddMedicalRecord.CommandType = CommandType.StoredProcedure;
+
+                //parameters
+                cmdAddMedicalRecord.Parameters.Add("@AnimalId", SqlDbType.Int);
+
+
+                cmdAddMedicalRecord.Parameters["@AnimalId"].Value = medicalRecord.AnimalId;
+
+                newRecordId = Convert.ToInt32(cmdAddMedicalRecord.ExecuteScalar());
+
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    //roll back changes
+                    trans.Rollback();
+
+                }
+                catch (Exception ex2)
+                {
+                    throw ex2;
+                }
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return newRecordId;
+        }
     }
 }

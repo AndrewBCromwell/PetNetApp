@@ -121,7 +121,10 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedResult, actualResult);
 
         }
-
+        /// <summary>
+        /// [Barry Mikulas - 2023/02/17]
+        /// Tests to see if a user can be found within the Users table based off UsersId
+        /// </summary>
         [TestMethod]
         public void TestSelectUserByUsersId()
         {
@@ -153,6 +156,55 @@ namespace LogicLayerTest
             Assert.AreEqual(actualUser.Zipcode, expectedUser.Zipcode);
             Assert.AreEqual(actualUser.Phone, expectedUser.Phone);
             Assert.AreEqual(actualUser.Active, expectedUser.Active);
+        }
+
+        /// <summary>
+        /// [Barry Mikulas - 2023/02/26]
+        /// Tests to see if a user can be marked suspended
+        /// </summary>
+        [TestMethod]
+        public void TestSuspendAccountByUsersId()
+        {
+            //arrange 
+            int userId = 1000;
+            bool actualResult = false;
+
+            //act 
+            actualResult = _userManager.SuspendUserAccount(userId);
+
+            //assert
+            Assert.IsTrue(actualResult);
+        }
+        /// <summary>
+        /// [Barry Mikulas - 2023/02/26]
+        /// Tests to see if a user can be marked unsuspended
+        /// </summary>
+        [TestMethod]
+        public void TestUnsuspendAccountByUsersId()
+        {
+            //arrange 
+            int userId = 1000;
+            bool actualResult = false;
+
+            //act 
+            actualResult = _userManager.UnsuspendUserAccount(userId);
+
+            //assert
+            Assert.IsTrue(actualResult);
+        }
+        [TestMethod]
+        public void TestReturnsCorrectCountOfActiveUnsuspendedUsersId()
+        {
+            //arrange
+            string roleId = "Admin";
+            int actualResult = 0;
+            int expectedResult = 2; //there are 2 unsuspended admins in fake data 1 suspended
+
+            //act
+            actualResult = _userManager.RetrieveCountActiveUnsuspendUserAccountsByRoleId(roleId);
+
+            //assert
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
         /// <summary>
