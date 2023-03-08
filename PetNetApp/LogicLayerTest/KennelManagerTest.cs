@@ -137,5 +137,18 @@ namespace LogicLayerTest
         {
             Assert.AreEqual(true, kennelManager.RemoveAnimalKennelingByKennelIdAndAnimalId(1, 1));
         }
+
+        [TestMethod]
+        public void TestRetrieveImageByAnimalId()
+        {
+            string expectedId = "ImageID";
+            string actualId = "";
+            int animalId = 1;
+
+            Images image = kennelManager.RetrieveImageByAnimalId(1);
+            actualId = image.ImageId;
+
+            Assert.AreEqual(expectedId, actualId);
+        }
     }
 }
