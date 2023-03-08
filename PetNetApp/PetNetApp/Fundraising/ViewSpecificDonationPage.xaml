@@ -1,0 +1,50 @@
+﻿<Page x:Class="WpfPresentation.Fundraising.ViewSpecificDonationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.Fundraising"
+      mc:Ignorable="d" x:Name="this" DataContext="{Binding ElementName=this}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ViewSpecificDonationPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <!--<RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>-->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Label>Donor Name: </Label>
+            <Label>
+                <Label.Content>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Donation.GivenName" />
+                                <Binding Path="Donation.FamilyName" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Label.Content>
+            </Label>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Label>Donation Amount: </Label>
+            <Label Content="{Binding Donation.Amount}"></Label>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <Label >Donation Message: </Label>
+            <Label Content="{Binding Donation.Message}"></Label>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Label>Donation Date: </Label>
+            <Label Content="{Binding Donation.DateDonated}"></Label>
+        </StackPanel>
+    </Grid>
+</Page>

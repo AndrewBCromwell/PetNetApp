@@ -30,6 +30,6 @@
         <Label Grid.Row="1" Grid.Column="2" Foreground="#EEF2E6" VerticalAlignment="Center" x:Name="lblAmountContent" Content="{Binding Donation.Amount}"></Label>
         <Label Grid.Row="1" Grid.Column="3" Foreground="#EEF2E6" VerticalAlignment="Center" x:Name="lblDateContent" Content="{Binding Donation.DateDonated}"></Label>
         <Label Grid.Row="1" Grid.Column="4" Foreground="#EEF2E6" VerticalAlignment="Center" x:Name="lblMessageContent"></Label>
-        <Button Grid.RowSpan="2" Grid.Column="5" Width="75" Height="50" Margin="5 0" Style="{StaticResource ResourceKey=rsrcSafeButton}" x:Name="btnView">View</Button>
+        <Button Grid.RowSpan="2" Grid.Column="5" Width="75" Height="50" Margin="5 0" Style="{StaticResource ResourceKey=rsrcSafeButton}" x:Name="btnView" Click="btnView_Click">View</Button>
     </Grid>                                                                                                                                  
 </UserControl>

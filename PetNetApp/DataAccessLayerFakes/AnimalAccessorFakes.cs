@@ -230,8 +230,8 @@ namespace DataAccessLayerFakes
                 AnimalTypeId = "Dog",
                 AnimalBreedId = "Lab",
                 AnimalStatusId = "Available"
+                
             });
-
 
             breeds.Add("Test breed 1", new List<string> { "Test type 1" });
             breeds.Add("Test breed 2", new List<string> { "Test type 2" });

@@ -96,5 +96,6 @@ namespace LogicLayerInterfaces
         /// <exception cref="SQLException">Delete fails.</exception>
         /// <returns>True if the record was removed</returns>
         bool RemoveAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId);
+        Images RetrieveImageByAnimalId(int animalId);
     }
 }

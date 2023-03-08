@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.UserControls
 {
@@ -48,6 +49,12 @@ namespace WpfPresentation.UserControls
             lblDateContent.Foreground = new SolidColorBrush(Color.FromRgb(28, 103, 88));
             lblMessageContent.Foreground = new SolidColorBrush(Color.FromRgb(28, 103, 88));
             btnView.Style = (Style)this.FindResource("rsrcDefaultButton");
+        }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            var service = NavigationService.GetNavigationService(this);
+            service.Navigate(new ViewSpecificDonationPage(Donation));
         }
     }
 }
