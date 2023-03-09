@@ -51,13 +51,15 @@ namespace DataAccessLayerFakes
                 DonationId = 2,
                 ShelterId = 1,
                 Amount = 150.00M,
-                Message = "Please use this well",
+                Message = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + 
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 DateDonated = DateTime.Today,
                 GivenName = "John",
                 FamilyName = "Smith",
                 HasInKindDonation = false,
                 Anonymous = false,
-                Target = "To help",
+                Target = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 PaymentMethod = "Cash"
             });
             fakeDonations.Add(new DonationVM
@@ -93,6 +95,11 @@ namespace DataAccessLayerFakes
         public List<DonationVM> SelectDonationsByShelterId(int ShelterId)
         {
             return fakeDonations;
+        }
+
+        public List<InKind> SelectInKindsByDonationId(int donationId)
+        {
+            return fakeDonations.First(don => don.DonationId == donationId).InKindList;
         }
     }
 }

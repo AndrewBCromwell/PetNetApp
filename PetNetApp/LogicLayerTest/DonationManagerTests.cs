@@ -1,6 +1,5 @@
 ﻿using LogicLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace LogicLayerTest
 {
@@ -23,6 +22,16 @@ namespace LogicLayerTest
             int shelterId = 1;
 
             actualResult = donationManager.RetrieveDonationsByShelterId(shelterId).Count;
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void TestRetrieveInKindsByDonationId()
+        {
+            int expectedResult = 3;
+            int actualResult = 0;
+            int donationId = 1;
+
+            actualResult = donationManager.RetrieveInKindsByDonationId(donationId).Count;
             Assert.AreEqual(expectedResult, actualResult);
         }
     }
