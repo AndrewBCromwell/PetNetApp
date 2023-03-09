@@ -38,7 +38,7 @@ namespace WpfPresentation.Development.Animals
         private List<string> _genders = null;
         private List<string> _types = null;
         private List<string> _statuses = null;
-        private List<string> _kennels = null;
+        private List<Kennel> _kennels = null;
         private List<string> _yesNo = new List<string> { "Yes", "No" };
         private List<Images> _imagesList;
 
@@ -104,7 +104,7 @@ namespace WpfPresentation.Development.Animals
             cmbAnimalGender.ItemsSource = _genders;
             _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
             cmbAnimalStatusId.ItemsSource = _statuses;
-           // _kennels = _manager
+            _kennels = _manager.KennelManager.RetrieveAllEmptyKennels((int)_manager.User.ShelterId);
             cmbAggressive.ItemsSource = _yesNo;
             cmbChildFriendly.ItemsSource = _yesNo;
             cmbNeuterStatus.ItemsSource = _yesNo;
@@ -197,6 +197,12 @@ namespace WpfPresentation.Development.Animals
                         _newAnimal.Description = txtDescription.Text;
                         _newAnimal.Personality = txtPersonality.Text;
                         _newAnimal.MicrochipNumber = txtMicrochipNumber.Text;
+                        _newAnimal.BroughtIn = DateTime.Today;
+
+                        if (!(cmbKennelName.SelectedItem == null || cmbKennelName.SelectedItem.ToString() == ""))
+                        {
+                            _newAnimal.KennelName = cmbKennelName.SelectedItem.ToString();
+                        }
 
                         if (cmbAggressive.SelectedItem.ToString() == "Yes")
                         {
@@ -229,24 +235,54 @@ namespace WpfPresentation.Development.Animals
 
                         try
                         {
-                            if (_manager.AnimalManager.AddAnimal(_newAnimal))
-                            {
-                                // success
-                                PromptWindow.ShowPrompt("Success", "Animal record has been created", ButtonMode.Ok);
-                                SetEditMode();
-                            }
-                            else
-                            {
-                                PromptWindow.ShowPrompt("Error", "An error occured.\nPlease try again.", ButtonMode.Ok);
-                            }
+                            _manager.AnimalManager.AddAnimal(_newAnimal);
+                            addAnimalToKennel();
+                            SetEditMode();
                         }
                         catch (Exception ex)
                         {
                             PromptWindow.ShowPrompt("Error", "Saving new record failed.\n" + ex, ButtonMode.Ok);
-                            
+
                         }
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/07
+        /// 
+        /// Helper method for checking if a kennel name has been selected
+        /// and then trying to assign the animal to that kennel.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void addAnimalToKennel()
+        {
+            if (!(cmbKennelName.SelectedItem == null || cmbKennelName.SelectedItem.ToString() == ""))
+            {
+                var kennelId = (from k in _kennels
+                                where cmbKennelName.SelectedItem.ToString() == k.KennelName
+                                select k.KennelId).First();
+                try
+                {
+                    _manager.KennelManager.AddAnimalIntoKennelByAnimalId(kennelId, _newAnimal.AnimalId);
+                    PromptWindow.ShowPrompt("Success", "Animal record has been created\n" +
+                                            "Animal added to " + _newAnimal.KennelName + ".", ButtonMode.Ok);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", "An error occured assigning animal to kennel\n" + ex, ButtonMode.Ok);
+                }
+            }
+            else
+            {
+                PromptWindow.ShowPrompt("Success", "Animal record has been created", ButtonMode.Ok);
             }
         }
 
@@ -291,6 +327,14 @@ namespace WpfPresentation.Development.Animals
         private void cmbAnimalType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cmbAnimalBreedId.ItemsSource = _breeds[cmbAnimalTypeId.SelectedItem.ToString()];
+            cmbKennelName.ItemsSource = from name in _kennels
+                                        where name.AnimalTypeId == cmbAnimalTypeId.SelectedItem.ToString()
+                                        select name.KennelName;
+
+            //var kennelId = from k in _kennels
+            //               where cmbKennelName.SelectedItem.ToString() == k.KennelName
+            //               select k.KennelId;
+
         }
 
         /// <summary>
@@ -350,6 +394,7 @@ namespace WpfPresentation.Development.Animals
             cmbAnimalGender.IsEnabled = false;
             cmbNeuterStatus.IsEnabled = false;
             cmbAnimalStatusId.IsEnabled = false;
+            cmbKennelName.IsEnabled = false;
             txtMicrochipNumber.IsEnabled = false;
             txtDescription.IsEnabled = false;
             txtPersonality.IsEnabled = false;
@@ -377,7 +422,7 @@ namespace WpfPresentation.Development.Animals
         /// </remarks>
         private void btnAddImages_Click(object sender, RoutedEventArgs e)
         {
-            if(btnSave.Content.ToString() == "Save")
+            if (btnSave.Content.ToString() == "Save")
             {
                 PromptWindow.ShowPrompt("Error", "Please save animal record\nbefore adding photos.", ButtonMode.Ok);
             }
@@ -428,6 +473,6 @@ namespace WpfPresentation.Development.Animals
                 viewableImage.Source = _manager.ImagesManager.RetrieveImageByImages(image);
                 wpAnimalImages.Children.Add(viewableImage);
             }
-        }   
+        }
     }
 }

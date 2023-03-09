@@ -337,9 +337,16 @@ namespace WpfPresentation.Animals
                     imgAnimal.Source = _manager.ImagesManager.RetrieveImageByImages(_imagesList[0]);
                     lblNoImage.Visibility = Visibility.Hidden;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                    BitmapImage brokenImage = new BitmapImage();
+                    brokenImage.BeginInit();
+                    brokenImage.UriSource = new Uri(@"/Images/BrokenImageGreen.png", UriKind.Relative);
+                    brokenImage.EndInit();
+                    imgAnimal.Source = brokenImage;
+                    imgAnimal.Height = 250;
+                    imgAnimal.Width = 250;
+                    lblNoImage.Visibility = Visibility.Hidden;
                 }
             }
         }

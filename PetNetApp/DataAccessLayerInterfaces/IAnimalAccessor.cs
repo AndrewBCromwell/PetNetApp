@@ -127,6 +127,7 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Update Fails</exception>
         /// <returns>Rows edited</returns>
         int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
+
         List<Animal> SelectAllAnimals(int shelterId);
         List<Animal> SelectAllAnimalsNotInKennel();
 

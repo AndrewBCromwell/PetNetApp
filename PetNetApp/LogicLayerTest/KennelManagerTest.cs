@@ -137,5 +137,18 @@ namespace LogicLayerTest
         {
             Assert.AreEqual(true, kennelManager.RemoveAnimalKennelingByKennelIdAndAnimalId(1, 1));
         }
+
+        [TestMethod]
+        public void TestRetrieveAllEmptyKennels()
+        {
+            int expectedCount = 1;
+            int actualCount = 0;
+            int shelterId = 100000;
+
+            var kennels = kennelManager.RetrieveAllEmptyKennels(shelterId);
+            actualCount = kennels.Count;
+
+            Assert.AreEqual(expectedCount, actualCount);
+        }
     }
 }

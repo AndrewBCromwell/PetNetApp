@@ -127,3 +127,23 @@ AS
 		(@ImageID, @AnimalID)
 	END
 GO
+
+
+/* Select all empty kennels */
+/* William Rients and Andrew S.*/
+print '' print '*** creating sp_select_all_empty_kennels'
+GO
+CREATE PROCEDURE [dbo].[sp_select_all_empty_kennels]
+(
+    @ShelterId    [int]
+)
+AS
+    BEGIN
+        SELECT  [Kennel].[KennelId], [Kennel].[KennelName], [Kennel].[AnimalTypeId]
+        FROM    [Kennel] LEFT JOIN [AnimalKenneling] 
+				ON [Kennel].[KennelId] = [AnimalKenneling].[KennelId]
+        WHERE   [AnimalKenneling].[AnimalId] IS NULL
+        AND     [ShelterId] = @ShelterId
+    END
+GO
+

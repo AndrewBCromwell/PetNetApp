@@ -165,5 +165,22 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="SQLException">Delete fails.</exception>
         /// <returns>Rows edited</returns>
         int DeleteAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/07
+        /// 
+        /// Selects all empty kennels
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="shelterId">The Id of the shelter</param>
+        /// <exception cref="SQLException"></exception>
+        /// <returns>List<Kennel></returns>
+        List<Kennel> SelectAllEmptyKennels(int shelterId);
     }
 }

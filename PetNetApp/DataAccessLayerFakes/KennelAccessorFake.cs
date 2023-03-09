@@ -235,5 +235,10 @@ namespace DataAccessLayerFakes
 
             return rowsAffected;
         }
+
+        public List<Kennel> SelectAllEmptyKennels(int shelterId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

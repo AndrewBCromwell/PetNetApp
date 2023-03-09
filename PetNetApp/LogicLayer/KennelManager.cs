@@ -190,5 +190,17 @@ namespace LogicLayer
                 throw new ApplicationException("Could not delete animal kenneling.", ex);
             }
         }
+
+        public List<Kennel> RetrieveAllEmptyKennels(int shelterId)
+        {
+            try
+            {
+                return kennelAccessor.SelectAllEmptyKennels(shelterId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve kennels.", ex);
+            }
+        }
     }
 }

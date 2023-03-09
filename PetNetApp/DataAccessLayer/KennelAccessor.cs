@@ -352,5 +352,44 @@ namespace DataAccessLayer
 
             return rowsAffected;
         }
+
+        public List<Kennel> SelectAllEmptyKennels(int shelterId)
+        {
+            List<Kennel> _kennelList = new List<Kennel>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_empty_kennels";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ShelterId", shelterId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var kennel = new Kennel();
+                        kennel.KennelId = reader.GetInt32(0);
+                        kennel.KennelName = reader.GetString(1);
+                        kennel.AnimalTypeId = reader.GetString(2);
+                        _kennelList.Add(kennel);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return _kennelList;
+        }
     }
 }

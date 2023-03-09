@@ -1442,7 +1442,7 @@ INSERT INTO [dbo].[Death]
         (100002, 100005, 'Old age', 'Plastic Bag', GETDATE(), 'Very heavy')
 GO
 
-/*
+
 print '' print '*** creating AnimalImage sample data'
 GO 
 INSERT INTO [dbo].[AnimalImage]
@@ -1458,4 +1458,3 @@ INSERT INTO [dbo].[AnimalImage]
         (100004, '314a2539-5dee-40ce-ac5b-026d53750c96'),
         (100005, '314a2539-5dee-40ce-ac5b-026d53750c97')
 GO
-*/

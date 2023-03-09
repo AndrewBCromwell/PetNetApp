@@ -66,13 +66,13 @@ namespace LogicLayer
             MedicalRecordManager = new MedicalRecordManager();
             FundraisingCampaignManager = new FundraisingCampaignManager();
             ImagesManager = new ImagesManager();
-            User = new UsersVM() { ShelterId = 100000, UsersId = 100000 };
             ShelterItemTransactionManager = new ShelterItemTransactionManager();
             ImagesManager = new ImagesManager();
             DonationManager = new DonationManager();
 
+
             //for testing from dev page
-/*            User = new UsersVM()
+            User = new UsersVM()
             {
                 UsersId = 100004,
                 ShelterId = 100000,
@@ -84,12 +84,12 @@ namespace LogicLayer
                 Phone = "319-123-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>() { "Admin"}
+                Roles = new List<string>() { "Admin" }
             };
-*/
+
 
         }
-    
+
         public static MasterManager GetMasterManager()
         {
             if (_existingMasterManager == null)

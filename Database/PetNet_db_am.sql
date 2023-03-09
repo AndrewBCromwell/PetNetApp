@@ -346,8 +346,7 @@ CREATE TABLE [dbo].[Animal] (
 	CONSTRAINT [fk_Animal_AnimalStatusId]FOREIGN KEY ([AnimalStatusId])
 		REFERENCES [dbo].[AnimalStatus]([AnimalStatusId]) on UPDATE CASCADE,
 	CONSTRAINT [fk_Animal_AnimalShelterId]FOREIGN KEY ([AnimalShelterId])
-		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE,
-	CONSTRAINT [ak_MicrochipSerialNumber] UNIQUE([MicrochipSerialNumber])
+		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE
 )
 GO
 
