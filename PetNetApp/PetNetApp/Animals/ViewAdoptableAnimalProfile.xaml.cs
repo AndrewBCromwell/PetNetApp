@@ -73,6 +73,7 @@ namespace WpfPresentation.Animals
             try
             {
                 _animalImages = _masterManager.ImagesManager.RetriveImageByAnimalId(_animalId);
+                
             }
             catch (Exception ex)
             {
@@ -97,11 +98,19 @@ namespace WpfPresentation.Animals
             //picAnimalImageList.Source = new BitmapImage(new Uri(imageFiles[curImageIdx], UriKind.Relative));
             try
             {
-                picAnimalImageList.Source = _masterManager.ImagesManager.RetrieveImageByImages(_animalImages[curImageIdx]);
+                if (_animalImages.Count == 0)
+                {
+                    picAnimalImageList.Source = new BitmapImage(new Uri(@"../../Images/AnimalImage.png", UriKind.Relative));
+                }
+                else
+                {
+                    picAnimalImageList.Source = _masterManager.ImagesManager.RetrieveImageByImages(_animalImages[curImageIdx]);
+                }
+                
             }
             catch (Exception ex)
             {
-                PromptWindow.ShowPrompt("Error", "Can not get the images. \n\n" + ex.Message + "\n\n" + ex.InnerException);
+                picAnimalImageList.Source = new BitmapImage(new Uri(@"../../Images/NullImage.png", UriKind.Relative));
             }
             LoadAnimalNote();
         }
