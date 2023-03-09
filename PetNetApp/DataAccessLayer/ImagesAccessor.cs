@@ -309,7 +309,7 @@ namespace DataAccessLayer
 
         public List<Images> SelectAnimalImageByAnimalId(int animalId)
         {
-            List<Images> images = null;
+            List<Images> images = new List<Images>();
 
             var connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
@@ -328,7 +328,10 @@ namespace DataAccessLayer
                 {
                     while (reader.Read())
                     {
-                        images image = new Images();
+                        Images image = new Images();
+                        image.ImageId = reader.GetString(0);
+                        image.ImageFileName = reader.GetString(1);
+                        images.Add(image);
                     }
                 }
 

@@ -31,6 +31,7 @@ namespace WpfPresentation.Community
         {
             InitializeComponent();
             _userId = userId;
+            stackPanelAdoptedAnimal.Children.Clear();
         }
 
         public void DisplayAdoptedAnimal(AnimalVM animal)
@@ -72,6 +73,7 @@ namespace WpfPresentation.Community
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            stackPanelAdoptedAnimal.Children.Clear();
             try
             {
                 _animalList = _masterManager.AnimalManager.RetriveAdoptedAnimalByUserId(_userId);

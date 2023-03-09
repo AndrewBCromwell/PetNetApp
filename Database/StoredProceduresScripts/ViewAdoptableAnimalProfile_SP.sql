@@ -41,10 +41,10 @@ CREATE PROCEDURE [dbo].[sp_select_animal_image_by_animalId]
 )
 AS
 	BEGIN
-		SELECT [Image].[ImageId], [Image].[ImageFileName]
-        FROM [Image]
+		SELECT [Images].[ImageId], [Images].[ImageFileName]
+        FROM [Images]
         JOIN [AnimalImage]
-        ON [Image].[ImageId] = [AnimalImage].[ImageId]
+        ON [Images].[ImageId] = [AnimalImage].[ImageId]
         WHERE [AnimalImage].[AnimalId] = @AnimalId			
 	END
 GO

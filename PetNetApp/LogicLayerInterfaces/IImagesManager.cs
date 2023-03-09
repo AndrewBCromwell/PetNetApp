@@ -70,5 +70,7 @@ namespace LogicLayerInterfaces
         /// <param name="imageFileNames">The list of Uri where the images are located</param>
         /// <returns></returns>
         bool AddMedicalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames);
+
+        List<Images> RetriveImageByAnimalId(int animalId);
     }
 }
