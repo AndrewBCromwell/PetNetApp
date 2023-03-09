@@ -387,5 +387,46 @@ namespace DataAccessLayer
 
             return rows;
         }
+
+        public List<Images> SelectAnimalImageByAnimalId(int animalId)
+        {
+            List<Images> images = new List<Images>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_animal_image_by_animalId";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@AnimalId", animalId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Images image = new Images();
+                        image.ImageId = reader.GetString(0);
+                        image.ImageFileName = reader.GetString(1);
+                        images.Add(image);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return images;
+        }
     }
 }

@@ -133,5 +133,8 @@ namespace LogicLayerInterfaces
         AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId);
 
         AnimalVM RetriveAnimalAdoptableProfile(int animalId);
+
+        List<AnimalVM> RetriveAdoptedAnimalByUserId(int userId);
+        FosterPlacementRecord RetriveFosterPlacementRecordNotes(int animalId);
     }
 }

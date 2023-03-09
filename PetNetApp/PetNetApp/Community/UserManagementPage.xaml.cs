@@ -205,7 +205,7 @@ namespace WpfPresentation.Community
                 }
                 catch (Exception ex)
                 {
-                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException);
+                    PromptWindow.ShowPrompt("Error", "Can not get the data. \n\n" + ex.Message);
                 }
             }
         }

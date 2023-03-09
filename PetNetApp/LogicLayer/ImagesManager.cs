@@ -139,5 +139,21 @@ namespace LogicLayer
 
             return images;
         }
+
+        public List<Images> RetriveImageByAnimalId(int animalId)
+        {
+            List<Images> images;
+
+            try
+            {
+                images = _imagesAccessor.SelectAnimalImageByAnimalId(animalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to get the images", ex);
+            }
+
+            return images;
+        }
     }
 }
