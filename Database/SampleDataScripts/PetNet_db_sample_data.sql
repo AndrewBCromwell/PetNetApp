@@ -776,16 +776,17 @@ INSERT INTO [dbo].[Donation]
         [Message],
         [HasInKindDonation],
         [Anonymous],
+        [Target],
         [PaymentMethod]
 		)
 	VALUES
-		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'visa'),
-        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'visa'),
-        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'visa'),
-        (100002, 100000, 12.99, 'Daily good deed', 1, 0, 'visa'),
-        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'visa'),
-        (100000, 100000, 99.99, 'Today was a good day', 1, 1, 'visa'),
-        (100000, 100000, 150.00, 'I won at the Casino', 1, 1, 'visa')
+		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa'),
+        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa'),
+        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa'),
+        (100002, 100000, 12.99, 'Daily good deed', 1, 0, ':)', 'Visa'),
+        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa'),
+        (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa'),
+        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa')
 GO
 
 print '' print '*** Creating InKind sample data'
@@ -801,6 +802,8 @@ INSERT INTO [dbo].[InKind]
 	VALUES
 		(100002, 'Dog food leftover by my previous dog', 1, 1),
         (100003, 'Some toys that were lying around', 5, 1),
+        (100003, 'Some food that was lying around', 15, 1),
+        (100003, 'Some cages that was lying around', 3, 1),
         (100004, 'Cages', 5, 1)
 GO
 

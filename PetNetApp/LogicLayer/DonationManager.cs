@@ -39,5 +39,17 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to retrieve donations", ex);
             }
         }
+
+        public List<InKind> RetrieveInKindsByDonationId(int donationId)
+        {
+            try
+            {
+                return donationAccessor.SelectInKindsByDonationId(donationId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve in-kind donations", ex);
+            }
+        }
     }
 }
