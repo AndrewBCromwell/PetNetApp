@@ -218,6 +218,11 @@ namespace DataAccessLayerFakes
             return rows;
         }
 
+        public List<Images> SelectAnimalImageByAnimalId(int animalId)
+        {
+            throw new NotImplementedException();
+        }
+
         public BitmapImage SelectImageByImages(Images images)
         {
             return new BitmapImage();

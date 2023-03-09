@@ -112,6 +112,12 @@
     <Compile Include="Animals\VaccinationsPage.xaml.cs">
       <DependentUpon>VaccinationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Community\UCAdoptedAnimal.xaml.cs">
+      <DependentUpon>UCAdoptedAnimal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Community\ViewUpdateFromFosterProfile.xaml.cs">
+      <DependentUpon>ViewUpdateFromFosterProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
       <DependentUpon>FundraisingPage.xaml</DependentUpon>
     </Compile>
@@ -243,6 +249,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\UploadAdditionalImageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\UCAdoptedAnimal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\ViewUpdateFromFosterProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -944,6 +958,12 @@
     <Resource Include="Images\BrokenImage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\application_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\download_light.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BrokenImageGreen.png" />

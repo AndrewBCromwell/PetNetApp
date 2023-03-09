@@ -86,7 +86,12 @@ INSERT INTO [dbo].[Images]
         ('314a2539-5dee-40ce-ac5b-026d53750c94','AnimalImage3.png'),
         ('314a2539-5dee-40ce-ac5b-026d53750c95','AnimalImage4.png'),
         ('314a2539-5dee-40ce-ac5b-026d53750c96','AnimalImage5.png'),
-        ('314a2539-5dee-40ce-ac5b-026d53750c97','AnimalImage6.png')
+        ('314a2539-5dee-40ce-ac5b-026d53750c97','AnimalImage6.png'),
+		('02f42168-5f29-4f70-a6ab-3c0b4c64dc24', '02f42168-5f29-4f70-a6ab-3c0b4c64dc24'),
+		('6efa448e-cead-4619-bb55-b9c078375404', '6efa448e-cead-4619-bb55-b9c078375404'),
+		('0238caf0-9398-4c32-aeb8-bcf151f300ef', '0238caf0-9398-4c32-aeb8-bcf151f300ef'),
+		('abacccd4-2844-4573-8c1d-5d668cc34953', 'abacccd4-2844-4573-8c1d-5d668cc34953'),
+		('eecea43f-3749-4f62-b70b-4381530618d9', 'eecea43f-3749-4f62-b70b-4381530618d9')
         
 GO
 
@@ -1456,5 +1461,12 @@ INSERT INTO [dbo].[AnimalImage]
         (100002, '314a2539-5dee-40ce-ac5b-026d53750c94'),
         (100003, '314a2539-5dee-40ce-ac5b-026d53750c95'),
         (100004, '314a2539-5dee-40ce-ac5b-026d53750c96'),
+        (100005, '314a2539-5dee-40ce-ac5b-026d53750c97'),
+		(100002, '02f42168-5f29-4f70-a6ab-3c0b4c64dc24'),
+		(100002, '6efa448e-cead-4619-bb55-b9c078375404'),
+		(100002, '0238caf0-9398-4c32-aeb8-bcf151f300ef'),
+		(100002, 'abacccd4-2844-4573-8c1d-5d668cc34953'),
+		(100002, 'eecea43f-3749-4f62-b70b-4381530618d9')
+GO
         (100005, '314a2539-5dee-40ce-ac5b-026d53750c97')
 GO

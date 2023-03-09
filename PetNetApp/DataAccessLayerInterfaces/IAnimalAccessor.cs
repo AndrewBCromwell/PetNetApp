@@ -158,5 +158,8 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">No animal is retrived with that Id</exception>
         /// <returns>AnimalVM object</returns>	
         AnimalVM SelectAnimalMedicalProfileByAnimalId(int AnimalId);
+
+        List<AnimalVM> SelectAdoptedAnimalByUserId(int usersId);
+        FosterPlacementRecord SelectFosterPlacementRecordNotes(int animalId);
     }
 }

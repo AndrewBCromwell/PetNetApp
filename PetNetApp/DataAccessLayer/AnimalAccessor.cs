@@ -706,16 +706,16 @@ namespace DataAccessLayer
                         animal.AnimalGender = reader.GetString(2);
                         animal.AnimalTypeId = reader.GetString(3);
                         animal.AnimalBreedId = reader.GetString(4);
-                        animal.Personality = reader.GetString(5);
-                        animal.Description = reader.GetString(6);
+                        animal.Personality = reader.IsDBNull(5) ? null : reader.GetString(5);
+                        animal.Description = reader.IsDBNull(6) ? null : reader.GetString(6);
                         animal.AnimalStatusId = reader.GetString(7);
                         animal.BroughtIn = reader.GetDateTime(8);
-                        animal.MicrochipNumber = reader.GetString(9);
+                        animal.MicrochipNumber = reader.IsDBNull(9) ? null : reader.GetString(9);
                         animal.Aggressive = reader.GetBoolean(10);
-                        animal.AggressiveDescription = reader.GetString(11);
+                        animal.AggressiveDescription = reader.IsDBNull(11) ? null : reader.GetString(11);
                         animal.ChildFriendly = reader.GetBoolean(12);
                         animal.NeuterStatus = reader.GetBoolean(13);
-                        animal.Notes = reader.GetString(14);
+                        animal.Notes = reader.IsDBNull(14) ? null : reader.GetString(14);
                     }
                 }
             }
@@ -730,6 +730,85 @@ namespace DataAccessLayer
             }
 
             return animal;
+        }
+
+        public List<AnimalVM> SelectAdoptedAnimalByUserId(int usersId)
+        {
+            List<AnimalVM> animals = new List<AnimalVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_animal_adopted_by_usersId";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UsersId", usersId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int animalId = reader.GetInt32(0);
+                        AnimalVM animal = SelectAnimalAdoptableProfile(animalId);
+                        animals.Add(animal);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return animals;
+        }
+
+        public FosterPlacementRecord SelectFosterPlacementRecordNotes(int animalId)
+        {
+            FosterPlacementRecord fosterPlacementRecord = new FosterPlacementRecord();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_foster_placement_record_notes";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@AnimalId", animalId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        fosterPlacementRecord.FosterPlacementRecordId = reader.GetInt32(0);
+                        fosterPlacementRecord.FosterPlacementId = reader.GetInt32(1);
+                        fosterPlacementRecord.FosterPlacementRecordNotes = reader.GetString(2);
+                        fosterPlacementRecord.FosterPlacementRecordDate = reader.GetDateTime(3);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return fosterPlacementRecord;
         }
     }
 }

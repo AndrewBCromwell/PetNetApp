@@ -102,5 +102,7 @@ namespace LogicLayerInterfaces
         /// <param name="imageFileNames">The list of Uri where the images are located</param>
         /// <returns>A boolean signifying success or failure</returns>
         bool AddAnimalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames);
+
+        List<Images> RetriveImageByAnimalId(int animalId);
     }
 }
