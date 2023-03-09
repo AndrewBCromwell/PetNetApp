@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfPresentation.Community
+namespace WpfPresentation.Development.Community
 {
     /// <summary>
     /// Interaction logic for RoleManagementPopup.xaml
