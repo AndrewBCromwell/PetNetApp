@@ -154,6 +154,9 @@
     <Compile Include="Management\CreateNewTicket.xaml.cs">
       <DependentUpon>CreateNewTicket.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\InKindUserControl.xaml.cs">
+      <DependentUpon>InKindUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
@@ -402,6 +405,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\InstitutionalEntityUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\InKindUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
