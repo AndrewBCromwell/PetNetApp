@@ -113,5 +113,6 @@ namespace LogicLayerInterfaces
         /// <exception cref="SQLException"></exception>
         /// <returns>List<Kennel></returns>
         List<Kennel> RetrieveAllEmptyKennels(int shelterId);
+        Images RetrieveImageByAnimalId(int animalId);
     }
 }

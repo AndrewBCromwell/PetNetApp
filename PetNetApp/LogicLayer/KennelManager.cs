@@ -191,6 +191,18 @@ namespace LogicLayer
             }
         }
 
+        public Images RetrieveImageByAnimalId(int animalId)
+        {
+            try
+            {
+                return kennelAccessor.SelectImageByAnimalId(animalId);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve image", e);
+            }
+        }
+
         public List<Kennel> RetrieveAllEmptyKennels(int shelterId)
         {
             try

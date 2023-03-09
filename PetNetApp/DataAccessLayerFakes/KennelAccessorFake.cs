@@ -18,7 +18,7 @@ namespace DataAccessLayerFakes
         private List<string> fakeAnimalTypes;
         private List<Kennel> fakeKennels = new List<Kennel>();
         private List<Tuple<Animal, Kennel>> fakeAnimalKenneling = new List<Tuple<Animal, Kennel>>();
-
+        private Images fakeImage = new Images() { ImageId = "ImageID", ImageFileName = "FileName" };
         public KennelAccessorFake()
         {
             fakeKennelVM = new KennelVM()
@@ -239,6 +239,11 @@ namespace DataAccessLayerFakes
         public List<Kennel> SelectAllEmptyKennels(int shelterId)
         {
             throw new NotImplementedException();
+        }
+
+        public Images SelectImageByAnimalId(int animalId)
+        {
+            return fakeImage;
         }
     }
 }
