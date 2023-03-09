@@ -59,21 +59,21 @@ namespace PetNetApp.Development
 
         private void btnShelters_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnShelters);
             
             frameMain.Navigate(ShelterPage.GetShelterPage(_manager));
         }
 
         private void btnEvents_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnEvents);
             // replace with page name and then delete comment
             frameMain.Navigate(null);
         }
 
         private void btnCommunity_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnCommunity);
             frameMain.Navigate(CommunityPage.GetCommunityPage(_manager));
         }
 

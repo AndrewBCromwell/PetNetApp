@@ -34,21 +34,22 @@ namespace LogicLayer
         public delegate void UserChangedAction();
         public event UserChangedAction UserLogout;
         public event UserChangedAction UserLogin;
-        public IKennelManager KennelManager { get; set; }
-        public IUsersManager UsersManager { get; set; }
-        public IDeathManager DeathManager { get; set; }
-        public IAnimalManager AnimalManager { get; set; }
-        public IAnimalUpdatesManager AnimalUpdatesManager { get; set; }
+        public IKennelManager KennelManager { get; private set; }
+        public IUsersManager UsersManager { get; private set; }
+        public IDeathManager DeathManager { get; private set; }
+        public IAnimalManager AnimalManager { get; private set; }
+        public IAnimalUpdatesManager AnimalUpdatesManager { get; private set; }
         public IScheduleManager ScheduleManager { get; set; }
-        public ITestManager TestManager { get; set; }
-        public IRoleManager RoleManager { get; set; }
-        public ITicketManager TicketManager { get; set; }
-        public IProcedureManager ProcedureManager { get; set; }
-        public IMedicalRecordManager MedicalRecordManager { get; set; }
-        public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
-        public IShelterItemTransactionManager ShelterItemTransactionManager { get; set; }
-        public IDonationManager DonationManager { get; set; }
-        public IImagesManager ImagesManager { get; set; }
+        public ITestManager TestManager { get; private set; }
+        public IRoleManager RoleManager { get; private set; }
+        public ITicketManager TicketManager { get; private set; }
+        public IProcedureManager ProcedureManager { get; private set; }
+        public IMedicalRecordManager MedicalRecordManager { get; private set; }
+        public IFundraisingCampaignManager FundraisingCampaignManager { get; private set; }
+        public IShelterItemTransactionManager ShelterItemTransactionManager { get; private set; }
+        public IDonationManager DonationManager { get; private set; }
+        public IImagesManager ImagesManager { get; private set; }
+        public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
 
 
         private MasterManager()
@@ -65,6 +66,7 @@ namespace LogicLayer
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
             FundraisingCampaignManager = new FundraisingCampaignManager();
+            InstitutionalEntityManager = new InstitutionalEntityManager();
             ImagesManager = new ImagesManager();
             ShelterItemTransactionManager = new ShelterItemTransactionManager();
             ImagesManager = new ImagesManager();

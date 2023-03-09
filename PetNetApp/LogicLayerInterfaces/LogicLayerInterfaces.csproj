@@ -48,6 +48,7 @@
     <Compile Include="IDonationManager.cs" />
     <Compile Include="IFundraisingCampaignManager.cs" />
     <Compile Include="IImagesManager.cs" />
+    <Compile Include="IInstitutionalEntityManager.cs" />
     <Compile Include="IKennelManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
     <Compile Include="IProcedureManager.cs" />

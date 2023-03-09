@@ -122,6 +122,11 @@ namespace WpfPresentation
             promptWindow.ShowDialog();
             return promptWindow.PromptSelection;
         }
+
+        private void btn3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public enum ButtonMode

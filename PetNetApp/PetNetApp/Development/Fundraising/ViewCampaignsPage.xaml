@@ -43,6 +43,7 @@
                     <ComboBoxItem Content="Ongoing"/>
                     <ComboBoxItem Content="Completed"/>
                     <ComboBoxItem Content="Both"/>
+                    <ComboBoxItem Content="Deleted"/>
                 </ComboBox>
             </Grid>
         </Grid>

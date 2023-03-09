@@ -58,6 +58,7 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="Shelter.cs" />
     <Compile Include="ShelterItemTransaction.cs" />
+    <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />
