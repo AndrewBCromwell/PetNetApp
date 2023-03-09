@@ -34,28 +34,24 @@ namespace LogicLayer
         public delegate void UserChangedAction();
         public event UserChangedAction UserLogout;
         public event UserChangedAction UserLogin;
-        public IKennelManager KennelManager { get; set; }
-        public IUsersManager UsersManager { get; set; }
-        public IDeathManager DeathManager { get; set; }
-        public IAnimalManager AnimalManager { get; set; }
-        public IAnimalUpdatesManager AnimalUpdatesManager { get; set; }
-        public IScheduleManager ScheduleManager { get; set; }
-        public ITestManager TestManager { get; set; }
-        public IRoleManager RoleManager { get; set; }
-        public IImagesManager ImagesManager { get; set; }
-        public ITicketManager TicketManager { get; set; }
-        public IProcedureManager ProcedureManager { get; set; }
-        public IMedicalRecordManager MedicalRecordManager { get; set; }
-        public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
+        public IKennelManager KennelManager { get; private set; }
+        public IUsersManager UsersManager { get; private set; }
+        public IDeathManager DeathManager { get; private set; }
+        public IAnimalManager AnimalManager { get; private set; }
+        public IAnimalUpdatesManager AnimalUpdatesManager { get; private set; }
+        public IScheduleManager ScheduleManager { get; private set; }
+        public ITestManager TestManager { get; private set; }
+        public IRoleManager RoleManager { get; private set; }
+        public IImagesManager ImagesManager { get; private set; }
+        public ITicketManager TicketManager { get; private set; }
+        public IProcedureManager ProcedureManager { get; private set; }
+        public IMedicalRecordManager MedicalRecordManager { get; private set; }
+        public IFundraisingCampaignManager FundraisingCampaignManager { get; private set; }
+        public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
 
 
         private MasterManager()
         {
-            User = new UsersVM()
-            {
-                UsersId = 100000,
-                ShelterId = 100000
-            };
             KennelManager = new KennelManager();
             UsersManager = new UsersManager();
             DeathManager = new DeathManager();
@@ -68,7 +64,8 @@ namespace LogicLayer
             TicketManager = new TicketManager();
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
-            FundraisingCampaignManager = new FundraisingCampaignManager(new FundraisingCampaignAccessorFakes());
+            FundraisingCampaignManager = new FundraisingCampaignManager();
+            InstitutionalEntityManager = new InstitutionalEntityManager();
             ImagesManager = new ImagesManager();
 
             //for testing from dev page

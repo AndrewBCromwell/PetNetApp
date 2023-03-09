@@ -55,7 +55,7 @@
     <Compile Include="Role.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Shelter.cs" />
-    <Compile Include="Sponsor.cs" />
+    <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />

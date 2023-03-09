@@ -16,11 +16,12 @@ namespace DataObjects
         public bool Complete { get; set; }
         public int UsersId { get; set; }
         public int ShelterId { get; set; }
+        public bool Active { get; set; }
     }
 
     public class FundraisingCampaignVM : FundraisingCampaign
     {
-        public List<Sponsor> Sponsors { get; set; }
+        public List<InstitutionalEntity> Sponsors { get; set; }
         //public List<CampaignUpdate> CampaignUpdates { get; set; }
         //public List<FundraisingEvent> FundraisingEventList { get; set; }
     }
@@ -39,7 +40,8 @@ namespace DataObjects
                 Complete = fundraisingCampaignVM.Complete,
                 StartDate = fundraisingCampaignVM.StartDate,
                 EndDate = fundraisingCampaignVM.EndDate,
-                Sponsors = fundraisingCampaignVM.Sponsors.ToList()
+                Sponsors = fundraisingCampaignVM.Sponsors.ToList(),
+                Active = fundraisingCampaignVM.Active
             };
 
             return copy;

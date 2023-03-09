@@ -10,9 +10,16 @@ using DataAccessLayer;
 
 namespace LogicLayer
 {
+    /// <summary>
+    /// Stephen Jaurigue
+    /// Created: 2023/02/23
+    /// 
+    /// The Logic Layer class for managing fundraising campaigns
+    /// </summary>
     public class FundraisingCampaignManager : IFundraisingCampaignManager
     {
         private IFundraisingCampaignAccessor _fundraisingCampaignAccessor = null;
+
         /// <summary>
         /// Stephen Jaurigue
         /// Created: 2023/02/23
@@ -42,7 +49,12 @@ namespace LogicLayer
             bool success = false;
             try
             {
-                success = _fundraisingCampaignAccessor.InsertFundraisingCampaign(fundraisingCampaign) != 0;
+                int campaignId = _fundraisingCampaignAccessor.InsertFundraisingCampaign(fundraisingCampaign);
+                if (campaignId != 0)
+                {
+                    success = true;
+                    fundraisingCampaign.FundraisingCampaignId = campaignId;
+                }
             }
             catch (Exception ex)
             {
@@ -51,12 +63,30 @@ namespace LogicLayer
             return success;
         }
 
-        public bool EditFundraisingCampaign(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM)
+        public bool EditFundraisingCampaignDetails(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM)
         {
             bool success = false;
             try
             {
-                success = _fundraisingCampaignAccessor.UpdateFundraisingCampaign(oldFundraisingCampaignVM, newFundraisingCampaignVM) != 0;
+                success = _fundraisingCampaignAccessor.UpdateFundraisingCampaignDetails(oldFundraisingCampaignVM, newFundraisingCampaignVM) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to add the new FundraisingCampaign", ex);
+            }
+            return success;
+        }
+
+        public bool RemoveFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
+        {
+            bool success = false;
+            try
+            {
+                if (_fundraisingCampaignAccessor.DeleteFundraisingCampaign(fundraisingCampaign) == 1)
+                {
+                    success = true;
+                    fundraisingCampaign.Active = false;
+                }
             }
             catch (Exception ex)
             {
@@ -77,6 +107,20 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to load Campaigns", ex);
             }
             return campaigns;
+        }
+
+        public FundraisingCampaignVM RetrieveFundraisingCampaignByFundraisingCampaignId(int fundraisingCampaignId)
+        {
+            FundraisingCampaignVM fundraisingCampaign = null;
+            try
+            {
+                fundraisingCampaign = _fundraisingCampaignAccessor.SelectFundraisingCampaignByFundraisingCampaignId(fundraisingCampaignId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load the fundraising campaign", ex);
+            }
+            return fundraisingCampaign;
         }
     }
 }

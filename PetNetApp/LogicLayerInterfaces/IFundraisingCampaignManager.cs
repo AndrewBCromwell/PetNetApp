@@ -40,6 +40,26 @@ namespace LogicLayerInterfaces
         /// <param name="oldFundraisingCampaignVM"></param>
         /// <param name="newFundraisingCampaignVM"></param>
         /// <returns></returns>
-        bool EditFundraisingCampaign(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM);
+        bool EditFundraisingCampaignDetails(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/03/04
+        /// 
+        /// Calls the Accessor method to retrieve a fundraising campaign and rewraps exceptions
+        /// </summary>
+        /// <param name="fundraisingCampaignId"></param>
+        /// <returns></returns>
+        FundraisingCampaignVM RetrieveFundraisingCampaignByFundraisingCampaignId(int fundraisingCampaignId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/03/07
+        /// 
+        /// Calls the Accessor method to remove the fundraising campaign
+        /// </summary>
+        /// <param name="fundraisingCampaign">Fundraising Campaign to remove</param>
+        /// <returns>Whether the record was successfully removed</returns>
+        bool RemoveFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
     }
 }

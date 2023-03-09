@@ -49,6 +49,7 @@
     <Compile Include="DeathAccessor.cs" />
     <Compile Include="FundraisingCampaignAccessor.cs" />
     <Compile Include="ImagesAccessor.cs" />
+    <Compile Include="InstitutionalEntityAccessor.cs" />
     <Compile Include="KennelAccessor.cs" />
     <Compile Include="MedicalRecordAccessor.cs" />
     <Compile Include="ProcedureAccessor.cs" />

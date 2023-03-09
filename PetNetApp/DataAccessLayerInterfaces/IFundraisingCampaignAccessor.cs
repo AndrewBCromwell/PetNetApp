@@ -31,6 +31,26 @@ namespace DataAccessLayerInterfaces
         /// <returns>Total Number of Rows affected</returns>
         int InsertFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
 
-        int UpdateFundraisingCampaign(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM);
+        int UpdateFundraisingCampaignDetails(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/03/04
+        /// 
+        /// Loads a Fundraising Campaign VM by its id
+        /// </summary>
+        /// <param name="fundraisingCampaignId">The Id of the Fundraising Campaign to load</param>
+        /// <returns>A Fundraising Campaign VM</returns>
+        FundraisingCampaignVM SelectFundraisingCampaignByFundraisingCampaignId(int fundraisingCampaignId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/03/07
+        /// 
+        /// Deactivates the record for this fundraising campaign
+        /// </summary>
+        /// <param name="fundraisingCampaign">Campaign to deactivate</param>
+        /// <returns>the number of campaigns deactivated</returns>
+        int DeleteFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
     }
 }

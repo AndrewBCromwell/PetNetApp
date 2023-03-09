@@ -102,14 +102,17 @@ namespace WpfPresentation.Development.Fundraising
             switch (((string)((ComboBoxItem)cbFilter.SelectedValue).Content).ToLower())
             {
                 case "completed":
-                    filterMethod = new Func<FundraisingCampaign, bool>(fc => fc.Complete);
+                    filterMethod = new Func<FundraisingCampaign, bool>(fc => fc.Complete && fc.Active);
                     break;
                 case "both":
-                    filterMethod = new Func<FundraisingCampaign, bool>(fc => true);
+                    filterMethod = new Func<FundraisingCampaign, bool>(fc => fc.Active);
+                    break;
+                case "deleted":
+                    filterMethod = new Func<FundraisingCampaignVM, bool>(fc => !fc.Active);
                     break;
                 case "ongoing":
                 default:
-                    filterMethod = new Func<FundraisingCampaign, bool>(fc => !fc.Complete);
+                    filterMethod = new Func<FundraisingCampaign, bool>(fc => !fc.Complete && fc.Active);
                     break;
             }
             _filteredFundraisingCampaigns = _fundraisingCampaigns.Where(filterMethod).Where(SearchForTextInFundraisingCampaign).OrderBy(sortMethod).ToList();
@@ -205,6 +208,10 @@ namespace WpfPresentation.Development.Fundraising
             foreach (FundraisingCampaignVM fundraisingCampaign in _filteredFundraisingCampaigns.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
             {
                 ViewCampaignsFundraisingCampaignUserControl item = new ViewCampaignsFundraisingCampaignUserControl(fundraisingCampaign, i % 2 == 0);
+                item.CampaignDeleted += () =>
+                {
+                    ApplyFundraisingCampaignFilterAndSort(false);
+                };
                 i++;
                 stackCampaigns.Children.Add(item);
             }

@@ -708,9 +708,9 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 	[Title]					[nvarchar](100)				NOT NULL,
 	[StartDate]				[datetime]					NULL,
 	[EndDate]				[datetime]					NULL,
-	[Description]			[nvarchar](255)				NULL,
+	[Description]			[nvarchar](250)				NOT NULL,
 	[Complete]				[bit]	DEFAULT 0			NOT NULL,
-	[Updated]				[int]						NULL,
+	[Active]				[bit]	DEFAULT 1			NOT NULL	
 	CONSTRAINT [pk_FundraisingCampaignId] PRIMARY KEY ([FundraisingCampaignId]),
 	CONSTRAINT [fk_FundraisingCampaign_UsersId] FOREIGN KEY ([UsersId])
 		REFERENCES [Users]([UsersId]),
