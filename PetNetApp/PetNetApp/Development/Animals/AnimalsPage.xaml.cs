@@ -77,7 +77,7 @@ namespace WpfPresentation.Development.Animals
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(new AddAnimalPage(_manager));
+            frameAnimals.Navigate(null);
         }
 
         private void btnAnimalList_Click(object sender, RoutedEventArgs e)

@@ -143,7 +143,7 @@ namespace LogicLayerTest
         {
             int expectedCount = 1;
             int actualCount = 0;
-            int shelterId = 100000;
+            int shelterId = 1;
 
             var kennels = kennelManager.RetrieveAllEmptyKennels(shelterId);
             actualCount = kennels.Count;

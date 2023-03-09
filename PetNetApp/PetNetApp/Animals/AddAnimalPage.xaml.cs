@@ -28,7 +28,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 
-namespace WpfPresentation.Development.Animals
+namespace WpfPresentation.Animals
 {
     public partial class AddAnimalPage : Page
     {
@@ -104,7 +104,7 @@ namespace WpfPresentation.Development.Animals
             cmbAnimalGender.ItemsSource = _genders;
             _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
             cmbAnimalStatusId.ItemsSource = _statuses;
-            _kennels = _manager.KennelManager.RetrieveAllEmptyKennels((int)_manager.User.ShelterId);
+            _kennels = _manager.KennelManager.RetrieveAllEmptyKennels(_manager.User.ShelterId.Value);
             cmbAggressive.ItemsSource = _yesNo;
             cmbChildFriendly.ItemsSource = _yesNo;
             cmbNeuterStatus.ItemsSource = _yesNo;
@@ -201,7 +201,7 @@ namespace WpfPresentation.Development.Animals
 
                         if (!(cmbKennelName.SelectedItem == null || cmbKennelName.SelectedItem.ToString() == ""))
                         {
-                            _newAnimal.KennelName = cmbKennelName.SelectedItem.ToString();
+                            _newAnimal.KennelName = ((Kennel)cmbKennelName.SelectedItem).KennelName;
                         }
 
                         if (cmbAggressive.SelectedItem.ToString() == "Yes")
@@ -266,14 +266,12 @@ namespace WpfPresentation.Development.Animals
         {
             if (!(cmbKennelName.SelectedItem == null || cmbKennelName.SelectedItem.ToString() == ""))
             {
-                var kennelId = (from k in _kennels
-                                where cmbKennelName.SelectedItem.ToString() == k.KennelName
-                                select k.KennelId).First();
+                var kennelId = ((Kennel)cmbKennelName.SelectedItem).KennelId;
                 try
                 {
                     _manager.KennelManager.AddAnimalIntoKennelByAnimalId(kennelId, _newAnimal.AnimalId);
                     PromptWindow.ShowPrompt("Success", "Animal record has been created\n" +
-                                            "Animal added to " + _newAnimal.KennelName + ".", ButtonMode.Ok);
+                                            "Animal added to " + _newAnimal.KennelName, ButtonMode.Ok);
                 }
                 catch (Exception ex)
                 {
@@ -327,14 +325,10 @@ namespace WpfPresentation.Development.Animals
         private void cmbAnimalType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cmbAnimalBreedId.ItemsSource = _breeds[cmbAnimalTypeId.SelectedItem.ToString()];
-            cmbKennelName.ItemsSource = from name in _kennels
-                                        where name.AnimalTypeId == cmbAnimalTypeId.SelectedItem.ToString()
-                                        select name.KennelName;
-
-            //var kennelId = from k in _kennels
-            //               where cmbKennelName.SelectedItem.ToString() == k.KennelName
-            //               select k.KennelId;
-
+            cmbKennelName.ItemsSource = from kennel in _kennels
+                                        where kennel.AnimalTypeId == cmbAnimalTypeId.SelectedItem.ToString()
+                                        select kennel;
+            cmbKennelName.DisplayMemberPath = "KennelName";
         }
 
         /// <summary>

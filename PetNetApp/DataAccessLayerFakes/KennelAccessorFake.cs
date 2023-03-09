@@ -238,7 +238,10 @@ namespace DataAccessLayerFakes
 
         public List<Kennel> SelectAllEmptyKennels(int shelterId)
         {
-            throw new NotImplementedException();
+            var kennelsWithoutAnimals = fakeKennelVMs.Where(
+                kennel => !fakeAnimalKenneling.Exists(animalKenneling => kennel.KennelId == animalKenneling.Item2.KennelId));
+
+            return kennelsWithoutAnimals.Select(kennelVM => (Kennel)kennelVM).ToList();
         }
 
         public Images SelectImageByAnimalId(int animalId)

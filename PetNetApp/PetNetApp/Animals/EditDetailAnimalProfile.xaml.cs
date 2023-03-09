@@ -584,9 +584,12 @@ namespace WpfPresentation.Animals
                 if (result == PromptSelection.Yes)
                 {
                     setDetailMode();
-                    NavigationService nav = NavigationService.GetNavigationService(this);
-                    nav.Navigate(new WpfPresentation.Management.ViewKennelPage());
+                    NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
                 }
+            }
+            else
+            {
+                NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
             }
         }
 

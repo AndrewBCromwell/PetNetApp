@@ -82,7 +82,7 @@
     <Compile Include="Animals\UploadAdditionalFileWindow.xaml.cs">
       <DependentUpon>UploadAdditionalFileWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Animals\AddAnimalPage.xaml.cs">
+    <Compile Include="Animals\AddAnimalPage.xaml.cs">
       <DependentUpon>AddAnimalPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\EditDetailAnimalProfile.xaml.cs">
@@ -308,7 +308,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Animals\AddAnimalPage.xaml">
+    <Page Include="Animals\AddAnimalPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
