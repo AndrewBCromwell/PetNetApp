@@ -50,7 +50,9 @@
     <Compile Include="AnimalManager.cs" />
     <Compile Include="AnimalUpdatesManager.cs" />
     <Compile Include="FundraisingCampaignManager.cs" />
+    <Compile Include="FundraisingEventManager.cs" />
     <Compile Include="ImagesManager.cs" />
+    <Compile Include="InstitutionalEntityManager.cs" />
     <Compile Include="KennelManager.cs" />
     <Compile Include="MasterManager.cs" />
     <Compile Include="MedicalRecordManager.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="TicketManager.cs" />
     <Compile Include="UsersManager.cs" />
     <Compile Include="VaccinationManager.cs" />
+    <Compile Include="ZipcodeManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerFakes\DataAccessLayerFakes.csproj">

@@ -344,9 +344,9 @@ INSERT INTO [dbo].[Shelter]
 		[ShelterActive]
 		)
 	VALUES
-		("Shelter 1", "111 Shelter Drive", 50001, "123-123-1111", "shelter1@shelter.com", "Animal Food", 1),
-		("Shelter 2", "112 Shelter Drive", 50002, "123-123-1112", "shelter2@shelter.com", "Animal Medicine", 1),
-		("Shelter 3", "113 Shelter Drive", 50001, "123-123-1113", "shelter3@shelter.com", "Kitty Litter", 1)
+		("Shelter 1", "111 Shelter Drive", 50001, "1231231111", "shelter1@shelter.com", "Animal Food", 1),
+		("Shelter 2", "112 Shelter Drive", 50002, "1231231112", "shelter2@shelter.com", "Animal Medicine", 1),
+		("Shelter 3", "113 Shelter Drive", 50001, "1231231113", "shelter3@shelter.com", "Kitty Litter", 1)
 GO
 
 print '' print '*** creating test data for Users (Mads)'
@@ -880,11 +880,11 @@ INSERT INTO [dbo].[Applicant]
         [CurrentlyAcceptingAnimals]
 		)
 	VALUES
-		('Gwen', 'Arman', '101 South Park Street', 50001, 987-654-3211, 
+		('Gwen', 'Arman', '101 South Park Street', 50001, 9876543211, 
         'ga@gmail.com', 'Single', 'Own', 0,0, 1),
-        ('Xander', 'Arman', '123 North Park Street', 50001, 987-654-3311, 
+        ('Xander', 'Arman', '123 North Park Street', 50001, 9876543311, 
         'xa@gmail.com', 'Single', 'Own', 0,0, 1),
-        ('Nicholas', 'Arman', '963 West Park Street', 50001, 987-654-3411, 
+        ('Nicholas', 'Arman', '963 West Park Street', 50001, 9876543411, 
         'na@gmail.com', 'Single', 'Own', 0,0, 1)
 GO
 
@@ -1203,12 +1203,13 @@ INSERT INTO [dbo].[InstitutionalEntity]
         [Phone],
 		[Address],
 		[Zipcode],
-        [ContactType]
+        [ContactType],
+        [ShelterId]
 		)
 	VALUES
-		('US Animals', 'Bob', 'Doe', 'bd@gmail.com', '1231233333', '121 Place Street', 50001, 'Sponsor'),
-        ('CA Animals', 'Stephanie', 'Doe', 'sd@gmail.com', '1231233334', '122 Place Street', 50001, 'Sponsor'),
-        ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor')
+		('US Animals', 'Bob', 'Doe', 'bd@gmail.com', '1231233333', '121 Place Street', 50001, 'Sponsor', 100000),
+        ('CA Animals', 'Stephanie', 'Doe', 'sd@gmail.com', '1231233334', '122 Place Street', 50001, 'Sponsor', 100000),
+        ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor', 100000)
 GO
 
 print '' print '*** creating FundraisingCampaignEntity sample data'
