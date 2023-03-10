@@ -55,7 +55,6 @@
     <Compile Include="AnimalManagerTests.cs" />
     <Compile Include="AnimalUpdatesTests.cs" />
     <Compile Include="FundraisingEventManagerTests.cs" />
-    <Compile Include="InstitutionalEntityTests.cs" />
     <Compile Include="MedicalRecordManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="KennelManagerTest.cs" />

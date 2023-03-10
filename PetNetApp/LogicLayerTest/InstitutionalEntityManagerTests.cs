@@ -51,6 +51,22 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
+        public void TestRetrievesCorrectNumberOfInstitutionalEntitiesByShelterIdAndEntityType()
+        {
+            InstitutionalEntityAccessorFake fakes = new InstitutionalEntityAccessorFake();
+            string entityType = "Host";
+            int shelterId = 100000;
+            // arrange
+            int expectedResult = fakes._institutionalEntitiesWithShelterId.FindAll(i => i.ContactType == entityType && i.ShelterId == shelterId).Count;
+
+            // act
+            int actualResult = _institutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndEntityType(shelterId, entityType).Count;
+
+            // assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
         public void TestAddNewInstitutionalEntity()
         {
             InstitutionalEntity entity = new InstitutionalEntity()

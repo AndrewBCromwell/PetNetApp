@@ -170,7 +170,7 @@ namespace WpfPresentation.Development.Fundraising
                     tbEmail.Text = _institutionalEntity.Email;
                     tbPhone.Text = new string(_institutionalEntity.Phone.Where(c => char.IsDigit(c)).ToArray());
                     tbAddress.Text = _institutionalEntity.Address;
-                    tbAddress2.Text = _institutionalEntity.AddressTwo;
+                    tbAddress2.Text = _institutionalEntity.Address2;
                     // check to see if zipcode is 5 digits
                     if (_institutionalEntity.Zipcode.IsValidZipcode())
                     {

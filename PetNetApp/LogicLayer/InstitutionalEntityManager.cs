@@ -10,7 +10,6 @@
 /// Updated: 
 /// Comments:
 /// </remarks>
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +19,6 @@ using DataObjects;
 using LogicLayerInterfaces;
 using DataAccessLayer;
 using DataAccessLayerInterfaces;
-using DataObjects;
-using LogicLayerInterfaces;
-using System;
-using System.Collections.Generic;
-
 
 namespace LogicLayer
 {

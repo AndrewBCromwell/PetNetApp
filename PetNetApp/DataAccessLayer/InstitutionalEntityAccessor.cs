@@ -61,7 +61,7 @@ namespace DataAccessLayer
                         institutionalEntity.Email = reader.GetString(4);
                         institutionalEntity.Phone = reader.GetString(5);
                         institutionalEntity.Address = reader.GetString(6);
-                        institutionalEntity.AddressTwo = reader.IsDBNull(7) ? null : reader.GetString(7);
+                        institutionalEntity.Address2 = reader.IsDBNull(7) ? null : reader.GetString(7);
                         institutionalEntity.Zipcode = reader.GetString(8);
                         institutionalEntity.ContactType = reader.GetString(9);
 
@@ -114,7 +114,7 @@ namespace DataAccessLayer
                         institutionalEntity.Email = reader.GetString(4);
                         institutionalEntity.Phone = reader.GetString(5);
                         institutionalEntity.Address = reader.GetString(6);
-                        institutionalEntity.AddressTwo = reader.IsDBNull(7) ? null : reader.GetString(7);
+                        institutionalEntity.Address2 = reader.IsDBNull(7) ? null : reader.GetString(7);
                         institutionalEntity.Zipcode = reader.GetString(8);
                         institutionalEntity.ContactType = reader.GetString(9);
 
@@ -164,7 +164,7 @@ namespace DataAccessLayer
                             Email = reader.GetString(4),
                             Phone = reader.GetString(5),
                             Address = reader.GetString(6),
-                            AddressTwo = (reader.IsDBNull(7) ? null : reader.GetString(7)),
+                            Address2 = (reader.IsDBNull(7) ? null : reader.GetString(7)),
                             Zipcode = reader.GetString(8).Substring(0, 5),
                             ContactType = reader.GetString(9),
                             ShelterId = reader.GetInt32(10)
