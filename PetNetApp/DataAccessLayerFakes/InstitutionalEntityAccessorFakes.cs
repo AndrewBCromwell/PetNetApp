@@ -37,7 +37,7 @@ namespace DataAccessLayerFakes
                 Email = "elon@spacex.com",
                 Phone = "4539876541",
                 Address = "123 Boca Chica Blvd",
-                AddressTwo = "",
+                Address2 = "",
                 Zipcode = "78520",
                 ContactType = "Host",
                 ShelterId = 100000
@@ -51,7 +51,7 @@ namespace DataAccessLayerFakes
                 Email = "elona@spacex.com",
                 Phone = "2539876541",
                 Address = "223 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Host",
                 ShelterId = 100000
@@ -65,7 +65,7 @@ namespace DataAccessLayerFakes
                 Email = "elono@spacex.com",
                 Phone = "3539876541",
                 Address = "323 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Host",
                 ShelterId = 100000
@@ -79,7 +79,7 @@ namespace DataAccessLayerFakes
                 Email = "melon@spacex.com",
                 Phone = "6539876541",
                 Address = "623 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Sponsor",
                 ShelterId = 100000
@@ -93,7 +93,7 @@ namespace DataAccessLayerFakes
                 Email = "lemon@spacex.com",
                 Phone = "7539876541",
                 Address = "723 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Host",
                 ShelterId = 100000
@@ -107,7 +107,7 @@ namespace DataAccessLayerFakes
                 Email = "Grape@spacex.com",
                 Phone = "8539876541",
                 Address = "823 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Host",
                 ShelterId = 100000
@@ -121,7 +121,7 @@ namespace DataAccessLayerFakes
                 Email = "Dragon@spacex.com",
                 Phone = "9539876541",
                 Address = "923 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Host",
                 ShelterId = 100000
@@ -135,7 +135,7 @@ namespace DataAccessLayerFakes
                 Email = "Falcon@spacex.com",
                 Phone = "1139876541",
                 Address = "113 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Sponsor",
                 ShelterId = 100000
@@ -149,7 +149,7 @@ namespace DataAccessLayerFakes
                 Email = "glen@spacex.com",
                 Phone = "1239876541",
                 Address = "1233 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Sponsor",
                 ShelterId = 100000
@@ -163,7 +163,7 @@ namespace DataAccessLayerFakes
                 Email = "nole@spacex.com",
                 Phone = "1339876541",
                 Address = "1323 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Contact",
                 ShelterId = 100000
@@ -177,7 +177,7 @@ namespace DataAccessLayerFakes
                 Email = "grimes@spacex.com",
                 Phone = "1439876541",
                 Address = "1423 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Contact",
                 ShelterId = 100000
@@ -191,7 +191,7 @@ namespace DataAccessLayerFakes
                 Email = "xasha12@spacex.com",
                 Phone = "4539876541",
                 Address = "123 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Contact",
                 ShelterId = 100000
@@ -231,7 +231,7 @@ namespace DataAccessLayerFakes
                     Email = (givenName + "." + familyName).ToLower() + i + "@" + cpyName.ToLower().Replace(" ", "") + ".com",
                     Phone = phoneNumber,
                     Address = "123 Boca Chica Blvd",
-                    AddressTwo = null,
+                    Address2 = null,
                     Zipcode = zc,
                     ContactType = ct,
                     ShelterId = 100000
