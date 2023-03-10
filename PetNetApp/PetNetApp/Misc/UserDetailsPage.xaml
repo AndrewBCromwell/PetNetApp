@@ -30,7 +30,7 @@
         <TextBox x:Name="txtAddress" VerticalAlignment="Top" HorizontalAlignment="Center" Width="380" Height="45" Margin="0,230,175,0" Background="#FFF6F7F3" Panel.ZIndex="1" />
         <Label Content="Street Address" Panel.ZIndex="1" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,205,425,0" Foreground="#FF3D8361"/>
 
-        <TextBox x:Name="txtAddressTwo" VerticalAlignment="Top" HorizontalAlignment="Center" Width="150" Height="45" Margin="400,230,0,0" Background="#FFF6F7F3" Panel.ZIndex="1" />
+        <TextBox x:Name="txtAddress2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="150" Height="45" Margin="400,230,0,0" Background="#FFF6F7F3" Panel.ZIndex="1" />
         <Label Content="Apt/Suite/Etc." Panel.ZIndex="1" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="370,205,0,0" Foreground="#FF3D8361"/>
 
         <TextBox x:Name="txtPhone" VerticalAlignment="Top" HorizontalAlignment="Center" Width="300" Height="45" Margin="0,310,250,0" Background="#FFF6F7F3" Panel.ZIndex="1" />

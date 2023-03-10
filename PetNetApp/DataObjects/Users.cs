@@ -16,7 +16,7 @@ namespace DataObjects
         public string FamilyName { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public string AddressTwo { get; set; }
+        public string Address2 { get; set; }
         public string Zipcode { get; set; }
         public string Phone { get; set; }
         public DateTime CreationDate { get; set; }

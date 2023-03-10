@@ -287,7 +287,49 @@ namespace DataAccessLayerFakes
 
             //fakes = _institutionalEntitiesWithShelterId.FindAll(i => i.ContactType == contactType && i.ShelterId == shelterId);
 
-            foreach (InstitutionalEntity fakeEntity in _institutionalEntities)
+            return fakes;
+        }
+
+        public int InsertInstitutionalEntity(InstitutionalEntity institutionalEntity)
+        {
+            _institutionalEntitiesWithShelterId.Add(institutionalEntity);
+            int rows = 0;
+
+            for (int i = 0; i < _institutionalEntitiesWithShelterId.Count; i++)
+            {
+                if (_institutionalEntitiesWithShelterId[i].InstitutionalEntityId == institutionalEntity.InstitutionalEntityId)
+                {
+                    rows = 1;
+                }
+            }
+            return rows;
+        }
+
+        public int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
+        {
+            int result = 0;
+
+            for (int i = 0; i < _institutionalEntitiesWithShelterId.Count; i++)
+            {
+                if (_institutionalEntitiesWithShelterId[i].InstitutionalEntityId == oldEntity.InstitutionalEntityId)
+                {
+                    // the real database will check for every editable field in the stored procedure
+                    _institutionalEntitiesWithShelterId[i].Address = _institutionalEntitiesWithShelterId[i].Address == oldEntity.Address
+                        ? _institutionalEntitiesWithShelterId[i].Address = newEntity.Address : oldEntity.Address;
+
+                    result++;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
+        {
+            InstitutionalEntity institutionalEntity = new InstitutionalEntity();
+
+            foreach (InstitutionalEntity fakeEntity in _institutionalEntitiesWithShelterId)
             {
                 if (fakeEntity.InstitutionalEntityId == institutionalEntityId)
                 {
@@ -300,41 +342,6 @@ namespace DataAccessLayerFakes
                 throw new ApplicationException("Entity not found");
             }
             return institutionalEntity;
-        }
-
-        public int InsertInstitutionalEntity(InstitutionalEntity institutionalEntity)
-        {
-            _institutionalEntities.Add(institutionalEntity);
-            int rows = 0;
-
-            for (int i = 0; i < _institutionalEntities.Count; i++)
-            {
-                if (_institutionalEntities[i].InstitutionalEntityId == institutionalEntity.InstitutionalEntityId)
-                {
-                    rows = 1;
-                }
-            }
-            return rows;
-        }
-
-        public int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
-        {
-            int result = 0;
-
-            for (int i = 0; i < _institutionalEntities.Count; i++)
-            {
-                if (_institutionalEntities[i].InstitutionalEntityId == oldEntity.InstitutionalEntityId)
-                {
-                    // the real database will check for every editable field in the stored procedure
-                    _institutionalEntities[i].Address = _institutionalEntities[i].Address == oldEntity.Address
-                        ? _institutionalEntities[i].Address = newEntity.Address : oldEntity.Address;
-
-                    result++;
-                    break;
-                }
-            }
-
-            return result;
         }
     }
 }

@@ -1472,5 +1472,3 @@ INSERT INTO [dbo].[AnimalImage]
 		(100002, 'abacccd4-2844-4573-8c1d-5d668cc34953'),
 		(100002, 'eecea43f-3749-4f62-b70b-4381530618d9')
 GO
-        (100005, '314a2539-5dee-40ce-ac5b-026d53750c97')
-GO

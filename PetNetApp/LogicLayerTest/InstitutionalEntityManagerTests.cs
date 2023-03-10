@@ -71,14 +71,14 @@ namespace LogicLayerTest
         {
             InstitutionalEntity entity = new InstitutionalEntity()
             {
-                InstitutionalEntityId = 1008,
+                InstitutionalEntityId = 10000,
                 CompanyName = "SpaceX",
                 GivenName = "Glen",
                 FamilyName = "Musk",
                 Email = "glen@spacex.com",
                 Phone = "1239876541",
                 Address = "1233 Boca Chica Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Sponsor",
                 ShelterId = 100000
@@ -103,7 +103,7 @@ namespace LogicLayerTest
                 Email = "nole@spacex.com",
                 Phone = "1339876541",
                 Address = "1323 Boca Chico Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Contact",
                 ShelterId = 100000
@@ -122,14 +122,14 @@ namespace LogicLayerTest
             // Arrange
             InstitutionalEntity badEntity = new InstitutionalEntity
             {
-                InstitutionalEntityId = 1008,
+                InstitutionalEntityId = 10008,
                 CompanyName = "SpaceX",
                 GivenName = "Nole",
                 FamilyName = "Musk",
                 Email = "nole@spacex.com",
                 Phone = "1339876541",
                 Address = "1323 Boca Chico Blvd",
-                AddressTwo = null,
+                Address2 = null,
                 Zipcode = "78520",
                 ContactType = "Contact",
                 ShelterId = 100000

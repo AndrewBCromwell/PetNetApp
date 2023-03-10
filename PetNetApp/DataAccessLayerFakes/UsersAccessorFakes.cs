@@ -309,7 +309,7 @@ namespace DataAccessLayerFakes
                     fakeUsers[i].GenderId == oldUser.GenderId &&
                     fakeUsers[i].PronounId == oldUser.PronounId &&
                     fakeUsers[i].Address == oldUser.Address &&
-                    fakeUsers[i].AddressTwo == oldUser.AddressTwo &&
+                    fakeUsers[i].Address2 == oldUser.Address2 &&
                     fakeUsers[i].Phone == oldUser.Phone &&
                     fakeUsers[i].Zipcode == oldUser.Zipcode)
                 {
@@ -320,7 +320,7 @@ namespace DataAccessLayerFakes
                     fakeUsers[i].GenderId = updatedUser.GenderId;
                     fakeUsers[i].PronounId = updatedUser.PronounId;
                     fakeUsers[i].Address = updatedUser.Address;
-                    fakeUsers[i].AddressTwo = updatedUser.AddressTwo;
+                    fakeUsers[i].Address2 = updatedUser.Address2;
                     fakeUsers[i].Phone = updatedUser.Phone;
                     fakeUsers[i].Zipcode = updatedUser.Zipcode;
 

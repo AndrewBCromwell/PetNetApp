@@ -13,7 +13,7 @@ namespace DataObjects
         public string ApplicantGivenName { get; set; }
         public string ApplicantFamilyName { get; set; }
         public string ApplicantAddress { get; set; }
-        public string ApplicantAddressTwo { get; set; }
+        public string ApplicantAddress2 { get; set; }
         public string ApplicantZipCode { get; set; }
         public string ApplicantPhoneNumber { get; set; }
         public string ApplicantEmail { get; set; }
