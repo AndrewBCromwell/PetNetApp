@@ -273,7 +273,56 @@ namespace DataAccessLayerFakes
 
         public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
         {
-            throw new NotImplementedException();
+            InstitutionalEntity institutionalEntity = new InstitutionalEntity();
+
+            foreach (InstitutionalEntity fakeEntity in _institutionalEntities)
+            {
+                if (fakeEntity.InstitutionalEntityId == institutionalEntityId)
+                {
+                    institutionalEntity = fakeEntity;
+                    return institutionalEntity;
+                }
+            }
+            if (institutionalEntity == null)
+            {
+                throw new ApplicationException("Entity not found");
+            }
+            return institutionalEntity;
+        }
+
+        public int InsertInstitutionalEntity(InstitutionalEntity institutionalEntity)
+        {
+            _institutionalEntities.Add(institutionalEntity);
+            int rows = 0;
+
+            for (int i = 0; i < _institutionalEntities.Count; i++)
+            {
+                if (_institutionalEntities[i].InstitutionalEntityId == institutionalEntity.InstitutionalEntityId)
+                {
+                    rows = 1;
+                }
+            }
+            return rows;
+        }
+
+        public int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
+        {
+            int result = 0;
+
+            for (int i = 0; i < _institutionalEntities.Count; i++)
+            {
+                if (_institutionalEntities[i].InstitutionalEntityId == oldEntity.InstitutionalEntityId)
+                {
+                    // the real database will check for every editable field in the stored procedure
+                    _institutionalEntities[i].Address = _institutionalEntities[i].Address == oldEntity.Address 
+                        ? _institutionalEntities[i].Address = newEntity.Address : oldEntity.Address;
+
+                    result++;
+                    break;
+                }
+            }
+
+            return result;
         }
     }
 }

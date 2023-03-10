@@ -28,6 +28,7 @@ namespace LogicLayerInterfaces
         /// </summary>
         /// <returns></returns>
         List<InstitutionalEntity> RetrieveAllSponsors();
+
         /// <summary>
         /// Barry Mikulas
         /// Created: 2023/03/01
@@ -62,6 +63,40 @@ namespace LogicLayerInterfaces
         /// <exception cref="SQLException">Retrieve fails.</exception>
         /// <returns>Returns an InstitutionalEntity</returns>
         InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId);
-    }
 
+        /// <summary>
+        /// Andrew
+        /// Created: 3/9/2023
+        /// 
+        /// Adds institutional entity to the database
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater name:
+        /// Updated: date
+        /// Comments:
+        /// </remarks>
+        /// <param name="shelterId">The Id of the shelter to be added</param>
+        /// <exception cref="Exception">Insert Fails</exception>
+        /// <returns>Boolean indicating success</returns>
+        bool AddInstitutionalEntity(InstitutionalEntity institutionalEntity);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/09
+        /// 
+        /// Edots an institutional entity record using an "old" entity
+        /// object and a "new" edited entity object
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="oldEntity">Entity object holding old data</param>
+        /// <param name="newEntity">Entity object holding new edited data</param>
+        /// <exception cref="Exception">Edit Fails</exception>
+        bool EditInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity);
+    }
 }

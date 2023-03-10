@@ -25,6 +25,7 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Insert Fails</exception>
         /// <returns>Rows affected</returns>
         int InsertAnimal(AnimalVM animal);
+
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/02/01

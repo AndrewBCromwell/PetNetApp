@@ -188,5 +188,20 @@ namespace DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
+        public int InsertInstitutionalEntityByShelterId(int shelterId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertInstitutionalEntity(InstitutionalEntity institutionalEntity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

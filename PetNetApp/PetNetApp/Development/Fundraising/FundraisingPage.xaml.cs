@@ -176,5 +176,12 @@ namespace WpfPresentation.Development.Fundraising
             ChangeSelectedButton((Button)sender);
             frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewEventsPage());
         }
+
+        private void btnViewSponsors_Click(object sender, RoutedEventArgs e)
+        {
+
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(null);
+        }
     }
 }
