@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfPresentation.Development.Community
+namespace WpfPresentation.Community
 {
     /// <summary>
     /// Interaction logic for RoleManagementPopup.xaml
@@ -56,7 +56,7 @@ namespace WpfPresentation.Development.Community
             bool success = false;
             newUserRole.RoleId = cboChooseRole.Text;
             //check to see if role selected from combo box
-            if (cboChooseRole.SelectedItem == null)
+            if (cboChooseRole.SelectedItem == null || ((Role)cboChooseRole.SelectedItem).RoleId == "Choose Role")
             {
                 //if no role selected tell user
                 PromptWindow.ShowPrompt("Error", "Please select a role to add and try again", ButtonMode.Ok);
@@ -195,9 +195,17 @@ namespace WpfPresentation.Development.Community
                 //this.cboChooseRole.ItemsSource = from r in _roles
                 //                                 orderby r.RoleId
                 //                                 select r.RoleId; 
-                this.cboChooseRole.ItemsSource = _roles;
+                var newItem = new Role { RoleId = "Choose Role", Description = "Click a role"};
+                this.cboChooseRole.Items.Add(newItem);
+            
+                foreach (var item in _roles)
+                {
+                    this.cboChooseRole.Items.Add(item);
+                }
+                //this.cboChooseRole.ItemsSource = _roles;
                 cboChooseRole.DisplayMemberPath = "RoleId";
-
+                cboChooseRole.SelectedItem = newItem;
+                
             }
             catch (Exception ex)
             {

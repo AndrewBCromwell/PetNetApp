@@ -54,6 +54,7 @@
     <Compile Include="Animals\AnimalDeathTests.cs" />
     <Compile Include="AnimalManagerTests.cs" />
     <Compile Include="AnimalUpdatesTests.cs" />
+    <Compile Include="FundraisingEventManagerTests.cs" />
     <Compile Include="MedicalRecordManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="KennelManagerTest.cs" />
@@ -64,12 +65,14 @@
     <Compile Include="ShelterManagerTests.cs" />
     <Compile Include="ImagesManagerTests.cs" />
     <Compile Include="TicketManagerTests.cs" />
+    <Compile Include="InstitutionalEntityManagerTests.cs" />
     <Compile Include="DonationManagerTests.cs" />
     <Compile Include="ShelterItemTransactionManagerTests.cs" />
     <Compile Include="VaccinationManagerTests.cs" />
     <Compile Include="FundraisingCampaignManagerTests.cs" />
     <Compile Include="ValidationiHelpersTests.cs" />
     <Compile Include="UsersManagerTest.cs" />
+    <Compile Include="ZipcodeManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

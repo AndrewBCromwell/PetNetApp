@@ -41,13 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applicant.cs" />
     <Compile Include="Death.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalUpdates.cs" />
+    <Compile Include="FosterPlacement.cs" />
+    <Compile Include="FosterPlacementRecord.cs" />
     <Compile Include="Donation.cs" />
     <Compile Include="FundraisingCampaign.cs" />
+    <Compile Include="FundraisingEvent.cs" />
     <Compile Include="Images.cs" />
     <Compile Include="InKind.cs" />
+    <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Kennel.cs" />
     <Compile Include="Procedure.cs" />
@@ -58,6 +63,7 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="Shelter.cs" />
     <Compile Include="ShelterItemTransaction.cs" />
+    <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />
@@ -65,6 +71,7 @@
     <Compile Include="Users.cs" />
     <Compile Include="Vaccination.cs" />
     <Compile Include="ValidationHelpers.cs" />
+    <Compile Include="Zipcode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

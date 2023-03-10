@@ -139,30 +139,15 @@ namespace DataAccessLayer
 
                     user.UsersId = reader.GetInt32(0);
                     user.GenderId = reader.GetString(1);
-                    if (reader.IsDBNull(2))
-                    {
-                        user.PronounId = "N/A";
-                    }
-                    else
-                    {
-                        user.PronounId = reader.GetString(2);
-                    }
-                    user.ShelterId = reader.GetInt32(3);
-                    user.GivenName = reader.GetString(4);
+                    user.PronounId = reader.IsDBNull(2) ? "N/A" : reader.GetString(2);
+                    user.ShelterId = reader.IsDBNull(3) ? 0 : reader.GetInt32(3);
+                    user.GivenName = reader.IsDBNull(4) ? null : reader.GetString(4);
                     user.FamilyName = reader.GetString(5);
                     user.Email = reader.GetString(6);
-                    user.Address = reader.GetString(7);
-                    if (reader.IsDBNull(8))
-                    {
-                        user.AddressTwo = null;
-                    }
-                    else
-                    {
-                        user.AddressTwo = reader.GetString(8);
-                    }
-
+                    user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
+                    user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
                     user.Zipcode = reader.GetString(9);
-                    user.Phone = reader.GetString(10);
+                    user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                     user.CreationDate = reader.GetDateTime(11);
                     user.Active = reader.GetBoolean(12);
                     user.Suspend = reader.GetBoolean(13);
@@ -965,7 +950,7 @@ namespace DataAccessLayer
             }
             catch (Exception up)
             {
-                throw;
+                throw up;
             }
             finally
             {

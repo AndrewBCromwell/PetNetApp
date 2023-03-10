@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfPresentation.Community"
         mc:Ignorable="d"
         Title="Suspend User" SizeToContent="Height" Width="700" 
-        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        WindowStartupLocation="CenterOwner" WindowStyle="None"
         ResizeMode="NoResize" Loaded="Window_Loaded" Background="Transparent" Visibility="Visible" AllowsTransparency="True">
     <!--
     Created by Barry Mikulas

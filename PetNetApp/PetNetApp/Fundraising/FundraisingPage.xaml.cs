@@ -41,7 +41,7 @@ namespace WpfPresentation.Fundraising
         {
             InitializeComponent();
             _manager = manager;
-            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations };
+            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnViewContacts, btnEvents };
         }
 
         /// <summary>
@@ -144,15 +144,45 @@ namespace WpfPresentation.Fundraising
                 btn.Visibility = Visibility.Collapsed;
             }
         }
+
+        /// <remarks>
+        /// Updater: Barry Mikulas
+        /// Updated: 2023/03/01
+        /// added call to ShowContactsButtonByRole()
+        /// </remarks>
         public void ShowButtonsByRole()
         {
             HideAllButtons();
             ShowCampaignsButtonByRole();
+            ShowContactsButtonByRole();
             ShowDonationsButtonByRole();
+            ShowEventsButtonByRole();
         }
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/05
+        /// 
+        /// Show events button if user has appropriate permissions
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        private void ShowEventsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnEvents.Visibility = Visibility.Visible;
+            }
+        }
+
         public void ShowCampaignsButtonByRole()
         {
-            string[] allowedRoles = { "Admin", "Manager", "Marketing"};
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnCampaigns.Visibility = Visibility.Visible;
@@ -165,6 +195,63 @@ namespace WpfPresentation.Fundraising
             {
                 btnDonations.Visibility = Visibility.Visible;
             }
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/01
+        /// 
+        /// Show contacts button if user has appropriate permissions
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        public void ShowContactsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnViewContacts.Visibility = Visibility.Visible;
+            }
+        }
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/01
+        /// 
+        /// Redirected to view contacts page
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        private void btnViewContacts_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameFundraising.Navigate(ViewFundraisingEventContacts.GetViewEventContacts());
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/05
+        /// 
+        /// Redirected to view fundraising Events page
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        private void btnEvents_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEventsPage());
         }
     }
 }

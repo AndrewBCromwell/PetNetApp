@@ -45,6 +45,7 @@ namespace WpfPresentation.Animals
         List<string> _yesNo = new List<string> { "Yes", "No" };
         DateTime _maxBroughtInDate = DateTime.Now;
         DateTime _minBroughtInDate = DateTime.Today - TimeSpan.FromDays(3);
+        private List<Images> _imagesList = null;
 
         /// <summary>
         /// Andrew Schneider
@@ -89,10 +90,7 @@ namespace WpfPresentation.Animals
         {
             populateComboBoxes();
             setDetailMode();
-            var mainWindow = PetNetApp.MainWindow.GetWindow(this) as PetNetApp.MainWindow;
-            mainWindow.ChangeSelectedButton(mainWindow.btnAnimals);
-            var animalsPage = AnimalsPage.GetAnimalsPage();
-            animalsPage.ChangeSelectedButton(animalsPage.btnAnimalList);
+            populateImage();
         }
 
         /// <summary>
@@ -302,6 +300,59 @@ namespace WpfPresentation.Animals
 
         /// <summary>
         /// Andrew Schneider
+        /// Created: 2023/03/06
+        /// 
+        /// Helper method for populating the animal image
+        /// If no image is available a label becomes 
+        /// visible alerting the user to this fact.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void populateImage()
+        {
+            if (_imagesList == null || _imagesList.Count == 0)
+            {
+                try
+                {
+                    _imagesList = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(_animalVM.AnimalId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                }
+            }
+
+            if(_imagesList.Count == 0)
+            {
+                lblNoImage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                try
+                {
+                    imgAnimal.Source = _manager.ImagesManager.RetrieveImageByImages(_imagesList[0]);
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+                catch (Exception)
+                {
+                    BitmapImage brokenImage = new BitmapImage();
+                    brokenImage.BeginInit();
+                    brokenImage.UriSource = new Uri(@"/Images/BrokenImageGreen.png", UriKind.Relative);
+                    brokenImage.EndInit();
+                    imgAnimal.Source = brokenImage;
+                    imgAnimal.Height = 250;
+                    imgAnimal.Width = 250;
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Andrew Schneider
         /// Created: 2023/02/02
         /// 
         /// Click event method that performs two different operations
@@ -436,7 +487,6 @@ namespace WpfPresentation.Animals
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(ex);
                             PromptWindow.ShowPrompt("Error", "Update failed.\n" + ex, ButtonMode.Ok);
                         }
                     }
@@ -534,7 +584,12 @@ namespace WpfPresentation.Animals
                 if (result == PromptSelection.Yes)
                 {
                     setDetailMode();
+                    NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
                 }
+            }
+            else
+            {
+                NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
             }
         }
 
@@ -564,10 +619,8 @@ namespace WpfPresentation.Animals
                 if (result == PromptSelection.Yes)
                 {
                     setDetailMode();
-                    NavigationService.Navigate(new MedicalNavigationPage(_manager, _animalVM,this));
-                    var animalsPage = AnimalsPage.GetAnimalsPage();
-                    animalsPage.ChangeSelectedButton(animalsPage.btnMedical);
-                    // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
+                    NavigationService nav = NavigationService.GetNavigationService(this);
+                    nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
                 }
             }
             else
@@ -579,12 +632,41 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/22
+        /// 
+        /// Helper method that links the breeds and types combo
+        /// boxes so that when an animal type is selected only
+        /// breeds of that type are available in the breeds box
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void cmbAnimalTypeId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cmbAnimalBreedId.ItemsSource = _breeds[cmbAnimalTypeId.SelectedItem.ToString()];
             cmbAnimalBreedId.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/22
+        /// 
+        /// Helper method that links the Aggressive combo box with
+        /// the Aggressive Description textbox, so that a description
+        /// can only be entered if "Yes" has been selected in the combo
+        /// box.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void cmbAggressive_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbAggressive.SelectedItem.ToString() == "Yes")

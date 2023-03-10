@@ -50,11 +50,7 @@ namespace WpfPresentation.Animals
             uploadAdditionalFileWindow.ShowDialog();
             NavigationService.Navigate(new MedicalFilesPage(_animal, _manager));
             
-            
-            
         }
-
-
 
         private void PopulatePage()
         {

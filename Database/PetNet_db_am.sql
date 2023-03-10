@@ -346,8 +346,7 @@ CREATE TABLE [dbo].[Animal] (
 	CONSTRAINT [fk_Animal_AnimalStatusId]FOREIGN KEY ([AnimalStatusId])
 		REFERENCES [dbo].[AnimalStatus]([AnimalStatusId]) on UPDATE CASCADE,
 	CONSTRAINT [fk_Animal_AnimalShelterId]FOREIGN KEY ([AnimalShelterId])
-		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE,
-	CONSTRAINT [ak_MicrochipSerialNumber] UNIQUE([MicrochipSerialNumber])
+		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE
 )
 GO
 
@@ -709,9 +708,9 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 	[Title]					[nvarchar](100)				NOT NULL,
 	[StartDate]				[datetime]					NULL,
 	[EndDate]				[datetime]					NULL,
-	[Description]			[nvarchar](255)				NULL,
+	[Description]			[nvarchar](250)				NOT NULL,
 	[Complete]				[bit]	DEFAULT 0			NOT NULL,
-	[Updated]				[int]						NULL,
+	[Active]				[bit]	DEFAULT 1			NOT NULL	
 	CONSTRAINT [pk_FundraisingCampaignId] PRIMARY KEY ([FundraisingCampaignId]),
 	CONSTRAINT [fk_FundraisingCampaign_UsersId] FOREIGN KEY ([UsersId])
 		REFERENCES [Users]([UsersId]),
@@ -1357,10 +1356,13 @@ CREATE TABLE [dbo].[InstitutionalEntity] (
 	[AddressTwo]				[nvarchar](50)				NULL,
 	[Zipcode]					[char](9)					NOT NULL,
 	[ContactType]				[nvarchar](17)				NOT NULL,
+	[ShelterId]					[int]						NOT NULL
 	
 	CONSTRAINT [pk_InstitutionalEntityId] PRIMARY KEY([InstitutionalEntityId]),
 	CONSTRAINT [fk_InstitutionalEntity_Zipcode] FOREIGN KEY([Zipcode]) 
 			REFERENCES [dbo].[Zipcode]([Zipcode]),
+	CONSTRAINT [fk_InstitutionalEntity_ShelterId] FOREIGN KEY([ShelterId]) 
+			REFERENCES [dbo].[Shelter]([ShelterId]),
 	CONSTRAINT [fk_InstitutionalEntity_ContactType] FOREIGN KEY([ContactType]) 
 			REFERENCES [dbo].[ContactType]([ContactTypeId]) ON UPDATE CASCADE
 )

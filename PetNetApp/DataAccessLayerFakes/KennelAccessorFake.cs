@@ -18,7 +18,7 @@ namespace DataAccessLayerFakes
         private List<string> fakeAnimalTypes;
         private List<Kennel> fakeKennels = new List<Kennel>();
         private List<Tuple<Animal, Kennel>> fakeAnimalKenneling = new List<Tuple<Animal, Kennel>>();
-
+        private Images fakeImage = new Images() { ImageId = "ImageID", ImageFileName = "FileName" };
         public KennelAccessorFake()
         {
             fakeKennelVM = new KennelVM()
@@ -234,6 +234,19 @@ namespace DataAccessLayerFakes
             }
 
             return rowsAffected;
+        }
+
+        public List<Kennel> SelectAllEmptyKennels(int shelterId)
+        {
+            var kennelsWithoutAnimals = fakeKennelVMs.Where(
+                kennel => !fakeAnimalKenneling.Exists(animalKenneling => kennel.KennelId == animalKenneling.Item2.KennelId));
+
+            return kennelsWithoutAnimals.Select(kennelVM => (Kennel)kennelVM).ToList();
+        }
+
+        public Images SelectImageByAnimalId(int animalId)
+        {
+            return fakeImage;
         }
     }
 }

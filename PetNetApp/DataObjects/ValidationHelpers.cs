@@ -10,7 +10,12 @@ namespace DataObjects
 {
     public static class ValidationHelpers
     {
-        public static Regex ZipcodeRegex { get; private set; } = new Regex(@"^(\d{5}|\d{9})$");
+        /// <summary>
+        /// Updated by: Barry Mikulas
+        /// 2023-03-04
+        /// Changed regex for zipcode to allow only 5 digits due to all zip coe data only being 5 digits
+        /// </summary>
+        public static Regex ZipcodeRegex { get; private set; } = new Regex(@"^(\d{5})$");
         public static Regex PhoneRegex { get; private set; } = new Regex(@"^\d{10,13}$");
         public static Regex AmountRegex { get; private set; } = new Regex(@"^(([1-9]\d{0,4})|0)(\.\d{1,2})?$");
         public static Regex EmailRegex { get; private set; } = new Regex(@"^(?=^.{1,64}@)[a-zA-Z0-9]+([-_\.]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(-?[a-zA-Z0-9]+)*\.[a-zA-Z0-9]{2,}([-\.]?[a-zA-Z0-9]{2,})*$");
@@ -57,12 +62,36 @@ namespace DataObjects
         /// Stephen Jaurigue
         /// Created: 2023/02/15
         /// 
+        /// Confirms description is less than 250 characters, must be at least 5 characters long
+        /// </summary>
+        /// <returns>Whether the string is a valid short description</returns>
+        public static bool IsValidRequiredShortDescription(this string description)
+        {
+            return description != null && description.Length >= 5 && description.Length <= 250;
+        }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/15
+        /// 
         /// Confirms description is less than 500 characters, can be null and empty
         /// </summary>
         /// <returns>Whether the string is a valid long description</returns>
         public static bool IsValidLongDescription(this string description)
         {
             return description == null || description.Length <= 500;
+        }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/15
+        /// 
+        /// Confirms description is less than 500 characters, must be at least 5 characters long
+        /// </summary>
+        /// <returns>Whether the string is a valid long description</returns>
+        public static bool IsValidRequiredLongDescription(this string description)
+        {
+            return description != null && description.Length >= 5 && description.Length <= 500;
         }
 
         /// <summary>
@@ -93,8 +122,9 @@ namespace DataObjects
         /// Stephen Jaurigue
         /// Created: 2023/02/15
         /// 
-        /// Confirms zipcode is 5 or 9 digits
+        /// Confirms zipcode is 5 digits
         /// </summary>
+        /// Updated by Barry Mikulas 2023-03-04    changed regex to only allow 5 digits
         /// <returns>Whether the string is a valid zipcode</returns>
         public static bool IsValidZipcode(this string zipcode)
         {
@@ -146,6 +176,19 @@ namespace DataObjects
         public static bool IsValidShelterName(this string shelterName)
         {
             return shelterName != "" && shelterName != null && shelterName.Length <= 50;
+        }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/03/02
+        /// 
+        /// Confirms the text is between 5 and 50 characters inclusive
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
+        public static bool IsValidTitle(this string title)
+        {
+            return title != null && title.Length >= 5 && title.Length <= 50;
         }
     }
 }

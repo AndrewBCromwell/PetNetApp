@@ -68,5 +68,49 @@ namespace DataAccessLayer
 
             return donationVMs;
         }
+
+        public List<InKind> SelectInKindsByDonationId(int donationId)
+        {
+            List<InKind> inKinds = new List<InKind>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_inkind_donations_by_donationId";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@DonationId", donationId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        InKind inKind = new InKind();
+
+                        inKind.InKindId = reader.GetInt32(0);
+                        inKind.DonationId = reader.GetInt32(1);
+                        inKind.Description = reader.GetString(2);
+                        inKind.Quanity = reader.GetInt32(3);
+                        inKind.Target = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        inKind.Recieved = reader.GetBoolean(5);
+
+                        inKinds.Add(inKind);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return inKinds;
+        }
     }
 }
