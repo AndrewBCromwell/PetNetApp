@@ -11,11 +11,13 @@ namespace LogicLayerTest
     public class MedicalRecordManagerTests
     {
         private MedicalRecordManager _medicalRecordManager = null;
+        private MedicalRecordAccessorFakes fake = null;
 
         [TestInitialize]
         public void TestSetup()
         {
             _medicalRecordManager = new MedicalRecordManager(new MedicalRecordAccessorFakes());
+            fake = new MedicalRecordAccessorFakes();
         }
 
         /// <summary>
@@ -174,6 +176,40 @@ namespace LogicLayerTest
 
             Assert.AreEqual(expectedCount, actualCount);
 
+        }
+        [TestMethod]
+        public void TestSelectMedicalRecordByAnimal()
+        {
+            int animalId = 100000;
+            int expectedCount = 1;
+            int actualCount = 0;
+
+            var medicalRecords = _medicalRecordManager.SelectMedicalRecordByAnimal(animalId);
+            actualCount = medicalRecords.Count;
+
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+        [TestMethod]
+        public void TestEditMedicalRecord()
+        {
+            int expectedResult = 1;
+            int actualResult = 0;
+            bool realResult = _medicalRecordManager.EditMedicalRecord(fake.oldmedicalRecord, fake.newmedicalRecord);
+            if (realResult)
+            {
+                actualResult = 1;
+            }
+            else
+            {
+                actualResult = 0;
+            }
+            Assert.AreEqual(actualResult, expectedResult);
+        }
+        [TestMethod]
+        public void TestAddMedicalNote()
+        {
+            bool realResult = _medicalRecordManager.AddMedicalNote(fake.addmedicalRecord);
+            Assert.IsTrue( realResult);
         }
     }
 }

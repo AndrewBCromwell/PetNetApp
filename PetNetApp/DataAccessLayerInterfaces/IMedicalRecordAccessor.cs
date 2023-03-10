@@ -80,5 +80,33 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="SQLException">retrieval fails</exception>
         /// <returns>List of MedicalRecordVM for the specified animalId</returns>
         List<MedicalRecordVM> SelectAllMedicalRecordsByAnimald(int animalId);
+
+        /// <summary>
+        /// Ethan Kline 
+        /// Created: 2023/02/18
+        /// </summary>
+        /// <param name="animalId">animalId to find the Medical record associated with it</param>
+        /// <exception cref="SQLException">Select Fails</exception>
+        /// <returns>MedicalRecordVMs that have a medicalRecordId that is associated with the animalId</returns>
+        List<MedicalRecordVM> SelectMedicalRecordByAnimal(int animalId);
+
+        /// <summary>
+        /// Ethan Kline 
+        /// Created: 2023/02/18
+        /// </summary>
+        /// <param name="medicalRecord">medical record that will overwrite an existing record</param>
+        /// <param name="oldmedicalRecord">medical record that will be overwriten</param>
+        /// <exception cref="SQLException">Update Fails</exception>
+        /// <returns>rows efected</returns>
+        int UpdateMedicalRecord(MedicalRecord oldmedicalRecord, MedicalRecord medicalRecord);
+
+        /// <summary>
+        /// Ethan Kline 
+        /// Created: 2023/03/10
+        /// </summary>
+        /// <param name="medicalRecord">medical record to add</param>
+        /// <exception cref="SQLException">add Fails</exception>
+        /// <returns>rows efected</returns>
+        int AddMedicalNotes(MedicalRecord medicalRecord);
     }
 }

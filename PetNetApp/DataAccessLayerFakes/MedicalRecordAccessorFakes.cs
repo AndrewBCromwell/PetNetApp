@@ -10,6 +10,10 @@ namespace DataAccessLayerFakes
 {
     public class MedicalRecordAccessorFakes : IMedicalRecordAccessor
     {
+        public MedicalRecord oldmedicalRecord = new MedicalRecord();
+        public MedicalRecord newmedicalRecord = new MedicalRecord();
+        public MedicalRecord addmedicalRecord = new MedicalRecord();
+
         private Dictionary<int, int> medicalRecordRepresentation = new Dictionary<int, int>()
         {
             {50, 60 },
@@ -88,6 +92,12 @@ namespace DataAccessLayerFakes
                 MicrochipNumber = "S/N-3234528",
                 Aggressive = false
             });
+            oldmedicalRecord.MedicalRecordId = 100000;
+            newmedicalRecord.MedicalRecordId = 100000;
+            addmedicalRecord.Diagnosis = "good";
+            addmedicalRecord.AnimalId = 100000;
+            addmedicalRecord.MedicalNotes = "this is a add note";
+            
         }
 
         public List<MedicalRecordVM> SelectMedicalRecordDiagnosisByAnimalId(int animalId)
@@ -118,6 +128,33 @@ namespace DataAccessLayerFakes
             medicalRecords.Add(medicalRecord);
             medicalRecordId = medicalRecord.MedicalRecordId;
             return medicalRecordId;
+        }
+        public List<MedicalRecordVM> SelectMedicalRecordByAnimal(int animalId)
+        {
+            return medicalRecords.Where(m => m.AnimalId == animalId).ToList();
+        }
+
+        public int UpdateMedicalRecord(MedicalRecord oldmedicalRecord, MedicalRecord medicalRecord)
+        {
+            int result = 0;
+
+            if (oldmedicalRecord.MedicalRecordId == medicalRecord.MedicalRecordId)
+            {
+                result = 1;
+            }
+            return result;
+        }
+
+        public int AddMedicalNotes(MedicalRecord medicalRecord)
+        {
+            if (addmedicalRecord.AnimalId >= 100000)
+            {
+                return  1;
+            }
+            else
+            {
+                return 2;
+            }
         }
 
         public int UpdateQuarantineStatusByMedicalRecordId(int medicalRecordId, bool quarantineStatus, bool oldQuarantineStatus)

@@ -75,5 +75,40 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException">Retrieval Fails</exception>
         /// <returns>A list of all MedicalRecordVMs for the passed animalId</returns>
         List<MedicalRecordVM> RetrieveAllMedicalRecordsByAnimalId(int animalId);
+
+        /// <summary>
+        /// Ethan Kline 
+        /// Created: 2023/02/18
+        /// </summary>
+        /// <param name="animalId">the id of the animal to return the medical record of</param>
+        /// <exception cref="ApplicationException">Faild to retrieve medical records</exception>
+        /// <returns>List of the medical record associated with the animal</returns>
+        List<MedicalRecordVM> SelectMedicalRecordByAnimal(int animalId);
+
+        /// <summary>
+        /// Ethan Kline 
+        /// Created: 2023/02/18
+        /// 
+        /// Takes two medical notes, passes them to the MedicalRecordAccessor, receives a response 
+        /// from the accessor, and returns a respnonse about whether the old medical record was
+        /// updated to be the new medical record.
+        /// </summary>
+        /// <param name="medicalRecord">the medical record to replace the old medical record in the db</param>
+        /// <param name="oldmedicalRecord">the medical record to be overwriten</param>
+        /// <exception cref="ApplicationException">Update Fails</exception>
+        /// <returns>Rows affected</returns>
+        bool EditMedicalRecord(MedicalRecord oldmedicalRecord, MedicalRecord medicalRecord);
+
+        /// <summary>
+        /// Ethan Kline 
+        /// Created: 2023/03/10
+        /// 
+        /// Takes a medical record, passes it to the MedicalRecordAccessor, receives a response 
+        /// from the accessor, and returns a respnonse about whether the  medical record was added
+        /// </summary>
+        /// <param name="medicalRecord">the medical record to be added</param>
+        /// <exception cref="ApplicationException">add Failed</exception>
+        /// <returns>Rows affected</returns>
+        bool AddMedicalNote(MedicalRecord medicalRecord);
     }
 }

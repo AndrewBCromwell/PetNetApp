@@ -124,6 +124,12 @@
     <Compile Include="Animals\UploadAdditionalImageWindow.xaml.cs">
       <DependentUpon>UploadAdditionalImageWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\Edit_Medical_Notes.xaml.cs">
+      <DependentUpon>Edit_Medical_Notes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\Medical_Notes.xaml.cs">
+      <DependentUpon>Medical_Notes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Community\SuspendUserPopup.xaml.cs">
       <DependentUpon>SuspendUserPopup.xaml</DependentUpon>
     </Compile>
@@ -339,6 +345,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Animals\MedicalRecordListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\Edit_Medical_Notes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\Medical_Notes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
