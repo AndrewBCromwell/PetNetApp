@@ -126,6 +126,20 @@ namespace DataAccessLayerFakes
                 }
             };
         }
+
+        public TestVM SelectTestByMedicalRecordId(int medicalRecordId)
+        {
+            TestVM test = null;
+            foreach (var t in _tests)
+            {
+                if (t.MedicalRecordId == medicalRecordId)
+                {
+                    test = (TestVM)t;
+                }
+            }
+            return test;
+        }
+
         public List<Test> SelectTestsByAnimalId(int animalId)
         {
             var animalsMedicalTestRecords = _medicalRecords.Where((record) => record.AnimalId == animalId && record.IsTest).Select((record) => record.MedicalRecordId);

@@ -25,5 +25,17 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="SQLException">Insert Fails</exception>
         /// <returns>MeidicalRecordId of the inserted record</returns>
         int InsertMedicalRecord(MedicalRecordVM medicalRecord);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/03/09
+        /// 
+        /// Retireves all medical records for a specified animalId.
+        /// Returns a list of MedicalRecordVM.
+        /// </summary>
+        /// <param name="animalId">the animal to retrieve medical records for</param>
+        /// <exception cref="SQLException">retrieval fails</exception>
+        /// <returns>List of MedicalRecordVM for the specified animalId</returns>
+        List<MedicalRecordVM> SelectAllMedicalRecordsByAnimald(int animalId);
     }
 }

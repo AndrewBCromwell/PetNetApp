@@ -12,6 +12,47 @@ namespace DataAccessLayer
 {
     public class TestAccessor : ITestAccessor
     {
+        public TestVM SelectTestByMedicalRecordId(int medicalRecordId)
+        {
+            TestVM test = null;
+            var conn = new DBConnection().GetConnection();
+            SqlCommand cmd = new SqlCommand("sp_select_test_by_medical_record_id", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@MedicalRecordId", SqlDbType.Int).Value = medicalRecordId;
+
+            try
+            {
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        test = new TestVM()
+                        {
+                            TestId = reader.GetInt32(0),
+                            MedicalRecordId = reader.GetInt32(1),
+                            UserId = reader.GetInt32(2),
+                            TestName = reader.GetString(3),
+                            TestAcceptableRange = reader.GetString(4),
+                            TestResult = reader.GetString(5),
+                            TestNotes = reader.GetString(6),
+                            TestDate = reader.GetDateTime(7)
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return test;
+        }
+
         public List<Test> SelectTestsByAnimalId(int animalId)
         {
             List<Test> tests = new List<Test>();

@@ -232,5 +232,50 @@ namespace DataAccessLayer
             }
             return newRecordId;
         }
+
+        public List<MedicalRecordVM> SelectAllMedicalRecordsByAnimald(int animalId)
+        {
+            List<MedicalRecordVM> medicalRecords = new List<MedicalRecordVM>();
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_medical_records_by_animal_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@AnimalId", SqlDbType.Int);
+            cmd.Parameters["@AnimalId"].Value = animalId;
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var medicalRecord = new MedicalRecordVM();
+                        medicalRecord.MedicalRecordId = reader.GetInt32(0);
+                        medicalRecord.Date = reader.GetDateTime(1);
+                        medicalRecord.MedicalNotes = reader.GetString(2);
+                        medicalRecord.IsProcedure = reader.GetBoolean(3);
+                        medicalRecord.IsTest = reader.GetBoolean(4);
+                        medicalRecord.IsVaccination = reader.GetBoolean(5);
+                        medicalRecord.IsPrescription = reader.GetBoolean(6);
+                        medicalRecord.Images = reader.GetBoolean(7);
+                        medicalRecord.QuarantineStatus = reader.GetBoolean(8);
+                        medicalRecord.Diagnosis = reader.GetString(9);
+                        medicalRecords.Add(medicalRecord);
+                    }
+                }
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return medicalRecords;
+        }
     }
 }

@@ -97,6 +97,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Animals\MedicalRecordListPage.xaml.cs">
+      <DependentUpon>MedicalRecordListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\UploadAdditionalImageWindow.xaml.cs">
       <DependentUpon>UploadAdditionalImageWindow.xaml</DependentUpon>
     </Compile>
@@ -292,6 +295,10 @@
     <Page Include="Development\Fundraising\ViewFundraisingEventsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\MedicalRecordListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
@@ -1082,6 +1089,9 @@
     <Resource Include="Images\BrokenImageGreen.png" />
     <Resource Include="Images\magnify.png" />
     <Resource Include="Images\magnifydark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\format_line_dark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

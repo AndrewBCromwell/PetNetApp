@@ -75,5 +75,10 @@ namespace DataAccessLayerFakes
             medicalRecordId = medicalRecord.MedicalRecordId;
             return medicalRecordId;
         }
+
+        public List<MedicalRecordVM> SelectAllMedicalRecordsByAnimald(int animalId)
+        {
+            return medicalRecords.Where(m => m.AnimalId == animalId).ToList();
+        }
     }
 }

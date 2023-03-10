@@ -142,5 +142,12 @@ namespace WpfPresentation.Animals
         {
             NavigationService.Navigate(_returnPage);
         }
+
+        private void btnMedRecordList_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton(btnMedRecordList);
+
+            frameMedical.Navigate(new MedicalRecordListPage(_medicalProfileAnimal, _manager));
+        }
     }
 }

@@ -39,6 +39,20 @@ namespace LogicLayer
             return medicalRecordId;
         }
 
+        public List<MedicalRecordVM>  RetrieveAllMedicalRecordsByAnimalId(int animalId)
+        {
+            List<MedicalRecordVM> medicalRecords = null;
+            try
+            {
+                medicalRecords = _medicalRecordAccessor.SelectAllMedicalRecordsByAnimald(animalId);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("There was an error retrieving data.");
+            }
+            return medicalRecords;
+        }
+
         public int RetrieveLastMedicalRecordIdByAnimalId(int animalId)
         {
             int medicalRecordId = 0;

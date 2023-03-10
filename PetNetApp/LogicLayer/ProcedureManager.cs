@@ -100,6 +100,20 @@ namespace LogicLayer
             return success;
         }
 
+        public ProcedureVM RetrieveProcedureByMedicalRecordId(int medicalRecordId)
+        {
+            ProcedureVM procedure = null;
+            try
+            {
+                procedure = _procedureAccessor.SelectProcedureByMedicalRecordId(medicalRecordId);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Data not found.", up);
+            }
+            return procedure;
+        }
+
         /// <summary>
         /// Andrew Cromwell
         /// Created: 2023/02/15

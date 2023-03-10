@@ -21,6 +21,21 @@ namespace LogicLayer
         {
             _testAccessor = testAccessor;
         }
+
+        public TestVM RetrieveTestByMedicalRecordId(int medicalRecordId)
+        {
+            TestVM test = null;
+            try
+            {
+                test = _testAccessor.SelectTestByMedicalRecordId(medicalRecordId);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("failed to retrieve data.", up);
+            }
+            return test;
+        }
+
         public List<Test> RetrieveTestsByAnimalId(int animalId)
         {
             try

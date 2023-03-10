@@ -38,5 +38,15 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedCount, actualCount);
 
         }
+
+        [TestMethod]
+        public void TestSelectTestByMedicalRecordId()
+        {
+            int medicalRecordId = 1;
+            int expectedTestId = 1;
+            int actualTestId = _testManager.RetrieveTestByMedicalRecordId(medicalRecordId).TestId;
+
+            Assert.AreEqual(expectedTestId, actualTestId);
+        }
     }
 }

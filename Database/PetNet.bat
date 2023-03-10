@@ -74,6 +74,8 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
 
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordList.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordDetailsByMedicalRecordId.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

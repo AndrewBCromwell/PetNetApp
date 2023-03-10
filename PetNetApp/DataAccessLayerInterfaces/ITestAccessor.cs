@@ -18,5 +18,15 @@ namespace DataAccessLayerInterfaces
         /// <param name="animalId">The animals ID to get tests for</param>
         /// <returns>Returns a list of tests</returns>
         List<Test> SelectTestsByAnimalId(int animalId);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/03/10
+        /// 
+        /// Gets the test for a specified medical record
+        /// </summary>
+        /// <param name="medicalRecordId">The medical record ID to get the test for</param>
+        /// <returns>A TestVM object</returns>
+        TestVM SelectTestByMedicalRecordId(int medicalRecordId);
     }
 }

@@ -99,5 +99,16 @@ namespace LogicLayerTest
             Assert.AreEqual(actualMedicalRecordId, returnedValue);
             Assert.AreEqual(recordsReturnedExpectedCount, recordsReturned.Count);
         }
+
+        [TestMethod]
+        public void TestRetrieveMedicalRecordsByAnimalId()
+        {
+            int animalId = 100000;
+            int expectedCount = 1;
+            int actualCount = _medicalRecordManager.RetrieveAllMedicalRecordsByAnimalId(animalId).Count;
+
+            Assert.AreEqual(expectedCount, actualCount);
+
+        }
     }
 }

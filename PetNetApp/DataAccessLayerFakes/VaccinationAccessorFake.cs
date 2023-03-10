@@ -59,6 +59,14 @@ namespace DataAccessLayerFakes
                 VaccineName = "TestVaccine1",
                 VaccineAdminsterDate = new DateTime(2000, 12, 12)
             });
+            fakeVaccinations.Add(new VaccinationVM()
+            {
+                VaccineId = 666,
+                MedicalRecordId = 666,
+                UserId = 666,
+                VaccineName = "TestVaccine1",
+                VaccineAdminsterDate = new DateTime(2023, 03, 03)
+            });
 
         }
         public int InsertVaccination(Vaccination vaccination, int animalId)
@@ -68,6 +76,19 @@ namespace DataAccessLayerFakes
             fakeVaccinations.Add(vaccination);
             newRows = fakeVaccinations.Count - existingRows;
             return newRows;
+        }
+
+        public VaccinationVM SelectVaccinationByMedicalRecordId(int medicalRecordId)
+        {
+            VaccinationVM vaccination = null;
+            foreach (var v in fakeVaccinations)
+            {
+                if (v.MedicalRecordId == medicalRecordId)
+                {
+                    vaccination = (VaccinationVM)v;
+                }
+            }
+            return vaccination;
         }
 
         public List<Vaccination> SelectVaccinationsByAnimalId(int animalId)

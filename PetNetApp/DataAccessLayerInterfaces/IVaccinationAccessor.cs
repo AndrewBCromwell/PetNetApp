@@ -65,5 +65,15 @@ namespace DataAccessLayerInterfaces
         /// <param name="newVaccination"></param>
         /// <returns></returns>
         int UpdateVaccination(Vaccination oldVaccination, Vaccination newVaccination);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/03/10
+        /// 
+        /// Gets the vaccine for a specified medical record
+        /// </summary>
+        /// <param name="medicalRecordId">The medical record ID to get the vaccine for</param>
+        /// <returns>A VaccineVM object</returns>
+        VaccinationVM SelectVaccinationByMedicalRecordId(int medicalRecordId);
     }
 }
