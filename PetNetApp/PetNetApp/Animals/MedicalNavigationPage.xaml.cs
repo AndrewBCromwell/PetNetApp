@@ -120,7 +120,8 @@ namespace WpfPresentation.Animals
         private void btnMedNotes_Click(object sender, RoutedEventArgs e) 
         {
             ChangeSelectedButton((Button)sender);
-                frameMedical.Navigate(new MedicalFilesPage(_medicalProfileAnimal, _manager));
+            //frameMedical.Navigate(new MedicalFilesPage(_medicalProfileAnimal, _manager));
+            frameMedical.Navigate(new Medical_Notes(_medicalProfileAnimal, _manager));
         }
 
         private void btnMedProcedures_Click(object sender, RoutedEventArgs e)

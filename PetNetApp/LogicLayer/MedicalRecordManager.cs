@@ -81,5 +81,74 @@ namespace LogicLayer
             }
             return result;
         }
+
+        /// Ethan Kline
+        /// Created: 2023/03/1
+        /// </summary>
+        /// <param name="animalId">the id of the animal to return the medical records of</param>
+        /// <exception cref="ApplicationException">Faild to retrieve records</exception>
+        /// <returns>List of the records associated with the animal</returns>
+        public List<MedicalRecordVM> SelectMedicalRecordByAnimal(int animalId)
+        {
+            List<MedicalRecordVM> MedicalRecords;
+
+            try
+            {
+                MedicalRecords = _medicalRecordAccessor.SelectMedicalRecordByAnimal(animalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Data not found.", ex);
+            }
+
+            return MedicalRecords;
+        }
+
+        /// Ethan Kline
+        ///  /// Created: 2023/03/1
+        /// </summary>
+        /// <param name="oldmedicalRecord">the record to replace</param>
+        /// <param name="medicalRecord">the new record to update</param>
+        /// <exception cref="ApplicationException">Faild to update record </exception>
+        /// <returns>true if the record updated</returns>
+        /// </summary>
+        
+        /// <returns></returns>
+        public bool EditMedicalRecord(MedicalRecord oldmedicalRecord, MedicalRecord medicalRecord)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _medicalRecordAccessor.UpdateMedicalRecord(oldmedicalRecord, medicalRecord));
+
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Update failed.", ex);
+            }
+            return result;
+        }
+        /// Ethan Kline
+        ///  /// Created: 2023/03/10
+        /// </summary>
+        /// <param name="medicalRecord">the record to add</param>
+        /// <exception cref="ApplicationException">Faild to add record </exception>
+        /// <returns>true if the record added</returns>
+        /// </summary>
+
+        public bool AddMedicalNote(MedicalRecord medicalRecord)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _medicalRecordAccessor.AddMedicalNotes(medicalRecord));
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Add failed.", ex); ;
+            }
+            return result;
+        }
     }
 }
