@@ -81,5 +81,21 @@ namespace LogicLayer
             }
             return schedules;
         }
+
+        public bool EditScheduleVM(ScheduleVM oldSchedule, ScheduleVM newSchedule)
+        {
+            bool wasUpdated = false;
+
+            try
+            {
+                wasUpdated = 0 < _scheduleAccessor.UpdateScheduleVM(oldSchedule,newSchedule);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to update schedule", ex);
+            }
+
+            return wasUpdated;
+        }
     }
 }

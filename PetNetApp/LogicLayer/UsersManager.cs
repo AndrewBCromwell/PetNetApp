@@ -64,7 +64,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Could not retrieve volunteers", ex);
             }
 
             return users;

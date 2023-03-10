@@ -37,7 +37,7 @@ namespace DataAccessLayerFakes
             });
             fakeSchedules.Add(new ScheduleVM()
             {
-                ScheduleId = 100000,
+                ScheduleId = 100001,
                 UserId = 100000,
                 StartTime = new DateTime(DateTime.Now.Year, 2, 11, 7, 0, 0),
                 EndTime = new DateTime(DateTime.Now.Year, 2, 11, 15, 0, 0),
@@ -46,7 +46,7 @@ namespace DataAccessLayerFakes
             });
             fakeSchedules.Add(new ScheduleVM()
             {
-                ScheduleId = 100000,
+                ScheduleId = 100002,
                 UserId = 100000,
                 StartTime = new DateTime(DateTime.Now.Year, 2, 12, 7, 0, 0),
                 EndTime = new DateTime(DateTime.Now.Year, 2, 12, 15, 0, 0),
@@ -55,7 +55,7 @@ namespace DataAccessLayerFakes
             });
             fakeSchedules.Add(new ScheduleVM()
             {
-                ScheduleId = 100000,
+                ScheduleId = 100003,
                 UserId = 100001,
                 StartTime = new DateTime(DateTime.Now.Year, 2, 10, 7, 0, 0),
                 EndTime = new DateTime(DateTime.Now.Year, 2, 10, 15, 0, 0),
@@ -100,6 +100,25 @@ namespace DataAccessLayerFakes
                 }
             }
             return schedules;
+        }
+
+        public int UpdateScheduleVM(ScheduleVM oldSchedule, ScheduleVM newSchedule)
+        {
+            int result = 0;
+
+            for (int i = 0; i < fakeSchedules.Count; i++)
+            {
+                if (fakeSchedules[i].ScheduleId == oldSchedule.ScheduleId)
+                {
+                    // the real database will check for every editable field in the stored procedure
+                    fakeSchedules[i].EndTime = fakeSchedules[i].EndTime == oldSchedule.EndTime ? fakeSchedules[i].EndTime = newSchedule.EndTime : oldSchedule.EndTime;
+
+                    result++;
+                    break;
+                }
+            }
+
+            return result;
         }
     }
 }

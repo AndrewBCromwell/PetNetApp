@@ -57,5 +57,22 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="SQLException">insert fails</exception>
         /// <returns>int</returns>
         int InsertSchedulebyUserid(ScheduleVM scheduleVM);
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/03/10
+        /// 
+        /// Updates an existing schedule record into the database
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="scheduleVM">The schedule with the updated data</param>
+        /// /// <param name="oldscheduleVM">The schedule with the old schedule data</param>
+        /// <exception cref="SQLException">Data failed to be inserted</exception>
+        /// <returns>true or false if record updated</returns>	
+        int UpdateScheduleVM(ScheduleVM oldSchedule, ScheduleVM newSchedule);
     }
 }

@@ -42,7 +42,7 @@
             </ComboBox>
             <Button x:Name="btnClear" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"   Click="btnClear_Click" Margin="70,0,70,0" MaxWidth="150">Clear</Button>
             <Button x:Name="btnAddSchedule" Grid.Row="2" Grid.Column="1" Margin="20,20,20,20" Height="40" Click="btnAddSchedule_Click">Add to Schedule</Button>
-            <Button x:Name="btnEditSchedule" Grid.Row="2" Grid.Column="1" Margin="20,20,20,20" Height="40">Edit Schedule</Button>
+            <Button x:Name="btnEditSchedule" Grid.Row="2" Grid.Column="1" Margin="20,20,20,20" Height="40" Click="btnEditSchedule_Click">Edit Schedule</Button>
         </StackPanel>
         
 

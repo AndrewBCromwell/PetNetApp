@@ -161,5 +161,60 @@ namespace DataAccessLayer
 
             return schedules;
         }
+
+        public int UpdateScheduleVM(ScheduleVM oldSchedule, ScheduleVM newSchedule)
+        {
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            //  command text
+            var cmdText = "sp_update_schedule";
+
+            // command 
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // add parameter objects to the command 
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+            cmd.Parameters.Add("@ScheduleId", SqlDbType.Int);
+            cmd.Parameters.Add("@StartTime", SqlDbType.DateTime);
+            cmd.Parameters.Add("@EndTime", SqlDbType.DateTime);
+            cmd.Parameters.Add("@OldStartTime", SqlDbType.DateTime);
+            cmd.Parameters.Add("@OldEndTime", SqlDbType.DateTime);
+
+            // set the values for the parameter objects
+            cmd.Parameters["@UsersId"].Value = newSchedule.UserId;
+            cmd.Parameters["@ScheduleId"].Value = newSchedule.ScheduleId;
+            cmd.Parameters["@StartTime"].Value = newSchedule.StartTime;
+            cmd.Parameters["@EndTime"].Value = newSchedule.EndTime;
+            cmd.Parameters["@OldStartTime"].Value = oldSchedule.StartTime;
+            cmd.Parameters["@OldEndTime"].Value = oldSchedule.EndTime;
+
+            // now that the command is set up, we can invoke it in a try-catch block
+            try
+            {
+                // open the connection
+                conn.Open();
+                // execute command
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close the connection
+                conn.Close();
+            }
+
+
+            return rows;
+        }
     }
 }

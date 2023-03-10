@@ -48,10 +48,9 @@ namespace WpfPresentation.Development.Management
             _scheduleVM = new ScheduleVM();
         }
 
-        public AddEditSchedule(UsersVM userVM, ScheduleVM scheduleVM)
+        public AddEditSchedule(ScheduleVM scheduleVM)
         {
             InitializeComponent();
-            _userVM = userVM;
             _scheduleVM = scheduleVM;
             _editmode = true;
         }
@@ -61,11 +60,16 @@ namespace WpfPresentation.Development.Management
             dtpStart.Minimum = DateTime.Today;
             dtpEnd.Minimum = DateTime.Today;
             
-            lblUsersName.Content = _userVM.GivenName + " " + _userVM.FamilyName;
-
-            if(_editmode == true)
+            if(!_editmode)
             {
-
+                lblUsersName.Content = _userVM.GivenName + " " + _userVM.FamilyName;
+            }
+            else
+            {
+                lblUsersName.Content = _scheduleVM.GivenName + " " + _scheduleVM.FamilyName;
+                dtpStart.Value = _scheduleVM.StartTime;
+                dtpEnd.Value = _scheduleVM.EndTime;
+                btnAdd.Content = "Save";
             }
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -104,17 +108,36 @@ namespace WpfPresentation.Development.Management
             DateTime startTime = (DateTime)dtpStart.Value;
             DateTime endTime = (DateTime)dtpEnd.Value;
 
-            _scheduleVM.StartTime = startTime;
-            _scheduleVM.EndTime = endTime;
-            _scheduleVM.JobId = 0;
-            _scheduleVM.UserId = _userVM.UsersId;
+
 
             if (_editmode)
             {
+                ScheduleVM oldSchedule = new ScheduleVM();
+                oldSchedule.StartTime = _scheduleVM.StartTime;
+                oldSchedule.EndTime = _scheduleVM.EndTime;
+
+                _scheduleVM.StartTime = (DateTime)dtpStart.Value;
+                _scheduleVM.EndTime = (DateTime)dtpEnd.Value;
+                try
+                {
+                    if(_masterManager.ScheduleManager.EditScheduleVM(oldSchedule, _scheduleVM))
+                    {
+                        this.DialogResult = true;
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
+                    this.DialogResult = false;
+                }
 
             }
             else
             {
+                _scheduleVM.StartTime = startTime;
+                _scheduleVM.EndTime = endTime;
+                _scheduleVM.UserId = _userVM.UsersId;
                 try
                 {
                     if(_masterManager.ScheduleManager.AddSchedulebyUserId(_scheduleVM))

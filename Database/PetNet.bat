@@ -37,6 +37,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_user_by_roleId_SP.sq
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_date_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_userId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddSchedule_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditSchedule_SP.sql
 
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_user_creation.sql

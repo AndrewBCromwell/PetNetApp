@@ -82,20 +82,28 @@ namespace WpfPresentation.Development.Management
                 }
             }
         }
+
+        private void PopulateDatGridByDate(DateTime dateSelected)
+        {
+            CboVolunteers.SelectedItem = null;
+            try
+            {
+                datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByDate((DateTime)date.SelectedDate);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+            }
+        }
+
+
         private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             
             if ( date.SelectedDate != null)
             {
-                CboVolunteers.SelectedItem = null;
-                try
-                {
-                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByDate((DateTime)date.SelectedDate);
-                }
-                catch (Exception ex)
-                {
-                    PromptWindow.ShowPrompt("Error", ex.Message);
-                }
+                PopulateDatGridByDate((DateTime)date.SelectedDate);
+               
             }
         }
         private void CboVolunteers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -128,6 +136,36 @@ namespace WpfPresentation.Development.Management
 
             }
             
+        }
+
+        private void btnEditSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ScheduleVM schedule = (ScheduleVM)datScheduledPerson.SelectedItem;
+            if(datScheduledPerson.SelectedItem == null)
+            {
+                PromptWindow.ShowPrompt("Error", "No schedule selected \n please select a schedule.");
+            }
+            else
+            {
+                var addEditSchedule = new AddEditSchedule(schedule);
+                addEditSchedule.Owner = Window.GetWindow(this);
+                if ((bool)addEditSchedule.ShowDialog())
+                {
+                    if((UsersVM)CboVolunteers.SelectedItem != null)
+                    {
+                        PopulateDatGridByUserId((UsersVM)CboVolunteers.SelectedItem);
+                    }
+                    else
+                    {
+                        PopulateDatGridByDate((DateTime)date.SelectedDate);
+                    }
+                    
+                }
+                else
+                {
+                    
+                }
+            }
         }
     }
 }
