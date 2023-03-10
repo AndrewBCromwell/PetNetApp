@@ -68,7 +68,7 @@ namespace WpfPresentation.Development.Community
         {
             ChangeSelectedButton((Button)sender);
 
-            frameCommunity.Navigate(new UserManagementPage());
+            frameCommunity.Navigate(null);
 
             //frameCommunity.Navigate(new RoleManagementTemp(_manager, _manager.UsersManager.RetrieveUserByUsersId(100001)));
         }

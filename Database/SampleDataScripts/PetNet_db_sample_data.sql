@@ -86,7 +86,12 @@ INSERT INTO [dbo].[Images]
         ('314a2539-5dee-40ce-ac5b-026d53750c94','AnimalImage3.png'),
         ('314a2539-5dee-40ce-ac5b-026d53750c95','AnimalImage4.png'),
         ('314a2539-5dee-40ce-ac5b-026d53750c96','AnimalImage5.png'),
-        ('314a2539-5dee-40ce-ac5b-026d53750c97','AnimalImage6.png')
+        ('314a2539-5dee-40ce-ac5b-026d53750c97','AnimalImage6.png'),
+		('02f42168-5f29-4f70-a6ab-3c0b4c64dc24', '02f42168-5f29-4f70-a6ab-3c0b4c64dc24'),
+		('6efa448e-cead-4619-bb55-b9c078375404', '6efa448e-cead-4619-bb55-b9c078375404'),
+		('0238caf0-9398-4c32-aeb8-bcf151f300ef', '0238caf0-9398-4c32-aeb8-bcf151f300ef'),
+		('abacccd4-2844-4573-8c1d-5d668cc34953', 'abacccd4-2844-4573-8c1d-5d668cc34953'),
+		('eecea43f-3749-4f62-b70b-4381530618d9', 'eecea43f-3749-4f62-b70b-4381530618d9')
         
 GO
 
@@ -276,21 +281,21 @@ INSERT INTO [dbo].[AnimalBreed]
 GO
 
 
-ECHO *print '' print '*** creating Zipcode sample data'
-ECHO GO 
-ECHO INSERT INTO [dbo].[Zipcode]
-ECHO 		(
-ECHO 		[Zipcode],
-ECHO 		[City],
-ECHO 		[State],
-REM 		[Latitude],
-REM 		[Longitude]
-REM 		)
-REM	VALUES
-REM 		("50001",'Ackworth','Iowa', 41.3669, 93.4727),
-REM 		("50002",'Adair','Iowa', 41.5004, 94.6434),
-REM         ("52404", "Cedar Rapids", "Iowa", "41.9779", "91.6656")
-REM GO
+-- ECHO print '' print '*** creating Zipcode sample data'
+-- ECHO GO 
+-- ECHO INSERT INTO [dbo].[Zipcode]
+-- ECHO 		(
+-- ECHO 		[Zipcode],
+-- ECHO 		[City],
+-- ECHO 		[State],
+-- REM 		[Latitude],
+-- REM 		[Longitude]
+-- REM 		)
+-- REM	VALUES
+-- REM 		("50001",'Ackworth','Iowa', 41.3669, 93.4727),
+-- REM 		("50002",'Adair','Iowa', 41.5004, 94.6434),
+-- REM         ("52404", "Cedar Rapids", "Iowa", "41.9779", "91.6656")
+-- REM GO
 
 
 print '' print '*** creating TicketStatus sample data'
@@ -344,9 +349,9 @@ INSERT INTO [dbo].[Shelter]
 		[ShelterActive]
 		)
 	VALUES
-		("Shelter 1", "111 Shelter Drive", 50001, "123-123-1111", "shelter1@shelter.com", "Animal Food", 1),
-		("Shelter 2", "112 Shelter Drive", 50002, "123-123-1112", "shelter2@shelter.com", "Animal Medicine", 1),
-		("Shelter 3", "113 Shelter Drive", 50001, "123-123-1113", "shelter3@shelter.com", "Kitty Litter", 1)
+		("Shelter 1", "111 Shelter Drive", 50001, "1231231111", "shelter1@shelter.com", "Animal Food", 1),
+		("Shelter 2", "112 Shelter Drive", 50002, "1231231112", "shelter2@shelter.com", "Animal Medicine", 1),
+		("Shelter 3", "113 Shelter Drive", 50001, "1231231113", "shelter3@shelter.com", "Kitty Litter", 1)
 GO
 
 print '' print '*** creating test data for Users (Mads)'
@@ -584,15 +589,16 @@ INSERT INTO [dbo].[Ticket]
 		(
 		[UsersId],
 		[TicketStatusId],
-        [TicketTitle]
+        [TicketTitle],
+		[TicketContext]
 		)
 	VALUES
-		(100000, 'Open', "My petnet stopped working"),
-		(100001, 'Open', "My petnet wont load animals"),
-		(100002, 'Open', "How do I use a computer?"),
-        (100000, 'Closed', "My keyboard wont type"),
-		(100001, 'Closed', "My page isnt loading"),
-		(100003, 'Open', "How do I use a computer?")
+		(100000, 'Open', "My petnet stopped working", "I do not know how to use this app."),
+		(100001, 'Open', "My petnet wont load animals", "I think there may be too many animals loading."),
+		(100002, 'Open', "How do I use a computer?", "I can't find the on button."),
+        (100000, 'Closed', "My keyboard wont type", "There are keys missing from my keyboard."),
+		(100001, 'Closed', "My page isnt loading", "I have been waiting for the page to load all day."),
+		(100003, 'Open', "How do I use a computer?", "My computer makes a loud noise when it is running.")
         
 GO
 
@@ -775,16 +781,17 @@ INSERT INTO [dbo].[Donation]
         [Message],
         [HasInKindDonation],
         [Anonymous],
+        [Target],
         [PaymentMethod]
 		)
 	VALUES
-		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'visa'),
-        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'visa'),
-        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'visa'),
-        (100002, 100000, 12.99, 'Daily good deed', 1, 0, 'visa'),
-        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'visa'),
-        (100000, 100000, 99.99, 'Today was a good day', 1, 1, 'visa'),
-        (100000, 100000, 150.00, 'I won at the Casino', 1, 1, 'visa')
+		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa'),
+        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa'),
+        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa'),
+        (100002, 100000, 12.99, 'Daily good deed', 1, 0, ':)', 'Visa'),
+        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa'),
+        (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa'),
+        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa')
 GO
 
 print '' print '*** Creating InKind sample data'
@@ -800,6 +807,8 @@ INSERT INTO [dbo].[InKind]
 	VALUES
 		(100002, 'Dog food leftover by my previous dog', 1, 1),
         (100003, 'Some toys that were lying around', 5, 1),
+        (100003, 'Some food that was lying around', 15, 1),
+        (100003, 'Some cages that was lying around', 3, 1),
         (100004, 'Cages', 5, 1)
 GO
 
@@ -880,11 +889,11 @@ INSERT INTO [dbo].[Applicant]
         [CurrentlyAcceptingAnimals]
 		)
 	VALUES
-		('Gwen', 'Arman', '101 South Park Street', 50001, 987-654-3211, 
+		('Gwen', 'Arman', '101 South Park Street', 50001, 9876543211, 
         'ga@gmail.com', 'Single', 'Own', 0,0, 1),
-        ('Xander', 'Arman', '123 North Park Street', 50001, 987-654-3311, 
+        ('Xander', 'Arman', '123 North Park Street', 50001, 9876543311, 
         'xa@gmail.com', 'Single', 'Own', 0,0, 1),
-        ('Nicholas', 'Arman', '963 West Park Street', 50001, 987-654-3411, 
+        ('Nicholas', 'Arman', '963 West Park Street', 50001, 9876543411, 
         'na@gmail.com', 'Single', 'Own', 0,0, 1)
 GO
 
@@ -1203,12 +1212,13 @@ INSERT INTO [dbo].[InstitutionalEntity]
         [Phone],
 		[Address],
 		[Zipcode],
-        [ContactType]
+        [ContactType],
+        [ShelterId]
 		)
 	VALUES
-		('US Animals', 'Bob', 'Doe', 'bd@gmail.com', '1231233333', '121 Place Street', 50001, 'Sponsor'),
-        ('CA Animals', 'Stephanie', 'Doe', 'sd@gmail.com', '1231233334', '122 Place Street', 50001, 'Sponsor'),
-        ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor')
+		('US Animals', 'Bob', 'Doe', 'bd@gmail.com', '1231233333', '121 Place Street', 50001, 'Sponsor', 100000),
+        ('CA Animals', 'Stephanie', 'Doe', 'sd@gmail.com', '1231233334', '122 Place Street', 50001, 'Sponsor', 100000),
+        ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor', 100000)
 GO
 
 print '' print '*** creating FundraisingCampaignEntity sample data'
@@ -1441,6 +1451,7 @@ INSERT INTO [dbo].[Death]
         (100002, 100005, 'Old age', 'Plastic Bag', GETDATE(), 'Very heavy')
 GO
 
+
 print '' print '*** creating AnimalImage sample data'
 GO 
 INSERT INTO [dbo].[AnimalImage]
@@ -1454,5 +1465,10 @@ INSERT INTO [dbo].[AnimalImage]
         (100002, '314a2539-5dee-40ce-ac5b-026d53750c94'),
         (100003, '314a2539-5dee-40ce-ac5b-026d53750c95'),
         (100004, '314a2539-5dee-40ce-ac5b-026d53750c96'),
-        (100005, '314a2539-5dee-40ce-ac5b-026d53750c97')
+        (100005, '314a2539-5dee-40ce-ac5b-026d53750c97'),
+		(100002, '02f42168-5f29-4f70-a6ab-3c0b4c64dc24'),
+		(100002, '6efa448e-cead-4619-bb55-b9c078375404'),
+		(100002, '0238caf0-9398-4c32-aeb8-bcf151f300ef'),
+		(100002, 'abacccd4-2844-4573-8c1d-5d668cc34953'),
+		(100002, 'eecea43f-3749-4f62-b70b-4381530618d9')
 GO

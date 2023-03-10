@@ -32,7 +32,6 @@ namespace WpfPresentation.Management.Inventory
     {
         MasterManager _manager;
         List<ShelterItemTransactionVM> _shelterItemTransactions;
-        private string _genericTransactionTag = "[user] checked[in/out] [quantity] units of [item] on [date]";
 
         public ViewInventoryChangesPage(MasterManager manager)
         {
@@ -111,9 +110,8 @@ namespace WpfPresentation.Management.Inventory
             {
                 PromptWindow.ShowPrompt("Error", ex.Message + "\n" + ex.InnerException.Message, ButtonMode.Ok);
             }
-            _shelterItemTransactions = _manager.ShelterItemTransactionManager.RetrieveInventoryTransactionByShelterId((int)_manager.User.ShelterId);
             int index = 0;
-            if (_shelterItemTransactions.Count != 0)
+            if (_shelterItemTransactions.Count != 0 && _shelterItemTransactions != null)
             {
                 foreach (ShelterItemTransactionVM transaction in _shelterItemTransactions)
                 {

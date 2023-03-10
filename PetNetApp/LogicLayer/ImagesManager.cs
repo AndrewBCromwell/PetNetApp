@@ -74,6 +74,7 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to add image.", up);
             }
         }
+
         public bool AddMedicalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames)
         {
             try
@@ -96,6 +97,60 @@ namespace LogicLayer
             catch (Exception up)
             {
                 throw new ApplicationException("Failed to retrieve images", up);
+            }
+
+            return images;
+        }
+        public bool AddAnimalImageByAnimalId(int animalId, string imageFileName)
+        {
+            try
+            {
+                return 0 != _imagesAccessor.InsertAnimalImageByAnimalId(animalId, imageFileName);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Failed to add image.", up);
+            }
+        }
+
+        public bool AddAnimalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames)
+        {
+            try
+            {
+                return 0 != _imagesAccessor.InsertAnimalImagesByAnimalId(animalId, imageFileNames);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Failed to add images.", up);
+            }
+        }
+
+        public List<Images> RetrieveAnimalImagesByAnimalId(int animalId)
+        {
+            List<Images> images;
+            try
+            {
+                images = _imagesAccessor.SelectAnimalImagesByAnimalId(animalId);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Failed to retrieve images", up);
+            }
+
+            return images;
+        }
+
+        public List<Images> RetriveImageByAnimalId(int animalId)
+        {
+            List<Images> images;
+
+            try
+            {
+                images = _imagesAccessor.SelectAnimalImageByAnimalId(animalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to get the images", ex);
             }
 
             return images;

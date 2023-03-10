@@ -45,5 +45,24 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedCount, actualCount);
         }
 
+        [TestMethod]
+        public void TestCreateTicket()
+        {
+            // Arrange
+            bool expectedResult = true;
+            bool actualResult;
+            int userId = 100000;
+            string ticketStatusId = "Open";
+            string ticketTitle = "Broken mouse";
+            string ticketContext = "My mouse is not working";
+
+            // Act
+            actualResult = _ticketManager.CreateNewTicket(userId, ticketStatusId, ticketTitle, ticketContext);
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+
     }
 }

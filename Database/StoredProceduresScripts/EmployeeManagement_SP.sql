@@ -23,8 +23,32 @@ AS
                 [Email], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], 
                 [Active], [Suspended]    
         FROM [Users]
+        WHERE NOT 0 = CAST((SELECT COUNT(RoleId) 
+            FROM UserRoles 
+            WHERE [UserRoles].[UsersId] = [Users].[UsersId]) AS INT)
         -- JOIN [UserRoles]
         --   ON [Users].[UsersId] = [UserRoles].[UsersId]
-        -- WHERE [RoleId] = 'Employee'
+        -- WHERE NOT [RoleId] = 'Employee'
+    END
+GO
+
+USE [PetNet_db_am]
+GO
+
+print '' print '*** creating sp_select_non_employee_users (Hoang Chu)'
+GO
+CREATE PROCEDURE [dbo].[sp_select_non_employee_users]
+AS
+    BEGIN
+        SELECT [Users].[UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName],
+                [Email], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], 
+                [Active], [Suspended]    
+        FROM [Users]
+        WHERE 0 = CAST((SELECT COUNT(RoleId) 
+            FROM UserRoles 
+            WHERE [UserRoles].[UsersId] = [Users].[UsersId]) AS INT)
+        -- JOIN [UserRoles]
+        --   ON [Users].[UsersId] = [UserRoles].[UsersId]
+        -- WHERE NOT [RoleId] = 'Employee'
     END
 GO

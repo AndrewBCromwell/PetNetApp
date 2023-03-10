@@ -27,8 +27,8 @@ namespace WpfPresentation.Animals
         private int _animalId = 0;
         public AnimalVM animalVM = new AnimalVM();
         private MasterManager _masterManager = MasterManager.GetMasterManager();
-        private List<string> imageFiles = new List<string>();
         private int curImageIdx = 0;
+        private List<Images> _animalImages = null;
 
         public ViewAdoptableAnimalProfile(int animalId)
         {
@@ -70,12 +70,14 @@ namespace WpfPresentation.Animals
         /// </remarks>
         private void GetImageFile()
         {
-            var files = Directory.GetFiles("../../Development/Animals/AnimalImages", "*.*", SearchOption.AllDirectories); 
-            foreach (string filename in files)
+            try
             {
-                if (Regex.IsMatch(filename, @"\.jpg$|\.png$|\.gif$"))
-                    imageFiles.Add(filename);
-                // Need a if statement to check the file name match with the animal image name when we have image table
+                _animalImages = _masterManager.ImagesManager.RetriveImageByAnimalId(_animalId);
+                
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Can not get the images. \n\n" + ex.Message);
             }
         }
 
@@ -93,7 +95,23 @@ namespace WpfPresentation.Animals
         /// </remarks>
         private void LoadImage()
         {
-            picAnimalImageList.Source = new BitmapImage(new Uri(imageFiles[curImageIdx], UriKind.Relative));
+            //picAnimalImageList.Source = new BitmapImage(new Uri(imageFiles[curImageIdx], UriKind.Relative));
+            try
+            {
+                if (_animalImages.Count == 0)
+                {
+                    picAnimalImageList.Source = new BitmapImage(new Uri(@"../../Images/AnimalImage.png", UriKind.Relative));
+                }
+                else
+                {
+                    picAnimalImageList.Source = _masterManager.ImagesManager.RetrieveImageByImages(_animalImages[curImageIdx]);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                picAnimalImageList.Source = new BitmapImage(new Uri(@"../../Images/NullImage.png", UriKind.Relative));
+            }
             LoadAnimalNote();
         }
 
@@ -136,7 +154,7 @@ namespace WpfPresentation.Animals
         /// <param name="e"></param>
         private void btnNextImage_Click(object sender, RoutedEventArgs e)
         {
-            if (curImageIdx < imageFiles.Count - 1)
+            if (curImageIdx < _animalImages.Count - 1)
             {
                 curImageIdx++;
                 LoadImage();
@@ -159,7 +177,16 @@ namespace WpfPresentation.Animals
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            animalVM = _masterManager.AnimalManager.RetriveAnimalAdoptableProfile(_animalId);
+
+            try
+            {
+                animalVM = _masterManager.AnimalManager.RetriveAnimalAdoptableProfile(_animalId);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Can not get the data. \n\n" + ex.Message);
+            }
+            
             DisplayAnimalProfile();
             GetImageFile();
             LoadImage();

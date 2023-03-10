@@ -30,7 +30,7 @@ namespace WpfPresentation.Development.Fundraising
         {
             InitializeComponent();
             _manager = manager;
-            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations };
+            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnEvents, btnViewContacts };
         }
 
         /// <summary>
@@ -121,8 +121,60 @@ namespace WpfPresentation.Development.Fundraising
         private void btnDonations_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameFundraising.Navigate(null);
+            frameFundraising.Navigate(WpfPresentation.Fundraising.ViewDonationsPage.ExistingDonationPage);
+        }
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/01
+        /// 
+        /// Show contacts button if user has appropriate permissions
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        public void ShowContactsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnViewContacts.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/01
+        /// 
+        /// Show contacts button if user has appropriate permissions
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        public void ShowEventsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnEvents.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void btnViewContacts_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(ViewFundraisingEventContacts.GetViewEventContacts());
+        }
+
+        private void btnEvents_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewEventsPage());
         }
     }
 }
