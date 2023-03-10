@@ -52,6 +52,7 @@ namespace LogicLayer
         public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
         public IFundraisingEventManager FundraisingEventManager { get; set; }
         public IZipcodeManager ZipcodeManager { get; set; }
+        public IVaccinationManager VaccinationManager { get; set; }
 
         private MasterManager()
         {
@@ -74,10 +75,11 @@ namespace LogicLayer
             DonationManager = new DonationManager();
             FundraisingEventManager = new FundraisingEventManager();
             ZipcodeManager = new ZipcodeManager();
+            VaccinationManager = new VaccinationManager();
 
 
             //for testing from dev page
-            User = new UsersVM()
+          User = new UsersVM()
             {
                 UsersId = 100004,
                 ShelterId = 100000,
@@ -89,12 +91,12 @@ namespace LogicLayer
                 Phone = "319-123-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>() { "Admin" }
+                Roles = new List<string>() { "Admin"}
             };
 
 
         }
-
+    
         public static MasterManager GetMasterManager()
         {
             if (_existingMasterManager == null)

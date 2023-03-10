@@ -53,6 +53,12 @@
                     <Label Padding="0" VerticalAlignment="Center">Procedures</Label>
                 </StackPanel>
             </Button>
+            <Button Margin="0 5" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" HorizontalAlignment="Left" x:Name="btnMedRecordList" Click="btnMedRecordList_Click" >
+                <StackPanel Orientation="Horizontal" Width="190">
+                    <Image Source="../Images/format_line_dark.png" Margin="5 0 2 0" />
+                    <Label Padding="0" VerticalAlignment="Center">Medical Record List</Label>
+                </StackPanel>
+            </Button>
             <Button Margin="0 5" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" HorizontalAlignment="Left" x:Name="btnMedBack" Click="btnMedBack_Click"  >
                 <StackPanel Orientation="Horizontal" Width="190">
                     <Image Source="../Images/arrow_left3_dark.png" Margin="5 0 2 0" />

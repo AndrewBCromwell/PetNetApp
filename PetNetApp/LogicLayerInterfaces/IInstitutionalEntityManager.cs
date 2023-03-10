@@ -77,7 +77,7 @@ namespace LogicLayerInterfaces
         /// Comments:
         /// </remarks>
         /// <param name="shelterId">The Id of the shelter to be added</param>
-        /// <exception cref="Exception">Insert Fails</exception>
+        /// <exception cref="ApplicationException">Insert Fails</exception>
         /// <returns>Boolean indicating success</returns>
         bool AddInstitutionalEntity(InstitutionalEntity institutionalEntity);
 
@@ -96,7 +96,7 @@ namespace LogicLayerInterfaces
         /// </remarks>
         /// <param name="oldEntity">Entity object holding old data</param>
         /// <param name="newEntity">Entity object holding new edited data</param>
-        /// <exception cref="Exception">Edit Fails</exception>
+        /// <exception cref="ApplicationException">Edit Fails</exception>
         bool EditInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity);
     }
 }

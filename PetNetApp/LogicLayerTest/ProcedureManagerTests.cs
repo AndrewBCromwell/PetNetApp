@@ -100,5 +100,16 @@ namespace LogicLayerTest
             Assert.IsTrue(methodResult);
             Assert.AreEqual(fakeprocedures[1].ProcedureName, "This sould replace the name on one of the fakes");
         }
+
+        [TestMethod]
+        public void RetrieveProcedureByMedicalRecordId()
+        {
+            int medicalRecordId = 666;
+            int expectedProcId = 666;
+            int actualProcId = _procedureManager.RetrieveProcedureByMedicalRecordId(medicalRecordId).ProcedureId;
+
+            Assert.AreEqual(expectedProcId, actualProcId);
+
+        }
     }
 }

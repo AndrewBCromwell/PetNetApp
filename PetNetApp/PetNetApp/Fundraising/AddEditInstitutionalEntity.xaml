@@ -10,7 +10,7 @@
         Loaded="Window_Loaded" 
         WindowStartupLocation="CenterOwner" WindowStyle="None"
         ResizeMode="NoResize"
-        Background="Transparent" Visibility="Visible" AllowsTransparency="True"
+        Background="Transparent" Visibility="Visible" AllowsTransparency="True" Closed="Window_Closed" Unloaded="Window_Unloaded"
         >
     <Border BorderThickness="5" Background="#EEF2E6"  BorderBrush="#FF1C6758" CornerRadius="20">
         <Grid Margin="35 0 35 0">

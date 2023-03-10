@@ -18,5 +18,34 @@ namespace DataAccessLayerInterfaces
         /// <param name="animalId">The animals ID to get tests for</param>
         /// <returns>Returns a list of tests</returns>
         List<Test> SelectTestsByAnimalId(int animalId);
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/02/09
+        /// 
+        /// Inserts new Test into database with the passed test and medicalRecordId
+        /// </summary>
+        /// 
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="test"></param>
+        /// <param name="medicalRecordId"></param>
+        /// /// <exception cref="SQLException">Insert Fails</exception>
+        /// <returns>Rows edited</returns>
+        int InsertTestByMedicalRecordId(Test test, int medicalRecordId);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/03/10
+        /// 
+        /// Gets the test for a specified medical record
+        /// </summary>
+        /// <param name="medicalRecordId">The medical record ID to get the test for</param>
+        /// <returns>A TestVM object</returns>
+        TestVM SelectTestByMedicalRecordId(int medicalRecordId);
     }
 }

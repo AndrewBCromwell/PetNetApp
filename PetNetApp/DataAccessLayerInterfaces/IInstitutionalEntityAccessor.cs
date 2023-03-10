@@ -77,8 +77,8 @@ namespace DataAccessLayerInterfaces
         /// Comments:
         /// </remarks>
         /// <param name="institutionalEntity">The Institutional Entity to be added</param>
-        /// <exception cref="Exception">Insert Fails</exception>
-        /// <returns>Rows affected</returns>
+        /// <exception cref="ApplicationException">Insert Fails</exception>
+        /// <returns>New institutional entity Id</returns>
         int InsertInstitutionalEntity(InstitutionalEntity institutionalEntity);
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace DataAccessLayerInterfaces
         /// </remarks>
         /// <param name="oldEntity">Entity object holding old data</param>
         /// <param name="newEntity">Entity object holding new edited data</param>
-        /// <exception cref="Exception">Update Fails</exception>
+        /// <exception cref="ApplicationException">Update Fails</exception>
         int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity);
 
     }

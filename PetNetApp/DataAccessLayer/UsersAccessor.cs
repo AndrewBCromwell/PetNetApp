@@ -960,6 +960,61 @@ namespace DataAccessLayer
             return roleCount;
             // throw new NotImplementedException();
         }
+
+        public List<UsersAdoptionRecords> SelectAdoptionRecordsByUserID(int usersId)
+        {
+            var adoptionRecordsList = new List<UsersAdoptionRecords>();
+
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdtext = "sp_select_adoption_records_by_user_id";
+
+            var cmd = new SqlCommand(cmdtext, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+
+            cmd.Parameters["@UsersId"].Value = usersId;
+
+
+
+            try
+            {
+
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var adoptionRecords = new UsersAdoptionRecords();
+
+                        adoptionRecords.animalName = reader.GetString(0);
+                        adoptionRecords.animalSpecies = reader.GetString(1);
+                        adoptionRecords.animalBreed = reader.GetString(2);
+                        adoptionRecords.oldAnimalId = reader.GetInt32(3);
+
+                        adoptionRecordsList.Add(adoptionRecords);
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return adoptionRecordsList;
+        }
     }
 
 

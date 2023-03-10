@@ -80,6 +80,21 @@ namespace LogicLayer
             }
             return result;
         }
+
+        public VaccinationVM RetrieveVaccinationByMedicalRecordId(int medicalRecordId)
+        {
+            VaccinationVM vaccination = null;
+            try
+            {
+                vaccination = vaccinationAccessor.SelectVaccinationByMedicalRecordId(medicalRecordId);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Data not found.", up);
+            }
+            return vaccination;
+        }
+
         /// <summary>
         /// Zaid Rachman
         /// 2023/02/11
