@@ -315,6 +315,13 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
+	 <Compile Include="Development\Management\AddEditSchedule.xaml.cs">
+		  <DependentUpon>AddEditSchedule.xaml</DependentUpon>
+	 </Compile>
+	 <Page Include="Development\Management\AddEditSchedule.xaml">
+		  <SubType>Designer</SubType>
+		  <Generator>MSBuild:Compile</Generator>
+	 </Page>
     <Page Include="Animals\AddTestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -817,6 +824,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+	<None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerFakes\DataAccessLayerFakes.csproj">
@@ -849,6 +857,8 @@
     <Folder Include="Donations\" />
     <Folder Include="Events\" />
     <Folder Include="Images\Icons\" />
+	<Folder Include="Development\Shelters\" />
+	<Folder Include="Shelters\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\petnetLogo.png">

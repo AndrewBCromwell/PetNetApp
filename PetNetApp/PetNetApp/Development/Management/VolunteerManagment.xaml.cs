@@ -51,7 +51,6 @@ namespace WpfPresentation.Development.Management
             }
             catch (Exception ex)
             {
-
                 PromptWindow.ShowPrompt("Error", ex.Message);
             }
             
