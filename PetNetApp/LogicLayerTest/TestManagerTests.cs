@@ -2,6 +2,8 @@
 using LogicLayerInterfaces;
 using DataAccessLayerFakes;
 using LogicLayer;
+using DataObjects;
+using System;
 
 namespace LogicLayerTest
 {
@@ -37,6 +39,45 @@ namespace LogicLayerTest
             // assert
             Assert.AreEqual(expectedCount, actualCount);
 
+        }
+
+        [TestMethod]
+        public void TestAddTestByMedicalRecordIdUsingCorrectMedicalId()
+        {
+            // Arrange
+            Test test = new Test();
+            test.TestName = "New Test";
+            test.TestDate = DateTime.Now;
+            test.TestAcceptableRange = "Range";
+            test.TestResult = "Results";
+            test.TestNotes = "Notes";
+            const int medicalId = 3;
+            const bool expected = true;
+            bool actual;
+
+            // Act
+            actual = _testManager.AddTestByMedicalRecordId(test, medicalId);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ApplicationException))]
+        public void TestAddTestByMedicalRecordIdUsingInorrectMedicalId()
+        {
+            // Arrange
+            Test test = new Test();
+            test.TestName = "New Test";
+            test.TestDate = DateTime.Now;
+            test.TestAcceptableRange = "";
+            test.TestResult = "Results";
+            test.TestNotes = "";
+            const int medicalId = 0;
+            bool actual;
+
+            // Act
+            actual = _testManager.AddTestByMedicalRecordId(test, medicalId);
         }
 
         [TestMethod]

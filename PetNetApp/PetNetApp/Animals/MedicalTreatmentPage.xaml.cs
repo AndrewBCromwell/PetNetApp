@@ -36,6 +36,7 @@ namespace WpfPresentation.Animals
     {
         private MedicalRecordManager _medicalRecordManager = null;
         private List<MedicalRecordVM> _medicalRecords = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
         private Animal _animal = null;
 
         public MedicalTreatmentPage(Animal animal)
@@ -112,9 +113,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// 
+        /// Nathan Zumsande
+        /// Updated: 2023/03/07 
+        /// Made it so only Users with Admin or Vet Roles can click QuarantineStatus button
         /// </remarks>
         /// <param name="medicalRecord"></param>
         private void createDiagnosisBox(MedicalRecord medicalRecord)
@@ -174,6 +175,11 @@ namespace WpfPresentation.Animals
             btnQuarantineStatus.Content = image;
             Grid.SetRow(btnQuarantineStatus, 1);
 
+            if (!_manager.User.Roles.Contains("Vet") && !_manager.User.Roles.Contains("Admin"))
+            {
+                btnQuarantineStatus.IsEnabled = false;
+            }
+
             Label lblQuarantineStatus = new Label();
             lblQuarantineStatus.Margin = new Thickness(45, 0, 0, 0);
             lblQuarantineStatus.VerticalAlignment = VerticalAlignment.Center;
@@ -228,7 +234,8 @@ namespace WpfPresentation.Animals
 
                 // add Quarantine window to be opened here and remove PromptWindow
 
-                PromptWindow.ShowPrompt("Quarantine", "TODO", ButtonMode.Ok);
+                //PromptWindow.ShowPrompt("Quarantine", "TODO", ButtonMode.Ok);
+                frmDiagnosisTreatment.Navigate(new QuarantinePage(medicalRecord, _medicalRecordManager, this));
             };
 
             btnPrescriptions.Click += (s, e) =>

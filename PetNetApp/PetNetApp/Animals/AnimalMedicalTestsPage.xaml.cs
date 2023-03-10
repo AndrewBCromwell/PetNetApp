@@ -117,11 +117,25 @@ namespace WpfPresentation.Animals
                 LoadAnimalTestData();
                 _needsReloaded = false;
             }
+            if (!_manager.User.Roles.Contains("Vet") && !_manager.User.Roles.Contains("Admin"))
+            {
+                btnAddTest.IsEnabled = false;
+            }
+            if (_manager.User.Roles.Contains("Vet") || _manager.User.Roles.Contains("Admin"))
+            {
+                btnAddTest.IsEnabled = true;
+            }
+
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             _needsReloaded = true;
+        }
+
+        private void btnAddTest_Click(object sender, RoutedEventArgs e)
+        {
+            frmTests.Navigate(new AddTestPage(_animal.AnimalId, _manager.User.UsersId, (MedicalRecordManager)_manager.MedicalRecordManager, (TestManager)_manager.TestManager));
         }
     }
 }

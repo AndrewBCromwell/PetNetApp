@@ -98,5 +98,53 @@ namespace DataAccessLayer
 
             return tests;
         }
+
+        public int InsertTestByMedicalRecordId(Test test, int medicalRecordId)
+        {
+            int rows = 0;
+
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_test_by_medical_record_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            /*
+                 @MedicalRecordID	
+                 @UserID				
+                 @TestName			
+                 @TestAcceptableRange
+                 @TestResult         
+                 @TestNotes			
+                 @TestDate			
+            */
+            // set parameters
+            cmd.Parameters.AddWithValue("@MedicalRecordID", medicalRecordId);
+            cmd.Parameters.AddWithValue("@UserID", test.UserId);
+            cmd.Parameters.AddWithValue("@TestName", test.TestName);
+            cmd.Parameters.AddWithValue("@TestAcceptableRange", test.TestAcceptableRange);
+            cmd.Parameters.AddWithValue("@TestResult", test.TestResult);
+            cmd.Parameters.AddWithValue("@TestNotes", test.TestNotes);
+            cmd.Parameters.AddWithValue("@TestDate", test.TestDate);
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close connection
+                conn.Close();
+            }
+
+            return rows;
+        }
     }
 }

@@ -47,5 +47,24 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to load Tests", up);
             }
         }
+
+        public bool AddTestByMedicalRecordId(Test test, int medicalRecordId)
+        {
+            bool result = false;
+            try
+            {
+                result = 1 == _testAccessor.InsertTestByMedicalRecordId(test, medicalRecordId);
+                if (!result)
+                {
+                    throw new ApplicationException("Concurrency Conflict");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
     }
 }

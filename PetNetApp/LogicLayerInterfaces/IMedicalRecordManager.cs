@@ -26,6 +26,45 @@ namespace LogicLayerInterfaces
         int AddMedicalRecord(MedicalRecordVM medicalRecord);
 
         /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/02/01
+        /// 
+        /// Updates the Quarantine Status of a medical record
+        /// </summary>
+        /// 
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="medicalRecordId"></param>
+        /// <param name="quarantineStatus"></param>
+        /// <param name="oldQuarantineStatus"></param>
+        /// <returns>True or false if row was edited</returns>
+        bool EditQuarantineStatusByMedicalRecordId(int medicalRecordId, bool quarantineStatus, bool oldQuarantineStatus);
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/09/02
+        /// 
+        /// Creates a new medical record and returns the Id
+        /// </summary>
+        /// 
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="animalId"></param>
+        /// <param name="medicalNotes"></param>
+        /// <param name="test"></param>
+        /// <param name="diagnosis"></param>
+        /// <returns>Id of the created medical record</returns>
+        int AddTestMedicalRecordByAnimalId(int animalId, string medicalNotes, bool test, string diagnosis);
+
+        /// <summary>
         /// Molly Meister
         /// Created: 2023/03/09
         /// 

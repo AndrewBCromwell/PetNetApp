@@ -70,6 +70,12 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewUpdatesFromFosterProfile_S
 sqlcmd -S localhost -E -i StoredProceduresScripts\ImageManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonations_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddTicket.sql
+
+
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertTestByMedicalRecordId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertTestMedicalRecordByAnimalId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateQuarantineStatusByMedicalRecordId_SP.sql
+
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql

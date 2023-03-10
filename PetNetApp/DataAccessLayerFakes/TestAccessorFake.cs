@@ -13,6 +13,7 @@ namespace DataAccessLayerFakes
     {
         private List<Test> _tests;
         private List<MedicalRecordVM> _medicalRecords;
+        
         public TestAccessorFake()
         {
             _tests = new List<Test>()
@@ -144,6 +145,26 @@ namespace DataAccessLayerFakes
         {
             var animalsMedicalTestRecords = _medicalRecords.Where((record) => record.AnimalId == animalId && record.IsTest).Select((record) => record.MedicalRecordId);
             return _tests.Where((test) => animalsMedicalTestRecords.Contains(test.TestId)).ToList();
+        }
+
+        public int InsertTestByMedicalRecordId(Test test, int medicalRecordId)
+        {
+            Test _test;
+            int results = 0;
+            foreach (MedicalRecord m in _medicalRecords)
+            {
+                if (m.MedicalRecordId == medicalRecordId)
+                {
+                    _test = test;
+                    _test.MedicalRecordId = medicalRecordId;
+                    results = 1;
+                }
+            }
+            if (results == 0)
+            {
+                throw new ApplicationException();
+            }
+            return results;
         }
     }
 }

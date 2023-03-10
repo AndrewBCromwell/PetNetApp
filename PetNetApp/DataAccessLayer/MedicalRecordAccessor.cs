@@ -233,6 +233,90 @@ namespace DataAccessLayer
             return newRecordId;
         }
 
+        public int InsertTestMedicalRecordByAnimalId(int animalId, string medicalNotes, bool test, string diagnosis)
+        {
+            int medicalRecordId = 0;
+
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_insert_test_medical_record_by_animal_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            /*
+                @MedicalRecordID        int output,
+                @AnimalID               int,
+                @MedicalNotes           nvarchar(250),
+                @Test                   bit,
+                @Diagnosis              nvarchar(250)
+            */
+            // set parameters
+            cmd.Parameters.AddWithValue("@AnimalID", animalId);
+            cmd.Parameters.AddWithValue("@MedicalNotes", medicalNotes);
+            cmd.Parameters.AddWithValue("@Test", test);
+            cmd.Parameters.AddWithValue("@Diagnosis", diagnosis);
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute
+                medicalRecordId = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close connection
+                conn.Close();
+            }
+
+            return medicalRecordId;
+        }
+
+        public int UpdateQuarantineStatusByMedicalRecordId(int medicalRecordId, bool quarantineStatus, bool oldQuarantineStatus)
+        {
+            int rows = 0;
+
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_update_quarantine_status_by_medical_record_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            /*
+                 @MedicalRecordID		int,
+	             @QuarantineStatus		bit,
+	             @OldQuarantineStatus	bit
+            */
+            // set parameters
+            cmd.Parameters.AddWithValue("@MedicalRecordID", medicalRecordId);
+            cmd.Parameters.AddWithValue("@QuarantineStatus", quarantineStatus);
+            cmd.Parameters.AddWithValue("@OldQuarantineStatus", oldQuarantineStatus);
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close connection
+                conn.Close();
+            }
+            return rows;
+        }
+
         public List<MedicalRecordVM> SelectAllMedicalRecordsByAnimald(int animalId)
         {
             List<MedicalRecordVM> medicalRecords = new List<MedicalRecordVM>();
