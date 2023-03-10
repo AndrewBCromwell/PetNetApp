@@ -1356,10 +1356,13 @@ CREATE TABLE [dbo].[InstitutionalEntity] (
 	[AddressTwo]				[nvarchar](50)				NULL,
 	[Zipcode]					[char](9)					NOT NULL,
 	[ContactType]				[nvarchar](17)				NOT NULL,
+	[ShelterId]					[int]						NOT NULL
 	
 	CONSTRAINT [pk_InstitutionalEntityId] PRIMARY KEY([InstitutionalEntityId]),
 	CONSTRAINT [fk_InstitutionalEntity_Zipcode] FOREIGN KEY([Zipcode]) 
 			REFERENCES [dbo].[Zipcode]([Zipcode]),
+	CONSTRAINT [fk_InstitutionalEntity_ShelterId] FOREIGN KEY([ShelterId]) 
+			REFERENCES [dbo].[Shelter]([ShelterId]),
 	CONSTRAINT [fk_InstitutionalEntity_ContactType] FOREIGN KEY([ContactType]) 
 			REFERENCES [dbo].[ContactType]([ContactTypeId]) ON UPDATE CASCADE
 )

@@ -178,11 +178,11 @@ namespace LogicLayerTest
         public void TestGoodZipcodes()
         {
             string goodZip1 = "34567";
-            string goodZip2 = "123456789";
+            string badZip1 = "123456789";
             string goodZip3 = "96555";
 
             Assert.IsTrue(goodZip1.IsValidZipcode());
-            Assert.IsTrue(goodZip2.IsValidZipcode());
+            Assert.IsTrue(!badZip1.IsValidZipcode());
             Assert.IsTrue(goodZip3.IsValidZipcode());
         }
         

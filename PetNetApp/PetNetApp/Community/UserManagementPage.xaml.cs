@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using WpfPresentation.Community.UsersControl;
 using LogicLayer;
 using DataObjects;
-using WpfPresentation.Development.Community;
 
 namespace WpfPresentation.Community
 {
@@ -133,6 +132,8 @@ namespace WpfPresentation.Community
         private void menuItem_Update_Click(Users user)
         {
             RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_masterManager, user);
+            roleManagementPopupWindow.Owner = Window.GetWindow(this);
+            roleManagementPopupWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             roleManagementPopupWindow.ShowDialog();
         }
 
@@ -144,7 +145,8 @@ namespace WpfPresentation.Community
         private void menuItem_Suspend_Click(Users user)
         {
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_masterManager, user);
-            //SuspendUserPopup suspendUserPopup = new SuspendUserPopup();
+            suspendUserPopup.Owner = Window.GetWindow(this);
+            suspendUserPopup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             suspendUserPopup.ShowDialog();
             NavigationService.Navigate(new UserManagementPage());
         }
@@ -158,7 +160,8 @@ namespace WpfPresentation.Community
         {
             
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_masterManager, user);
-            //SuspendUserPopup suspendUserPopup = new SuspendUserPopup();
+            suspendUserPopup.Owner = Window.GetWindow(this);
+            suspendUserPopup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             suspendUserPopup.ShowDialog();
             NavigationService.Navigate(new  UserManagementPage());
         }

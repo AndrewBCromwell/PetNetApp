@@ -16,6 +16,21 @@ namespace DataAccessLayerInterfaces
     /// <returns></returns>
     public interface IDonationAccessor
     {
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023/03/01
+        /// Description: Selects all donations by a shelter id
+        /// </summary>
+        /// <param name="ShelterId"></param>
+        /// <returns></returns>
         List<DonationVM> SelectDonationsByShelterId(int ShelterId);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023/03/08
+        /// Description: Selects all inkinds by donation id
+        /// </summary>
+        /// <param name="donationId"></param>
+        /// <returns></returns>
+        List<InKind> SelectInKindsByDonationId(int donationId);
     }
 }

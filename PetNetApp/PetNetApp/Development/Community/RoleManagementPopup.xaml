@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="User Role Management" Width="700" 
         SizeToContent="Height"
-        WindowStartupLocation="CenterScreen"  WindowStyle="None"
+        WindowStartupLocation="CenterOwner"  WindowStyle="None"
         ResizeMode="NoResize" Loaded="Window_Loaded" Background="Transparent" Visibility="Visible" AllowsTransparency="True">
     <!--Page was designed by Barry Mikulas-->
     <Border BorderThickness="5" Background="#FF3D8361" BorderBrush="#FF1C6758" CornerRadius="20">
@@ -24,7 +24,7 @@
                     BorderBrush="Transparent" Foreground="#FF1C6758" Content="X" Click="btnCloseWindowX_Click"/>
             <Rectangle  Grid.Row="0" x:Name="rectHeader" Fill="{DynamicResource DataGridColumnHeader.Background}" Height="5" Width="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <ComboBox x:Name="cboChooseRole" Margin="10"  Width="225" ToolTip="{Binding SelectedItem.Description, RelativeSource={RelativeSource Self}}" Text="Choose Role" />
+                <ComboBox x:Name="cboChooseRole" Margin="10"  Width="225" ToolTip="{Binding SelectedItem.Description, RelativeSource={RelativeSource Self}}" SelectedIndex="0"/>
                 <Button Grid.Row="1" x:Name="btn_AddRole" Content="+ Add Role" Margin="10" Height="41" Width="180" Click="btn_AddRole_Click" Padding="6,3,5,3"  >
                     <Button.Style >
                         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ResourceKey=rsrcSafeButton}">

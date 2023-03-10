@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.UserControls;
 
 namespace WpfPresentation.Fundraising
 {
@@ -24,10 +25,46 @@ namespace WpfPresentation.Fundraising
     {
         public static Donation Donation { get; set; }
         private MasterManager masterManager = MasterManager.GetMasterManager();
+        private List<InKind> inKinds;
         public ViewSpecificDonationPage(Donation donation)
         {
             Donation = donation;
             InitializeComponent();
+        }
+
+        private void this_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(Donation.HasInKindDonation)
+            {
+                spInKindDonations.Children.Clear();
+                try
+                {
+                    inKinds = masterManager.DonationManager.RetrieveInKindsByDonationId(Donation.DonationId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message);
+                }
+                foreach (var inKind in inKinds)
+                {
+                    InKindUserControl inKindUserControl = new InKindUserControl(inKind);
+                    spInKindDonations.Children.Add(inKindUserControl);
+                }
+            } 
+            else
+            {
+                HideInKindElements();
+            }
+
+        }
+
+        public void HideInKindElements()
+        {
+            lblInKind.Visibility = Visibility.Hidden;
+            lblDesc.Visibility = Visibility.Hidden;
+            lblQuanity.Visibility = Visibility.Hidden;
+            svInkind.Visibility = Visibility.Hidden;
+            spInKindDonations.Visibility = Visibility.Hidden;
         }
     }
 }

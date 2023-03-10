@@ -49,6 +49,7 @@
     <Compile Include="DeathAccessor.cs" />
     <Compile Include="DonationAccessor.cs" />
     <Compile Include="FundraisingCampaignAccessor.cs" />
+    <Compile Include="FundraisingEventAccessor.cs" />
     <Compile Include="ImagesAccessor.cs" />
     <Compile Include="InstitutionalEntityAccessor.cs" />
     <Compile Include="KennelAccessor.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="TicketAccessor.cs" />
     <Compile Include="UsersAccessor.cs" />
     <Compile Include="VaccinationAccessor.cs" />
+    <Compile Include="ZipcodeAccessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerInterfaces\DataAccessLayerInterfaces.csproj">

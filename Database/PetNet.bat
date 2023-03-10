@@ -8,9 +8,9 @@ rem Follow this example (but without rem):
 rem sqlcmd -S localhost -E -i SampleData\ASampleFeature_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\Zipcodes_DB.sql
 sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
+sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
-
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -70,6 +70,10 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewUpdatesFromFosterProfile_S
 sqlcmd -S localhost -E -i StoredProceduresScripts\ImageManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonations_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddTicket.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
+
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

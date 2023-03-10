@@ -54,5 +54,17 @@ namespace DataAccessLayerFakes
                            select institutionalEntityRecord;
             return sponsors.ToList();
         }
+
+        public List<InstitutionalEntity> SelectAllInstitutionalEntitiesByShelterIdAndEntityType(int shelterId, string entityType)
+        {
+            throw new NotImplementedException();
+
+
+        }
+
+        public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

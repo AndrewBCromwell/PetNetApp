@@ -50,7 +50,8 @@ namespace LogicLayer
         public IDonationManager DonationManager { get; private set; }
         public IImagesManager ImagesManager { get; private set; }
         public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
-
+        public IFundraisingEventManager FundraisingEventManager { get; set; }
+        public IZipcodeManager ZipcodeManager { get; set; }
 
         private MasterManager()
         {
@@ -71,6 +72,8 @@ namespace LogicLayer
             ShelterItemTransactionManager = new ShelterItemTransactionManager();
             ImagesManager = new ImagesManager();
             DonationManager = new DonationManager();
+            FundraisingEventManager = new FundraisingEventManager();
+            ZipcodeManager = new ZipcodeManager();
 
 
             //for testing from dev page
