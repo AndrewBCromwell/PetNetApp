@@ -106,9 +106,9 @@ namespace DataAccessLayer
                     {
                         KennelVM kennelVM = new KennelVM();
                         AnimalVM animal = new AnimalVM();
-                        List<Images> animalImages = new List<Images>();
-                        Images image = new Images();
-                        animal.AnimalImages = animalImages;
+                        //List<Images> animalImages = new List<Images>();
+                        //Images image = new Images();
+                        //animal.AnimalImages = animalImages;
 
                         kennelVM.KennelId = reader.GetInt32(0);
                         kennelVM.ShelterId = reader.GetInt32(1);
@@ -127,15 +127,15 @@ namespace DataAccessLayer
                             animal.AnimalId = reader.GetInt32(8);
                         }
                         
-                        if(reader.IsDBNull(9))
-                        {
-                            image = null;
-                        } else
-                        {
-                            image.ImageId = reader.GetString(9);
-                            image.ImageFileName = reader.GetString(10);
-                            animal.AnimalImages.Add(image);
-                        }
+                        //if(reader.IsDBNull(9))
+                        //{
+                        //    image = null;
+                        //} else
+                        //{
+                        //    image.ImageId = reader.GetString(9);
+                        //    image.ImageFileName = reader.GetString(10);
+                        //    animal.AnimalImages.Add(image);
+                        //}
 
                         kennelVM.Animal = animal;
                         kennelVMs.Add(kennelVM);
@@ -351,6 +351,82 @@ namespace DataAccessLayer
             }
 
             return rowsAffected;
+        }
+
+        public List<Kennel> SelectAllEmptyKennels(int shelterId)
+        {
+            List<Kennel> _kennelList = new List<Kennel>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_empty_kennels";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ShelterId", shelterId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var kennel = new Kennel();
+                        kennel.KennelId = reader.GetInt32(0);
+                        kennel.KennelName = reader.GetString(1);
+                        kennel.AnimalTypeId = reader.GetString(2);
+                        _kennelList.Add(kennel);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return _kennelList;
+        }
+
+        public Images SelectImageByAnimalId(int animalId)
+        {
+            Images image = new Images();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_image_by_animalid";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@AnimalId", animalId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        image.ImageId = reader.GetString(0);
+                        image.ImageFileName = reader.GetString(1);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return image;
         }
     }
 }

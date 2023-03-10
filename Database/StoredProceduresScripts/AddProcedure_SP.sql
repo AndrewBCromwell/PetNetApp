@@ -14,7 +14,7 @@ Description:
 USE [PetNet_db_am]
 GO
 
-print '' print '*** creting sp_insert_procedure_by_medical_record_id'
+print '' print '*** creting sp_insert_procedure_by_medical_record_id (Andrew Cromwell)'
 GO
 
 CREATE PROCEDURE [dbo].[sp_insert_procedure_by_medical_record_id]
@@ -46,7 +46,7 @@ GO
 
 
 
-print '' print '*** creating sp_select_last_medical_record_id_by_animal_id'
+print '' print '*** creating sp_select_last_medical_record_id_by_animal_id (Andrew Cromwell)'
 GO
 
 CREATE PROCEDURE [dbo].[sp_select_last_medical_record_by_animal_id]

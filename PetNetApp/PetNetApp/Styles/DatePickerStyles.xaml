@@ -16,6 +16,7 @@
         <Setter Property="SelectionBrush" Value="{StaticResource DatePicker.Static.Highlight}"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
@@ -202,7 +203,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
-    
+
+
 
 </ResourceDictionary>

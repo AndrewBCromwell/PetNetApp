@@ -26,7 +26,7 @@ namespace WpfPresentation.Fundraising
     public partial class AddEditInstitutionalEntity : Window
     {
         private MasterManager _masterManager = MasterManager.GetMasterManager();
-        private WindowMode _windowMode;
+        private WindowMode2 _windowMode;
         private string _contactType;
 
         private InstitutionalEntity _institutionalEntity;
@@ -38,7 +38,7 @@ namespace WpfPresentation.Fundraising
         /// <param name="entityType">sets the type of institutional being added</param>
         public AddEditInstitutionalEntity(string entityType)
         {
-            _windowMode = WindowMode.Add;
+            _windowMode = WindowMode2.Add;
             _contactType = entityType;
             InitializeComponent();
             SetupAddInstitutionalEntity();
@@ -52,11 +52,11 @@ namespace WpfPresentation.Fundraising
         /// <param name="entityType">brings in the type </param>
         public AddEditInstitutionalEntity(InstitutionalEntity institutionalEntity, string windowMode, string entityType)
         {
-            _windowMode = windowMode.ToLower() == "edit" ? WindowMode.Edit : WindowMode.View;
+            _windowMode = windowMode.ToLower() == "edit" ? WindowMode2.Edit : WindowMode2.View;
             _contactType = entityType;
             _institutionalEntity = institutionalEntity;
             InitializeComponent();
-            if (_windowMode == WindowMode.Edit)
+            if (_windowMode == WindowMode2.Edit)
             {
                 SetupEditInstitutionalEntity();
             }
@@ -150,7 +150,7 @@ namespace WpfPresentation.Fundraising
         {
             try
             {
-                if (_windowMode == WindowMode.View || _windowMode == WindowMode.Edit)
+                if (_windowMode == WindowMode2.View || _windowMode == WindowMode2.Edit)
                 {
                     tbCompanyName.Text = _institutionalEntity.CompanyName;
                     tbGivenName.Text = _institutionalEntity.GivenName;
@@ -198,17 +198,17 @@ namespace WpfPresentation.Fundraising
         {
             switch (_windowMode)
             {
-                case WindowMode.Add:
+                case WindowMode2.Add:
                     //TODO: confirm the user wants to cancel input
                     if (PromptWindow.ShowPrompt("Cancel", "Are you sure you want to cancel adding?", ButtonMode.YesNo) == PromptSelection.Yes)
                     {
                         this.Close();
                     }
                     break;
-                case WindowMode.View:
+                case WindowMode2.View:
                     this.Close();
                     break;
-                case WindowMode.Edit:
+                case WindowMode2.Edit:
                     //TODO: confirm user wants to cancel editing
                     if (PromptWindow.ShowPrompt("Cancel", "Are you sure you want to cancel editing?", ButtonMode.YesNo) == PromptSelection.Yes)
                     {
@@ -248,11 +248,11 @@ namespace WpfPresentation.Fundraising
         private void tbZipcode_LostFocus(object sender, RoutedEventArgs e)
         {
             // if WindowMode.Add or WindowMode.Edit and IsValidZipcode - load city and state
-            if ((_windowMode == WindowMode.Add || _windowMode == WindowMode.Edit) && tbZipcode.Text.IsValidZipcode())
+            if ((_windowMode == WindowMode2.Add || _windowMode == WindowMode2.Edit) && tbZipcode.Text.IsValidZipcode())
             {
                 LoadCityStateByZipCode();
             }
-            else if ((_windowMode == WindowMode.Add || _windowMode == WindowMode.Edit) && tbZipcode.Text.Length < 5)
+            else if ((_windowMode == WindowMode2.Add || _windowMode == WindowMode2.Edit) && tbZipcode.Text.Length < 5)
             {
                 tbCity.Text = "";
                 tbState.Text = "";
@@ -280,7 +280,7 @@ namespace WpfPresentation.Fundraising
             }
         }
     }
-    enum WindowMode
+    enum WindowMode2
     {
         Add,
         Edit,

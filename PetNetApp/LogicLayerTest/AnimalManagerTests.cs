@@ -257,11 +257,33 @@ namespace LogicLayerTest
         public void TestSelectAnimalAdoptableProfile()
         {
             string expectedResult = "Test name 1";
-            string actualRessult = "";
+            string actualResult = "";
 
-            actualRessult = _animalManager.RetriveAnimalAdoptableProfile(999999).AnimalName;
+            actualResult = _animalManager.RetriveAnimalAdoptableProfile(999999).AnimalName;
 
-            Assert.AreEqual(expectedResult, actualRessult);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestSelectAdoptedAnimalByUserId()
+        {
+            int expectedResult = 3;
+            int actualResult = 0;
+
+            actualResult = _animalManager.RetriveAdoptedAnimalByUserId(100000).Count();
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestSelectFosterPlacementRecordNotes()
+        {
+            string expectedResult = "This is a note";
+            string actualResult = "";
+
+            actualResult = _animalManager.RetriveFosterPlacementRecordNotes(100000).FosterPlacementRecordNotes;
+
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
     }

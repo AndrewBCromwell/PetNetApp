@@ -54,7 +54,7 @@ namespace WpfPresentation.Animals
             return _existingAnimalsPage;
         }
 
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
@@ -70,35 +70,35 @@ namespace WpfPresentation.Animals
 
         private void btnAdopt_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnAdopt);
             // replace with page name and then delete comment
             frameAnimals.Navigate(null);
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnFoster);
             // replace with page name and then delete comment
             frameAnimals.Navigate(null);
         }
 
         private void btnSurrender_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnSurrender);
             // replace with page name and then delete comment
             frameAnimals.Navigate(null);
         }
 
         private void btnAnimalList_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnAnimalList);
             // replace with page name and then delete comment
             frameAnimals.Navigate(new AnimalListPage(_manager));
         }
 
         private void btnMedical_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnMedical);
             frameAnimals.Navigate(MedicalPage.GetMedicalPage(_manager));
         }
 

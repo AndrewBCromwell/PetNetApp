@@ -12,6 +12,7 @@ namespace DataObjects
         public int UserId { get; set; }
         public string TicketStatusId { get; set; }
         public string TicketTitle { get; set; }
+        public string TicketContext { get; set; }
         public DateTime TicketDate { get; set; }
         public bool TicketActive { get; set; }
     }

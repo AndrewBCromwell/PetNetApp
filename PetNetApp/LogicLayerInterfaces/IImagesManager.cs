@@ -70,5 +70,39 @@ namespace LogicLayerInterfaces
         /// <param name="imageFileNames">The list of Uri where the images are located</param>
         /// <returns></returns>
         bool AddMedicalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/05
+        /// 
+        /// Retrieves a list of image objects for the specified animal's profile record
+        /// </summary>
+        /// <param name="animalId">The id of the animal whose images will be returned</param>
+        /// <returns>A list of Images objects</returns>
+        List<Images> RetrieveAnimalImagesByAnimalId(int animalId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/05
+        /// 
+        /// Adds the selected image to the animal profile record
+        /// </summary>
+        /// <param name="animalId">The id of the animal to whose record an image is being added</param>
+        /// <param name="imageFileName">The Uri where the image is located</param>
+        /// <returns>A boolean signifying success or failure</returns>
+        bool AddAnimalImageByAnimalId(int animalId, string imageFileName);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/05
+        /// 
+        /// Adds the selected image to the animal profile record
+        /// </summary>
+        /// <param name="animalId">The id of the animal to whose record images are being added</param>
+        /// <param name="imageFileNames">The list of Uri where the images are located</param>
+        /// <returns>A boolean signifying success or failure</returns>
+        bool AddAnimalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames);
+
+        List<Images> RetriveImageByAnimalId(int animalId);
     }
 }

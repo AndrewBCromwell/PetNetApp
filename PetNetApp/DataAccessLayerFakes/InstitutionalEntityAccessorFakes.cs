@@ -261,6 +261,16 @@ namespace DataAccessLayerFakes
 
         }
 
+        public List<InstitutionalEntity> SelectAllSponsors()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<InstitutionalEntity> SelectFundraisingSponsorsByCampaignId(int fundraisingCampaignId)
+        {
+            throw new NotImplementedException();
+        }
+
         public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
         {
             throw new NotImplementedException();

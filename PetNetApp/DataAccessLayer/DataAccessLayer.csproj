@@ -47,6 +47,7 @@
     <Compile Include="AnimalUpdatesAccessor.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="DeathAccessor.cs" />
+    <Compile Include="DonationAccessor.cs" />
     <Compile Include="FundraisingCampaignAccessor.cs" />
     <Compile Include="FundraisingEventAccessor.cs" />
     <Compile Include="ImagesAccessor.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="RoleAccessor.cs" />
     <Compile Include="ScheduleAccessor.cs" />
     <Compile Include="ShelterAccessor.cs" />
+    <Compile Include="ShelterItemTransactionAccessor.cs" />
     <Compile Include="TestAccessor.cs" />
     <Compile Include="TicketAccessor.cs" />
     <Compile Include="UsersAccessor.cs" />

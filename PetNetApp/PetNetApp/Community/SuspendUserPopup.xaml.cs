@@ -105,7 +105,7 @@ namespace WpfPresentation.Community
             }
             catch (Exception up)
             {
-                PromptWindow.ShowPrompt("Try Again", "Please enter a valid password and try again");
+                PromptWindow.ShowPrompt("Try Again", up.Message);
                 txtConfirmPassword.SelectAll();
                 txtConfirmPassword.Focus();
                 return;

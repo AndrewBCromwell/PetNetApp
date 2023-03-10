@@ -45,6 +45,7 @@ namespace WpfPresentation.Animals
         List<string> _yesNo = new List<string> { "Yes", "No" };
         DateTime _maxBroughtInDate = DateTime.Now;
         DateTime _minBroughtInDate = DateTime.Today - TimeSpan.FromDays(3);
+        private List<Images> _imagesList = null;
 
         /// <summary>
         /// Andrew Schneider
@@ -80,6 +81,8 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/01
         /// </summary>
+        /// <remarks>
+        /// Added a line of code to change the selected UI buttons when this page loads in case something returns to it(MedicalNavigationPage)
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -87,6 +90,7 @@ namespace WpfPresentation.Animals
         {
             populateComboBoxes();
             setDetailMode();
+            populateImage();
         }
 
         /// <summary>
@@ -274,14 +278,14 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Stephen Jaurigue
+        /// Updated: 2023/02/28 
+        /// Fixed a problem where the breeds list was getting set to the dictionary items
+        /// instead of being left blank until a type was selected
         /// </remarks>
         private void populateComboBoxes()
         {
             _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
-            cmbAnimalBreedId.ItemsSource = _breeds;
             _types = _manager.AnimalManager.RetrieveAllAnimalTypes();
             cmbAnimalTypeId.ItemsSource = _types;
 
@@ -292,6 +296,59 @@ namespace WpfPresentation.Animals
             cmbAggressive.ItemsSource = _yesNo;
             cmbChildFriendly.ItemsSource = _yesNo;
             cmbNeuterStatus.ItemsSource = _yesNo;
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/06
+        /// 
+        /// Helper method for populating the animal image
+        /// If no image is available a label becomes 
+        /// visible alerting the user to this fact.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void populateImage()
+        {
+            if (_imagesList == null || _imagesList.Count == 0)
+            {
+                try
+                {
+                    _imagesList = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(_animalVM.AnimalId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                }
+            }
+
+            if(_imagesList.Count == 0)
+            {
+                lblNoImage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                try
+                {
+                    imgAnimal.Source = _manager.ImagesManager.RetrieveImageByImages(_imagesList[0]);
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+                catch (Exception)
+                {
+                    BitmapImage brokenImage = new BitmapImage();
+                    brokenImage.BeginInit();
+                    brokenImage.UriSource = new Uri(@"/Images/BrokenImageGreen.png", UriKind.Relative);
+                    brokenImage.EndInit();
+                    imgAnimal.Source = brokenImage;
+                    imgAnimal.Height = 250;
+                    imgAnimal.Width = 250;
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         /// <summary>
@@ -430,7 +487,6 @@ namespace WpfPresentation.Animals
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(ex);
                             PromptWindow.ShowPrompt("Error", "Update failed.\n" + ex, ButtonMode.Ok);
                         }
                     }
@@ -451,18 +507,15 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Stephen Jaurigue
+        /// Updated: 2023/02/28 
+        /// Fixed a problem where the user returns to this page after navigating somewhere else that the back button doesn't go to the AnimalListPage
         /// </remarks>
         private void btn_Back_Click(object sender, RoutedEventArgs e)
         {
             if(btnBack.Content.ToString() == "Back")
             {
-                if (NavigationService.CanGoBack)
-                {
-                    NavigationService.GoBack();
-                }
+                NavigationService.Navigate(AnimalListPage.GetAnimalListPage(_manager));
             }
             // If button text is not "Back" then it is "Cancel" and we need to prompt the user for confirmation
             else
@@ -531,7 +584,12 @@ namespace WpfPresentation.Animals
                 if (result == PromptSelection.Yes)
                 {
                     setDetailMode();
+                    NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
                 }
+            }
+            else
+            {
+                NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
             }
         }
 
@@ -548,9 +606,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Stephen Jaurigue
+        /// Updated: 2023/02/28 
+        /// Fixed a problem where medical page back feature wouldn't return to the animal profile page
         /// </remarks>
         private void btnMedicalProfile_Click(object sender, RoutedEventArgs e)
         {
@@ -563,23 +621,52 @@ namespace WpfPresentation.Animals
                     setDetailMode();
                     NavigationService nav = NavigationService.GetNavigationService(this);
                     nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
-                    // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
                 }
             }
             else
             {
-                NavigationService nav = NavigationService.GetNavigationService(this);
-                nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
-               // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
+                NavigationService.Navigate(new MedicalNavigationPage(_manager, _animalVM,this));
+                var animalsPage = AnimalsPage.GetAnimalsPage();
+                animalsPage.ChangeSelectedButton(animalsPage.btnMedical);
+                // nav.Navigate(new WpfPresentation.Animals.AnimalMedicalProfile(_animalVM.AnimalId));
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/22
+        /// 
+        /// Helper method that links the breeds and types combo
+        /// boxes so that when an animal type is selected only
+        /// breeds of that type are available in the breeds box
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void cmbAnimalTypeId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cmbAnimalBreedId.ItemsSource = _breeds[cmbAnimalTypeId.SelectedItem.ToString()];
             cmbAnimalBreedId.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/02/22
+        /// 
+        /// Helper method that links the Aggressive combo box with
+        /// the Aggressive Description textbox, so that a description
+        /// can only be entered if "Yes" has been selected in the combo
+        /// box.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void cmbAggressive_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbAggressive.SelectedItem.ToString() == "Yes")

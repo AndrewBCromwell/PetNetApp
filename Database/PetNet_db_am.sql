@@ -346,8 +346,7 @@ CREATE TABLE [dbo].[Animal] (
 	CONSTRAINT [fk_Animal_AnimalStatusId]FOREIGN KEY ([AnimalStatusId])
 		REFERENCES [dbo].[AnimalStatus]([AnimalStatusId]) on UPDATE CASCADE,
 	CONSTRAINT [fk_Animal_AnimalShelterId]FOREIGN KEY ([AnimalShelterId])
-		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE,
-	CONSTRAINT [ak_MicrochipSerialNumber] UNIQUE([MicrochipSerialNumber])
+		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE
 )
 GO
 
@@ -537,6 +536,7 @@ CREATE TABLE [dbo].[Ticket] (
 	[UsersId]					[int]							 	NOT NULL,
 	[TicketStatusId]			[nvarchar](50)						NOT NULL, 
 	[TicketTitle]				[nvarchar](500)						NOT NULL,
+	[TicketContext]				[nvarchar](500)						NOT NULL,
 	[TicketDate]				[datetime]		DEFAULT GETDATE()	NOT NULL,
 	[TicketActive]				[bit]			DEFAULT 1			NOT NULL,
 	CONSTRAINT [pk_TicketId] PRIMARY KEY([TicketId]),
@@ -708,9 +708,9 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 	[Title]					[nvarchar](100)				NOT NULL,
 	[StartDate]				[datetime]					NULL,
 	[EndDate]				[datetime]					NULL,
-	[Description]			[nvarchar](255)				NULL,
+	[Description]			[nvarchar](250)				NOT NULL,
 	[Complete]				[bit]	DEFAULT 0			NOT NULL,
-	[Updated]				[int]						NULL,
+	[Active]				[bit]	DEFAULT 1			NOT NULL	
 	CONSTRAINT [pk_FundraisingCampaignId] PRIMARY KEY ([FundraisingCampaignId]),
 	CONSTRAINT [fk_FundraisingCampaign_UsersId] FOREIGN KEY ([UsersId])
 		REFERENCES [Users]([UsersId]),
