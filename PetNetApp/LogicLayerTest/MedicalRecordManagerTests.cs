@@ -99,5 +99,70 @@ namespace LogicLayerTest
             Assert.AreEqual(actualMedicalRecordId, returnedValue);
             Assert.AreEqual(recordsReturnedExpectedCount, recordsReturned.Count);
         }
+
+        [TestMethod]
+        public void TestEditQuarantineStatusWithCorrectOldQuarantineStatus()
+        {
+            // Arrange
+            const int id = 100000;
+            const bool quarantineStatus = true;
+            const bool oldQurantineStatus = false;
+            bool expected = true;
+            bool actual;
+
+            // Act
+            actual = _medicalRecordManager.EditQuarantineStatusByMedicalRecordId(id, quarantineStatus, oldQurantineStatus);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ApplicationException))]
+        public void FailTestEditQuarantineStatusWithIncorrectOldQuarantineStatus()
+        {
+            // Arrange
+            const int id = 100000;
+            const bool quarantineStatus = true;
+            const bool oldQurantineStatus = true;
+            bool actual;
+
+            // Act
+            actual = _medicalRecordManager.EditQuarantineStatusByMedicalRecordId(id, quarantineStatus, oldQurantineStatus);
+
+        }
+
+        [TestMethod]
+        public void TestAddTestMedicalRecordByAnimalIdWithCorrectAnimalId()
+        {
+            // Arrange
+            const int animalid = 100001;
+            const string notes = "test";
+            const bool test = true;
+            const string diagnosis = "none";
+            int expected = 100002;
+            int actual;
+
+            // Act
+            actual = _medicalRecordManager.AddTestMedicalRecordByAnimalId(animalid, notes, test, diagnosis);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ApplicationException))]
+        public void TestAddTestMedicalRecordByAnimalIdWithInorrectAnimalId()
+        {
+            // Arrange
+            const int animalid = 0;
+            const string notes = "test";
+            const bool test = true;
+            const string diagnosis = "none";
+            int actual;
+
+            // Act
+            actual = _medicalRecordManager.AddTestMedicalRecordByAnimalId(animalid, notes, test, diagnosis);
+        }
     }
 }

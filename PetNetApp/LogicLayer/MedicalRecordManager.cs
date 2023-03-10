@@ -81,5 +81,37 @@ namespace LogicLayer
             }
             return result;
         }
+
+        public bool EditQuarantineStatusByMedicalRecordId(int medicalRecordId, bool quarantineStatus, bool oldQuarantineStatus)
+        {
+            bool result = false;
+            try
+            {
+                result = 1 == _medicalRecordAccessor.UpdateQuarantineStatusByMedicalRecordId(medicalRecordId, quarantineStatus, oldQuarantineStatus);
+                if (!result)
+                {
+                    throw new ApplicationException("Concurrency Conflict");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public int AddTestMedicalRecordByAnimalId(int animalId, string medicalNotes, bool test, string diagnosis)
+        {
+            int medicalRecordId;
+            try
+            {
+                medicalRecordId = _medicalRecordAccessor.InsertTestMedicalRecordByAnimalId(animalId, medicalNotes, test, diagnosis);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return medicalRecordId;
+        }
     }
 }

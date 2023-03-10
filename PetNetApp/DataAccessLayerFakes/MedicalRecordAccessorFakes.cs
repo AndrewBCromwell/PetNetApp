@@ -27,6 +27,7 @@ namespace DataAccessLayerFakes
             return medicalRecordId;
         }
         List<MedicalRecordVM> medicalRecords = new List<MedicalRecordVM>();
+        List<AnimalVM> animals = new List<AnimalVM>();
 
         public MedicalRecordAccessorFakes()
         {
@@ -43,6 +44,49 @@ namespace DataAccessLayerFakes
                 Images = false,
                 QuarantineStatus = false,
                 Diagnosis = "Sample Diagnosis 1"
+            });
+
+            medicalRecords.Add(new MedicalRecordVM
+            {
+                MedicalRecordId = 100001,
+                AnimalId = 100001,
+                Date = DateTime.Now,
+                MedicalNotes = "These are sample medical notes",
+                IsProcedure = true,
+                IsTest = true,
+                IsVaccination = true,
+                IsPrescription = false,
+                Images = false,
+                QuarantineStatus = true,
+                Diagnosis = "Sample Diagnosis 2"
+            });
+
+            animals.Add(new AnimalVM
+            {
+                AnimalId = 100000,
+                AnimalName = "Rufus",
+                AnimalGender = "Male",
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Lab",
+                Personality = "Friendly",
+                Description = "this is a sample description",
+                BroughtIn = new DateTime(),
+                MicrochipNumber = "S/N-3234529",
+                Aggressive = false
+            });
+
+            animals.Add(new AnimalVM
+            {
+                AnimalId = 100001,
+                AnimalName = "Roo",
+                AnimalGender = "Male",
+                AnimalTypeId = "Dog",
+                AnimalBreedId = "Retriever",
+                Personality = "Friendly",
+                Description = "this is a sample description",
+                BroughtIn = new DateTime(),
+                MicrochipNumber = "S/N-3234528",
+                Aggressive = false
             });
         }
 
@@ -74,6 +118,49 @@ namespace DataAccessLayerFakes
             medicalRecords.Add(medicalRecord);
             medicalRecordId = medicalRecord.MedicalRecordId;
             return medicalRecordId;
+        }
+
+        public int UpdateQuarantineStatusByMedicalRecordId(int medicalRecordId, bool quarantineStatus, bool oldQuarantineStatus)
+        {
+            // loop through medicalRecords and change the one you need to change
+
+            var m = medicalRecords.Find(md => md.MedicalRecordId == medicalRecordId);
+            if (m.QuarantineStatus == oldQuarantineStatus)
+            {
+                return 1;
+            }
+            else
+            {
+                throw new ApplicationException();
+            }
+
+            // if it's old status is what was passed
+            // return 1 for 1 row affected, or throw exception if you didn't find one
+        }
+
+        public int InsertTestMedicalRecordByAnimalId(int animalId, string medicalNotes, bool test, string diagnosis)
+        {
+            MedicalRecordVM newTestRecord = new MedicalRecordVM();
+            bool found = false;
+            foreach (Animal a in animals)
+            {
+                if (a.AnimalId == animalId)
+                {
+                    found = true;
+                    newTestRecord.MedicalRecordId = medicalRecords[medicalRecords.Count - 1].MedicalRecordId + 1;
+                    newTestRecord.AnimalId = animalId;
+                    newTestRecord.MedicalNotes = medicalNotes;
+                    newTestRecord.IsTest = test;
+                    newTestRecord.Diagnosis = diagnosis;
+
+                    medicalRecords.Add(newTestRecord);
+                }
+            }
+            if (found == false)
+            {
+                throw new ApplicationException();
+            }
+            return newTestRecord.MedicalRecordId;
         }
     }
 }
