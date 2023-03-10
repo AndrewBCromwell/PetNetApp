@@ -41,7 +41,7 @@ namespace WpfPresentation.Fundraising
         {
             InitializeComponent();
             _manager = manager;
-            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnViewContacts, btnEvents };
+            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnViewContacts, btnEvents, btnViewSponsors };
         }
 
         /// <summary>
@@ -157,6 +157,7 @@ namespace WpfPresentation.Fundraising
             ShowContactsButtonByRole();
             ShowDonationsButtonByRole();
             ShowEventsButtonByRole();
+            ShowSponsorsButtonByRole();
         }
 
 
@@ -217,6 +218,26 @@ namespace WpfPresentation.Fundraising
             }
         }
 
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/03/10
+        /// 
+        /// Show sponsors button if user has appropriate permissions
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        private void ShowSponsorsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnViewSponsors.Visibility = Visibility.Visible;
+            }
+        }
+
 
         /// <summary>
         /// Barry Mikulas
@@ -252,6 +273,12 @@ namespace WpfPresentation.Fundraising
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
             frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEventsPage());
+        }
+
+        private void btnViewSponsors_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(ViewFundraisingEventSponsors.GetViewEventSponsors());
         }
     }
 }

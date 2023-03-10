@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using WpfPresentation.Fundraising;
 using WpfPresentation.Management;
 
 namespace WpfPresentation.Development.Fundraising
@@ -30,7 +31,7 @@ namespace WpfPresentation.Development.Fundraising
         {
             InitializeComponent();
             _manager = manager;
-            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnEvents, btnViewContacts };
+            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnEvents, btnViewContacts, btnViewSponsors };
         }
 
         /// <summary>
@@ -175,6 +176,19 @@ namespace WpfPresentation.Development.Fundraising
         {
             ChangeSelectedButton((Button)sender);
             frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewEventsPage());
+        }
+
+        private void btnViewSponsors_Click(object sender, RoutedEventArgs e)
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnViewSponsors.Visibility = Visibility.Visible;
+
+            }
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(ViewFundraisingEventSponsors.GetViewEventSponsors());
+
         }
     }
 }
