@@ -451,5 +451,19 @@ namespace LogicLayer
             // return 2; //green test
             //throw new NotImplementedException(); //red test
         }
+
+        public List<UsersAdoptionRecords> RetrieveAdoptionRecordsByUserID(int usersId)
+        {
+            List<UsersAdoptionRecords> userAdoptionRecords = new List<UsersAdoptionRecords>();
+            try
+            {
+                userAdoptionRecords = _userAccessor.SelectAdoptionRecordsByUserID(usersId);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("An error has occured", e);
+            }
+            return userAdoptionRecords;
+        }
     }
 }

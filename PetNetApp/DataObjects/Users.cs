@@ -28,5 +28,14 @@ namespace DataObjects
     {
         public List<string> Roles {get;set;}
         public List<ScheduleVM> Schedule { get; set; }
+        public List<UsersAdoptionRecords> AdoptionRecords { get; set; }
+    }
+
+    public class UsersAdoptionRecords
+    {
+        public string animalName { get; set; }
+        public string animalSpecies { get; set; }
+        public string animalBreed { get; set; }
+        public int oldAnimalId { get; set; }
     }
 }

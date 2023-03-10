@@ -79,7 +79,7 @@ namespace LogicLayer
 
 
             //for testing from dev page
-/*            User = new UsersVM()
+          User = new UsersVM()
             {
                 UsersId = 100004,
                 ShelterId = 100000,
@@ -93,7 +93,7 @@ namespace LogicLayer
                 Suspend = false,
                 Roles = new List<string>() { "Admin"}
             };
-*/
+
 
         }
     

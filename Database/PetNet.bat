@@ -11,6 +11,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
 sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -89,6 +90,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordDetailsByMedi
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditExamNotes_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewExamNotes_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddExamNotes_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\CustomerRecords_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

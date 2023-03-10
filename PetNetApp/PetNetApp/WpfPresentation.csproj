@@ -87,6 +87,9 @@
     <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
       <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Community\CustomerRecordsPage.xaml.cs">
+      <DependentUpon>CustomerRecordsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
@@ -117,7 +120,7 @@
     </Page>
     <Compile Include="Animals\QurantinePage.xaml.cs">
       <DependentUpon>QurantinePage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Animals\MedicalRecordListPage.xaml.cs">
       <DependentUpon>MedicalRecordListPage.xaml</DependentUpon>
     </Compile>
@@ -198,7 +201,7 @@
     </Compile>
     <Compile Include="Shelters\ShelterNetworkPage.xaml.cs">
       <DependentUpon>ShelterNetworkPage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
       <DependentUpon>AddEditViewFundraisingCampaignPage.xaml</DependentUpon>
     </Compile>
@@ -321,13 +324,17 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
-	 <Compile Include="Development\Management\AddEditSchedule.xaml.cs">
-		  <DependentUpon>AddEditSchedule.xaml</DependentUpon>
-	 </Compile>
-	 <Page Include="Development\Management\AddEditSchedule.xaml">
-		  <SubType>Designer</SubType>
-		  <Generator>MSBuild:Compile</Generator>
-	 </Page>
+    <Compile Include="Development\Management\AddEditSchedule.xaml.cs">
+      <DependentUpon>AddEditSchedule.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Community\CustomerRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\AddEditSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AddTestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -335,7 +342,7 @@
     <Page Include="Animals\QurantinePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-	</Page>
+    </Page>
     <Page Include="Development\Fundraising\ViewFundraisingEventContacts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -838,7 +845,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-	<None Include="packages.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerFakes\DataAccessLayerFakes.csproj">
@@ -871,8 +878,6 @@
     <Folder Include="Donations\" />
     <Folder Include="Events\" />
     <Folder Include="Images\Icons\" />
-	<Folder Include="Development\Shelters\" />
-	<Folder Include="Shelters\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\petnetLogo.png">

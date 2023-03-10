@@ -58,7 +58,8 @@ namespace DataAccessLayerFakes
                 Phone = "319-123-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>()
+                Roles = new List<string>(),
+                AdoptionRecords = new List<UsersAdoptionRecords>()
             });
             fakeUsers.Add(new UsersVM()
             {
@@ -72,7 +73,8 @@ namespace DataAccessLayerFakes
                 Phone = "319-789-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>()
+                Roles = new List<string>(),
+                AdoptionRecords = new List<UsersAdoptionRecords>()
             });
             fakeUsers.Add(new UsersVM()
             {
@@ -86,7 +88,8 @@ namespace DataAccessLayerFakes
                 Phone = "319-567-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>()
+                Roles = new List<string>(),
+                AdoptionRecords = new List<UsersAdoptionRecords>()
             });
             fakeUsers.Add(new UsersVM()
             {
@@ -100,7 +103,8 @@ namespace DataAccessLayerFakes
                 Phone = "319-321-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>()
+                Roles = new List<string>(),
+                AdoptionRecords = new List<UsersAdoptionRecords>()
             });
             fakeUsers.Add(new UsersVM()
             {
@@ -113,7 +117,8 @@ namespace DataAccessLayerFakes
                 Phone = "319-594-3138",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>() { "Helpdesk", "Marketing", "Admin" }
+                Roles = new List<string>() { "Helpdesk", "Marketing", "Admin" },
+                AdoptionRecords = new List<UsersAdoptionRecords>()
             });
             fakeUsers.Add(new UsersVM()
             {
@@ -126,7 +131,8 @@ namespace DataAccessLayerFakes
                 Phone = "319-111-2222",
                 Active = true,
                 Suspend = true,
-                Roles = new List<string>() { "Vet", "Maintenance", "Admin" }
+                Roles = new List<string>() { "Vet", "Maintenance", "Admin" },
+                AdoptionRecords = new List<UsersAdoptionRecords>()
             });
 
             //one user test requires 3 volunteers - if more volunteer roles are added if will cause it to fail -  Barry
@@ -147,6 +153,49 @@ namespace DataAccessLayerFakes
             fakePronouns.Add("They/Them");
             fakePronouns.Add("Any/All");
 
+            // Fakes for the adoption record functionaly (Refered to as CustomerRecords in the drive and github) - Teft
+            fakeUsers[0].AdoptionRecords.Add(new UsersAdoptionRecords()
+            {
+                animalName = "Tom",
+                animalSpecies = "Cat",
+                animalBreed = "Norwegian Forest Cat",
+                oldAnimalId = 100032
+            });
+            fakeUsers[0].AdoptionRecords.Add(new UsersAdoptionRecords()
+            {
+                animalName = "Tina",
+                animalSpecies = "Dog",
+                animalBreed = "Golden Retriever",
+                oldAnimalId = 100033
+            });
+            fakeUsers[0].AdoptionRecords.Add(new UsersAdoptionRecords()
+            {
+                animalName = "Deek",
+                animalSpecies = "Rat",
+                animalBreed = "Rat",
+                oldAnimalId = 100034
+            });
+            fakeUsers[1].AdoptionRecords.Add(new UsersAdoptionRecords()
+            {
+                animalName = "Mort",
+                animalSpecies = "Chicken",
+                animalBreed = "Big Chicken",
+                oldAnimalId = 100035
+            });
+            fakeUsers[1].AdoptionRecords.Add(new UsersAdoptionRecords()
+            {
+                animalName = "Thomas",
+                animalSpecies = "Fish",
+                animalBreed = "Goldfish",
+                oldAnimalId = 100036
+            });
+            fakeUsers[1].AdoptionRecords.Add(new UsersAdoptionRecords()
+            {
+                animalName = "Bart",
+                animalSpecies = "Ferret",
+                animalBreed = "Longest Ferret",
+                oldAnimalId = 100037
+            });
         }
 
         /// <summary>
@@ -549,6 +598,37 @@ namespace DataAccessLayerFakes
             return result;
             //return 2; // green test
             //throw new NotImplementedException(); // red test
+        }
+
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/02/03
+        /// 
+        /// Selects a user's past adoption records by their user id.
+        /// </summary>
+        ///
+        /// <remarks>
+        ///
+        /// </remarks>
+        public List<UsersAdoptionRecords> SelectAdoptionRecordsByUserID(int usersId)
+        {
+            List<UsersAdoptionRecords> usersAdoptionRecords = new List<UsersAdoptionRecords>();
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                if (fakeUser.UsersId == usersId)
+                {
+                    foreach (var fakeRecord in fakeUser.AdoptionRecords)
+                    {
+                        usersAdoptionRecords.Add(fakeRecord);
+                    }
+                }
+                if (fakeUser == null)
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            return usersAdoptionRecords;
         }
     }
 }
