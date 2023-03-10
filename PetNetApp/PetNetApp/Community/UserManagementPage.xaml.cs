@@ -108,6 +108,16 @@ namespace WpfPresentation.Community
                             ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemActivate);
                         }
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu.IsOpen = true;
+
+                        // Customer records option.
+
+                        MenuItem menuItemCustomerRecords = new MenuItem()
+                        { Header = "Customer Records" };
+                        menuItemCustomerRecords.Click += (object1, args) => menuItem_CustomerRecords_Click(user);
+                        ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemCustomerRecords);
+
+                        // Return statement.
+
                         return;
                     };
             if(index % 2 == 0)
@@ -121,6 +131,16 @@ namespace WpfPresentation.Community
                 ucPreviewUser.Background = (Brush)bc.ConvertFrom("#EEF2E6");
             }
             stpUsersList.Children.Add(ucPreviewUser);
+        }
+
+        /// <summary>
+        /// Created by Teft Francisco
+        /// Created: 2023/03/03
+        /// Button will navigate to the user's customer records.
+        /// </summary>
+        private void menuItem_CustomerRecords_Click(Users user)
+        {
+            NavigationService.Navigate(new CustomerRecordsPage(user));
         }
 
         private void usersProfile_MouseClick()

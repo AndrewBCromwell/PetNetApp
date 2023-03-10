@@ -11,6 +11,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
 sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -37,6 +38,10 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AnimalDOD513-514_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_user_by_roleId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_date_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_userId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddSchedule_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditSchedule_SP.sql
+
+
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_user_creation.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddRole_to_User_SP.sql
 
@@ -70,10 +75,22 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewUpdatesFromFosterProfile_S
 sqlcmd -S localhost -E -i StoredProceduresScripts\ImageManagement_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonations_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddTicket.sql
+
+
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertTestByMedicalRecordId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertTestMedicalRecordByAnimalId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateQuarantineStatusByMedicalRecordId_SP.sql
+
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
 
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordList.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordDetailsByMedicalRecordId.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditExamNotes_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewExamNotes_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddExamNotes_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\CustomerRecords_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

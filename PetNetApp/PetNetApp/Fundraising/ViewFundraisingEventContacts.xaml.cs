@@ -225,8 +225,8 @@ namespace WpfPresentation.Fundraising
                 _fundraisingEventContacts = _masterManager.InstitutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndEntityType((int)_masterManager.User.ShelterId, _entityType);
 
                 //TODO: comment out the following 2 lines and uncomment the above line if copying to live
-                //InstitutionalEntityManager _im = new InstitutionalEntityManager(new InstitutionalEntityAccessorFakes());
-                //_fundraisingEventContacts = _im.RetrieveAllInstitutionalEntitiesByShelterIdAndEntityType((int)_masterManager.User.ShelterId, _contactType);
+                //InstitutionalEntityManager _im = new InstitutionalEntityManager(new InstitutionalEntityAccessorFake());
+                //_fundraisingEventContacts = _im.RetrieveAllInstitutionalEntitiesByShelterIdAndEntityType((int)_masterManager.User.ShelterId, _entityType);
             }
             catch (ApplicationException ex)
             {

@@ -37,23 +37,22 @@ namespace LogicLayer
             _scheduleAccessor = scheduleAccessor;
         }
 
+        public bool AddSchedulebyUserId(ScheduleVM scheduleVM)
+        {
+            bool wasAdded = false;
 
+            try
+            {
+                wasAdded = 0 < _scheduleAccessor.InsertSchedulebyUserid(scheduleVM);
+            }
+            catch (Exception ex)
+            {
 
-        /// <summary>
-        /// Chris Dreismeier
-        /// Created: 2023/02/09
-        /// 
-        /// Retrieves all people schedule on passed day from the accessor
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="selectedDate">The date that you want to all people schedules</param>
-        /// <exception cref="SQLException">Data failed to be retrieved</exception>
-        /// <returns>List of Schedules</returns>	
+                throw ex;
+            }
+
+            return wasAdded;
+        }
         public List<ScheduleVM> RetrieveScheduleByDate(DateTime selectedDate)
         {
             List<ScheduleVM> schedules = null;
@@ -68,22 +67,6 @@ namespace LogicLayer
             }
             return schedules;
         }
-
-        /// <summary>
-        /// Chris Dreismeier
-        /// Created: 2023/02/17
-        /// 
-        /// Retrieves the schedule of the person passed through
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="userId">The Id of the user for whose schedule you looking for</param>
-        /// <exception cref="SQLException">Data failed to be retrieved</exception>
-        /// <returns>List of Schedules</returns>
         public List<ScheduleVM> RetrieveScheduleByUserId(int userId)
         {
             List<ScheduleVM> schedules = null;
@@ -97,6 +80,22 @@ namespace LogicLayer
                 throw new ApplicationException("Error Retrieving schedule data.", ex);
             }
             return schedules;
+        }
+
+        public bool EditScheduleVM(ScheduleVM oldSchedule, ScheduleVM newSchedule)
+        {
+            bool wasUpdated = false;
+
+            try
+            {
+                wasUpdated = 0 < _scheduleAccessor.UpdateScheduleVM(oldSchedule,newSchedule);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to update schedule", ex);
+            }
+
+            return wasUpdated;
         }
     }
 }

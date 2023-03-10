@@ -127,6 +127,19 @@ namespace DataAccessLayerFakes
             }
         }
 
+        public ProcedureVM SelectProcedureByMedicalRecordId(int medicalRecordId)
+        {
+            ProcedureVM procedure = null;
+            foreach(var vm in fakeProcedures)
+            {
+                if(vm.MedicalRecordId == medicalRecordId)
+                {
+                    procedure = vm;
+                }
+            }
+            return procedure;
+        }
+
         /// <summary>
         /// Andrew Cromwell
         /// Created: 2023/02/15

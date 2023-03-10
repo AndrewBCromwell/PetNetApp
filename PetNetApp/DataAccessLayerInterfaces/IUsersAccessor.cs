@@ -97,5 +97,15 @@ namespace DataAccessLayerInterfaces
         /// <param name="roleId"></param>
         /// <returns>int count of accounts</returns>
         int SelectCountActiveUnsuspendedUsersByRole(string roleId);
+
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/03/03
+        /// 
+        /// Takes a user's user id and returns previous adoption records associated with that user.
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns>int count of accounts</returns>
+        List<UsersAdoptionRecords> SelectAdoptionRecordsByUserID(int usersId);
     }
 }

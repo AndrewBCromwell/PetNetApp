@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataObjects;
-using LogicLayerInterfaces;
-/// <summary>
+﻿/// <summary>
 /// Barry Mikulas
 /// Created: 2023/03/01
 /// 
@@ -17,13 +10,15 @@ using LogicLayerInterfaces;
 /// Updated: 
 /// Comments:
 /// </remarks>
-using DataAccessLayer;
-using DataAccessLayerInterfaces;
-using DataObjects;
-using LogicLayerInterfaces;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DataObjects;
+using LogicLayerInterfaces;
+using DataAccessLayer;
+using DataAccessLayerInterfaces;
 
 namespace LogicLayer
 {

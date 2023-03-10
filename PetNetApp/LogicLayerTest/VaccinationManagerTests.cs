@@ -16,15 +16,18 @@ using LogicLayer;
 using DataAccessLayerFakes;
 using DataObjects;
 using System.Collections.Generic;
+using LogicLayerInterfaces;
+
 namespace LogicLayerTest
 {
     
     [TestClass]
     public class VaccinationManagerTests
     {
-        VaccinationManager vaccinationManager = null;
+        private IVaccinationManager vaccinationManager = null;
+
         [TestInitialize]
-        public void TestUp()
+        public void TestSetup()
         {
             vaccinationManager = new VaccinationManager(new VaccinationAccessorFake());
         }
@@ -96,6 +99,16 @@ namespace LogicLayerTest
             bool actualResult = vaccinationManager.EditVaccination(testOldVaccination, testVaccination);
             Assert.AreEqual(expectedResult, actualResult);
 
+        }
+
+        [TestMethod]
+        public void TestSelectVaccinationByMedicalRecordId()
+        {
+            int medicalRecordId = 666;
+            int expectedVaccinationId = 666;
+            int actualVaccinationId = vaccinationManager.RetrieveVaccinationByMedicalRecordId(medicalRecordId).VaccineId;
+            
+            Assert.AreEqual(expectedVaccinationId, actualVaccinationId);
         }
 
     }

@@ -27,7 +27,7 @@ INSERT INTO [dbo].[Applicant]
 	([UsersId],[ApplicantGivenName],[ApplicantFamilyName], [ApplicantAddress], [ApplicantZipCode], [ApplicantPhoneNumber], 
     [ApplicantEmail], [HomeTypeId], [HomeOwnershipId], [NumberOfChildren], [NumberOfPets], [CurrentlyAcceptingAnimals])
 	VALUES
-    (100000, 'Stephen', 'Jaurige', '100 Eve', '50001', '123456789', 'userEmail@gmail.com', 'Apartment', 'Renting', '1', '3', 1)
+    (100001, 'Stephen', 'Jaurige', '100 Eve', '50001', '123456789', 'userEmail@gmail.com', 'Apartment', 'Renting', '1', '3', 1)
 GO
 
 print '' print '*** Inserting sample FosterPlacement data'
