@@ -18,7 +18,7 @@ namespace DataObjects
         public int ShelterId { get; set; }
         public string ShelterName { get; set; }
         public string Address { get; set; }
-        public string AddressTwo { get; set; }
+        public string Address2 { get; set; }
         public string ZipCode { get; set; } // This is stored in the DB as an nvarchar, so leaving it as a string here
         public string Phone { get; set; }   // This is stored in the DB as an nvarchar, so leaving it as a string here
         public string Email { get; set; }

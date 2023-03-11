@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <Label x:Name="lblAnimalId" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20 0"/>
         <Label Content="Tests" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Grid.Row="1"/>
-        <Button x:Name="btnAddTest" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20 0" Grid.Row="1" Width="150" Height="50" Content="Add"/>
+        <Button x:Name="btnAddTest" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20 0" Grid.Row="1" Width="150" Height="50" Content="Add" Click="btnAddTest_Click"/>
         <DataGrid HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Margin="20" x:Name="dgTests" AutoGenerateColumns="False" SelectionMode="Single" MouseDoubleClick="dgTests_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding TestName}" Header="Test Name" Width="1*"></DataGridTextColumn>
@@ -27,5 +27,6 @@
                 <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding TestNotes}" Header="Notes" Width="2*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Frame x:Name="frmTests" Grid.RowSpan="3" Margin="10,10,0,0"/>
     </Grid>
 </Page>

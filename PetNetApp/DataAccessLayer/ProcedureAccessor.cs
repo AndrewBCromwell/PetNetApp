@@ -77,6 +77,48 @@ namespace DataAccessLayer
             return rows;
         }
 
+        public ProcedureVM SelectProcedureByMedicalRecordId(int medicalRecordId)
+        {
+            ProcedureVM procedure = null;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_procedure_by_medical_record_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@MedicalRecordId", SqlDbType.Int).Value = medicalRecordId;
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        procedure = new ProcedureVM()
+                        {
+                            ProcedureId = reader.GetInt32(0),
+                            MedicalRecordId = reader.GetInt32(1),
+                            UserId = reader.GetInt32(2),
+                            ProcedureName = reader.GetString(3),
+                            MedicationsAdministered = reader.IsDBNull(4) ? null : reader.GetString(4),
+                            ProcedureNotes = reader.IsDBNull(5) ? null : reader.GetString(5),
+                            ProcedureDate = reader.GetDateTime(6)
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return procedure;
+        }
+
         /// <summary>
         /// Andrew Cromwell
         /// Created: 2023/02/16

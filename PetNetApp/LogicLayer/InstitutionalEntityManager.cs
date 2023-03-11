@@ -1,4 +1,16 @@
-﻿using System;
+﻿/// <summary>
+/// Barry Mikulas
+/// Created: 2023/03/01
+/// 
+/// Methods for Institutional Entity 
+/// </summary>
+///
+/// <remarks>
+/// Updater
+/// Updated: 
+/// Comments:
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +31,10 @@ namespace LogicLayer
     /// </summary>
     public class InstitutionalEntityManager : IInstitutionalEntityManager
     {
+        
         private IInstitutionalEntityAccessor _institutionalEntityAccessor = null;
+
+
         public InstitutionalEntityManager()
         {
             _institutionalEntityAccessor = new InstitutionalEntityAccessor();
@@ -55,6 +70,60 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to load sponsors", ex);
             }
             return sponsors;
+        }
+        public List<InstitutionalEntity> RetrieveAllInstitutionalEntitiesByShelterIdAndEntityType(int shelterId, string entityType)
+        {
+            List<InstitutionalEntity> institutionalEntities = new List<InstitutionalEntity>();
+            try
+            {
+                institutionalEntities = _institutionalEntityAccessor.SelectAllInstitutionalEntitiesByShelterIdAndEntityType(shelterId, entityType);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return institutionalEntities;
+        }
+
+        public InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
+        {
+            InstitutionalEntity institutionalEntity = new InstitutionalEntity();
+            try
+            {
+                institutionalEntity = _institutionalEntityAccessor.SelectInstitutionalEntityByInstitutionalEntityId(institutionalEntityId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Entity record not found.", ex);
+            }
+            return institutionalEntity;
+        }
+
+        public bool AddInstitutionalEntity(InstitutionalEntity institutionalEntity)
+        {
+            int id = 0;
+            try
+            {
+                id = _institutionalEntityAccessor.InsertInstitutionalEntity(institutionalEntity);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Entity record failed to be added", ex);
+            }
+            return id != 0;
+        }
+
+        public bool EditInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
+        {
+            try
+            {
+                return 1 == _institutionalEntityAccessor.UpdateInstitutionalEntity(oldEntity, newEntity);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while updating record.", ex);
+            }
         }
     }
 }

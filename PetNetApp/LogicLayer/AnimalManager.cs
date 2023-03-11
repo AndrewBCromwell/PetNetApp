@@ -55,7 +55,7 @@ namespace LogicLayer
         }
             return animals;
         }
-      
+
         public AnimalVM RetrieveAnimalByAnimalId(int animalId, int shelterId)
         {
             /*
@@ -73,7 +73,8 @@ namespace LogicLayer
                 throw new ApplicationException("Animal record not found.", ex);
             }
             return animalVM;
-            }
+        }
+
 
         public Dictionary<string, List<string>> RetrieveAllAnimalBreeds()
         {

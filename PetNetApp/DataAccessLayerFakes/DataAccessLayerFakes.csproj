@@ -48,6 +48,7 @@
     <Compile Include="DonationAccessorFake.cs" />
     <Compile Include="FundraisingCampaignAccessorFake.cs" />
     <Compile Include="FundraisingFakeData.cs" />
+    <Compile Include="FundraisingEventAccessorFakes.cs" />
     <Compile Include="ImagesAccessorFakes.cs" />
     <Compile Include="ShelterItemTransactionAccessorFakes.cs" />
     <Compile Include="InstitutionalEntityAccessorFake.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="ShelterAccessorFakes.cs" />
     <Compile Include="UsersAccessorFakes.cs" />
     <Compile Include="VaccinationAccessorFake.cs" />
+    <Compile Include="ZipcodeAccessorFakes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerInterfaces\DataAccessLayerInterfaces.csproj">

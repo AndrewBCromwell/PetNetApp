@@ -78,7 +78,7 @@ namespace DataAccessLayer
                         user.FamilyName = reader.GetString(5);
                         user.Email = reader.GetString(6);
                         user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
-                        user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
+                        user.Address2 = reader.IsDBNull(8) ? null : reader.GetString(8);
                         user.Zipcode = reader.GetString(9);
                         user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                         user.CreationDate = reader.GetDateTime(11);
@@ -134,7 +134,7 @@ namespace DataAccessLayer
                 {
                     UsersVM user = new UsersVM();
                     // [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName],
-                    // [Email], [PasswordHash], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], 
+                    // [Email], [PasswordHash], [Address], [Address2], [Zipcode], [Phone], [CreationDate], 
                     // [Active], [Suspended]
 
                     user.UsersId = reader.GetInt32(0);
@@ -145,7 +145,7 @@ namespace DataAccessLayer
                     user.FamilyName = reader.GetString(5);
                     user.Email = reader.GetString(6);
                     user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
-                    user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
+                    user.Address2 = reader.IsDBNull(8) ? null : reader.GetString(8);
                     user.Zipcode = reader.GetString(9);
                     user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                     user.CreationDate = reader.GetDateTime(11);
@@ -273,7 +273,7 @@ namespace DataAccessLayer
                     }
                     else
                     {
-                        user.AddressTwo = reader.GetString(8);
+                        user.Address2 = reader.GetString(8);
                     }
                 }
                 reader.Close();
@@ -580,7 +580,7 @@ namespace DataAccessLayer
                         user.Email = reader.GetString(6);
                         //user.PasswordHash = reader.GetString(7);
                         user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
-                        user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
+                        user.Address2 = reader.IsDBNull(8) ? null : reader.GetString(8);
                         user.Zipcode = reader.GetString(10);
                         user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                         user.CreationDate = reader.GetDateTime(12);
@@ -652,7 +652,7 @@ namespace DataAccessLayer
                     user.FamilyName = reader.GetString(5);
                     user.Email = reader.GetString(6);
                     user.Address = reader.GetString(7);
-                    user.AddressTwo = reader.GetString(8);
+                    user.Address2 = reader.GetString(8);
                     user.Zipcode = reader.GetString(9);
                     user.Phone = reader.GetString(10);
                     user.CreationDate = reader.GetDateTime(11);
@@ -723,7 +723,7 @@ namespace DataAccessLayer
 
         /// <summary>
         /// [Mads Rhea - 2023/02/15]
-        /// Injects updated user info into the Users table where the UsersId, GivenName, FamilyName, GenderId, PronounId, Address, AddressTwo, Phone, and Zipcode match.
+        /// Injects updated user info into the Users table where the UsersId, GivenName, FamilyName, GenderId, PronounId, Address, Address2, Phone, and Zipcode match.
         /// </summary>
         /// <returns>int</returns>
         public int UpdateUserDetails(Users oldUser, Users updatedUser)
@@ -745,7 +745,7 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@OldGenderId", oldUser.GenderId);
             cmd.Parameters.AddWithValue("@OldPronounId", oldUser.PronounId);
             cmd.Parameters.AddWithValue("@OldAddress", oldUser.Address);
-            cmd.Parameters.AddWithValue("@OldAddressTwo", oldUser.AddressTwo);
+            cmd.Parameters.AddWithValue("@OldAddress2", oldUser.Address2);
             cmd.Parameters.AddWithValue("@OldPhone", oldUser.Phone);
             cmd.Parameters.AddWithValue("@OldZipcode", oldUser.Zipcode);
 
@@ -759,8 +759,8 @@ namespace DataAccessLayer
             cmd.Parameters["@NewPronounId"].Value = updatedUser.PronounId;
             cmd.Parameters.Add("@NewAddress", SqlDbType.NVarChar, 50);
             cmd.Parameters["@NewAddress"].Value = updatedUser.Address;
-            cmd.Parameters.Add("@NewAddressTwo", SqlDbType.NVarChar, 50);
-            cmd.Parameters["@NewAddressTwo"].Value = updatedUser.AddressTwo;
+            cmd.Parameters.Add("@NewAddress2", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@NewAddress2"].Value = updatedUser.Address2;
             cmd.Parameters.Add("@NewPhone", SqlDbType.NVarChar, 13);
             cmd.Parameters["@NewPhone"].Value = updatedUser.Phone;
             cmd.Parameters.Add("@NewZipcode", SqlDbType.Char, 9);
@@ -959,6 +959,61 @@ namespace DataAccessLayer
 
             return roleCount;
             // throw new NotImplementedException();
+        }
+
+        public List<UsersAdoptionRecords> SelectAdoptionRecordsByUserID(int usersId)
+        {
+            var adoptionRecordsList = new List<UsersAdoptionRecords>();
+
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdtext = "sp_select_adoption_records_by_user_id";
+
+            var cmd = new SqlCommand(cmdtext, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+
+            cmd.Parameters["@UsersId"].Value = usersId;
+
+
+
+            try
+            {
+
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var adoptionRecords = new UsersAdoptionRecords();
+
+                        adoptionRecords.animalName = reader.GetString(0);
+                        adoptionRecords.animalSpecies = reader.GetString(1);
+                        adoptionRecords.animalBreed = reader.GetString(2);
+                        adoptionRecords.oldAnimalId = reader.GetInt32(3);
+
+                        adoptionRecordsList.Add(adoptionRecords);
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return adoptionRecordsList;
         }
     }
 

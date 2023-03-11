@@ -25,5 +25,16 @@ namespace LogicLayerInterfaces
         bool AddProcedureByMedicalRecordId(Procedure procedure, int medicalRecordId);
         bool EditProcedureByProcedureId(Procedure procedure, Procedure oldProcedure);
         List<ProcedureVM> RetrieveProceduresByAnimalId(int animalId);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/03/10
+        /// 
+        /// Calls the Accessor method to retrieve the procedure associated with the specified medical record
+        /// </summary>
+        /// <param name="medicalRecordId">The ID of the medical record to get procedure for</param>
+        /// <exception cref="ApplicationException">If the retrieval fails</exception>
+        /// <returns>A ProcedureVM object for the medical record</returns>
+        ProcedureVM RetrieveProcedureByMedicalRecordId(int medicalRecordId);
     }
 }

@@ -257,7 +257,7 @@ namespace PetNetApp
         }
         private void ShowSheltersButtonByRoles()
         {
-            string[] allowedRoles = { "Admin", "Manager" };
+            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnShelters.Visibility = Visibility.Visible;

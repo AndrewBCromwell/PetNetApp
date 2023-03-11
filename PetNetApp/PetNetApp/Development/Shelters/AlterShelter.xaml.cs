@@ -123,9 +123,9 @@ namespace WpfPresentation.Development.Shelters
             lblShelterAddress.Content += " (Required)";
             txtShelterAddress.IsReadOnly = false;
             txtShelterAddress.Text = _currentShelter.Address;
-            lblShelterAddressTwo.Content += " (Optional)";
-            txtShelterAddressTwo.IsReadOnly = false;
-            txtShelterAddressTwo.Text = _currentShelter.AddressTwo;
+            lblShelterAddress2.Content += " (Optional)";
+            txtShelterAddress2.IsReadOnly = false;
+            txtShelterAddress2.Text = _currentShelter.Address2;
             lblShelterPhone.Content += " (Optional)";
             txtShelterPhone.IsReadOnly = false;
             txtShelterPhone.Text = _currentShelter.Phone;
@@ -172,8 +172,8 @@ namespace WpfPresentation.Development.Shelters
 
             txtShelterAddress.IsReadOnly = true;
             txtShelterAddress.Text = _currentShelter.Address;
-            txtShelterAddressTwo.IsReadOnly = true;
-            txtShelterAddressTwo.Text = _currentShelter.AddressTwo;
+            txtShelterAddress2.IsReadOnly = true;
+            txtShelterAddress2.Text = _currentShelter.Address2;
             txtShelterPhone.IsReadOnly = true;
             txtShelterPhone.Text = _currentShelter.Phone;
             txtShelterEmail.IsReadOnly = true;
@@ -229,9 +229,9 @@ namespace WpfPresentation.Development.Shelters
             lblShelterAddress.Content += " (Required)";
             txtShelterAddress.IsReadOnly = false;
             txtShelterAddress.Text = _currentShelter.Address;
-            lblShelterAddressTwo.Content += " (Optional)";
-            txtShelterAddressTwo.IsReadOnly = false;
-            txtShelterAddressTwo.Text = _currentShelter.AddressTwo;
+            lblShelterAddress2.Content += " (Optional)";
+            txtShelterAddress2.IsReadOnly = false;
+            txtShelterAddress2.Text = _currentShelter.Address2;
             lblShelterPhone.Content += " (Optional)";
             txtShelterPhone.IsReadOnly = false;
             txtShelterPhone.Text = _currentShelter.Phone;
@@ -285,7 +285,7 @@ namespace WpfPresentation.Development.Shelters
                     {
                         shelterError = "Failed to add shelter.";
                         bool sucessfullyAddedShelter = _shelterManager.AddShelter(
-                            txtShelterName.Text, txtShelterAddress.Text, txtShelterAddressTwo.Text,
+                            txtShelterName.Text, txtShelterAddress.Text, txtShelterAddress2.Text,
                             txtShelterZipCode.Text, txtShelterPhone.Text, txtShelterEmail.Text, txtShelterAreasOfNeed.Text,
                             (bool)radioActivate.IsChecked
                             );
@@ -303,8 +303,8 @@ namespace WpfPresentation.Development.Shelters
                         bool updatedShelterName = _shelterManager.EditShelterName(_currentShelter, txtShelterName.Text);
                         // Address
                         bool updatedAddress = _shelterManager.EditAddress(_currentShelter, txtShelterAddress.Text);
-                        // AddressTwo
-                        bool updatedAddressTwo = _shelterManager.EditAddressTwo(_currentShelter, txtShelterAddressTwo.Text);
+                        // Address2
+                        bool updatedAddress2 = _shelterManager.EditAddress2(_currentShelter, txtShelterAddress2.Text);
                         // Zipcode
                         bool updatedZipcode = _shelterManager.EditZipCode(_currentShelter, txtShelterZipCode.Text);
                         // Phone
@@ -349,9 +349,9 @@ namespace WpfPresentation.Development.Shelters
             {
                 errorMessage.Append("\n\nInvalid Shelter Address");
             }
-            if (!txtShelterAddressTwo.Text.IsValidAddress2())   // This field is optional
+            if (!txtShelterAddress2.Text.IsValidAddress2())   // This field is optional
             {
-                if (!txtShelterAddressTwo.Text.Equals("") && txtShelterAddressTwo.Text != null)
+                if (!txtShelterAddress2.Text.Equals("") && txtShelterAddress2.Text != null)
                 {
                     errorMessage.Append("\n\nInvalid Shelter Address Two");
                 }

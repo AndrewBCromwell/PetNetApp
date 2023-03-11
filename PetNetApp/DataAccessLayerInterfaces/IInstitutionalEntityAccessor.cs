@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DataAccessLayerInterfaces
 {
     public interface IInstitutionalEntityAccessor
@@ -27,5 +28,76 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         /// <returns></returns>
         List<InstitutionalEntity> SelectAllSponsors();
+
+        /// <summary>
+        /// Asa Armstrong
+        /// Created: 2023/03/01
+        /// 
+        /// Selects all Institutional Entities for a shelter.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Asa Armstrong
+        /// Updated: 2023/03/01
+        /// Created
+        /// </remarks>
+        /// <param name="shelterId">int</param>
+        /// <param name="entityType">type of entity to select</param>
+        /// <exception cref="SQLException">Select fails.</exception>
+        /// <returns>List<InstitutionalEntity></returns>
+        List<InstitutionalEntity> SelectAllInstitutionalEntitiesByShelterIdAndEntityType(int shelterId, string entityType);
+
+        /// <summary>
+        /// Asa Armstrong
+        /// Created: 2023/03/01
+        /// 
+        /// Selects an Institutional Entity by its Id.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Asa Armstrong
+        /// Updated: 2023/03/01
+        /// Created
+        /// </remarks>
+        /// <param name="InstitutionalEntityId">int</param>
+        /// <exception cref="SQLException">Select fails.</exception>
+        /// <returns>InstitutionalEntityId</returns>
+        InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId);
+
+        /// <summary>
+        /// Andrew
+        /// Created: 3/9/2023
+        /// 
+        /// Inserts institutional entity into the database
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater name:
+        /// Updated: date
+        /// Comments:
+        /// </remarks>
+        /// <param name="institutionalEntity">The Institutional Entity to be added</param>
+        /// <exception cref="ApplicationException">Insert Fails</exception>
+        /// <returns>New institutional entity Id</returns>
+        int InsertInstitutionalEntity(InstitutionalEntity institutionalEntity);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/09
+        /// 
+        /// Updates an institutional entity record using an "old" entity
+        /// object and a "new" edited entity object
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="oldEntity">Entity object holding old data</param>
+        /// <param name="newEntity">Entity object holding new edited data</param>
+        /// <exception cref="ApplicationException">Update Fails</exception>
+        int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity);
+
     }
 }
