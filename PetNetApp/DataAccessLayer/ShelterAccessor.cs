@@ -48,7 +48,7 @@ namespace DataAccessLayer
                             shelter.ShelterId = Convert.ToInt32(reader["ShelterId"]);
                             shelter.ShelterName = Convert.ToString(reader["ShelterName"]);
                             shelter.Address = Convert.ToString(reader["Address"]);
-                            shelter.Address2 = Convert.ToString(reader["Address2"]);
+                            shelter.Address2 = Convert.ToString(reader["AddressTwo"]);
                             shelter.ZipCode = Convert.ToString(reader["Zipcode"]);
                             shelter.Phone = Convert.ToString(reader["Phone"]);
                             shelter.Email = Convert.ToString(reader["Email"]);
@@ -176,7 +176,7 @@ namespace DataAccessLayer
                             shelter.ShelterId = Convert.ToInt32(reader["ShelterId"]);
                             shelter.ShelterName = Convert.ToString(reader["ShelterName"]);
                             shelter.Address = Convert.ToString(reader["Address"]);
-                            shelter.Address2 = Convert.ToString(reader["Address2"]);
+                            shelter.Address2 = Convert.ToString(reader["AddressTwo"]);
                             shelter.ZipCode = Convert.ToString(reader["Zipcode"]);
                             shelter.Phone = Convert.ToString(reader["Phone"]);
                             shelter.Email = Convert.ToString(reader["Email"]);
