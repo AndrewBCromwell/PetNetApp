@@ -120,6 +120,9 @@
     <Compile Include="Management\Inventory\ViewShelterInventoryPage.xaml.cs">
       <DependentUpon>ViewShelterInventoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\ViewTicketPage.xaml.cs">
+      <DependentUpon>ViewTicketPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
     </Compile>
@@ -478,6 +481,11 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Management\Inventory\ViewShelterInventoryPage.xaml">
+		  <SubType>Designer</SubType>
+		  <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	
+    <Page Include="Management\ViewTicketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

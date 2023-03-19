@@ -217,5 +217,34 @@ namespace WpfPresentation.Management
         {
             NavigationService.Navigate(new CreateNewTicket(_masterManager));
         }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/03/16
+        /// 
+        /// Opens ticket information when ticket
+        /// button is clicked
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void btnTicket_Click(object sender, RoutedEventArgs e)
+        {
+            DataGrid dataGrid = datTickList;
+            DataGridRow Row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
+            DataGridCell RowAndColumn = (DataGridCell)dataGrid.Columns[0].GetCellContent(Row).Parent;
+            string CellValue = ((TextBlock)RowAndColumn.Content).Text;
+
+            foreach (TicketVM ticketVM in _ticketVMs)
+            {
+                if (ticketVM.TicketId == Int32.Parse(CellValue))
+                {
+                    frmTicketViewPage.Navigate(new ViewTicketPage(ticketVM));
+                }
+            }
+        }
     }
 }
