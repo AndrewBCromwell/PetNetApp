@@ -50,8 +50,10 @@
     <Compile Include="IFundraisingEventManager.cs" />
     <Compile Include="IImagesManager.cs" />
     <Compile Include="IInstitutionalEntityManager.cs" />
+    <Compile Include="IItemManager.cs" />
     <Compile Include="IKennelManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
+    <Compile Include="IShelterInventoryItemManager.cs" />
     <Compile Include="IProcedureManager.cs" />
     <Compile Include="IRoleManager.cs" />
     <Compile Include="IScheduleManager.cs" />

@@ -53,6 +53,7 @@
     <Compile Include="Images.cs" />
     <Compile Include="InKind.cs" />
     <Compile Include="InstitutionalEntity.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Kennel.cs" />
     <Compile Include="Procedure.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Role.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Shelter.cs" />
+    <Compile Include="ShelterInventoryItem.cs" />
     <Compile Include="ShelterItemTransaction.cs" />
     <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="Test.cs" />

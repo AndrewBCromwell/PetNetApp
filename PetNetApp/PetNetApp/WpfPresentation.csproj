@@ -111,6 +111,15 @@
     <Compile Include="Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
+      <DependentUpon>InventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewEditShelterInventoryItem.xaml.cs">
+      <DependentUpon>ViewEditShelterInventoryItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewShelterInventoryPage.xaml.cs">
+      <DependentUpon>ViewShelterInventoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
     </Compile>
@@ -452,6 +461,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Management\Inventory\InventoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\ViewEditShelterInventoryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -459,6 +476,10 @@
     <Page Include="Fundraising\ViewFundraisingEventsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\Inventory\ViewShelterInventoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Misc\AccountInfoPage.xaml">
       <SubType>Designer</SubType>
