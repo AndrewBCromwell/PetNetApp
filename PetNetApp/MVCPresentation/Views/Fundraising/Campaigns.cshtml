@@ -1,0 +1,33 @@
+﻿@model MVCPresentation.Models.CampaignsViewModel
+
+@{
+    ViewBag.Title = "Campaigns";
+}
+
+<h2>Campaigns</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @{
+            //Dictionary<string, object> htmlAttributes = new Dictionary<string, object>();
+            //htmlAttributes.Add("class", "searchBox");
+            Html.TextBoxFor(model => model.Search);
+        }
+    </div>
+    <div>
+        @Html.EnumDropDownListFor(model => model.SortingMethod)
+    </div>
+    <div>
+        @Html.EnumDropDownListFor(model => model.FilterMethod)
+    </div>
+}
+
+<h3>@Model.Campaigns.Count()</h3>
+<h3>@Model.PagingInfo.TotalItems</h3>
+<h3>@Model.PagingInfo.CurrentPage</h3>
+<h3>@Model.PagingInfo.ItemsPerPage</h3>
+<h3>@Model.PagingInfo.TotalPages</h3>
+
+@Html.PageLinks(Model.PagingInfo, (page) => Url.Action("Campaigns",
+    new { page = page, sort = Model.SortingMethod, filter = Model.FilterMethod, search = Model.Search, shelter = Model.Shelter }))
