@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LogicLayer;
+using DataObjects;
 
 namespace MVCPresentation.Controllers
 {
@@ -11,7 +13,7 @@ namespace MVCPresentation.Controllers
         // GET: Donate
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Donations");
         }
     }
 }

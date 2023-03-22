@@ -21,6 +21,19 @@ namespace LogicLayer
         {
             donationAccessor = da;
         }
+
+        public List<DonationVM> RetrieveAllDonations()
+        {
+            try
+            {
+                return donationAccessor.SelectAllDonations();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve donations", ex);
+            }
+        }
+
         /// <summary>
         /// Author: Gwen Arman
         /// Date: 2023/03/02

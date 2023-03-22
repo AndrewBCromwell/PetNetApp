@@ -26,6 +26,7 @@ namespace DataAccessLayerFakes
                 Anonymous = false,
                 Target = "To help",
                 PaymentMethod = "Cash",
+                ShelterName = "Doggy Care",
                 InKindList = new List<InKind>()
                 {
                     new InKind()
@@ -60,7 +61,8 @@ namespace DataAccessLayerFakes
                 Anonymous = false,
                 Target = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                PaymentMethod = "Cash"
+                PaymentMethod = "Cash",
+                ShelterName = "Kitty Care",
             });
             fakeDonations.Add(new DonationVM
             {
@@ -74,7 +76,8 @@ namespace DataAccessLayerFakes
                 HasInKindDonation = false,
                 Anonymous = false,
                 Target = "To help",
-                PaymentMethod = "Cash"
+                PaymentMethod = "Cash",
+                ShelterName = "Snakey Care",
             });
             fakeDonations.Add(new DonationVM
             {
@@ -88,13 +91,20 @@ namespace DataAccessLayerFakes
                 HasInKindDonation = false,
                 Anonymous = false,
                 Target = "To help",
-                PaymentMethod = "Cash"
+                PaymentMethod = "Cash",
+                ShelterName = "Animal Care",
             });
 
         }
-        public List<DonationVM> SelectDonationsByShelterId(int ShelterId)
+
+        public List<DonationVM> SelectAllDonations()
         {
             return fakeDonations;
+        }
+
+        public List<DonationVM> SelectDonationsByShelterId(int ShelterId)
+        {
+            return fakeDonations.Where(d => d.ShelterId == ShelterId).ToList();
         }
 
         public List<InKind> SelectInKindsByDonationId(int donationId)
