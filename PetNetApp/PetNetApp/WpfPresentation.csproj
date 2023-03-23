@@ -96,6 +96,9 @@
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Fundraising\UpdateFundraisingCampaign.xaml.cs">
+      <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\ViewFundraisingEventContacts.xaml.cs">
       <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
     </Compile>
@@ -343,6 +346,10 @@
       <DependentUpon>AddEditSchedule.xaml</DependentUpon>
     </Compile>
     <Page Include="Community\CustomerRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\UpdateFundraisingCampaign.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1201,6 +1208,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\format_line_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_down_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_up_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh_button_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh_button_light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

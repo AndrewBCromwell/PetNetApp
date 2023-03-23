@@ -83,7 +83,8 @@ namespace WpfPresentation.UserControls
 
         private void menuUpdate_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("Update", "Updating " + FundraisingCampaign.Title);
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new WpfPresentation.Development.Fundraising.UpdateFundraisingCampaign(FundraisingCampaign));
         }
     }
 }

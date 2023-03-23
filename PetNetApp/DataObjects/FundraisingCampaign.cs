@@ -23,7 +23,7 @@ namespace DataObjects
     {
         public List<InstitutionalEntity> Sponsors { get; set; }
         //public List<CampaignUpdate> CampaignUpdates { get; set; }
-        //public List<FundraisingEvent> FundraisingEventList { get; set; }
+        public List<FundraisingEvent> FundraisingEventList { get; set; }
     }
 
     public static class FundraisingCampaignExtensions
