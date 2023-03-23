@@ -4,9 +4,6 @@ using DataObjects;
 using LogicLayerInterfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogicLayer
 {
@@ -31,6 +28,18 @@ namespace LogicLayer
             catch (Exception ex)
             {
                 throw new ApplicationException("Failed to retrieve donations", ex);
+            }
+        }
+
+        public DonationVM RetrieveDonationByDonationId(int donationId)
+        {
+            try
+            {
+                return donationAccessor.SelectDonationByDonationId(donationId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve donation", ex);
             }
         }
 

@@ -59,8 +59,8 @@ namespace DataAccessLayerFakes
                 FamilyName = "Smith",
                 HasInKindDonation = false,
                 Anonymous = false,
-                Target = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                Target = "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Apple " + "Word " + "Word " + "Word " + "Word " +
+                "Word " + "Word " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test ",
                 PaymentMethod = "Cash",
                 ShelterName = "Kitty Care",
             });
@@ -100,6 +100,11 @@ namespace DataAccessLayerFakes
         public List<DonationVM> SelectAllDonations()
         {
             return fakeDonations;
+        }
+
+        public DonationVM SelectDonationByDonationId(int donationID)
+        {
+            return fakeDonations.Find(d => d.DonationId == donationID);
         }
 
         public List<DonationVM> SelectDonationsByShelterId(int ShelterId)

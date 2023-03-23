@@ -14,6 +14,23 @@ Updated: yyyy/mm/dd
 Description: 
 ****************************************************************/
 
+print '' print '*** creating sp_select_donation_by_donationId'
+GO
+Create procedure [dbo].[sp_select_donation_by_donationId]
+(
+	@DonationId	[int]
+)
+AS
+	BEGIN
+		Select 	[Donation].[DonationId], [Donation].[UsersId], [Users].[GivenName], [Users].[FamilyName], [Donation].[ShelterId],
+				[Amount], [Message], [Date], [Donation].[GivenName], [Donation].[FamilyName], [HasInKindDonation],
+                [Anonymous], [Target], [PaymentMethod], [ScheduledDonationId], [FundraisingEventId]
+		From 	[Donation] left join [Users]
+					on [Donation].[UsersId] = [Users].[UsersId]
+		Where	[DonationId] = @DonationId
+    END
+GO
+
 print '' print '*** creating sp_select_inkind_donations_by_donationId'
 GO
 Create procedure [dbo].[sp_select_inkind_donations_by_donationId]

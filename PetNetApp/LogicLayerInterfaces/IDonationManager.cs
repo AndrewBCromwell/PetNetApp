@@ -32,5 +32,13 @@ namespace LogicLayerInterfaces
         /// <param name="donationId"></param>
         /// <returns></returns>
         List<InKind> RetrieveInKindsByDonationId(int donationId);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023/03/02
+        /// Description: Retrieves donation by donationsId
+        /// </summary>
+        /// <param name="donationId"></param>
+        /// <returns></returns>
+        DonationVM RetrieveDonationByDonationId(int donationId);
     }
 }

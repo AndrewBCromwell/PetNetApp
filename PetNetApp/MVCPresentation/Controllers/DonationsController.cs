@@ -28,13 +28,13 @@ namespace MVCPresentation.Controllers
         }
 
         // GET: Donations/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             if (id != null)
             {
                 try
                 {
-                    donationVM = masterManager.DonationManager.RetrieveAllDonations().Find(d => d.DonationId == id);
+                    donationVM = masterManager.DonationManager.RetrieveDonationByDonationId(id.Value);
                 }
                 catch (Exception ex)
                 {
@@ -62,7 +62,7 @@ namespace MVCPresentation.Controllers
             }
             else
             {
-                ViewBag.Message = "No doantion with that ID";
+                ViewBag.Message = "No donation with that ID";
                 return View("Error");
             }
         }

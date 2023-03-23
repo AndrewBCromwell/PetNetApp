@@ -36,6 +36,16 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
+        public void TestRetrieveDonationByDonationId()
+        {
+            int expectedId = 1;
+            int actualId = 0;
+
+            actualId = donationManager.RetrieveDonationByDonationId(1).DonationId;
+            Assert.AreEqual(expectedId, actualId);
+        }
+
+        [TestMethod]
         public void TestRetrieveInKindsByDonationId()
         {
             int expectedResult = 3;

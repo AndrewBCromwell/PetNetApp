@@ -39,5 +39,13 @@ namespace DataAccessLayerInterfaces
         /// <param name="donationId"></param>
         /// <returns></returns>
         List<InKind> SelectInKindsByDonationId(int donationId);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023/03/08
+        /// Description: Selects donation by donation id
+        /// </summary>
+        /// <param name="donationID"></param>
+        /// <returns></returns>
+        DonationVM SelectDonationByDonationId(int donationID);
     }
 }

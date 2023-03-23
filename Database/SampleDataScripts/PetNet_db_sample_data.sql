@@ -791,7 +791,8 @@ INSERT INTO [dbo].[Donation]
         (100002, 100000, 12.99, 'Daily good deed', 1, 0, ':)', 'Visa'),
         (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa'),
         (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa'),
-        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa')
+        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa'),
+        (100000, 100001, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa')
 GO
 
 print '' print '*** Creating InKind sample data'
