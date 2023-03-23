@@ -97,8 +97,7 @@ namespace PetNetApp
         private void btnEvents_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnEvents);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
+            frameMain.Navigate(WpfPresentation.Events.EventsPage.GetEventsPage());
         }
 
         private void btnCommunity_Click(object sender, RoutedEventArgs e)

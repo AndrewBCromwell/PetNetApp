@@ -69,6 +69,7 @@
     <Compile Include="TicketManager.cs" />
     <Compile Include="UsersManager.cs" />
     <Compile Include="VaccinationManager.cs" />
+    <Compile Include="VolunteerManager.cs" />
     <Compile Include="ZipcodeManager.cs" />
   </ItemGroup>
   <ItemGroup>

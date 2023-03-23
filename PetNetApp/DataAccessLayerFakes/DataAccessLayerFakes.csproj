@@ -65,6 +65,7 @@
     <Compile Include="ShelterAccessorFakes.cs" />
     <Compile Include="UsersAccessorFakes.cs" />
     <Compile Include="VaccinationAccessorFake.cs" />
+    <Compile Include="VolunteerAccessorFakes.cs" />
     <Compile Include="ZipcodeAccessorFakes.cs" />
   </ItemGroup>
   <ItemGroup>

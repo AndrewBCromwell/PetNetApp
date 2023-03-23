@@ -66,6 +66,7 @@
     <Compile Include="TicketAccessor.cs" />
     <Compile Include="UsersAccessor.cs" />
     <Compile Include="VaccinationAccessor.cs" />
+    <Compile Include="VolunteerAccessor.cs" />
     <Compile Include="ZipcodeAccessor.cs" />
   </ItemGroup>
   <ItemGroup>

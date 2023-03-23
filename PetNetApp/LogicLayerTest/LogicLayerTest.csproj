@@ -74,6 +74,7 @@
     <Compile Include="FundraisingCampaignManagerTests.cs" />
     <Compile Include="ValidationiHelpersTests.cs" />
     <Compile Include="UsersManagerTest.cs" />
+    <Compile Include="VolunteerManagerTests.cs" />
     <Compile Include="ZipcodeManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>

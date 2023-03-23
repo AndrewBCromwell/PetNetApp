@@ -102,6 +102,15 @@
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Events\EventsPage.xaml.cs">
+      <DependentUpon>EventsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\VolunteerListPage.xaml.cs">
+      <DependentUpon>VolunteerListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\VolunteerListUserControl.xaml.cs">
+      <DependentUpon>VolunteerListUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fundraising\ViewFundraisingEventSponsors.xaml.cs">
       <DependentUpon>ViewFundraisingEventSponsors.xaml</DependentUpon>
     </Compile>
@@ -378,6 +387,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Events\EventsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\VolunteerListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\VolunteerListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Fundraising\ViewFundraisingEventSponsors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -481,10 +502,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Management\Inventory\ViewShelterInventoryPage.xaml">
-		  <SubType>Designer</SubType>
-		  <Generator>MSBuild:Compile</Generator>
-	  </Page>
-	
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\ViewTicketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -912,7 +932,6 @@
     <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
     <Folder Include="Donations\" />
-    <Folder Include="Events\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>

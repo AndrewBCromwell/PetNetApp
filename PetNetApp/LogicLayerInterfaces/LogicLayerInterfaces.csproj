@@ -63,6 +63,7 @@
     <Compile Include="ITicketManager.cs" />
     <Compile Include="IUsersManager.cs" />
     <Compile Include="IVaccinationManager.cs" />
+    <Compile Include="IVolunteerManager.cs" />
     <Compile Include="IZipcodeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

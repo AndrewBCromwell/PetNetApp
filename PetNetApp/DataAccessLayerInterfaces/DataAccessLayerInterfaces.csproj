@@ -64,6 +64,7 @@
     <Compile Include="ITicketAccessor.cs" />
     <Compile Include="IUsersAccessor.cs" />
     <Compile Include="IVaccinationAccessor.cs" />
+    <Compile Include="IVolunteerAccessor.cs" />
     <Compile Include="IZipcodeAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
