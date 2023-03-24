@@ -405,7 +405,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Suspend user failed.", ex);
             }
 
             return result;
@@ -427,7 +427,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Unsuspend user failed.", ex);
             }
 
             return result;
@@ -444,7 +444,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Unable to retrieve count of unsuspended accounts.", ex);
             }
 
             return usersIdCount;

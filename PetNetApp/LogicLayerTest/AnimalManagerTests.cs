@@ -17,7 +17,7 @@ namespace LogicLayerTest
     public class AnimalManagerTests
     {
         private AnimalManager _animalManager = null;
-      
+
         [TestInitialize]
         public void TestSetup()
         {
@@ -25,11 +25,11 @@ namespace LogicLayerTest
             _animalManager = new AnimalManager(new AnimalAccessorFakes());
         }
 
-      
         [TestCleanup]
         public void testTearDown()
         {
             _animalManager = null;
+            AnimalFakeData.ResetFakeAnimalData();
         }
 
         [TestMethod]
@@ -286,5 +286,29 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        [TestMethod]
+        public void TestRetrieveAllAnimalsByFundraisingEventReturnsCorrectList()
+        {
+            //arrange
+            int fundraisingEventId = 100000;
+            int expectedResult = 4;
+            int actualResult;
+            int fundraisingEventId2 = 100001;
+            int expectedResult2 = 2;
+            int actualResult2;
+            int fundraisingEventId3 = 100002;
+            int expectedResult3 = 2;
+            int actualResult3;
+
+            //act
+            actualResult = _animalManager.RetrieveAnimalsByFundrasingEventId(fundraisingEventId).Count;
+            actualResult2 = _animalManager.RetrieveAnimalsByFundrasingEventId(fundraisingEventId2).Count;
+            actualResult3 = _animalManager.RetrieveAnimalsByFundrasingEventId(fundraisingEventId3).Count;
+
+            //assert
+            Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual(expectedResult2, actualResult2);
+            Assert.AreEqual(expectedResult3, actualResult3);
+        }
     }
 }

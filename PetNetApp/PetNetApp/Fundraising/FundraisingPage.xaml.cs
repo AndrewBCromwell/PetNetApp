@@ -253,7 +253,6 @@ namespace WpfPresentation.Fundraising
         private void btnViewContacts_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
             frameFundraising.Navigate(ViewFundraisingEventContacts.GetViewEventContacts());
         }
 
@@ -272,7 +271,7 @@ namespace WpfPresentation.Fundraising
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEventsPage());
+            frameFundraising.Navigate(WpfPresentation.Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
 
         private void btnViewSponsors_Click(object sender, RoutedEventArgs e)

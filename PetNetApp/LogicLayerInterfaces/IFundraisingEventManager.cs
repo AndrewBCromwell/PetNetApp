@@ -19,6 +19,6 @@ namespace LogicLayerInterfaces
         /// <param name="shelterId">The shelter Id of the logged in user to retrieve all the events for</param>
         /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List<FundraisingEvent></FundraisingEvent></returns>
-        List<FundraisingEvent> RetrieveAllFundraisingEventsByShelterId(int shelterId);
+        List<FundraisingEventVM> RetrieveAllFundraisingEventsByShelterId(int shelterId);
     }
 }

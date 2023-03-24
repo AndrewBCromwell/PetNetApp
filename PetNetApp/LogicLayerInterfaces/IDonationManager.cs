@@ -40,5 +40,21 @@ namespace LogicLayerInterfaces
         /// <param name="donationId"></param>
         /// <returns></returns>
         DonationVM RetrieveDonationByDonationId(int donationId);
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/17
+        /// Retrieves donations by fundraising eventId
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        List<DonationVM> RetrieveDonationsByEventId(int eventId);
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/17
+        /// Retrieves a sum of the donation amounts by fundraising eventId
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        decimal RetrieveSumDonationsByEventId(int eventId);
     }
 }

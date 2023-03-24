@@ -26,6 +26,7 @@ namespace DataAccessLayerFakes
                 Anonymous = false,
                 Target = "To help",
                 PaymentMethod = "Cash",
+                FundraisingEventId = 1000,
                 ShelterName = "Doggy Care",
                 InKindList = new List<InKind>()
                 {
@@ -63,6 +64,7 @@ namespace DataAccessLayerFakes
                 "Word " + "Word " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test ",
                 PaymentMethod = "Cash",
                 ShelterName = "Kitty Care",
+                FundraisingEventId = 1000
             });
             fakeDonations.Add(new DonationVM
             {
@@ -78,6 +80,7 @@ namespace DataAccessLayerFakes
                 Target = "To help",
                 PaymentMethod = "Cash",
                 ShelterName = "Snakey Care",
+                FundraisingEventId = 1001
             });
             fakeDonations.Add(new DonationVM
             {
@@ -107,6 +110,13 @@ namespace DataAccessLayerFakes
             return fakeDonations.Find(d => d.DonationId == donationID);
         }
 
+        public List<DonationVM> SelectDonationsByEventId(int eventId)
+        {
+
+            return fakeDonations.Where(fd => fd.FundraisingEventId == eventId).ToList();
+            throw new NotImplementedException();
+        }
+
         public List<DonationVM> SelectDonationsByShelterId(int ShelterId)
         {
             return fakeDonations.Where(d => d.ShelterId == ShelterId).ToList();
@@ -115,6 +125,12 @@ namespace DataAccessLayerFakes
         public List<InKind> SelectInKindsByDonationId(int donationId)
         {
             return fakeDonations.First(don => don.DonationId == donationId).InKindList;
+        }
+
+        public decimal SelectSumDonationsByEventId(int eventId)
+        {
+            return fakeDonations.Where(fd => fd.FundraisingEventId == eventId).ToList().Sum(fd => fd.Amount).GetValueOrDefault();
+            // throw new NotImplementedException();
         }
     }
 }

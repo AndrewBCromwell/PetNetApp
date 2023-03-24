@@ -96,18 +96,21 @@
     <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
       <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
+      <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\UpdateFundraisingCampaign.xaml.cs">
       <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Fundraising\ViewFundraisingEventContacts.xaml.cs">
-      <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
     </Compile>
+	  <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
+		  <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
+	  </Compile>
     <Compile Include="Events\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
@@ -123,15 +126,6 @@
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fundraising\ViewFundraisingEventsPage.xaml.cs">
-      <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
-      <DependentUpon>SpecificRequestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Management\Inventory\ViewRequestListPage.xaml.cs">
-      <DependentUpon>ViewRequestListPage.xaml</DependentUpon>
-	</Compile>
     <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
       <DependentUpon>InventoryPage.xaml</DependentUpon>
     </Compile>
@@ -256,9 +250,6 @@
     <Compile Include="UserControls\InKindUserControl.xaml.cs">
       <DependentUpon>InKindUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
-      <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
@@ -375,6 +366,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Management\AddEditSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -387,7 +382,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Fundraising\ViewFundraisingEventContacts.xaml">
+    <Page Include="Fundraising\ViewFundraisingEventContacts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -485,10 +480,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Fundraising\ViewFundraisingEventContacts.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -521,14 +512,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Fundraising\ViewFundraisingEventsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Management\Inventory\ViewRequestListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>	
     <Page Include="Management\Inventory\ViewShelterInventoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1264,6 +1247,12 @@
   <ItemGroup>
     <Resource Include="Images\cedar_rapids_map.png" />
     <Resource Include="Images\mapmarkerdark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\picture_placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\outlined_placeholder-519.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
