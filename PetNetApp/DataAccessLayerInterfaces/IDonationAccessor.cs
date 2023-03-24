@@ -63,5 +63,13 @@ namespace DataAccessLayerInterfaces
         /// <param name="eventID"></param>
         /// <returns></returns>
         decimal SelectSumDonationsByEventId(int eventId);
+        /// <summary>
+        /// Author: Teft Francisco
+        /// Date: 2023/03/14
+        /// Description: Retrieves a user's donations by their user id
+        /// </summary>
+        /// <param name="UsersId"></param>
+        /// <returns></returns>
+        List<DonationVM> SelectDonationsByUserId(int usersId);
     }
 }

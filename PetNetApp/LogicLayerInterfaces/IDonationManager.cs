@@ -56,5 +56,13 @@ namespace LogicLayerInterfaces
         /// <param name="eventId"></param>
         /// <returns></returns>
         decimal RetrieveSumDonationsByEventId(int eventId);
+        /// <summary>
+        /// Author: Teft Francisco
+        /// Date: 2023/03/14
+        /// Description: Retrieves a user's donations by their user id
+        /// </summary>
+        /// <param name="UsersId"></param>
+        /// <returns></returns>
+        List<DonationVM> RetrieveDonationsByUserId(int usersId);
     }
 }
