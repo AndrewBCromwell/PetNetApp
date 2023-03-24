@@ -25,7 +25,7 @@ namespace DataAccessLayer
 
         static ImagesAccessor()
         {
-            Directory.CreateDirectory(fullImagePath);
+            //Directory.CreateDirectory(fullImagePath);
         }
 
         /// <summary>

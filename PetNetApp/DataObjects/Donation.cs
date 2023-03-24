@@ -28,5 +28,6 @@ namespace DataObjects
     {
         public List<InKind> InKindList { get; set; }
         public Users User { get; set; }
+        public string ShelterName { get; set; }
     }
 }

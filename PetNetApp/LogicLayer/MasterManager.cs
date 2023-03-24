@@ -53,6 +53,11 @@ namespace LogicLayer
         public IFundraisingEventManager FundraisingEventManager { get; set; }
         public IZipcodeManager ZipcodeManager { get; set; }
         public IVaccinationManager VaccinationManager { get; set; }
+        public IShelterInventoryItemManager ShelterInventoryItemManager { get; set; }
+        public IShelterManager ShelterManager { get; set; }
+        public IItemManager ItemManager { get; set; }
+        public IVolunteerManager VolunteerManager { get; set; }
+
 
         private MasterManager()
         {
@@ -76,6 +81,10 @@ namespace LogicLayer
             FundraisingEventManager = new FundraisingEventManager();
             ZipcodeManager = new ZipcodeManager();
             VaccinationManager = new VaccinationManager();
+            ShelterInventoryItemManager = new ShelterInventoryItemManager();
+            ShelterManager = new ShelterManager();
+            ItemManager = new ItemManager();
+            VolunteerManager = new VolunteerManager();
 
 
             //for testing from dev page

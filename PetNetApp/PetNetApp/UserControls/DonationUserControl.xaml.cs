@@ -31,6 +31,12 @@ namespace WpfPresentation.UserControls
             {
                 UpdateAlternativeTheme();
             }
+
+            // Added by Andrew S. on 3/20/23
+            if(Donation.Message == null)
+            {
+                Donation.Message = "";
+            }
             lblMessageContent.Content = Donation.Message.Length > 30 ? Donation.Message.Substring(0, 30) + "..." : Donation.Message;
         }
 

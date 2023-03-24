@@ -24,6 +24,27 @@ namespace LogicLayerTest
             actualResult = donationManager.RetrieveDonationsByShelterId(shelterId).Count;
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void TestRetrieveDonations()
+        {
+            int expectedResult = 4;
+            int actualResult = 0;
+
+            actualResult = donationManager.RetrieveAllDonations().Count;
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestRetrieveDonationByDonationId()
+        {
+            int expectedId = 1;
+            int actualId = 0;
+
+            actualId = donationManager.RetrieveDonationByDonationId(1).DonationId;
+            Assert.AreEqual(expectedId, actualId);
+        }
+
         [TestMethod]
         public void TestRetrieveInKindsByDonationId()
         {

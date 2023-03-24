@@ -68,10 +68,13 @@
     <Compile Include="InstitutionalEntityManagerTests.cs" />
     <Compile Include="DonationManagerTests.cs" />
     <Compile Include="ShelterItemTransactionManagerTests.cs" />
+    <Compile Include="ShelterInventoryItemManagerTests.cs" />
+    <Compile Include="ItemManagerTests.cs" />
     <Compile Include="VaccinationManagerTests.cs" />
     <Compile Include="FundraisingCampaignManagerTests.cs" />
     <Compile Include="ValidationiHelpersTests.cs" />
     <Compile Include="UsersManagerTest.cs" />
+    <Compile Include="VolunteerManagerTests.cs" />
     <Compile Include="ZipcodeManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
