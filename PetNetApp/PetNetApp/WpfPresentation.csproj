@@ -93,23 +93,50 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
+      <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
       <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
-      <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
+    <Compile Include="Development\Fundraising\UpdateFundraisingCampaign.xaml.cs">
+      <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
+    </Compile>
+	  <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
+		  <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
+	  </Compile>
+    <Compile Include="Events\EventsPage.xaml.cs">
+      <DependentUpon>EventsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\VolunteerListPage.xaml.cs">
+      <DependentUpon>VolunteerListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\VolunteerListUserControl.xaml.cs">
+      <DependentUpon>VolunteerListUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\ViewFundraisingEventSponsors.xaml.cs">
       <DependentUpon>ViewFundraisingEventSponsors.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
+      <DependentUpon>InventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewEditShelterInventoryItem.xaml.cs">
+      <DependentUpon>ViewEditShelterInventoryItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewShelterInventoryPage.xaml.cs">
+      <DependentUpon>ViewShelterInventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewTicketPage.xaml.cs">
+      <DependentUpon>ViewTicketPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
@@ -331,6 +358,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Community\ViewNearbyResourcesMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\UpdateFundraisingCampaign.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -364,6 +399,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\Medical_Notes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\EventsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\VolunteerListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\VolunteerListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -449,7 +496,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Management\Inventory\InventoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\ViewEditShelterInventoryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\Inventory\ViewInventoryChangesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\ViewShelterInventoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\ViewTicketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -876,7 +939,6 @@
     <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
     <Folder Include="Donations\" />
-    <Folder Include="Events\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
@@ -1165,6 +1227,22 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\format_line_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_down_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_up_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh_button_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh_button_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cedar_rapids_map.png" />
+    <Resource Include="Images\mapmarkerdark.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\picture_placeholder.png" />

@@ -786,6 +786,37 @@ INSERT INTO [dbo].[Donation]
 		[FundraisingEventId]
 		)
 	VALUES
+		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa', NULL),
+        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', NULL),
+        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', NULL),
+        (100002, 100000, 12.99, '', 1, 0, ':)', 'Visa', NULL),
+        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa', NULL),
+        (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa', NULL),
+        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL),
+        (100000, 100001, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL)
+GO
+
+/* Insert donation records with dates and no messages */
+INSERT INTO [dbo].[Donation]
+		(
+        [UsersId],
+		[ShelterId],
+        [Amount],
+		[Date],
+        [HasInKindDonation],
+        [Anonymous],
+        [Target],
+        [PaymentMethod],
+		[FundraisingEventId]
+		)
+	VALUES
+		(100001, 100000, 100.00, '2023-03-18', 0, 0,'I hope this helps the shelter','Visa', NULL),
+        (100002, 100000, 56.00, '2023-02-26', 0, 0, 'Trying to help', 'visa', NULL),
+        (100003, 100000, 12.99, '2022-10-15', 1, 0, 'Have a good day', 'Visa', NULL),
+        (100002, 100000, 12.99, '2022-05-14', 1, 0, ':)', 'Visa', NULL),
+        (100000, 100000, 12.99, '2022-08-14', 1, 0, 'Yay', 'Visa', NULL),
+        (100000, 100000, 99.99, '2022-10-10', 0, 1, 'Im writing this off in my taxes', 'Visa', NULL),
+        (100000, 100000, 150.00, '2023-03-17', 0, 1, 'Too much money for one person', 'Visa', NULL)
 		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa', 100000),
         (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', 100000),
         (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', 100001),

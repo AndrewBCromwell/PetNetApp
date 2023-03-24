@@ -27,6 +27,7 @@ namespace DataAccessLayerFakes
                 Target = "To help",
                 PaymentMethod = "Cash",
                 FundraisingEventId = 1000,
+                ShelterName = "Doggy Care",
                 InKindList = new List<InKind>()
                 {
                     new InKind()
@@ -59,9 +60,10 @@ namespace DataAccessLayerFakes
                 FamilyName = "Smith",
                 HasInKindDonation = false,
                 Anonymous = false,
-                Target = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                Target = "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Apple " + "Word " + "Word " + "Word " + "Word " +
+                "Word " + "Word " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test ",
                 PaymentMethod = "Cash",
+                ShelterName = "Kitty Care",
                 FundraisingEventId = 1000
             });
             fakeDonations.Add(new DonationVM
@@ -77,6 +79,7 @@ namespace DataAccessLayerFakes
                 Anonymous = false,
                 Target = "To help",
                 PaymentMethod = "Cash",
+                ShelterName = "Snakey Care",
                 FundraisingEventId = 1001
             });
             fakeDonations.Add(new DonationVM
@@ -91,9 +94,20 @@ namespace DataAccessLayerFakes
                 HasInKindDonation = false,
                 Anonymous = false,
                 Target = "To help",
-                PaymentMethod = "Cash"
+                PaymentMethod = "Cash",
+                ShelterName = "Animal Care",
             });
 
+        }
+
+        public List<DonationVM> SelectAllDonations()
+        {
+            return fakeDonations;
+        }
+
+        public DonationVM SelectDonationByDonationId(int donationID)
+        {
+            return fakeDonations.Find(d => d.DonationId == donationID);
         }
 
         public List<DonationVM> SelectDonationsByEventId(int eventId)
@@ -105,7 +119,7 @@ namespace DataAccessLayerFakes
 
         public List<DonationVM> SelectDonationsByShelterId(int ShelterId)
         {
-            return fakeDonations;
+            return fakeDonations.Where(d => d.ShelterId == ShelterId).ToList();
         }
 
         public List<InKind> SelectInKindsByDonationId(int donationId)

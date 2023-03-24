@@ -80,6 +80,12 @@ namespace WpfPresentation.Development.Community
             frameCommunity.Navigate(null);
         }
 
+        private void btnResources_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameCommunity.Navigate(new Resources());
+        }
+
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;
@@ -113,6 +119,8 @@ namespace WpfPresentation.Development.Community
                 btnScrollLeft.Visibility = Visibility.Visible;
             }
         }
+
+
 
         private void btnScrollRight_Click(object sender, RoutedEventArgs e)
         {

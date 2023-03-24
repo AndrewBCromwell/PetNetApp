@@ -93,6 +93,13 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\EditExamNotes_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewExamNotes_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddExamNotes_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\CustomerRecords_SP.sql
+
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShelterId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShelterIdAndItemId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByItemId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
+
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE
