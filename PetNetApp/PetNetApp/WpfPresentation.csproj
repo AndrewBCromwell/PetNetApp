@@ -226,6 +226,9 @@
     <Compile Include="Fundraising\ViewDonationsPage.xaml.cs">
       <DependentUpon>ViewDonationsPage.xaml</DependentUpon>
     </Compile>
+	<Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
+      <DependentUpon>SpecificRequestPage.xaml</DependentUpon>
+	</Compile>
     <Compile Include="Shelters\ContactPage.xaml.cs">
       <DependentUpon>ContactPage.xaml</DependentUpon>
     </Compile>
