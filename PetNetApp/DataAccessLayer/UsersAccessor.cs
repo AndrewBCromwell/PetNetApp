@@ -250,7 +250,7 @@ namespace DataAccessLayer
                         GivenName = reader.GetString(4),
                         FamilyName = reader.GetString(5),
                         Email = reader.GetString(6),
-                        Address = reader.GetString(7),
+                        // nullable
                         // nullable
                         Zipcode = reader.GetString(9),
                         Phone = reader.GetString(10),
