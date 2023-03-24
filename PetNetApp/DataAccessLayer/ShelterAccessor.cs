@@ -48,7 +48,7 @@ namespace DataAccessLayer
                             shelter.ShelterId = Convert.ToInt32(reader["ShelterId"]);
                             shelter.ShelterName = Convert.ToString(reader["ShelterName"]);
                             shelter.Address = Convert.ToString(reader["Address"]);
-                            shelter.AddressTwo = Convert.ToString(reader["AddressTwo"]);
+                            shelter.Address2 = Convert.ToString(reader["AddressTwo"]);
                             shelter.ZipCode = Convert.ToString(reader["Zipcode"]);
                             shelter.Phone = Convert.ToString(reader["Phone"]);
                             shelter.Email = Convert.ToString(reader["Email"]);
@@ -89,7 +89,7 @@ namespace DataAccessLayer
                 return shelterList;
             }
         }
-        public bool InsertShelter(string shelterName, string address, string addressTwo, string zipCode, string phone, string email, string areasOfNeed, bool shelterActive)
+        public bool InsertShelter(string shelterName, string address, string Address2, string zipCode, string phone, string email, string areasOfNeed, bool shelterActive)
         {
             // Initialize result to failure
             bool result = false;
@@ -105,7 +105,7 @@ namespace DataAccessLayer
             // Parameters
             cmd.Parameters.Add("ShelterName", SqlDbType.NVarChar, 50);
             cmd.Parameters.Add("Address", SqlDbType.NVarChar, 50);
-            cmd.Parameters.Add("AddressTwo", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("Address2", SqlDbType.NVarChar, 50);
             cmd.Parameters.Add("Zipcode", SqlDbType.Char, 9);
             cmd.Parameters.Add("Phone", SqlDbType.NVarChar, 13);
             cmd.Parameters.Add("Email", SqlDbType.NVarChar, 254);
@@ -114,7 +114,7 @@ namespace DataAccessLayer
 
             cmd.Parameters["ShelterName"].Value = shelterName;
             cmd.Parameters["Address"].Value = address;
-            cmd.Parameters["AddressTwo"].Value = addressTwo;
+            cmd.Parameters["Address2"].Value = Address2;
             cmd.Parameters["Zipcode"].Value = zipCode;
             cmd.Parameters["Phone"].Value = phone;
             cmd.Parameters["Email"].Value = email;
@@ -176,7 +176,7 @@ namespace DataAccessLayer
                             shelter.ShelterId = Convert.ToInt32(reader["ShelterId"]);
                             shelter.ShelterName = Convert.ToString(reader["ShelterName"]);
                             shelter.Address = Convert.ToString(reader["Address"]);
-                            shelter.AddressTwo = Convert.ToString(reader["AddressTwo"]);
+                            shelter.Address2 = Convert.ToString(reader["AddressTwo"]);
                             shelter.ZipCode = Convert.ToString(reader["Zipcode"]);
                             shelter.Phone = Convert.ToString(reader["Phone"]);
                             shelter.Email = Convert.ToString(reader["Email"]);
@@ -318,7 +318,7 @@ namespace DataAccessLayer
             return result;
         }
 
-        public int UpdateAddressTwoByShelterID(int shelterID, string newAddressTwo)
+        public int UpdateAddress2ByShelterID(int shelterID, string newAddress2)
         {
             // This should be 1 upon successful script execution
             int result = 0;
@@ -326,15 +326,15 @@ namespace DataAccessLayer
             var connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
             // Command Text
-            var cmdText = "sp_edit_addresstwo_by_shelter_id";
+            var cmdText = "sp_edit_Address2_by_shelter_id";
             // Command
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             // Parameters
             cmd.Parameters.Add("ShelterId", SqlDbType.Int);
-            cmd.Parameters.Add("newAddressTwo", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("newAddress2", SqlDbType.NVarChar, 50);
             cmd.Parameters["ShelterId"].Value = shelterID;
-            cmd.Parameters["newAddressTwo"].Value = newAddressTwo;
+            cmd.Parameters["newAddress2"].Value = newAddress2;
             try
             {
                 conn.Open();

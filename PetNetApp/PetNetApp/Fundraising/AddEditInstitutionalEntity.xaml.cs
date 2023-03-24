@@ -126,8 +126,8 @@ namespace WpfPresentation.Fundraising
             tbZipcode.IsReadOnly = false;
             tbCity.IsReadOnly = true;
             tbState.IsReadOnly = true;
-            btnCancel.IsCancel = true;
-            btnClose.IsCancel = false;
+            //btnCancel.IsCancel = true;
+            //btnClose.IsCancel = false;
             btnSave.IsDefault = true;
             btnEdit.IsDefault = false;
         }
@@ -206,7 +206,7 @@ namespace WpfPresentation.Fundraising
                     }
                     break;
                 case WindowMode2.View:
-                    this.Close();
+                   // this.Close();
                     break;
                 case WindowMode2.Edit:
                     //TODO: confirm user wants to cancel editing
@@ -214,23 +214,308 @@ namespace WpfPresentation.Fundraising
                     {
                         this.Close();
                     }
+                    else
+                    {
+                        return;
+                    }
                     break;
                 default:
                     break;
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/10
+        /// 
+        /// Click event method for the "Edit" button that perfomrs validation
+        /// and if it passes updates an institutional entity record in the
+        /// database.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: change to edit mode
-            PromptWindow.ShowPrompt("Edit", "Edit button clicked", ButtonMode.SaveCancel);
-
+            _windowMode = WindowMode2.Edit;
+            SetupEditInstitutionalEntity();
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/10
+        /// 
+        /// Click event method for the "Save" button that performs validation
+        /// and if it passes inserts an institutional entity record into the
+        /// database.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: attempt to save
-            PromptWindow.ShowPrompt("Save", "Save button clicked", ButtonMode.SaveCancel);
+            validateEntityOnSave();
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/10
+        /// 
+        /// Helper method to validate data when "Save" button is clicked.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        private void validateEntityOnSave()
+        {
+            if (tbGivenName.Text == "" || tbFamilyName.Text == "" || tbEmail.Text == "" || tbPhone.Text == ""
+                || tbAddress.Text == "" || tbZipcode.Text == "")
+            {
+                PromptWindow.ShowPrompt("Error", "Please enter all fields.", ButtonMode.Ok);
+            }
+
+            else
+            {
+                InstitutionalEntity newInstitutionalEntity = new InstitutionalEntity();
+                newInstitutionalEntity.ShelterId = _masterManager.User.ShelterId.Value;
+                newInstitutionalEntity.ContactType = _contactType;
+
+                bool goodData = true;
+
+                if (tbCompanyName == null || tbCompanyName.Text == "")
+                {
+                    newInstitutionalEntity.CompanyName = "";
+                }
+                else
+                {
+                    if (!(tbGivenName.Text.Length > 100))
+                    {
+                        goodData = true;
+                        newInstitutionalEntity.CompanyName = tbCompanyName.Text;
+                    }
+                    else
+                    {
+                        goodData = false;
+                        PromptWindow.ShowPrompt("Format Error", "Company name cannot be longer than 100 characters.",
+                                                ButtonMode.Ok);
+                        tbCompanyName.Focus();
+                        tbCompanyName.SelectAll();
+                    }
+                }
+
+                // Validate given name
+                if (goodData)
+                {
+                    if (tbGivenName.Text.IsValidFirstName())
+                    {
+                        goodData = true;
+                        newInstitutionalEntity.GivenName = tbGivenName.Text;
+                    }
+                    else
+                    {
+                        goodData = false;
+                        PromptWindow.ShowPrompt("Format Error", "Given name must be in proper format.",
+                                                ButtonMode.Ok);
+                        tbGivenName.Focus();
+                        tbGivenName.SelectAll();
+                    }
+
+                    // Validate family name
+                    if (goodData)
+                    {
+                        if (tbFamilyName.Text.IsValidLastName())
+                        {
+                            goodData = true;
+                            newInstitutionalEntity.FamilyName = tbFamilyName.Text;
+                        }
+                        else
+                        {
+                            goodData = false;
+                            PromptWindow.ShowPrompt("Format Error", "Family name must be in proper format.",
+                                                    ButtonMode.Ok);
+                            tbFamilyName.Focus();
+                            tbFamilyName.SelectAll();
+                        }
+                    }
+
+                    // Validate email
+                    if (goodData)
+                    {
+                        if (tbEmail.Text.IsValidEmail())
+                        {
+                            goodData = true;
+                            newInstitutionalEntity.Email = tbEmail.Text;
+                        }
+                        else
+                        {
+                            goodData = false;
+                            PromptWindow.ShowPrompt("Format Error", "Email must be in proper format.",
+                                                    ButtonMode.Ok);
+                            tbEmail.Focus();
+                            tbEmail.SelectAll();
+                        }
+                    }
+
+                    // Validate phone
+                    if (goodData)
+                    {
+                        if (tbPhone.Text.IsValidPhone())
+                        {
+                            goodData = true;
+                            newInstitutionalEntity.Phone = tbPhone.Text;
+                        }
+                        else
+                        {
+                            goodData = false;
+                            PromptWindow.ShowPrompt("Format Error", "Phone number must be in proper format.",
+                                                    ButtonMode.Ok);
+                            tbPhone.Focus();
+                            tbPhone.SelectAll();
+                        }
+                    }
+
+                    // Validate address 1
+                    if (goodData)
+                    {
+                        if (tbAddress.Text.IsValidAddress())
+                        {
+                            goodData = true;
+                            newInstitutionalEntity.Address = tbAddress.Text;
+                        }
+                        else
+                        {
+                            goodData = false;
+                            PromptWindow.ShowPrompt("Format Error", "Address Line 1 must be in proper format.",
+                                                    ButtonMode.Ok);
+                            tbAddress.Focus();
+                            tbAddress.SelectAll();
+                        }
+                    }
+
+                    // Validate address 2
+                    if (goodData)
+                    {
+                        if (tbAddress2 == null || tbAddress2.Text == "")
+                        {
+                            newInstitutionalEntity.Address2 = "";
+                        }
+                        else
+                        {
+                            if (tbAddress2.Text.IsValidAddress2())
+                            {
+                                goodData = true;
+                                newInstitutionalEntity.Address2 = tbAddress2.Text;
+                            }
+                            else
+                            {
+                                goodData = false;
+                                PromptWindow.ShowPrompt("Format Error", "Address Line 2 must be in proper format.",
+                                                        ButtonMode.Ok);
+                                tbAddress2.Focus();
+                                tbAddress2.SelectAll();
+                            }
+                        }
+                    }
+
+                    // Validate ZIP code
+                    if (goodData)
+                    {
+                        if (tbZipcode.Text.IsValidZipcode())
+                        {
+                            goodData = true;
+                            newInstitutionalEntity.Zipcode = tbZipcode.Text;
+                        }
+                        else
+                        {
+                            goodData = false;
+                            PromptWindow.ShowPrompt("Format Error", "Zipcode must be in proper format.",
+                                                    ButtonMode.Ok);
+                            tbZipcode.Focus();
+                            tbZipcode.SelectAll();
+                        }
+                    }
+
+                    // If validation has passed (goodData is still true) try to create the new institutional entity record
+                    if (goodData)
+                    {
+                        switch (_windowMode)
+                        {
+                            case WindowMode2.Add:
+                                SaveNewEntity(newInstitutionalEntity);
+                                break;
+                            case WindowMode2.Edit:
+                                UpdateEntity(newInstitutionalEntity);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/10
+        /// 
+        /// Method with try/catch to save a new institutional entity record
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        private void SaveNewEntity(InstitutionalEntity newInstitutionalEntity)
+        {
+            try
+            {
+                _masterManager.InstitutionalEntityManager.AddInstitutionalEntity(newInstitutionalEntity);
+
+
+                _institutionalEntity = newInstitutionalEntity;
+                PromptWindow.ShowPrompt("Success", "New " + _institutionalEntity.ContactType + " record has been added", ButtonMode.Ok);
+                _windowMode = WindowMode2.View;
+                SetupViewInstitutionalEntity();
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Add record failed.\n" + ex, ButtonMode.Ok);
+            }
+        }
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/10
+        /// 
+        /// Method with try/catch to update an institutional entity record
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        private void UpdateEntity(InstitutionalEntity newInstitutionalEntity)
+        {
+            try
+            {
+                _masterManager.InstitutionalEntityManager.EditInstitutionalEntity(_institutionalEntity, newInstitutionalEntity);
+
+                _institutionalEntity = newInstitutionalEntity;
+                PromptWindow.ShowPrompt("Success", _institutionalEntity.ContactType + " record has been updated", ButtonMode.Ok);
+                _windowMode = WindowMode2.View;
+                SetupViewInstitutionalEntity();
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Update failed.\n" + ex, ButtonMode.Ok);
+            }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -279,7 +564,27 @@ namespace WpfPresentation.Fundraising
                 tbZipcode.SelectAll();
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            //switch (_contactType)
+            //{
+            //    case "Contact":
+            //        ViewFundraisingEventContacts viewFundraisingEventContacts = new ViewFundraisingEventContacts();
+            //        viewFundraisingEventContacts.NavigationService.Navigate();
+            //    default:
+            //        break;
+            //}
+            //NavigationService.Navigate(new ViewFundraisingEventContacts());
+        }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new ViewFundraisingEventContacts());
+        }
     }
+
+
     enum WindowMode2
     {
         Add,

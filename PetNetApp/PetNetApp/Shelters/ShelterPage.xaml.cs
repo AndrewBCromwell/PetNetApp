@@ -47,7 +47,7 @@ namespace WpfPresentation.Shelters
         {
             InitializeComponent();
             _manager = manager;
-            _shelterTabButtons = new Button[] { btnShelter, btnRescue, btnAnimalControl };
+            _shelterTabButtons = new Button[] { btnShelter, btnRescue, btnAnimalControl, btnShelterNetwork };
         }
 
         public static ShelterPage GetShelterPage(MasterManager manager)
@@ -73,6 +73,7 @@ namespace WpfPresentation.Shelters
             ShowShelterButtonByRole();
             ShowRescueButtonByRole();
             ShowAnimalControlButtonByRole();
+            ShowShelterNetworkButtonByRole();
         }
         public void ShowShelterButtonByRole()
         {
@@ -96,6 +97,15 @@ namespace WpfPresentation.Shelters
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnAnimalControl.Visibility = Visibility.Visible;
+            }
+        }
+
+        public void ShowShelterNetworkButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnShelterNetwork.Visibility = Visibility.Visible;
             }
         }
 
@@ -181,6 +191,12 @@ namespace WpfPresentation.Shelters
         private void svShelterPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             UpdateScrollButtons();
+        }
+
+        private void btnShelterNetwork_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameShelter.Navigate(ShelterNetworkPage.GetShelterNetworkPage(_manager));
         }
     }
 }

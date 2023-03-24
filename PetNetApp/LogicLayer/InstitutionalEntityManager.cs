@@ -88,7 +88,42 @@ namespace LogicLayer
 
         public InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
         {
-            throw new NotImplementedException();
+            InstitutionalEntity institutionalEntity = new InstitutionalEntity();
+            try
+            {
+                institutionalEntity = _institutionalEntityAccessor.SelectInstitutionalEntityByInstitutionalEntityId(institutionalEntityId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Entity record not found.", ex);
+            }
+            return institutionalEntity;
+        }
+
+        public bool AddInstitutionalEntity(InstitutionalEntity institutionalEntity)
+        {
+            int id = 0;
+            try
+            {
+                id = _institutionalEntityAccessor.InsertInstitutionalEntity(institutionalEntity);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Entity record failed to be added", ex);
+            }
+            return id != 0;
+        }
+
+        public bool EditInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
+        {
+            try
+            {
+                return 1 == _institutionalEntityAccessor.UpdateInstitutionalEntity(oldEntity, newEntity);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while updating record.", ex);
+            }
         }
     }
 }

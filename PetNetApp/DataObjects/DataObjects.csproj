@@ -45,6 +45,7 @@
     <Compile Include="Death.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalUpdates.cs" />
+    <Compile Include="FilterDonation.cs" />
     <Compile Include="FosterPlacement.cs" />
     <Compile Include="FosterPlacementRecord.cs" />
     <Compile Include="Donation.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Images.cs" />
     <Compile Include="InKind.cs" />
     <Compile Include="InstitutionalEntity.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Kennel.cs" />
     <Compile Include="Procedure.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Role.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Shelter.cs" />
+    <Compile Include="ShelterInventoryItem.cs" />
     <Compile Include="ShelterItemTransaction.cs" />
     <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="Test.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="Users.cs" />
     <Compile Include="Vaccination.cs" />
     <Compile Include="ValidationHelpers.cs" />
+    <Compile Include="Volunteer.cs" />
     <Compile Include="Zipcode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

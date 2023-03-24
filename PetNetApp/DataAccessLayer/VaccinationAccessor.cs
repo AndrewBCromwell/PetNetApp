@@ -118,6 +118,45 @@ namespace DataAccessLayer
             return rows;
 
         }
+
+        public VaccinationVM SelectVaccinationByMedicalRecordId(int medicalRecordId)
+        {
+            VaccinationVM vaccination = null;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_vaccination_by_medical_record_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@MedicalRecordId", SqlDbType.Int).Value = medicalRecordId;
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    vaccination = new VaccinationVM()
+                    {
+                        VaccineId = reader.GetInt32(0),
+                        MedicalRecordId = reader.GetInt32(1),
+                        UserId = reader.GetInt32(2),
+                        VaccineName = reader.GetString(3),
+                        VaccineAdminsterDate = reader.GetDateTime(4)
+                    };
+                }
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return vaccination;
+        }
+
         /// <summary>
         /// Zaid Rachman
         /// 2023/02/12

@@ -304,7 +304,7 @@ namespace WpfPresentation.Animals
                                                     "Animal record will not be saved.", ButtonMode.YesNo);
             if (result == PromptSelection.Yes)
             {
-                NavigationService.Navigate(null);
+                NavigationService.Navigate(new AnimalListPage(_manager));
             }
         }
 

@@ -52,6 +52,7 @@
     <Compile Include="FundraisingEventAccessor.cs" />
     <Compile Include="ImagesAccessor.cs" />
     <Compile Include="InstitutionalEntityAccessor.cs" />
+    <Compile Include="ItemAccessor.cs" />
     <Compile Include="KennelAccessor.cs" />
     <Compile Include="MedicalRecordAccessor.cs" />
     <Compile Include="ProcedureAccessor.cs" />
@@ -60,11 +61,13 @@
     <Compile Include="RoleAccessor.cs" />
     <Compile Include="ScheduleAccessor.cs" />
     <Compile Include="ShelterAccessor.cs" />
+    <Compile Include="ShelterInventoryAccessor.cs" />
     <Compile Include="ShelterItemTransactionAccessor.cs" />
     <Compile Include="TestAccessor.cs" />
     <Compile Include="TicketAccessor.cs" />
     <Compile Include="UsersAccessor.cs" />
     <Compile Include="VaccinationAccessor.cs" />
+    <Compile Include="VolunteerAccessor.cs" />
     <Compile Include="ZipcodeAccessor.cs" />
   </ItemGroup>
   <ItemGroup>

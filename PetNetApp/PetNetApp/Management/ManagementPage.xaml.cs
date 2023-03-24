@@ -125,7 +125,7 @@ namespace WpfPresentation.Management
         {
             ChangeSelectedButton(btnInventory);
             // replace with page name and then delete comment
-            frameManagement.Navigate(new ViewRequestListPage(_manager));
+            frameManagement.Navigate(new InventoryPage());
         }
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {

@@ -290,9 +290,58 @@ namespace DataAccessLayerFakes
             return fakes;
         }
 
+        public int InsertInstitutionalEntity(InstitutionalEntity institutionalEntity)
+        {
+            _institutionalEntitiesWithShelterId.Add(institutionalEntity);
+            int rows = 0;
+
+            for (int i = 0; i < _institutionalEntitiesWithShelterId.Count; i++)
+            {
+                if (_institutionalEntitiesWithShelterId[i].InstitutionalEntityId == institutionalEntity.InstitutionalEntityId)
+                {
+                    rows = 1;
+                }
+            }
+            return rows;
+        }
+
+        public int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
+        {
+            int result = 0;
+
+            for (int i = 0; i < _institutionalEntitiesWithShelterId.Count; i++)
+            {
+                if (_institutionalEntitiesWithShelterId[i].InstitutionalEntityId == oldEntity.InstitutionalEntityId)
+                {
+                    // the real database will check for every editable field in the stored procedure
+                    _institutionalEntitiesWithShelterId[i].Address = _institutionalEntitiesWithShelterId[i].Address == oldEntity.Address
+                        ? _institutionalEntitiesWithShelterId[i].Address = newEntity.Address : oldEntity.Address;
+
+                    result++;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
         public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
         {
-            throw new NotImplementedException();
+            InstitutionalEntity institutionalEntity = new InstitutionalEntity();
+
+            foreach (InstitutionalEntity fakeEntity in _institutionalEntitiesWithShelterId)
+            {
+                if (fakeEntity.InstitutionalEntityId == institutionalEntityId)
+                {
+                    institutionalEntity = fakeEntity;
+                    return institutionalEntity;
+                }
+            }
+            if (institutionalEntity == null)
+            {
+                throw new ApplicationException("Entity not found");
+            }
+            return institutionalEntity;
         }
     }
 }

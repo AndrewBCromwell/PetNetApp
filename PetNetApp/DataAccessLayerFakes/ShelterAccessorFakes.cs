@@ -25,7 +25,7 @@ namespace DataAccessLayerFakes
                 ShelterId = 0,
                 ShelterName = "Test Shelter 00",
                 Address = "Fake area 00",
-                AddressTwo = "Fake address 00",
+                Address2 = "Fake address 00",
                 ZipCode = "50001",
                 Phone = "000-000-0000",
                 Email = "zero@zero.zerp",
@@ -37,7 +37,7 @@ namespace DataAccessLayerFakes
                 ShelterId = 1,
                 ShelterName = "Test Shelter 01",
                 Address = "Fake area 01",
-                AddressTwo = "Fake address 01",
+                Address2 = "Fake address 01",
                 ZipCode = "50001",
                 Phone = "555-666-7777",
                 Email = "fake@fake.fake",
@@ -49,7 +49,7 @@ namespace DataAccessLayerFakes
                 ShelterId = 2,
                 ShelterName = "Test Shelter 02",
                 Address = "Fake area 02",
-                AddressTwo = null,
+                Address2 = null,
                 ZipCode = "50002",
                 Phone = null,
                 Email = null,
@@ -62,13 +62,13 @@ namespace DataAccessLayerFakes
             shelterList[shelterID].ShelterActive = false;
             return 1;
         }
-        public bool InsertShelter(string shelterName, string address, string addressTwo, string zipCode, string phone, string email, string areasOfNeed, bool shelterActive)
+        public bool InsertShelter(string shelterName, string address, string Address2, string zipCode, string phone, string email, string areasOfNeed, bool shelterActive)
         {
             Shelter newShelter = new Shelter();
             newShelter.ShelterId = 000003;  // Arbitrary value must be added
             newShelter.ShelterName = shelterName;
             newShelter.Address = address;
-            newShelter.AddressTwo = addressTwo;
+            newShelter.Address2 = Address2;
             newShelter.ZipCode = zipCode;
             newShelter.Phone = phone;
             newShelter.Email = email;
@@ -87,7 +87,7 @@ namespace DataAccessLayerFakes
             returnShelter.ShelterId = shelterList[shelterID].ShelterId;
             returnShelter.ShelterName = shelterList[shelterID].ShelterName;
             returnShelter.Address = shelterList[shelterID].Address;
-            returnShelter.AddressTwo = shelterList[shelterID].AddressTwo;
+            returnShelter.Address2 = shelterList[shelterID].Address2;
             returnShelter.ZipCode = shelterList[shelterID].ZipCode;
             returnShelter.Phone = shelterList[shelterID].Phone;
             returnShelter.Email = shelterList[shelterID].Email;
@@ -119,9 +119,9 @@ namespace DataAccessLayerFakes
                 return 0;
             }
         }
-        public int UpdateAddressTwoByShelterID(int shelterID, string newAddressTwo)
+        public int UpdateAddress2ByShelterID(int shelterID, string newAddress2)
         {
-            shelterList[shelterID].AddressTwo = newAddressTwo;
+            shelterList[shelterID].Address2 = newAddress2;
             return 1;
         }
         public int UpdateAreasOfNeedByShelterID(int shelterID, string newAreasOfNeed)

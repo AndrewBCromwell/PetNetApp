@@ -25,7 +25,9 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException">Add Fails</exception>
         /// <returns>Boolean representing success or failure</returns>
         bool AddAnimal(AnimalVM animal);
+
         List<Animal> RetrieveAllAnimals(String animalName);
+
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/02/02

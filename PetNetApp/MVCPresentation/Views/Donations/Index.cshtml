@@ -1,0 +1,95 @@
+﻿@model IEnumerable<DataObjects.DonationVM>
+
+@{
+    ViewBag.Title = "Donate";
+}
+<div class="container">
+    <div class="row">
+        <h2>Donations</h2>
+        <p>
+            @Html.ActionLink("Donate Here!", "Create")
+        </p>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Shelter Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    var date = item.DateDonated.Value.ToString("MM/dd/yyyy");
+    string shortMessage= "";
+    if(item.Message.Length > 45)
+    {
+        shortMessage = item.Message.Substring(0, 45) + "...";
+    }
+
+<tr>
+    @if (item.Anonymous)
+    {
+        <th>Anonymous</th>
+        <th></th>
+    }
+    else if (item.UserId == null)
+    {
+        <th>
+            @Html.DisplayFor(modelItem => item.GivenName)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.FamilyName)
+        </th>
+    }
+    else
+    {
+        <th>
+            @Html.DisplayFor(modelItem => item.User.GivenName)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.User.FamilyName)
+        </th>
+    }
+    <th>
+        @Html.DisplayFor(modelItem => item.ShelterName)
+    </th>
+    <th>
+        @Html.DisplayFor(modelItem => item.Amount)
+    </th>
+    <th>
+        @Html.DisplayFor(modelItem => date)
+    </th>
+    @if (item.Message.Length > 45)
+    {
+        <th>
+            @Html.DisplayFor(modelItem => shortMessage)
+        </th>
+    }
+    else
+    {
+        <th>
+            @Html.DisplayFor(modelItem => item.Message)
+        </th>
+    }
+    <td>
+        @Html.ActionLink("View", "Details", new { id = item.DonationId })
+    </td>
+</tr>
+}
+
+</table>

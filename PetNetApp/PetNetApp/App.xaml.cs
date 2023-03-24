@@ -66,4 +66,22 @@ namespace PetNetApp
             return ((double)value * (denominator / numerator)).ToString();
         }
     }
+
+    [ValueConversion(typeof(bool), typeof(bool))]
+    public class BoolStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var boolString = value is bool && (bool)value;
+
+            return boolString ? "Yes" : "No";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value != null && value.ToString() == "Yes";
+        }
+    }
+
+    
 }

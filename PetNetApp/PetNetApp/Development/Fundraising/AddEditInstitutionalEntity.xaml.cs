@@ -1,4 +1,16 @@
-﻿using DataAccessLayerFakes;
+﻿/// <summary>
+/// Barry
+/// Created: 2023/03/09
+/// 
+/// Interaction logic for AddAnimalPage.xaml
+/// </summary>
+///
+/// <remarks>
+/// Andrew Schneider
+/// Updated: 2023/03/09
+/// </remarks>
+/// 
+using DataAccessLayerFakes;
 using DataObjects;
 using LogicLayer;
 using System;
@@ -21,13 +33,13 @@ using WpfPresentation.UserControls;
 namespace WpfPresentation.Development.Fundraising
 {
     /// <summary>
-    /// Interaction logic for AlterContact.xaml
+    /// Interaction logic for AddEditInstitutionalEntity.xaml
     /// </summary>
     public partial class AddEditInstitutionalEntity : Window
     {
         private MasterManager _masterManager = MasterManager.GetMasterManager();
-        private WindowMode2 _windowMode;
-        private string _contactType;
+        private WindowMode2 _windowMode2;
+        private string _entityType;
 
         private InstitutionalEntity _institutionalEntity;
 
@@ -38,25 +50,25 @@ namespace WpfPresentation.Development.Fundraising
         /// <param name="entityType">sets the type of institutional being added</param>
         public AddEditInstitutionalEntity(string entityType)
         {
-            _windowMode = WindowMode2.Add;
-            _contactType = entityType;
+            _windowMode2 = WindowMode2.Add;
+            _entityType = entityType;
             InitializeComponent();
             SetupAddInstitutionalEntity();
         }
 
         /// <summary>
-        /// used to for edit and view entity
+        /// Used to for add, edit, and view entity
         /// </summary>
         /// <param name="institutionalEntity"></param>
         /// <param name="windowMode">sets the window mode to edit or view</param>
         /// <param name="entityType">brings in the type </param>
-        public AddEditInstitutionalEntity(InstitutionalEntity institutionalEntity, string windowMode, string entityType)
+        public AddEditInstitutionalEntity(InstitutionalEntity institutionalEntity, string windowMode2, string entityType)
         {
-            _windowMode = windowMode.ToLower() == "edit" ? WindowMode2.Edit : WindowMode2.View;
-            _contactType = entityType;
+            _windowMode2 = windowMode2.ToLower() == "edit" ? WindowMode2.Edit : WindowMode2.View;
+            _entityType = entityType;
             _institutionalEntity = institutionalEntity;
             InitializeComponent();
-            if (_windowMode == WindowMode2.Edit)
+            if (_windowMode2 == WindowMode2.Edit)
             {
                 SetupEditInstitutionalEntity();
             }
@@ -68,7 +80,7 @@ namespace WpfPresentation.Development.Fundraising
 
         private void SetupEditInstitutionalEntity()
         {
-            lblWindowTitle.Content = _windowMode + " " + _contactType.Substring(0, 1).ToUpper() + _contactType.Substring(1);
+            lblWindowTitle.Content = _windowMode2 + " " + _entityType.Substring(0, 1).ToUpper() + _entityType.Substring(1);
             AddEditMode();
             stackEditClose.IsEnabled = false;
             stackEditClose.Visibility = Visibility.Collapsed;
@@ -78,7 +90,7 @@ namespace WpfPresentation.Development.Fundraising
 
         private void SetupViewInstitutionalEntity()
         {
-            lblWindowTitle.Content = _windowMode + " " + _contactType.Substring(0, 1).ToUpper() + _contactType.Substring(1);
+            lblWindowTitle.Content = _windowMode2 + " " + _entityType.Substring(0, 1).ToUpper() + _entityType.Substring(1);
             ViewMode();
             stackEditClose.IsEnabled = true;
             stackEditClose.Visibility = Visibility.Visible;
@@ -88,7 +100,7 @@ namespace WpfPresentation.Development.Fundraising
 
         private void SetupAddInstitutionalEntity()
         {
-            lblWindowTitle.Content = _windowMode + " " + _contactType.Substring(0, 1).ToUpper() + _contactType.Substring(1);
+            lblWindowTitle.Content = _windowMode2 + " " + _entityType.Substring(0, 1).ToUpper() + _entityType.Substring(1);
             AddEditMode();
             stackEditClose.IsEnabled = false;
             stackEditClose.Visibility = Visibility.Collapsed;
@@ -150,7 +162,7 @@ namespace WpfPresentation.Development.Fundraising
         {
             try
             {
-                if (_windowMode == WindowMode2.View || _windowMode == WindowMode2.Edit)
+                if (_windowMode2 == WindowMode2.View || _windowMode2 == WindowMode2.Edit)
                 {
                     tbCompanyName.Text = _institutionalEntity.CompanyName;
                     tbGivenName.Text = _institutionalEntity.GivenName;
@@ -196,14 +208,11 @@ namespace WpfPresentation.Development.Fundraising
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            switch (_windowMode)
+            switch (_windowMode2)
             {
                 case WindowMode2.Add:
-                    //TODO: confirm the user wants to cancel input
-                    if (PromptWindow.ShowPrompt("Cancel", "Are you sure you want to cancel adding?", ButtonMode.YesNo) == PromptSelection.Yes)
-                    {
-                        this.Close();
-                    }
+                    var result = PromptWindow.ShowPrompt("Discard Changes", "Are you sure you want to cancel?\n" +
+                                                   _entityType + " record will not be saved.", ButtonMode.YesNo);
                     break;
                 case WindowMode2.View:
                     this.Close();
@@ -248,11 +257,11 @@ namespace WpfPresentation.Development.Fundraising
         private void tbZipcode_LostFocus(object sender, RoutedEventArgs e)
         {
             // if WindowMode.Add or WindowMode.Edit and IsValidZipcode - load city and state
-            if ((_windowMode == WindowMode2.Add || _windowMode == WindowMode2.Edit) && tbZipcode.Text.IsValidZipcode())
+            if ((_windowMode2 == WindowMode2.Add || _windowMode2 == WindowMode2.Edit) && tbZipcode.Text.IsValidZipcode())
             {
                 LoadCityStateByZipCode();
             }
-            else if ((_windowMode == WindowMode2.Add || _windowMode == WindowMode2.Edit) && tbZipcode.Text.Length < 5)
+            else if ((_windowMode2 == WindowMode2.Add || _windowMode2 == WindowMode2.Edit) && tbZipcode.Text.Length < 5)
             {
                 tbCity.Text = "";
                 tbState.Text = "";

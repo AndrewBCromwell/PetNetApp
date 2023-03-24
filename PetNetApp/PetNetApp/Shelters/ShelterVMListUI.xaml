@@ -35,7 +35,7 @@
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ShelterId}" Header="ID" Width="1*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ShelterName}" Header="Shelter Name" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding Address}" Header="Address" Width="2*"></DataGridTextColumn>
-                    <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding AddressTwo}" Header="Address Two" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding Address2}" Header="Address Two" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ZipCode}" Header="Zip" Width="1*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding Phone}" Header="Phone" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding Email}" Header="Email" Width="2*"></DataGridTextColumn>

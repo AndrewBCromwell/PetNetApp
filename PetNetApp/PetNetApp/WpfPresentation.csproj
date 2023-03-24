@@ -54,6 +54,21 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -63,23 +78,47 @@
     <Compile Include="Animals\AddEditVaccinationsPage.xaml.cs">
       <DependentUpon>AddEditVaccinationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\AddTestPage.xaml.cs">
+      <DependentUpon>AddTestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
       <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
       <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Community\CustomerRecordsPage.xaml.cs">
+      <DependentUpon>CustomerRecordsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
+      <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Fundraising\UpdateFundraisingCampaign.xaml.cs">
+      <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\ViewFundraisingEventContacts.xaml.cs">
       <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\EventsPage.xaml.cs">
+      <DependentUpon>EventsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\VolunteerListPage.xaml.cs">
+      <DependentUpon>VolunteerListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\VolunteerListUserControl.xaml.cs">
+      <DependentUpon>VolunteerListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewFundraisingEventSponsors.xaml.cs">
+      <DependentUpon>ViewFundraisingEventSponsors.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
@@ -92,6 +131,18 @@
     </Compile>
     <Compile Include="Management\Inventory\ViewRequestListPage.xaml.cs">
       <DependentUpon>ViewRequestListPage.xaml</DependentUpon>
+	</Compile>
+    <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
+      <DependentUpon>InventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewEditShelterInventoryItem.xaml.cs">
+      <DependentUpon>ViewEditShelterInventoryItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewShelterInventoryPage.xaml.cs">
+      <DependentUpon>ViewShelterInventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewTicketPage.xaml.cs">
+      <DependentUpon>ViewTicketPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
@@ -103,8 +154,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Animals\QurantinePage.xaml.cs">
+      <DependentUpon>QurantinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\MedicalRecordListPage.xaml.cs">
+      <DependentUpon>MedicalRecordListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\UploadAdditionalImageWindow.xaml.cs">
       <DependentUpon>UploadAdditionalImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\Edit_Medical_Notes.xaml.cs">
+      <DependentUpon>Edit_Medical_Notes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\Medical_Notes.xaml.cs">
+      <DependentUpon>Medical_Notes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Community\SuspendUserPopup.xaml.cs">
       <DependentUpon>SuspendUserPopup.xaml</DependentUpon>
@@ -168,6 +231,12 @@
     </Compile>
     <Compile Include="Fundraising\ViewDonationsPage.xaml.cs">
       <DependentUpon>ViewDonationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shelters\ContactPage.xaml.cs">
+      <DependentUpon>ContactPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shelters\ShelterNetworkPage.xaml.cs">
+      <DependentUpon>ShelterNetworkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
       <DependentUpon>AddEditViewFundraisingCampaignPage.xaml</DependentUpon>
@@ -291,6 +360,33 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Management\AddEditSchedule.xaml.cs">
+      <DependentUpon>AddEditSchedule.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Community\CustomerRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\ViewNearbyResourcesMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\UpdateFundraisingCampaign.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\AddEditSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AddTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\QurantinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Fundraising\ViewFundraisingEventContacts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -298,6 +394,34 @@
     <Page Include="Development\Fundraising\ViewFundraisingEventsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\MedicalRecordListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\Edit_Medical_Notes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\Medical_Notes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\EventsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\VolunteerListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\VolunteerListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewFundraisingEventSponsors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
@@ -382,6 +506,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\SpecificRequestPage.xaml">
+	  <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\InventoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\ViewEditShelterInventoryItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -394,6 +526,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Management\Inventory\ViewRequestListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>	
+    <Page Include="Management\Inventory\ViewShelterInventoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\ViewTicketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -468,6 +608,14 @@
     <Page Include="Development\Fundraising\FundraisingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shelters\ContactPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shelters\ShelterNetworkPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\DonationUserControl.xaml">
       <SubType>Designer</SubType>
@@ -773,6 +921,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -780,6 +929,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayerFakes\DataAccessLayerFakes.csproj">
@@ -810,7 +960,6 @@
     <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
     <Folder Include="Donations\" />
-    <Folder Include="Events\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
@@ -1096,6 +1245,25 @@
     <Resource Include="Images\BrokenImageGreen.png" />
     <Resource Include="Images\magnify.png" />
     <Resource Include="Images\magnifydark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\format_line_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_down_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_up_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh_button_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh_button_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cedar_rapids_map.png" />
+    <Resource Include="Images\mapmarkerdark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
