@@ -103,5 +103,15 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedResult2, actualResult2);
             Assert.AreEqual(expectedResult3, actualResult3);
         }
+
+        [TestMethod]
+        public void TestRetrieveDonationsByUserId()
+        {
+            int userId = 1;
+            int expectedResult = 1;
+            int actualResult = donationManager.RetrieveDonationsByUserId(userId).Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

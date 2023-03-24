@@ -52,12 +52,12 @@ namespace LogicLayer
         public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
         public IFundraisingEventManager FundraisingEventManager { get; set; }
         public IZipcodeManager ZipcodeManager { get; set; }
+        public IRequestManager RequestManager { get; private set; }
         public IVaccinationManager VaccinationManager { get; set; }
         public IShelterInventoryItemManager ShelterInventoryItemManager { get; set; }
         public IShelterManager ShelterManager { get; set; }
         public IItemManager ItemManager { get; set; }
         public IVolunteerManager VolunteerManager { get; set; }
-
 
         private MasterManager()
         {
@@ -80,6 +80,7 @@ namespace LogicLayer
             DonationManager = new DonationManager();
             FundraisingEventManager = new FundraisingEventManager();
             ZipcodeManager = new ZipcodeManager();
+            RequestManager = new RequestManager();
             VaccinationManager = new VaccinationManager();
             ShelterInventoryItemManager = new ShelterInventoryItemManager();
             ShelterManager = new ShelterManager();
@@ -103,7 +104,7 @@ namespace LogicLayer
             //    Roles = new List<string>() { "Admin" }
             //};
         }
-    
+
         public static MasterManager GetMasterManager()
         {
             if (_existingMasterManager == null)

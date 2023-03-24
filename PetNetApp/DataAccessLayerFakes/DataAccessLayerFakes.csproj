@@ -51,6 +51,7 @@
     <Compile Include="FundraisingFakeData.cs" />
     <Compile Include="FundraisingEventAccessorFakes.cs" />
     <Compile Include="ImagesAccessorFakes.cs" />
+    <Compile Include="RequestAccessorFakes.cs" />
     <Compile Include="ItemAccessorFakes.cs" />
     <Compile Include="ShelterInventoryAccessorFakes.cs" />
     <Compile Include="ShelterItemTransactionAccessorFakes.cs" />

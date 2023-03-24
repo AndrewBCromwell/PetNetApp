@@ -1148,9 +1148,9 @@ INSERT INTO [dbo].[AnimalMedicalImage]
         ('314a2539-5dee-40ce-ac5b-026d53750c85', 100005)
 GO
 
-print '' print '*** creating RequestRescourceLine sample data'
+print '' print '*** creating RequestResourceLine sample data'
 GO 
-INSERT INTO [dbo].[RequestRescourceLine]
+INSERT INTO [dbo].[RequestResourceLine]
 		(
 		[RequestId],
 		[ItemId],
