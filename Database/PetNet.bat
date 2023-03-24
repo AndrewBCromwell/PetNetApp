@@ -73,6 +73,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddTicket.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewRequest_SP.sql
 
 ECHO .
 ECHO if no errors appear DB was created

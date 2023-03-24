@@ -52,6 +52,7 @@ namespace LogicLayer
         public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
         public IFundraisingEventManager FundraisingEventManager { get; set; }
         public IZipcodeManager ZipcodeManager { get; set; }
+        public IRequestManager RequestManager { get; private set; }
 
         private MasterManager()
         {
@@ -74,6 +75,7 @@ namespace LogicLayer
             DonationManager = new DonationManager();
             FundraisingEventManager = new FundraisingEventManager();
             ZipcodeManager = new ZipcodeManager();
+            RequestManager = new RequestManager();
 
 
             //for testing from dev page

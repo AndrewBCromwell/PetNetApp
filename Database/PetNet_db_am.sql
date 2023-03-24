@@ -1206,19 +1206,19 @@ CREATE TABLE [dbo].[AnimalMedicalImage] (
 GO
 
 -- Created by: Mohmeed Tomsah
-print '' print '*** creating RequestRescourceLine table ***'
+print '' print '*** creating RequestResourceLine table ***'
 GO
-CREATE TABLE [dbo].[RequestRescourceLine](
+CREATE TABLE [dbo].[RequestResourceLine](
 	[RequestId]	                     [int]                    NOT NULL,
 	[ItemId]	                     [nvarchar](50)	          NOT NULL,
 	[QuantityRequested]	             [int]	                  NOT NULL,
 	[Notes]	                         [nvarchar](1000)	      NOT NULL,
 	
-    CONSTRAINT [fk_RequestRescourceLine_RequestId]	FOREIGN KEY ([RequestId])
+    CONSTRAINT [fk_RequestResourceLine_RequestId]	FOREIGN KEY ([RequestId])
 		REFERENCES [dbo].[Request] ([RequestId]),
-	CONSTRAINT [fk_RequestRescourceLine_ItemId]	FOREIGN KEY ([ItemId])
+	CONSTRAINT [fk_RequestRecourceLine_ItemId]	FOREIGN KEY ([ItemId])
 		REFERENCES [dbo].[Item] ([ItemId]) ON UPDATE CASCADE,
-	CONSTRAINT [pk_RequestRescourceLine_RequestId] PRIMARY KEY([RequestId], [ItemId])
+	CONSTRAINT [pk_RequestResourceLine_RequestId] PRIMARY KEY([RequestId], [ItemId])
 )
 GO
 

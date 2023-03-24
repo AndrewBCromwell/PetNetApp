@@ -87,6 +87,12 @@
     <Compile Include="Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
+      <DependentUpon>SpecificRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewRequestListPage.xaml.cs">
+      <DependentUpon>ViewRequestListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
     </Compile>
@@ -375,6 +381,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Management\Inventory\SpecificRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -382,6 +392,10 @@
     <Page Include="Fundraising\ViewFundraisingEventsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\Inventory\ViewRequestListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Misc\AccountInfoPage.xaml">
       <SubType>Designer</SubType>

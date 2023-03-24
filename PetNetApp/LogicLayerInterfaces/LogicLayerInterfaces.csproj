@@ -53,6 +53,7 @@
     <Compile Include="IKennelManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
     <Compile Include="IProcedureManager.cs" />
+    <Compile Include="IRequestManager.cs" />
     <Compile Include="IRoleManager.cs" />
     <Compile Include="IScheduleManager.cs" />
     <Compile Include="IShelterItemTransactionManager.cs" />
