@@ -32,5 +32,21 @@ namespace DataAccessLayerInterfaces
         /// <param name="donationId"></param>
         /// <returns></returns>
         List<InKind> SelectInKindsByDonationId(int donationId);
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/17
+        /// Description: Selects all of the donations by eventId
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <returns></returns>
+        List<DonationVM> SelectDonationsByEventId(int eventId);
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/17
+        /// Description: Selects sum of all of the donations by eventId
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <returns></returns>
+        decimal SelectSumDonationsByEventId(int eventId);
     }
 }

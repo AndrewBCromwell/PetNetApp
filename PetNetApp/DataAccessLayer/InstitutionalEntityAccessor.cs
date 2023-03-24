@@ -333,5 +333,105 @@ namespace DataAccessLayer
             }
             return id;
         }
+
+        public List<InstitutionalEntity> SelectFundraisingEventInstitutionalEntitiesByEventIdAndContactType(int fundraisingEventId, string contactType)
+        {
+            List<InstitutionalEntity> institutionalEntities = new List<InstitutionalEntity>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_fundraising_institutional_entities_by_eventId_contactType";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.Parameters.Add("@FundraisingEventId", SqlDbType.Int).Value = fundraisingEventId;
+            cmd.Parameters.Add("@ContactType", SqlDbType.NVarChar).Value = contactType;
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        InstitutionalEntity institutionalEntity = new InstitutionalEntity();
+
+                        institutionalEntity.InstitutionalEntityId = reader.GetInt32(0);
+                        institutionalEntity.CompanyName = reader.IsDBNull(1) ? null : reader.GetString(1);
+                        institutionalEntity.GivenName = reader.GetString(2);
+                        institutionalEntity.FamilyName = reader.GetString(3);
+                        institutionalEntity.Email = reader.GetString(4);
+                        institutionalEntity.Phone = reader.GetString(5);
+                        institutionalEntity.Address = reader.GetString(6);
+                        institutionalEntity.Address2 = reader.IsDBNull(7) ? null : reader.GetString(7);
+                        institutionalEntity.Zipcode = reader.GetString(8);
+                        institutionalEntity.ContactType = reader.GetString(9);
+
+                        institutionalEntities.Add(institutionalEntity);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return institutionalEntities;
+        }
+
+        public InstitutionalEntity SelectInstitutionalEntityByFundraisingEventIdAndContactType(int fundraisingEventId, string contactType)
+        {
+            //throw new NotImplementedException();
+
+            InstitutionalEntity institutionalEntity = new InstitutionalEntity();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_institutional_entity_by_event_id_and_contact_type";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.Parameters.Add("@FundraisingEventId", SqlDbType.Int).Value = fundraisingEventId;
+            cmd.Parameters.Add("@ContactType", SqlDbType.NVarChar).Value = contactType;
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        institutionalEntity.InstitutionalEntityId = reader.GetInt32(0);
+                        institutionalEntity.CompanyName = reader.IsDBNull(1) ? null : reader.GetString(1);
+                        institutionalEntity.GivenName = reader.GetString(2);
+                        institutionalEntity.FamilyName = reader.GetString(3);
+                        institutionalEntity.Email = reader.GetString(4);
+                        institutionalEntity.Phone = reader.GetString(5);
+                        institutionalEntity.Address = reader.GetString(6);
+                        institutionalEntity.Address2 = reader.IsDBNull(7) ? null : reader.GetString(7);
+                        institutionalEntity.Zipcode = reader.GetString(8);
+                        institutionalEntity.ContactType = reader.GetString(9);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return institutionalEntity;
+        }
     }
 }

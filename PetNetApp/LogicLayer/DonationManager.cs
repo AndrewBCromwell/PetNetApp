@@ -21,6 +21,8 @@ namespace LogicLayer
         {
             donationAccessor = da;
         }
+
+
         /// <summary>
         /// Author: Gwen Arman
         /// Date: 2023/03/02
@@ -49,6 +51,43 @@ namespace LogicLayer
             catch (Exception ex)
             {
                 throw new ApplicationException("Failed to retrieve in-kind donations", ex);
+            }
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// created: 2023/03/17
+        /// Retrieves donations by fundraising eventId
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public List<DonationVM> RetrieveDonationsByEventId(int eventId)
+        {
+            try
+            {
+                return donationAccessor.SelectDonationsByEventId(eventId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve donations by EventId", ex);
+            }
+        }
+        /// <summary>
+        /// Barry Mikulas
+        /// created: 2023/03/17
+        /// Retrieves sum of donation amount by fundraising eventId
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public decimal RetrieveSumDonationsByEventId(int eventId)
+        {
+            try
+            {
+                return donationAccessor.SelectSumDonationsByEventId(eventId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve sum of donations by EventId", ex);
             }
         }
     }

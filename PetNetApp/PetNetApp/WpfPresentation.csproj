@@ -93,10 +93,13 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
+      <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Fundraising\ViewFundraisingEventContacts.xaml.cs">
+    <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
       <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
@@ -107,9 +110,6 @@
     </Compile>
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Fundraising\ViewFundraisingEventsPage.xaml.cs">
-      <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
@@ -223,9 +223,6 @@
     <Compile Include="UserControls\InKindUserControl.xaml.cs">
       <DependentUpon>InKindUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
-      <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
@@ -334,6 +331,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Management\AddEditSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -346,7 +347,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Fundraising\ViewFundraisingEventContacts.xaml">
+    <Page Include="Fundraising\ViewFundraisingEventContacts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -432,10 +433,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Fundraising\ViewFundraisingEventContacts.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -455,10 +452,6 @@
     <Page Include="Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Fundraising\ViewFundraisingEventsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Misc\AccountInfoPage.xaml">
       <SubType>Designer</SubType>
@@ -1172,6 +1165,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\format_line_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\picture_placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\outlined_placeholder-519.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

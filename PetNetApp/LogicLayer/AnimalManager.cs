@@ -246,5 +246,21 @@ namespace LogicLayer
 
             return fosterPlacementRecord;
         }
+
+        public List<AnimalVM> RetrieveAnimalsByFundrasingEventId(int fundraisingEventId)
+        {
+            //throw new NotImplementedException();
+            List<AnimalVM> animals;
+            try
+            {
+                animals = _animalAccessor.SelectAnimalsByFundraisingEventId(fundraisingEventId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Animals for fundraising event not found.", ex);
+            }
+
+            return animals;
+        }
     }
 }

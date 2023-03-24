@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace DataAccessLayerFakes
         private List<InstitutionalEntity> _institutionalEntities = FundraisingFakeData.InstitutionalEntities;
         private List<Tuple<int, int>> _fundraisingCampaignEntities = FundraisingFakeData.FundraisingCampaignEntities;
         public List<InstitutionalEntity> _institutionalEntitiesWithShelterId = new List<InstitutionalEntity>();
+        private List<Tuple<int, int>> _fundraisingEventEntities = FundraisingFakeData.FundraisingEventEntities;
 
         public InstitutionalEntityAccessorFake()
         {
@@ -342,6 +344,29 @@ namespace DataAccessLayerFakes
                 throw new ApplicationException("Entity not found");
             }
             return institutionalEntity;
+        }
+
+        public List<InstitutionalEntity> SelectFundraisingEventInstitutionalEntitiesByEventIdAndContactType(int fundraisingEventId, string contactType)
+        {
+            // throw new NotImplementedException();
+            var institutionalEntities = from institutionalEntityRecord in _institutionalEntities
+                                        join fundraisingEventEntityRecord in _fundraisingEventEntities on institutionalEntityRecord.InstitutionalEntityId equals fundraisingEventEntityRecord.Item2
+                                        where fundraisingEventEntityRecord.Item1 == fundraisingEventId && institutionalEntityRecord.ContactType == contactType
+                                        select institutionalEntityRecord;
+
+            return institutionalEntities.ToList();
+        }
+
+        public InstitutionalEntity SelectInstitutionalEntityByFundraisingEventIdAndContactType(int fundraisingEventId, string contactType)
+        {
+//            throw new NotImplementedException();
+
+            var institutionalEntity = from institutionalEntityRecord in _institutionalEntities
+                                      join fundraisingEventEntityRecord in _fundraisingEventEntities on institutionalEntityRecord.InstitutionalEntityId equals fundraisingEventEntityRecord.Item2
+                                      where fundraisingEventEntityRecord.Item1 == fundraisingEventId && institutionalEntityRecord.ContactType == contactType
+                                      select institutionalEntityRecord;
+
+            return (InstitutionalEntity)institutionalEntity.FirstOrDefault();
         }
     }
 }

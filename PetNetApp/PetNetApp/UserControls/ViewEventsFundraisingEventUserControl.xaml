@@ -35,10 +35,10 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" Margin="20 0" VerticalAlignment="Center" Grid.Column="0">
                     <Label Content="{Binding FundraisingEvent.Title}" Foreground="{Binding Foreground}" MinWidth="{Binding TitleSectionWidth}"/>
-                    <Label Content=" | Date: "/>
-                    <Label Content="{Binding FundraisingEvent.StartTime.Date}" Foreground="{Binding Foreground}" MinWidth="{Binding StartDateSectionWidth}"/>
-                    <Label Content=" Time: "/>
-                    <Label Content="{Binding FundraisingEvent.StartTime.TimeOfDay}" Foreground="{Binding Foreground}" MinWidth="{Binding StartTimeSectionWidth}"/>
+                    <Label Content=" | "/>
+                    <Label Content="{Binding FundraisingEvent.StartTime}" Foreground="{Binding Foreground}" MinWidth="{Binding StartDateSectionWidth}"/>
+                    <!--<Label Content=" Time: "/>
+                    <Label Content="{Binding FundraisingEvent.StartTime.TimeOfDay}" Foreground="{Binding Foreground}" MinWidth="{Binding StartTimeSectionWidth}"/>-->
                 </StackPanel>
                 <Button Grid.Column="1" Name="btnMenu" Click="btnMenu_Click" Width="40" Height="40">
                     <Button.Style>
@@ -72,8 +72,8 @@
                         <ContextMenu>
                             <MenuItem Name="menuView" Click="menuView_Click" Header="View"/>
                             <MenuItem Name="menuEdit" Click="menuEdit_Click" Header="Edit"/>
-                            <MenuItem Name="menuDelete" Click="menuDelete_Click" Header="Delete"/>
                             <MenuItem Name="menuUpdate" Click="menuUpdate_Click" Header="Update"/>
+                            <MenuItem Name="menuDelete" Click="menuDelete_Click" Header="Delete"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

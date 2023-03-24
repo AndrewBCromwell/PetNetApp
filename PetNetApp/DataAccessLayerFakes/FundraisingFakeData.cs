@@ -17,7 +17,9 @@ namespace DataObjects
         public static List<FundraisingCampaignVM> FundraisingCampaigns { get; set; }
         public static List<InstitutionalEntity> InstitutionalEntities { get; set; }
         public static List<Tuple<int, int>> FundraisingCampaignEntities { get; set; }
-
+        //public static List<FundraisingEventVM> FundraisingEvents { get; set; }
+        public static List<Tuple<int, int>> FundraisingEventEntities { get; set; }
+ 
         static FundraisingFakeData()
         {
             ResetFakeFundraisingCampaignData();
@@ -269,6 +271,38 @@ namespace DataObjects
                 new Tuple<int,int>(110000,17),
                 new Tuple<int,int>(110000,18),
                 new Tuple<int,int>(110000,19)
+            };
+
+            FundraisingEventEntities = new List<Tuple<int, int>>()
+            {
+                new Tuple<int,int>(100000,10),
+                new Tuple<int,int>(100000,11),
+                new Tuple<int,int>(100000,13),
+                new Tuple<int,int>(100000,15),
+                new Tuple<int,int>(100000,14),
+                new Tuple<int,int>(100000,17),
+                new Tuple<int,int>(100000,18),
+                new Tuple<int,int>(100000,19),
+                new Tuple<int,int>(100001,10),
+                new Tuple<int,int>(100001,16),
+                new Tuple<int,int>(100001,15),
+                new Tuple<int,int>(100001,13),
+                new Tuple<int,int>(100002,12),
+                new Tuple<int,int>(100002,10),
+                new Tuple<int,int>(100002,15),
+                new Tuple<int,int>(100002,17),
+                new Tuple<int,int>(100002,18),
+                new Tuple<int,int>(100003,10),
+                new Tuple<int,int>(100003,11),
+                new Tuple<int,int>(100003,12),
+                new Tuple<int,int>(100003,16),
+                new Tuple<int,int>(100004,10),
+                new Tuple<int,int>(100004,11),
+                new Tuple<int,int>(100004,13),
+                new Tuple<int,int>(100004,14),
+                new Tuple<int,int>(100004,17),
+                new Tuple<int,int>(100004,18),
+                new Tuple<int,int>(100004,19)
             };
         }
     }

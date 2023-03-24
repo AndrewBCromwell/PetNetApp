@@ -169,13 +169,13 @@ namespace WpfPresentation.Development.Fundraising
         private void btnViewContacts_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameFundraising.Navigate(ViewFundraisingEventContacts.GetViewEventContacts());
+            frameFundraising.Navigate(WpfPresentation.Fundraising.ViewFundraisingEventContacts.GetViewEventContacts());
         }
 
         private void btnEvents_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewEventsPage());
+            frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
 
         private void btnViewSponsors_Click(object sender, RoutedEventArgs e)

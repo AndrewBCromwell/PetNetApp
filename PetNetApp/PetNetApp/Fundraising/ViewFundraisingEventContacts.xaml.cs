@@ -324,7 +324,6 @@ namespace WpfPresentation.Fundraising
             addEditInstitutionalEntity.Owner = Window.GetWindow(this);
             addEditInstitutionalEntity.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             addEditInstitutionalEntity.ShowDialog();
-            NavigationService.Navigate(new ViewFundraisingEventContacts());
         }
 
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)

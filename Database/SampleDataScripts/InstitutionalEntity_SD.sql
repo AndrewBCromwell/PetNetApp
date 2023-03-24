@@ -373,3 +373,24 @@ VALUES
 , (100362, N'Exxon Mobil', N'Mia', N'Alvarez', N'mia.alvarez298@exxonmobil.com', N'7762167178', N'123 Boca Chica Blvd', NULL, N'29555    ', N'Host', 100000)
 SET IDENTITY_INSERT [dbo].[InstitutionalEntity] OFF
 GO
+
+print '' print '*** creating FundraisingEventEntity sample data'
+GO 
+INSERT INTO [dbo].[FundraisingEventEntity]
+		(
+		[EventId],
+		[ContactId]
+		)
+	VALUES
+		(100000, 100004),
+		(100000, 100007),
+		(100000, 100010),
+		(100000, 100034),
+		(100000, 100003),
+		(100000, 100155),
+		(100000, 100167),
+		(100000, 100209),
+		(100001, 100247),
+		(100002, 100248) 
+
+GO

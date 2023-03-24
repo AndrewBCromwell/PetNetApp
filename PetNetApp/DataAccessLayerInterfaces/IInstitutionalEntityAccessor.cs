@@ -99,5 +99,28 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="ApplicationException">Update Fails</exception>
         int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity);
 
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/15
+        /// 
+        /// Gets a list of all the institutional entities that are of contact type for the fundraising event
+        /// Contact types are Sponsor, Contact, Host
+        /// </summary>
+        /// <param name="fundraisingEventId">Id of the fundraising event</param>
+        /// <param name="contactType">type of institutional entity list attempting to retrieve</param>
+        /// <returns></returns>
+        List<InstitutionalEntity> SelectFundraisingEventInstitutionalEntitiesByEventIdAndContactType(int fundraisingEventId, string contactType);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/16
+        /// 
+        /// Gets a single institutional entity for the given event id and contact type.
+        /// used to retrieve the Host for an event
+        /// </summary>
+        /// <param name="fundraisingEventId">Id of the fundraising event</param>
+        /// <param name="contactType">type of institutional entity attempting to retrieve<</param>
+        /// <returns></returns>
+        InstitutionalEntity SelectInstitutionalEntityByFundraisingEventIdAndContactType(int fundraisingEventId, string contactType);
     }
 }

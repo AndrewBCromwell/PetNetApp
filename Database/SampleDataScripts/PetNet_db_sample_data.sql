@@ -782,16 +782,17 @@ INSERT INTO [dbo].[Donation]
         [HasInKindDonation],
         [Anonymous],
         [Target],
-        [PaymentMethod]
+        [PaymentMethod],
+		[FundraisingEventId]
 		)
 	VALUES
-		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa'),
-        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa'),
-        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa'),
-        (100002, 100000, 12.99, 'Daily good deed', 1, 0, ':)', 'Visa'),
-        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa'),
-        (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa'),
-        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa')
+		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa', 100000),
+        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', 100000),
+        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', 100001),
+        (100002, 100000, 12.99, 'Daily good deed', 1, 0, ':)', 'Visa', NULL),
+        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa', NULL),
+        (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa', 100001),
+        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL)
 GO
 
 print '' print '*** Creating InKind sample data'
@@ -1318,8 +1319,17 @@ INSERT INTO [dbo].[FundraiserAnimal]
 		)
 	VALUES
 		(100000, 100000),
+		(100000, 100006),
+		(100000, 100005),
+		(100000, 100011),
+		(100000, 100007),
         (100001, 100001),
-        (100002, 100002)
+        (100001, 100009),
+        (100001, 100010),
+        (100001, 100011),
+        (100002, 100001),
+        (100002, 100003),
+        (100002, 100005)
 GO
 
 print '' print '*** creating AnimalUpdates sample data'
