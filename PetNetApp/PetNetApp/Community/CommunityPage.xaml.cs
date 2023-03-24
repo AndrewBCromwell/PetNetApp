@@ -79,6 +79,12 @@ namespace WpfPresentation.Community
             frameCommunity.Navigate(new UserManagementPage());
         }
 
+        private void btnResources_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameCommunity.Navigate(new Resources());
+        }
+
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnAbout);

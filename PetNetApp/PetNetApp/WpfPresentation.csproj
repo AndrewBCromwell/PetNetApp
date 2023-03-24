@@ -93,6 +93,9 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
+      <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
@@ -355,6 +358,10 @@
       <DependentUpon>AddEditSchedule.xaml</DependentUpon>
     </Compile>
     <Page Include="Community\CustomerRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Community\ViewNearbyResourcesMap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1239,6 +1246,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\refresh_button_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cedar_rapids_map.png" />
+    <Resource Include="Images\mapmarkerdark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
