@@ -52,6 +52,7 @@
     <Compile Include="IInstitutionalEntityAccessor.cs" />
     <Compile Include="IItemAccessor.cs" />
     <Compile Include="IKennelAccessor.cs" />
+    <Compile Include="ILibraryAccessor.cs" />
     <Compile Include="IMedicalRecordAccessor.cs" />
     <Compile Include="IFundraisingEventAccessor.cs" />
     <Compile Include="IProcedureAccessor.cs" />

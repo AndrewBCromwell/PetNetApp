@@ -52,6 +52,7 @@
     <Compile Include="IInstitutionalEntityManager.cs" />
     <Compile Include="IItemManager.cs" />
     <Compile Include="IKennelManager.cs" />
+    <Compile Include="ILibraryManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
     <Compile Include="IShelterInventoryItemManager.cs" />
     <Compile Include="IProcedureManager.cs" />

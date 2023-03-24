@@ -100,6 +100,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByIte
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

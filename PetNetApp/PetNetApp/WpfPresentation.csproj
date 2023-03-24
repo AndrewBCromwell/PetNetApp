@@ -105,6 +105,9 @@
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Management\Inventory\Library\LibraryUI.xaml.cs">
+      <DependentUpon>LibraryUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Events\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,9 @@
     </Compile>
     <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
       <DependentUpon>InventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\Library\LibraryUI.xaml.cs">
+      <DependentUpon>LibraryUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\ViewEditShelterInventoryItem.xaml.cs">
       <DependentUpon>ViewEditShelterInventoryItem.xaml</DependentUpon>
@@ -394,6 +400,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Development\Management\Inventory\Library\LibraryUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Events\EventsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -493,6 +503,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\InventoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\Library\LibraryUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

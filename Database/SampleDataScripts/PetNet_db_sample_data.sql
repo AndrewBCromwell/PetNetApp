@@ -213,6 +213,9 @@ INSERT INTO [dbo].[Category]
 		, ('Dog')
 		, ('Rabbit')
 		, ('Rodent')
+		/* Other */
+		, ('Food')
+		, ('Medicine')
 GO
 
 print '' print '*** Inserting Item Records'
@@ -874,9 +877,13 @@ INSERT INTO [dbo].[ItemCategory]
 		)
 	VALUES
 		('Dog Food', 'Dog'),
+		('Dog Food', 'Food'),
         ('Cat Food', 'Cat'),
+		('Cat Food', 'Food'),
         ('Rabbit Food', 'Rabbit'),
-		('Rodent Food', 'Rodent')
+		('Rabbit Food', 'Food'),
+		('Rodent Food', 'Rodent'),
+		('Rodent Food', 'Food')
 GO
 
 print '' print '*** Creating EventSubscription sample data'

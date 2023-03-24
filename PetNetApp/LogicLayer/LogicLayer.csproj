@@ -56,6 +56,7 @@
     <Compile Include="InstitutionalEntityManager.cs" />
     <Compile Include="ItemManager.cs" />
     <Compile Include="KennelManager.cs" />
+    <Compile Include="LibraryManager.cs" />
     <Compile Include="MasterManager.cs" />
     <Compile Include="MedicalRecordManager.cs" />
     <Compile Include="ProcedureManager.cs" />

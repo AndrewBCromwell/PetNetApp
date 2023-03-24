@@ -54,6 +54,7 @@
     <Compile Include="InstitutionalEntityAccessor.cs" />
     <Compile Include="ItemAccessor.cs" />
     <Compile Include="KennelAccessor.cs" />
+    <Compile Include="LibraryAccessor.cs" />
     <Compile Include="MedicalRecordAccessor.cs" />
     <Compile Include="ProcedureAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
