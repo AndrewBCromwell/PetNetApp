@@ -13,7 +13,7 @@ namespace MVCPresentation.Controllers
         // GET: Donate
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Donations");
         }
     }
 }
