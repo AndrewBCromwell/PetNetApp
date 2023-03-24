@@ -146,7 +146,7 @@ namespace WpfPresentation.Development.Management
         private void btnLibrary_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameManagement.Navigate(LibraryUI.GetLibraryUI(_manager));
+            frameManagement.Navigate(WpfPresentation.Management.Inventory.Library.LibraryUI.GetLibraryUI(_manager));
         }
     }
 }
