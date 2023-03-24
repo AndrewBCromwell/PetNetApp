@@ -122,6 +122,19 @@ namespace DataAccessLayerFakes
             return fakeDonations.Where(d => d.ShelterId == ShelterId).ToList();
         }
 
+        public List<DonationVM> SelectDonationsByUserId(int usersId)
+        {
+            List<DonationVM> fakeSortedDonations = new List<DonationVM>();
+            foreach (var donation in fakeDonations)
+            {
+                if (donation.UserId == usersId)
+                {
+                    fakeSortedDonations.Add(donation);
+                }
+            }
+            return fakeSortedDonations;
+        }
+
         public List<InKind> SelectInKindsByDonationId(int donationId)
         {
             return fakeDonations.First(don => don.DonationId == donationId).InKindList;

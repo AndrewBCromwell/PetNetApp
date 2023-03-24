@@ -91,7 +91,7 @@ namespace WpfPresentation.Fundraising
         /// <remarks>
         /// Updater: Andrew Schneider
         /// Updated: 2023/03/18
-        /// Originally part of Page_Loaded but moved to a separate method
+        /// Originally part of Page_Loaded but moved to a separate methods
         /// so it could be called from Page_Loaded and the "Reset" button
         /// on the Filter Donations popup.
         /// </remarks>

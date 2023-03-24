@@ -43,6 +43,19 @@ namespace LogicLayer
             }
         }
 
+        public List<DonationVM> RetrieveDonationsByUserId(int usersId)
+        {
+            try
+            {
+                return donationAccessor.SelectDonationsByUserId(usersId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Failed to retrieve donations for this donor.", ex);
+            }
+        }
+
         /// <summary>
         /// Author: Gwen Arman
         /// Date: 2023/03/02

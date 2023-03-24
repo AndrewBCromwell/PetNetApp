@@ -108,9 +108,12 @@
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
     </Compile>
-	  <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
-		  <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="Fundraising\DonorInfoPage.xaml.cs">
+      <DependentUpon>DonorInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
+      <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Events\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
@@ -382,6 +385,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\QurantinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\DonorInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

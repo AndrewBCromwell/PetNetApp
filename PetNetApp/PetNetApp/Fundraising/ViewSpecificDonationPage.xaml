@@ -37,6 +37,7 @@
                     </TextBlock>
                 </Label.Content>
             </Label>
+            <Button x:Name="btnViewDonorProfile" Content="View Donor Profile..." Width="167" Margin="0,6,0,22" Click="btnViewDonorProfile_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal">
             <Label>Donation Amount:</Label>
