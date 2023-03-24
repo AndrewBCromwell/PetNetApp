@@ -31,6 +31,18 @@ namespace LogicLayerInterfaces
 
         /// <summary>
         /// Barry Mikulas
+        /// Created: 2023/03/04
+        /// 
+        /// Uses the Accessor method to retrieve Institutional Entities of the ContactType
+        /// for the event and rewraps exceptions
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="contactType">of types Sponsor, Host, or Contact</param>
+        /// <returns></returns>
+        List<InstitutionalEntity> RetrieveFundraisingInstitutionalEntitiesByEventIdAndContactType(int eventId, string contactType);
+
+        /// <summary>
+        /// Barry Mikulas
         /// Created: 2023/03/01
         /// 
         /// Retrieves a list of all InstitutionalEntities for by shelterId and entityType
@@ -98,5 +110,23 @@ namespace LogicLayerInterfaces
         /// <param name="newEntity">Entity object holding new edited data</param>
         /// <exception cref="ApplicationException">Edit Fails</exception>
         bool EditInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created 03/16/2023
+        /// 
+        /// Retrieve an institutional entity for an event given an eventId and contactType
+        /// Mainly used for contact type Host
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example:  Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="fundraisingEventId"></param>
+        /// <param name="contactType"></param>
+        /// <returns></returns>
+        InstitutionalEntity RetrieveInstitutionalEntityByEventIdAndContactType(int fundraisingEventId, string contactType);
     }
 }

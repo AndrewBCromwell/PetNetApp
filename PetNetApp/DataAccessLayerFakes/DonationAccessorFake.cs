@@ -26,6 +26,8 @@ namespace DataAccessLayerFakes
                 Anonymous = false,
                 Target = "To help",
                 PaymentMethod = "Cash",
+                FundraisingEventId = 1000,
+                ShelterName = "Doggy Care",
                 InKindList = new List<InKind>()
                 {
                     new InKind()
@@ -58,9 +60,11 @@ namespace DataAccessLayerFakes
                 FamilyName = "Smith",
                 HasInKindDonation = false,
                 Anonymous = false,
-                Target = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                PaymentMethod = "Cash"
+                Target = "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Word " + "Apple " + "Word " + "Word " + "Word " + "Word " +
+                "Word " + "Word " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test " + "Test ",
+                PaymentMethod = "Cash",
+                ShelterName = "Kitty Care",
+                FundraisingEventId = 1000
             });
             fakeDonations.Add(new DonationVM
             {
@@ -74,7 +78,9 @@ namespace DataAccessLayerFakes
                 HasInKindDonation = false,
                 Anonymous = false,
                 Target = "To help",
-                PaymentMethod = "Cash"
+                PaymentMethod = "Cash",
+                ShelterName = "Snakey Care",
+                FundraisingEventId = 1001
             });
             fakeDonations.Add(new DonationVM
             {
@@ -88,18 +94,56 @@ namespace DataAccessLayerFakes
                 HasInKindDonation = false,
                 Anonymous = false,
                 Target = "To help",
-                PaymentMethod = "Cash"
+                PaymentMethod = "Cash",
+                ShelterName = "Animal Care",
             });
 
         }
-        public List<DonationVM> SelectDonationsByShelterId(int ShelterId)
+
+        public List<DonationVM> SelectAllDonations()
         {
             return fakeDonations;
+        }
+
+        public DonationVM SelectDonationByDonationId(int donationID)
+        {
+            return fakeDonations.Find(d => d.DonationId == donationID);
+        }
+
+        public List<DonationVM> SelectDonationsByEventId(int eventId)
+        {
+
+            return fakeDonations.Where(fd => fd.FundraisingEventId == eventId).ToList();
+            throw new NotImplementedException();
+        }
+
+        public List<DonationVM> SelectDonationsByShelterId(int ShelterId)
+        {
+            return fakeDonations.Where(d => d.ShelterId == ShelterId).ToList();
+        }
+
+        public List<DonationVM> SelectDonationsByUserId(int usersId)
+        {
+            List<DonationVM> fakeSortedDonations = new List<DonationVM>();
+            foreach (var donation in fakeDonations)
+            {
+                if (donation.UserId == usersId)
+                {
+                    fakeSortedDonations.Add(donation);
+                }
+            }
+            return fakeSortedDonations;
         }
 
         public List<InKind> SelectInKindsByDonationId(int donationId)
         {
             return fakeDonations.First(don => don.DonationId == donationId).InKindList;
+        }
+
+        public decimal SelectSumDonationsByEventId(int eventId)
+        {
+            return fakeDonations.Where(fd => fd.FundraisingEventId == eventId).ToList().Sum(fd => fd.Amount).GetValueOrDefault();
+            // throw new NotImplementedException();
         }
     }
 }

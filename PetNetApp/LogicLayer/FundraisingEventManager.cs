@@ -38,11 +38,11 @@ namespace LogicLayer
         {
             _fundraisingEventAccessor = fundraisingEventAccessor;
         }
-        public List<FundraisingEvent> RetrieveAllFundraisingEventsByShelterId(int shelterId)
+        public List<FundraisingEventVM> RetrieveAllFundraisingEventsByShelterId(int shelterId)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
 
-            List<FundraisingEvent> events = null;
+            List<FundraisingEventVM> events = null;
             try
             {
                 events = _fundraisingEventAccessor.SelectAllFundraisingEventsByShelterId(shelterId);

@@ -56,6 +56,7 @@
     <Compile Include="IMedicalRecordAccessor.cs" />
     <Compile Include="IFundraisingEventAccessor.cs" />
     <Compile Include="IProcedureAccessor.cs" />
+    <Compile Include="IRequestAccessor.cs" />
     <Compile Include="IRoleAccessor.cs" />
     <Compile Include="IScheduleAccessor.cs" />
     <Compile Include="IShelterAccessor.cs" />

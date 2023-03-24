@@ -52,12 +52,12 @@ namespace LogicLayer
         public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
         public IFundraisingEventManager FundraisingEventManager { get; set; }
         public IZipcodeManager ZipcodeManager { get; set; }
+        public IRequestManager RequestManager { get; private set; }
         public IVaccinationManager VaccinationManager { get; set; }
         public IShelterInventoryItemManager ShelterInventoryItemManager { get; set; }
         public IShelterManager ShelterManager { get; set; }
         public IItemManager ItemManager { get; set; }
         public IVolunteerManager VolunteerManager { get; set; }
-
 
         private MasterManager()
         {
@@ -80,6 +80,7 @@ namespace LogicLayer
             DonationManager = new DonationManager();
             FundraisingEventManager = new FundraisingEventManager();
             ZipcodeManager = new ZipcodeManager();
+            RequestManager = new RequestManager();
             VaccinationManager = new VaccinationManager();
             ShelterInventoryItemManager = new ShelterInventoryItemManager();
             ShelterManager = new ShelterManager();
@@ -87,25 +88,25 @@ namespace LogicLayer
             VolunteerManager = new VolunteerManager();
 
 
-            //for testing from dev page
+            // for testing from dev page
             User = new UsersVM()
-            {
-                UsersId = 100004,
-                ShelterId = 100000,
-                GivenName = "Barry",
-                FamilyName = "Mikulas",
-                Email = "bmikulas@company.com",
-                Address = "4150 riverview road",
-                Zipcode = "52411",
-                Phone = "319-123-1325",
-                Active = true,
-                Suspend = false,
-                Roles = new List<string>() { "Admin"}
-            };
+              {
+                  UsersId = 100004,
+                  ShelterId = 100000,
+                  GivenName = "Barry",
+                  FamilyName = "Mikulas",
+                  Email = "bmikulas@company.com",
+                  Address = "4150 riverview road",
+                  Zipcode = "52411",
+                  Phone = "319-123-1325",
+                 Active = true,
+                  Suspend = false,
+                  Roles = new List<string>() { "Admin"}
+              };
 
 
         }
-    
+
         public static MasterManager GetMasterManager()
         {
             if (_existingMasterManager == null)

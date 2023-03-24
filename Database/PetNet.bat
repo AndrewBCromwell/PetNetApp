@@ -86,6 +86,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateQuarantineStatusByMedica
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewRequest_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordList.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordDetailsByMedicalRecordId.sql
@@ -98,6 +99,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShel
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShelterIdAndItemId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByItemId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql

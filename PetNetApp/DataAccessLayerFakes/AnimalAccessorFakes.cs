@@ -21,6 +21,8 @@ namespace DataAccessLayerFakes
         List<Applicant> fakeApplicants = new List<Applicant>();
         List<FosterPlacement> fakeFosterPlacements = new List<FosterPlacement>();
         List<FosterPlacementRecord> fakeFosterPlacementRecords = new List<FosterPlacementRecord>();
+        private List<AnimalVM> _fakeFundraisingEventAnimals = AnimalFakeData.Animals;
+        private List<Tuple<int, int>> _fakefundraiserAnimal = AnimalFakeData.FundraiserAnimal;
 
         public AnimalAccessorFakes()
         {
@@ -429,6 +431,17 @@ namespace DataAccessLayerFakes
             }
 
             return fosterPlacementRecord;
+        }
+
+        public List<AnimalVM> SelectAnimalsByFundraisingEventId(int fundraisingEventId)
+        {
+            //throw new NotImplementedException();
+            var fundraisingEventAnimals = from animalFundraisingEventRecord in _fakeFundraisingEventAnimals
+                                          join fundraisingEventAnimalRecord in _fakefundraiserAnimal on animalFundraisingEventRecord.AnimalId equals fundraisingEventAnimalRecord.Item2
+                                          where fundraisingEventAnimalRecord.Item1 == fundraisingEventId
+                                          select animalFundraisingEventRecord;
+
+            return fundraisingEventAnimals.ToList();
         }
     }
 }

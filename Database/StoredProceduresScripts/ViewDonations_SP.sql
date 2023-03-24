@@ -31,3 +31,18 @@ AS
     END
 GO
 
+print '' print '*** creating sp_select_all_donations'
+GO
+Create procedure [dbo].[sp_select_all_donations]
+AS
+	BEGIN
+		Select 	[Donation].[DonationId], [Donation].[UsersId], [Users].[GivenName], [Users].[FamilyName], [Donation].[ShelterId],
+				[Amount], [Message], [Date], [Donation].[GivenName], [Donation].[FamilyName], [HasInKindDonation],
+                [Anonymous], [Target], [PaymentMethod], [ScheduledDonationId], [FundraisingEventId], [ShelterName]
+		From 	[Donation] left join [Users]
+					on [Donation].[UsersId] = [Users].[UsersId]
+                    left join [Shelter]
+                    on [Donation].[ShelterId] = [Shelter].[ShelterId]
+    END
+GO
+

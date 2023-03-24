@@ -93,17 +93,26 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
+      <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
+      <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\UpdateFundraisingCampaign.xaml.cs">
       <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Fundraising\ViewFundraisingEventContacts.xaml.cs">
-      <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
       <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\DonorInfoPage.xaml.cs">
+      <DependentUpon>DonorInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
+      <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Management\Inventory\Library\LibraryUI.xaml.cs">
       <DependentUpon>LibraryUI.xaml</DependentUpon>
@@ -122,9 +131,6 @@
     </Compile>
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Fundraising\ViewFundraisingEventsPage.xaml.cs">
-      <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
       <DependentUpon>InventoryPage.xaml</DependentUpon>
@@ -229,6 +235,9 @@
     <Compile Include="Fundraising\ViewDonationsPage.xaml.cs">
       <DependentUpon>ViewDonationsPage.xaml</DependentUpon>
     </Compile>
+	<Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
+      <DependentUpon>SpecificRequestPage.xaml</DependentUpon>
+	</Compile>
     <Compile Include="Shelters\ContactPage.xaml.cs">
       <DependentUpon>ContactPage.xaml</DependentUpon>
     </Compile>
@@ -252,9 +261,6 @@
     </Compile>
     <Compile Include="UserControls\InKindUserControl.xaml.cs">
       <DependentUpon>InKindUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
-      <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
@@ -364,7 +370,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Community\ViewNearbyResourcesMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Fundraising\UpdateFundraisingCampaign.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -380,7 +394,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Fundraising\ViewFundraisingEventContacts.xaml">
+    <Page Include="Fundraising\DonorInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewFundraisingEventContacts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -482,10 +500,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Fundraising\ViewFundraisingEventContacts.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -500,6 +514,10 @@
     </Page>
     <Page Include="Fundraising\ViewDonationsPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\SpecificRequestPage.xaml">
+	  <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\InventoryPage.xaml">
@@ -517,10 +535,6 @@
     <Page Include="Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Fundraising\ViewFundraisingEventsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Management\Inventory\ViewShelterInventoryPage.xaml">
       <SubType>Designer</SubType>
@@ -1253,6 +1267,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\refresh_button_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cedar_rapids_map.png" />
+    <Resource Include="Images\mapmarkerdark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\picture_placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\outlined_placeholder-519.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
