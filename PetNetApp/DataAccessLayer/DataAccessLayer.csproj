@@ -55,8 +55,10 @@
     <Compile Include="ItemAccessor.cs" />
     <Compile Include="KennelAccessor.cs" />
     <Compile Include="MedicalRecordAccessor.cs" />
+    <Compile Include="PostAccessor.cs" />
     <Compile Include="ProcedureAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyAccessor.cs" />
     <Compile Include="RequestAccessor.cs" />
     <Compile Include="RoleAccessor.cs" />
     <Compile Include="ScheduleAccessor.cs" />

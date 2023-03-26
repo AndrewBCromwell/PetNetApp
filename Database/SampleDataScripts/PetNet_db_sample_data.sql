@@ -419,18 +419,22 @@ print '' print '*** Creating Post sample data'
 
 GO
 INSERT INTO [dbo].[Post]
-		(		
-		[UserId],		
+		(			
 		[PostAuthor],	
-		[PostContent]
+		[PostContent],
+        [PostVisibility],
+        [PostAdminRemoved]
 		)
 	VALUES
-		(100000,100000,'Im happy'),
-		(100001,100001,'Im hungry'),
-		(100002,100002,'I like star wars'),
-		(100003,100003,'PETNET ROCKS!'),
-        (100000,100000,'I love this website'),
-        (100000,100000,'I found my pet through this website')
+		(100000,'Im happy', 1, null),
+		(100001,'Im hungry', 1, null),
+		(100002,'I like star wars', 1, null),
+		(100003,'PETNET ROCKS!', 1, null),
+        (100000,'I love this website', 1, null),
+        (100000,'I found my pet through this website', 1, null),
+        (100002,'Spamming', 0, 1),
+        (100002,'Toxic Behavior', 0, 1),
+        (100002,'Typo in my post', 0, 0)
 GO
 
 print '' print '*** Creating Event sample data'
@@ -540,15 +544,19 @@ INSERT INTO [dbo].[Reply]
 		(
 		[PostId],   
 		[ReplyAuthor],    
-		[ReplyContent]
+		[ReplyContent],
+        [ReplyVisibility],
+        [ReplyAdminRemoved]
 		)
 	VALUES
-		(100000, 100000, "Wow that's cool"),
-        (100000, 100003, "Again?"),
-        (100001, 100003, "Oh wow"),
-        (100001, 100003, "Haha"),
-        (100002, 100003, "Oh wow"),
-        (100002, 100003, "Haha")
+		(100000, 100000, "Wow that's cool", 0, 0),
+        (100000, 100003, "Again?", 1, null),
+        (100001, 100003, "Oh wow", 1, null),
+        (100001, 100003, "Haha", 1, null),
+        (100002, 100003, "Oh wow", 0, 0),
+        (100002, 100003, "Haha", 1, null),
+        (100002, 100000, "Toxic Behvaior over and over", 0, 1),
+        (100002, 100000, "Spamming replies on the spot", 0, 1)
 GO
 
 print '' print '*** Creating Favorite sample data'

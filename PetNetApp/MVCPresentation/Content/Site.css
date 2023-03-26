@@ -87,3 +87,7 @@ footer {
 .textWrap {
     word-wrap: break-word
 }
+
+.overflow {
+    overflow-y: auto;
+}

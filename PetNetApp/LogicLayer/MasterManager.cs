@@ -1,6 +1,4 @@
-﻿using DataAccessLayer;
-using DataAccessLayerInterfaces;
-using DataObjects;
+﻿using DataObjects;
 using LogicLayerInterfaces;
 using System;
 using System.Collections.Generic;
@@ -58,6 +56,8 @@ namespace LogicLayer
         public IShelterManager ShelterManager { get; set; }
         public IItemManager ItemManager { get; set; }
         public IVolunteerManager VolunteerManager { get; set; }
+        public IPostManager PostManager { get; set; }
+        public IReplyManager ReplyManager { get; set; }
 
         private MasterManager()
         {
@@ -86,23 +86,25 @@ namespace LogicLayer
             ShelterManager = new ShelterManager();
             ItemManager = new ItemManager();
             VolunteerManager = new VolunteerManager();
+            PostManager = new PostManager();
+            ReplyManager = new ReplyManager();
 
 
             //for testing from dev page
-            //User = new UsersVM()
-            //{
-            //    UsersId = 100004,
-            //    ShelterId = 100000,
-            //    GivenName = "Barry",
-            //    FamilyName = "Mikulas",
-            //    Email = "bmikulas@company.com",
-            //    Address = "4150 riverview road",
-            //    Zipcode = "52411",
-            //    Phone = "319-123-1325",
-            //    Active = true,
-            //    Suspend = false,
-            //    Roles = new List<string>() { "Admin" }
-            //};
+            User = new UsersVM()
+            {
+                UsersId = 100000,
+                ShelterId = 100000,
+                GivenName = "Barry",
+                FamilyName = "Mikulas",
+                Email = "bmikulas@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true,
+                Suspend = false,
+                Roles = new List<string>() { "Admin" }
+            };
         }
 
         public static MasterManager GetMasterManager()

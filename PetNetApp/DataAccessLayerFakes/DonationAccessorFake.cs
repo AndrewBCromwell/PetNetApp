@@ -47,7 +47,6 @@ namespace DataAccessLayerFakes
                     }
                 }
             });
-            ;
             fakeDonations.Add(new DonationVM
             {
                 DonationId = 2,
@@ -97,7 +96,6 @@ namespace DataAccessLayerFakes
                 PaymentMethod = "Cash",
                 ShelterName = "Animal Care",
             });
-
         }
 
         public List<DonationVM> SelectAllDonations()
