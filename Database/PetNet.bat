@@ -102,6 +102,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sq
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddPost_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditPost_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 ECHO .
 ECHO if no errors appear DB was created

@@ -355,14 +355,14 @@ print '' print '*** creating table for Post (Mads)'
 GO
 CREATE TABLE [dbo].[Post] (
 	[PostId]			[int]		IDENTITY(100000,1) 	NOT NULL,
-	[UserId]			[int]							NOT NULL,
 	[PostAuthor]		[int]							NOT NULL,
 	[PostContent]		[nvarchar](250)					NOT NULL,
 	[PostDate]			[datetime]						NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	[PostVisibility]	[bit]							NOT NULL DEFAULT 1,
+    [PostAdminRemoved]	[bit]							NULL DEFAULT NULL
 	
 	CONSTRAINT [pk_PostId] PRIMARY KEY([PostId]),
-	CONSTRAINT [fk_PostUsers_UserId] FOREIGN KEY ([UserId])
+	CONSTRAINT [fk_Post_PostAuthor] FOREIGN KEY ([PostAuthor])
        REFERENCES [dbo].[Users]([UsersId])
 )
 GO
@@ -485,6 +485,7 @@ CREATE TABLE [dbo].[Reply] (
 	[ReplyContent]		[nvarchar](250)				NOT NULL,
 	[ReplyDate]			[datetime]					NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	[ReplyVisibility]	[bit]						NOT NULL DEFAULT 1,
+    [ReplyAdminRemoved]	[bit]						NULL DEFAULT NULL
 
 	CONSTRAINT [pk_ReplyId]	PRIMARY KEY ([ReplyId]),
 	CONSTRAINT [fk_ReplyPost_PostId] FOREIGN KEY ([PostId])

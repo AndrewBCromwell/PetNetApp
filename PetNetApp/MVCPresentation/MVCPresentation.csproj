@@ -190,6 +190,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\community.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -198,6 +199,9 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Views\Donations\Index.cshtml" />
     <Content Include="Views\Donations\Details.cshtml" />
+    <Content Include="Views\Community\Index.cshtml" />
+    <Content Include="Views\Community\Create.cshtml" />
+    <Content Include="Views\Community\Edit.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -326,9 +330,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Animals\" />
-    <Folder Include="Views\Community\" />
     <Folder Include="Views\Donate\" />
     <Folder Include="Views\Events\" />
+    <Folder Include="Views\Post\" />
     <Folder Include="Views\Shelters\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>

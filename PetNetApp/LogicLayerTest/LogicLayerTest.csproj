@@ -71,6 +71,8 @@
     <Compile Include="RequestManagerTests.cs" />
     <Compile Include="ShelterInventoryItemManagerTests.cs" />
     <Compile Include="ItemManagerTests.cs" />
+    <Compile Include="PostManagerTests.cs" />
+    <Compile Include="ReplyManagerTests.cs" />
     <Compile Include="LibraryManagerTests.cs" />
     <Compile Include="VaccinationManagerTests.cs" />
     <Compile Include="FundraisingCampaignManagerTests.cs" />
