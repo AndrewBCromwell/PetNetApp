@@ -39,7 +39,8 @@ namespace WpfPresentation.Animals
     /// </summary>
     public partial class AddEditVaccinationsPage : Page
     {
-        private VaccinationManager _vaccineManager = new VaccinationManager();
+
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
         private Vaccination _vaccine = new Vaccination();
         Animal _currentAnimal = new Animal(); //Used to keep tract of current animal
         bool _addMode; //Used to keep track of if we are inserting or editing data.
@@ -106,7 +107,10 @@ namespace WpfPresentation.Animals
         private void setAddMode()
         {
             txtVaccineName.IsEnabled = true;
-            txtUsersId.IsEnabled = true;
+            txtUsersId.IsEnabled = false;
+
+            txtUsersId.Text = MasterManager.GetMasterManager().User.UsersId.ToString();
+
             dpDateAdministered.IsEnabled = true;
 
             lblAddEditVaccine.Content = "Add New Vaccine";
@@ -128,7 +132,7 @@ namespace WpfPresentation.Animals
 
 
             txtVaccineName.IsEnabled = true;
-            txtUsersId.IsEnabled = true;
+            txtUsersId.IsEnabled = false;
             dpDateAdministered.IsEnabled = true;
 
             lblAddEditVaccine.Content = "Edit Vaccine Information";
@@ -163,15 +167,10 @@ namespace WpfPresentation.Animals
                     dpDateAdministered.Focus();
                     return;
                 }
-                try
-                {
-                    usersId = int.Parse(txtUsersId.Text);
-                }
-                catch (Exception)
-                {
-                    PromptWindow.ShowPrompt("Date Error", "Please Enter a Valid User ID");
-                    return;
-                }
+
+                usersId = MasterManager.GetMasterManager().User.UsersId;
+
+
                 //This if statement calls "RetrieveUserByUsersId" and returns a list of users that matches the Id
                 //If it returns 0, the user doesn't exist
                 if (_usersManager.RetrieveUsersByUsersId(usersId).Count == 0)
@@ -215,7 +214,7 @@ namespace WpfPresentation.Animals
                 };
                 try
                 {
-                    _vaccineManager.AddVaccination(newVaccination, _currentAnimal.AnimalId);
+                    _masterManager.VaccinationManager.AddVaccination(newVaccination, _currentAnimal.AnimalId);
 
                 }
                 catch (Exception)
@@ -290,7 +289,7 @@ namespace WpfPresentation.Animals
                     UserId = usersId
 
                 };
-                _vaccineManager.EditVaccination(_vaccine, newVaccination);
+                _masterManager.VaccinationManager.EditVaccination(_vaccine, newVaccination);
 
                 NavigationService.Navigate(new VaccinationsPage(_currentAnimal));
             }
