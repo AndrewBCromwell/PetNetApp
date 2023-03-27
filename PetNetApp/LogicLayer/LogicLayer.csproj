@@ -49,8 +49,10 @@
     <Compile Include="DeathManager.cs" />
     <Compile Include="AnimalManager.cs" />
     <Compile Include="AnimalUpdatesManager.cs" />
+    <Compile Include="FosterApplicationResponseManager.cs" />
     <Compile Include="FundraisingCampaignManager.cs" />
     <Compile Include="ImagesManager.cs" />
+    <Compile Include="InstitutionalEntityManager.cs" />
     <Compile Include="KennelManager.cs" />
     <Compile Include="MasterManager.cs" />
     <Compile Include="MedicalRecordManager.cs" />

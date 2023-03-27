@@ -44,8 +44,10 @@
     <Compile Include="Death.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalUpdates.cs" />
+    <Compile Include="FosterApplicationResponse.cs" />
     <Compile Include="FundraisingCampaign.cs" />
     <Compile Include="Images.cs" />
+    <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Kennel.cs" />
     <Compile Include="Procedure.cs" />

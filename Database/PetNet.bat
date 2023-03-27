@@ -8,6 +8,10 @@ rem Follow this example (but without rem):
 rem sqlcmd -S localhost -E -i SampleData\ASampleFeature_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\Zipcodes_DB.sql
 sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
+sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
+
+sqlcmd -S localhost -E -i FosterApplicationResponse.sql
+sqlcmd -S localhost -E -i FosterApplicationResponse_SP.sql
 
 
 
@@ -60,6 +64,8 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\LogInUser_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\SuspendUserAccount_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ImageManagement_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
+
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

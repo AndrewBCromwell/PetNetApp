@@ -18,6 +18,7 @@
                 <Rectangle Width="25"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Campaigns" x:Name="btnCampaigns" Click="btnCampaigns_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Donations" x:Name="btnDonations" Click="btnDonations_Click"/>
+                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Hosts" x:Name="btnHosts" Click="btnHosts_Click"/>
                 <Rectangle Width="25"/>
             </StackPanel>
         </ScrollViewer>
