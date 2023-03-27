@@ -75,7 +75,7 @@ namespace WpfPresentation.Fundraising
         {
             try
             {
-                _hosts = _masterManager.InstitutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndContactType((int)_masterManager.User.ShelterId, _contactType);
+                _hosts = _masterManager.InstitutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndEntityType((int)_masterManager.User.ShelterId, _contactType);
                 // for testing
                 // _hosts = _institutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndContactType((int)_masterManager.User.ShelterId, _contactType);
             }
@@ -251,7 +251,7 @@ namespace WpfPresentation.Fundraising
         {
             try
             {
-                _hosts = _masterManager.InstitutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndContactType((int)_masterManager.User.ShelterId, _contactType);
+                _hosts = _masterManager.InstitutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndEntityType((int)_masterManager.User.ShelterId, _contactType);
                 // using fake data
                 // _hosts = _institutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndContactType((int)_masterManager.User.ShelterId, _contactType);
 

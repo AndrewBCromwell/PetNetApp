@@ -58,13 +58,6 @@ namespace LogicLayer
         public IVolunteerManager VolunteerManager { get; set; }
         public IPostManager PostManager { get; set; }
         public IReplyManager ReplyManager { get; set; }
-        public ITestManager TestManager { get; set; }
-        public IRoleManager RoleManager { get; set; }
-        public IImagesManager ImagesManager { get; set; }
-        public ITicketManager TicketManager { get; set; }
-        public IProcedureManager ProcedureManager { get; set; }
-        public IMedicalRecordManager MedicalRecordManager { get; set; }
-        public IFundraisingCampaignManager FundraisingCampaignManager { get; set; }
         public IFosterApplicationResponseManager FosterApplicationResponseManager { get; set; }
 
 

@@ -19,8 +19,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayerInterfaces;
 using DataObjects;
-using System.Data.SqlClient;
-using System.Data;
 
 namespace DataAccessLayer
 {
