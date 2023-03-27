@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @RenderSection("styles", false)
+
+</head>
+<body>
+    <div class="header">
+        <div class="header-images">
+            <!-- Petnet Logo -->
+            <a href="@Url.Action("About", "Home")">
+                <img src="~/Images/petnetLogo_hover.png" height="75" />
+            </a>
+            <span></span>
+            <a href="@Url.Action("About", "Home")">
+                <img src="~/Images/bell_notification.png" height="45" />
+            </a>
+            <a href="@Url.Action("About", "Home")">
+                <img src="~/Images/user_hover.png" height="45" />
+            </a>
+            <a href="@Url.Action("About", "Home")">
+                <img src="~/Images/menuIcon.png" height="45" />
+            </a>
+        </div>
+
+        <div class="header-menu">
+            <ul class="header-menu-list">
+                <li class="header-menu-list-item">@Html.ActionLink("Animals", "Adopt", "Animals")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "Submenu", "Shelters")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Events", "Submenu", "Events")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Community", "Index", "Community")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Donate", "Index", "Donate")</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <footer>
+
+        <div class="footer-images">
+
+        </div>
+
+    </footer>
+</body>
+
+</html>

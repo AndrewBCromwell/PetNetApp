@@ -74,7 +74,7 @@ namespace PetNetApp
             frameMain.Navigate(null);
         }
 
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Resources["rsrcSelectedTabButton"];
@@ -90,32 +90,31 @@ namespace PetNetApp
 
         private void btnShelters_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnShelters);
             frameMain.Navigate(ShelterPage.GetShelterPage(_manager));
         }
 
         private void btnEvents_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
+            ChangeSelectedButton(btnEvents);
+            frameMain.Navigate(WpfPresentation.Events.EventsPage.GetEventsPage());
         }
 
         private void btnCommunity_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnCommunity);
             frameMain.Navigate(CommunityPage.GetCommunityPage());
         }
 
         private void btnAnimals_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnAnimals);
             frameMain.Navigate(AnimalsPage.GetAnimalsPage());
         }
 
         private void btnManagement_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnManagement);
             frameMain.Navigate(ManagementPage.GetManagementPage());
         }
 
@@ -257,7 +256,7 @@ namespace PetNetApp
         }
         private void ShowSheltersButtonByRoles()
         {
-            string[] allowedRoles = { "Admin", "Manager" };
+            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnShelters.Visibility = Visibility.Visible;

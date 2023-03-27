@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using WpfPresentation.Community.UsersControl;
 using LogicLayer;
 using DataObjects;
-using WpfPresentation.Development.Community;
 
 namespace WpfPresentation.Community
 {
@@ -109,6 +108,16 @@ namespace WpfPresentation.Community
                             ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemActivate);
                         }
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu.IsOpen = true;
+
+                        // Customer records option.
+
+                        MenuItem menuItemCustomerRecords = new MenuItem()
+                        { Header = "Customer Records" };
+                        menuItemCustomerRecords.Click += (object1, args) => menuItem_CustomerRecords_Click(user);
+                        ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemCustomerRecords);
+
+                        // Return statement.
+
                         return;
                     };
             if(index % 2 == 0)
@@ -124,6 +133,16 @@ namespace WpfPresentation.Community
             stpUsersList.Children.Add(ucPreviewUser);
         }
 
+        /// <summary>
+        /// Created by Teft Francisco
+        /// Created: 2023/03/03
+        /// Button will navigate to the user's customer records.
+        /// </summary>
+        private void menuItem_CustomerRecords_Click(Users user)
+        {
+            NavigationService.Navigate(new CustomerRecordsPage(user));
+        }
+
         private void usersProfile_MouseClick()
         {
             MessageBox.Show("User's profile");
@@ -133,6 +152,8 @@ namespace WpfPresentation.Community
         private void menuItem_Update_Click(Users user)
         {
             RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_masterManager, user);
+            roleManagementPopupWindow.Owner = Window.GetWindow(this);
+            roleManagementPopupWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             roleManagementPopupWindow.ShowDialog();
         }
 
@@ -144,7 +165,8 @@ namespace WpfPresentation.Community
         private void menuItem_Suspend_Click(Users user)
         {
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_masterManager, user);
-            //SuspendUserPopup suspendUserPopup = new SuspendUserPopup();
+            suspendUserPopup.Owner = Window.GetWindow(this);
+            suspendUserPopup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             suspendUserPopup.ShowDialog();
             NavigationService.Navigate(new UserManagementPage());
         }
@@ -158,7 +180,8 @@ namespace WpfPresentation.Community
         {
             
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_masterManager, user);
-            //SuspendUserPopup suspendUserPopup = new SuspendUserPopup();
+            suspendUserPopup.Owner = Window.GetWindow(this);
+            suspendUserPopup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             suspendUserPopup.ShowDialog();
             NavigationService.Navigate(new  UserManagementPage());
         }
@@ -205,7 +228,7 @@ namespace WpfPresentation.Community
                 }
                 catch (Exception ex)
                 {
-                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException);
+                    PromptWindow.ShowPrompt("Error", "Can not get the data. \n\n" + ex.Message);
                 }
             }
         }

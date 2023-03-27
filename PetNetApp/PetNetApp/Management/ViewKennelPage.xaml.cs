@@ -55,17 +55,15 @@ namespace WpfPresentation.Management
                     }
                     else
                     {
-                        if(kennelVMs[i].Animal.AnimalImages.Count != 0)
+                        try
                         {
-                            try
-                            {
-                                kennelUserControl.imgAnimalDisplay.Source = masterManager.ImagesManager.RetrieveImageByImages(kennelVMs[i].Animal.AnimalImages[0]);
-                            }
-                            catch (Exception)
-                            {
-                                BitmapImage brokenImage = new BitmapImage(new Uri("..\\Images\\BrokenImage.png", UriKind.Relative));
-                                kennelUserControl.imgAnimalDisplay.Source = brokenImage;
-                            }
+                            Images image = masterManager.KennelManager.RetrieveImageByAnimalId(kennelVMs[i].Animal.AnimalId);
+                            kennelUserControl.imgAnimalDisplay.Source = masterManager.ImagesManager.RetrieveImageByImages(image);
+                        }
+                        catch (Exception)
+                        {
+                            BitmapImage brokenImage = new BitmapImage(new Uri("..\\Images\\BrokenImage.png", UriKind.Relative));
+                            kennelUserControl.imgAnimalDisplay.Source = brokenImage;
                         }
                         
                         kennelUserControl.lblKennelName.Content += kennelVMs[i].Animal.AnimalName;

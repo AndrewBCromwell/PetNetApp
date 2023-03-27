@@ -108,7 +108,15 @@ namespace WpfPresentation.Animals
         private void datMedProcedure_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ProcedureVM selecteProcedure = (ProcedureVM)datMedProcedure.SelectedItem;
-            NavigationService.Navigate(new EditProcedurePage(selecteProcedure, _manager));
+            if(selecteProcedure == null)
+            {
+                NavigationService.Navigate(new EditProcedurePage(_procedureAnimal, _manager));
+            }
+            else
+            {
+                NavigationService.Navigate(new EditProcedurePage(selecteProcedure, _manager));
+            }
+            
         }
     }
 }

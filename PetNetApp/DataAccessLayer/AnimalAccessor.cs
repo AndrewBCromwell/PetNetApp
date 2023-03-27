@@ -13,24 +13,9 @@ namespace DataAccessLayer
 {
     public class AnimalAccessor : IAnimalAccessor
     {
-        /// <summary>
-        /// John
-        /// Created: N/A
-        /// 
-        /// Inserts animal profile record into the database
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Andrew Schneider
-        /// Updated: 2023/02/19
-        /// Added shelter Id
-        /// </remarks>
-        /// <param name="animal">The animal object to be added</param>
-        /// <exception cref="Exception">Insert Fails</exception>
-        /// <returns>Rows affected</returns>
         public int InsertAnimal(AnimalVM animal)
         {
-            int rows = 0;
+            int id = 0;
 
             DBConnection factory = new DBConnection();
             var conn = factory.GetConnection();
@@ -43,20 +28,60 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@AnimalGender", animal.AnimalGender);
             cmd.Parameters.AddWithValue("@AnimalTypeId", animal.AnimalTypeId);
             cmd.Parameters.AddWithValue("@AnimalBreedId", animal.AnimalBreedId);
-            cmd.Parameters.AddWithValue("@Personality", animal.Personality);
-            cmd.Parameters.AddWithValue("@Description", animal.Description);
             cmd.Parameters.AddWithValue("@AnimalStatusId", animal.AnimalStatusId);
-            cmd.Parameters.AddWithValue("@RecievedDate", animal.BroughtIn);
-            cmd.Parameters.AddWithValue("@MicrochipSerialNumber", animal.MicrochipNumber);
             cmd.Parameters.AddWithValue("@Aggressive", animal.Aggressive);
-            cmd.Parameters.AddWithValue("@AggressiveDescription", animal.AggressiveDescription);
             cmd.Parameters.AddWithValue("@ChildFriendly", animal.ChildFriendly);
             cmd.Parameters.AddWithValue("@NeuterStatus", animal.NeuterStatus);
-            cmd.Parameters.AddWithValue("@Notes", animal.Notes);
+
+            if (animal.Personality == null)
+            {
+                cmd.Parameters.AddWithValue("@Personality", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Personality", animal.Personality);
+            }
+
+            if (animal.Description == null)
+            {
+                cmd.Parameters.AddWithValue("@Description", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Description", animal.Description);
+            }
+
+            if (animal.MicrochipNumber == null)
+            {
+                cmd.Parameters.AddWithValue("@MicrochipSerialNumber", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@MicrochipSerialNumber", animal.MicrochipNumber);
+            }
+
+            if (animal.AggressiveDescription == null)
+            {
+                cmd.Parameters.AddWithValue("@AggressiveDescription", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@AggressiveDescription", animal.AggressiveDescription);
+            }
+
+            if (animal.Notes == null)
+            {
+                cmd.Parameters.AddWithValue("@Notes", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Notes", animal.Notes);
+            }
+
             try
             {
                 conn.Open();
-                var reader = cmd.ExecuteNonQuery();
+                id = Convert.ToInt32(cmd.ExecuteScalar());
             }
             catch (Exception ex)
             {
@@ -67,7 +92,7 @@ namespace DataAccessLayer
             {
                 conn.Close();
             }
-            return rows;
+            return id;
         }
 
         /// <summary>
@@ -138,22 +163,6 @@ namespace DataAccessLayer
             return animals;
         }
 
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/01
-        /// 
-        /// Selects an animal VM by animal Id and shelter Id
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="animalId">The animal Id of the animal VM to be returned</param>
-        /// <param name="shelterId">The shelter Id of the animal VM to be returned</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>AnimalVM</returns>
         public AnimalVM SelectAnimalByAnimalId(int animalId, int shelterId)
         {
             AnimalVM animal = new AnimalVM();
@@ -228,22 +237,7 @@ namespace DataAccessLayer
 
             return animal;
         }
-
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Selects all animal breeds to populate add/edit animal profile combo boxes
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param>No parameters</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>A  list of all animal breeds</returns>
+       
         public Dictionary<string, List<string>> SelectAllAnimalBreeds()
         {
             Dictionary<string, List<string>> breeds = new Dictionary<string, List<string>>();
@@ -299,21 +293,6 @@ namespace DataAccessLayer
             return breeds;
         }
 
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Selects all animal genders to populate add/edit animal profile combo boxes
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param>No parameters</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>A  list of all animal genders</returns>
         public List<string> SelectAllAnimalGenders()
         {
             List<string> genders = new List<string>();
@@ -362,22 +341,7 @@ namespace DataAccessLayer
             }
             return genders;
         }
-
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Selects all animal statuses to populate add/edit animal profile combo boxes
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param>No parameters</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>A  list of all animal statuses</returns>
+       
         public List<string> SelectAllAnimalStatuses()
         {
             List<string> statuses = new List<string>();
@@ -426,22 +390,7 @@ namespace DataAccessLayer
             }
             return statuses;
         }
-
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Selects all animal types to populate add/edit animal profile combo boxes
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param>No parameters</param>
-        /// <exception cref="Exception">Select Fails</exception>
-        /// <returns>A  list of all animal types</returns>
+       
         public List<string> SelectAllAnimalTypes()
         {
             List<string> types = new List<string>();
@@ -491,23 +440,6 @@ namespace DataAccessLayer
             return types;
         }
 
-        /// <summary>
-        /// Andrew Schneider
-        /// Created: 2023/02/08
-        /// 
-        /// Updates an animal profile record using an "old" animal VM
-        /// object and a "new" edited animal VM object
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example:  Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="oldAnimal">AnimalVM object holding old data</param>
-        /// <param name="newAnimal">AnimalVM object holding new edited data</param>
-        /// <exception cref="Exception">Update Fails</exception>
-        /// <returns>Rows edited</returns>
         public int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal)
         {
             int rows = 0;
@@ -774,16 +706,16 @@ namespace DataAccessLayer
                         animal.AnimalGender = reader.GetString(2);
                         animal.AnimalTypeId = reader.GetString(3);
                         animal.AnimalBreedId = reader.GetString(4);
-                        animal.Personality = reader.GetString(5);
-                        animal.Description = reader.GetString(6);
+                        animal.Personality = reader.IsDBNull(5) ? null : reader.GetString(5);
+                        animal.Description = reader.IsDBNull(6) ? null : reader.GetString(6);
                         animal.AnimalStatusId = reader.GetString(7);
                         animal.BroughtIn = reader.GetDateTime(8);
-                        animal.MicrochipNumber = reader.GetString(9);
+                        animal.MicrochipNumber = reader.IsDBNull(9) ? null : reader.GetString(9);
                         animal.Aggressive = reader.GetBoolean(10);
-                        animal.AggressiveDescription = reader.GetString(11);
+                        animal.AggressiveDescription = reader.IsDBNull(11) ? null : reader.GetString(11);
                         animal.ChildFriendly = reader.GetBoolean(12);
                         animal.NeuterStatus = reader.GetBoolean(13);
-                        animal.Notes = reader.GetString(14);
+                        animal.Notes = reader.IsDBNull(14) ? null : reader.GetString(14);
                     }
                 }
             }
@@ -798,6 +730,149 @@ namespace DataAccessLayer
             }
 
             return animal;
+        }
+
+        public List<AnimalVM> SelectAdoptedAnimalByUserId(int usersId)
+        {
+            List<AnimalVM> animals = new List<AnimalVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_animal_adopted_by_usersId";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UsersId", usersId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int animalId = reader.GetInt32(0);
+                        AnimalVM animal = SelectAnimalAdoptableProfile(animalId);
+                        animals.Add(animal);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return animals;
+        }
+
+        public FosterPlacementRecord SelectFosterPlacementRecordNotes(int animalId)
+        {
+            FosterPlacementRecord fosterPlacementRecord = new FosterPlacementRecord();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_foster_placement_record_notes";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@AnimalId", animalId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        fosterPlacementRecord.FosterPlacementRecordId = reader.GetInt32(0);
+                        fosterPlacementRecord.FosterPlacementId = reader.GetInt32(1);
+                        fosterPlacementRecord.FosterPlacementRecordNotes = reader.GetString(2);
+                        fosterPlacementRecord.FosterPlacementRecordDate = reader.GetDateTime(3);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return fosterPlacementRecord;
+        }
+
+        public List<AnimalVM> SelectAnimalsByFundraisingEventId(int fundraisingEventId)
+        {
+            //throw new NotImplementedException();
+            List<AnimalVM> animals = new List<AnimalVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_animals_by_fundraising_event_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@FundraisingEventId", fundraisingEventId);
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var animal = new AnimalVM();
+
+                        animal.AnimalId = reader.GetInt32(0);
+                        animal.AnimalName = reader.GetString(1);
+                        animal.AnimalTypeId = reader.GetString(2);
+                        animal.AnimalBreedId = reader.GetString(3);
+                        animal.Personality = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        animal.Description = reader.IsDBNull(5) ? null : reader.GetString(5);
+                        animal.AnimalStatusId = reader.GetString(6);
+                        animal.BroughtIn = reader.GetDateTime(7);
+                        animal.MicrochipNumber = reader.GetString(8);
+                        animal.Aggressive = reader.GetBoolean(9);
+                        animal.AggressiveDescription = reader.IsDBNull(10) ? null : reader.GetString(10);
+                        animal.ChildFriendly = reader.GetBoolean(11);
+                        animal.NeuterStatus = reader.GetBoolean(12);
+                        animal.Notes = reader.IsDBNull(13) ? null : reader.GetString(13);
+                        animal.AnimalShelterId = reader.GetInt32(14);
+                        animal.AnimalStatusDescription = "";
+                        animal.KennelName = "";
+                        animal.AnimalGender = "";
+                        animal.AnimalTypeDescription = "";
+                        animal.AnimalBreedDescription = "";
+                        animal.MedicalNotes = new List<MedicalRecord>();
+                        animal.AnimalDeath = new DeathVM();
+                        animal.AnimalImages = new List<Images>();
+
+                        animals.Add(animal);
+                    }
+                }
+
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return animals;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace LogicLayerInterfaces
         /// </summary>
         /// <param name="shelterName">The name of the shelter</param>
         /// <param name="address">the address of the shelter</param>
-        /// <param name="addressTwo">the extended address information of the shelter</param>
+        /// <param name="Address2">the extended address information of the shelter</param>
         /// <param name="zipCode">the zipcode of the shelter</param>
         /// <param name="phone">the phone number of the shelter</param>
         /// <param name="email">the email address of the shelter</param>
@@ -39,7 +39,7 @@ namespace LogicLayerInterfaces
         bool AddShelter(
             string shelterName
             , string address
-            , string addressTwo
+            , string Address2
             , string zipCode
             , string phone
             , string email
@@ -69,12 +69,12 @@ namespace LogicLayerInterfaces
         /// <summary>
         /// Brian Collum
         /// Created: 2023/02/23
-        /// Updates the addressTwo of a shelter
+        /// Updates the Address2 of a shelter
         /// </summary>
         /// <param name="shelter">The shelter object to update</param>
-        /// <param name="newAddressTwo">The new addressTwo of the shelter</param>
+        /// <param name="newAddress2">The new Address2 of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
-        bool EditAddressTwo(Shelter shelter, string newAddressTwo);
+        bool EditAddress2(Shelter shelter, string newAddress2);
 
         /// <summary>
         /// Brian Collum

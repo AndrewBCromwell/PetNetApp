@@ -346,8 +346,7 @@ CREATE TABLE [dbo].[Animal] (
 	CONSTRAINT [fk_Animal_AnimalStatusId]FOREIGN KEY ([AnimalStatusId])
 		REFERENCES [dbo].[AnimalStatus]([AnimalStatusId]) on UPDATE CASCADE,
 	CONSTRAINT [fk_Animal_AnimalShelterId]FOREIGN KEY ([AnimalShelterId])
-		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE,
-	CONSTRAINT [ak_MicrochipSerialNumber] UNIQUE([MicrochipSerialNumber])
+		REFERENCES [dbo].[Shelter]([ShelterId]) on UPDATE CASCADE
 )
 GO
 
@@ -356,14 +355,14 @@ print '' print '*** creating table for Post (Mads)'
 GO
 CREATE TABLE [dbo].[Post] (
 	[PostId]			[int]		IDENTITY(100000,1) 	NOT NULL,
-	[UserId]			[int]							NOT NULL,
 	[PostAuthor]		[int]							NOT NULL,
 	[PostContent]		[nvarchar](250)					NOT NULL,
 	[PostDate]			[datetime]						NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	[PostVisibility]	[bit]							NOT NULL DEFAULT 1,
+    [PostAdminRemoved]	[bit]							NULL DEFAULT NULL
 	
 	CONSTRAINT [pk_PostId] PRIMARY KEY([PostId]),
-	CONSTRAINT [fk_PostUsers_UserId] FOREIGN KEY ([UserId])
+	CONSTRAINT [fk_Post_PostAuthor] FOREIGN KEY ([PostAuthor])
        REFERENCES [dbo].[Users]([UsersId])
 )
 GO
@@ -486,6 +485,7 @@ CREATE TABLE [dbo].[Reply] (
 	[ReplyContent]		[nvarchar](250)				NOT NULL,
 	[ReplyDate]			[datetime]					NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	[ReplyVisibility]	[bit]						NOT NULL DEFAULT 1,
+    [ReplyAdminRemoved]	[bit]						NULL DEFAULT NULL
 
 	CONSTRAINT [pk_ReplyId]	PRIMARY KEY ([ReplyId]),
 	CONSTRAINT [fk_ReplyPost_PostId] FOREIGN KEY ([PostId])
@@ -537,6 +537,7 @@ CREATE TABLE [dbo].[Ticket] (
 	[UsersId]					[int]							 	NOT NULL,
 	[TicketStatusId]			[nvarchar](50)						NOT NULL, 
 	[TicketTitle]				[nvarchar](500)						NOT NULL,
+	[TicketContext]				[nvarchar](500)						NOT NULL,
 	[TicketDate]				[datetime]		DEFAULT GETDATE()	NOT NULL,
 	[TicketActive]				[bit]			DEFAULT 1			NOT NULL,
 	CONSTRAINT [pk_TicketId] PRIMARY KEY([TicketId]),
@@ -708,9 +709,9 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 	[Title]					[nvarchar](100)				NOT NULL,
 	[StartDate]				[datetime]					NULL,
 	[EndDate]				[datetime]					NULL,
-	[Description]			[nvarchar](255)				NULL,
+	[Description]			[nvarchar](250)				NOT NULL,
 	[Complete]				[bit]	DEFAULT 0			NOT NULL,
-	[Updated]				[int]						NULL,
+	[Active]				[bit]	DEFAULT 1			NOT NULL	
 	CONSTRAINT [pk_FundraisingCampaignId] PRIMARY KEY ([FundraisingCampaignId]),
 	CONSTRAINT [fk_FundraisingCampaign_UsersId] FOREIGN KEY ([UsersId])
 		REFERENCES [Users]([UsersId]),
@@ -1206,19 +1207,19 @@ CREATE TABLE [dbo].[AnimalMedicalImage] (
 GO
 
 -- Created by: Mohmeed Tomsah
-print '' print '*** creating RequestRescourceLine table ***'
+print '' print '*** creating RequestResourceLine table ***'
 GO
-CREATE TABLE [dbo].[RequestRescourceLine](
+CREATE TABLE [dbo].[RequestResourceLine](
 	[RequestId]	                     [int]                    NOT NULL,
 	[ItemId]	                     [nvarchar](50)	          NOT NULL,
 	[QuantityRequested]	             [int]	                  NOT NULL,
 	[Notes]	                         [nvarchar](1000)	      NOT NULL,
 	
-    CONSTRAINT [fk_RequestRescourceLine_RequestId]	FOREIGN KEY ([RequestId])
+    CONSTRAINT [fk_RequestResourceLine_RequestId]	FOREIGN KEY ([RequestId])
 		REFERENCES [dbo].[Request] ([RequestId]),
-	CONSTRAINT [fk_RequestRescourceLine_ItemId]	FOREIGN KEY ([ItemId])
+	CONSTRAINT [fk_RequestRecourceLine_ItemId]	FOREIGN KEY ([ItemId])
 		REFERENCES [dbo].[Item] ([ItemId]) ON UPDATE CASCADE,
-	CONSTRAINT [pk_RequestRescourceLine_RequestId] PRIMARY KEY([RequestId], [ItemId])
+	CONSTRAINT [pk_RequestResourceLine_RequestId] PRIMARY KEY([RequestId], [ItemId])
 )
 GO
 

@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--Colors needs to be at top since other use it-->
+                <!--Colors needs to be at top since others use it-->
                 <ResourceDictionary Source="/Styles/Colors.xaml"/>
 
                 <ResourceDictionary Source="/Styles/Converters.xaml"/>

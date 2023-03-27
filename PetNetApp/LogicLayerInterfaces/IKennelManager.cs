@@ -96,5 +96,23 @@ namespace LogicLayerInterfaces
         /// <exception cref="SQLException">Delete fails.</exception>
         /// <returns>True if the record was removed</returns>
         bool RemoveAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/07
+        /// 
+        /// Retrieves all empty kennels
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="shelterId">The Id of the shelter</param>
+        /// <exception cref="SQLException"></exception>
+        /// <returns>List<Kennel></returns>
+        List<Kennel> RetrieveAllEmptyKennels(int shelterId);
+        Images RetrieveImageByAnimalId(int animalId);
     }
 }

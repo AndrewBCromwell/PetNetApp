@@ -15,6 +15,7 @@ namespace DataAccessLayerFakes
         List<Images> fakeImages = new List<Images>();
         List<MedicalRecordVM> fakeMedicalRecords = new List<MedicalRecordVM>();
         List<Images> stephenFakeImages = new List<Images>();
+        List<AnimalVM> fakeAnimals = new List<AnimalVM>();
 
         public ImagesAccessorFakes()
         {
@@ -101,6 +102,57 @@ namespace DataAccessLayerFakes
                 }
             });
 
+            fakeAnimals.Add(new AnimalVM
+            {
+                AnimalId = 1,
+                AnimalName = "Test name 1",
+                AnimalGender = "Test gender 1",
+                AnimalTypeId = "Test type 1",
+                AnimalBreedId = "Test breed 1",
+                KennelName = "Test kennel 1",
+                Personality = "Test personality 1",
+                Description = "Test description 1",
+                AnimalStatusId = "Test status 1",
+                AnimalStatusDescription = "Test status description 1",
+                BroughtIn = DateTime.Parse("2023-06-01"),
+                MicrochipNumber = "Test SN",
+                Aggressive = false,
+                AggressiveDescription = "Not aggressive",
+                ChildFriendly = true,
+                NeuterStatus = true,
+                Notes = "N/A",
+                AnimalImages = new List<Images>
+                {
+                    fakeImages[1]
+                }
+            });
+
+            fakeAnimals.Add(new AnimalVM
+            {
+                AnimalId = 2,
+                AnimalShelterId = 100000,
+                AnimalName = "Test name 2",
+                AnimalGender = "Test gender 2",
+                AnimalTypeId = "Test type 2",
+                AnimalBreedId = "Test breed 2",
+                KennelName = "Test kennel 2",
+                Personality = "Test personality 2",
+                Description = "Test description 2",
+                AnimalStatusId = "Test status 2",
+                AnimalStatusDescription = "Test status description 2",
+                BroughtIn = DateTime.Parse("2023-06-02"),
+                MicrochipNumber = "Test SN",
+                Aggressive = true,
+                AggressiveDescription = "Bites",
+                ChildFriendly = false,
+                NeuterStatus = false,
+                Notes = "N/A",
+                AnimalImages = new List<Images>
+                {
+                    fakeImages[1]
+                }
+            });
+
         }
 
         public int DeleteImageByImages(Images images)
@@ -166,6 +218,11 @@ namespace DataAccessLayerFakes
             return rows;
         }
 
+        public List<Images> SelectAnimalImageByAnimalId(int animalId)
+        {
+            throw new NotImplementedException();
+        }
+
         public BitmapImage SelectImageByImages(Images images)
         {
             return new BitmapImage();
@@ -182,6 +239,59 @@ namespace DataAccessLayerFakes
                 if(record.AnimalId == animalId)
                 {
                     foreach(var image in record.AnimalImages)
+                    {
+                        _images.Add(image);
+                    }
+                }
+            }
+            return _images;
+        }
+
+        public int InsertAnimalImageByAnimalId(int animalId, string imageFileName)
+        {
+            int rows = 0;
+            Images _image = new Images();
+            _image.ImageId = "unique-15";
+            _image.ImageFileName = imageFileName;
+
+            for (int i = 0; i < fakeAnimals.Count; i++)
+            {
+                if (fakeAnimals[i].AnimalId == animalId)
+                {
+                    fakeAnimals[i].AnimalImages.Add(_image);
+                    rows = 3;
+                }
+            }
+
+            return rows;
+        }
+
+        public int InsertAnimalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames)
+        {
+            int rows = 0;
+            List<Images> newImages = new List<Images>();
+            foreach (string imageFileName in imageFileNames)
+            {
+                Images _image = new Images();
+                _image.ImageId = "unique-15";
+                _image.ImageFileName = imageFileName;
+                newImages.Add(_image);
+                stephenFakeImages.Add(_image);
+                fakeAnimals.Where(rec => rec.AnimalId == animalId).ToList().ForEach(rec => rec.AnimalImages.Add(_image));
+                rows++;
+            }
+            fakeAnimals.First(record => record.AnimalId == animalId).AnimalImages.Concat(newImages);
+            return rows;
+        }
+
+        public List<Images> SelectAnimalImagesByAnimalId(int animalId)
+        {
+            List<Images> _images = new List<Images>();
+            foreach (var animal in fakeAnimals)
+            {
+                if (animal.AnimalId == animalId)
+                {
+                    foreach (var image in animal.AnimalImages)
                     {
                         _images.Add(image);
                     }

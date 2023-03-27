@@ -64,7 +64,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Could not retrieve volunteers", ex);
             }
 
             return users;
@@ -405,7 +405,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Suspend user failed.", ex);
             }
 
             return result;
@@ -427,7 +427,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Unsuspend user failed.", ex);
             }
 
             return result;
@@ -444,12 +444,26 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Unable to retrieve count of unsuspended accounts.", ex);
             }
 
             return usersIdCount;
             // return 2; //green test
             //throw new NotImplementedException(); //red test
+        }
+
+        public List<UsersAdoptionRecords> RetrieveAdoptionRecordsByUserID(int usersId)
+        {
+            List<UsersAdoptionRecords> userAdoptionRecords = new List<UsersAdoptionRecords>();
+            try
+            {
+                userAdoptionRecords = _userAccessor.SelectAdoptionRecordsByUserID(usersId);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("An error has occured", e);
+            }
+            return userAdoptionRecords;
         }
     }
 }

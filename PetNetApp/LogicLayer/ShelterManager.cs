@@ -34,7 +34,7 @@ namespace LogicLayer
             List<Shelter> shelterList = _shelterAccessor.RetrieveShelterList();
             return shelterList;
         }
-        public bool AddShelter(string shelterName, string address, string addressTwo, string zipCode, string phone, string email, string areasOfNeed, bool shelterActive)
+        public bool AddShelter(string shelterName, string address, string Address2, string zipCode, string phone, string email, string areasOfNeed, bool shelterActive)
         {
             bool result = false;
             try
@@ -46,7 +46,7 @@ namespace LogicLayer
                     || zipCode == null || zipCode.Equals("")
                     ))
                 {
-                    result = _shelterAccessor.InsertShelter(shelterName, address, addressTwo, zipCode, phone, email, areasOfNeed, shelterActive);
+                    result = _shelterAccessor.InsertShelter(shelterName, address, Address2, zipCode, phone, email, areasOfNeed, shelterActive);
                 }
             }
             catch (Exception ex)
@@ -85,14 +85,14 @@ namespace LogicLayer
                 throw new ApplicationException("Failed update shelter address.", ex);
             }
         }
-        public bool EditAddressTwo(Shelter shelter, string newAddressTwo)
+        public bool EditAddress2(Shelter shelter, string newAddress2)
         {
             try
             {
                 int itemsUpdated = 0;
-                if (!shelter.AddressTwo.Equals(newAddressTwo))
+                if (!shelter.Address2.Equals(newAddress2))
                 {
-                    itemsUpdated = _shelterAccessor.UpdateAddressTwoByShelterID(shelter.ShelterId, newAddressTwo);
+                    itemsUpdated = _shelterAccessor.UpdateAddress2ByShelterID(shelter.ShelterId, newAddress2);
                 }
                 if (itemsUpdated == 1) { return true; }
                 else { return false; }

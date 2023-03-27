@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.UserControls
 {
@@ -42,22 +43,25 @@ namespace WpfPresentation.UserControls
 
         private void menuEdit_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("Edit", "Editing " + InstitutionalEntity.GivenName + " " + InstitutionalEntity.FamilyName);
+            string windowMode = "edit";
+            AddEditInstitutionalEntity addEditInstitutionalEntity = new AddEditInstitutionalEntity(InstitutionalEntity, windowMode, InstitutionalEntity.ContactType);
+            addEditInstitutionalEntity.Owner = Window.GetWindow(this);
+            addEditInstitutionalEntity.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            addEditInstitutionalEntity.ShowDialog();
         }
 
         private void menuView_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("View", "Viewing " + InstitutionalEntity.GivenName + " " + InstitutionalEntity.FamilyName);
+            string windowMode = "view";
+            AddEditInstitutionalEntity addEditInstitutionalEntity = new AddEditInstitutionalEntity(InstitutionalEntity, windowMode, InstitutionalEntity.ContactType);
+            addEditInstitutionalEntity.Owner = Window.GetWindow(this);
+            addEditInstitutionalEntity.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            addEditInstitutionalEntity.ShowDialog();
         }
-        private void menuDelete_Click(object sender, RoutedEventArgs e)
-        {
-            PromptWindow.ShowPrompt("Delete", "Are you sure you want to delete " + InstitutionalEntity.GivenName + " " + InstitutionalEntity.FamilyName + "?", ButtonMode.DeleteCancel);
 
-        }
-
-        private void menuUpdate_Click(object sender, RoutedEventArgs e)
+        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            PromptWindow.ShowPrompt("Update", "Updating " + InstitutionalEntity.GivenName + " " + InstitutionalEntity.FamilyName);
+            menuView_Click(sender, e);
         }
 
     }

@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using LogicLayer;
 using WpfPresentation.Management;
 using DataObjects;
+using WpfPresentation.Development.Management.Inventory;
+using WpfPresentation.Development.Management.Library;
 
 namespace WpfPresentation.Development.Management
 {
@@ -61,13 +63,15 @@ namespace WpfPresentation.Development.Management
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameManagement.Navigate(null);
+
+            frameManagement.Navigate(new ViewInventoryChangesPage(_manager));
+
         }
 
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            frameManagement.Navigate(new ViewTicketList());
+            frameManagement.Navigate(new ViewTicketList(_manager));
         }
 
         private void btnKennel_Click(object sender, RoutedEventArgs e)
@@ -139,6 +143,10 @@ namespace WpfPresentation.Development.Management
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
 
-        
+        private void btnLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameManagement.Navigate(WpfPresentation.Management.Inventory.Library.LibraryUI.GetLibraryUI(_manager));
+        }
     }
 }

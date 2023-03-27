@@ -67,20 +67,27 @@ namespace WpfPresentation.Community
 
         private void btnForum_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnForum);
             // replace with page name and then delete comment
             frameCommunity.Navigate(null);
         }
 
         private void btnUsers_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnUsers);
+            // replace with page name and then delete comment
             frameCommunity.Navigate(new UserManagementPage());
+        }
+
+        private void btnResources_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameCommunity.Navigate(new Resources());
         }
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
-            ChangeSelectedButton((Button)sender);
+            ChangeSelectedButton(btnAbout);
             // replace with page name and then delete comment
             frameCommunity.Navigate(null);
         }

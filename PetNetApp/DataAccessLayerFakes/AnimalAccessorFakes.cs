@@ -18,6 +18,11 @@ namespace DataAccessLayerFakes
         List<AnimalVM> fakeAnimals = new List<AnimalVM>();
         List<Animal> fakeAnimals1 = new List<Animal>();
         private AnimalVM fakeAnimalVM = new AnimalVM();
+        List<Applicant> fakeApplicants = new List<Applicant>();
+        List<FosterPlacement> fakeFosterPlacements = new List<FosterPlacement>();
+        List<FosterPlacementRecord> fakeFosterPlacementRecords = new List<FosterPlacementRecord>();
+        private List<AnimalVM> _fakeFundraisingEventAnimals = AnimalFakeData.Animals;
+        private List<Tuple<int, int>> _fakefundraiserAnimal = AnimalFakeData.FundraiserAnimal;
 
         public AnimalAccessorFakes()
         {
@@ -230,8 +235,8 @@ namespace DataAccessLayerFakes
                 AnimalTypeId = "Dog",
                 AnimalBreedId = "Lab",
                 AnimalStatusId = "Available"
+                
             });
-
 
             breeds.Add("Test breed 1", new List<string> { "Test type 1" });
             breeds.Add("Test breed 2", new List<string> { "Test type 2" });
@@ -241,6 +246,40 @@ namespace DataAccessLayerFakes
             types.Add("Test type 2");
             statuses.Add("Test status 1");
             statuses.Add("Test status 2");
+
+            fakeApplicants.Add(new Applicant 
+            { 
+                ApplicantId = 100000,
+                UserId = 100000
+            });
+
+            fakeFosterPlacements.Add(new FosterPlacement
+            {
+                FosterPlacementId = 100000,
+                AnimalId = 100000,
+                ApplicantId = 100000
+            });
+
+            fakeFosterPlacements.Add(new FosterPlacement
+            {
+                FosterPlacementId = 100001,
+                AnimalId = 100001,
+                ApplicantId = 100000
+            });
+
+            fakeFosterPlacements.Add(new FosterPlacement
+            {
+                FosterPlacementId = 100002,
+                AnimalId = 100002,
+                ApplicantId = 100000
+            });
+
+            fakeFosterPlacementRecords.Add(new FosterPlacementRecord
+            {
+                FosterPlacementRecordId = 100000,
+                FosterPlacementId = 100000,
+                FosterPlacementRecordNotes = "This is a note"
+            });
 
         }
 
@@ -354,6 +393,55 @@ namespace DataAccessLayerFakes
             }
 
             return animalVM;
+        }
+
+        public List<AnimalVM> SelectAdoptedAnimalByUserId(int usersId)
+        {
+            List<AnimalVM> animals = new List<AnimalVM>();
+
+            foreach (FosterPlacement fosterPlacement in fakeFosterPlacements)
+            {
+                foreach (Applicant applicant in fakeApplicants)
+                {
+                    if (applicant.UserId == usersId && applicant.ApplicantId == fosterPlacement.ApplicantId)
+                    {
+                        animals.Add(new AnimalVM());
+                        break;
+                    }
+                }
+            }
+
+            return animals;
+        }
+
+        public FosterPlacementRecord SelectFosterPlacementRecordNotes(int animalId)
+        {
+            FosterPlacementRecord fosterPlacementRecord = null;
+
+            foreach (FosterPlacement fosterPlacement in fakeFosterPlacements)
+            {
+                foreach (FosterPlacementRecord placementRecord in fakeFosterPlacementRecords)
+                {
+                    if (placementRecord.FosterPlacementId == fosterPlacement.FosterPlacementId && fosterPlacement.AnimalId == animalId)
+                    {
+                        fosterPlacementRecord = placementRecord;
+                        break;
+                    }
+                }
+            }
+
+            return fosterPlacementRecord;
+        }
+
+        public List<AnimalVM> SelectAnimalsByFundraisingEventId(int fundraisingEventId)
+        {
+            //throw new NotImplementedException();
+            var fundraisingEventAnimals = from animalFundraisingEventRecord in _fakeFundraisingEventAnimals
+                                          join fundraisingEventAnimalRecord in _fakefundraiserAnimal on animalFundraisingEventRecord.AnimalId equals fundraisingEventAnimalRecord.Item2
+                                          where fundraisingEventAnimalRecord.Item1 == fundraisingEventId
+                                          select animalFundraisingEventRecord;
+
+            return fundraisingEventAnimals.ToList();
         }
     }
 }

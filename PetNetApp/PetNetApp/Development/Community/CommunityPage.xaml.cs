@@ -68,7 +68,7 @@ namespace WpfPresentation.Development.Community
         {
             ChangeSelectedButton((Button)sender);
 
-            frameCommunity.Navigate(new UserManagementPage());
+            frameCommunity.Navigate(null);
 
             //frameCommunity.Navigate(new RoleManagementTemp(_manager, _manager.UsersManager.RetrieveUserByUsersId(100001)));
         }
@@ -78,6 +78,12 @@ namespace WpfPresentation.Development.Community
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
             frameCommunity.Navigate(null);
+        }
+
+        private void btnResources_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameCommunity.Navigate(new Resources());
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -113,6 +119,8 @@ namespace WpfPresentation.Development.Community
                 btnScrollLeft.Visibility = Visibility.Visible;
             }
         }
+
+
 
         private void btnScrollRight_Click(object sender, RoutedEventArgs e)
         {

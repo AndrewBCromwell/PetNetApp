@@ -82,5 +82,39 @@ namespace DataAccessLayerInterfaces
         /// <param name="animalId">The animal id to get medical record images for</param>
         /// <returns>List of Images objects</returns>
         int InsertMedicalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/05
+        /// 
+        /// Selects all the profile images for the specified animal
+        /// </summary>
+        /// <param name="animalId">The id of the animal whose images will be selected</param>
+        /// <returns>A list of Images objects</returns>
+        List<Images> SelectAnimalImagesByAnimalId(int animalId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/05
+        /// 
+        /// Inserts the selected image into the database
+        /// </summary>
+        /// <param name="animalId">The id of the animal to whose record an image is being added</param>
+        /// <param name="imageFileName">The Uri where the image is located</param>
+        /// <returns>Rows affected</returns>
+        int InsertAnimalImageByAnimalId(int animalId, string imageFileName);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/05
+        /// 
+        /// Inserts the selected images into the database
+        /// </summary>
+        /// <param name="animalId">The id of the animal to whose record images are being added</param>
+        /// <param name="imageFileNames">The list of Uri where the images are located</param>
+        /// <returns>Rows affected</returns>
+        int InsertAnimalImagesByAnimalId(int animalId, IEnumerable<string> imageFileNames);
+
+        List<Images> SelectAnimalImageByAnimalId(int animalId);
     }
 }

@@ -31,7 +31,7 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         /// <param name="shelterName">The name of the shelter</param>
         /// <param name="address">the address of the shelter</param>
-        /// <param name="addressTwo">the extended address information of the shelter</param>
+        /// <param name="Address2">the extended address information of the shelter</param>
         /// <param name="zipCode">the zipcode of the shelter</param>
         /// <exception cref="SQLException">Zipcode will throw SQLExceptions when the user enters a zipcode that is not present in the database</exception>
         /// <param name="phone">the phone number of the shelter</param>
@@ -43,7 +43,7 @@ namespace DataAccessLayerInterfaces
         bool InsertShelter(
             string shelterName
             , string address
-            , string addressTwo
+            , string Address2
             , string zipCode
             , string phone
             , string email
@@ -77,13 +77,13 @@ namespace DataAccessLayerInterfaces
         /// <summary>
         /// Brian Collum
         /// Created: 2023/02/23
-        /// Updates the addressTwo of a shelter
+        /// Updates the Address2 of a shelter
         /// </summary>
         /// <param name="shelterID">The ID of the shelter</param>
-        /// <param name="newAddressTwo">The new addressTwo of the shelter</param>
+        /// <param name="newAddress2">The new Address2 of the shelter</param>
         /// <exception cref="SQLException">All can throw SQLExceptions</exception>
         /// <returns>Integer number of rows affected</returns>
-        int UpdateAddressTwoByShelterID(int shelterID, string newAddressTwo);
+        int UpdateAddress2ByShelterID(int shelterID, string newAddress2);
 
         /// <summary>
         /// Brian Collum

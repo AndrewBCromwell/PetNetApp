@@ -44,22 +44,33 @@
   <ItemGroup>
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
+    <Compile Include="IReplyAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IDeathAccessor.cs" />
+    <Compile Include="IDonationAccessor.cs" />
     <Compile Include="IFosterApplicationResponseAccessor.cs" />
     <Compile Include="IFundraisingCampaignAccessor.cs" />
     <Compile Include="IImagesAccessor.cs" />
     <Compile Include="IInstitutionalEntityAccessor.cs" />
+    <Compile Include="IItemAccessor.cs" />
     <Compile Include="IKennelAccessor.cs" />
+    <Compile Include="ILibraryAccessor.cs" />
     <Compile Include="IMedicalRecordAccessor.cs" />
+    <Compile Include="IFundraisingEventAccessor.cs" />
+    <Compile Include="IPostAccessor.cs" />
     <Compile Include="IProcedureAccessor.cs" />
+    <Compile Include="IRequestAccessor.cs" />
     <Compile Include="IRoleAccessor.cs" />
     <Compile Include="IScheduleAccessor.cs" />
     <Compile Include="IShelterAccessor.cs" />
+    <Compile Include="IShelterInventoryItemAccessor.cs" />
+    <Compile Include="IShelterItemTransactionAccessor.cs" />
     <Compile Include="ITestAccessor.cs" />
     <Compile Include="ITicketAccessor.cs" />
     <Compile Include="IUsersAccessor.cs" />
     <Compile Include="IVaccinationAccessor.cs" />
+    <Compile Include="IVolunteerAccessor.cs" />
+    <Compile Include="IZipcodeAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -327,5 +327,20 @@ namespace LogicLayerTest
             // Assert
             Assert.AreEqual(rowsAffected, expectedRowResult);
         }
+
+        [TestMethod]
+        public void TestSelectAdoptionRecordsByUserId()
+        {
+            // Arrange
+            List<UsersAdoptionRecords> adoptionRecords = null;
+            int expectedRowResult = 3;
+
+            // Act
+            adoptionRecords = _userManager.RetrieveAdoptionRecordsByUserID(1001);
+            int actualRowResult = adoptionRecords.Count;
+
+            // Assert
+            Assert.AreEqual(expectedRowResult, actualRowResult);
+        }
     }
 }
