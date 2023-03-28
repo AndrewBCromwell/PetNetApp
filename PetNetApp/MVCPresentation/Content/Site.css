@@ -1,5 +1,10 @@
 ﻿body {
     background-color: #eef2e6;
+    position: relative;
+    overflow: auto;
+    padding-bottom: 5%;
+    min-height: 100vh;
+    color: #1C6758;
 }
 
 .header {
@@ -77,7 +82,7 @@ textarea {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     height: 5%;
     width: 100%;
@@ -85,7 +90,7 @@ footer {
 }
 
 .textWrap {
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 .overflow {

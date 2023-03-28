@@ -50,6 +50,8 @@ namespace DataObjects
 
     public class FosterApplicationResponseVM : FosterApplicationResponse
     {
+        public FosterApplication FosterApplicationResponseFosterApplication { get; set; }
+        public Users Responder { get; set; }
         public int ApplicantId { get; set; }
         public string FosterApplicantGivenName { get; set; }
         public string FosterApplicantFamilyName { get; set; }

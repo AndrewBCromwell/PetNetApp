@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAdoptionApplicationManager.cs" />
     <Compile Include="IDeathManager.cs" />
     <Compile Include="IAnimalManager.cs" />
     <Compile Include="IAnimalUpdatesManager.cs" />
@@ -73,10 +74,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataObjects\DataObjects.csproj">
-      <Project>{5f873a2c-b117-4b22-88c8-bc29b3acba2e}</Project>
-      <Name>DataObjects</Name>
-    </ProjectReference>
+	  <ProjectReference Include="..\DataObjects\DataObjects.csproj">
+		  <Project>{5f873a2c-b117-4b22-88c8-bc29b3acba2e}</Project>
+		  <Name>DataObjects</Name>
+	  </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

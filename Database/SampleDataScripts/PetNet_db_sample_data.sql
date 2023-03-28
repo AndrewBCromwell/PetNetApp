@@ -149,9 +149,10 @@ INSERT INTO [dbo].[HomeType]
 		[HomeTypeID]
 		)
 	VALUES
-		('Single'),
-        ('With kids'),
-        ('With other pets')
+		('House'),
+        ('Apartment/Condo'),
+        ('Trailer'),
+		('Other')
 GO
 
 print '' print '*** Inserting BannedWords Records'
@@ -938,11 +939,11 @@ INSERT INTO [dbo].[Applicant]
 		)
 	VALUES
 		('Gwen', 'Arman', '101 South Park Street', 50001, 9876543211, 
-        'ga@gmail.com', 'Single', 'Own', 0,0, 1),
+        'ga@gmail.com', 'House', 'Own', 0,0, 1),
         ('Xander', 'Arman', '123 North Park Street', 50001, 9876543311, 
-        'xa@gmail.com', 'Single', 'Own', 0,0, 1),
+        'xa@gmail.com', 'Apartment/Condo', 'Own', 0,0, 1),
         ('Nicholas', 'Arman', '963 West Park Street', 50001, 9876543411, 
-        'na@gmail.com', 'Single', 'Own', 0,0, 1)
+        'na@gmail.com', 'Trailer', 'Own', 0,0, 1)
 GO
 
 print '' print '*** Creating FosterApplication sample data'
@@ -1241,12 +1242,14 @@ GO
 INSERT INTO [dbo].[AdoptionApplication]
 		(
 		[ApplicantId],
-		[AnimalId]
+		[AnimalId],
+		[ApplicationStatusId],
+		[AdoptionApplicationDate]
 		)
 	VALUES
-		(100000, 100000),
-        (100001, 100001),
-        (100002, 100002)
+		(100000, 100000, 'Pending', DEFAULT),
+        (100001, 100001, 'Pending', DEFAULT),
+        (100002, 100002, 'Approved', DEFAULT)
 GO
 
 print '' print '*** creating InstitutionalEntity sample data'

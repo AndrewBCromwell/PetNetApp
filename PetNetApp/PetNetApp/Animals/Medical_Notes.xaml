@@ -13,8 +13,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition Height="150"/>
-            <RowDefinition Height="110"/>
             <RowDefinition />
+            <RowDefinition Height="15"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="30"/>
 
@@ -41,10 +41,10 @@
             </DataGrid>-->
         </Grid>
 
-        <Frame x:Name="frmMedicalRecords" Grid.Row="3"/>
+        <Frame x:Name="frmMedicalRecords" Grid.Row="2"/>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btn_upload_file" Content="Upload File" Grid.Column="2" HorizontalAlignment="Left" Width="155" Height="50" RenderTransformOrigin="0.19,0.5" Margin="9,0,0,0" Padding="1" Click="btn_upload_file_Click"/>
+            <Button x:Name="btn_upload_file" Content="Upload Image" Grid.Column="2" HorizontalAlignment="Left" Width="155" Height="50" RenderTransformOrigin="0.19,0.5" Margin="9,0,0,0" Padding="1" Click="btn_upload_file_Click"/>
             <Button x:Name="btn_edit" Content="Edit" Grid.Column="3" HorizontalAlignment="Center" Width="155" Height="50" RenderTransformOrigin="0.19,0.5" Margin="10,0,0,0" Padding="1" Click="btn_edit_Click" VerticalAlignment="Bottom"/>
             <Button x:Name="btn_add" Content="Add" Grid.Column="4" HorizontalAlignment="Right" Width="155" Height="50" RenderTransformOrigin="0.19,0.5" Margin="10,0,0,0" Padding="1" Click="btn_add_Click"/>
         </StackPanel>

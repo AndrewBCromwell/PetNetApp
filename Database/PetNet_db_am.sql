@@ -924,7 +924,7 @@ CREATE TABLE [dbo].[Applicant] (
 	[HomeOwnershipId]		[nvarchar](50)				NOT NULL,
 	[NumberOfChildren]		[int]						NOT NULL,
 	[NumberOfPets]			[int]						NOT NULL,
-	[CurrentlyAcceptingAnimals]	[bit]					NOT NULL DEFAULT NULL,
+	[CurrentlyAcceptingAnimals]	[bit]					NOT NULL DEFAULT 1,
 	
 	CONSTRAINT [fk_Applicant_UsersID] FOREIGN KEY([UsersId])
 		REFERENCES [dbo].[Users]([UsersId]),
@@ -1328,11 +1328,11 @@ GO
 print '' print '** creating table for AdoptionApplication'
 GO
 CREATE TABLE [dbo].[AdoptionApplication] (
-    [AdoptionApplicationId]    	[int]  IDENTITY(100000,1)     NOT NULL,
-    [ApplicantId]    			[int]     NOT NULL,
-    [AnimalId]    				[int]     NOT NULL,
-    [ApplicationStatusId]    	[nvarchar](50) DEFAULT 'Pending'    NOT NULL,
-    [AdoptionApplicationDate]   [datetime]   DEFAULT GETDATE()  NOT NULL
+    [AdoptionApplicationId]    	[int] IDENTITY(100000,1)    NOT NULL,
+    [ApplicantId]    			[int]     					NOT NULL,
+    [AnimalId]    				[int]     					NOT NULL,
+    [ApplicationStatusId]    	[nvarchar](50)				NOT NULL	DEFAULT 'Pending',
+    [AdoptionApplicationDate]   [datetime]					NOT NULL	DEFAULT GETDATE(),
 
     CONSTRAINT [pk_AdoptionApplication] PRIMARY KEY([AdoptionApplicationId]),
     CONSTRAINT [fk_AdoptionApplication_ApplicantId] FOREIGN KEY ([ApplicantId])
