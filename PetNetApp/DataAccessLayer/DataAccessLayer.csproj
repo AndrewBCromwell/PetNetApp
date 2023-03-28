@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoptionApplicationAccessor.cs" />
     <Compile Include="AnimalAccessor.cs" />
     <Compile Include="AnimalUpdatesAccessor.cs" />
     <Compile Include="DBConnection.cs" />

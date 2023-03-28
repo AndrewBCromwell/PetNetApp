@@ -52,6 +52,7 @@ namespace LogicLayer
         public IZipcodeManager ZipcodeManager { get; set; }
         public IRequestManager RequestManager { get; private set; }
         public IVaccinationManager VaccinationManager { get; set; }
+        public IAdoptionApplicationManager AdoptionApplicationManager { get; set; }
         public IShelterInventoryItemManager ShelterInventoryItemManager { get; set; }
         public IShelterManager ShelterManager { get; set; }
         public IItemManager ItemManager { get; set; }
@@ -90,6 +91,7 @@ namespace LogicLayer
             VolunteerManager = new VolunteerManager();
             PostManager = new PostManager();
             ReplyManager = new ReplyManager();
+            AdoptionApplicationManager = new AdoptionApplicationManager();
 
             FosterApplicationResponseManager = new FosterApplicationResponseManager();
 

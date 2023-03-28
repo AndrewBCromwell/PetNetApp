@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimalFakeData.cs" />
+    <Compile Include="AdoptionApplicationAccessorFakes.cs" />
     <Compile Include="DeathAccessorFake.cs" />
     <Compile Include="AnimalAccessorFakes.cs" />
     <Compile Include="AnimalUpdatesFakes.cs" />

@@ -1,0 +1,127 @@
+﻿@model DataObjects.Applicant
+@section styles
+{
+    <link href="~/Content/animals.css" rel="stylesheet" />
+}
+
+
+<h3 class="adoption-application-header mt-3 ml-5 mr-5">Adoption Application for AnimalNameHere</h3>
+@*will pass animal id once available*@
+<div style="height: 100%;">
+
+    <div class="adoption-applcation-cols col-md-3" style="background-color: #9EC1B0; min-height: 90vh;"></div>
+    <div class="adoption-applcation-cols col-md-6" id="adoption-application-form">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            //TODO: link to sign in/create account once created
+
+
+            <div class="form-horizontal text-center">
+                <h4 class="subheader-with-link" style="color: #9EC1B0;">To link this application to an account, <a href="#">@Html.ActionLink("Sign In", "Adopt", "Animals")</a> or <a href="#">@Html.ActionLink("Create An Account", "Adopt", "Animals")</a> now!</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group" align="center">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ApplicantGivenName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name" } })
+                        @Html.ValidationMessageFor(model => model.ApplicantGivenName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ApplicantFamilyName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name" } })
+                        @Html.ValidationMessageFor(model => model.ApplicantFamilyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ApplicantAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Address line 1" } })
+                        @Html.ValidationMessageFor(model => model.ApplicantAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ApplicantAddress2, new { htmlAttributes = new { @class = "form-control", placeholder = "Address line 2" } })
+                        @Html.ValidationMessageFor(model => model.ApplicantAddress2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ApplicantZipCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Zip code" } })
+                        @Html.ValidationMessageFor(model => model.ApplicantZipCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ApplicantPhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Phone number" } })
+                        @Html.ValidationMessageFor(model => model.ApplicantPhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ApplicantEmail, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                        @Html.ValidationMessageFor(model => model.ApplicantEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center" style="color: #1C6758;">
+                    @Html.LabelFor(model => model.HomeTypeId, "Which best describes your home?", htmlAttributes: new { @class = "control-label col-md-10", style = "text-align: center;" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.HomeTypeId,
+                            new SelectList((IEnumerable<String>)ViewBag.HomeTypes), "Select One", new { @class = "form-control", style = "color: #9EC1B0;" })
+                        @Html.ValidationMessageFor(model => model.HomeTypeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center" style="color: #1C6758;">
+                    @Html.LabelFor(model => model.HomeOwnershipId, "Do you own or rent?", htmlAttributes: new { @class = "control-label col-md-10", style = "text-align: center;" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.HomeOwnershipId,
+                            new SelectList((IEnumerable<String>)ViewBag.HomeOwnershipTypes), "Select One", new { @class = "form-control", style = "color: #9EC1B0;" })
+                        @Html.ValidationMessageFor(model => model.HomeOwnershipId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center" style="color: #1C6758;">
+                    @Html.LabelFor(model => model.NumberOfChildren, "How many children live in the home?", htmlAttributes: new { @class = "control-label col-md-10", style = "text-align: center;" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NumberOfChildren, new { htmlAttributes = new { @class = "form-control", placeholder = "0", style = "color: #9EC1B0;" } })
+                        @Html.ValidationMessageFor(model => model.NumberOfChildren, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" align="center" style="color: #1C6758;">
+                    @Html.LabelFor(model => model.NumberOfPets, "How many pets are currently in the home?", htmlAttributes: new { @class = "control-label col-md-10", style = "text-align: center;" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NumberOfPets, new { htmlAttributes = new { @class = "form-control", placeholder = "0", style = "color: #9EC1B0;" } })
+                        @Html.ValidationMessageFor(model => model.NumberOfPets, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10 mx-auto">
+                        <input id="submit-application" type="submit" value="Submit Application" class="btn btn-lg" />
+                    </div>
+                </div>
+            </div>
+        }
+        <div>
+            @*TODO:* Link back to adoptable animal profile, not currently a page to go back to*@
+            @Html.ActionLink("Back to Index", "Index")
+        </div>
+    </div>
+    <div class="adoption-applcation-cols col-md-3" style="background-color: #9EC1B0; min-height: 90vh;"></div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
