@@ -27,7 +27,7 @@ using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
 
-namespace WpfPresentation.Development.Fundraising
+namespace WpfPresentation.Fundraising
 {
     public partial class UpdateFundraisingCampaign : Page
     {
