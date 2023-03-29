@@ -47,6 +47,7 @@
     <Compile Include="AdoptionPlacement.cs" />
     <Compile Include="AnimalType.cs" />
     <Compile Include="Applicant.cs" />
+    <Compile Include="CampaignUpdate.cs" />
     <Compile Include="ApplicationStatus.cs" />
     <Compile Include="Death.cs" />
     <Compile Include="Animal.cs" />

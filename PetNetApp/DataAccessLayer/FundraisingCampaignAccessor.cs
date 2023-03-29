@@ -18,7 +18,6 @@ namespace DataAccessLayer
     /// </summary>
     public class FundraisingCampaignAccessor : IFundraisingCampaignAccessor
     {
- 
         public List<FundraisingCampaignVM> SelectAllFundraisingCampaignsByShelterId(int shelterId)
         {
             List<FundraisingCampaignVM> fundraisingCampaigns = new List<FundraisingCampaignVM>();
@@ -55,6 +54,9 @@ namespace DataAccessLayer
                                 Description = reader.IsDBNull(6) ? null : reader.GetString(6),
                                 Complete = reader.GetBoolean(7),
                                 Active = reader.GetBoolean(8),
+                                AmountRaised = reader.GetDecimal(9),
+                                NumOfAttendees = reader.GetInt32(10),
+                                NumAnimalsAdopted = reader.GetInt32(11),
                                 Sponsors = new List<InstitutionalEntity>()
                             });
                         }
@@ -140,6 +142,7 @@ namespace DataAccessLayer
             }
             return rows;
         }
+
         public int InsertFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
         {
             int campaignId = 0;
@@ -218,12 +221,15 @@ namespace DataAccessLayer
                             Description = reader.IsDBNull(6) ? null : reader.GetString(6),
                             Complete = reader.GetBoolean(7),
                             Active = reader.GetBoolean(8),
+                            AmountRaised = reader.GetDecimal(9),
+                            NumOfAttendees = reader.GetInt32(10),
+                            NumAnimalsAdopted = reader.GetInt32(11),
                             Sponsors = new List<InstitutionalEntity>()
                         };
                     }
                     else
                     {
-                        throw new ApplicationException("No Fundraising Campiagns with id " + fundraisingCampaignId);
+                        throw new ApplicationException("No Fundraising Campaigns with id " + fundraisingCampaignId);
                     }
                 }
             }
@@ -257,6 +263,85 @@ namespace DataAccessLayer
             try
             {
                 conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return rows;
+        }
+
+        public int InsertCampaignUpdate(CampaignUpdate campaignUpdate)
+        {
+            int id = 0;
+
+            DBConnection factory = new DBConnection();
+            var conn = factory.GetConnection();
+            var cmdText = "sp_insert_campaign_update";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@CampaignId", campaignUpdate.CampaignId);
+            cmd.Parameters.AddWithValue("@UpdateTitle", campaignUpdate.UpdateTitle);
+            cmd.Parameters.AddWithValue("@UpdateDescription", campaignUpdate.UpdateDescription);
+
+            try
+            {
+                conn.Open();
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return id;
+        }
+
+        public int UpdateFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM)
+        {
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            // cmdText
+            var cmdText = "sp_update_fundraising_campaign_results";
+
+            //command
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // parameters
+            cmd.Parameters.Add("@FundraisingCampaignId", SqlDbType.Int).Value = oldFundraisingCampaignVM.FundraisingCampaignId;
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int).Value = oldFundraisingCampaignVM.ShelterId;
+
+            cmd.Parameters.AddWithValue("@OldComplete",oldFundraisingCampaignVM.Complete);
+            cmd.Parameters.AddWithValue("@OldAmountRaised", oldFundraisingCampaignVM.AmountRaised);
+            cmd.Parameters.AddWithValue("@OldNumOfAttendees", oldFundraisingCampaignVM.NumOfAttendees);
+            cmd.Parameters.AddWithValue("@OldNumAnimalsAdopted", oldFundraisingCampaignVM.NumAnimalsAdopted);
+            
+            cmd.Parameters.AddWithValue("@NewComplete",newFundraisingCampaignVM.Complete);
+            cmd.Parameters.AddWithValue("@NewAmountRaised", newFundraisingCampaignVM.AmountRaised);
+            cmd.Parameters.AddWithValue("@NewNumOfAttendees", newFundraisingCampaignVM.NumOfAttendees);
+            cmd.Parameters.AddWithValue("@NewNumAnimalsAdopted", newFundraisingCampaignVM.NumAnimalsAdopted);
+            
+            try
+            {
+                conn.Open();
+
                 rows = cmd.ExecuteNonQuery();
             }
             catch (Exception ex)

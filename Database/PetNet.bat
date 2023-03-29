@@ -66,7 +66,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewChangesToInventoryData_SP.
 
 sqlcmd -S localhost -E -i "StoredProceduresScripts\FundraisingCampaign(Add,Edit,Delete)_SP.sql"
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddEditInstitutionalEntities_SP.sql
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddCampaignUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReactivateAccount_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\Shelter_Stored_Procedures.sql

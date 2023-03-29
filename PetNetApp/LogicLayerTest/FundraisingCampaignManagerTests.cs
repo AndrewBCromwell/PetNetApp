@@ -116,5 +116,43 @@ namespace LogicLayerTest
             Assert.IsFalse(updatedCampaign.Active);
 
         }
+
+        [TestMethod]
+        public void TestAddCampaignUpdate()
+        {
+            CampaignUpdate campaignUpdate = new CampaignUpdate()
+            {
+                CampaignUpdateId = 100004,
+                CampaignId = 100000,
+                UpdateTitle = "Update 4",
+                UpdateDescription = "Campaign is successful."
+            };
+
+            bool actualResult = _fundraisingCampaignManager.AddCampaignUpdate(campaignUpdate);
+
+            Assert.IsTrue(actualResult);
+        }
+
+        [TestMethod]
+        public void TestUpdateFundraisingCampaignResults()
+        {
+            // Arrange
+            FundraisingCampaignVM oldFundraisingCampaign = _fundraisingCampaignManager.RetrieveFundraisingCampaignByFundraisingCampaignId(110000);
+            FundraisingCampaignVM newFundraisingCampaign = new FundraisingCampaignVM
+            {
+                ShelterId = 100000,
+                Description = "Garble",
+                Complete = true,
+                AmountRaised = 10000,
+                NumOfAttendees = 110,
+                NumAnimalsAdopted = 15
+            };
+
+            // Act
+            bool actualResult = _fundraisingCampaignManager.EditFundraisingCampaignResults(oldFundraisingCampaign, newFundraisingCampaign);
+
+            // Assert
+            Assert.IsTrue(actualResult);
+        }
     }
 }

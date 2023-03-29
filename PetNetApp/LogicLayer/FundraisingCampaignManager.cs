@@ -122,5 +122,38 @@ namespace LogicLayer
             }
             return fundraisingCampaign;
         }
+
+        public bool AddCampaignUpdate(CampaignUpdate campaignUpdate)
+        {
+            bool success = false;
+            try
+            {
+                int campaignUpdateId = _fundraisingCampaignAccessor.InsertCampaignUpdate(campaignUpdate);
+                if (campaignUpdateId != 0)
+                {
+                    success = true;
+                    campaignUpdate.CampaignUpdateId = campaignUpdateId;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to add the new Campagin Update", ex);
+            }
+            return success;
+        }
+
+        public bool EditFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM)
+        {
+            bool success = false;
+            try
+            {
+                success = _fundraisingCampaignAccessor.UpdateFundraisingCampaignResults(oldFundraisingCampaignVM, newFundraisingCampaignVM) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to update the campaign results", ex);
+            }
+            return success;
+        }
     }
 }
