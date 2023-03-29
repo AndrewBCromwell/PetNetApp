@@ -710,7 +710,10 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 	[EndDate]				[datetime]					NULL,
 	[Description]			[nvarchar](250)				NOT NULL,
 	[Complete]				[bit]	DEFAULT 0			NOT NULL,
-	[Active]				[bit]	DEFAULT 1			NOT NULL	
+	[Active]				[bit]	DEFAULT 1			NOT NULL,
+	[AmountRaised]			[decimal](9,2) DEFAULT 0	NULL,
+	[NumOfAttendees]		[int]	DEFAULT 0			NULL,
+	[NumAnimalsAdopted]		[int]	DEFAULT 0			NULL
 	CONSTRAINT [pk_FundraisingCampaignId] PRIMARY KEY ([FundraisingCampaignId]),
 	CONSTRAINT [fk_FundraisingCampaign_UsersId] FOREIGN KEY ([UsersId])
 		REFERENCES [Users]([UsersId]),
@@ -718,7 +721,6 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 		REFERENCES [Shelter]([ShelterId])
 )
 GO
-
 
 print '' print '*** creating FundraisingCampaign indices'
 CREATE INDEX ix_FundraisingCampaignUsersId

@@ -740,15 +740,18 @@ INSERT INTO [dbo].[FundraisingCampaign]
         [Title],
 		[StartDate],
         [EndDate],
-        [Description]
+        [Description],
+		[AmountRaised],		
+		[NumOfAttendees],	
+		[NumAnimalsAdopted]
 		)
 	VALUES
-		(100001, 100000, 'Doggy Day', '2023-07-12', '2023-07-14', 'For the Doggies'),
-        (100001, 100000, 'Kitty Day', '2023-07-16', '2023-07-18', 'For the Kitties'),
-        (100001, 100000, 'Snake Day', '2023-07-20', '2023-07-21', 'For the Snakies'),
-        (100001, 100000, 'GIVE ME YOUR MONEY', '2023-07-12', '2023-07-14', 'A little too rich? We can help?'),
-        (100001, 100000, 'Fun Day!', '2023-07-16', '2023-07-18', 'For all animals!'),
-        (100001, 100000, 'PETNET Ball', '2023-07-20', '2023-07-21', 'Time to play catch with your animals')
+		(100001, 100000, 'Doggy Day', '2023-07-12', '2023-07-14', 'For the Doggies', 500, 45, 15),
+        (100001, 100000, 'Kitty Day', '2023-07-16', '2023-07-18', 'For the Kitties', 1500, 52, 23),
+        (100001, 100000, 'Snake Day', '2023-07-20', '2023-07-21', 'For the Snakies', 300, 14, 4),
+        (100001, 100000, 'GIVE ME YOUR MONEY', '2023-07-12', '2023-07-14', 'A little too rich? We can help?', 5875.50, 40, 15),
+        (100001, 100000, 'Fun Day!', '2023-07-16', '2023-07-18', 'For all animals!', 250, 25, 10),
+        (100001, 100000, 'PETNET Ball', '2023-07-20', '2023-07-21', 'Time to play catch with your animals', 885, 73, 12)
 GO
 
 print '' print '*** Creating FundraisingEvent sample data'
