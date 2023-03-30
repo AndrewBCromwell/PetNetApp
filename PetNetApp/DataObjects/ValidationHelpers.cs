@@ -190,5 +190,16 @@ namespace DataObjects
         {
             return title != null && title.Length >= 5 && title.Length <= 50;
         }
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/03/09
+        /// Validator for a Generic NVarchar of length X
+        /// Confirms that the supplied string is not null, empty, and is shorter than the supplied character limit
+        /// </summary>
+        /// <returns>Whether the string is a valid shelter name</returns>
+        public static bool IsValidNVarcharX(this string targetString, int characterLimit)
+        {
+            return targetString != "" && targetString != null && targetString.Length <= characterLimit;
+        }
     }
 }

@@ -82,16 +82,20 @@ namespace LogicLayer
             return medicalRecords;
         }
 
-        public int UpdateTreatmentByMedicalRecordId(int medicalRecordId, string diagnosis, string medicalNotes)
+        public bool EditTreatmentByMedicalRecordId(int medicalRecordId, string newDiagnosis, string newMedicalNotes, string oldDiagnosis, string oldMedicalNotes)
         {
-            int result = 0;
+            bool result = false;
             try
             {
-                result = _medicalRecordAccessor.UpdateMedicalTreatmentByMedicalrecordId(medicalRecordId, diagnosis, medicalNotes);
+                result = 1 == _medicalRecordAccessor.UpdateMedicalTreatmentByMedicalrecordId(medicalRecordId, newDiagnosis, newMedicalNotes, oldDiagnosis, oldMedicalNotes);
+                if (!result)
+                {
+                    throw new ApplicationException("\na data concurrency error occured, refreshing page; try again.");
+                }
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("There was an error updating data", ex);
+                throw ex;
             }
             return result;
         }

@@ -13,7 +13,7 @@ namespace LogicLayer
 {
     public class ImagesManager : IImagesManager
     {
-        private IImagesAccessor _imagesAccessor;
+        private IImagesAccessor _imagesAccessor = null;
         public ImagesManager()
         {
             _imagesAccessor = new ImagesAccessor();

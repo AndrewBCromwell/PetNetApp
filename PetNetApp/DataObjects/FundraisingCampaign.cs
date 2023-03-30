@@ -17,6 +17,9 @@ namespace DataObjects
         public int UsersId { get; set; }
         public int ShelterId { get; set; }
         public bool Active { get; set; }
+        public decimal AmountRaised { get; set; }
+        public int NumOfAttendees { get; set; }
+        public int NumAnimalsAdopted { get; set; }
     }
 
     public class FundraisingCampaignVM : FundraisingCampaign

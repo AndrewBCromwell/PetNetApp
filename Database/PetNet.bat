@@ -1,6 +1,7 @@
 ECHO off
 
 sqlcmd -S localhost -E -i PetNet_db_am.sql
+sqlcmd -S localhost -E -i FosterApplicationResponse.sql
 
 
 rem Add your sample data scripts to the bottom of this list
@@ -9,6 +10,7 @@ rem sqlcmd -S localhost -E -i SampleData\ASampleFeature_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\Zipcodes_DB.sql
 sqlcmd -S localhost -E -i SampleDataScripts\PetNet_db_sample_data.sql
 sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
+
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
@@ -64,7 +66,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewChangesToInventoryData_SP.
 
 sqlcmd -S localhost -E -i "StoredProceduresScripts\FundraisingCampaign(Add,Edit,Delete)_SP.sql"
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddEditInstitutionalEntities_SP.sql
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddCampaignUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReactivateAccount_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\Shelter_Stored_Procedures.sql
@@ -86,6 +88,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateQuarantineStatusByMedica
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewRequest_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordList.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordDetailsByMedicalRecordId.sql
@@ -98,8 +101,17 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShel
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShelterIdAndItemId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByItemId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddPost_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditPost_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
+
+sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

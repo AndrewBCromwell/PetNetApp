@@ -40,5 +40,23 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Inserting ticket failed</exception>
         /// <returns>Rows Affected</returns>
         int InsertTicket(int UserId, string TicketStatusId, string TicketTitle, string TicketContext);
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// updates a ticket status by TicketID
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="newTicket">ticket to be updated</param>
+        /// <param name="oldTicket">old ticket </param>
+        /// <exception cref="Exception">Update Fails</exception>
+        /// <returns>Rows affected</returns>	
+        int UpdateTicketStatus(Ticket newTicket, Ticket oldTicket);
     }
 }

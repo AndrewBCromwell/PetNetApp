@@ -355,14 +355,14 @@ print '' print '*** creating table for Post (Mads)'
 GO
 CREATE TABLE [dbo].[Post] (
 	[PostId]			[int]		IDENTITY(100000,1) 	NOT NULL,
-	[UserId]			[int]							NOT NULL,
 	[PostAuthor]		[int]							NOT NULL,
 	[PostContent]		[nvarchar](250)					NOT NULL,
 	[PostDate]			[datetime]						NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	[PostVisibility]	[bit]							NOT NULL DEFAULT 1,
+    [PostAdminRemoved]	[bit]							NULL DEFAULT NULL
 	
 	CONSTRAINT [pk_PostId] PRIMARY KEY([PostId]),
-	CONSTRAINT [fk_PostUsers_UserId] FOREIGN KEY ([UserId])
+	CONSTRAINT [fk_Post_PostAuthor] FOREIGN KEY ([PostAuthor])
        REFERENCES [dbo].[Users]([UsersId])
 )
 GO
@@ -485,6 +485,7 @@ CREATE TABLE [dbo].[Reply] (
 	[ReplyContent]		[nvarchar](250)				NOT NULL,
 	[ReplyDate]			[datetime]					NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	[ReplyVisibility]	[bit]						NOT NULL DEFAULT 1,
+    [ReplyAdminRemoved]	[bit]						NULL DEFAULT NULL
 
 	CONSTRAINT [pk_ReplyId]	PRIMARY KEY ([ReplyId]),
 	CONSTRAINT [fk_ReplyPost_PostId] FOREIGN KEY ([PostId])
@@ -710,7 +711,10 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 	[EndDate]				[datetime]					NULL,
 	[Description]			[nvarchar](250)				NOT NULL,
 	[Complete]				[bit]	DEFAULT 0			NOT NULL,
-	[Active]				[bit]	DEFAULT 1			NOT NULL	
+	[Active]				[bit]	DEFAULT 1			NOT NULL,
+	[AmountRaised]			[decimal](9,2) DEFAULT 0	NULL,
+	[NumOfAttendees]		[int]	DEFAULT 0			NULL,
+	[NumAnimalsAdopted]		[int]	DEFAULT 0			NULL
 	CONSTRAINT [pk_FundraisingCampaignId] PRIMARY KEY ([FundraisingCampaignId]),
 	CONSTRAINT [fk_FundraisingCampaign_UsersId] FOREIGN KEY ([UsersId])
 		REFERENCES [Users]([UsersId]),
@@ -718,7 +722,6 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 		REFERENCES [Shelter]([ShelterId])
 )
 GO
-
 
 print '' print '*** creating FundraisingCampaign indices'
 CREATE INDEX ix_FundraisingCampaignUsersId
@@ -923,7 +926,7 @@ CREATE TABLE [dbo].[Applicant] (
 	[HomeOwnershipId]		[nvarchar](50)				NOT NULL,
 	[NumberOfChildren]		[int]						NOT NULL,
 	[NumberOfPets]			[int]						NOT NULL,
-	[CurrentlyAcceptingAnimals]	[bit]					NOT NULL DEFAULT NULL,
+	[CurrentlyAcceptingAnimals]	[bit]					NOT NULL DEFAULT 1,
 	
 	CONSTRAINT [fk_Applicant_UsersID] FOREIGN KEY([UsersId])
 		REFERENCES [dbo].[Users]([UsersId]),
@@ -1206,19 +1209,19 @@ CREATE TABLE [dbo].[AnimalMedicalImage] (
 GO
 
 -- Created by: Mohmeed Tomsah
-print '' print '*** creating RequestRescourceLine table ***'
+print '' print '*** creating RequestResourceLine table ***'
 GO
-CREATE TABLE [dbo].[RequestRescourceLine](
+CREATE TABLE [dbo].[RequestResourceLine](
 	[RequestId]	                     [int]                    NOT NULL,
 	[ItemId]	                     [nvarchar](50)	          NOT NULL,
 	[QuantityRequested]	             [int]	                  NOT NULL,
 	[Notes]	                         [nvarchar](1000)	      NOT NULL,
 	
-    CONSTRAINT [fk_RequestRescourceLine_RequestId]	FOREIGN KEY ([RequestId])
+    CONSTRAINT [fk_RequestResourceLine_RequestId]	FOREIGN KEY ([RequestId])
 		REFERENCES [dbo].[Request] ([RequestId]),
-	CONSTRAINT [fk_RequestRescourceLine_ItemId]	FOREIGN KEY ([ItemId])
+	CONSTRAINT [fk_RequestRecourceLine_ItemId]	FOREIGN KEY ([ItemId])
 		REFERENCES [dbo].[Item] ([ItemId]) ON UPDATE CASCADE,
-	CONSTRAINT [pk_RequestRescourceLine_RequestId] PRIMARY KEY([RequestId], [ItemId])
+	CONSTRAINT [pk_RequestResourceLine_RequestId] PRIMARY KEY([RequestId], [ItemId])
 )
 GO
 
@@ -1327,11 +1330,11 @@ GO
 print '' print '** creating table for AdoptionApplication'
 GO
 CREATE TABLE [dbo].[AdoptionApplication] (
-    [AdoptionApplicationId]    	[int]  IDENTITY(100000,1)     NOT NULL,
-    [ApplicantId]    			[int]     NOT NULL,
-    [AnimalId]    				[int]     NOT NULL,
-    [ApplicationStatusId]    	[nvarchar](50) DEFAULT 'Pending'    NOT NULL,
-    [AdoptionApplicationDate]   [datetime]   DEFAULT GETDATE()  NOT NULL
+    [AdoptionApplicationId]    	[int] IDENTITY(100000,1)    NOT NULL,
+    [ApplicantId]    			[int]     					NOT NULL,
+    [AnimalId]    				[int]     					NOT NULL,
+    [ApplicationStatusId]    	[nvarchar](50)				NOT NULL	DEFAULT 'Pending',
+    [AdoptionApplicationDate]   [datetime]					NOT NULL	DEFAULT GETDATE(),
 
     CONSTRAINT [pk_AdoptionApplication] PRIMARY KEY([AdoptionApplicationId]),
     CONSTRAINT [fk_AdoptionApplication_ApplicantId] FOREIGN KEY ([ApplicantId])

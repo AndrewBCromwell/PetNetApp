@@ -155,12 +155,29 @@ namespace DataAccessLayerInterfaces
         /// Updated: yyyy/mm/dd
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        /// <param name="animalId">int for the animal</param>
+        /// <param name="AnimalId">int for the animal</param>
         /// <exception cref="Exception">No animal is retrived with that Id</exception>
         /// <returns>AnimalVM object</returns>	
         AnimalVM SelectAnimalMedicalProfileByAnimalId(int AnimalId);
 
         List<AnimalVM> SelectAdoptedAnimalByUserId(int usersId);
         FosterPlacementRecord SelectFosterPlacementRecordNotes(int animalId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/20
+        /// 
+        /// Selects a list of animalVM models for a given fundraising event id
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="fundraisingEventId">int for the fundraising event id</param>
+        /// <exception cref="Exception">No animals retrieved with that event id</exception>
+        /// <returns>List of AnimalVM objects</returns>
+        List<AnimalVM> SelectAnimalsByFundraisingEventId(int fundraisingEventId);
     }
 }

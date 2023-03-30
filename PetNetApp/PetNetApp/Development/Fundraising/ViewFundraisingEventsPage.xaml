@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1*" MinWidth="350"/>
             </Grid.ColumnDefinitions>
-            <Label FontSize="25" Content="Fundraising Events" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 0 5" Loaded="Label_Loaded" Unloaded="Label_Unloaded"/>
+            <Label FontSize="25" Content="Fundraising Events" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 0 5"/>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -34,8 +34,9 @@
                 <uc:PlaceholderTextBox x:Name="tbSearch" DefaultText="Enter Event Keyword" Margin="5 0" Grid.ColumnSpan="3" Height="50" Grid.Row="0" KeyDown="tbSearch_KeyDown"/>
                 <ComboBox x:Name="cbSort" Grid.Column="0" Grid.Row="1" Height="50" Margin="5 0" SelectedIndex="0">
                     <ComboBoxItem IsEnabled="False">Sort By</ComboBoxItem>
-                    <ComboBoxItem>Title</ComboBoxItem>
+                    <ComboBoxItem>All</ComboBoxItem>
                     <ComboBoxItem>Start Date</ComboBoxItem>
+                    <ComboBoxItem>Title</ComboBoxItem>
                 </ComboBox>
                 <Button x:Name="btnSearch" Margin="5 0" Height="50" Grid.Row="1" Grid.Column="2" Content="Search" Click="btnSearch_Click"/>
                 <ComboBox x:Name="cbFilter" Grid.Column="1" Grid.Row="1" Height="50" Margin="5 0" SelectedIndex="0">
@@ -43,6 +44,8 @@
                     <ComboBoxItem Content="Ongoing"/>
                     <ComboBoxItem Content="Completed"/>
                     <ComboBoxItem Content="Both"/>
+                    <ComboBoxItem Content="Visible"/>
+                    <ComboBoxItem Content="Hidden"/>
                 </ComboBox>
             </Grid>
         </Grid>

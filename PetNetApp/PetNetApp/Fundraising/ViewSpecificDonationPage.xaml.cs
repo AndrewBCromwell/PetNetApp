@@ -66,5 +66,10 @@ namespace WpfPresentation.Fundraising
             svInkind.Visibility = Visibility.Hidden;
             spInKindDonations.Visibility = Visibility.Hidden;
         }
+
+        private void btnViewDonorProfile_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new DonorInfoPage((int)Donation.UserId));
+        }
     }
 }

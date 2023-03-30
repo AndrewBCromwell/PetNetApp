@@ -91,7 +91,7 @@ namespace WpfPresentation.Fundraising
         /// <remarks>
         /// Updater: Andrew Schneider
         /// Updated: 2023/03/18
-        /// Originally part of Page_Loaded but moved to a separate method
+        /// Originally part of Page_Loaded but moved to a separate methods
         /// so it could be called from Page_Loaded and the "Reset" button
         /// on the Filter Donations popup.
         /// </remarks>
@@ -133,6 +133,8 @@ namespace WpfPresentation.Fundraising
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFilterDonations_Click(object sender, RoutedEventArgs e)
         {
             if(popFilterDonations.IsOpen == false)
@@ -160,12 +162,14 @@ namespace WpfPresentation.Fundraising
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblFilter_MouseDown(object sender, MouseButtonEventArgs e)
         {
             _filteredDonationVMs.Clear();
             spDonations.Children.Clear();
 
-            if (cmbFilterCategory.SelectedItem != null && cmbFilterOption != null)
+            if (cmbFilterCategory.SelectedItem != null && cmbFilterOption.SelectedItem != null)
             {
                 switch (cmbFilterCategory.SelectedItem.ToString())
                 {
@@ -214,6 +218,8 @@ namespace WpfPresentation.Fundraising
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbFilterCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(cmbFilterCategory.SelectedItem == null)
@@ -435,6 +441,7 @@ namespace WpfPresentation.Fundraising
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="comboBoxesUsed">Boolean for if combo boxes have been used</param>
         private void CheckMiscellaneousFilters(bool comboBoxesUsed)
         {
             if(comboBoxesUsed == false)
@@ -499,6 +506,8 @@ namespace WpfPresentation.Fundraising
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// </remarks>
         private void lblReset_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -522,6 +531,8 @@ namespace WpfPresentation.Fundraising
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblNoMessage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (ckbNoMessage.IsChecked == true)

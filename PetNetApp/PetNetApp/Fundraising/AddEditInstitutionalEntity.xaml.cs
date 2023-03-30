@@ -126,8 +126,6 @@ namespace WpfPresentation.Fundraising
             tbZipcode.IsReadOnly = false;
             tbCity.IsReadOnly = true;
             tbState.IsReadOnly = true;
-            //btnCancel.IsCancel = true;
-            //btnClose.IsCancel = false;
             btnSave.IsDefault = true;
             btnEdit.IsDefault = false;
         }
@@ -520,7 +518,6 @@ namespace WpfPresentation.Fundraising
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            //PromptWindow.ShowPrompt("Close", "close button clicked");
             return;
         }
 
@@ -550,7 +547,6 @@ namespace WpfPresentation.Fundraising
             try
             {
                 zipcodeData = _masterManager.ZipcodeManager.RetrieveCityStateLatLongByZipcode(tbZipcode.Text);
-                //TODO: implement this data
                 tbCity.Text = zipcodeData.City;
                 tbState.Text = zipcodeData.State;
             }
@@ -567,15 +563,20 @@ namespace WpfPresentation.Fundraising
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            //switch (_contactType)
-            //{
-            //    case "Contact":
-            //        ViewFundraisingEventContacts viewFundraisingEventContacts = new ViewFundraisingEventContacts();
-            //        viewFundraisingEventContacts.NavigationService.Navigate();
-            //    default:
-            //        break;
-            //}
-            //NavigationService.Navigate(new ViewFundraisingEventContacts());
+            switch (_contactType)
+            {
+                case "Host":
+                    ViewFundraisingEventHosts.GetViewFundraisingEventHosts();
+                    break;
+                case "Contact":
+                    ViewFundraisingEventContacts.GetViewEventContacts();
+                    break;
+                case "Sponsor":
+                    ViewFundraisingEventSponsors.GetViewEventSponsors();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)

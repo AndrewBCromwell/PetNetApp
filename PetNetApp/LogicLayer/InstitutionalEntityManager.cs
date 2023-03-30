@@ -20,6 +20,7 @@ using LogicLayerInterfaces;
 using DataAccessLayer;
 using DataAccessLayerInterfaces;
 
+
 namespace LogicLayer
 {
 
@@ -31,7 +32,7 @@ namespace LogicLayer
     /// </summary>
     public class InstitutionalEntityManager : IInstitutionalEntityManager
     {
-        
+
         private IInstitutionalEntityAccessor _institutionalEntityAccessor = null;
 
 
@@ -81,7 +82,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Failed to load institutional entities", ex);
             }
             return institutionalEntities;
         }
@@ -124,6 +125,38 @@ namespace LogicLayer
             {
                 throw new ApplicationException("An error occurred while updating record.", ex);
             }
+        }
+
+        public List<InstitutionalEntity> RetrieveFundraisingInstitutionalEntitiesByEventIdAndContactType(int eventId, string contactType)
+        {
+            List<InstitutionalEntity> institutionalEntities = null;
+            try
+            {
+                institutionalEntities = _institutionalEntityAccessor.SelectFundraisingEventInstitutionalEntitiesByEventIdAndContactType(eventId, contactType);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load event " + contactType.ToLower() + "s.", ex);
+            }
+            return institutionalEntities;
+        }
+
+        public InstitutionalEntity RetrieveInstitutionalEntityByEventIdAndContactType(int fundraisingEventId, string contactType)
+        {
+            //throw new NotImplementedException();
+            InstitutionalEntity institutionalEntity = null;
+
+            try
+            {
+                institutionalEntity = _institutionalEntityAccessor.SelectInstitutionalEntityByFundraisingEventIdAndContactType(fundraisingEventId, contactType);
+            }
+            catch (Exception ex)
+            {
+
+                throw new AccessViolationException("Failed to load a " + contactType + " for the event.", ex);
+            }
+
+            return institutionalEntity;
         }
     }
 }

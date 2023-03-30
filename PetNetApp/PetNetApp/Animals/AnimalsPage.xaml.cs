@@ -79,7 +79,9 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton(btnFoster);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            //frameAnimals.Navigate(null);
+            PromptWindow.ShowPrompt("Edit in future", "Need to replace the foster application response page here and relink it correctly.");
+            frameAnimals.Navigate(new AddEditReportOnFoster(100000)); // need to replace with actual foster page and add report to Foster application
         }
 
         private void btnSurrender_Click(object sender, RoutedEventArgs e)
