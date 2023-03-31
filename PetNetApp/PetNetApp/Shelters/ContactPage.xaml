@@ -31,8 +31,8 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label x:Name="lblContact" Grid.Row="1" Grid.Column="1" FontSize="27" FontWeight="DemiBold" HorizontalAlignment="Center">Contact</Label>
-        <Label x:Name="lblGrid" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">Click person to message</Label>
-        <DataGrid x:Name="datContact" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10 0 10 0" MouseDoubleClick="datContact_MouseDoubleClick">
+        <Label x:Name="lblGrid" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">Managers Contact Information</Label>
+        <DataGrid x:Name="datContact" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10 0 10 0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Given Name" Binding="{Binding GivenName}" Width="*"/>
                 <DataGridTextColumn Header="Family Name" Binding="{Binding FamilyName}" Width="*"/>

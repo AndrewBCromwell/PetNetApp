@@ -85,6 +85,10 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddTicket.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertTestByMedicalRecordId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertTestMedicalRecordByAnimalId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateQuarantineStatusByMedicalRecordId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItem_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItemCategory_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteItemCategory_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\SelectAllCategories_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql

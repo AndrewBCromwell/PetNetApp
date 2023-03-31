@@ -114,23 +114,5 @@ namespace WpfPresentation.Shelters
         {
             NavigationService.Navigate(null);
         }
-
-        /// <summary>
-        /// Nathan Zumsande
-        /// Created: 2023/03/08
-        /// Opens messaging for the user to send message to selected user
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void datContact_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            PromptWindow.ShowPrompt("Todo", "Todo", ButtonMode.Ok);
-        }
     }
 }

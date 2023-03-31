@@ -6,8 +6,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Nathan Zumsande
+/// Updated: 2023/03/31
+/// Added methods InsertItem, SelectAllCategories
+/// InsertItemCategory, DeleteItemCategory
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,156 @@ namespace DataAccessLayer
 {
     public class ItemAccessor : IItemAccessor
     {
+        public int DeleteItemCategory(string itemId, string category)
+        {
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_delete_item_category";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //set parameters
+            cmd.Parameters.AddWithValue("@ItemId", itemId);
+            cmd.Parameters.AddWithValue("@CategoryId", category);
+
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute
+                rows = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close connection
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+        public int InsertItem(string itemId)
+        {
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_item";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //set parameters
+            cmd.Parameters.AddWithValue("@ItemId", itemId);
+
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute
+                rows = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close connection
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+        public int InsertItemCategory(string itemId, string category)
+        {
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_item_category";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //set parameters
+            cmd.Parameters.AddWithValue("@ItemId", itemId);
+            cmd.Parameters.AddWithValue("@CategoryId", category);
+
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute
+                rows = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close connection
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+        public List<string> SelectAllCategories()
+        {
+            List<string> categories = new List<string>();
+            string category = "";
+
+            //connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_categories";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                //open connection
+                conn.Open();
+
+                //execute
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    category = reader.GetString(0);
+                    categories.Add(category);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                //close connection
+                conn.Close();
+            }
+
+            return categories;
+        }
+
         public Item SelectItemByItemId(string ItemId)
         {
             Item item = new Item();
@@ -74,5 +226,7 @@ namespace DataAccessLayer
             return item;
 
         }
+
+
     }
 }
