@@ -105,7 +105,7 @@ namespace DataAccessLayerFakes
             return medicalRecords.Where(m => m.AnimalId == animalId).ToList();
         }
 
-        public int UpdateMedicalTreatmentByMedicalrecordId(int medicalRecordId, string diagnosis, string medicalNotes)
+        public int UpdateMedicalTreatmentByMedicalrecordId(int medicalRecordId, string newDiagnosis, string newMedicalNotes, string oldDiagnosis, string oldMedicalNotes)
         {
             int result = 0;
 
@@ -113,8 +113,8 @@ namespace DataAccessLayerFakes
             {
                 if (medicalRecords[i].MedicalRecordId == medicalRecordId)
                 {
-                    medicalRecords[i].Diagnosis = diagnosis;
-                    medicalRecords[i].MedicalNotes = medicalNotes;
+                    medicalRecords[i].Diagnosis = newDiagnosis;
+                    medicalRecords[i].MedicalNotes = newMedicalNotes;
 
                     result++;
                 }

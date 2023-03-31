@@ -61,5 +61,27 @@ namespace LogicLayerInterfaces
         /// <param name="fundraisingCampaign">Fundraising Campaign to remove</param>
         /// <returns>Whether the record was successfully removed</returns>
         bool RemoveFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// A method to create a new fundraising campaign update
+        /// </summary>
+        /// <param name="campaignUpdate">The campaign update record</param>
+        /// <returns>Bool indicating success</returns>
+        bool AddCampaignUpdate(CampaignUpdate campaignUpdate);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// A method to update the fundraising campaign results
+        /// </summary>
+        /// <param name="oldFundraisingCampaignVM">The original campaign record</param>
+        /// <param name="newFundraisingCampaignVM">The new campaign record</param>
+        /// <returns>Bool indicating success</returns>
+        bool EditFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM,
+            FundraisingCampaignVM newFundraisingCampaignVM);
     }
 }

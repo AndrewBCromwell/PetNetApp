@@ -52,5 +52,26 @@ namespace DataAccessLayerInterfaces
         /// <param name="fundraisingCampaign">Campaign to deactivate</param>
         /// <returns>the number of campaigns deactivated</returns>
         int DeleteFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// A method to create a new fundraising campaign update
+        /// </summary>
+        /// <param name="campaignUpdate">The campaign update record</param>
+        /// <returns>ID of the update record created</returns>
+        int InsertCampaignUpdate(CampaignUpdate campaignUpdate);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// A method to update the fundraising campaign results
+        /// </summary>
+        /// <param name="oldFundraisingCampaignVM">The original campaign record</param>
+        /// <param name="newFundraisingCampaignVM">The new campaign record</param>
+        int UpdateFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM,
+            FundraisingCampaignVM newFundraisingCampaignVM);
     }
 }

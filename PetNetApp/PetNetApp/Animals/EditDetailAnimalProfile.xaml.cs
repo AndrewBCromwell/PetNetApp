@@ -9,7 +9,6 @@
 /// Updater Name
 /// Updated: yyyy/mm/dd
 /// </remarks>
-/// 
 
 using DataObjects;
 using LogicLayer;

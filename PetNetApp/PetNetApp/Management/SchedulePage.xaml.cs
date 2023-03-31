@@ -29,7 +29,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 
-namespace WpfPresentation.Development.Management
+namespace WpfPresentation.Management
 {
     /// <summary>
     /// Interaction logic for SchedulePage.xaml
@@ -42,6 +42,7 @@ namespace WpfPresentation.Development.Management
         {
             InitializeComponent();
             LoadCmbBox();
+            btnDeleteSchedule.Visibility = Visibility.Hidden;
         }
 
         public SchedulePage(UsersVM user)
@@ -50,56 +51,14 @@ namespace WpfPresentation.Development.Management
             LoadCmbBox();
             CboVolunteers.SelectedValue = user.UsersId;
             PopulateDatGridByUserId(user);
+            btnDeleteSchedule.Visibility = Visibility.Hidden;
         }
 
-        private void LoadCmbBox()
-        {
-            
-            try
-            {
-                CboVolunteers.ItemsSource = _masterManager.UsersManager.RetrieveUserByRole("Volunteer",100000);
-                CboVolunteers.SelectedValuePath = "UsersId";
-            }
-            catch (Exception ex)
-            {
 
-                PromptWindow.ShowPrompt("Error", ex.Message);
-            }
-            
-        }
-        private void PopulateDatGridByUserId(UsersVM user)
-        {
-            if (CboVolunteers.SelectedItem != null)
-            {
-                date.SelectedDate = null;
-                try
-                {
-                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByUserId(user.UsersId);
-                }
-                catch (Exception ex)
-                {
-                    PromptWindow.ShowPrompt("Error", ex.Message);
-                }
-            }
-        }
-
-        private void PopulateDatGridByDate(DateTime dateSelected)
-        {
-            CboVolunteers.SelectedItem = null;
-            try
-            {
-                datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByDate((DateTime)date.SelectedDate);
-            }
-            catch (Exception ex)
-            {
-                PromptWindow.ShowPrompt("Error", ex.Message);
-            }
-        }
 
 
         private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
+        {  
             if ( date.SelectedDate != null)
             {
                 PopulateDatGridByDate((DateTime)date.SelectedDate);
@@ -115,6 +74,7 @@ namespace WpfPresentation.Development.Management
         {
             CboVolunteers.SelectedItem = null;
             datScheduledPerson.ItemsSource = null;
+            hideShowDeleteButton();
         }
         private void btnAddSchedule_Click(object sender, RoutedEventArgs e)
         {
@@ -165,6 +125,89 @@ namespace WpfPresentation.Development.Management
                 {
                     
                 }
+            }
+        }
+
+        private void btnDeleteSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ScheduleVM scheduleVMToDelete = (ScheduleVM)datScheduledPerson.SelectedItem;
+            try
+            {
+                _masterManager.ScheduleManager.DeleteScheduleVM(scheduleVMToDelete.ScheduleId);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+            }
+            if ((UsersVM)CboVolunteers.SelectedItem != null)
+            {
+                PopulateDatGridByUserId((UsersVM)CboVolunteers.SelectedItem);
+            }
+            else
+            {
+                PopulateDatGridByDate((DateTime)date.SelectedDate);
+            }
+
+        }
+
+        private void datScheduledPerson_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            hideShowDeleteButton();
+        }
+
+        private void LoadCmbBox()
+        {
+
+            try
+            {
+                CboVolunteers.ItemsSource = _masterManager.UsersManager.RetrieveUserByRole("Volunteer", 100000);
+                CboVolunteers.SelectedValuePath = "UsersId";
+            }
+            catch (Exception ex)
+            {
+
+                PromptWindow.ShowPrompt("Error", ex.Message);
+            }
+
+        }
+        private void PopulateDatGridByUserId(UsersVM user)
+        {
+            if (CboVolunteers.SelectedItem != null)
+            {
+                date.SelectedDate = null;
+                try
+                {
+                    datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByUserId(user.UsersId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message);
+                }
+            }
+        }
+        private void PopulateDatGridByDate(DateTime dateSelected)
+        {
+            CboVolunteers.SelectedItem = null;
+            try
+            {
+                datScheduledPerson.ItemsSource = _masterManager.ScheduleManager.RetrieveScheduleByDate((DateTime)date.SelectedDate);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+            }
+        }
+
+        private void hideShowDeleteButton()
+        {
+            
+            if(datScheduledPerson.SelectedItem == null)
+            {
+                btnDeleteSchedule.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnDeleteSchedule.Visibility = Visibility.Visible;
             }
         }
     }

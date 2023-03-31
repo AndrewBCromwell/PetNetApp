@@ -53,5 +53,23 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to retrieve tickets", e);
             }
         }
+
+        public bool EditTicketStatus(Ticket newTicket, Ticket oldTicket)
+        {
+            bool result = false;
+            try
+            {
+                result = 1 == _ticketAccessor.UpdateTicketStatus(newTicket, oldTicket);
+                if (!result)
+                {
+                    throw new ApplicationException("\na data concurrency error occured, refreshing page; try again.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
     }
 }

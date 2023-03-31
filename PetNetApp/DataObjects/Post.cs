@@ -12,7 +12,7 @@ namespace DataObjects
         public int PostId { get; set; }
         public int PostAuthor { get; set; }
         [Required(ErrorMessage = "Post cant be empty")]
-        [RegularExpression(@"^(?!\s*$).+",
+        [RegularExpression(@"^(?!\s*$)(\s|\S)+$", 
          ErrorMessage = "Post cant be only space(s)")]
         public string PostContent { get; set; }
         public DateTime PostDate { get; set; }

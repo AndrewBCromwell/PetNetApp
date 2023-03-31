@@ -24,6 +24,48 @@ namespace DataAccessLayer
 {
     public class ScheduleAccessor : IScheduleAccessor
     {
+        public int DeleteScheduleVM(int scheduleId)
+        {
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            //  command text
+            var cmdText = "sp_delete_schedule_by_scheduleid";
+
+            // command 
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // add parameter objects to the command 
+            cmd.Parameters.AddWithValue("@ScheduleId", scheduleId);
+
+
+            try
+            {
+                // open the connection
+                conn.Open();
+                // execute command
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close the connection
+                conn.Close();
+            }
+
+
+            return rows;
+        }
+
         public int InsertSchedulebyUserid(ScheduleVM scheduleVM)
         {
             int rowsAffected = 0;

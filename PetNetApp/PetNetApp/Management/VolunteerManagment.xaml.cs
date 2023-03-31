@@ -16,7 +16,7 @@ using DataObjects;
 using LogicLayer;
 using PetNetApp.Development;
 
-namespace WpfPresentation.Development.Management
+namespace WpfPresentation.Management
 {
     /// <summary>
     /// Interaction logic for VolunteerManagment.xaml

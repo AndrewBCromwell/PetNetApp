@@ -42,6 +42,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_date_SP.
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_userId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddSchedule_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditSchedule_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteSchedule_SP.sql
 
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_user_creation.sql
@@ -66,7 +67,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewChangesToInventoryData_SP.
 
 sqlcmd -S localhost -E -i "StoredProceduresScripts\FundraisingCampaign(Add,Edit,Delete)_SP.sql"
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddEditInstitutionalEntities_SP.sql
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddCampaignUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReactivateAccount_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\Shelter_Stored_Procedures.sql
@@ -112,6 +113,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

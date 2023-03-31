@@ -97,5 +97,19 @@ namespace LogicLayer
 
             return wasUpdated;
         }
+
+        public bool DeleteScheduleVM(int scheduleId)
+        {
+            bool wasDeleted = false;
+            try
+            {
+                wasDeleted = 0 < _scheduleAccessor.DeleteScheduleVM(scheduleId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to delete Record", ex);
+            }
+            return wasDeleted;
+        }
     }
 }

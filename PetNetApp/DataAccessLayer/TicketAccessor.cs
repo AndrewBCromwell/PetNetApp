@@ -86,5 +86,38 @@ namespace DataAccessLayer
 
             return _tickets;
         }
+
+        public int UpdateTicketStatus(Ticket newTicket, Ticket oldTicket)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_ticket";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@TicketId", oldTicket.TicketId);
+            cmd.Parameters.AddWithValue("@OldTicketStatusId", oldTicket.TicketStatusId);
+            cmd.Parameters.AddWithValue("@NewTicketStatusId", newTicket.TicketStatusId);
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
     }
 }
