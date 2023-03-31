@@ -6,6 +6,10 @@
     min-height: 100vh;
     color: #1C6758;
 }
+.navbar-default {
+    background-color: #3d8361;
+    border-width:0;
+}
 
 .header {
     background-color: #3d8361;
@@ -14,8 +18,7 @@
 }
 
 .header-images {
-    margin-left: 50px;
-    padding-bottom: 10px;
+    margin-left: 2%;
 }
 
 .header-images span{

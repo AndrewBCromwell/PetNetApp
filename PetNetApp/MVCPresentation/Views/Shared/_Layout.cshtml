@@ -6,28 +6,41 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
     @RenderSection("styles", false) 
 
 </head>
 <body>
-    <div class="header">
-        <div class="header-images">
-            <!-- Petnet Logo -->
-            <a href="@Url.Action("About", "Home")">
-                <img src="~/Images/petnetLogo_hover.png" height="75" />
-            </a>
-            <span></span>
-            <a href="@Url.Action("About", "Home")">
-                <img src="~/Images/bell_notification.png" height="45" />
-            </a>
-            <a href="@Url.Action("About", "Home")">
-                <img src="~/Images/user_hover.png" height="45" />
-            </a>
-            <a href="@Url.Action("About", "Home")">
-                <img src="~/Images/menuIcon.png" height="45" />
-            </a>
-        </div>
+    <div class="header ">
+        <nav class="navbar navbar-expand-lg container-fluid">
+            <div class="header-images ">
+                <!-- Petnet Logo -->
+                <a href="@Url.Action("About", "Home")">
+                    <img src="~/Images/petnetLogo_hover.png" height="75" />
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse d-flex flex-row-reverse">
+                <ul class="nav navbar-nav nav">
+                    <li>
+                        <a href="@Url.Action("About", "Home")">
+                            <img src="~/Images/bell_notification.png" height="45" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("About", "Home")">
+                            <img src="~/Images/user_hover.png" height="45" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("About", "Home")">
+                            <img src="~/Images/menuIcon.png" height="45" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
 
         <div class="header-menu">
             <ul class="header-menu-list">

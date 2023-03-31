@@ -105,6 +105,9 @@
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
+      <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fundraising\UpdateFundraisingCampaign.xaml.cs">
       <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
@@ -134,9 +137,6 @@
     </Compile>
     <Compile Include="Fundraising\ViewFundraisingEventSponsors.xaml.cs">
       <DependentUpon>ViewFundraisingEventSponsors.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
-      <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
       <DependentUpon>InventoryPage.xaml</DependentUpon>
@@ -243,9 +243,6 @@
     </Compile>
     <Compile Include="Shelters\ShelterNetworkPage.xaml.cs">
       <DependentUpon>ShelterNetworkPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
-      <DependentUpon>AddEditViewFundraisingCampaignPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\AddFundraisingCampaignSponsorsWindow.xaml.cs">
       <DependentUpon>AddFundraisingCampaignSponsorsWindow.xaml</DependentUpon>
@@ -381,6 +378,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fundraising\AddEditInstitutionalEntity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Fundraising\UpdateFundraisingCampaign.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -506,14 +507,6 @@
     <Page Include="Animals\AnimalMedicalTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Fundraising\AddEditInstitutionalEntity.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Fundraising\AddFundraisingCampaignSponsorsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
