@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalFakeData.cs" />
+    <Compile Include="AdoptionApplicationAccessorFakes.cs" />
     <Compile Include="DeathAccessorFake.cs" />
     <Compile Include="AnimalAccessorFakes.cs" />
     <Compile Include="AnimalUpdatesFakes.cs" />
@@ -49,8 +51,13 @@
     <Compile Include="FundraisingCampaignAccessorFake.cs" />
     <Compile Include="FundraisingFakeData.cs" />
     <Compile Include="FundraisingEventAccessorFakes.cs" />
+    <Compile Include="FosterApplicationResponseAccessorFakes.cs" />
     <Compile Include="ImagesAccessorFakes.cs" />
+    <Compile Include="PostAccessorFake.cs" />
+    <Compile Include="ReplyAccessorFake.cs" />
+    <Compile Include="RequestAccessorFakes.cs" />
     <Compile Include="ItemAccessorFakes.cs" />
+    <Compile Include="LibraryAccessorFakes.cs" />
     <Compile Include="ShelterInventoryAccessorFakes.cs" />
     <Compile Include="ShelterItemTransactionAccessorFakes.cs" />
     <Compile Include="InstitutionalEntityAccessorFake.cs" />

@@ -63,7 +63,17 @@ namespace WpfPresentation.Management.Inventory
         {
 
             //inserting page information
-            _item = _masterManager.ItemManager.RetrieveItemByItemId(_shelterInventoryItemVM.ItemId);
+            try
+            {
+                _item = _masterManager.ItemManager.RetrieveItemByItemId(_shelterInventoryItemVM.ItemId);
+            }
+            catch (Exception)
+            {
+
+                PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve item data.");
+                return;
+            }
+
             lblItemName.Content = "Item Name: " + _shelterInventoryItemVM.ItemId;
             txtQuantity.Text = _shelterInventoryItemVM.Quantity.ToString();
             txtLowThreshold.Text = _shelterInventoryItemVM.LowInventoryThreshold.ToString();
@@ -149,18 +159,109 @@ namespace WpfPresentation.Management.Inventory
         /// <param name="e"></param>
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            //Validation
+            //Validation correct input
 
             decimal useStatistic;
 
+            int quantity;
+            int lowthreshold;
+            int highthreshold;
 
             try
             {
                 useStatistic = decimal.Parse(txtUseStatistic.Text);
+                if(useStatistic < 0)
+                {
+                    PromptWindow.ShowPrompt("Use Statistic Input Error", "An Error has occured. Use Statistic can not be below 0. Please Try again");
+                    txtLowThreshold.Focus();
+                    return;
+                }
             }
             catch (Exception)
             {
                 PromptWindow.ShowPrompt("Use Statistic Input Error", "An Error has occured. Use Statistic only allows decimals and integers. Please Try again");
+                txtUseStatistic.Focus();
+                return;
+            }
+            try
+            {
+                quantity = int.Parse(txtQuantity.Text);
+
+                if(quantity < 0)
+                {
+                    PromptWindow.ShowPrompt("Quantity Input Error", "An Error has occured. Quantity can not be below 0. Please Try again");
+                    txtQuantity.Focus();
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                PromptWindow.ShowPrompt("Quantity Input Error", "An Error has occured. Quantity only allows integers as input. Please Try again");
+                txtQuantity.Focus();
+                return;
+
+            }
+            try
+            {
+                lowthreshold = int.Parse(txtLowThreshold.Text);
+                if(lowthreshold < 0)
+                {
+                    PromptWindow.ShowPrompt("Low Threshold Input Error", "An Error has occured. Low Threshold can not be below 0. Please Try again");
+                    txtLowThreshold.Focus();
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                PromptWindow.ShowPrompt("Low Threshold Input Error", "An Error has occured. Low threshold only allows integers as input. Please Try again");
+                txtLowThreshold.Focus();
+                return;
+
+            }
+
+            try
+            {
+                highthreshold = int.Parse(txtHighThreshold.Text);
+                if(highthreshold < 0)
+                {
+                    PromptWindow.ShowPrompt("High Threshold Input Error", "An Error has occured. High Threshold can not be below 0. Please Try again");
+                    txtLowThreshold.Focus();
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                PromptWindow.ShowPrompt("High Threshold Input Error", "An Error has occured. High Threshold only allows integers as input. Please Try again");
+                txtHighThreshold.Focus();
+                return;
+
+            }
+
+
+
+            //Validation if null
+            if (txtQuantity.Text == "")
+            {
+                PromptWindow.ShowPrompt("Date Error", "Please enter an item quantity");
+                txtQuantity.Focus();
+                return;
+            }
+            if (txtHighThreshold.Text == "")
+            {
+                PromptWindow.ShowPrompt("Date Error", "Please enter a high threshold");
+                txtHighThreshold.Focus();
+                return;
+            }
+            if (txtLowThreshold.Text == "")
+            {
+                PromptWindow.ShowPrompt("Date Error", "Please enter a low threshold");
+                txtLowThreshold.Focus();
+                return;
+            }
+            if (txtUseStatistic.Text == "")
+            {
+                PromptWindow.ShowPrompt("Date Error", "Please enter a use statistic");
+                txtUseStatistic.Focus();
                 return;
             }
 
@@ -184,7 +285,17 @@ namespace WpfPresentation.Management.Inventory
 
             };
 
-            _masterManager.ShelterInventoryItemManager.EditShelterInventoryItem(_shelterInventoryItemVM, updatedShelterItemVM);
+            try
+            {
+                _masterManager.ShelterInventoryItemManager.EditShelterInventoryItem(_shelterInventoryItemVM, updatedShelterItemVM);
+            }
+            catch (Exception)
+            {
+
+                PromptWindow.ShowPrompt("Edit Failed", "Failed to update inventory item");
+                return;
+            }
+
 
             NavigationService.Navigate(new ViewShelterInventoryPage());
         }

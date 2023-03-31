@@ -138,5 +138,21 @@ namespace LogicLayerInterfaces
 
         List<AnimalVM> RetriveAdoptedAnimalByUserId(int userId);
         FosterPlacementRecord RetriveFosterPlacementRecordNotes(int animalId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/20
+        /// 
+        /// Retrieves a list of animals for a fundraising event
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// <param name="fundraisingEventId">The fundraisingEventId of the event retrieving animals for</param>
+        /// <exception cref="ApplicationException">Retrieve Fails</exception>
+        /// <returns>List of AnimalVMs</returns>
+        List<AnimalVM> RetrieveAnimalsByFundrasingEventId(int fundraisingEventId);
     }
 }

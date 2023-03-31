@@ -68,7 +68,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Unable to add role to user.");
             }
 
             return wasAdded;

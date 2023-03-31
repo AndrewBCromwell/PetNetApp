@@ -40,5 +40,21 @@ namespace LogicLayerInterfaces
         /// <exception cref="Exception">Creating ticket failed</exception>
         /// <returns>True or false if ticket was created</returns>
         bool CreateNewTicket(int UserId, string TicketStatusId, string TicketTitle, string TicketContext);
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/03/23
+        /// 
+        /// updates a ticket's status
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater 
+        /// Updated: 
+        /// example: 
+        /// </remarks>
+        /// <exception cref="Exception">problem updating ticket</exception>
+        /// <returns>List of ticket objects</returns>	
+        bool EditTicketStatus(Ticket newTicket, Ticket oldTicket);
     }
 }

@@ -42,7 +42,19 @@ namespace WpfPresentation.Management.Inventory
         public InventoryPage()
         {
             InitializeComponent();
-            List<Role> userRoles = _masterManager.RoleManager.RetrieveRoleListByUserId(MasterManager.GetMasterManager().User.UsersId);
+
+            List<Role> userRoles;
+            try
+            {
+                userRoles = _masterManager.RoleManager.RetrieveRoleListByUserId(MasterManager.GetMasterManager().User.UsersId);
+            }
+            catch (Exception)
+            {
+
+                PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve roles list");
+                return;
+            }
+
             if (userRoles == null)
             {
                 btnViewShelterInventory.Visibility = Visibility.Hidden;

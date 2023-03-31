@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using WpfPresentation.Development.Management;
 using WpfPresentation.Management.Inventory;
+using WpfPresentation.Management.Inventory.Library;
 
 namespace WpfPresentation.Management
 {
@@ -214,6 +215,12 @@ namespace WpfPresentation.Management
         private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
         {
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
+        }
+
+        private void btnLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameManagement.Navigate(LibraryUI.GetLibraryUI(_manager));
         }
     }
 }

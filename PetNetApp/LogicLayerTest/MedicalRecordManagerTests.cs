@@ -69,9 +69,9 @@ namespace LogicLayerTest
         public void UpdateTreatmentByMedicalRecordId()
         {
             int animalId = 100000;
-            int expectedResult = 1;
+            bool expectedResult = true;
 
-            int actualResult = _medicalRecordManager.UpdateTreatmentByMedicalRecordId(animalId, "New Diagnosis Name", "New Diagnosis Notes");
+            bool actualResult = _medicalRecordManager.EditTreatmentByMedicalRecordId(animalId, "New Diagnosis Name", "New Diagnosis Notes", "old Diagnosis Name", "old Diagnosis Notes");
 
 
             Assert.AreEqual(expectedResult, actualResult);

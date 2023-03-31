@@ -149,9 +149,10 @@ INSERT INTO [dbo].[HomeType]
 		[HomeTypeID]
 		)
 	VALUES
-		('Single'),
-        ('With kids'),
-        ('With other pets')
+		('House'),
+        ('Apartment/Condo'),
+        ('Trailer'),
+		('Other')
 GO
 
 print '' print '*** Inserting BannedWords Records'
@@ -213,6 +214,9 @@ INSERT INTO [dbo].[Category]
 		, ('Dog')
 		, ('Rabbit')
 		, ('Rodent')
+		/* Other */
+		, ('Food')
+		, ('Medicine')
 GO
 
 print '' print '*** Inserting Item Records'
@@ -419,18 +423,22 @@ print '' print '*** Creating Post sample data'
 
 GO
 INSERT INTO [dbo].[Post]
-		(		
-		[UserId],		
+		(			
 		[PostAuthor],	
-		[PostContent]
+		[PostContent],
+        [PostVisibility],
+        [PostAdminRemoved]
 		)
 	VALUES
-		(100000,100000,'Im happy'),
-		(100001,100001,'Im hungry'),
-		(100002,100002,'I like star wars'),
-		(100003,100003,'PETNET ROCKS!'),
-        (100000,100000,'I love this website'),
-        (100000,100000,'I found my pet through this website')
+		(100000,'Im happy', 1, null),
+		(100001,'Im hungry', 1, null),
+		(100002,'I like star wars', 1, null),
+		(100003,'PETNET ROCKS!', 1, null),
+        (100000,'I love this website', 1, null),
+        (100000,'I found my pet through this website', 1, null),
+        (100002,'Spamming', 0, 1),
+        (100002,'Toxic Behavior', 0, 1),
+        (100002,'Typo in my post', 0, 0)
 GO
 
 print '' print '*** Creating Event sample data'
@@ -540,15 +548,19 @@ INSERT INTO [dbo].[Reply]
 		(
 		[PostId],   
 		[ReplyAuthor],    
-		[ReplyContent]
+		[ReplyContent],
+        [ReplyVisibility],
+        [ReplyAdminRemoved]
 		)
 	VALUES
-		(100000, 100000, "Wow that's cool"),
-        (100000, 100003, "Again?"),
-        (100001, 100003, "Oh wow"),
-        (100001, 100003, "Haha"),
-        (100002, 100003, "Oh wow"),
-        (100002, 100003, "Haha")
+		(100000, 100000, "Wow that's cool", 0, 0),
+        (100000, 100003, "Again?", 1, null),
+        (100001, 100003, "Oh wow", 1, null),
+        (100001, 100003, "Haha", 1, null),
+        (100002, 100003, "Oh wow", 0, 0),
+        (100002, 100003, "Haha", 1, null),
+        (100002, 100000, "Toxic Behvaior over and over", 0, 1),
+        (100002, 100000, "Spamming replies on the spot", 0, 1)
 GO
 
 print '' print '*** Creating Favorite sample data'
@@ -740,15 +752,18 @@ INSERT INTO [dbo].[FundraisingCampaign]
         [Title],
 		[StartDate],
         [EndDate],
-        [Description]
+        [Description],
+		[AmountRaised],		
+		[NumOfAttendees],	
+		[NumAnimalsAdopted]
 		)
 	VALUES
-		(100001, 100000, 'Doggy Day', '2023-07-12', '2023-07-14', 'For the Doggies'),
-        (100001, 100000, 'Kitty Day', '2023-07-16', '2023-07-18', 'For the Kitties'),
-        (100001, 100000, 'Snake Day', '2023-07-20', '2023-07-21', 'For the Snakies'),
-        (100001, 100000, 'GIVE ME YOUR MONEY', '2023-07-12', '2023-07-14', 'A little too rich? We can help?'),
-        (100001, 100000, 'Fun Day!', '2023-07-16', '2023-07-18', 'For all animals!'),
-        (100001, 100000, 'PETNET Ball', '2023-07-20', '2023-07-21', 'Time to play catch with your animals')
+		(100001, 100000, 'Doggy Day', '2023-07-12', '2023-07-14', 'For the Doggies', 500, 45, 15),
+        (100001, 100000, 'Kitty Day', '2023-07-16', '2023-07-18', 'For the Kitties', 1500, 52, 23),
+        (100001, 100000, 'Snake Day', '2023-07-20', '2023-07-21', 'For the Snakies', 300, 14, 4),
+        (100001, 100000, 'GIVE ME YOUR MONEY', '2023-07-12', '2023-07-14', 'A little too rich? We can help?', 5875.50, 40, 15),
+        (100001, 100000, 'Fun Day!', '2023-07-16', '2023-07-18', 'For all animals!', 250, 25, 10),
+        (100001, 100000, 'PETNET Ball', '2023-07-20', '2023-07-21', 'Time to play catch with your animals', 885, 73, 12)
 GO
 
 print '' print '*** Creating FundraisingEvent sample data'
@@ -782,17 +797,18 @@ INSERT INTO [dbo].[Donation]
         [HasInKindDonation],
         [Anonymous],
         [Target],
-        [PaymentMethod]
+        [PaymentMethod],
+		[FundraisingEventId]
 		)
 	VALUES
-		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa'),
-        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa'),
-        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa'),
-        (100002, 100000, 12.99, '', 1, 0, ':)', 'Visa'),
-        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa'),
-        (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa'),
-        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa'),
-        (100000, 100001, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa')
+		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa', NULL),
+        (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', NULL),
+        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', NULL),
+        (100002, 100000, 12.99, '', 1, 0, ':)', 'Visa', NULL),
+        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa', NULL),
+        (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa', NULL),
+        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL),
+        (100000, 100001, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL)
 GO
 
 /* Insert donation records with dates and no messages */
@@ -802,19 +818,28 @@ INSERT INTO [dbo].[Donation]
 		[ShelterId],
         [Amount],
 		[Date],
+		[Message],
         [HasInKindDonation],
         [Anonymous],
         [Target],
-        [PaymentMethod]
+        [PaymentMethod],
+		[FundraisingEventId]
 		)
 	VALUES
-		(100001, 100000, 100.00, '2023-03-18', 0, 0,'I hope this helps the shelter','Visa'),
-        (100002, 100000, 56.00, '2023-02-26', 0, 0, 'Trying to help', 'visa'),
-        (100003, 100000, 12.99, '2022-10-15', 1, 0, 'Have a good day', 'Visa'),
-        (100002, 100000, 12.99, '2022-05-14', 1, 0, ':)', 'Visa'),
-        (100000, 100000, 12.99, '2022-08-14', 1, 0, 'Yay', 'Visa'),
-        (100000, 100000, 99.99, '2022-10-10', 0, 1, 'Im writing this off in my taxes', 'Visa'),
-        (100000, 100000, 150.00, '2023-03-17', 0, 1, 'Too much money for one person', 'Visa')
+		(100001, 100000, 100.00, '2023-03-18','Daily good deed', 0, 0,'I hope this helps the shelter','Visa', NULL),
+        (100002, 100000, 56.00, '2023-02-26', 'Daily good deed',0, 0, 'Trying to help', 'visa', NULL),
+        (100003, 100000, 12.99, '2022-10-15','Daily good deed', 1, 0, 'Have a good day', 'Visa', NULL),
+        (100002, 100000, 12.99, '2022-05-14','Daily good deed', 1, 0, ':)', 'Visa', NULL),
+        (100000, 100000, 12.99, '2022-08-14','Daily good deed', 1, 0, 'Yay', 'Visa', NULL),
+        (100000, 100000, 99.99, '2022-10-10','Daily good deed', 0, 1, 'Im writing this off in my taxes', 'Visa', NULL),
+        (100000, 100000, 150.00, '2023-03-17','Daily good deed', 0, 1, 'Too much money for one person', 'Visa', NULL),
+		(100001, 100000, 100.00, '2023-03-17','Daily good deed', 0, 0,'I hope this helps the shelter','Visa', 100000),
+        (100002, 100000, 56.00, '2023-03-17','Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', 100000),
+        (100003, 100000, 12.99, '2023-03-17','Daily good deed', 1, 0, 'Have a good day', 'Visa', 100001),
+        (100002, 100000, 12.99, '2023-03-17','Daily good deed', 1, 0, ':)', 'Visa', NULL),
+        (100000, 100000, 12.99, '2023-03-17','Daily good deed', 1, 0, 'Yay', 'Visa', NULL),
+        (100000, 100000, 99.99, '2023-03-17','Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa', 100001),
+        (100000, 100000, 150.00, '2023-03-17','I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL)
 GO
 
 print '' print '*** Creating InKind sample data'
@@ -875,9 +900,13 @@ INSERT INTO [dbo].[ItemCategory]
 		)
 	VALUES
 		('Dog Food', 'Dog'),
+		('Dog Food', 'Food'),
         ('Cat Food', 'Cat'),
+		('Cat Food', 'Food'),
         ('Rabbit Food', 'Rabbit'),
-		('Rodent Food', 'Rodent')
+		('Rabbit Food', 'Food'),
+		('Rodent Food', 'Rodent'),
+		('Rodent Food', 'Food')
 GO
 
 print '' print '*** Creating EventSubscription sample data'
@@ -913,11 +942,11 @@ INSERT INTO [dbo].[Applicant]
 		)
 	VALUES
 		('Gwen', 'Arman', '101 South Park Street', 50001, 9876543211, 
-        'ga@gmail.com', 'Single', 'Own', 0,0, 1),
+        'ga@gmail.com', 'House', 'Own', 0,0, 1),
         ('Xander', 'Arman', '123 North Park Street', 50001, 9876543311, 
-        'xa@gmail.com', 'Single', 'Own', 0,0, 1),
+        'xa@gmail.com', 'Apartment/Condo', 'Own', 0,0, 1),
         ('Nicholas', 'Arman', '963 West Park Street', 50001, 9876543411, 
-        'na@gmail.com', 'Single', 'Own', 0,0, 1)
+        'na@gmail.com', 'Trailer', 'Own', 0,0, 1)
 GO
 
 print '' print '*** Creating FosterApplication sample data'
@@ -1138,9 +1167,9 @@ INSERT INTO [dbo].[AnimalMedicalImage]
         ('314a2539-5dee-40ce-ac5b-026d53750c85', 100005)
 GO
 
-print '' print '*** creating RequestRescourceLine sample data'
+print '' print '*** creating RequestResourceLine sample data'
 GO 
-INSERT INTO [dbo].[RequestRescourceLine]
+INSERT INTO [dbo].[RequestResourceLine]
 		(
 		[RequestId],
 		[ItemId],
@@ -1216,12 +1245,14 @@ GO
 INSERT INTO [dbo].[AdoptionApplication]
 		(
 		[ApplicantId],
-		[AnimalId]
+		[AnimalId],
+		[ApplicationStatusId],
+		[AdoptionApplicationDate]
 		)
 	VALUES
-		(100000, 100000),
-        (100001, 100001),
-        (100002, 100002)
+		(100000, 100000, 'Pending', DEFAULT),
+        (100001, 100001, 'Pending', DEFAULT),
+        (100002, 100002, 'Approved', DEFAULT)
 GO
 
 print '' print '*** creating InstitutionalEntity sample data'
@@ -1341,8 +1372,17 @@ INSERT INTO [dbo].[FundraiserAnimal]
 		)
 	VALUES
 		(100000, 100000),
+		(100000, 100006),
+		(100000, 100005),
+		(100000, 100011),
+		(100000, 100007),
         (100001, 100001),
-        (100002, 100002)
+        (100001, 100009),
+        (100001, 100010),
+        (100001, 100011),
+        (100002, 100001),
+        (100002, 100003),
+        (100002, 100005)
 GO
 
 print '' print '*** creating AnimalUpdates sample data'

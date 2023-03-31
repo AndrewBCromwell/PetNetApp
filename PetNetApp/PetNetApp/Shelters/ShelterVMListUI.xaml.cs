@@ -79,10 +79,22 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Loads a fresh copy of the list of shelters from the database
         /// </summary>
+        /// <remarks>
+        /// Brian Collum
+        /// Updated: 2023/03/24
+        /// Moved refreshShelterList() into a try/catch for safety
+        /// </remarks>
         private void refreshShelterList()
         {
-            _shelterList = _shelterManager.GetShelterList();
-            datShelterVMListView.ItemsSource = _shelterList;
+            try
+            {
+                _shelterList = _shelterManager.GetShelterList();
+                datShelterVMListView.ItemsSource = _shelterList;
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+            }
         }
         /// <summary>
         /// Brian Collum

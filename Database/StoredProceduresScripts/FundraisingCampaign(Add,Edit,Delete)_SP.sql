@@ -8,7 +8,8 @@ CREATE PROCEDURE [dbo].[sp_select_fundraising_campaign_by_campaignId]
 )
 AS
 	BEGIN
-		SELECT [FundraisingCampaignId], [UsersId], [ShelterId], [Title], [StartDate], [EndDate], [Description], [Complete],[Active]
+		SELECT [FundraisingCampaignId], [UsersId], [ShelterId], [Title], [StartDate], [EndDate], [Description], [Complete],
+				[Active], [AmountRaised], [NumOfAttendees], [NumAnimalsAdopted]
 		FROM [FundraisingCampaign]
 		WHERE @FundraisingCampaignId = [FundraisingCampaignId]
 	END

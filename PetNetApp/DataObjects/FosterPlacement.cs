@@ -15,4 +15,11 @@ namespace DataObjects
         public DateTime FosterEndDate { get; set; }
         public bool FosterAnimalReturned { get; set; }
     }
+
+    public class FosterPlacementVM : FosterPlacement
+    {
+        public Animal FosterPlacementAnimal { get; set; }
+        public Applicant FosterPacementApplicant { get; set; }
+        public List<FosterPlacementRecord> FosterPlacementNotes { get; set; }
+    }
 }

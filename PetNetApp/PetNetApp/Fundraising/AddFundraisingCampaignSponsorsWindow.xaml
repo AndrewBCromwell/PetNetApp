@@ -19,7 +19,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Add Campaign Sponsors" FontSize="25" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblTitle" Content="Add Campaign Sponsors" FontSize="25" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
         <uc:PlaceholderTextBox DefaultText="Search Sponsors" Grid.Row="1" Grid.Column="0" Width="200" Margin="10 5" HorizontalAlignment="Right" x:Name="ptbSearchText" KeyDown="ptbSearchText_KeyDown"/>
         <Button x:Name="btnSearch" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="10 0" Width="30" Height="30" Click="btnSearch_Click">
             <Button.Style>

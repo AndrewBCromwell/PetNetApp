@@ -47,5 +47,29 @@ namespace DataAccessLayerInterfaces
         /// <param name="donationID"></param>
         /// <returns></returns>
         DonationVM SelectDonationByDonationId(int donationID);
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/17
+        /// Description: Selects all of the donations by eventId
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <returns></returns>
+        List<DonationVM> SelectDonationsByEventId(int eventId);
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/17
+        /// Description: Selects sum of all of the donations by eventId
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <returns></returns>
+        decimal SelectSumDonationsByEventId(int eventId);
+        /// <summary>
+        /// Author: Teft Francisco
+        /// Date: 2023/03/14
+        /// Description: Retrieves a user's donations by their user id
+        /// </summary>
+        /// <param name="UsersId"></param>
+        /// <returns></returns>
+        List<DonationVM> SelectDonationsByUserId(int usersId);
     }
 }

@@ -24,7 +24,7 @@
 
         <!--Column 0-->
         <!--Row 0-->
-        <Label x:Name="lblItemName" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="10 0">Item Name:</Label>
+        <Label x:Name="lblItemName" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="10 0" FontWeight="Bold">Item Name:</Label>
 
         <!--Row 1-->
         <Label x:Name="lblQuantity" VerticalAlignment="Center" Grid.Row="1"  Margin="10 0">Quantity:</Label>
@@ -37,12 +37,12 @@
         <!--Row 4-->
         <GroupBox x:Name="gbFlags" Grid.Column="0" Grid.Row="4" Header="Flags:" Background="WhiteSmoke" Margin="10 0">
             <StackPanel>
-                <CheckBox x:Name="cbInTransit" Content="In Transit"/>
-                <CheckBox x:Name="cbUrgent" Content="Urgent"/>
-                <CheckBox x:Name="cbProcessing" Content="Processing"/>
-                <CheckBox x:Name="cbDoNotOrder" Content="Do Not Order"/>
+                <CheckBox x:Name="cbInTransit" Content="In Transit" IsTabStop="False"/>
+                <CheckBox x:Name="cbUrgent" Content="Urgent" IsTabStop="False"/>
+                <CheckBox x:Name="cbProcessing" Content="Processing" IsTabStop="False"/>
+                <CheckBox x:Name="cbDoNotOrder" Content="Do Not Order" IsTabStop="False"/>
                 <Label x:Name="lblCustomFlag" Content="Custom Flag:"/>
-                <TextBox x:Name="txtCustomFlags" Height="50" MinLines="8" TextWrapping="Wrap" VerticalContentAlignment="Top"></TextBox>
+                <TextBox x:Name="txtCustomFlags" Height="50" MinLines="8" TextWrapping="Wrap" VerticalContentAlignment="Top" IsTabStop="False"></TextBox>
             </StackPanel>
         </GroupBox>
 

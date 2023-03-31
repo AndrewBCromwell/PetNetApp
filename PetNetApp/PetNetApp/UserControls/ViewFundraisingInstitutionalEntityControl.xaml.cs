@@ -63,5 +63,6 @@ namespace WpfPresentation.UserControls
         {
             menuView_Click(sender, e);
         }
+
     }
 }
