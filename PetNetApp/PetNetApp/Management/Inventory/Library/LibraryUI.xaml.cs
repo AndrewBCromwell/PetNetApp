@@ -70,7 +70,7 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/02/24
         /// Refresh the list of library items by loading them from the database
         /// </summary>
-        private void refreshLibraryList()
+        public void refreshLibraryList()
         {
             try
             {
@@ -107,6 +107,24 @@ namespace WpfPresentation.Management.Inventory.Library
             if (_libraryItemList == null)
             {
                 refreshLibraryList();
+            }
+        }
+
+        private void btnAddLibraryItem_Click(object sender, RoutedEventArgs e)
+        {
+            frmLibrary.Navigate(new AddResourceItemPage(_masterManager.ItemManager, this));
+        }
+
+        private void btnEditLibraryItem_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = (Item) datLibraryInventory.SelectedItem;
+            if(selectedItem == null)
+            {
+                PromptWindow.ShowPrompt("Error", "Please select an item to edit from the list to edit.", ButtonMode.Ok);
+            }
+            else
+            {
+                frmLibrary.Navigate(new AddResourceItemPage(_masterManager.ItemManager, selectedItem, this));
             }
         }
     }
