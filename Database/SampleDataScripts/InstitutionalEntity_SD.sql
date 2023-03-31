@@ -37,7 +37,7 @@ INSERT [dbo].[InstitutionalEntity] ([InstitutionalEntityId], [CompanyName], [Giv
 VALUES 
 (100027, N'SpaceX', N'Nole', N'Musk', N'nole@spacex.com', N'1339876541', N'1323 Boca Chica Blvd', NULL, N'78520    ', N'Contact', 100000)
 , (100028, N'SpaceX', N'Grimes', N'Musk', N'grimes@spacex.com', N'1439876541', N'1423 Boca Chica Blvd', NULL, N'78520    ', N'Contact', 100000)
-, (100029, N'SpaceX', N'X Ã† A-12', N'Musk', N'xasha12@spacex.com', N'4539876541', N'123 Boca Chica Blvd', NULL, N'78520    ', N'Contact', 100000)
+, (100029, N'SpaceX', N'X Æ A-12', N'Musk', N'xasha12@spacex.com', N'4539876541', N'123 Boca Chica Blvd', NULL, N'78520    ', N'Contact', 100000)
 , (100030, N'New York Life', N'Will', N'Nelson', N'will.nelson0@newyorklife.com', N'1054253471', N'123 Boca Chica Blvd', NULL, N'10013    ', N'Contact', 100000)
 , (100031, N'Exelon', N'Noah', N'Adams', N'noah.adams4@exelon.com', N'1580130583', N'123 Boca Chica Blvd', NULL, N'29384    ', N'Contact', 100000)
 , (100032, N'Ford Motor', N'Ethan', N'Davis', N'ethan.davis5@fordmotor.com', N'4705313032', N'123 Boca Chica Blvd', NULL, N'29555    ', N'Contact', 100000)

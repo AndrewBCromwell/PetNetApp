@@ -288,9 +288,8 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/24
         /// 
-        /// Click event method for the "Cancel" button. A popup is shown
-        /// to confirm if the user actually intends to stop an animal
-        /// record without saving. 
+        /// Click event method for the "Cancel" button. A popup is shown to confirm if
+        /// the user actually intends to stop creating an animal record without saving. 
         /// </summary>
         ///
         /// <remarks>

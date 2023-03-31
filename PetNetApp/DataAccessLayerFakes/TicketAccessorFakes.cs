@@ -62,5 +62,23 @@ namespace DataAccessLayerFakes
         {
             return fakeTickVMs;
         }
+
+        public int UpdateTicketStatus(Ticket newTicket, Ticket oldTicket)
+        {
+            int result = 0;
+
+            for (int i = 0; i < fakeTickVMs.Count; i++)
+            {
+                if (fakeTickVMs[i].TicketId == oldTicket.TicketId)
+                {
+                    fakeTickVMs[i].TicketStatusId = newTicket.TicketStatusId;
+
+                    result++;
+                    break;
+                }
+            }
+
+            return result;
+        }
     }
 }

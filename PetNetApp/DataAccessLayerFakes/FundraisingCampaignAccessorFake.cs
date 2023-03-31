@@ -18,8 +18,33 @@ namespace DataAccessLayerFakes
     {
         private List<FundraisingCampaignVM> _fundraisingCampaigns = FundraisingFakeData.FundraisingCampaigns;
         private List<Tuple<int, int>> _fundraisingCampaignEntities = FundraisingFakeData.FundraisingCampaignEntities;
+        private List<CampaignUpdate> _fakeCampaignUpdates = new List<CampaignUpdate>();
         public FundraisingCampaignAccessorFake()
         {
+            _fakeCampaignUpdates.Add(new CampaignUpdate
+            {
+                CampaignUpdateId = 100001,
+                CampaignId = 100000,
+                UpdateTitle = "Update 1",
+                UpdateDescription = "Campaign is successful."
+            });
+
+            _fakeCampaignUpdates.Add(new CampaignUpdate
+            {
+                CampaignUpdateId = 100002,
+                CampaignId = 100001,
+                UpdateTitle = "Update 2",
+                UpdateDescription = "Campaign is successful."
+            });
+
+            _fakeCampaignUpdates.Add(new CampaignUpdate
+            {
+                CampaignUpdateId = 100003,
+                CampaignId = 100001,
+                UpdateTitle = "Update 3",
+                UpdateDescription = "Campaign is successful."
+            });
+
         }
 
         public int DeleteFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
@@ -84,6 +109,31 @@ namespace DataAccessLayerFakes
                 recordsChanged++;
                 return recordsChanged;
             }
+        }
+
+        public int InsertCampaignUpdate(CampaignUpdate campaignUpdate)
+        {
+            _fakeCampaignUpdates.Add(campaignUpdate);
+            int campaignUpdateId = 0;
+
+            for (int i = 0; i < _fakeCampaignUpdates.Count; i++)
+            {
+                if (_fakeCampaignUpdates[i].CampaignUpdateId == campaignUpdate.CampaignUpdateId)
+                {
+                    campaignUpdateId = _fakeCampaignUpdates[i].CampaignUpdateId;
+                }
+            }
+            return campaignUpdateId;
+        }
+
+        public int UpdateFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM)
+        {
+            int recordsChanged = 0;
+            var editing = _fundraisingCampaigns.Find(campaign => campaign.FundraisingCampaignId == oldFundraisingCampaignVM.FundraisingCampaignId);
+            _fundraisingCampaigns.Remove(editing);
+            _fundraisingCampaigns.Add(newFundraisingCampaignVM);
+            recordsChanged++;
+            return recordsChanged;
         }
     }
 }

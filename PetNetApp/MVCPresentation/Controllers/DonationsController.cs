@@ -20,9 +20,10 @@ namespace MVCPresentation.Controllers
             {
                 donationVMs = masterManager.DonationManager.RetrieveAllDonations();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                ViewBag.Message = "Could not retrieve donations";
+                View("Error");
             }
             return View(donationVMs);
         }
@@ -36,9 +37,10 @@ namespace MVCPresentation.Controllers
                 {
                     donationVM = masterManager.DonationManager.RetrieveDonationByDonationId(id.Value);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    ViewBag.Message = "Could not retrieve donation";
+                    View("Error");
                 }
 
                 if (donationVM == null)

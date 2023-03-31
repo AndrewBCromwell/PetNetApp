@@ -41,7 +41,7 @@ namespace WpfPresentation.Fundraising
         {
             InitializeComponent();
             _manager = manager;
-            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnViewContacts, btnEvents, btnViewSponsors };
+            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnViewContacts, btnEvents, btnViewSponsors, btnHosts };
         }
 
         /// <summary>
@@ -158,6 +158,7 @@ namespace WpfPresentation.Fundraising
             ShowDonationsButtonByRole();
             ShowEventsButtonByRole();
             ShowSponsorsButtonByRole();
+            ShowHostsButtonByRole();
         }
 
 
@@ -278,6 +279,48 @@ namespace WpfPresentation.Fundraising
         {
             ChangeSelectedButton((Button)sender);
             frameFundraising.Navigate(ViewFundraisingEventSponsors.GetViewEventSponsors());
+        }
+
+        /// <summary>
+        /// Asa Armstrong
+        /// Created: 2023/03/01
+        /// 
+        /// Show Host button if user has the role "Admin", "Manager", or "Marketing".
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Asa Armstrong
+        /// Updated: 2023/03/01 
+        /// Created
+        /// </remarks>
+        public void ShowHostsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnHosts.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Asa Armstrong
+        /// Created: 2023/03/01
+        /// 
+        /// Button click for Hosts tab button
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Asa Armstrong
+        /// Updated: 2023/03/01 
+        /// Created
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHosts_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            // replace with page name and then delete comment
+            frameFundraising.Navigate(ViewFundraisingEventHosts.GetViewFundraisingEventHosts());
         }
     }
 }

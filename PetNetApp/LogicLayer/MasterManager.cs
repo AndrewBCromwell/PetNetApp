@@ -1,6 +1,4 @@
-﻿using DataAccessLayer;
-using DataAccessLayerInterfaces;
-using DataObjects;
+﻿using DataObjects;
 using LogicLayerInterfaces;
 using System;
 using System.Collections.Generic;
@@ -54,10 +52,16 @@ namespace LogicLayer
         public IZipcodeManager ZipcodeManager { get; set; }
         public IRequestManager RequestManager { get; private set; }
         public IVaccinationManager VaccinationManager { get; set; }
+        public IAdoptionApplicationManager AdoptionApplicationManager { get; set; }
         public IShelterInventoryItemManager ShelterInventoryItemManager { get; set; }
         public IShelterManager ShelterManager { get; set; }
         public IItemManager ItemManager { get; set; }
         public IVolunteerManager VolunteerManager { get; set; }
+        public IPostManager PostManager { get; set; }
+        public IReplyManager ReplyManager { get; set; }
+        public IFosterApplicationResponseManager FosterApplicationResponseManager { get; set; }
+        public IFosterManager FosterManager { get; set; }
+
 
         private MasterManager()
         {
@@ -86,25 +90,27 @@ namespace LogicLayer
             ShelterManager = new ShelterManager();
             ItemManager = new ItemManager();
             VolunteerManager = new VolunteerManager();
+            PostManager = new PostManager();
+            ReplyManager = new ReplyManager();
+            AdoptionApplicationManager = new AdoptionApplicationManager();
+            FosterApplicationResponseManager = new FosterApplicationResponseManager();
+            FosterManager = new FosterManager();
 
-
-            // for testing from dev page
+            //for testing from dev page
             User = new UsersVM()
-              {
-                  UsersId = 100004,
-                  ShelterId = 100000,
-                  GivenName = "Barry",
-                  FamilyName = "Mikulas",
-                  Email = "bmikulas@company.com",
-                  Address = "4150 riverview road",
-                  Zipcode = "52411",
-                  Phone = "319-123-1325",
-                 Active = true,
-                  Suspend = false,
-                  Roles = new List<string>() { "Admin"}
-              };
-
-
+            {
+                UsersId = 100000,
+                ShelterId = 100000,
+                GivenName = "Barry",
+                FamilyName = "Mikulas",
+                Email = "bmikulas@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true,
+                Suspend = false,
+                Roles = new List<string>() { "Admin" }
+            };
         }
 
         public static MasterManager GetMasterManager()

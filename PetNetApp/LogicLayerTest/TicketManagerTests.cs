@@ -63,6 +63,27 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        [TestMethod]
+        public void EditTicketStatus()
+        {
+            bool result = false;
+            bool expectedResult = true;
+            TicketVM oldTicket = new TicketVM
+            {
+                TicketId = 100000,
+                TicketStatusId = "Open"
+            };
+            TicketVM newTicket = new TicketVM
+            {
+                TicketId = 100000,
+                TicketStatusId = "Closed"
+            };
+
+            result = _ticketManager.EditTicketStatus(newTicket, oldTicket);
+
+            Assert.AreEqual(result, expectedResult);
+        }
+
 
     }
 }

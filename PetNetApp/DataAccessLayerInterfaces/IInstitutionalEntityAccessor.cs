@@ -1,9 +1,21 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Asa Armstrong
+/// Created: 2023/03/01
+/// 
+/// Data Accessor class to CRUD Institutional Entity objects.
+/// </summary>
+///
+/// <remarks>
+/// Asa Armstrong
+/// Updated: 2023/03/01
+/// Created
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataObjects;
 
 
 namespace DataAccessLayerInterfaces

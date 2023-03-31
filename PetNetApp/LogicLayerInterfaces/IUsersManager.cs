@@ -47,6 +47,7 @@ namespace LogicLayerInterfaces
         bool EditUserDetails(Users oldUser, Users updatedUser);
         bool ResetPassword(string email, string oldPassword, string newPassword);
         bool UpdateEmail(string oldEmail, string newEmail, string passwordHash);
+        List<string> RetrieveRolesByUsersId(int usersId);
 
         // Alex Oetken
         bool DeactivateUserAccount(int UserId);

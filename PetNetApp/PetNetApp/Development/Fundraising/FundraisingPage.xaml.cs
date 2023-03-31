@@ -31,7 +31,7 @@ namespace WpfPresentation.Development.Fundraising
         {
             InitializeComponent();
             _manager = manager;
-            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnEvents, btnViewContacts, btnViewSponsors };
+            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnEvents, btnViewContacts, btnViewSponsors, btnHosts };
         }
 
         /// <summary>
@@ -189,6 +189,12 @@ namespace WpfPresentation.Development.Fundraising
             ChangeSelectedButton((Button)sender);
             frameFundraising.Navigate(ViewFundraisingEventSponsors.GetViewEventSponsors());
 
+        }
+
+        private void btnHosts_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(ViewFundraisingEventHosts.GetViewFundraisingEventHosts());
         }
     }
 }

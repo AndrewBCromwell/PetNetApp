@@ -43,11 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoptionApplicationAccessor.cs" />
     <Compile Include="AnimalAccessor.cs" />
     <Compile Include="AnimalUpdatesAccessor.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="DeathAccessor.cs" />
     <Compile Include="DonationAccessor.cs" />
+    <Compile Include="FosterAccessor.cs" />
+    <Compile Include="FosterApplicationResponseAccessor.cs" />
     <Compile Include="FundraisingCampaignAccessor.cs" />
     <Compile Include="FundraisingEventAccessor.cs" />
     <Compile Include="ImagesAccessor.cs" />
@@ -56,8 +59,10 @@
     <Compile Include="KennelAccessor.cs" />
     <Compile Include="LibraryAccessor.cs" />
     <Compile Include="MedicalRecordAccessor.cs" />
+    <Compile Include="PostAccessor.cs" />
     <Compile Include="ProcedureAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyAccessor.cs" />
     <Compile Include="RequestAccessor.cs" />
     <Compile Include="RoleAccessor.cs" />
     <Compile Include="ScheduleAccessor.cs" />

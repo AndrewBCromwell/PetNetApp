@@ -23,6 +23,7 @@ namespace WpfPresentation.Animals
     public partial class AnimalMedicalProfile : Page
     {
         private int _animalId;
+        private List<Images> _imagesList;
         Kennel _kennel = new Kennel();
         AnimalVM _animalVM = new AnimalVM();
         MasterManager _masterManager = MasterManager.GetMasterManager();
@@ -86,7 +87,14 @@ namespace WpfPresentation.Animals
                 txtAnimalMicrochipNum.Text = _animalVM.MicrochipNumber;
                 txtAnimalName.Text = _animalVM.AnimalName;
                 txtAnimalNotes.Text = _animalVM.Notes;
-                txtAnimalKennelNum.Text = _kennel.KennelId.ToString();
+                if (_kennel.KennelId == 0)
+                {
+                    txtAnimalKennelNum.Text = "Unassigned";
+                }
+                else
+                {
+                    txtAnimalKennelNum.Text = _kennel.KennelId.ToString();
+                }
                 if (_animalVM.AnimalGender == "Male")
                 {
                     rdbAnimalGenderMale.IsChecked = true;
@@ -103,12 +111,64 @@ namespace WpfPresentation.Animals
                 {
                     rdbAnimalAlteredYes.IsChecked = true;
                 }
+                populateImage();
             }
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message, ButtonMode.Ok);
-            }
-            
+            }            
         }
+
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/03/24
+        /// 
+        /// Populates the animals medical image
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void populateImage()
+        {
+            if (_imagesList == null || _imagesList.Count == 0)
+            {
+                try
+                {
+                    _imagesList = _masterManager.ImagesManager.RetrieveMedicalImagesByAnimalId(_animalId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                }
+            }
+
+            if (_imagesList.Count == 0)
+            {
+                lblNoImage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                try
+                {
+                    imgMedAnimal.Source = _masterManager.ImagesManager.RetrieveImageByImages(_imagesList[0]);
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+                catch (Exception)
+                {
+                    BitmapImage brokenImage = new BitmapImage();
+                    brokenImage.BeginInit();
+                    brokenImage.UriSource = new Uri(@"/Images/BrokenImageGreen.png", UriKind.Relative);
+                    brokenImage.EndInit();
+                    imgMedAnimal.Source = brokenImage;
+                    imgMedAnimal.Height = 250;
+                    imgMedAnimal.Width = 250;
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
     }
 }

@@ -56,49 +56,43 @@ namespace WpfPresentation.Animals
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            frmMedicalRecords.Content = new MedicalFilesPage(_medicalnoteAnimal, _manager);
             datMedicalRecordGrid.ItemsSource = null;
 
             try
             {
                 _MedicalRecords = _manager.MedicalRecordManager.SelectMedicalRecordByAnimal(_medicalnoteAnimal.AnimalId);
+                if (_MedicalRecords.Count != 0)
+                {
+                    datMedicalRecordGrid.ItemsSource = _MedicalRecords;
+
+                    datMedicalRecordGrid.Columns.RemoveAt(0);
+                    datMedicalRecordGrid.Columns.RemoveAt(0);
+                    datMedicalRecordGrid.Columns.RemoveAt(0);
+                    datMedicalRecordGrid.Columns.RemoveAt(0);
+                    datMedicalRecordGrid.Columns.RemoveAt(0);
+                    datMedicalRecordGrid.Columns.RemoveAt(0);
+                    datMedicalRecordGrid.Columns.RemoveAt(0);
+                    datMedicalRecordGrid.Columns.RemoveAt(2);
+                    datMedicalRecordGrid.Columns.RemoveAt(2);
+                    datMedicalRecordGrid.Columns.RemoveAt(2);
+                    datMedicalRecordGrid.Columns.RemoveAt(2);
+                    datMedicalRecordGrid.Columns.RemoveAt(2);
+                    datMedicalRecordGrid.Columns.RemoveAt(2);
+                    datMedicalRecordGrid.Columns.RemoveAt(2);
+
+                }
+                else
+                {
+                    List<string> noRecordMessage = new List<string>();
+                    datMedicalRecordGrid.ItemsSource = noRecordMessage;
+                    datMedicalRecordGrid.Columns[0].Header = "No Notes Available";
+                }
             }
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("An Error occurred", ex.Message + "\n" + ex.InnerException, ButtonMode.Ok);
-            }
-
-            if (_MedicalRecords.Count != 0)
-            {
-                datMedicalRecordGrid.ItemsSource = _MedicalRecords;
-
-                try
-                {
-                    datMedicalRecordGrid.Columns.RemoveAt(0);
-                    datMedicalRecordGrid.Columns.RemoveAt(0);
-                    datMedicalRecordGrid.Columns.RemoveAt(0);
-                    datMedicalRecordGrid.Columns.RemoveAt(0);
-                    datMedicalRecordGrid.Columns.RemoveAt(0);
-                    datMedicalRecordGrid.Columns.RemoveAt(0);
-                    datMedicalRecordGrid.Columns.RemoveAt(0);
-                    datMedicalRecordGrid.Columns.RemoveAt(2);
-                    datMedicalRecordGrid.Columns.RemoveAt(2);
-                    datMedicalRecordGrid.Columns.RemoveAt(2);
-                    datMedicalRecordGrid.Columns.RemoveAt(2);
-                    datMedicalRecordGrid.Columns.RemoveAt(2);
-                    datMedicalRecordGrid.Columns.RemoveAt(2);
-                    datMedicalRecordGrid.Columns.RemoveAt(2);
-                }
-                catch (Exception ex)
-                {
-                    PromptWindow.ShowPrompt("An Error occurred", ex.Message + "\n" + ex.InnerException, ButtonMode.Ok);
-                }
-            }
-            else
-            {
-                List<string> noRecordMessage = new List<string>();
-                datMedicalRecordGrid.ItemsSource = noRecordMessage;
-                datMedicalRecordGrid.Columns[0].Header = "No Notes Available";
-            }
+            }   
         }
 
         private void datMedicalRecordGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -109,7 +103,10 @@ namespace WpfPresentation.Animals
 
         private void btn_upload_file_Click(object sender, RoutedEventArgs e)
         {
-            //var Edit_Medical_Notes = new Edit_Medical_Notes();
+            var uploadAdditionalFileWindow = new UploadAdditionalFileWindow(_medicalnoteAnimal, _manager);
+            uploadAdditionalFileWindow.Owner = Window.GetWindow(this);
+            uploadAdditionalFileWindow.ShowDialog();
+            NavigationService.Navigate(new Medical_Notes(_medicalnoteAnimal, _manager));
         }
 
         private void btn_edit_Click(object sender, RoutedEventArgs e)

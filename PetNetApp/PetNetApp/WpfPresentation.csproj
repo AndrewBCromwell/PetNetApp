@@ -75,6 +75,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animals\AddEditReportOnFoster.xaml.cs">
+      <DependentUpon>AddEditReportOnFoster.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AddEditVaccinationsPage.xaml.cs">
       <DependentUpon>AddEditVaccinationsPage.xaml</DependentUpon>
     </Compile>
@@ -102,7 +105,7 @@
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Fundraising\UpdateFundraisingCampaign.xaml.cs">
+    <Compile Include="Fundraising\UpdateFundraisingCampaign.xaml.cs">
       <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
@@ -125,6 +128,9 @@
     </Compile>
     <Compile Include="Events\VolunteerListUserControl.xaml.cs">
       <DependentUpon>VolunteerListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\AddFundraisingEventHostWindow.xaml.cs">
+      <DependentUpon>AddFundraisingEventHostWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\ViewFundraisingEventSponsors.xaml.cs">
       <DependentUpon>ViewFundraisingEventSponsors.xaml</DependentUpon>
@@ -202,12 +208,6 @@
     <Compile Include="Animals\MedProcedurePage.xaml.cs">
       <DependentUpon>MedProcedurePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Community\RoleManagementPopup.xaml.cs">
-      <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Community\RoleManagementTemp.xaml.cs">
-      <DependentUpon>RoleManagementTemp.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Animals\VaccinationsPage.xaml.cs">
       <DependentUpon>VaccinationsPage.xaml</DependentUpon>
     </Compile>
@@ -268,6 +268,9 @@
     <Compile Include="UserControls\InKindUserControl.xaml.cs">
       <DependentUpon>InKindUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fundraising\ViewFundraisingEventHosts.xaml.cs">
+      <DependentUpon>ViewFundraisingEventHosts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
@@ -302,7 +305,7 @@
     <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
       <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\SchedulePage.xaml.cs">
+    <Compile Include="Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
@@ -356,6 +359,10 @@
     <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AddEditReportOnFoster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AddEditVaccinationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -369,7 +376,7 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\AddEditSchedule.xaml.cs">
+    <Compile Include="Management\AddEditSchedule.xaml.cs">
       <DependentUpon>AddEditSchedule.xaml</DependentUpon>
     </Compile>
     <Page Include="Community\CustomerRecordsPage.xaml">
@@ -380,7 +387,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Fundraising\UpdateFundraisingCampaign.xaml">
+    <Page Include="Fundraising\UpdateFundraisingCampaign.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -388,7 +395,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Management\AddEditSchedule.xaml">
+    <Page Include="Management\AddEditSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -437,6 +444,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Events\VolunteerListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\AddFundraisingEventHostWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -558,6 +569,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fundraising\ViewFundraisingEventHosts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Misc\AccountInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -611,14 +626,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Animals\MedicalTreatmentPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Community\RoleManagementPopup.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Community\RoleManagementTemp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -758,11 +765,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Management\SchedulePage.xaml">
+    <Page Include="Management\SchedulePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Management\VolunteerManagment.xaml">
+    <Page Include="Management\VolunteerManagment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -831,7 +838,7 @@
     <Compile Include="Development\Management\ManagementPage.xaml.cs">
       <DependentUpon>ManagementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\VolunteerManagment.xaml.cs">
+    <Compile Include="Management\VolunteerManagment.xaml.cs">
       <DependentUpon>VolunteerManagment.xaml</DependentUpon>
     </Compile>
     <Compile Include="PromptWindow.xaml.cs">

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DataObjects.PostVM>
+@section styles
+{
+    <link href="~/Content/community.css" rel="stylesheet" />
+}
+@{
+    ViewBag.Title = "Community Page";
+}
+<div class="container">
+    <h2>Community</h2>
+    <div class="flex overflow">
+        <div class="flexSmall">
+            <img src="http://via.placeholder.com/75x75" class="image">
+        </div>
+        <div class="flexLarge">
+            @{Html.RenderPartial("Create", new DataObjects.Post()); }
+            <hr />
+        </div>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="flex overflow">
+            <div class="flexSmall">
+                <img src="http://via.placeholder.com/100x100" class="image">
+            </div>
+            <div class="flexLarge">
+                <h3 class="userNameText">@item.PosterGivenName@item.PosterFamilyName</h3>
+                @if (!item.PostVisibility)
+                {
+                    <h7 class="deactive">Deactivated</h7>
+                }
+
+                <p class="postText">@item.PostContent</p>
+            </div>
+        </div>
+        <div class="table">
+            <div class="row">
+                <div class="cell">
+                    @if (item.ReplyCount > 0)
+                    {
+                        @Html.ActionLink("Show Replies", "ShowReplies", new { id = item.PostId });
+                        if (ViewBag.User.UsersId == item.PostAuthor || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator"))
+                        {
+                            <text> | </text>
+                        }
+                    }
+
+                    @if (ViewBag.User.UsersId == item.PostAuthor)
+                    {
+
+                        @Html.ActionLink("Edit Post", "Edit", new { id = item.PostId });
+                        <text> | </text>
+                    }
+
+                    @if (item.PostVisibility && (ViewBag.User.UsersId == item.PostId || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator")))
+                    {
+                        @Html.ActionLink("Delete Post", "Delete", new { id = item.PostId });
+                    }
+
+                    @if (!(item.PostVisibility && (ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator"))))
+                    {
+                        @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId });
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,4 +1,15 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Barry Mikulas
+/// Created: 2023/03/01
+/// 
+/// Contains interfaces for Instutional Entity functions
+/// </summary>
+///
+/// <remarks>
+/// Updater
+/// Updated: 
+/// Comment:
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
