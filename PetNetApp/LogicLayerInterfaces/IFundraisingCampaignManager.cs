@@ -23,6 +23,30 @@ namespace LogicLayerInterfaces
 
         /// <summary>
         /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// A method to get the active fundraising campaigns for this active shelter
+        /// </summary>
+        /// 
+        /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
+        List<FundraisingCampaignVM> RetrieveAllActiveFundraisingCampaignsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// A method to get the active fundraising campaigns for all active shelters
+        /// </summary>
+        /// 
+        /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
+        List<FundraisingCampaignVM> RetrieveAllActiveFundraisingCampaigns();
+
+        /// <summary>
+        /// Stephen Jaurigue
         /// Created: 2023/03/02
         /// 
         /// A method to create a new fundraising campaign for this shelter

@@ -10,15 +10,24 @@ namespace MVCPresentation.Models
     public class CampaignsViewModel
     {
         public PagingInfo PagingInfo { get; private set; }
-        public SortingMethod SortingMethod { get; set; }
-        public FilterMethod FilterMethod { get; set; }
+        [Display(Name = "Sort")]
+        public SortingMethod? Sort { get; set; }
+        [Display(Name = "Filter")]
+        public FilterMethod? Filter { get; set; }
         public IEnumerable<FundraisingCampaignVM> Campaigns { get; set; }
+        public IEnumerable<Shelter> Shelters { get; set; }
         public string Search { get; set; }
         public int? Shelter { get; set; }
         public CampaignsViewModel()
         {
             PagingInfo = new PagingInfo();
         }
+    }
+
+    public class FundraisingCampaignForCampaignsModel
+    {
+        public FundraisingCampaignVM FundraisingCampaign { get; set; }
+        public bool AlternateColor { get; set; }
     }
 
     public enum SortingMethod
@@ -31,7 +40,6 @@ namespace MVCPresentation.Models
     {
         Ongoing,
         Completed,
-        Both,
-        Deleted
+        Both
     }
 }

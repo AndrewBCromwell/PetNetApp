@@ -37,7 +37,7 @@ namespace MVCPresentation.HtmlHelpers
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", pageUrl(1));
                 tag.InnerHtml = "<<";
-                tag.AddCssClass("btn btn-default");
+                tag.AddCssClass("default-button nav-button");
                 result.Append(tag.ToString());
             }
 
@@ -47,7 +47,7 @@ namespace MVCPresentation.HtmlHelpers
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", pageUrl(pagingInfo.CurrentPage - 1));
                 tag.InnerHtml = "<";
-                tag.AddCssClass("btn btn-default");
+                tag.AddCssClass("default-button nav-button");
                 result.Append(tag.ToString());
             }
 
@@ -74,10 +74,13 @@ namespace MVCPresentation.HtmlHelpers
                 tag.InnerHtml = currentPage.ToString();
                 if (currentPage == pagingInfo.CurrentPage)
                 {
-                    tag.AddCssClass("selected");
-                    tag.AddCssClass("btn-primary");
+                    tag.AddCssClass("alternate-default-button");
                 }
-                tag.AddCssClass("btn btn-default");
+                else
+                {
+                    tag.AddCssClass("default-button");
+                }
+                tag.AddCssClass("nav-button");
                 result.Append(tag.ToString());
             }
 
@@ -87,7 +90,7 @@ namespace MVCPresentation.HtmlHelpers
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", pageUrl(pagingInfo.CurrentPage + 1));
                 tag.InnerHtml = ">";
-                tag.AddCssClass("btn btn-default");
+                tag.AddCssClass("default-button nav-button");
                 result.Append(tag.ToString());
             }
             // Last Page Link
@@ -97,7 +100,7 @@ namespace MVCPresentation.HtmlHelpers
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", pageUrl(pagingInfo.TotalPages));
                 tag.InnerHtml = ">>";
-                tag.AddCssClass("btn btn-default");
+                tag.AddCssClass("default-button nav-button");
                 result.Append(tag.ToString());
             }
 

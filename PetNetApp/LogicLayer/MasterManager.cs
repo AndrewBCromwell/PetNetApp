@@ -71,7 +71,7 @@ namespace LogicLayer
             TicketManager = new TicketManager();
             ProcedureManager = new ProcedureManager();
             MedicalRecordManager = new MedicalRecordManager();
-            FundraisingCampaignManager = new FundraisingCampaignManager(new FundraisingCampaignAccessorFake());
+            FundraisingCampaignManager = new FundraisingCampaignManager();
             InstitutionalEntityManager = new InstitutionalEntityManager();
             ImagesManager = new ImagesManager();
             ShelterItemTransactionManager = new ShelterItemTransactionManager();

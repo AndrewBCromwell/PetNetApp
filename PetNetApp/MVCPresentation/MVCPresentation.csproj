@@ -189,15 +189,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="colors.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\button-styles.css" />
+    <Content Include="Content\Fundraising\campaigns-desktop.css" />
+    <Content Include="Content\Fundraising\campaigns-mobile.css" />
+    <Content Include="Content\Fundraising\campaigns.css" />
+    <Content Include="Content\Fundraising\page-navigation.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Views\Fundraising\Campaigns.cshtml" />
+    <Content Include="Views\Fundraising\FundraisingCampaignForCampaigns.cshtml" />
+    <Content Include="Views\Fundraising\Campaigns.Mobile.cshtml" />
+    <Content Include="Views\Fundraising\Campaign.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

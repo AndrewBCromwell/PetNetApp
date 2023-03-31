@@ -18,81 +18,91 @@ namespace MVCPresentation.Controllers
         {
             return View();
         }
-        public ActionResult Campaigns(int page = 1, int? shelter = 100000, SortingMethod sort = SortingMethod.StartDate, FilterMethod filter = FilterMethod.Ongoing, string search = null)
+
+        public ActionResult Campaign(int? campaign)
         {
-            CampaignsViewModel campaignsViewModel = new CampaignsViewModel();
+            return View(new FundraisingCampaign());
+        }
+
+        public ActionResult Campaigns(CampaignsViewModel campaignsViewModel, int Page = 1)
+        {
             PagingInfo pagingInfo = campaignsViewModel.PagingInfo;
-            campaignsViewModel.FilterMethod = filter;
-            campaignsViewModel.SortingMethod = sort;
-            pagingInfo.CurrentPage = page;
-            pagingInfo.ItemsPerPage = 1;
-            campaignsViewModel.Shelter = shelter;
-            campaignsViewModel.Search = search;
+            pagingInfo.CurrentPage = Page;
+            pagingInfo.ItemsPerPage = 10;
 
             List<FundraisingCampaignVM> campaigns = null;
-            if (shelter != null)
+            try
             {
-                try
+                campaignsViewModel.Shelters = _masterManger.ShelterManager.GetShelterList().Where(shelter => shelter.ShelterActive).OrderBy(sh => sh.ShelterName);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View("Error");
+            }
+
+            try
+            {
+                if (campaignsViewModel.Shelter != null)
                 {
-                    campaigns = _masterManger.FundraisingCampaignManager.RetrieveAllFundraisingCampaignsByShelterId(shelter.Value);
-
-
-                    Func<FundraisingCampaignVM, string> sortMethod = null;
-                    switch (sort)
-                    {
-                        case SortingMethod.Title:
-                            sortMethod = new Func<FundraisingCampaign, string>(fc => fc.Title);
-                            break;
-                        case SortingMethod.StartDate:
-                            sortMethod = new Func<FundraisingCampaign, string>(fc => fc.StartDate != null ? fc.StartDate.Value.Ticks.ToString() : DateTime.MaxValue.Ticks.ToString());
-                            break;
-                    }
-
-                    Func<FundraisingCampaignVM, bool> filterMethod = null;
-                    switch (filter)
-                    {
-                        case FilterMethod.Completed:
-                            filterMethod = new Func<FundraisingCampaign, bool>(fc => fc.Complete && fc.Active);
-                            break;
-                        case FilterMethod.Both:
-                            filterMethod = new Func<FundraisingCampaign, bool>(fc => fc.Active);
-                            break;
-                        case FilterMethod.Deleted:
-                            filterMethod = new Func<FundraisingCampaignVM, bool>(fc => !fc.Active);
-                            break;
-                        case FilterMethod.Ongoing:
-                            filterMethod = new Func<FundraisingCampaign, bool>(fc => !fc.Complete && fc.Active);
-                            break;
-                    }
-
-                    Func<FundraisingCampaignVM, bool> searchForTextInFundraisingCampaign = (campaign) => true;
-
-                    if (search != null && search.Trim() != "")
-                    {
-                        search = search.Trim();
-                        searchForTextInFundraisingCampaign = (fundraisingCampaign) =>
-                        {
-                            return fundraisingCampaign.Title?.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                    fundraisingCampaign.Description?.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                    (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("MM/dd/yyyy").Contains(search) : false) ||
-                                    (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("MM/dd/yyyy").Contains(search) : false) ||
-                                    (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("M/d/yyyy").Contains(search) : false) ||
-                                    (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("M/d/yyyy").Contains(search) : false);
-                        };
-                    }
-
-
-                    campaigns = campaigns.OrderBy(sortMethod).Where(filterMethod).Where(searchForTextInFundraisingCampaign).ToList();
+                    campaigns = _masterManger.FundraisingCampaignManager.RetrieveAllActiveFundraisingCampaignsByShelterId(campaignsViewModel.Shelter.Value);
                 }
-                catch (Exception ex)
+                else
                 {
-                    return View("Error");
+                    campaigns = _masterManger.FundraisingCampaignManager.RetrieveAllActiveFundraisingCampaigns();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                return new ViewResult();
+                ViewBag.Error = ex.Message + "\n\n" + ex.InnerException.Message;
+                return View("Error");
             }
+
+            Func<FundraisingCampaignVM, string> sortMethod = null;
+            switch (campaignsViewModel.Sort)
+            {
+                case null:
+                case SortingMethod.StartDate:
+                    sortMethod = new Func<FundraisingCampaign, string>(fc => fc.StartDate != null ? fc.StartDate.Value.Ticks.ToString() : DateTime.MaxValue.Ticks.ToString());
+                    break;
+                case SortingMethod.Title:
+                    sortMethod = new Func<FundraisingCampaign, string>(fc => fc.Title);
+                    break;
+            }
+
+            Func<FundraisingCampaignVM, bool> filterMethod = null;
+            switch (campaignsViewModel.Filter)
+            {
+                case null:
+                case FilterMethod.Ongoing:
+                    filterMethod = new Func<FundraisingCampaign, bool>(fc => !fc.Complete && fc.Active);
+                    break;
+                case FilterMethod.Completed:
+                    filterMethod = new Func<FundraisingCampaign, bool>(fc => fc.Complete && fc.Active);
+                    break;
+                case FilterMethod.Both:
+                    filterMethod = new Func<FundraisingCampaign, bool>(fc => fc.Active);
+                    break;
+            }
+
+            Func<FundraisingCampaignVM, bool> searchForTextInFundraisingCampaign = (campaign) => true;
+
+            if (campaignsViewModel.Search != null && campaignsViewModel.Search.Trim() != "")
+            {
+                campaignsViewModel.Search = campaignsViewModel.Search.Trim();
+                searchForTextInFundraisingCampaign = (fundraisingCampaign) =>
+                {
+                    return fundraisingCampaign.Title?.IndexOf(campaignsViewModel.Search, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                            fundraisingCampaign.Description?.IndexOf(campaignsViewModel.Search, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                            (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("MM/dd/yyyy").Contains(campaignsViewModel.Search) : false) ||
+                            (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("MM/dd/yyyy").Contains(campaignsViewModel.Search) : false) ||
+                            (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("M/d/yyyy").Contains(campaignsViewModel.Search) : false) ||
+                            (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("M/d/yyyy").Contains(campaignsViewModel.Search) : false);
+                };
+            }
+
+
+            campaigns = campaigns.OrderBy(sortMethod).Where(filterMethod).Where(searchForTextInFundraisingCampaign).ToList();
             pagingInfo.TotalItems = campaigns.Count;
 
             if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
