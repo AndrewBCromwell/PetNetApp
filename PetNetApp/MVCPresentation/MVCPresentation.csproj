@@ -305,11 +305,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Donations\Index.cshtml" />
-    <Content Include="Views\Donations\Details.cshtml" />
-    <Content Include="Views\Community\Index.cshtml" />
-    <Content Include="Views\Community\Create.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
     <Content Include="Views\Fundraising\Campaigns.cshtml" />
     <Content Include="Views\Fundraising\FundraisingCampaignForCampaigns.cshtml" />
     <Content Include="Views\Fundraising\Campaigns.Mobile.cshtml" />
