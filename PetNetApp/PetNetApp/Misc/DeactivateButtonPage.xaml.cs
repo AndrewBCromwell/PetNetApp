@@ -33,10 +33,17 @@ namespace WpfPresentation.Misc
     {
         private static DeactivateButtonPage _existingDeactivateButton = null;
         private MasterManager _manager = MasterManager.GetMasterManager();
+        private bool isAvaliable = false;
+        private int animalsFostering = 0;
+        private int animalsCanFoster = 0;
 
         public DeactivateButtonPage()
         {
             InitializeComponent();
+
+            isAvaliable = _manager.FosterManager.RetrieveCurrentlyAcceptingAnimalsByUsersId(_manager.User.UsersId);
+            animalsFostering = _manager.FosterManager.RetrieveNumberOfAnimalsFostererHasByUsersId(_manager.User.UsersId);
+            animalsCanFoster = _manager.FosterManager.RetrieveNumberOfAnimalsApprovedByUsersId(_manager.User.UsersId);
         }
 
         public static DeactivateButtonPage GetDeactivateButtonPage()
@@ -74,6 +81,101 @@ namespace WpfPresentation.Misc
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             txtblkDeactivateWarning.Text = "WARNING: Clicking the button below will deactivate your account!\nThe only way you can get your account back is having an admin reactivate it for you.\n\nBE SURE THIS IS WHAT YOU WANT TO DO BEFORE PROCEEDING.";
+            RoleToggle();
+            
+        }
+
+        private void RoleToggle()
+        {
+            List<string> userRoles = _manager.UsersManager.RetrieveRolesByUsersId(_manager.User.UsersId);
+            foreach (string role in userRoles)
+            {
+                if (role == "Fosterer")
+                {
+                    ShowFosterToggle();
+                }
+            }
+        }
+
+        private void ShowFosterToggle()
+        {
+            lblNoOfAnimals.Content = animalsFostering + " Fostering / " + animalsCanFoster + " Max Number";
+
+            ToggleFosterButtonText();
+
+            gridSettings.RowDefinitions[1].Height = new GridLength(50);
+            if (animalsFostering >= animalsCanFoster) 
+            {
+                gridSettings.RowDefinitions[2].Height = new GridLength(58);
+                btnToggleFoster.IsEnabled = false;
+                lblToggleFosterText1.Visibility = Visibility.Visible;
+                lblToggleFosterText2.Visibility = Visibility.Visible;
+                rectDecor2.Visibility = Visibility.Visible;
+            }
+            gridSettings.RowDefinitions[3].Height = new GridLength(100);
+            gridSettings.RowDefinitions[4].Height = new GridLength(25);
+
+            lblToggleFosterHeader.Visibility = Visibility.Visible;
+            rectDecor.Visibility = Visibility.Visible;
+            rectDecor1.Visibility = Visibility.Visible;
+            
+            btnToggleFoster.Visibility = Visibility.Visible;
+            lblNoOfAnimals.Visibility = Visibility.Visible;
+            if (animalsFostering < animalsCanFoster)
+            {
+                btnToggleFoster.IsEnabled = true;
+            }    
+        }
+
+        private void ToggleFosterButtonText()
+        {
+            if (!isAvaliable)
+            {
+                btnToggleFoster.Content = "Unavailable";
+            }
+            else if(isAvaliable && (animalsFostering >= animalsCanFoster))
+            {
+                try
+                {
+                    _manager.FosterManager.EditCurrentlyAcceptingAnimalsByUsersId(_manager.User.UsersId, !isAvaliable);
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                btnToggleFoster.Content = "Limit Reached";
+            }
+            else
+            {
+                btnToggleFoster.Content = "Available";
+            }
+        }
+
+        private void btnToggleFoster_Click(object sender, RoutedEventArgs e)
+        {
+            if (animalsFostering < animalsCanFoster)
+            {
+                var message = MessageBox.Show("Are you sure you want to turn your availability " + (isAvaliable ? "off?" : "on?"), "You're currently marked as " + (isAvaliable ? "\"Avaliable\"" : "\"Unavaliable\""), MessageBoxButton.YesNo);
+
+                if (message == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        isAvaliable = !isAvaliable;
+                        _manager.FosterManager.EditCurrentlyAcceptingAnimalsByUsersId(_manager.User.UsersId, isAvaliable);
+                        ToggleFosterButtonText();
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+
+            
         }
     }
 }
