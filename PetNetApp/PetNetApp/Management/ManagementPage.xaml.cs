@@ -125,8 +125,7 @@ namespace WpfPresentation.Management
         private void btnInventory_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnInventory);
-            // replace with page name and then delete comment
-            frameManagement.Navigate(new InventoryPage());
+            frameManagement.Navigate(InventoryNavigationPage.GetInventoryNavigationPage(_manager));
         }
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
@@ -199,10 +198,5 @@ namespace WpfPresentation.Management
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
 
-        private void btnLibrary_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            frameManagement.Navigate(LibraryUI.GetLibraryUI(_manager));
-        }
     }
 }

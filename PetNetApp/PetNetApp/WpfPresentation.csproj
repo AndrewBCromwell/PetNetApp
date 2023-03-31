@@ -132,6 +132,9 @@
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\InventoryNavigationPage.xaml.cs">
+      <DependentUpon>InventoryNavigationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
       <DependentUpon>InventoryPage.xaml</DependentUpon>
     </Compile>
@@ -235,9 +238,12 @@
     <Compile Include="Fundraising\ViewDonationsPage.xaml.cs">
       <DependentUpon>ViewDonationsPage.xaml</DependentUpon>
     </Compile>
-	<Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
+    <Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
       <DependentUpon>SpecificRequestPage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
+	<Compile Include="Management\Inventory\ViewRequestListPage.xaml.cs">
+      <DependentUpon>ViewRequestListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Shelters\ContactPage.xaml.cs">
       <DependentUpon>ContactPage.xaml</DependentUpon>
     </Compile>
@@ -516,8 +522,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Management\Inventory\InventoryNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\Inventory\SpecificRequestPage.xaml">
-	  <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+	<Page Include="Management\Inventory\ViewRequestListPage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\InventoryPage.xaml">
