@@ -23,6 +23,29 @@ namespace DataAccessLayerInterfaces
 
         /// <summary>
         /// Stephen Jaurigue
+        /// Created: 2023/03/24
+        /// 
+        /// A method to get the active fundraising campaigns for all active shelters
+        /// </summary>
+        /// 
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
+        List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaigns();
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/03/24
+        /// 
+        /// A method to get the active fundraising campaigns for this active shelter
+        /// </summary>
+        /// 
+        /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
+        List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaignsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Stephen Jaurigue
         /// Created: 2023/03/02
         /// 
         /// A method to create a new fundraising campaign for this shelter

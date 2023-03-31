@@ -71,6 +71,16 @@ namespace DataAccessLayerFakes
             return _fundraisingCampaigns.Count - previousCount + fundraisingCampaign.Sponsors.Count;
         }
 
+        public List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaigns()
+        {
+            return _fundraisingCampaigns.Where(fundraisingCampaing => fundraisingCampaing.Active).ToList();
+        }
+
+        public List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaignsByShelterId(int shelterId)
+        {
+            return _fundraisingCampaigns.Where(fundraisingCampaing => fundraisingCampaing.ShelterId == shelterId && fundraisingCampaing.Active).ToList();
+        }
+
         public List<FundraisingCampaignVM> SelectAllFundraisingCampaignsByShelterId(int shelterId)
         {
             return _fundraisingCampaigns.Where(fundraisingCampaing => fundraisingCampaing.ShelterId == shelterId).ToList();

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - PETNET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -36,6 +36,7 @@
                 <li class="header-menu-list-item">@Html.ActionLink("Events", "Submenu", "Events")</li>
                 <li class="header-menu-list-item">@Html.ActionLink("Community", "Index", "Community")</li>
                 <li class="header-menu-list-item">@Html.ActionLink("Donate", "Index", "Donate")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Fundraising", "Index", "Fundraising")</li>
             </ul>
         </div>
     </div>
@@ -51,12 +52,10 @@
     @RenderSection("scripts", required: false)
 
     <footer>
-
         <div class="footer-images">
 
         </div>
 
     </footer>
 </body>
-
 </html>

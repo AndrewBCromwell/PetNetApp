@@ -1,0 +1,10 @@
+﻿@model MVCPresentation.Models.FundraisingCampaignForCampaignsModel
+
+<div class="@(Model.AlternateColor ? "campaign-control-primary campaign-control" : "campaign-control-alternate campaign-control")">
+    <div class="campaign-control-text-container">
+        <p class="campaign-control-text">@Model.FundraisingCampaign.Title | @Model.FundraisingCampaign.StartDate</p>
+    </div>
+    <div class="campaign-control-button-group">
+        @Html.ActionLink("View","Campaign",new {campaign = Model.FundraisingCampaign.FundraisingCampaignId}, new { @class = "campaign-link " + (Model.AlternateColor ? "campaign-link-primary" : "campaign-link-alternate")})
+    </div>
+</div>
