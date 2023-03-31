@@ -49,6 +49,7 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="DeathAccessor.cs" />
     <Compile Include="DonationAccessor.cs" />
+    <Compile Include="FosterAccessor.cs" />
     <Compile Include="FosterApplicationResponseAccessor.cs" />
     <Compile Include="FundraisingCampaignAccessor.cs" />
     <Compile Include="FundraisingEventAccessor.cs" />

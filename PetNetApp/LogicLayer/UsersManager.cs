@@ -465,5 +465,22 @@ namespace LogicLayer
             }
             return userAdoptionRecords;
         }
+
+        public List<string> RetrieveRolesByUsersId(int usersId)
+        {
+            List<string> userRoles = new List<string>();
+
+            try
+            {
+                userRoles = _userAccessor.SelectRolesByUserID(usersId);
+            }
+            catch (Exception e)
+            {
+
+                throw new ApplicationException("An error has occured", e);
+            }
+
+            return userRoles;
+        }
     }
 }
