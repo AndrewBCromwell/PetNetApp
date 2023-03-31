@@ -42,6 +42,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_date_SP.
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_userId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddSchedule_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditSchedule_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteSchedule_SP.sql
 
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_user_creation.sql
@@ -106,6 +107,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShel
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByItemId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ToggleFoster_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
