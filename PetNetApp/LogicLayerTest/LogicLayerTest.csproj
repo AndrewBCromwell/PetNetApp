@@ -76,6 +76,7 @@
     <Compile Include="LibraryManagerTests.cs" />
     <Compile Include="FosterApplicationResponseTests.cs" />
     <Compile Include="AdoptionApplicationManagerTests.cs" />
+    <Compile Include="FosterManagerTests.cs" />
     <Compile Include="VaccinationManagerTests.cs" />
     <Compile Include="FundraisingCampaignManagerTests.cs" />
     <Compile Include="ValidationiHelpersTests.cs" />

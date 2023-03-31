@@ -95,6 +95,34 @@ namespace LogicLayer
             return success;
         }
 
+        public List<FundraisingCampaignVM> RetrieveAllActiveFundraisingCampaigns()
+        {
+            List<FundraisingCampaignVM> campaigns = null;
+            try
+            {
+                campaigns = _fundraisingCampaignAccessor.SelectAllActiveFundraisingCampaigns();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load Campaigns", ex);
+            }
+            return campaigns;
+        }
+
+        public List<FundraisingCampaignVM> RetrieveAllActiveFundraisingCampaignsByShelterId(int shelterId)
+        {
+            List<FundraisingCampaignVM> campaigns = null;
+            try
+            {
+                campaigns = _fundraisingCampaignAccessor.SelectAllActiveFundraisingCampaignsByShelterId(shelterId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load Campaigns", ex);
+            }
+            return campaigns;
+        }
+
         public List<FundraisingCampaignVM> RetrieveAllFundraisingCampaignsByShelterId(int shelterId)
         {
             List<FundraisingCampaignVM> campaigns = null;

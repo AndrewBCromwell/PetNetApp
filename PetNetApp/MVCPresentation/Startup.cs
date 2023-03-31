@@ -8,6 +8,7 @@ namespace MVCPresentation
     {
         public void Configuration(IAppBuilder app)
         {
+            DataObjects.DataPathInformation.BaseDirectory = System.Web.HttpRuntime.AppDomainAppPath;
             ConfigureAuth(app);
         }
     }

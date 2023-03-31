@@ -30,8 +30,10 @@ namespace WpfPresentation.Management.Inventory
     /// </summary>
     public partial class ViewInventoryChangesPage : Page
     {
-        MasterManager _manager;
-        List<ShelterItemTransactionVM> _shelterItemTransactions;
+        private static ViewInventoryChangesPage _existingViewInventoryChangesPage = null;
+
+        private MasterManager _manager;
+        private List<ShelterItemTransactionVM> _shelterItemTransactions;
 
         public ViewInventoryChangesPage(MasterManager manager)
         {
@@ -39,10 +41,18 @@ namespace WpfPresentation.Management.Inventory
             _manager = manager;
         }
 
+        public static ViewInventoryChangesPage GetViewInventoryChangesPage(MasterManager manager)
+        {
+            if (_existingViewInventoryChangesPage == null)
+            {
+                _existingViewInventoryChangesPage = new ViewInventoryChangesPage(manager);
+            }
+            return _existingViewInventoryChangesPage;
+        }
 
         /// <summary>
-        /// Your Name
-        /// Created: 2023/02/28
+        /// Andrew Cromwell
+        /// Created: 2023/03/01
         /// 
         /// Formats a ShelterItemTransaction to a lable to display on the page.
         /// </summary>
@@ -94,7 +104,7 @@ namespace WpfPresentation.Management.Inventory
 
         /// <summary>
         /// Your Name
-        /// Created: 2023/02/28
+        /// Created: 2023/03/28
         /// 
         /// Retrieves ShelterItemTransactionVMs and sends each to DisplayInventoryChangeRecord.
         /// </summary>

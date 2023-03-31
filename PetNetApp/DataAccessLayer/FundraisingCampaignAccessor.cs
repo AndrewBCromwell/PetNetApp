@@ -80,7 +80,7 @@ namespace DataAccessLayer
             int rows = 0;
 
 
-            var fundraisingCampaignEntitiesToAdd = newFundraisingCampaignVM.Sponsors.Where(newEntity => !oldFundraisingCampaignVM.Sponsors.Exists(oldEntity => oldEntity.InstitutionalEntityId == newEntity.InstitutionalEntityId));
+            var fundraisingCampaignEntitiesToAdd = newFundraisingCampaignVM.Sponsors.Where(newEntity => !oldFundraisingCampaignVM.Sponsors.Exists(oldEntity => newEntity.InstitutionalEntityId == oldEntity.InstitutionalEntityId));
             var fundraisingCampaignEntitiesToRemove = oldFundraisingCampaignVM.Sponsors.Where(oldEntity => !newFundraisingCampaignVM.Sponsors.Exists(newEntity => newEntity.InstitutionalEntityId == oldEntity.InstitutionalEntityId));
 
             DBConnection factory = new DBConnection();
@@ -353,6 +353,112 @@ namespace DataAccessLayer
                 conn.Close();
             }
             return rows;
+        }
+
+        public List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaigns()
+        {
+            List<FundraisingCampaignVM> fundraisingCampaigns = new List<FundraisingCampaignVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_all_active_fundraising_campaigns";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            fundraisingCampaigns.Add(new FundraisingCampaignVM()
+                            {
+                                FundraisingCampaignId = reader.GetInt32(0),
+                                UsersId = reader.GetInt32(1),
+                                ShelterId = reader.GetInt32(2),
+                                Title = reader.GetString(3),
+                                StartDate = reader.IsDBNull(4) ? new DateTime?() : reader.GetDateTime(4),
+                                EndDate = reader.IsDBNull(5) ? new DateTime?() : reader.GetDateTime(5),
+                                Description = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                Complete = reader.GetBoolean(7),
+                                Active = reader.GetBoolean(8),
+                                Sponsors = new List<InstitutionalEntity>()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return fundraisingCampaigns;
+        }
+
+        public List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaignsByShelterId(int shelterId)
+        {
+            List<FundraisingCampaignVM> fundraisingCampaigns = new List<FundraisingCampaignVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_all_active_fundraising_campaigns_by_shelterId";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int).Value = shelterId;
+
+            try
+            {
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            fundraisingCampaigns.Add(new FundraisingCampaignVM()
+                            {
+                                FundraisingCampaignId = reader.GetInt32(0),
+                                UsersId = reader.GetInt32(1),
+                                ShelterId = reader.GetInt32(2),
+                                Title = reader.GetString(3),
+                                StartDate = reader.IsDBNull(4) ? new DateTime?() : reader.GetDateTime(4),
+                                EndDate = reader.IsDBNull(5) ? new DateTime?() : reader.GetDateTime(5),
+                                Description = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                Complete = reader.GetBoolean(7),
+                                Active = reader.GetBoolean(8),
+                                Sponsors = new List<InstitutionalEntity>()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return fundraisingCampaigns;
         }
     }
 }
