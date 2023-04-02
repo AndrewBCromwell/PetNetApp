@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DC4F1495-01D6-472B-8F33-12FBDDAF4002}</ProjectGuid>
+    <ProjectGuid>{DFCCFF7D-8A1A-46FB-BC2D-1DC3D5126853}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -182,6 +182,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304011702365_Adding UserId field to User.cs" />
+    <Compile Include="Migrations\202304011702365_Adding UserId field to User.Designer.cs">
+      <DependentUpon>202304011702365_Adding UserId field to User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FundraisingViewModels.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
@@ -309,6 +314,9 @@
     <Content Include="Views\Fundraising\FundraisingCampaignForCampaigns.cshtml" />
     <Content Include="Views\Fundraising\Campaigns.Mobile.cshtml" />
     <Content Include="Views\Fundraising\Campaign.cshtml" />
+    <Content Include="Views\Community\ShowReplies.cshtml" />
+    <Content Include="Views\Community\CreateReply.cshtml" />
+    <Content Include="Views\Community\EditReply.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -473,6 +481,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202304011702365_Adding UserId field to User.resx">
+      <DependentUpon>202304011702365_Adding UserId field to User.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

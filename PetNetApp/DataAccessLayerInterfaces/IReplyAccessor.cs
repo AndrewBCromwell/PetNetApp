@@ -41,5 +41,30 @@ namespace DataAccessLayerInterfaces
         /// <param name="postId"></param>
         /// <returns></returns>
         int SelectCountActiveRepliesByPostId(int postId);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023-04-01
+        /// Description: Inserts a reply
+        /// </summary>
+        /// <param name="reply"></param>
+        /// <returns></returns>
+        int InsertReply(Reply reply);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023-04-01
+        /// Description: Updates a reply
+        /// </summary>
+        /// <param name="reply"></param>
+        /// <param name="newReply"></param>
+        /// <returns></returns>
+        int UpdateReply(Reply reply, Reply newReply);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023-04-01
+        /// Description: Selects reply by replyId
+        /// </summary>
+        /// <param name="replyid"></param>
+        /// <returns></returns>
+        ReplyVM SelectReplyByReplyId(int replyId);
     }
 }

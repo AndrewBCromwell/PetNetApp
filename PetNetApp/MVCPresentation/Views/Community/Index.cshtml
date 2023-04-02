@@ -31,7 +31,7 @@
                     <h7 class="deactive">Deactivated</h7>
                 }
 
-                <p class="postText">@item.PostContent</p>
+                <p class="communityText">@item.PostContent</p>
             </div>
         </div>
         <div class="table">
@@ -46,19 +46,19 @@
                         }
                     }
 
-                    @if (ViewBag.User.UsersId == item.PostAuthor)
+                    @if (item.PostVisibility && ViewBag.User.UsersId == item.PostAuthor)
                     {
 
                         @Html.ActionLink("Edit Post", "Edit", new { id = item.PostId });
                         <text> | </text>
                     }
 
-                    @if (item.PostVisibility && (ViewBag.User.UsersId == item.PostId || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator")))
+                    @if (item.PostVisibility && (ViewBag.User.UsersId == item.PostAuthor || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator")))
                     {
                         @Html.ActionLink("Delete Post", "Delete", new { id = item.PostId });
                     }
 
-                    @if (!(item.PostVisibility && (ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator"))))
+                    @if (!item.PostVisibility && (ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator")))
                     {
                         @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId });
                     }

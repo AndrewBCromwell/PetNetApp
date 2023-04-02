@@ -49,7 +49,7 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
-        public void TestUpdatePost()
+        public void TestEditPost()
         {
             bool expectedResult = true;
             bool actualResult = false;
