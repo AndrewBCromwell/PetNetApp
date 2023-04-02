@@ -139,5 +139,10 @@ namespace LogicLayerInterfaces
         /// <param name="contactType"></param>
         /// <returns></returns>
         InstitutionalEntity RetrieveInstitutionalEntityByEventIdAndContactType(int fundraisingEventId, string contactType);
+
+        List<InstitutionalEntity> RetrieveAllHosts();
+
+        List<InstitutionalEntity> RetrieveAllContact();
+        InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalId);
     }
 }

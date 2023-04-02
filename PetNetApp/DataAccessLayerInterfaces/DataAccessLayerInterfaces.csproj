@@ -52,6 +52,7 @@
     <Compile Include="IDonationAccessor.cs" />
     <Compile Include="IFosterApplicationResponseAccessor.cs" />
     <Compile Include="IFundraisingCampaignAccessor.cs" />
+    <Compile Include="IFundraisingEventAccessor.cs" />
     <Compile Include="IImagesAccessor.cs" />
     <Compile Include="IInstitutionalEntityAccessor.cs" />
     <Compile Include="IItemAccessor.cs" />

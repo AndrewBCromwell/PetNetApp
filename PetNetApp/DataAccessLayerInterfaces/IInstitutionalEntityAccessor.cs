@@ -134,5 +134,8 @@ namespace DataAccessLayerInterfaces
         /// <param name="contactType">type of institutional entity attempting to retrieve<</param>
         /// <returns></returns>
         InstitutionalEntity SelectInstitutionalEntityByFundraisingEventIdAndContactType(int fundraisingEventId, string contactType);
+        List<InstitutionalEntity> SelectAllHosts();
+        List<InstitutionalEntity> SelectAllContact();
+        InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId);
     }
 }

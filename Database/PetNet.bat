@@ -118,6 +118,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
+
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddFundRaisingEvent_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditFundRaisingEvent_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

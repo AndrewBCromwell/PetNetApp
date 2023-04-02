@@ -45,6 +45,36 @@ namespace LogicLayer
             _institutionalEntityAccessor = institutionalEntityAccessor;
         }
 
+        public List<InstitutionalEntity> RetrieveAllContact()
+        {
+            List<InstitutionalEntity> contacts = null;
+
+            try
+            {
+                contacts = _institutionalEntityAccessor.SelectAllContact();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failded to load contacts", ex);
+            }
+
+            return contacts;
+        }
+
+        public List<InstitutionalEntity> RetrieveAllHosts()
+        {
+            List<InstitutionalEntity> hosts = null;
+            try
+            {
+                hosts = _institutionalEntityAccessor.SelectAllHosts();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load hosts", ex);
+            }
+            return hosts;
+        }
+
         public List<InstitutionalEntity> RetrieveAllSponsors()
         {
             List<InstitutionalEntity> sponsors = null;
@@ -154,6 +184,22 @@ namespace LogicLayer
             {
 
                 throw new AccessViolationException("Failed to load a " + contactType + " for the event.", ex);
+            }
+
+            return institutionalEntity;
+        }
+
+        public InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalId)
+        {
+            InstitutionalEntity institutionalEntity = null;
+
+            try
+            {
+                institutionalEntity = _institutionalEntityAccessor.SelectInstitutionalEntityByInstitutionalEntityId(institutionalId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Can not find any institutional entity with this Id", ex);
             }
 
             return institutionalEntity;
