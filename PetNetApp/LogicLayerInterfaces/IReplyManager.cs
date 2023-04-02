@@ -41,5 +41,30 @@ namespace LogicLayerInterfaces
         /// <param name="postId"></param>
         /// <returns></returns>
         int RetrieveCountActiveRepliesByPostId(int postId);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023-04-01
+        /// Description: Adds a reply
+        /// </summary>
+        /// <param name="reply"></param>
+        /// <returns></returns>
+        int AddReply(Reply reply);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023-04-01
+        /// Description: Edits a reply
+        /// </summary>
+        /// <param name="reply"></param>
+        /// <param name="newReply"></param>
+        /// <returns></returns>
+        bool EditReply(Reply reply, Reply newReply);
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 2023-04-01
+        /// Description: Retrieves reply by reply id
+        /// </summary>
+        /// <param name="replyId"></param>
+        /// <returns></returns>
+        ReplyVM RetrieveReplyByReplyId(int replyId);
     }
 }

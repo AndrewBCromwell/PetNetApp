@@ -118,6 +118,8 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE
