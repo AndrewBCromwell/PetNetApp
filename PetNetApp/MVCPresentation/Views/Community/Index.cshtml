@@ -37,7 +37,7 @@
         <div class="table">
             <div class="row">
                 <div class="cell">
-                    @if (item.ReplyCount > 0)
+                    @if (item.PostVisibility)
                     {
                         @Html.ActionLink("Show Replies", "ShowReplies", new { id = item.PostId });
                         if (ViewBag.User.UsersId == item.PostAuthor || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator"))
