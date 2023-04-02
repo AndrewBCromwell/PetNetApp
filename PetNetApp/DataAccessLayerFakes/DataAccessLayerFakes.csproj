@@ -48,6 +48,7 @@
     <Compile Include="DonationAccessorFake.cs" />
     <Compile Include="FundraisingCampaignAccessorFake.cs" />
     <Compile Include="FundraisingFakeData.cs" />
+    <Compile Include="FundraisingEventFakes.cs" />
     <Compile Include="ImagesAccessorFakes.cs" />
     <Compile Include="ShelterItemTransactionAccessorFakes.cs" />
     <Compile Include="InstitutionalEntityAccessorFake.cs" />

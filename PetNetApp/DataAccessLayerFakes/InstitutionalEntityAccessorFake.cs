@@ -54,5 +54,26 @@ namespace DataAccessLayerFakes
                            select institutionalEntityRecord;
             return sponsors.ToList();
         }
+
+        public List<InstitutionalEntity> SelectAllHosts()
+        {
+            var hosts = from institutionalEntityRecord in _institutionalEntities
+                           where institutionalEntityRecord.ContactType == "Host"
+                        select institutionalEntityRecord;
+            return hosts.ToList();
+        }
+
+        public List<InstitutionalEntity> SelectAllContact()
+        {
+            var contact = from institutionalEntityRecord in _institutionalEntities
+                        where institutionalEntityRecord.ContactType == "Contact"
+                        select institutionalEntityRecord;
+            return contact.ToList();
+        }
+
+        public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -27,5 +27,8 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         /// <returns></returns>
         List<InstitutionalEntity> SelectAllSponsors();
+        List<InstitutionalEntity> SelectAllHosts();
+        List<InstitutionalEntity> SelectAllContact();
+        InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId);
     }
 }

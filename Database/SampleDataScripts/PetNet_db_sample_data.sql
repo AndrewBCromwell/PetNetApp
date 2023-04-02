@@ -1214,7 +1214,15 @@ INSERT INTO [dbo].[InstitutionalEntity]
 	VALUES
 		('US Animals', 'Bob', 'Doe', 'bd@gmail.com', '1231233333', '121 Place Street', 50001, 'Sponsor'),
         ('CA Animals', 'Stephanie', 'Doe', 'sd@gmail.com', '1231233334', '122 Place Street', 50001, 'Sponsor'),
-        ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor')
+        ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor'),
+		('BA Animals', 'Cam', 'Doe', 'cd@gmail.com', '1231233335', '124 Place Street', 50001, 'Host'),
+		('DA Animals', 'Jack', 'Doe', 'jkd@gmail.com', '1231233335', '126 Place Street', 50001, 'Host'),
+		('LA Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Host'),
+		('DF Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Host'),
+		('WG Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact'),
+		('PK Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact'),
+		('NS Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact'),
+		('ST Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact')
 GO
 
 print '' print '*** creating FundraisingCampaignEntity sample data'
@@ -1239,6 +1247,9 @@ INSERT INTO [dbo].[FundraisingEventEntity]
 		)
 	VALUES
 		(100000, 100000),
+		(100000, 100001),
+		(100000, 100007),
+		(100000, 100008),
         (100001, 100001),
         (100002, 100002)
 GO
@@ -1467,6 +1478,4 @@ INSERT INTO [dbo].[AnimalImage]
 		(100002, '0238caf0-9398-4c32-aeb8-bcf151f300ef'),
 		(100002, 'abacccd4-2844-4573-8c1d-5d668cc34953'),
 		(100002, 'eecea43f-3749-4f62-b70b-4381530618d9')
-GO
-        (100005, '314a2539-5dee-40ce-ac5b-026d53750c97')
 GO

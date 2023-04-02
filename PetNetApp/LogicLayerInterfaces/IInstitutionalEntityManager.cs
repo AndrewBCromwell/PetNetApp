@@ -27,5 +27,10 @@ namespace LogicLayerInterfaces
         /// </summary>
         /// <returns></returns>
         List<InstitutionalEntity> RetrieveAllSponsors();
+
+        List<InstitutionalEntity> RetrieveAllHosts();
+
+        List<InstitutionalEntity> RetrieveAllContact();
+        InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalId);
     }
 }

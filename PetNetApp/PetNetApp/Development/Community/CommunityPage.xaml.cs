@@ -61,7 +61,7 @@ namespace WpfPresentation.Development.Community
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameCommunity.Navigate(null);
+            frameCommunity.Navigate(new Events.EditFundraisingEvent(_manager.FundraisingEventManager.FindFundraisingEvent(100000)));
         }
 
         private void btnUsers_Click(object sender, RoutedEventArgs e)

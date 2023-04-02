@@ -51,6 +51,7 @@
     <Compile Include="AnimalUpdatesManager.cs" />
     <Compile Include="DonationManager.cs" />
     <Compile Include="FundraisingCampaignManager.cs" />
+    <Compile Include="FundraisingEventManager.cs" />
     <Compile Include="ImagesManager.cs" />
     <Compile Include="InstitutionalEntityManager.cs" />
     <Compile Include="KennelManager.cs" />
