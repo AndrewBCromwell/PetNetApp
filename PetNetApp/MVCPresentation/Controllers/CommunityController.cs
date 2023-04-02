@@ -25,18 +25,18 @@ namespace MVCPresentation.Controllers
                 if (masterManager.User.Roles.Contains("Admin") || masterManager.User.Roles.Contains("Moderator"))
                 {
                     posts = masterManager.PostManager.RetrieveAllPosts();
-                    foreach (var post in posts)
-                    {
-                        post.ReplyCount = masterManager.ReplyManager.RetrieveCountRepliesByPostId(post.PostId);
-                    }
+                    //foreach (var post in posts)
+                    //{
+                    //    post.ReplyCount = masterManager.ReplyManager.RetrieveCountRepliesByPostId(post.PostId);
+                    //}
                 }
                 else
                 {
                     posts = masterManager.PostManager.RetrieveActivePosts();
-                    foreach (var post in posts)
-                    {
-                        post.ReplyCount = masterManager.ReplyManager.RetrieveCountActiveRepliesByPostId(post.PostId);
-                    }
+                    //foreach (var post in posts)
+                    //{
+                    //    post.ReplyCount = masterManager.ReplyManager.RetrieveCountActiveRepliesByPostId(post.PostId);
+                    //}
                 }
             }
             catch (Exception ex)
