@@ -52,7 +52,6 @@ namespace MVCPresentation.Controllers
         {
             if(id != null)
             {
-                
                 try
                 {
                     postVM = masterManager.PostManager.RetrievePostByPostId(id.Value);
@@ -143,7 +142,9 @@ namespace MVCPresentation.Controllers
 
                 if (postVM.PostVisibility)
                 {
-                    if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    //if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+
+                    if (masterManager.User.Roles.Contains("Admin") || masterManager.User.Roles.Contains("Moderator"))
                     {
                         postVM.Replies = masterManager.ReplyManager.RetrieveAllRepliesByPostId(postVM.PostId);
                     }
