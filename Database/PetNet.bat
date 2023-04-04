@@ -108,6 +108,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByIte
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ToggleFoster_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\MVCSetup_sp.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
