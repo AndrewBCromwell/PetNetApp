@@ -117,7 +117,7 @@ namespace WpfPresentation.Management.Inventory
         private void btnViewExceptionRecords_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GetNavigationService(this).Navigate(
-                Development.Management.Inventory.ViewNewItemRequestsPage.GetViewNewItemRequestsPage());
+                ViewNewItemRequestsPage.GetViewNewItemRequestsPage());
         }
     }
 }

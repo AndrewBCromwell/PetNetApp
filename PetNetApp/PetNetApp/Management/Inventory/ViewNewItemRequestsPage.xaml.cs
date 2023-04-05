@@ -29,7 +29,7 @@ using System.Windows.Shapes;
 using WpfPresentation.UserControls;
 
 
-namespace WpfPresentation.Development.Management.Inventory
+namespace WpfPresentation.Management.Inventory
 {
 
     public partial class ViewNewItemRequestsPage : Page

@@ -125,7 +125,7 @@ namespace WpfPresentation.UserControls
                 {
                     PromptWindow.ShowPrompt("Success", "'" + ResourceAddRequest.Title
                                                 + "' has been deactivated.", ButtonMode.Ok);
-                    WpfPresentation.Development.Management.Inventory.ViewNewItemRequestsPage
+                    WpfPresentation.Management.Inventory.ViewNewItemRequestsPage
                         .GetViewNewItemRequestsPage();
                 }
             }

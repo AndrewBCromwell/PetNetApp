@@ -128,7 +128,7 @@
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\Inventory\ViewNewItemRequestsPage.xaml.cs">
+    <Compile Include="Management\Inventory\ViewNewItemRequestsPage.xaml.cs">
       <DependentUpon>ViewNewItemRequestsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\UpdateFundraisingCampaign.xaml.cs">
@@ -422,7 +422,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Management\Inventory\ViewNewItemRequestsPage.xaml">
+    <Page Include="Management\Inventory\ViewNewItemRequestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
