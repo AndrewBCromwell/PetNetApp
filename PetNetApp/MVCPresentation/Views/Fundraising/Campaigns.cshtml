@@ -1,0 +1,65 @@
+﻿@model MVCPresentation.Models.CampaignsViewModel
+
+@{
+    ViewBag.Title = "Campaigns";
+}
+
+@section styles
+{
+    <link href="~/Content/Fundraising/campaigns.css" rel="stylesheet" />
+    <link href="~/Content/Fundraising/campaigns-desktop.css" rel="stylesheet" />
+    <link href="~/Content/Fundraising/page-navigation.css" rel="stylesheet" />
+}
+
+<div class="campaigns-main-grid">
+    <div class="campaigns-title-and-filter-grid">
+        <div class="campaigns-title-group">
+            <h2 class="campaigns-title">Fundraising Campaigns</h2>
+        </div>
+        @using (Html.BeginForm("Campaigns", "Fundraising", FormMethod.Get, new { @class = "campaign-inputs" }))
+        {
+            <div class="search-group">
+                @Html.TextBoxFor(model => model.Search, new { @class = "search-input", placeholder = "Search" })
+            </div>
+            <div class="shelter-group">
+                @{
+                    SelectList list = new SelectList(Model.Shelters, "ShelterId", "ShelterName");
+                }
+                @Html.DropDownListFor(model => model.Shelter, list, "All Shelters", new { @class = "shelter-input" })
+            </div>
+            <div class="sort-group">
+                @Html.EnumDropDownListFor(model => model.Sort, "Sort", new { @class = "sort-input" })
+            </div>
+            <div class="filter-group">
+                @Html.EnumDropDownListFor(model => model.Filter, "Filter", new { @class = "filter-input" })
+            </div>
+
+            <div class="search-button-group">
+                <input type="submit" value="Search" class="search-button default-button" />
+            </div>
+        }
+    </div>
+    <div class="campaigns-list @(Model.Campaigns.Count() == 0 ? "campaigns-list-empty" : "")">
+        @{
+            if (Model.Campaigns.Count() > 0)
+            {
+                bool alternate = false;
+                foreach (var campaign in Model.Campaigns)
+                {
+                    @Html.Partial("FundraisingCampaignForCampaigns", new MVCPresentation.Models.FundraisingCampaignForCampaignsModel() { FundraisingCampaign = campaign, AlternateColor = alternate });
+                    alternate = !alternate;
+                }
+            }
+            else
+            {
+                <div class="no-campaigns-group">
+                    <h4 class="no-campaigns-text">No fundraising campaigns found</h4>
+                </div>
+            }
+        }
+    </div>
+    <div class="nav-buttons">
+        @Html.PageLinks(Model.PagingInfo, (page) => Url.Action("Campaigns",
+            new { Sort = (int?)Model.Sort, Filter = (int?)Model.Filter, Search = Model.Search, Shelter = Model.Shelter, Page = page }))
+    </div>
+</div>

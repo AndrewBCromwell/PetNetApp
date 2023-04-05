@@ -45,6 +45,7 @@
     <Compile Include="IAdoptionApplicationAccessor.cs" />
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
+    <Compile Include="IFosterAccessor.cs" />
     <Compile Include="IReplyAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IDeathAccessor.cs" />

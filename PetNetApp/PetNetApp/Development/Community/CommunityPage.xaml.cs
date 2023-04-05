@@ -31,7 +31,7 @@ namespace WpfPresentation.Development.Community
         {
             InitializeComponent();
             _manager = manager;
-            _communityTabButtons = new Button[] { btnAbout, btnForum, btnUsers };
+            _communityTabButtons = new Button[] { btnAbout, btnForum, btnUsers, btnResources };
         }
 
         public static CommunityPage GetCommunityPage(MasterManager manager)
@@ -67,10 +67,7 @@ namespace WpfPresentation.Development.Community
         private void btnUsers_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-
-            frameCommunity.Navigate(null);
-
-            //frameCommunity.Navigate(new RoleManagementTemp(_manager, _manager.UsersManager.RetrieveUserByUsersId(100001)));
+            frameCommunity.Navigate(new UserManagementPage());
         }
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)

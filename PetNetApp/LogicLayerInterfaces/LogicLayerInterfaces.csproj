@@ -48,6 +48,7 @@
     <Compile Include="IAnimalUpdatesManager.cs" />
     <Compile Include="IDonationManager.cs" />
     <Compile Include="IFosterApplicationResponseManager.cs" />
+    <Compile Include="IFosterManager.cs" />
     <Compile Include="IFundraisingCampaignManager.cs" />
     <Compile Include="IFundraisingEventManager.cs" />
     <Compile Include="IImagesManager.cs" />

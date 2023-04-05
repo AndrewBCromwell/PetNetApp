@@ -1,0 +1,230 @@
+﻿:root {
+    --campaign-input-x-margin: 5px;
+    --campaign-input-y-margin: 0px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body
+{height: 100%;}
+
+
+.body-content
+{
+    overflow:auto;
+}
+
+html
+{
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.body-content
+{
+    height: calc(95% - var(--header-height));
+}
+
+
+.campaigns-main-grid {
+    color: #1C6758;
+    display: grid;
+    height: 100%;
+    grid-template-rows: 50px 50px minmax(100px, calc(100% - 200px)) 100px;
+}
+
+.campaigns-list {
+    overflow: auto;
+    height: 100%;
+    grid-row: 3;
+}
+
+.campaigns-title-group {
+    grid-row: 1;
+    vertical-align: middle;
+    text-align: center;
+    height:50px;
+    display: table;
+}
+
+.campaigns-title-group h3
+{
+    margin: inherit;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-body
+{
+    width: 80%;
+    margin: auto;
+}
+
+.campaign-inputs {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: 40px;
+}
+
+.search-group
+{
+    vertical-align: middle;
+    align-self: center;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.sort-button-group {
+    grid-column: 2;
+    grid-row: 1;
+    vertical-align: middle;
+    align-self: center;
+}
+
+.sort-button {
+    align-self: center;
+    vertical-align: middle;
+    height: 40px;
+    width: calc(100% - var(--campaign-input-x-margin) * 2);
+    margin: 0 var(--campaign-input-x-margin);
+    text-align: center;
+}
+
+.sort-group {
+    vertical-align: middle;
+    align-self: center;
+    grid-column: 1;
+    grid-row: 2;
+    margin: 5px;
+}
+
+.filter-group {
+    vertical-align: middle;
+    align-self: center;
+    grid-column: 2;
+    grid-row: 2;
+    margin: 5px;
+}
+
+.shelter-group {
+    vertical-align: middle;
+    align-self: center;
+    grid-column: 3;
+    grid-row: 2;
+    margin: 5px;
+}
+
+.modal-button {
+    width: 80px;
+    height: 40px;
+}
+
+.modal-apply-button
+{
+}
+
+.modal-close-button
+{
+}
+
+.search-button-group {
+    vertical-align: middle;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.search-input {
+    max-width: initial;
+    width: calc(100% - var(--campaign-input-x-margin) * 2);
+    height: 40px;
+    margin: 0 var(--campaign-input-x-margin);
+}
+
+.sort-input {
+    width: calc(100% - var(--campaign-input-x-margin) * 2);
+    height: 50px;
+    margin: 0 var(--campaign-input-x-margin);
+}
+
+.filter-input {
+    width: calc(100% - var(--campaign-input-x-margin) * 2);
+    height: 50px;
+    margin: 0 var(--campaign-input-x-margin);
+}
+
+.shelter-input {
+    width: calc(100% - var(--campaign-input-x-margin) * 2);
+    height: 50px;
+    margin: 0 var(--campaign-input-x-margin);
+}
+
+.search-button {
+    align-self: center;
+    vertical-align: middle;
+    height: 50px;
+    width: calc(100% - var(--campaign-input-x-margin) * 2);
+    margin: 0 var(--campaign-input-x-margin);
+    text-align:center;
+}
+
+.campaign-inputs select, input {
+    border-radius: 10px;
+    border-top: 1px solid #D6CDA4;
+    border-left: 1px solid #D6CDA4;
+    border-right: 1px solid #D6CDA4;
+    border-bottom: 1px solid #D6CDA4;
+}
+
+
+.campaign-inputs select:hover, input:hover {
+    border-radius: 10px;
+    border-top: 1px solid #3D8361;
+    border-left: 1px solid #3D8361;
+    border-right: 1px solid #3D8361;
+    border-bottom: 1px solid #3D8361;
+}
+
+
+    .campaign-inputs select:focus, input:focus {
+        outline:none;
+        border-radius: 10px;
+        border-top: 1px solid #1C6758;
+        border-left: 1px solid #1C6758;
+        border-right: 1px solid #1C6758;
+        border-bottom: 1px solid #1C6758;
+    }
+
+
+
+.nav-buttons {
+    text-align: center;
+    align-self: center;
+    vertical-align: middle;
+    grid-row: 4;
+}
+
+.no-campaigns-group {
+    width: 300px;
+    height: 75px;
+}
+
+@media only screen and (max-width: 960px) {
+    .campaigns-title-and-filter-grid {
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+    }
+}

@@ -65,6 +65,11 @@ namespace DataAccessLayerFakes
 
         }
 
+        public int DeleteScheduleVM(int scheduleId)
+        {
+            throw new NotImplementedException();
+        }
+
         public int InsertSchedulebyUserid(ScheduleVM scheduleVM)
         {
             int result = fakeSchedules.Count();

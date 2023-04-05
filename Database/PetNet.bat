@@ -42,6 +42,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_date_SP.
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_select_schedule_by_userId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddSchedule_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditSchedule_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteSchedule_SP.sql
 
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_user_creation.sql
@@ -84,6 +85,10 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddTicket.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertTestByMedicalRecordId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertTestMedicalRecordByAnimalId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateQuarantineStatusByMedicalRecordId_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItem_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItemCategory_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteItemCategory_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\SelectAllCategories_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
@@ -103,6 +108,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByIte
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewEditResourceAddRequests_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ToggleFoster_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\MVCSetup_sp.sql
+
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddPost_SP.sql
@@ -111,6 +119,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

@@ -11,7 +11,21 @@ namespace LogicLayerInterfaces
     {
         int RetrieveLastMedicalRecordIdByAnimalId(int animalId);
         List<MedicalRecordVM> RetrieveMedicalRecordDiagnosisByAnimalId(int animalId);
-        int UpdateTreatmentByMedicalRecordId(int medicalRecordId, string diagnosis, string medicalNotes);
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/03/22
+        /// 
+        /// 
+        /// </summary>
+        /// <param name="medicalRecordId"></param>
+        /// /// <param name="newDiagnosis"></param>
+        /// /// <param name="newMedicalNotes"></param>
+        /// /// <param name="oldDiagnosis"></param>
+        /// /// <param name="oldMedicalNotes"></param>
+        /// <exception cref="ApplicationException">Insert Fails</exception>
+        /// <returns>returns bool of the result of the update</returns>
+        bool EditTreatmentByMedicalRecordId(int medicalRecordId, string newDiagnosis, string newMedicalNotes, string oldDiagnosis, string oldMedicalNotes);
 
         /// <summary>
         /// Andrew Cromwell

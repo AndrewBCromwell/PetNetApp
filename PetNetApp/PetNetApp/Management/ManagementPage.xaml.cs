@@ -39,11 +39,29 @@ namespace WpfPresentation.Management
                 _existingManagementPage?.frameManagement.Navigate(null);
             };
         }
+
+        public static ManagementPage GetManagementPage(MasterManager manager)
+        {
+            if (_existingManagementPage == null)
+            {
+                _existingManagementPage = new ManagementPage(manager);
+            }
+            return _existingManagementPage;
+        }
+
         public ManagementPage()
         {
             InitializeComponent();
-            _managementPageButtons = new Button[] { btnInventory, btnLibrary, btnKennel, btnTickets, btnVolunteer, btnSchedule };
+            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
         }
+
+        public ManagementPage(MasterManager manager)
+        {
+            InitializeComponent();
+            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
+            _manager = manager;
+        }
+
         public void HideAllButtons()
         {
             UnselectAllButtons();
@@ -56,7 +74,6 @@ namespace WpfPresentation.Management
         {
             HideAllButtons();
             ShowInventoryButtonByRole();
-            ShowLibraryButtonByRole();
             ShowKennelButtonByRole();
             ShowScheduleButtonByRole();
             ShowTicketsButtonByRole();
@@ -76,15 +93,6 @@ namespace WpfPresentation.Management
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnKennel.Visibility = Visibility.Visible;
-            }
-        }
-
-        public void ShowLibraryButtonByRole()
-        {
-            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
-            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
-            {
-                btnLibrary.Visibility = Visibility.Visible;
             }
         }
 
@@ -121,7 +129,7 @@ namespace WpfPresentation.Management
             }
             return _existingManagementPage;
         }
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
@@ -136,8 +144,7 @@ namespace WpfPresentation.Management
         private void btnInventory_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnInventory);
-            // replace with page name and then delete comment
-            frameManagement.Navigate(InventoryPage.GetInventoryPage());
+            frameManagement.Navigate(InventoryNavigationPage.GetInventoryNavigationPage(_manager));
         }
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
@@ -155,14 +162,14 @@ namespace WpfPresentation.Management
         {
             ChangeSelectedButton(btnVolunteer);
             // replace with page name and then delete comment
-            frameManagement.Navigate(new Development.Management.VolunteerManagment());
+            frameManagement.Navigate(new Management.VolunteerManagment());
             
         }
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnSchedule);
             // replace with page name and then delete comment
-            frameManagement.Navigate(null);
+            frameManagement.Navigate(new Management.SchedulePage());
         }
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -210,10 +217,5 @@ namespace WpfPresentation.Management
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
 
-        private void btnLibrary_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            frameManagement.Navigate(LibraryUI.GetLibraryUI(_manager));
-        }
     }
 }

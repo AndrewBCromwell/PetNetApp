@@ -216,7 +216,6 @@ namespace DataAccessLayer
         /// <returns>UsersVM</returns>
         public UsersVM SelectUserByEmail(string email)
         {
-
             UsersVM user = null;
 
             DBConnection connectionFactory = new DBConnection();
@@ -1015,10 +1014,109 @@ namespace DataAccessLayer
 
             return adoptionRecordsList;
         }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/03/29]
+        /// Returns all RoleIDs from the Role table.
+        /// </summary>
+        /// <returns>List of strings</returns>
+        public List<string> SelectAllRoles()
+        {
+            List<string> roles = new List<string>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_all_roles";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        roles.Add(reader.GetString(0));
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Cannot retrieve roles.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return roles;
+        }
+
+        public UsersVM AuthenticateUser(string email, string passwordHash)
+        {
+            UsersVM result = null;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmd = new SqlCommand("sp_authenticate_user");
+            cmd.Connection = conn;
+
+            // set the command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // add parameters for the procedure
+            cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 250);
+            cmd.Parameters.Add("@PasswordHash", SqlDbType.NVarChar, 100);
+
+            // set the values for the parameters
+            cmd.Parameters["@Email"].Value = email;
+            cmd.Parameters["@PasswordHash"].Value = passwordHash;
+
+            // now that the command is set up, we can execute it
+            try
+            {
+                // open the connection
+                conn.Open();
+
+                // execute the command
+                if (1 == Convert.ToInt32(cmd.ExecuteScalar()))
+                {
+                    // if the command worked correctly, get a user
+                    // object
+                    result = SelectUserByEmail(email);
+                }
+                else
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
+        }
+
+        
     }
-
-
-
 }
 
 

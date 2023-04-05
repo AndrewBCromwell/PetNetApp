@@ -130,6 +130,25 @@ namespace WpfPresentation.Management
         /// Matthew Meppelink
         /// Created: 2023/03/01
         /// 
+        /// refreshes the list of tickets 
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: 
+        /// </remarks>
+        public void refreshTickets()
+        {
+            datTickList.ItemsSource = null;
+            datTickList.ItemsSource = _ticketVMs;
+        }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/03/01
+        /// 
         /// calls one of two refreshTickets methods based on the content of txtSearch
         /// 
         /// 
@@ -242,7 +261,7 @@ namespace WpfPresentation.Management
             {
                 if (ticketVM.TicketId == Int32.Parse(CellValue))
                 {
-                    frmTicketViewPage.Navigate(new ViewTicketPage(ticketVM));
+                    frmTicketViewPage.Navigate(new ViewTicketPage(ticketVM, _masterManager, this));
                 }
             }
         }

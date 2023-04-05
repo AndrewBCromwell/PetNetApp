@@ -630,5 +630,15 @@ namespace DataAccessLayerFakes
             }
             return usersAdoptionRecords;
         }
+
+        public List<string> SelectAllRoles()
+        {
+            throw new NotImplementedException();
+        }
+
+        public UsersVM AuthenticateUser(string email, string passwordHash)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

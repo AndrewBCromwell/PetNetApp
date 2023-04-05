@@ -57,6 +57,19 @@ namespace WpfPresentation.Animals
             _oldNotes = medicalRecord.MedicalNotes.ToString();
         }
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// saves the user inputed data and updates the data in the database
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// 
         private void btnSave_click(object sender, RoutedEventArgs e)
         {
             PromptSelection selection = (PromptWindow.ShowPrompt("Update Diagnosis", "Do you want to update this treatment record?", ButtonMode.YesNo));
@@ -64,12 +77,13 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    _medicalRecordManager.UpdateTreatmentByMedicalRecordId(_medicalRecord.MedicalRecordId, txtDiagnosisUpdate.Text.ToString(), txtNotesUpdate.Text.ToString());
+                    _medicalRecordManager.EditTreatmentByMedicalRecordId(_medicalRecord.MedicalRecordId, txtDiagnosisUpdate.Text.ToString(), txtNotesUpdate.Text.ToString(), _oldDiagnosisName, _oldNotes);
                     _medicalTreatmentPage.refreshPage();
                 }
                 catch (Exception ex)
                 {
                     PromptWindow.ShowPrompt("Error", ex.Message + "\n" + ex.InnerException.Message, ButtonMode.Ok);
+                    _medicalTreatmentPage.refreshPage();
                 }
             }
             else
@@ -80,6 +94,20 @@ namespace WpfPresentation.Animals
             NavigationService.Navigate(null);
         }
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// cancels the edit, prompts user to confirm their actino if fields have 
+        /// been changed
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// 
         private void btnCancel_click(object sender, RoutedEventArgs e)
         {
             if (!_oldDiagnosisName.Equals(txtDiagnosisUpdate.Text) || !_oldNotes.Equals(txtNotesUpdate.Text))

@@ -229,7 +229,8 @@ INSERT INTO [dbo].[Item]
 		 ('Cat Food'),
 		 ('Dog Food'),
 		 ('Rabbit Food'),
-		 ('Rodent Food')
+		 ('Rodent Food'),
+		 ('Mysterious Item')
 GO
 
 print '' print '*** Inserting AnimalType Records'

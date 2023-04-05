@@ -42,6 +42,8 @@ namespace DataAccessLayerInterfaces
         int AuthenticateUserWithEmailAndPasswordHash(string email, string passwordHash);
         UsersVM SelectUserByEmail(string email);
         List<string> SelectRolesByUserID(int userId);
+        List<string> SelectAllRoles();
+        UsersVM AuthenticateUser(string email, string passwordHash);
 
         // Mads - ACCOUNT SETTINGS
         List<string> SelectAllPronouns();
