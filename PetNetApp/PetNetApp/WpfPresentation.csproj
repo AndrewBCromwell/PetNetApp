@@ -41,6 +41,7 @@
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -105,6 +106,9 @@
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Management\Inventory\ViewNewItemRequestsPage.xaml.cs">
+      <DependentUpon>ViewNewItemRequestsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fundraising\UpdateFundraisingCampaign.xaml.cs">
       <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
@@ -149,6 +153,9 @@
     </Compile>
     <Compile Include="Management\ViewTicketPage.xaml.cs">
       <DependentUpon>ViewTicketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NewItemRequestUserControl.xaml.cs">
+      <DependentUpon>NewItemRequestUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
@@ -381,6 +388,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Community\ViewNearbyResourcesMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Management\Inventory\ViewNewItemRequestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -647,6 +658,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\InKindUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\NewItemRequestUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

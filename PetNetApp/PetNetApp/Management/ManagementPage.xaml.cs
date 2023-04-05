@@ -42,7 +42,7 @@ namespace WpfPresentation.Management
         public ManagementPage()
         {
             InitializeComponent();
-            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
+            _managementPageButtons = new Button[] { btnInventory, btnLibrary, btnKennel, btnTickets, btnVolunteer, btnSchedule };
         }
         public void HideAllButtons()
         {
@@ -56,6 +56,7 @@ namespace WpfPresentation.Management
         {
             HideAllButtons();
             ShowInventoryButtonByRole();
+            ShowLibraryButtonByRole();
             ShowKennelButtonByRole();
             ShowScheduleButtonByRole();
             ShowTicketsButtonByRole();
@@ -77,6 +78,16 @@ namespace WpfPresentation.Management
                 btnKennel.Visibility = Visibility.Visible;
             }
         }
+
+        public void ShowLibraryButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnLibrary.Visibility = Visibility.Visible;
+            }
+        }
+
         public void ShowTicketsButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager", "Helpdesk", "Maintenance" };
@@ -126,7 +137,7 @@ namespace WpfPresentation.Management
         {
             ChangeSelectedButton(btnInventory);
             // replace with page name and then delete comment
-            frameManagement.Navigate(new InventoryPage());
+            frameManagement.Navigate(InventoryPage.GetInventoryPage());
         }
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {

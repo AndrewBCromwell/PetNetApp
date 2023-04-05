@@ -102,7 +102,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShel
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByItemId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewEditResourceAddRequests_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddPost_SP.sql

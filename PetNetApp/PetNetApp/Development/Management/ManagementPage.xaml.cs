@@ -32,7 +32,7 @@ namespace WpfPresentation.Development.Management
         public ManagementPage(MasterManager manager)
         {
             InitializeComponent();
-            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
+            _managementPageButtons = new Button[] { btnInventory, btnLibrary, btnKennel, btnTickets, btnVolunteer, btnSchedule };
             _manager = manager;
         }
 
