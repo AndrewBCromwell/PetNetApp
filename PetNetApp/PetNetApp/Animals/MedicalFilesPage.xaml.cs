@@ -43,15 +43,6 @@ namespace WpfPresentation.Animals
             PopulatePage();
         }
 
-        private void btnAddFile_Click(object sender, RoutedEventArgs e)
-        {
-            var uploadAdditionalFileWindow = new UploadAdditionalFileWindow(_animal, _manager);
-            uploadAdditionalFileWindow.Owner = Window.GetWindow(this);
-            uploadAdditionalFileWindow.ShowDialog();
-            NavigationService.Navigate(new MedicalFilesPage(_animal, _manager));
-            
-        }
-
         private void PopulatePage()
         {
             if (_imagesList == null || _imagesList.Count == 0)

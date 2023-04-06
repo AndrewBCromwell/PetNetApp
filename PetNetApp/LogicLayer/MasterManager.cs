@@ -52,6 +52,7 @@ namespace LogicLayer
         public IZipcodeManager ZipcodeManager { get; set; }
         public IRequestManager RequestManager { get; private set; }
         public IVaccinationManager VaccinationManager { get; set; }
+        public IAdoptionApplicationManager AdoptionApplicationManager { get; set; }
         public IShelterInventoryItemManager ShelterInventoryItemManager { get; set; }
         public IShelterManager ShelterManager { get; set; }
         public IItemManager ItemManager { get; set; }
@@ -59,6 +60,8 @@ namespace LogicLayer
         public IPostManager PostManager { get; set; }
         public IReplyManager ReplyManager { get; set; }
         public IFosterApplicationResponseManager FosterApplicationResponseManager { get; set; }
+        public IResourceAddRequestManager ResourceAddRequestManager { get; set; }
+        public IFosterManager FosterManager { get; set; }
         public IAdoptionApplicationResponseManager AdoptionApplicationResponseManager { get; set; }
 
 
@@ -91,8 +94,10 @@ namespace LogicLayer
             VolunteerManager = new VolunteerManager();
             PostManager = new PostManager();
             ReplyManager = new ReplyManager();
-
+            AdoptionApplicationManager = new AdoptionApplicationManager();
             FosterApplicationResponseManager = new FosterApplicationResponseManager();
+            ResourceAddRequestManager = new ResourceAddRequestManager();
+            FosterManager = new FosterManager();
             AdoptionApplicationResponseManager = new AdoptionApplicationResponseManager();
 
             //for testing from dev page

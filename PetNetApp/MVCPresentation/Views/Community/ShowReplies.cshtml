@@ -1,0 +1,86 @@
+﻿@model DataObjects.PostVM
+@section styles
+{
+    <link href="~/Content/community.css" rel="stylesheet" />
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowReplies</title>
+</head>
+<body>
+    <div class="container lower">
+        <div class="flex overflow">
+            <div class="flexSmall">
+                <img src="http://via.placeholder.com/150x150" class="image">
+            </div>
+            <div class="flexLarge">
+                <h3 class="userNameText">@Model.PosterGivenName@Model.PosterFamilyName</h3>
+                <p class="postText">@Model.PostContent</p>
+            </div>
+        </div>
+        <hr />
+        <div class="flex overflow">
+            <div class="flexSmall">
+                <img src="http://via.placeholder.com/75x75" class="image">
+            </div>
+            <div class="flexLarge">
+                @{Html.RenderPartial("CreateReply", new DataObjects.ReplyVM()); }
+            </div>
+        </div>
+        <hr />
+        @if (Model.Replies.Count > 0)
+        {
+            foreach (var reply in Model.Replies)
+            {
+                <div class="flex overflow">
+                    <div class="flexSmall">
+                        <img src="http://via.placeholder.com/100x100" class="image">
+                    </div>
+                    <div class="flexLarge">
+                        <h3 class="userNameText">@reply.ReplierGivenName@reply.ReplierFamilyName</h3>
+                        @if (!reply.ReplyVisibility)
+                        {
+                            <h7 class="deactive">Deactivated</h7>
+                        }
+                        <p class="communityText">@reply.ReplyContent</p>
+                    </div>
+                </div>
+                <div class="table">
+                    <div class="row">
+                        <div class="cell">
+
+                            @if (reply.ReplyVisibility && ViewBag.UserId == reply.ReplyAuthor)
+                            {
+
+                                @Html.ActionLink("Edit Reply", "EditReply", new { id = reply.ReplyId });
+                                <text> | </text>
+                            }
+
+                            @if (reply.ReplyVisibility && (ViewBag.UserId == reply.ReplyAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
+                            {
+                                @Html.ActionLink("Delete Reply", "DeleteReply", new { id = reply.ReplyId });
+                            }
+
+                            @if (!reply.ReplyVisibility && (ViewBag.UserId == reply.ReplyAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
+                            {
+                                @Html.ActionLink("Reinstate Reply", "ReinstateReply", new { id = reply.ReplyId });
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        } 
+        else
+        {
+            <h5>Be the first to reply!</h5>
+        }
+
+    </div>
+    <div class="container">
+        @Html.ActionLink("Back", "Index")
+    </div>
+</body>
+</html>

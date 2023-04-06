@@ -42,12 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAdoptionApplicationManager.cs" />
     <Compile Include="IAdoptionApplicationResponseManager.cs" />
     <Compile Include="IDeathManager.cs" />
     <Compile Include="IAnimalManager.cs" />
     <Compile Include="IAnimalUpdatesManager.cs" />
     <Compile Include="IDonationManager.cs" />
     <Compile Include="IFosterApplicationResponseManager.cs" />
+    <Compile Include="IFosterManager.cs" />
     <Compile Include="IFundraisingCampaignManager.cs" />
     <Compile Include="IFundraisingEventManager.cs" />
     <Compile Include="IImagesManager.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="IMedicalRecordManager.cs" />
     <Compile Include="IPostManager.cs" />
     <Compile Include="IReplyManager.cs" />
+    <Compile Include="IResourceAddRequestManager.cs" />
     <Compile Include="IShelterInventoryItemManager.cs" />
     <Compile Include="IProcedureManager.cs" />
     <Compile Include="IRequestManager.cs" />

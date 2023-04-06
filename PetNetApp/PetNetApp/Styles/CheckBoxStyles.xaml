@@ -15,8 +15,17 @@
     <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="{StaticResource ControlPressedGlyphColor}"/>
     <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="{StaticResource ControlGlyphColor}"/>
     <SolidColorBrush x:Key="OptionMark.Static.Foreground" Color="{StaticResource ControlForegroundColor}"/>
+    <Style x:Key="OptionMarkFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="14,0,0,0" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="{x:Type CheckBox}" x:Key="rsrcCheckBox">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
         <Setter Property="Foreground" Value="{StaticResource OptionMark.Static.Foreground}"/>

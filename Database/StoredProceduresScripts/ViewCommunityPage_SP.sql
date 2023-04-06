@@ -50,7 +50,7 @@ AS
 		Select 	[ReplyId], [PostId], [ReplyAuthor], [ReplyContent], [ReplyDate], [ReplyVisibility], [GivenName], [FamilyName]
         From	[Reply] join [Users]
 					on [Reply].[ReplyAuthor] = [Users].[UsersId]
-        Where	[PostId] = @PostId AND [ReplyAdminRemoved] IS NULL OR [ReplyAdminRemoved] = 1
+        Where	[PostId] = @PostId AND ([ReplyAdminRemoved] IS NULL OR [ReplyAdminRemoved] = 1)
         Order By	[ReplyDate] DESC
     END
 GO

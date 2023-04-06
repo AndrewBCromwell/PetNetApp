@@ -76,5 +76,22 @@ namespace LogicLayerInterfaces
         /// <exception cref="SQLException">Data failed to be inserted</exception>
         /// <returns>true or false if record updated</returns>	
         bool EditScheduleVM(ScheduleVM oldSchedule, ScheduleVM newSchedule);
+
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/03/24
+        /// 
+        /// Deletes an existing schedule record into the database
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// /// <param name="scheduleId">The id of the schedule to be deleted</param>
+        /// <exception cref="SQLException">Data failed to be deleted</exception>
+        /// <returns>true or false if record deleted</returns>	
+        bool DeleteScheduleVM(int scheduleId);
     }
 }

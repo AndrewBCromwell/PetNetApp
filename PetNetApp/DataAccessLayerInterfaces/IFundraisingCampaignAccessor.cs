@@ -23,6 +23,29 @@ namespace DataAccessLayerInterfaces
 
         /// <summary>
         /// Stephen Jaurigue
+        /// Created: 2023/03/24
+        /// 
+        /// A method to get the active fundraising campaigns for all active shelters
+        /// </summary>
+        /// 
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
+        List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaigns();
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/03/24
+        /// 
+        /// A method to get the active fundraising campaigns for this active shelter
+        /// </summary>
+        /// 
+        /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
+        List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaignsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Stephen Jaurigue
         /// Created: 2023/03/02
         /// 
         /// A method to create a new fundraising campaign for this shelter
@@ -52,5 +75,26 @@ namespace DataAccessLayerInterfaces
         /// <param name="fundraisingCampaign">Campaign to deactivate</param>
         /// <returns>the number of campaigns deactivated</returns>
         int DeleteFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// A method to create a new fundraising campaign update
+        /// </summary>
+        /// <param name="campaignUpdate">The campaign update record</param>
+        /// <returns>ID of the update record created</returns>
+        int InsertCampaignUpdate(CampaignUpdate campaignUpdate);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// A method to update the fundraising campaign results
+        /// </summary>
+        /// <param name="oldFundraisingCampaignVM">The original campaign record</param>
+        /// <param name="newFundraisingCampaignVM">The new campaign record</param>
+        int UpdateFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM,
+            FundraisingCampaignVM newFundraisingCampaignVM);
     }
 }

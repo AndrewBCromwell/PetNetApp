@@ -10,9 +10,40 @@ namespace DataAccessLayerInterfaces
     public interface IMedicalRecordAccessor
     {
         int SelectLastMedicalRecordIdByAnimalId(int animalId);
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// Selects all medical records for a specific animal
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="animalId">animal's animalId number</param>
+        /// <exception cref="Exception">Select Fails</exception>
+        /// <returns>All medicalrecord rows where animalId equals the param</returns>
         List<MedicalRecordVM> SelectMedicalRecordDiagnosisByAnimalId(int animalId);
-
-        int UpdateMedicalTreatmentByMedicalrecordId(int medicalRecordId, string diagnosis, string medicalNotes);
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// updates a medicalrecord's treatment and diagnosis by medicalrecordid
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="medicalRecordId">medical record id</param>
+        /// <param name="diagnosis">A name of an animal's diagnosis</param>
+        /// <param name="medicalNotes">Notes about an animal's treatment/diagnosis</param>
+        /// <exception cref="Exception">Update Fails</exception>
+        /// <returns>Rows affected</returns>	
+        int UpdateMedicalTreatmentByMedicalrecordId(int medicalRecordId, string newDiagnosis, string newMedicalNotes, string oldDiagnosis, string oldMedicalNotes);
 
         /// <summary>
         /// Andrew Cromwell

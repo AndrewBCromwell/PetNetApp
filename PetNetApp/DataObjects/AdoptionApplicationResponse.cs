@@ -10,7 +10,7 @@ namespace DataObjects
     {
         public int AdoptionApplicationResponseId { get; set; }
         public int AdoptionApplicationId { get; set; }
-        public int UsersId { get; set; }
+        public int ResponderUserId { get; set; }
         public bool Approved { get; set; }
         public DateTime AdoptionApplicationResponseDate { get; set; }
         public string AdoptionApplicationResponseNotes { get; set; }
@@ -81,10 +81,12 @@ namespace DataObjects
                     ;
             }
             catch (Exception)
-            {
+    {
                 return false;
             }
         }
         */
+        public AdoptionApplication Application { get; set; }
+        public Users Responder { get; set; }
     }
 }

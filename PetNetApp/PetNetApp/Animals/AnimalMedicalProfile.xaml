@@ -86,7 +86,9 @@
                      Height="45" Margin=" 10 0"/>
                     <TextBox x:Name="txtAnimalMicrochipNum" Grid.Column="1" Grid.Row="1" FontSize="15" Background="White" 
                      Height="45" Margin="10 0"/>
-                    <Image Grid.Row="2" Grid.ColumnSpan="2" Margin="25" MaxHeight="300" HorizontalAlignment="Center" Source="/WpfPresentation;component/Images/perfectCAT.png" />
+                    <Label x:Name="lblNoImage" Grid.Row="2" Grid.ColumnSpan="2" Margin="25" FontWeight="Bold"
+                                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center">No image available</Label>
+                    <Image x:Name="imgMedAnimal" Grid.Row="2" Grid.ColumnSpan="2" Margin="25" MaxHeight="300" HorizontalAlignment="Center" />
                     <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <Label FontWeight="Bold" FontSize="25">Medicine Schedule</Label>
                         <Image  Height="23" Width="34" Source="/WpfPresentation;component/Images/libraryplus_dark.png" ></Image>

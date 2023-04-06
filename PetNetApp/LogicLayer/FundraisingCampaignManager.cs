@@ -95,6 +95,34 @@ namespace LogicLayer
             return success;
         }
 
+        public List<FundraisingCampaignVM> RetrieveAllActiveFundraisingCampaigns()
+        {
+            List<FundraisingCampaignVM> campaigns = null;
+            try
+            {
+                campaigns = _fundraisingCampaignAccessor.SelectAllActiveFundraisingCampaigns();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load Campaigns", ex);
+            }
+            return campaigns;
+        }
+
+        public List<FundraisingCampaignVM> RetrieveAllActiveFundraisingCampaignsByShelterId(int shelterId)
+        {
+            List<FundraisingCampaignVM> campaigns = null;
+            try
+            {
+                campaigns = _fundraisingCampaignAccessor.SelectAllActiveFundraisingCampaignsByShelterId(shelterId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load Campaigns", ex);
+            }
+            return campaigns;
+        }
+
         public List<FundraisingCampaignVM> RetrieveAllFundraisingCampaignsByShelterId(int shelterId)
         {
             List<FundraisingCampaignVM> campaigns = null;
@@ -121,6 +149,39 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to load the fundraising campaign", ex);
             }
             return fundraisingCampaign;
+        }
+
+        public bool AddCampaignUpdate(CampaignUpdate campaignUpdate)
+        {
+            bool success = false;
+            try
+            {
+                int campaignUpdateId = _fundraisingCampaignAccessor.InsertCampaignUpdate(campaignUpdate);
+                if (campaignUpdateId != 0)
+                {
+                    success = true;
+                    campaignUpdate.CampaignUpdateId = campaignUpdateId;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to add the new Campagin Update", ex);
+            }
+            return success;
+        }
+
+        public bool EditFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM, FundraisingCampaignVM newFundraisingCampaignVM)
+        {
+            bool success = false;
+            try
+            {
+                success = _fundraisingCampaignAccessor.UpdateFundraisingCampaignResults(oldFundraisingCampaignVM, newFundraisingCampaignVM) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to update the campaign results", ex);
+            }
+            return success;
         }
     }
 }

@@ -541,5 +541,10 @@ namespace WpfPresentation.Fundraising
         {
             ApplyFundraisingEventContactSort();
         }
+
+        private void Page_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Page_Loaded(sender, e);
+        }
     }
 }

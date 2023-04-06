@@ -42,20 +42,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoptionApplication.cs" />
     <Compile Include="AdoptionApplicationResponse.cs" />
+    <Compile Include="AdoptionPlacement.cs" />
+    <Compile Include="AnimalType.cs" />
     <Compile Include="Applicant.cs" />
+    <Compile Include="DataPathInformation.cs" />
+    <Compile Include="CampaignUpdate.cs" />
+    <Compile Include="ApplicationStatus.cs" />
     <Compile Include="Death.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalUpdates.cs" />
+    <Compile Include="FosterApplication.cs" />
+    <Compile Include="FosterApplicationResponse.cs" />
     <Compile Include="FilterDonation.cs" />
     <Compile Include="FosterPlacement.cs" />
     <Compile Include="FosterPlacementRecord.cs" />
     <Compile Include="Donation.cs" />
     <Compile Include="FosterApplicationResponse.cs" />
+    <Compile Include="FosterRequest.cs" />
+    <Compile Include="FosterRequestResponse.cs" />
     <Compile Include="FundraisingCampaign.cs" />
     <Compile Include="FundraisingEvent.cs" />
     <Compile Include="Images.cs" />
     <Compile Include="InKind.cs" />
+    <Compile Include="Inspection.cs" />
     <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Job.cs" />
@@ -67,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reply.cs" />
     <Compile Include="Request.cs" />
+    <Compile Include="ResourceAddRequest.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Shelter.cs" />

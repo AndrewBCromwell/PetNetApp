@@ -6,8 +6,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Nathan Zumsande
+/// Updated: 2023/03/31
+/// Added methods AddItem, RetrieveAllCategories
+/// AddItemCategory, RemoveItemCategory
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -33,6 +35,80 @@ namespace LogicLayer
             _itemAccessor = itemAccessor;
 
         }
+
+        public bool AddItem(string itemId)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _itemAccessor.InsertItem(itemId));
+                if (!result)
+                {
+                    throw new ApplicationException("Insert failed for item " + itemId);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public bool AddItemCategory(string itemId, string category)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _itemAccessor.InsertItemCategory(itemId, category));
+                if (!result)
+                {
+                    throw new ApplicationException("Insert Item Category failed for item " + itemId + " with the category of " + category);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public List<string> RetrieveAllCategories()
+        {
+            List<string> categories = new List<string>();
+            try
+            {
+                categories = _itemAccessor.SelectAllCategories();
+                if(categories.Count == 0)
+                {
+                    throw new ApplicationException("Items not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An Error Occured while retrieving categories", ex);
+            }
+
+            return categories;
+        }
+
+        public bool RemoveItemCategory(string itemId, string category)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _itemAccessor.DeleteItemCategory(itemId, category));
+                if (!result)
+                {
+                    throw new ApplicationException("Delete Item Category failed for item " + itemId + " with the category of " + category);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
         public Item RetrieveItemByItemId(string itemId)
         {
             Item item = null;

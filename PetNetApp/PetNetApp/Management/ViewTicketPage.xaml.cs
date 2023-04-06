@@ -1,4 +1,5 @@
 ﻿using DataObjects;
+using LogicLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,21 @@ namespace WpfPresentation.Management
     /// </summary>
     public partial class ViewTicketPage : Page
     {
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
         private TicketVM _ticketVM = null;
-        public ViewTicketPage(TicketVM ticketVM)
+        private TicketVM _oldTicket = null;
+        private ViewTicketList _viewTicketList = null;
+
+        public ViewTicketPage(TicketVM ticketVM, MasterManager manager, ViewTicketList viewTicketList)
         {
             _ticketVM = ticketVM;
+            _oldTicket = new TicketVM();
+            _oldTicket.TicketId = _ticketVM.TicketId;
+            _oldTicket.TicketStatusId = _ticketVM.TicketStatusId;
+            _masterManager = manager;
+            _viewTicketList = viewTicketList;
             InitializeComponent();
+
         }
 
         /// <summary>
@@ -63,6 +74,7 @@ namespace WpfPresentation.Management
         {
             lblTicketNumber.Content = "Ticket: " + _ticketVM.TicketId;
             txtTicketTitle.Text = _ticketVM.TicketTitle;
+            txtTicketContext.Text = _ticketVM.TicketContext;
             txtTicketDate.Text = _ticketVM.TicketDate.ToString();
             txtTicketType.Text = _ticketVM.TicketStatusId;
             txtTicketPoster.Text = _ticketVM.Email;
@@ -109,9 +121,9 @@ namespace WpfPresentation.Management
 
         /// <summary>
         /// Matthew Meppelink
-        /// Created: 2023/03/16
+        /// Created: 2023/03/23
         /// 
-        /// TODO
+        /// Updates a ticket's status to closed or open
         /// 
         /// </summary>
         ///
@@ -122,7 +134,43 @@ namespace WpfPresentation.Management
         /// </remarks>
         private void btnResolve_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("TODO", "TODO", ButtonMode.Ok);
+            string ticketStatus = _ticketVM.TicketStatusId == "Closed" ? "open" : "close";
+            PromptSelection selection = (PromptWindow.ShowPrompt("Resolve?", "Do you want to " + ticketStatus + " this ticket?", ButtonMode.YesNo));
+            if (selection == PromptSelection.Yes)
+            {
+                _ticketVM.TicketStatusId = _ticketVM.TicketStatusId == "Closed" ? "Open" : "Closed";
+                try
+                {
+                    _masterManager.TicketManager.EditTicketStatus(_ticketVM, _oldTicket);
+
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error!", "An error occured while processing your request" + ex.InnerException.Message, ButtonMode.Ok);
+                }
+                _viewTicketList.refreshTickets();
+                NavigationService.Navigate(null);
+                PromptWindow.ShowPrompt("Success!", "Ticket " + _ticketVM.TicketId + "'s status was succesfully updated to " + _ticketVM.TicketStatusId, ButtonMode.Ok);
+            }
+
+        }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/03/23
+        /// 
+        /// Exits the current screen, sends user back to view ticket list page
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(null);
         }
     }
 }

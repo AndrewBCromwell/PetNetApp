@@ -23,6 +23,30 @@ namespace LogicLayerInterfaces
 
         /// <summary>
         /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// A method to get the active fundraising campaigns for this active shelter
+        /// </summary>
+        /// 
+        /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
+        List<FundraisingCampaignVM> RetrieveAllActiveFundraisingCampaignsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/23
+        /// 
+        /// A method to get the active fundraising campaigns for all active shelters
+        /// </summary>
+        /// 
+        /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
+        List<FundraisingCampaignVM> RetrieveAllActiveFundraisingCampaigns();
+
+        /// <summary>
+        /// Stephen Jaurigue
         /// Created: 2023/03/02
         /// 
         /// A method to create a new fundraising campaign for this shelter
@@ -61,5 +85,27 @@ namespace LogicLayerInterfaces
         /// <param name="fundraisingCampaign">Fundraising Campaign to remove</param>
         /// <returns>Whether the record was successfully removed</returns>
         bool RemoveFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// A method to create a new fundraising campaign update
+        /// </summary>
+        /// <param name="campaignUpdate">The campaign update record</param>
+        /// <returns>Bool indicating success</returns>
+        bool AddCampaignUpdate(CampaignUpdate campaignUpdate);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// A method to update the fundraising campaign results
+        /// </summary>
+        /// <param name="oldFundraisingCampaignVM">The original campaign record</param>
+        /// <param name="newFundraisingCampaignVM">The new campaign record</param>
+        /// <returns>Bool indicating success</returns>
+        bool EditFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM,
+            FundraisingCampaignVM newFundraisingCampaignVM);
     }
 }

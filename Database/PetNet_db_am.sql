@@ -446,12 +446,15 @@ print '' print '*** creating table for ResourceAddRequest'
 GO
 CREATE TABLE [dbo].[ResourceAddRequest] (
     [ResourceAddRequestId]  [int] IDENTITY(100000, 1)       NOT NULL,
+	[ShelterId]				[int]							NOT NULL,
     [UsersId]               [int]                           NOT NULL,
     [Title]                 [nvarchar](100)                 NOT NULL,
     [Note]                  [nvarchar](2500)                NOT NULL,
     [Active]                [bit]                           NOT NULL,
     [Date]                  [datetime]  DEFAULT GETDATE()   NOT NULL,
     CONSTRAINT  [pk_ResourceAddRequestId] PRIMARY KEY ([ResourceAddRequestId]),
+	CONSTRAINT	[fk_ResourceAddRequestShelterId] FOREIGN KEY ([ShelterId])
+		REFERENCES [dbo].[Shelter]([ShelterId]),
     CONSTRAINT  [fk_UsersId] FOREIGN KEY ([UsersId])
         REFERENCES [dbo].[Users]([UsersId])
 )
@@ -711,7 +714,10 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 	[EndDate]				[datetime]					NULL,
 	[Description]			[nvarchar](250)				NOT NULL,
 	[Complete]				[bit]	DEFAULT 0			NOT NULL,
-	[Active]				[bit]	DEFAULT 1			NOT NULL	
+	[Active]				[bit]	DEFAULT 1			NOT NULL,
+	[AmountRaised]			[decimal](9,2) DEFAULT 0	NULL,
+	[NumOfAttendees]		[int]	DEFAULT 0			NULL,
+	[NumAnimalsAdopted]		[int]	DEFAULT 0			NULL
 	CONSTRAINT [pk_FundraisingCampaignId] PRIMARY KEY ([FundraisingCampaignId]),
 	CONSTRAINT [fk_FundraisingCampaign_UsersId] FOREIGN KEY ([UsersId])
 		REFERENCES [Users]([UsersId]),
@@ -719,7 +725,6 @@ CREATE TABLE [dbo].[FundraisingCampaign]
 		REFERENCES [Shelter]([ShelterId])
 )
 GO
-
 
 print '' print '*** creating FundraisingCampaign indices'
 CREATE INDEX ix_FundraisingCampaignUsersId
@@ -924,7 +929,7 @@ CREATE TABLE [dbo].[Applicant] (
 	[HomeOwnershipId]		[nvarchar](50)				NOT NULL,
 	[NumberOfChildren]		[int]						NOT NULL,
 	[NumberOfPets]			[int]						NOT NULL,
-	[CurrentlyAcceptingAnimals]	[bit]					NOT NULL DEFAULT NULL,
+	[CurrentlyAcceptingAnimals]	[bit]					NOT NULL DEFAULT 1,
 	
 	CONSTRAINT [fk_Applicant_UsersID] FOREIGN KEY([UsersId])
 		REFERENCES [dbo].[Users]([UsersId]),
@@ -1328,11 +1333,11 @@ GO
 print '' print '** creating table for AdoptionApplication'
 GO
 CREATE TABLE [dbo].[AdoptionApplication] (
-    [AdoptionApplicationId]    	[int]  IDENTITY(100000,1)     NOT NULL,
-    [ApplicantId]    			[int]     NOT NULL,
-    [AnimalId]    				[int]     NOT NULL,
-    [ApplicationStatusId]    	[nvarchar](50) DEFAULT 'Pending'    NOT NULL,
-    [AdoptionApplicationDate]   [datetime]   DEFAULT GETDATE()  NOT NULL
+    [AdoptionApplicationId]    	[int] IDENTITY(100000,1)    NOT NULL,
+    [ApplicantId]    			[int]     					NOT NULL,
+    [AnimalId]    				[int]     					NOT NULL,
+    [ApplicationStatusId]    	[nvarchar](50)				NOT NULL	DEFAULT 'Pending',
+    [AdoptionApplicationDate]   [datetime]					NOT NULL	DEFAULT GETDATE(),
 
     CONSTRAINT [pk_AdoptionApplication] PRIMARY KEY([AdoptionApplicationId]),
     CONSTRAINT [fk_AdoptionApplication_ApplicantId] FOREIGN KEY ([ApplicantId])

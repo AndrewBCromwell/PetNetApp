@@ -12,7 +12,7 @@ namespace DataObjects
         public int PostId { get; set; }
         public int PostAuthor { get; set; }
         [Required(ErrorMessage = "Post cant be empty")]
-        [RegularExpression(@"^(?!\s*$).+",
+        [RegularExpression(@"^(?!\s*$)(\s|\S)+$", 
          ErrorMessage = "Post cant be only space(s)")]
         public string PostContent { get; set; }
         public DateTime PostDate { get; set; }
@@ -24,7 +24,6 @@ namespace DataObjects
         public string PosterGivenName { get; set; }
         public string PosterFamilyName { get; set; }
         public List<ReplyVM> Replies { get; set; }
-        public int ReplyCount { get; set; }
         public int FavoriteCount { get; set; }
         public bool UserFavorited { get; set; }
         public bool UserPostReported { get; set; }

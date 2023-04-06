@@ -10,7 +10,7 @@
       Title="ViewFundraisingEventHosts"
       Background="#EEF2E6"
       Loaded="Page_Loaded"
-      Unloaded="Page_Unloaded">
+      Unloaded="Page_Unloaded" GotFocus="Page_GotFocus">
 
     <Grid Margin="26 0">
         <Grid.RowDefinitions>
