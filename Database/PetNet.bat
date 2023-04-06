@@ -110,6 +110,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\EditPost_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationResponse_SP.sql
+
+
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

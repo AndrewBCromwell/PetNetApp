@@ -75,6 +75,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animals\AddEditReportOnAdopter.xaml.cs">
+      <DependentUpon>AddEditReportOnAdopter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AddEditReportOnFoster.xaml.cs">
       <DependentUpon>AddEditReportOnFoster.xaml</DependentUpon>
     </Compile>
@@ -238,9 +241,9 @@
     <Compile Include="Fundraising\ViewDonationsPage.xaml.cs">
       <DependentUpon>ViewDonationsPage.xaml</DependentUpon>
     </Compile>
-	<Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
+    <Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
       <DependentUpon>SpecificRequestPage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Shelters\ContactPage.xaml.cs">
       <DependentUpon>ContactPage.xaml</DependentUpon>
     </Compile>
@@ -356,6 +359,10 @@
     <Compile Include="UserControls\AnimalListUserControl.xaml.cs">
       <DependentUpon>AnimalListUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AddEditReportOnAdopter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AddEditReportOnFoster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -527,7 +534,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\SpecificRequestPage.xaml">
-	  <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\InventoryPage.xaml">

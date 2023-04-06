@@ -72,7 +72,9 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton(btnAdopt);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            //frameAnimals.Navigate(null);
+            //PromptWindow.ShowPrompt("Edit in future", "Need to replace the adoption application response page here and relink it correctly.");
+            frameAnimals.Navigate(new AddEditReportOnAdopter(100000));
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)

@@ -1,8 +1,8 @@
 ﻿/// <summary>
 /// Asa Armstrong
-/// Created: 2023/03/22
+/// Created: 2023/03/30
 /// 
-/// WPF UI logic for adding and editing Reports on Fosters. Uses FosterApplicationResponse Data Object and Database Object.
+/// WPF UI logic for adding and editing Reports on Adopters. Uses AdoptionApplicationResponse Data Object and Database Object.
 /// </summary>
 ///
 /// <remarks>
@@ -28,27 +28,30 @@ using LogicLayer;
 
 namespace WpfPresentation.Animals
 {
-    public partial class AddEditReportOnFoster : Page
+    /// <summary>
+    /// Interaction logic for AddEditReportOnAdopter.xaml
+    /// </summary>
+    public partial class AddEditReportOnAdopter : Page
     {
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private bool isEditMode = false;
-        // private FosterApplication _fosterApplication = null;
-        private int _fosterApplicationId = -1;
+        // private AdoptionApplication _adoptionApplication = null;
+        private int _adoptionApplicationId = -1;
 
-        private FosterApplicationResponseVM _oldFosterApplicationResponse = new FosterApplicationResponseVM();
-        private FosterApplicationResponseVM _responseVM = new FosterApplicationResponseVM();
+        private AdoptionApplicationResponseVM _oldAdoptionApplicationResponse = new AdoptionApplicationResponseVM();
+        private AdoptionApplicationResponseVM _response = new AdoptionApplicationResponseVM();
 
-        public AddEditReportOnFoster(int fosterApplicationId)
+        public AddEditReportOnAdopter(int adoptionApplicationId)
         {
-            _fosterApplicationId = fosterApplicationId;
+            _adoptionApplicationId = adoptionApplicationId;
             InitializeComponent();
             setupPage();
         }
 
         /*
-        public AddEditReportOnFoster(FosterApplication FosterApplication)
+        public AddEditReportOnAdopter(AdoptionApplication adoptionApplication)
         {
-            _fosterApplication = FosterApplication;
+            _adoptionApplication = adoptionApplication;
             InitializeComponent();
         }
         */
@@ -57,16 +60,16 @@ namespace WpfPresentation.Animals
         {
             try
             {
-                _oldFosterApplicationResponse = _masterManager.FosterApplicationResponseManager.RetrieveFosterApplicationResponse(_fosterApplicationId);
-                if (!_oldFosterApplicationResponse.FosterApplicationResponseId.Equals(0)) // a record exists so edit mode
+                _oldAdoptionApplicationResponse = _masterManager.AdoptionApplicationResponseManager.RetrieveAdoptionApplicationResponse(_adoptionApplicationId);
+                if (!_oldAdoptionApplicationResponse.AdoptionApplicationId.Equals(0)) // record exists
                 {
                     isEditMode = true;
                     setPageForEditMode();
                 }
                 else // not edit mode
                 {
-                    // txt_FosterName.Text = _fosterApplication -> Given and Family name
-                    // txt_FosterAccountID.Text = _fosterApplication -> ApplicantId
+                    // txt_AdopterName.Text = _adoptionApplication -> Given and Family name
+                    // txt_AdopterAccountID.Text = _adoptionApplication -> ApplicantId
                 }
             }
             catch (Exception ex)
@@ -77,37 +80,37 @@ namespace WpfPresentation.Animals
 
         private void setPageForEditMode()
         {
-            lbl_Title.Content = "Update Foster Application Response";
-            txt_Comments.Text = _oldFosterApplicationResponse.FosterApplicationResponseNotes;
-            txt_FosterAccountID.Text = _oldFosterApplicationResponse.ApplicantId.ToString();
-            txt_FosterName.Text = _oldFosterApplicationResponse.FosterApplicantGivenName + " " + _oldFosterApplicationResponse.FosterApplicantFamilyName;
-            txt_FosterReportID.Text = _oldFosterApplicationResponse.FosterApplicationResponseId.ToString();
-            rad_ApprovedYes.IsChecked = _oldFosterApplicationResponse.Approved;
+            lbl_Title.Content = "Update Adoption Application Response";
+            txt_Comments.Text = _oldAdoptionApplicationResponse.AdoptionApplicationResponseNotes;
+            txt_AdopterAccountID.Text = _oldAdoptionApplicationResponse.ApplicantId.ToString();
+            txt_AdopterName.Text = _oldAdoptionApplicationResponse.AdoptionApplicantGivenName + " " + _oldAdoptionApplicationResponse.AdoptionApplicantFamilyName;
+            txt_AdoptionResponseID.Text = _oldAdoptionApplicationResponse.AdoptionApplicationResponseId.ToString();
+            rad_ApprovedYes.IsChecked = _oldAdoptionApplicationResponse.Approved;
 
-            txt_FosterAccountID.Visibility = Visibility.Hidden;
+            txt_AdopterAccountID.Visibility = Visibility.Hidden;
             txt_DateCreated.Visibility = Visibility.Visible;
-            lbl_FosterAccountID.Visibility = Visibility.Hidden;
+            lbl_AdopterAccountID.Visibility = Visibility.Hidden;
             lbl_DateCreated.Visibility = Visibility.Visible;
 
-            txt_DateCreated.Text = _oldFosterApplicationResponse.FosterApplicationResponseDate.ToLongDateString();
+            txt_DateCreated.Text = _oldAdoptionApplicationResponse.AdoptionApplicationResponseDate.ToLongDateString();
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                _responseVM.Approved = (rad_ApprovedYes.IsChecked.Equals(true) ? true : false);
-                _responseVM.FosterApplicationResponseNotes = txt_Comments.Text;
-                if (!ValidationHelpers.IsValidLongDescription(_responseVM.FosterApplicationResponseNotes))
+                _response.Approved = (rad_ApprovedYes.IsChecked.Equals(true) ? true : false);
+                _response.AdoptionApplicationResponseNotes = txt_Comments.Text;
+                if (!ValidationHelpers.IsValidLongDescription(_response.AdoptionApplicationResponseNotes))
                 {
                     throw new ApplicationException("Invalid Comments");
                 }
-                _responseVM.UsersId = _masterManager.User.UsersId;
-                _responseVM.FosterApplicationId = _fosterApplicationId; // or _fosterApplication.FosterApplicationId
+                _response.UsersId = _masterManager.User.UsersId;
+                _response.AdoptionApplicationId = _adoptionApplicationId; // or _adoptionApplication.AdoptionApplicationId
 
                 if (!isEditMode)// not edit mode
                 {
-                    if (_masterManager.FosterApplicationResponseManager.AddFosterApplicationResponse(_responseVM))
+                    if (_masterManager.AdoptionApplicationResponseManager.AddAdoptionApplicationResponse(_response))
                     {
                         PromptWindow.ShowPrompt("Congratulations!", "Record Added", ButtonMode.Ok);
                         setupPage();
@@ -119,7 +122,7 @@ namespace WpfPresentation.Animals
                 }
                 else // edit mode
                 {
-                    if(_masterManager.FosterApplicationResponseManager.EditFosterApplicationResponse(_responseVM, _oldFosterApplicationResponse))
+                    if (_masterManager.AdoptionApplicationResponseManager.EditAdoptionApplicationResponse(_response, _oldAdoptionApplicationResponse))
                     {
                         PromptWindow.ShowPrompt("Congratulations!", "Record Updated", ButtonMode.Ok);
                         setupPage();

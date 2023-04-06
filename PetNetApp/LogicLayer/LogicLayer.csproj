@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoptionApplicationResponseManager.cs" />
     <Compile Include="DeathManager.cs" />
     <Compile Include="AnimalManager.cs" />
     <Compile Include="AnimalUpdatesManager.cs" />

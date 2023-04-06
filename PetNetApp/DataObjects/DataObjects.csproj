@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoptionApplicationResponse.cs" />
     <Compile Include="Applicant.cs" />
     <Compile Include="Death.cs" />
     <Compile Include="Animal.cs" />

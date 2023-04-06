@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAdoptionApplicationResponseAccessor.cs" />
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IReplyAccessor.cs" />
