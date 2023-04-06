@@ -23,7 +23,7 @@ namespace DataAccessLayer
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@AdoptionApplicationId", adoptionApplicationResponse.AdoptionApplicationId);
-            cmd.Parameters.AddWithValue("@UsersId", adoptionApplicationResponse.UsersId);
+            cmd.Parameters.AddWithValue("@UsersId", adoptionApplicationResponse.ResponderUserId);
             cmd.Parameters.AddWithValue("@Approved", adoptionApplicationResponse.Approved);
 
             //cmd.Parameters.AddWithValue("@AdoptionApplicationResponseNotes", adoptionApplicationResponse.AdoptionApplicationResponseNotes);
@@ -74,7 +74,7 @@ namespace DataAccessLayer
                     {
                         responseVM.AdoptionApplicationResponseId = reader.GetInt32(0);
                         responseVM.AdoptionApplicationId = reader.GetInt32(1);
-                        responseVM.UsersId = reader.GetInt32(2);
+                        responseVM.ResponderUserId = reader.GetInt32(2);
                         responseVM.Approved = reader.GetBoolean(3);
                         responseVM.AdoptionApplicationResponseDate = reader.GetDateTime(4);
                         responseVM.AdoptionApplicationResponseNotes = reader.IsDBNull(5) ? null : reader.GetString(5);
@@ -106,7 +106,7 @@ namespace DataAccessLayer
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@AdoptionApplicationResponseId", oldAdoptionApplicationResponse.AdoptionApplicationResponseId);
             cmd.Parameters.AddWithValue("@AdoptionApplicationId", oldAdoptionApplicationResponse.AdoptionApplicationId);
-            cmd.Parameters.AddWithValue("@UsersId", oldAdoptionApplicationResponse.UsersId);
+            cmd.Parameters.AddWithValue("@UsersId", oldAdoptionApplicationResponse.ResponderUserId);
 
             cmd.Parameters.AddWithValue("@OldApproved", oldAdoptionApplicationResponse.Approved);
             //cmd.Parameters.AddWithValue("@OldAdoptionApplicationResponseNotes", oldAdoptionApplicationResponse.AdoptionApplicationResponseNotes);

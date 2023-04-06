@@ -59,7 +59,6 @@
     <Compile Include="FosterPlacement.cs" />
     <Compile Include="FosterPlacementRecord.cs" />
     <Compile Include="Donation.cs" />
-    <Compile Include="FosterApplicationResponse.cs" />
     <Compile Include="FosterRequest.cs" />
     <Compile Include="FosterRequestResponse.cs" />
     <Compile Include="FundraisingCampaign.cs" />

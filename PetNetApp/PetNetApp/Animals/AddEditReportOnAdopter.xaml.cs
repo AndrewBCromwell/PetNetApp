@@ -105,7 +105,7 @@ namespace WpfPresentation.Animals
                 {
                     throw new ApplicationException("Invalid Comments");
                 }
-                _response.UsersId = _masterManager.User.UsersId;
+                _response.ResponderUserId = _masterManager.User.UsersId;
                 _response.AdoptionApplicationId = _adoptionApplicationId; // or _adoptionApplication.AdoptionApplicationId
 
                 if (!isEditMode)// not edit mode

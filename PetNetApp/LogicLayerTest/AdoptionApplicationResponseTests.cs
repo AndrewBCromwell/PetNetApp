@@ -19,7 +19,7 @@ namespace LogicLayerTest
         {
             AdoptionApplicationResponseId = 999_998,
             AdoptionApplicationId = 999_998,
-            UsersId = 999_998,
+            ResponderUserId = 999_998,
             Approved = false,
             AdoptionApplicationResponseDate = dt,
             AdoptionApplicationResponseNotes = "notes"
@@ -29,7 +29,7 @@ namespace LogicLayerTest
         {
             AdoptionApplicationResponseId = 999_998,
             AdoptionApplicationId = 999_998,
-            UsersId = 999_998,
+            ResponderUserId = 999_998,
             Approved = false,
             AdoptionApplicationResponseDate = dt,
             AdoptionApplicationResponseNotes = "notes"

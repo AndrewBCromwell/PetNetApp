@@ -33,7 +33,7 @@ namespace DataObjects
 
                 return (this.AdoptionApplicationResponseId == response2.AdoptionApplicationResponseId) &&
                     (this.AdoptionApplicationId == response2.AdoptionApplicationId) &&
-                    (this.UsersId == response2.UsersId) &&
+                    (this.ResponderUserId == response2.ResponderUserId) &&
                     (this.Approved == response2.Approved) &&
                     (this.AdoptionApplicationResponseDate.Equals(response2.AdoptionApplicationResponseDate)) &&
                     (this.AdoptionApplicationResponseNotes.Equals(response2.AdoptionApplicationResponseNotes))

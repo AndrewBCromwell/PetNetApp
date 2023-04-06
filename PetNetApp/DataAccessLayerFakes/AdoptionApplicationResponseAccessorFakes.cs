@@ -22,7 +22,7 @@ namespace DataAccessLayerFakes
                 {
                     AdoptionApplicationResponseId = 999_999,
                     AdoptionApplicationId = 999_999,
-                    UsersId = 999_999,
+                    ResponderUserId = 999_999,
                     Approved = false,
                     AdoptionApplicationResponseDate = DateTime.Now,
                     AdoptionApplicationResponseNotes = "notes"
@@ -59,7 +59,7 @@ namespace DataAccessLayerFakes
                 response.AdoptionApplicationResponseId = tempResponse.AdoptionApplicationResponseId;
                 response.AdoptionApplicationResponseNotes = tempResponse.AdoptionApplicationResponseNotes;
                 response.Approved = tempResponse.Approved;
-                response.UsersId = tempResponse.UsersId;
+                response.ResponderUserId = tempResponse.ResponderUserId;
                 response.AdoptionApplicationId = tempResponse.AdoptionApplicationId;
             }
             catch (Exception ex)
