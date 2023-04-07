@@ -69,6 +69,7 @@ namespace WpfPresentation.Fundraising
         private void btnDone_Click(object sender, RoutedEventArgs e)
         {
             _selectedEventHost = (InstitutionalEntity)datHost.SelectedItem;
+            
             if (_selectedEventHost != null)
             {
                 this.Close();

@@ -515,6 +515,7 @@ print '' print '*** Creating ResourceAddRequest sample data'
 GO
 INSERT INTO [dbo].[ResourceAddRequest]
 		(
+		[ShelterId],
 		[UsersId], 
 		[Title],   
 		[Note],    
@@ -522,10 +523,10 @@ INSERT INTO [dbo].[ResourceAddRequest]
 		[Date]    
 		)
 	VALUES
-		(100000,"Need food","Yo we need cat food",1,GETDATE()),
-		(100001,"Need food","Yo we need dog food",1,GETDATE()),
-		(100002,"Need food","Yo we need rabbit food",1,GETDATE()),
-		(100002,"Need food","Yo we need rodent food",1,GETDATE())
+		(100000, 100000,"Gourmet cat food","We need gourmet cat food",1,GETDATE()),
+		(100000, 100001,"Gourmet dog food","We need gourmet dog food",1,GETDATE()),
+		(100000, 100002,"Gourmet rabbit food","We need gourmet rabbit food",1,GETDATE()),
+		(100000, 100002,"Gourmet snake food","We need gourmet snake food",1,GETDATE())
 GO
 
 print '' print '*** Creating Suspension sample data'

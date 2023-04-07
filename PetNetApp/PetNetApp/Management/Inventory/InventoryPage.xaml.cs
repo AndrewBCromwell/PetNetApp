@@ -35,6 +35,7 @@ namespace WpfPresentation.Management.Inventory
     public partial class InventoryPage : Page
     {
         MasterManager _masterManager = MasterManager.GetMasterManager();
+        private static InventoryPage _existingInventoryPage = null;
         /// <summary>
         /// Zaid Rachman
         /// Created: 2023/03/19
@@ -42,7 +43,32 @@ namespace WpfPresentation.Management.Inventory
         public InventoryPage()
         {
             InitializeComponent();
+            CheckUserRoles();
+        }
 
+        public static InventoryPage GetInventoryPage()
+        {
+            if (_existingInventoryPage == null)
+            {
+                _existingInventoryPage = new InventoryPage();
+            }
+            return _existingInventoryPage;
+        }
+
+        /// <summary>
+        /// Zaid Rachman
+        /// Created: 2023/03/19
+        /// 
+        /// Checks user roles and hides buttons as necessary
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name: Andrew Schneider
+        /// Updated: 2023/03/30
+        /// Moved code to its own method
+        /// </remarks>
+        private void CheckUserRoles()
+        {
             List<Role> userRoles;
             try
             {
@@ -60,6 +86,7 @@ namespace WpfPresentation.Management.Inventory
                 btnViewShelterInventory.Visibility = Visibility.Hidden;
             }
         }
+
         /// <summary>
         /// /// Zaid Rachman
         /// Created: 2023/03/19
@@ -85,6 +112,12 @@ namespace WpfPresentation.Management.Inventory
         private void btnViewInventoryChanges_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ViewInventoryChangesPage(_masterManager));
+        }
+
+        private void btnViewExceptionRecords_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(
+                ViewNewItemRequestsPage.GetViewNewItemRequestsPage());
         }
     }
 }
