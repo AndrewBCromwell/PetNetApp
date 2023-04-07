@@ -161,11 +161,20 @@
     <Compile Include="Events\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Events\ViewEvents.xaml.cs">
+      <DependentUpon>ViewEvents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Events\VolunteerListPage.xaml.cs">
       <DependentUpon>VolunteerListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\VolunteerListUserControl.xaml.cs">
       <DependentUpon>VolunteerListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewEvents.xaml.cs">
+      <DependentUpon>ViewEvents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewEventsWin.xaml.cs">
+      <DependentUpon>ViewEventsWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\AddFundraisingEventHostWindow.xaml.cs">
       <DependentUpon>AddFundraisingEventHostWindow.xaml</DependentUpon>
@@ -512,6 +521,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Events\ViewEvents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Events\VolunteerListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -521,6 +534,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Fundraising\AddFundraisingEventHostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewEvents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewEventsWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

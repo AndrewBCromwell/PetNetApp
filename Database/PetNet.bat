@@ -110,6 +110,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewEditResourceAddRequests_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ToggleFoster_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\MVCSetup_sp.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewEventByName.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
@@ -125,6 +126,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\RetrievePledgersByEventId_SP.s
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

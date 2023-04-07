@@ -51,6 +51,7 @@
     <Compile Include="DonationAccessor.cs" />
     <Compile Include="FosterAccessor.cs" />
     <Compile Include="FosterApplicationResponseAccessor.cs" />
+    <Compile Include="EventAccessor.cs" />
     <Compile Include="FundraisingCampaignAccessor.cs" />
     <Compile Include="FundraisingEventAccessor.cs" />
     <Compile Include="ImagesAccessor.cs" />

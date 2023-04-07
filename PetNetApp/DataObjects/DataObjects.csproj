@@ -55,6 +55,7 @@
     <Compile Include="AnimalUpdates.cs" />
     <Compile Include="FosterApplication.cs" />
     <Compile Include="FosterApplicationResponse.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="FilterDonation.cs" />
     <Compile Include="FosterPlacement.cs" />
     <Compile Include="FosterPlacementRecord.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="ShelterInventoryItem.cs" />
     <Compile Include="ShelterItemTransaction.cs" />
     <Compile Include="InstitutionalEntity.cs" />
+    <Compile Include="SponsorEvent.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />

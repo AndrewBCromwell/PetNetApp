@@ -134,5 +134,15 @@ namespace DataAccessLayerInterfaces
         /// <param name="contactType">type of institutional entity attempting to retrieve<</param>
         /// <returns></returns>
         InstitutionalEntity SelectInstitutionalEntityByFundraisingEventIdAndContactType(int fundraisingEventId, string contactType);
+        /// <summary>
+        /// Ethan Kline 
+        /// Created: 2023/03/30
+        /// 
+        /// Gets a list of all the institutional entities by name
+        /// </summary>
+        /// <param name="name">object companyname</param>
+        /// <exception cref="ApplicationException">Retrieval Fails</exception>
+        List<SponsorEvent> SelectSponsorEventByName(String name);
+
     }
 }

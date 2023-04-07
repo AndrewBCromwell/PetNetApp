@@ -63,6 +63,7 @@ namespace LogicLayer
         public IResourceAddRequestManager ResourceAddRequestManager { get; set; }
         public IFosterManager FosterManager { get; set; }
         public IPledgeManager PledgeManager { get; set; }
+        public IEventManager EventManager { get; set; }
 
 
         private MasterManager()
@@ -99,6 +100,7 @@ namespace LogicLayer
             ResourceAddRequestManager = new ResourceAddRequestManager();
             FosterManager = new FosterManager();
             PledgeManager = new PledgeManager();
+            EventManager = new EventManager();
 
             //for testing from dev page
             User = new UsersVM()
