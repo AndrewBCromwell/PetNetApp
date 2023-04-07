@@ -107,5 +107,6 @@ namespace LogicLayerInterfaces
         /// </remarks>
         /// <param userId="usersId"></param>
         List<UsersAdoptionRecords> RetrieveAdoptionRecordsByUserID(int usersId);
+        UsersVM RetrieveUserByUserEmail(string email);
     }
 }

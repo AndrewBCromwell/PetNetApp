@@ -62,6 +62,7 @@
     <Compile Include="LibraryManager.cs" />
     <Compile Include="MasterManager.cs" />
     <Compile Include="MedicalRecordManager.cs" />
+    <Compile Include="PledgeManager.cs" />
     <Compile Include="PostManager.cs" />
     <Compile Include="ProcedureManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

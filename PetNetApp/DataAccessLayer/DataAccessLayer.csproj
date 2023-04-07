@@ -59,6 +59,7 @@
     <Compile Include="KennelAccessor.cs" />
     <Compile Include="LibraryAccessor.cs" />
     <Compile Include="MedicalRecordAccessor.cs" />
+    <Compile Include="PledgeAccessor.cs" />
     <Compile Include="PostAccessor.cs" />
     <Compile Include="ProcedureAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

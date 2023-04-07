@@ -494,6 +494,11 @@ namespace WpfPresentation.Development.Fundraising
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_masterManager, animal));
         }
+
+        private void btnPledgers_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ViewFundraisingEventPledgers(FundraisingEvent, _masterManager));
+        }
     }
     public enum PageMode
     {

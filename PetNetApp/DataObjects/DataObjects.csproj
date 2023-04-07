@@ -71,6 +71,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Kennel.cs" />
+    <Compile Include="Pledge.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Procedure.cs" />
     <Compile Include="MedicalRecord.cs" />

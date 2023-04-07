@@ -54,6 +54,7 @@
     <Compile Include="FundraisingEventAccessorFakes.cs" />
     <Compile Include="FosterApplicationResponseAccessorFakes.cs" />
     <Compile Include="ImagesAccessorFakes.cs" />
+    <Compile Include="PledgeAccessorFakes.cs" />
     <Compile Include="PostAccessorFake.cs" />
     <Compile Include="ReplyAccessorFake.cs" />
     <Compile Include="RequestAccessorFakes.cs" />

@@ -134,6 +134,15 @@
     <Compile Include="Management\Inventory\ViewNewItemRequestsPage.xaml.cs">
       <DependentUpon>ViewNewItemRequestsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fundraising\CreateNewPledge.xaml.cs">
+      <DependentUpon>CreateNewPledge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewFundraisingEventPledgers.xaml.cs">
+      <DependentUpon>ViewFundraisingEventPledgers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewSpecificPledger.xaml.cs">
+      <DependentUpon>ViewSpecificPledger.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fundraising\UpdateFundraisingCampaign.xaml.cs">
       <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
@@ -194,11 +203,20 @@
     <Compile Include="UserControls\NewItemRequestUserControl.xaml.cs">
       <DependentUpon>NewItemRequestUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FundraisingEventPledgerHeaderControl.xaml.cs">
+      <DependentUpon>FundraisingEventPledgerHeaderControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ViewFundraisingEventPledgersControl.xaml.cs">
+      <DependentUpon>ViewFundraisingEventPledgersControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewFundraisingInstitutionalEntityControl.xaml.cs">
       <DependentUpon>ViewFundraisingInstitutionalEntityControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewSpecificPledgerControl.xaml.cs">
+      <DependentUpon>ViewSpecificPledgerControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Animals\AddEditAnimalDeath.xaml">
       <SubType>Designer</SubType>
@@ -427,6 +445,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Management\Inventory\ViewNewItemRequestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\CreateNewPledge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewFundraisingEventPledgers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewSpecificPledger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -690,6 +720,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\DonationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FundraisingEventPledgerHeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -971,7 +1005,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ViewFundraisingEventPledgersControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\ViewFundraisingInstitutionalEntityControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewSpecificPledgerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -57,6 +57,7 @@
     <Compile Include="IKennelManager.cs" />
     <Compile Include="ILibraryManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
+    <Compile Include="IPledgeManager.cs" />
     <Compile Include="IPostManager.cs" />
     <Compile Include="IReplyManager.cs" />
     <Compile Include="IResourceAddRequestManager.cs" />
