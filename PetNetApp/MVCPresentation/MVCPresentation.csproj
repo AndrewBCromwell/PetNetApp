@@ -182,21 +182,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304040339378_InitialCreate.cs" />
-    <Compile Include="Migrations\202304040339378_InitialCreate.Designer.cs">
-      <DependentUpon>202304040339378_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202304070738315_InitialCreate.cs" />
+    <Compile Include="Migrations\202304070738315_InitialCreate.Designer.cs">
+      <DependentUpon>202304070738315_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304040423342_Added GivenName and FamilyName to User.cs" />
-    <Compile Include="Migrations\202304040423342_Added GivenName and FamilyName to User.Designer.cs">
-      <DependentUpon>202304040423342_Added GivenName and FamilyName to User.cs</DependentUpon>
+    <Compile Include="Migrations\202304070741507_UserFields.cs" />
+    <Compile Include="Migrations\202304070741507_UserFields.Designer.cs">
+      <DependentUpon>202304070741507_UserFields.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304040743222_UsersId.cs" />
-    <Compile Include="Migrations\202304040743222_UsersId.Designer.cs">
-      <DependentUpon>202304040743222_UsersId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304040828099_Registration Fields.cs" />
-    <Compile Include="Migrations\202304040828099_Registration Fields.Designer.cs">
-      <DependentUpon>202304040828099_Registration Fields.cs</DependentUpon>
+    <Compile Include="Migrations\202304070814588_Zipcode.cs" />
+    <Compile Include="Migrations\202304070814588_Zipcode.Designer.cs">
+      <DependentUpon>202304070814588_Zipcode.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -495,17 +491,14 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202304040339378_InitialCreate.resx">
-      <DependentUpon>202304040339378_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304070738315_InitialCreate.resx">
+      <DependentUpon>202304070738315_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040423342_Added GivenName and FamilyName to User.resx">
-      <DependentUpon>202304040423342_Added GivenName and FamilyName to User.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304070741507_UserFields.resx">
+      <DependentUpon>202304070741507_UserFields.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040743222_UsersId.resx">
-      <DependentUpon>202304040743222_UsersId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040828099_Registration Fields.resx">
-      <DependentUpon>202304040828099_Registration Fields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304070814588_Zipcode.resx">
+      <DependentUpon>202304070814588_Zipcode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
