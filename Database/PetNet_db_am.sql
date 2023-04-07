@@ -446,12 +446,15 @@ print '' print '*** creating table for ResourceAddRequest'
 GO
 CREATE TABLE [dbo].[ResourceAddRequest] (
     [ResourceAddRequestId]  [int] IDENTITY(100000, 1)       NOT NULL,
+	[ShelterId]				[int]							NOT NULL,
     [UsersId]               [int]                           NOT NULL,
     [Title]                 [nvarchar](100)                 NOT NULL,
     [Note]                  [nvarchar](2500)                NOT NULL,
     [Active]                [bit]                           NOT NULL,
     [Date]                  [datetime]  DEFAULT GETDATE()   NOT NULL,
     CONSTRAINT  [pk_ResourceAddRequestId] PRIMARY KEY ([ResourceAddRequestId]),
+	CONSTRAINT	[fk_ResourceAddRequestShelterId] FOREIGN KEY ([ShelterId])
+		REFERENCES [dbo].[Shelter]([ShelterId]),
     CONSTRAINT  [fk_UsersId] FOREIGN KEY ([UsersId])
         REFERENCES [dbo].[Users]([UsersId])
 )

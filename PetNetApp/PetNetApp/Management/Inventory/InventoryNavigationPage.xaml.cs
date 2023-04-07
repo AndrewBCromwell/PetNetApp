@@ -83,7 +83,7 @@ namespace WpfPresentation.Management.Inventory
         {
             ChangeSelectedButton(btnViewResourceAddRequest);
             // replace with page name and then delete comment
-            frameInventory.Navigate(null);
+            frameInventory.Navigate(ViewNewItemRequestsPage.GetViewNewItemRequestsPage());
         }
 
         private void btnCheckIn_Click(object sender, RoutedEventArgs e)

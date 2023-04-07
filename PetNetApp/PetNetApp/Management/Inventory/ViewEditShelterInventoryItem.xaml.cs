@@ -80,6 +80,19 @@ namespace WpfPresentation.Management.Inventory
             txtHighThreshold.Text = _shelterInventoryItemVM.HighInventoryThreshold.ToString();
             txtUseStatistic.Text = _shelterInventoryItemVM.UseStatistic.ToString();
 
+            lblOverLowStock.Visibility = Visibility.Hidden;
+            if(_shelterInventoryItemVM.Quantity < _shelterInventoryItemVM.LowInventoryThreshold)
+            {
+                lblOverLowStock.Visibility = Visibility.Visible;
+                lblOverLowStock.Content = "Low Quantity!";
+            }
+
+            if (_shelterInventoryItemVM.Quantity > _shelterInventoryItemVM.HighInventoryThreshold)
+            {
+                lblOverLowStock.Visibility = Visibility.Visible;
+                lblOverLowStock.Content = "Overstocked!";
+            }
+
             if (_shelterInventoryItemVM.CustomFlag != null)
             {
                 txtCustomFlags.Text = _shelterInventoryItemVM.CustomFlag.ToString();
@@ -324,6 +337,8 @@ namespace WpfPresentation.Management.Inventory
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+
+            
         }
 
 
@@ -339,6 +354,8 @@ namespace WpfPresentation.Management.Inventory
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+
+         
         }
         /// <summary>
         /// Zaid Rachman

@@ -142,8 +142,12 @@ namespace WpfPresentation.Management.Inventory
         /// <summary>
         /// Zaid Rachman
         /// Created: 2023/03/19
-        /// 
         /// Populates the flags column
+        /// Zaid Rachman
+        /// Updated: 2023/04/04
+        /// Added Low Stock and Over Stock indicators 
+        /// 
+        /// 
         /// </summary>
         private void UpdateFlags()
         {
@@ -175,6 +179,14 @@ namespace WpfPresentation.Management.Inventory
                 {
                     Flags.Add(shelter.CustomFlag);
                 }
+                if (shelter.Quantity < shelter.LowInventoryThreshold) //Checks to see if quantity is lower than the threshold set
+                {
+                    Flags.Add("Low Quantity"); 
+                }
+                if (shelter.Quantity > shelter.HighInventoryThreshold) //Checks to see if quantity is higher than the threshold set
+                {
+                    Flags.Add("Overstocked");
+                }
 
                 //Formating
                 for (int i = 0; i < Flags.Count; i++)
@@ -194,6 +206,8 @@ namespace WpfPresentation.Management.Inventory
                         flagsList += ",";
                     }
                 }
+
+                
                 shelter.DisplayFlags = flagsList; //Using the CustomFlag property as a way to show all flags
 
 

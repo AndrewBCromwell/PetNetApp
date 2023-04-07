@@ -60,7 +60,9 @@ namespace LogicLayer
         public IPostManager PostManager { get; set; }
         public IReplyManager ReplyManager { get; set; }
         public IFosterApplicationResponseManager FosterApplicationResponseManager { get; set; }
+        public IResourceAddRequestManager ResourceAddRequestManager { get; set; }
         public IFosterManager FosterManager { get; set; }
+        public IPledgeManager PledgeManager { get; set; }
 
 
         private MasterManager()
@@ -94,7 +96,9 @@ namespace LogicLayer
             ReplyManager = new ReplyManager();
             AdoptionApplicationManager = new AdoptionApplicationManager();
             FosterApplicationResponseManager = new FosterApplicationResponseManager();
+            ResourceAddRequestManager = new ResourceAddRequestManager();
             FosterManager = new FosterManager();
+            PledgeManager = new PledgeManager();
 
             //for testing from dev page
             User = new UsersVM()

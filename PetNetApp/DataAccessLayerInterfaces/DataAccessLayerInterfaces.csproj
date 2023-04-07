@@ -46,6 +46,7 @@
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IFosterAccessor.cs" />
+    <Compile Include="IPledgeAccessor.cs" />
     <Compile Include="IReplyAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IDeathAccessor.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="IPostAccessor.cs" />
     <Compile Include="IProcedureAccessor.cs" />
     <Compile Include="IRequestAccessor.cs" />
+    <Compile Include="IResourceAddRequestAccessor.cs" />
     <Compile Include="IRoleAccessor.cs" />
     <Compile Include="IScheduleAccessor.cs" />
     <Compile Include="IShelterAccessor.cs" />

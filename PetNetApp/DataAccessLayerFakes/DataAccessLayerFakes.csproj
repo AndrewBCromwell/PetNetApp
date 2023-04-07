@@ -54,11 +54,13 @@
     <Compile Include="FundraisingEventAccessorFakes.cs" />
     <Compile Include="FosterApplicationResponseAccessorFakes.cs" />
     <Compile Include="ImagesAccessorFakes.cs" />
+    <Compile Include="PledgeAccessorFakes.cs" />
     <Compile Include="PostAccessorFake.cs" />
     <Compile Include="ReplyAccessorFake.cs" />
     <Compile Include="RequestAccessorFakes.cs" />
     <Compile Include="ItemAccessorFakes.cs" />
     <Compile Include="LibraryAccessorFakes.cs" />
+    <Compile Include="ResourceAddRequestAccessorFake.cs" />
     <Compile Include="ShelterInventoryAccessorFakes.cs" />
     <Compile Include="ShelterItemTransactionAccessorFakes.cs" />
     <Compile Include="InstitutionalEntityAccessorFake.cs" />

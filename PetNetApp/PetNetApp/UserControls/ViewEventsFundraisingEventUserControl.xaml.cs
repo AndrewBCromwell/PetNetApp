@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using DataObjects;
 using WpfPresentation.Development.Fundraising;
 using LogicLayer;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.UserControls
 {
@@ -84,6 +85,9 @@ namespace WpfPresentation.UserControls
             NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewUpdateFundraisingEventPage.GetUpdateFundraisingEventPage(FundraisingEvent));
         }
 
-
+        private void menuAddPledge_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new CreateNewPledge(FundraisingEvent.FundraisingEventId, _masterManager));
+        }
     }
 }

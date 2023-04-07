@@ -59,11 +59,13 @@
     <Compile Include="KennelAccessor.cs" />
     <Compile Include="LibraryAccessor.cs" />
     <Compile Include="MedicalRecordAccessor.cs" />
+    <Compile Include="PledgeAccessor.cs" />
     <Compile Include="PostAccessor.cs" />
     <Compile Include="ProcedureAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyAccessor.cs" />
     <Compile Include="RequestAccessor.cs" />
+    <Compile Include="ResourceAddRequestAccessor.cs" />
     <Compile Include="RoleAccessor.cs" />
     <Compile Include="ScheduleAccessor.cs" />
     <Compile Include="ShelterAccessor.cs" />

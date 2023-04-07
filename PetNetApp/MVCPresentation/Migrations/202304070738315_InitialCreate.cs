@@ -3,7 +3,7 @@ namespace MVCPresentation.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddingUserIdfieldtoUser : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -35,7 +35,6 @@ namespace MVCPresentation.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        UserId = c.Int(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

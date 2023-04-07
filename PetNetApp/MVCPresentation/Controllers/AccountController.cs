@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -17,9 +18,23 @@ namespace MVCPresentation.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IEnumerable<String> _genders;
+        private IEnumerable<String> _pronouns;
 
         public AccountController()
         {
+            try
+            {
+                LogicLayer.UsersManager usersManager = new LogicLayer.UsersManager();
+                _genders = usersManager.RetrieveGenders();
+                _pronouns = usersManager.RetrievePronouns();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,6 +154,9 @@ namespace MVCPresentation.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Genders = _genders;
+            ViewBag.Pronouns = _pronouns;
+
             return View();
         }
 
@@ -149,23 +167,75 @@ namespace MVCPresentation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+           
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                LogicLayer.UsersManager usrMgr = new LogicLayer.UsersManager();
+                
+                try
+                {
+                    if (usrMgr.RetrieveUserByEmail(model.Email))
+                    {
+                        var oldUser = usrMgr.AuthenticateUser(model.Email, model.Password);
+                        var user = new ApplicationUser
+                        {
+                            GivenName = oldUser.GivenName,
+                            FamilyName = oldUser.FamilyName,
+                            UsersId = oldUser.UsersId,
+                            PhoneNumber = oldUser.Phone,
+                            PronounId = oldUser.PronounId,
+                            GenderId = oldUser.GenderId,
+                            ShelterId = oldUser.ShelterId,
+                            Address = oldUser.Address,
+                            AddressTwo = oldUser.Address2,
+
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            var roles = usrMgr.RetrieveRolesByUsersId(oldUser.UsersId);
+
+                            foreach (var role in roles)
+                            {
+                                UserManager.AddToRole(user.Id, role);
+                            }
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
+                    else // for web-side users
+                    {
+                        var user = new ApplicationUser
+                        {
+                            GivenName = model.GivenName,
+                            FamilyName = model.FamilyName,
+                            PhoneNumber = model.Phone,
+                            PronounId = model.PronounId[0],
+                            GenderId = model.GenderId[0],
+                            Zipcode = model.Zipcode,
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+
+                        var result = await UserManager.CreateAsync(user, model.Password);
+
+                        if (result.Succeeded)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
                 }
-                AddErrors(result);
+                catch
+                {
+                    return View(model);
+                }
             }
 
             // If we got this far, something failed, redisplay form

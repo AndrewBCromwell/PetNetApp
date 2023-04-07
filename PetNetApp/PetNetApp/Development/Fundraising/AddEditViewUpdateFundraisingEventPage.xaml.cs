@@ -14,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.Fundraising;
 using WpfPresentation.UserControls;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.Development.Fundraising
 {
@@ -492,6 +494,11 @@ namespace WpfPresentation.Development.Fundraising
             PromptWindow.ShowPrompt("Animal", "Show animal record?");
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_masterManager, animal));
+        }
+
+        private void btnPledgers_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ViewFundraisingEventPledgers(FundraisingEvent, _masterManager));
         }
     }
     public enum PageMode
