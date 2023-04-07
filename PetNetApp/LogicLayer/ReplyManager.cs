@@ -22,6 +22,42 @@ namespace LogicLayer
             replyAccessor = ra;
         }
 
+        public int AddReply(Reply reply)
+        {
+            int newId = 0;
+            try
+            {
+                newId = replyAccessor.InsertReply(reply);
+                if (newId == 0)
+                {
+                    throw new Exception("Accesor method returned 0");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to add a reply", ex);
+            }
+            return newId;
+        }
+
+        public bool EditReply(Reply reply, Reply newReply)
+        {
+            int rowAffected = 0;
+            try
+            {
+                rowAffected = replyAccessor.UpdateReply(reply, newReply);
+                if (rowAffected == 0)
+                {
+                    throw new Exception("Update failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Reply failed to update", ex);
+            }
+            return rowAffected == 1;
+        }
+
         public List<ReplyVM> RetrieveActiveRepliesByPostId(int postId)
         {
             List<ReplyVM> replies = new List<ReplyVM>();
@@ -44,7 +80,7 @@ namespace LogicLayer
 
             try
             {
-                replies = replyAccessor.SelectActiveRepliesByPostId(postId);
+                replies = replyAccessor.SelectAllRepliesByPostId(postId);
             }
             catch (Exception ex)
             {
@@ -82,6 +118,22 @@ namespace LogicLayer
                 throw new ApplicationException("Could not retrieve a count", ex);
             }
             return count;
+        }
+
+        public ReplyVM RetrieveReplyByReplyId(int replyId)
+        {
+            ReplyVM reply = new ReplyVM();
+
+            try
+            {
+                reply = replyAccessor.SelectReplyByReplyId(replyId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Post not found", ex);
+            }
+
+            return reply;
         }
     }
 }

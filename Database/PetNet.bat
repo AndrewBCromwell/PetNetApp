@@ -107,7 +107,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewShelterInventoryItemByShel
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInventoryItemCategoryByItemId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterInventoryItem_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewEditResourceAddRequests_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ToggleFoster_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\MVCSetup_sp.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
@@ -118,6 +120,8 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

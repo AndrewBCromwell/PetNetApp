@@ -12,6 +12,39 @@ namespace DataAccessLayer
 {
     public class ReplyAccessor : IReplyAccessor
     {
+        public int InsertReply(Reply reply)
+        {
+            int newId = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_reply";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ReplyAuthor", SqlDbType.NVarChar, 25).Value = reply.ReplyAuthor;
+            cmd.Parameters.Add("@ReplyContent", SqlDbType.NVarChar, 250).Value = reply.ReplyContent;
+            cmd.Parameters.Add("@ReplyDate", SqlDbType.NVarChar, 25).Value = reply.ReplyDate;
+            cmd.Parameters.Add("@PostId", SqlDbType.NVarChar, 25).Value = reply.PostId;
+
+
+            try
+            {
+                conn.Open();
+                newId = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return newId;
+        }
+
         public List<ReplyVM> SelectActiveRepliesByPostId(int postId)
         {
             List<ReplyVM> replies = new List<ReplyVM>();
@@ -65,7 +98,7 @@ namespace DataAccessLayer
 
             var connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
-            var cmdText = "sp_select_active_replies_by_postid";
+            var cmdText = "sp_select_all_replies_by_postid";
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -162,6 +195,83 @@ namespace DataAccessLayer
             }
 
             return repliesCount;
+        }
+
+        public ReplyVM SelectReplyByReplyId(int replyId)
+        {
+            ReplyVM reply = null;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_reply_by_replyId";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ReplyId", replyId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        reply = new ReplyVM();
+
+                        reply.ReplyId = reader.GetInt32(0);
+                        reply.ReplyAuthor = reader.GetInt32(1);
+                        reply.ReplyContent = reader.GetString(2);
+                        reply.ReplyDate = reader.GetDateTime(3);
+                        reply.ReplyVisibility = reader.GetBoolean(4);
+                        reply.ReplierGivenName = reader.GetString(5);
+                        reply.ReplierFamilyName = reader.GetString(6);
+                        reply.PostId = reader.GetInt32(7);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return reply;
+        }
+
+        public int UpdateReply(Reply reply, Reply newReply)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_reply";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ReplyId", SqlDbType.NVarChar, 25).Value = reply.ReplyId;
+            cmd.Parameters.Add("@ReplyContent", SqlDbType.NVarChar, 250).Value = newReply.ReplyContent;
+            cmd.Parameters.Add("@ReplyDate", SqlDbType.NVarChar, 25).Value = newReply.ReplyDate;
+            cmd.Parameters.Add("@OldReplyContent", SqlDbType.NVarChar, 250).Value = reply.ReplyContent;
+
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
         }
     }
 }

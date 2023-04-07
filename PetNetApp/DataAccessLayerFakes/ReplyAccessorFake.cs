@@ -10,10 +10,11 @@ namespace DataAccessLayerFakes
 {
     public class ReplyAccessorFake : IReplyAccessor
     {
-        List<ReplyVM> fakeReplies = new List<ReplyVM>();
+        List<ReplyVM> fakeRepliesVM = new List<ReplyVM>();
+        List<Reply> fakeReplies = new List<Reply>();
         public ReplyAccessorFake()
         {
-            fakeReplies.Add(new ReplyVM
+            fakeRepliesVM.Add(new ReplyVM
             {
                 ReplyId= 1,
                 PostId = 1,
@@ -25,7 +26,7 @@ namespace DataAccessLayerFakes
                 ReplierFamilyName = "Arman",
                 UserReplyReport = false
             });
-            fakeReplies.Add(new ReplyVM
+            fakeRepliesVM.Add(new ReplyVM
             {
                 ReplyId = 2,
                 PostId = 1,
@@ -38,7 +39,7 @@ namespace DataAccessLayerFakes
                 ReplierFamilyName = "Arman",
                 UserReplyReport = false
             });
-            fakeReplies.Add(new ReplyVM
+            fakeRepliesVM.Add(new ReplyVM
             {
                 ReplyId = 3,
                 PostId = 2,
@@ -50,7 +51,7 @@ namespace DataAccessLayerFakes
                 ReplierFamilyName = "Arman",
                 UserReplyReport = false
             });
-            fakeReplies.Add(new ReplyVM
+            fakeRepliesVM.Add(new ReplyVM
             {
                 ReplyId = 4,
                 PostId = 2,
@@ -64,24 +65,59 @@ namespace DataAccessLayerFakes
             });
         }
 
+        public int InsertReply(Reply reply)
+        {
+            int result = 0;
+            fakeReplies.Add(reply);
+
+            foreach (var item in fakeReplies)
+            {
+                if(item.ReplyId == reply.ReplyId)
+                {
+                    result = 1;
+                }
+            }
+            return result;
+        }
+
         public List<ReplyVM> SelectActiveRepliesByPostId(int postId)
         {
-            return fakeReplies.Where(r => r.ReplyVisibility == true && r.PostId == postId).ToList();
+            return fakeRepliesVM.Where(r => r.ReplyVisibility == true && r.PostId == postId).ToList();
         }
 
         public List<ReplyVM> SelectAllRepliesByPostId(int postId)
         {
-            return fakeReplies.Where(r => r.PostId == postId).ToList();
+            return fakeRepliesVM.Where(r => r.PostId == postId).ToList();
         }
 
         public int SelectCountActiveRepliesByPostId(int postId)
         {
-            return fakeReplies.Where(r => r.PostId == postId && r.ReplyVisibility == true).Count();
+            return fakeRepliesVM.Where(r => r.PostId == postId && r.ReplyVisibility == true).Count();
         }
 
         public int SelectCountRepliesByPostId(int postId)
         {
-            return fakeReplies.Where(r => r.PostId == postId).Count();
+            return fakeRepliesVM.Where(r => r.PostId == postId).Count();
+        }
+
+        public ReplyVM SelectReplyByReplyId(int replyId)
+        {
+            return fakeRepliesVM.Find(r => r.ReplyId == replyId);
+        }
+
+        public int UpdateReply(Reply reply, Reply newReply)
+        {
+            int result = 0;
+            foreach (var item in fakeRepliesVM)
+            {
+                if (item.ReplyId == reply.ReplyId)
+                {
+                    reply.ReplyContent = newReply.ReplyContent;
+                    reply.ReplyDate = newReply.ReplyDate;
+                    result = 1;
+                }
+            }
+            return result;
         }
     }
 }

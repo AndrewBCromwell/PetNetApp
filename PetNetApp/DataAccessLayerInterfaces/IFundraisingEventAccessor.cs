@@ -17,7 +17,7 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         /// 
         /// <param name="shelterId">ShelterId to select all the Fundraising Events for</param>
-        /// <exception cref="SQLEXception">Load Fails</exception>
+        /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List<FundraisingEvent></returns>
         List<FundraisingEventVM> SelectAllFundraisingEventsByShelterId(int shelterId);
     }

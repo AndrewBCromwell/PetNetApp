@@ -151,21 +151,71 @@ namespace MVCPresentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                LogicLayer.UsersManager usrMgr = new LogicLayer.UsersManager();
 
-                    return RedirectToAction("Index", "Home");
+                try
+                {
+                    if (usrMgr.RetrieveUserByEmail(model.Email))
+                    {
+                        var oldUser = usrMgr.AuthenticateUser(model.Email, model.Password);
+                        var user = new ApplicationUser
+                        {
+                            GivenName = oldUser.GivenName,
+                            FamilyName = oldUser.FamilyName,
+                            UsersId = oldUser.UsersId,
+                            PhoneNumber = oldUser.Phone,
+                            PronounId = oldUser.PronounId,
+                            ShelterId = oldUser.ShelterId,
+                            Address = oldUser.Address,
+                            AddressTwo = oldUser.Address2,
+
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            var roles = usrMgr.RetrieveRolesByUsersId(oldUser.UsersId);
+
+                            foreach (var role in roles)
+                            {
+                                UserManager.AddToRole(user.Id, role);
+                            }
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
+                    else // for web-side users
+                    {
+                        var user = new ApplicationUser
+                        {
+                            // GivenName = model.GivenName,
+                            // FamilyName = model.FamilyName,
+                            //PhoneNumber = model.Phone,
+                            //PronounId = model.PronounId,
+                            //ShelterId = model.ShelterId,
+                            //Address = model.Address,
+                            //AddressTwo = model.Address2,
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+
+                        var result = await UserManager.CreateAsync(user, model.Password);
+
+                        if (result.Succeeded)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
                 }
-                AddErrors(result);
+                catch
+                {
+                    return View(model);
+                }
             }
 
             // If we got this far, something failed, redisplay form
