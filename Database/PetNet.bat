@@ -120,6 +120,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
+
+
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

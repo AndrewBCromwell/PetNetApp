@@ -54,5 +54,40 @@ namespace LogicLayerTest
 
             Assert.AreEqual(expectedNumberOfRequestLines, requests[indexToCheck].RequestLines.Count);
         }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/06
+        /// </summary> 
+        [TestMethod]
+        public void TestAddInventoryItemRequestRturnsTrueWhenAddingSuccessful()
+        {
+            RequestVM request = new RequestVM() { RecievingShelterId = 5 };
+
+            Assert.IsTrue(_requestManager.AddInventoryItemRequest(request));
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/06
+        /// </summary> 
+        [TestMethod]
+        public void TestAddInventoryItemRequestAddsRequestsCrorrectly()
+        {
+            int shelterId = 5;
+            int expectedRequests = 1;
+            int expectedRequestLines = 2;
+            List<RequestVM> returnedRequests = null;
+            RequestVM request = new RequestVM() { RecievingShelterId = shelterId, RequestLines = new List<RequestResourceLine>(),
+                RequestDate = DateTime.Now};
+            request.RequestLines.Add(new RequestResourceLine() { ItemId = "food" });
+            request.RequestLines.Add(new RequestResourceLine() { ItemId = "water" });
+
+            _requestManager.AddInventoryItemRequest(request);
+            returnedRequests = _requestManager.RetrieveRequestsByShelterId(shelterId);
+
+            Assert.AreEqual(expectedRequests, returnedRequests.Count);
+            Assert.AreEqual(expectedRequestLines, returnedRequests[0].RequestLines.Count);
+        }
     }
 }
