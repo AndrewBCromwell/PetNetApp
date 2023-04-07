@@ -158,7 +158,7 @@
     </Compile>
     <Compile Include="Management\Inventory\Library\AddResourceItemPage.xaml.cs">
       <DependentUpon>AddResourceItemPage.xaml</DependentUpon>
-    </Compile>
+	 </Compile>
     <Compile Include="Management\Inventory\InventoryNavigationPage.xaml.cs">
       <DependentUpon>InventoryNavigationPage.xaml</DependentUpon>
     </Compile>
@@ -262,7 +262,7 @@
     <Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
       <DependentUpon>SpecificRequestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\Inventory\ViewRequestListPage.xaml.cs">
+	<Compile Include="Management\Inventory\ViewRequestListPage.xaml.cs">
       <DependentUpon>ViewRequestListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shelters\ContactPage.xaml.cs">
@@ -559,7 +559,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\Inventory\ViewRequestListPage.xaml">
+    <Page Include="Management\Inventory\Library\AddResourceItemPage.xaml">
+	  <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\InventoryNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\SpecificRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+	<Page Include="Management\Inventory\ViewRequestListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
