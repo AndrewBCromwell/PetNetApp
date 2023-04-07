@@ -81,9 +81,9 @@ namespace WpfPresentation.Management.Inventory
 
                 PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter list");
                 return;
-            } */
+            }
 
-            //cboShelter.DisplayMemberPath = "ShelterName";
+            cboShelter.DisplayMemberPath = "ShelterName";*/
 
             Users user;
             try
@@ -101,16 +101,16 @@ namespace WpfPresentation.Management.Inventory
 
             if (shelterId != null)
             {
-                /* try
-                 {
-                     cboShelter.SelectedItem = _masterManager.ShelterManager.RetrieveShelterVMByShelterID((int)shelterId);
-                 }
-                 catch (Exception)
-                 {
+               /* try
+                {
+                    cboShelter.SelectedItem = _masterManager.ShelterManager.RetrieveShelterVMByShelterID((int)shelterId);
+                }
+                catch (Exception)
+                {
 
-                     PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter");
-                     return;
-                 }*/
+                    PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter");
+                    return;
+                }*/
                 try
                 {
                     _shelterInventoryItemVMList = _masterManager.ShelterInventoryItemManager.RetrieveInventoryByShelterId((int)shelterId);

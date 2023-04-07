@@ -16,7 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>        
-        <Label x:Name="lblViewInventoryChanges" Grid.Row="0" Grid.Column="1" Content="List of Shelter Requests" VerticalContentAlignment="Center"
+        <Label x:Name="lblViewRequests" Grid.Row="0" Grid.Column="1" Content="List of Shelter Requests" VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center" FontSize="24"/>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <StackPanel x:Name="stpRequestList">

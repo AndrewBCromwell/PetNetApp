@@ -185,17 +185,26 @@
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\AddRequestLinePage.xaml.cs">
+      <DependentUpon>AddRequestLinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\CreateShelterRequestPage.xaml.cs">
+      <DependentUpon>CreateShelterRequestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\Inventory\Library\AddResourceItemPage.xaml.cs">
       <DependentUpon>AddResourceItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\InventoryNavigationPage.xaml.cs">
       <DependentUpon>InventoryNavigationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
-      <DependentUpon>InventoryPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Management\Inventory\Library\LibraryUI.xaml.cs">
       <DependentUpon>LibraryUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\RequestInProgress.xaml.cs">
+      <DependentUpon>RequestInProgress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\SelectShelterForRequestPage.xaml.cs">
+      <DependentUpon>SelectShelterForRequestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\ViewEditCartPage.xaml.cs">
       <DependentUpon>ViewEditCartPage.xaml</DependentUpon>
@@ -619,10 +628,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-	  <Page Include="Management\Inventory\SpecificRequestPage.xaml">
-		  <SubType>Designer</SubType>
-		  <Generator>MSBuild:Compile</Generator>
-	  </Page>
+    <Page Include="Management\Inventory\AddRequestLinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\CreateShelterRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\Inventory\Library\AddResourceItemPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -631,16 +644,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    
+    <Page Include="Management\Inventory\RequestInProgress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\SelectShelterForRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\SpecificRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\Inventory\ViewEditCartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\ViewRequestListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Management\Inventory\InventoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

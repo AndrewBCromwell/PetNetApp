@@ -127,6 +127,9 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\RetrievePledgersByEventId_SP.s
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
+
+
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE
