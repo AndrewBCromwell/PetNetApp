@@ -6,27 +6,42 @@
       xmlns:local="clr-namespace:WpfPresentation.Development.Management"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      
+      Background="#9EC1B0"
       Title="InventoryPage">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="50"></RowDefinition>
+            <!-- user control -->
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"
+                      Grid.Row="1" Padding="20, 20, 20, 0" Margin="38, 10, 38, 0" Background="#EEEFE1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-        </Grid.ColumnDefinitions>
-
-        <Button x:Name="btnViewShelterInventory" Margin="30" Width="200" Height="150" Click="btnViewShelterInventory_Click">
-            View Shelter Inventory...
-        </Button>
-        
-        <Button x:Name="btnViewInventoryChanges" Margin="30" Width="200" Height="150" Grid.Column="1"  Click="btnViewInventoryChanges_Click">
-            View Inventory Changes...
-        </Button>
-
+                <Button x:Name="btnViewShelterInventory" Width="200" Height="150" Click="btnViewShelterInventory_Click"
+                        Content="View Shelter Inventory" />
+                <Button x:Name="btnViewExceptionRecords" Width="200" Grid.Column="1" Height="150" 
+                        Content="View Exception Records" Click="btnViewExceptionRecords_Click"/>
+                <Button x:Name="btnViewInventoryChanges" Margin="10" Width="200" Height="150" Grid.Column="2" 
+                        Click="btnViewInventoryChanges_Click" Content="View Inventory Changes"/>
+                <Button x:Name="btnViewAnimalSpecialNeeds" Margin="10" Width="200" Height="150" Grid.Column="0"
+                        Grid.Row="1" Content="View Animal Special Needs"/>
+                <Button x:Name="btnViewShelterRequests" Margin="10" Width="200" Height="150" Grid.Column="1" 
+                        Grid.Row="1" Content="View Shelter Requests"/>
+            </Grid>
+        </ScrollViewer>
+        <Rectangle Grid.Row="3" Grid.ColumnSpan="3" Fill="#1C6758"></Rectangle>
     </Grid>
 </Page>

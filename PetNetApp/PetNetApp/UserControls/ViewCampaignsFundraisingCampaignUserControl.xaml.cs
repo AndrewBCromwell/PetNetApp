@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
+using WpfPresentation.Development.Fundraising;
 
 namespace WpfPresentation.UserControls
 {
@@ -51,12 +52,12 @@ namespace WpfPresentation.UserControls
 
         private void menuEdit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GetNavigationService(this).Navigate(Fundraising.AddEditViewFundraisingCampaignPage.GetEditFundraisingCampaignPage(FundraisingCampaign));
+            NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetEditFundraisingCampaignPage(FundraisingCampaign));
         }
 
         private void menuView_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GetNavigationService(this).Navigate(Fundraising.AddEditViewFundraisingCampaignPage.GetViewFundraisingCampaignPage(FundraisingCampaign));
+            NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetViewFundraisingCampaignPage(FundraisingCampaign));
         }
 
         private void menuDelete_Click(object sender, RoutedEventArgs e)
