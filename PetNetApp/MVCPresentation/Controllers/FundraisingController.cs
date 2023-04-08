@@ -7,6 +7,7 @@ using LogicLayer;
 using LogicLayerInterfaces;
 using DataObjects;
 using MVCPresentation.Models;
+using System.Threading.Tasks;
 
 namespace MVCPresentation.Controllers
 {
@@ -19,11 +20,64 @@ namespace MVCPresentation.Controllers
             return View();
         }
 
-        public ActionResult Campaign(int? campaign)
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/04/08
+        /// 
+        /// Controller method for /Fundraising/Campaign to view a single campaign
+        /// </summary>
+        /// <param name="campaign">the id of the campaign to view</param>
+        /// <param name="partial">whether to render this view as a whole page or for a modal</param>
+        /// <returns></returns>
+        public async Task<ActionResult> Campaign(int? campaign, bool partial = false)
         {
-            return View(new FundraisingCampaign());
+            await Task.Delay(2000);
+            FundraisingCampaignVM fundraisingCampaign = null;
+            try
+            {
+
+                if (campaign == null
+                    || (fundraisingCampaign = _masterManger.FundraisingCampaignManager.RetrieveFundraisingCampaignByFundraisingCampaignId(campaign.Value)) == null
+                    || !fundraisingCampaign.Active)
+                {
+                    return RedirectToAction("Campaigns");
+                }
+                fundraisingCampaign.Sponsors = _masterManger.InstitutionalEntityManager.RetrieveFundraisingSponsorsByCampaignId(campaign.Value);
+                fundraisingCampaign.FundraisingEventList = _masterManger.FundraisingEventManager.RetrieveAllFundraisingEventsByCampaignId(campaign.Value).Cast<FundraisingEvent>().ToList();
+
+                if (partial)
+                {
+                    return PartialView(fundraisingCampaign);
+                }
+                else
+                {
+                    return View(fundraisingCampaign);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + ex.InnerException.Message;
+
+                if (partial)
+                {
+                    return PartialView("Error");
+                }
+                else
+                {
+                    return View("Error");
+                }
+            }
         }
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/04/08
+        /// 
+        /// Controller method for /Fundraising/Campaigns to view all public campaigns
+        /// </summary>
+        /// <param name="campaignsViewModel">The model holding the different parameters for searching and campaign data</param>
+        /// <param name="Page">The current page were on</param>
+        /// <returns></returns>
         public ActionResult Campaigns(CampaignsViewModel campaignsViewModel, int Page = 1)
         {
             PagingInfo pagingInfo = campaignsViewModel.PagingInfo;

@@ -18,6 +18,11 @@ namespace DataAccessLayerFakes
 
         }
 
+        public List<FundraisingEventVM> SelectAllFundraisingEventsByCampaignId(int campaignId)
+        {
+            return fakeFundraisingEvents.Where((e) => e.CampaignId == campaignId).ToList();
+        }
+
         public List<FundraisingEventVM> SelectAllFundraisingEventsByShelterId(int shelterId)
         {
             //throw new NotImplementedException();

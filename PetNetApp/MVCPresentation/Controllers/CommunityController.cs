@@ -38,6 +38,13 @@ namespace MVCPresentation.Controllers
                     //    post.ReplyCount = masterManager.ReplyManager.RetrieveCountActiveRepliesByPostId(post.PostId);
                     //}
                 }
+                //if (User.Identity.IsAuthenticated)
+                //{
+                    foreach (var post in posts)
+                    {
+                        post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
+                    }
+                //}
             }
             catch (Exception ex)
             {
