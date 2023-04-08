@@ -222,6 +222,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\community.css" />
     <Content Include="Content\button-styles.css" />
+    <Content Include="Content\Fundraising\campaign-partial.css" />
+    <Content Include="Content\Fundraising\campaign.css" />
     <Content Include="Content\Fundraising\campaigns-desktop.css" />
     <Content Include="Content\Fundraising\campaigns-mobile.css" />
     <Content Include="Content\Fundraising\campaigns.css" />
@@ -238,6 +240,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\fundraising-campaigns.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />

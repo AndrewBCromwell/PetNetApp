@@ -105,5 +105,21 @@ namespace LogicLayer
 
             return post;
         }
+
+        public bool RetrieveUserPostReportedByPostIdAndUserId(int postId, int userId)
+        {
+            bool reported = false;
+
+            try
+            {
+                reported = postAccessor.SelectUserPostReportedByPostIdandUserId(postId, userId) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to check if the post has been reported");
+            }
+
+            return reported;
+        }
     }
 }

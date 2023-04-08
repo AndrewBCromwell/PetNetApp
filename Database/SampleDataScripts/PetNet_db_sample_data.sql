@@ -778,6 +778,7 @@ INSERT INTO [dbo].[FundraisingEvent]
 		(
         [UsersId],
 		[ShelterId],
+		[CampaignId],
         [Title],
         [StartTime],
         [EndTime],
@@ -785,9 +786,9 @@ INSERT INTO [dbo].[FundraisingEvent]
         [AdditionalInfo]
 		)
 	VALUES
-		(100001, 100000, 'Shelter in Need', '2023-07-12', '2023-07-14', 'You got a shelter in need', 'It will be fun!'),
-        (100001, 100000, 'Puppy Fun Day', '2023-07-16', '2023-07-18', 'Watch cute puppies play', 'It will be fun!'),
-        (100001, 100000, 'Give me your money', '2023-07-20', '2023-07-21', 'I want money', 'It will be fun!')
+		(100001, 100000,100000, 'Shelter in Need', '2023-07-12', '2023-07-14', 'You got a shelter in need', 'It will be fun!'),
+        (100001, 100000,100000, 'Puppy Fun Day', '2023-07-16', '2023-07-18', 'Watch cute puppies play', 'It will be fun!'),
+        (100001, 100000,100000, 'Give me your money', '2023-07-20', '2023-07-21', 'I want money', 'It will be fun!')
 GO
 
 print '' print '*** Creating Donation sample data'

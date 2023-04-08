@@ -35,5 +35,17 @@ namespace LogicLayerTest
             // assert
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void TestRetrieveFundraisingEventsByCampaignId()
+        {
+            int expected = 4;
+            int actual = 0;
+            int campaignId = 100000;
+
+            actual = _fundraisingEventManager.RetrieveAllFundraisingEventsByCampaignId(campaignId).Count;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

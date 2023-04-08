@@ -48,5 +48,16 @@ namespace LogicLayerInterfaces
         /// <param name="postId"></param>
         /// <returns></returns>
         PostVM RetrievePostByPostId(int postId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/06
+        /// 
+        /// Gets whether the current user has reported the post
+        /// </summary>
+        /// <param name="postId">user to check</param>
+        /// <param name="userId">post to check</param>
+        /// <returns>Whether the user has reported the post</returns>
+        bool RetrieveUserPostReportedByPostIdAndUserId(int postId, int userId);
     }
 }

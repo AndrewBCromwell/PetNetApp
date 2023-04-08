@@ -34,40 +34,14 @@
     --color-red:#C02825;
     --color-dark-red:#b22b29;
     --color-light-gray:#d0d8d4;
-    
-    --header-height: 160px;
 }
 
-
-@media only screen and (max-width: 1680px) {
-    :root {
-        --header-height: 205px;
-    }
-}
-
-@media only screen and (max-width: 950px) {
-    :root {
-        --header-height: 260px;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    :root {
-        --header-height: 315px;
-    }
-}
-
-@media only screen and (max-width: 350px) {
-    :root {
-        --header-height: 480px;
-    }
-}
 
 body {
     background-color: #eef2e6;
     position: relative;
     overflow: auto;
-    padding-bottom: 5%;
+    padding-bottom: 5vh;
     min-height: 100vh;
     color: #1C6758;
 }
@@ -79,7 +53,7 @@ body {
 .header {
     background-color: #3d8361;
     padding-top: 10px;
-    height: var(--header-height);
+    height: 10%;
 }
 
 .header-images {

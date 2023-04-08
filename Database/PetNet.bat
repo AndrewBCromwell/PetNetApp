@@ -94,6 +94,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\InsertCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingCampaign_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewRequest_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordList.sql

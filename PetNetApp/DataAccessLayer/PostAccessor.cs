@@ -176,6 +176,31 @@ namespace DataAccessLayer
             return post;
         }
 
+        public int SelectUserPostReportedByPostIdandUserId(int postId, int userId)
+        {
+            int reportedCount = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmd = new SqlCommand("sp_select_user_post_reported_by_postId_and_userId", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@PostId", SqlDbType.Int).Value = postId;
+            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = userId;
+
+            try
+            {
+                using (conn)
+                {
+                    reportedCount = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return reportedCount;
+        }
+
         public int UpdatePost(Post post, Post newPost)
         {
             int rowsAffected = 0;

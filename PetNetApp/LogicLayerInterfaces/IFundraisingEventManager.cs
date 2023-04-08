@@ -20,5 +20,15 @@ namespace LogicLayerInterfaces
         /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List<FundraisingEvent></FundraisingEvent></returns>
         List<FundraisingEventVM> RetrieveAllFundraisingEventsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/04/06
+        /// 
+        /// A method to get the fundraising events for the campaign
+        /// </summary>
+        /// <param name="campaignId">the campaign to get events for</param>
+        /// <returns>List of Fundraising Events for the campaign</returns>
+        List<FundraisingEventVM> RetrieveAllFundraisingEventsByCampaignId(int campaignId);
     }
 }

@@ -123,6 +123,11 @@ namespace DataAccessLayerFakes
             return fakePostVMs.Find(p => p.PostId == postId);
         }
 
+        public int SelectUserPostReportedByPostIdandUserId(int postId, int userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public int UpdatePost(Post post, Post newPost)
         {
             int result = 0;

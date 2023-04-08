@@ -48,5 +48,7 @@ namespace DataAccessLayerInterfaces
         /// <param name="postId"></param>
         /// <returns></returns>
         PostVM SelectPostByPostId(int postId);
+
+        int SelectUserPostReportedByPostIdandUserId(int postId, int userId);
     }
 }
