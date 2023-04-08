@@ -142,5 +142,20 @@ namespace DataAccessLayerFakes
 
             return categories;
         }
+
+        public int InsertCategory(string categoryId)
+        {
+            int number = 0;
+            fakeCategorys.Add(categoryId);
+            foreach (var c in fakeCategorys)
+            {
+                if (c == categoryId)
+                {
+                    number++;
+                }
+            }
+
+            return number;
+        }
     }
 }

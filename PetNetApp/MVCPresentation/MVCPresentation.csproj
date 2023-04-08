@@ -223,6 +223,7 @@
     <Content Include="Content\Fundraising\campaigns-mobile.css" />
     <Content Include="Content\Fundraising\campaigns.css" />
     <Content Include="Content\Fundraising\page-navigation.css" />
+    <Content Include="Content\ShelterNetwork.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -329,6 +330,7 @@
     <Content Include="Views\Community\ShowReplies.cshtml" />
     <Content Include="Views\Community\CreateReply.cshtml" />
     <Content Include="Views\Community\EditReply.cshtml" />
+    <Content Include="Views\Shelters\Index.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -466,7 +468,6 @@
     <Folder Include="Views\Donate\" />
     <Folder Include="Views\Events\" />
     <Folder Include="Views\Post\" />
-    <Folder Include="Views\Shelters\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

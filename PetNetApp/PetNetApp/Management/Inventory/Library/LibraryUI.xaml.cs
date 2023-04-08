@@ -110,11 +110,21 @@ namespace WpfPresentation.Management.Inventory.Library
             }
         }
 
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/06
+        /// Navigates to the AddResourceItemPage
+        /// </summary>
         private void btnAddLibraryItem_Click(object sender, RoutedEventArgs e)
         {
             frmLibrary.Navigate(new AddResourceItemPage(_masterManager.ItemManager, this));
         }
 
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/06
+        /// Navigates to the EditResourceItemPage
+        /// </summary>
         private void btnEditLibraryItem_Click(object sender, RoutedEventArgs e)
         {
             var selectedItem = (Item) datLibraryInventory.SelectedItem;
@@ -126,6 +136,16 @@ namespace WpfPresentation.Management.Inventory.Library
             {
                 frmLibrary.Navigate(new AddResourceItemPage(_masterManager.ItemManager, selectedItem, this));
             }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/06
+        /// Navigates to the AddCategoryTagPage
+        /// </summary>
+        private void btnAddCategory_Click(object sender, RoutedEventArgs e)
+        {
+            frmLibrary.Navigate(new AddCategoryTagPage(_masterManager, this));
         }
     }
 }
