@@ -13,7 +13,7 @@ namespace MVCPresentation.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202304040339378_InitialCreate"; }
+            get { return "202304070738315_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

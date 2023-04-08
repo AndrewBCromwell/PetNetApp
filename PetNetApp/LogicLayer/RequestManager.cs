@@ -24,6 +24,19 @@ namespace LogicLayer
             _requestAccessor = requestAccessor;
         }
 
+        public bool AddInventoryItemRequest(RequestVM request)
+        {
+            bool success = false;
+            try
+            {
+                success = _requestAccessor.InsertInventoryItemRequest(request);
+            }catch(Exception ex)
+            {
+                throw new ApplicationException("Error. The request was not sent.", ex);
+            }
+            return success;
+        }
+
         public List<RequestVM> RetrieveRequestsByShelterId(int shelterId)
         {
             List<RequestVM> requests = null;

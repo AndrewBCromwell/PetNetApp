@@ -7,13 +7,13 @@ namespace MVCPresentation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddedUserIdGivenNameandFamilyNametoUser : IMigrationMetadata
+    public sealed partial class UserFields : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedUserIdGivenNameandFamilyNametoUser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UserFields));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304040423342_Added UserId GivenName and FamilyName to User"; }
+            get { return "202304070741507_UserFields"; }
         }
         
         string IMigrationMetadata.Source

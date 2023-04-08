@@ -7,13 +7,13 @@ namespace MVCPresentation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RegistrationFields : IMigrationMetadata
+    public sealed partial class Zipcode : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RegistrationFields));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Zipcode));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304040828099_Registration Fields"; }
+            get { return "202304070814588_Zipcode"; }
         }
         
         string IMigrationMetadata.Source
