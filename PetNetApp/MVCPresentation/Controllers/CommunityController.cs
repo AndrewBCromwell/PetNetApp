@@ -40,10 +40,10 @@ namespace MVCPresentation.Controllers
                 }
                 //if (User.Identity.IsAuthenticated)
                 //{
-                    foreach (var post in posts)
-                    {
-                        post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
-                    }
+                    //foreach (var post in posts)
+                    //{
+                    //    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
+                    //}
                 //}
             }
             catch (Exception ex)
