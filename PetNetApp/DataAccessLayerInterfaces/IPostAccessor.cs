@@ -50,5 +50,16 @@ namespace DataAccessLayerInterfaces
         PostVM SelectPostByPostId(int postId);
 
         int SelectUserPostReportedByPostIdandUserId(int postId, int userId);
+
+        /// <summary>
+        /// Author: Matthew Meppelink
+        /// Date: 2023-03-30
+        /// Description: Updates a post visibility to true or false
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <param name="newVisibility"></param>
+        /// <param name="oldVisibility"></param>
+        /// <returns></returns>
+        int UpdatePostVisibility(int postId, bool newVisibility, bool oldVisibility);
     }
 }

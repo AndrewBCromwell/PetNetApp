@@ -233,5 +233,36 @@ namespace DataAccessLayer
 
             return rowsAffected;
         }
+
+        public int UpdatePostVisibility(int postId, bool newVisibility, bool oldVisibility)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_post_visibility";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@PostId", postId);
+            cmd.Parameters.AddWithValue("@NewPostVisibility", newVisibility);
+            cmd.Parameters.AddWithValue("@OldPostVisibility", oldVisibility);
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
     }
 }

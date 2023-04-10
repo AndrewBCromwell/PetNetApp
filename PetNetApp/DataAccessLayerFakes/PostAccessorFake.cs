@@ -142,5 +142,20 @@ namespace DataAccessLayerFakes
             }
             return result;
         }
+        public int UpdatePostVisibility(int postId, bool newVisibility, bool oldVisibility)
+        {
+            int result = 0;
+
+            foreach (Post post in fakePosts)
+            {
+                if (post.PostId == postId)
+                {
+                    post.PostVisibility = newVisibility;
+                    result = 1;
+                }
+            }
+
+            return result;
+        }
     }
 }

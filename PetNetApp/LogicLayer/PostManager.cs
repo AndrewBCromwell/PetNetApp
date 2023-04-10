@@ -121,5 +121,23 @@ namespace LogicLayer
 
             return reported;
         }
+
+        public bool EditPostVisibility(int postId, bool newVisibility, bool oldVisibility)
+        {
+            bool result = false;
+            try
+            {
+                result = 1 == postAccessor.UpdatePostVisibility(postId, newVisibility, oldVisibility);
+                if (!result)
+                {
+                    throw new ApplicationException("deletion of post failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("deletion of post failed", ex);
+            }
+            return result;
+        }
     }
 }
