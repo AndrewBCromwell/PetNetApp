@@ -40,6 +40,7 @@ namespace WpfPresentation.UserControls
         private ResourceAddRequest newResourceAddRequest = new ResourceAddRequest();
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private Users _user = new Users();
+        private ScrollViewer _svItemRequestList = new ScrollViewer();
 
         /// <summary>
         /// Andrew Schneider
@@ -57,11 +58,12 @@ namespace WpfPresentation.UserControls
         /// <param name="resourceAddRequest">ResourceAddRequest
         ///     that needs a user control</param>
         /// <param name="useAlternateColors">Bool for control color</param>
-        public NewItemRequestUserControl(ResourceAddRequest resourceAddRequest, bool useAlternateColors)
+        public NewItemRequestUserControl(ResourceAddRequest resourceAddRequest, bool useAlternateColors, ScrollViewer svItemRequestList)
         {
             ResourceAddRequest = resourceAddRequest;
             UseAlternateColors = useAlternateColors;
             DataContext = this;
+            _svItemRequestList = svItemRequestList;
             CreateNewResourceAddRequestObject();
             InitializeComponent();
         }
@@ -186,7 +188,9 @@ namespace WpfPresentation.UserControls
         private void _this_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AssignUsersName();
+            popResourceAddRequestNote.PlacementTarget = _svItemRequestList;
             popResourceAddRequestNote.IsOpen = true;
+            
         }
 
         /// <summary>

@@ -9,7 +9,7 @@
 /// Nathan Zumsande
 /// Updated: 2023/03/31
 /// Added methods AddItem, RetrieveAllCategories
-/// AddItemCategory, RemoveItemCategory
+/// AddItemCategory, RemoveItemCategory, AddCategory
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -61,6 +61,16 @@ namespace LogicLayerInterfaces
         /// <param name="category"></param>
         /// <returns>True or false if row was added</returns>
         bool AddItemCategory(string itemId, string category);
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/06
+        /// 
+        /// Adds a Category
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns>True or false if row was added</returns>
+        bool AddCategory(string categoryId);
 
         /// <summary>
         /// Nathan Zumsande

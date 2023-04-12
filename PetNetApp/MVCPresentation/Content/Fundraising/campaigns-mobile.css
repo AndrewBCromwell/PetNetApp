@@ -1,40 +1,4 @@
-﻿:root {
-    --campaign-input-x-margin: 5px;
-    --campaign-input-y-margin: 0px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.header {
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-body
-{height: 100%;}
-
-
-.body-content
-{
-    overflow:auto;
-}
-
-html
-{
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-.body-content
-{
-    height: calc(95% - var(--header-height));
-}
-
-
+﻿
 .campaigns-main-grid {
     color: #1C6758;
     display: grid;
@@ -63,9 +27,9 @@ html
     vertical-align: middle;
 }
 
-.modal-body
+#filterModal .modal-body
 {
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
@@ -129,14 +93,6 @@ html
     height: 40px;
 }
 
-.modal-apply-button
-{
-}
-
-.modal-close-button
-{
-}
-
 .search-button-group {
     vertical-align: middle;
     align-self: center;
@@ -180,35 +136,6 @@ html
     text-align:center;
 }
 
-.campaign-inputs select, input {
-    border-radius: 10px;
-    border-top: 1px solid #D6CDA4;
-    border-left: 1px solid #D6CDA4;
-    border-right: 1px solid #D6CDA4;
-    border-bottom: 1px solid #D6CDA4;
-}
-
-
-.campaign-inputs select:hover, input:hover {
-    border-radius: 10px;
-    border-top: 1px solid #3D8361;
-    border-left: 1px solid #3D8361;
-    border-right: 1px solid #3D8361;
-    border-bottom: 1px solid #3D8361;
-}
-
-
-    .campaign-inputs select:focus, input:focus {
-        outline:none;
-        border-radius: 10px;
-        border-top: 1px solid #1C6758;
-        border-left: 1px solid #1C6758;
-        border-right: 1px solid #1C6758;
-        border-bottom: 1px solid #1C6758;
-    }
-
-
-
 .nav-buttons {
     text-align: center;
     align-self: center;
@@ -226,5 +153,12 @@ html
         grid-row: 1;
         display: grid;
         grid-template-columns: repeat(2, 50%);
+    }
+}
+
+@media only screen and (max-width: 374px)
+{
+    .campaigns-title {
+        font-size: 18px;
     }
 }

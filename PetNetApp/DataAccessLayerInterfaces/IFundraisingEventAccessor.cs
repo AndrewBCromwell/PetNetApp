@@ -20,5 +20,15 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List<FundraisingEvent></returns>
         List<FundraisingEventVM> SelectAllFundraisingEventsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/04/06
+        /// 
+        /// A method to get the fundraising events for the campaign
+        /// </summary>
+        /// <param name="campaignId">the campaign to get events for</param>
+        /// <returns>a list of events for the campaign</returns>
+        List<FundraisingEventVM> SelectAllFundraisingEventsByCampaignId(int campaignId);
     }
 }

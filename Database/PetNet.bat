@@ -90,10 +90,12 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItem_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItemCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteItemCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\SelectAllCategories_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertCategory_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingCampaign_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewRequest_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordList.sql
@@ -130,6 +132,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditHoursOfOperation_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\UpdatePostVisibility_SP.sql
 
 
 ECHO .

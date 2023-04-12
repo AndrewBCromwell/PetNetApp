@@ -16,7 +16,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.Fundraising;
 using WpfPresentation.UserControls;
-using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.Development.Fundraising
 {
