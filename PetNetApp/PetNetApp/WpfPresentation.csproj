@@ -122,6 +122,9 @@
     <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
       <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Donations\ViewDonationReceiptWindow.xaml.cs">
+      <DependentUpon>ViewDonationReceiptWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
       <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
     </Compile>
@@ -419,6 +422,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Community\ViewNearbyResourcesMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Donations\ViewDonationReceiptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1034,12 +1041,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Development\Donate\" />
     <Folder Include="Development\Donations\" />
     <Folder Include="Development\Events\" />
     <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
-    <Folder Include="Donations\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>

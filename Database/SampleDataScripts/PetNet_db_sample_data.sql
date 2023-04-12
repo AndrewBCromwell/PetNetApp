@@ -803,7 +803,7 @@ INSERT INTO [dbo].[Donation]
 		[FundraisingEventId]
 		)
 	VALUES
-		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa', NULL),
+		(100001, 100000, 100.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmoident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 0,'Dogs','Visa', NULL),
         (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', NULL),
         (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', NULL),
         (100002, 100000, 12.99, '', 1, 0, ':)', 'Visa', NULL),
@@ -855,10 +855,10 @@ INSERT INTO [dbo].[InKind]
         [Received]
 		)
 	VALUES
-		(100002, 'Dog food leftover by my previous dog', 1, 1),
-        (100003, 'Some toys that were lying around', 5, 1),
-        (100003, 'Some food that was lying around', 15, 1),
-        (100003, 'Some cages that was lying around', 3, 1),
+		(100002, 'Dog food', 1, 1),
+        (100003, 'Cat toys', 5, 1),
+        (100003, 'Cat food', 15, 1),
+        (100003, 'Bird Cages', 3, 1),
         (100004, 'Cages', 5, 1)
 GO
 
