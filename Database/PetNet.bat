@@ -14,6 +14,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -128,6 +129,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditHoursOfOperation_SP.sql
 
 
 ECHO .

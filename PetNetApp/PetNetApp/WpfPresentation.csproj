@@ -218,6 +218,9 @@
     <Compile Include="Management\ViewTicketPage.xaml.cs">
       <DependentUpon>ViewTicketPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Shelters\HoursOfOperation.xaml.cs">
+      <DependentUpon>HoursOfOperation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NewItemRequestUserControl.xaml.cs">
       <DependentUpon>NewItemRequestUserControl.xaml</DependentUpon>
     </Compile>
@@ -753,6 +756,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Shelters\ContactPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shelters\HoursOfOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

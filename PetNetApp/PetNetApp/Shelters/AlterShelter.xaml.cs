@@ -157,6 +157,9 @@ namespace WpfPresentation.Shelters
             txtShelterZipCode.IsReadOnly = true;
             txtShelterZipCode.Text = _currentShelter.ZipCode;
 
+            // Change Hours of Operation button to specify view.
+            btnEditHoursOfOperation.Content = "View Hours of Operation";
+
             if (_currentShelter.ShelterActive)
             {
                 lblShelterActive.Content = "This shelter is currently active.";
@@ -389,6 +392,11 @@ namespace WpfPresentation.Shelters
                 errorMessage.Append("No error");
             }
             return errorMessage.ToString();
+        }
+        private void btnEditHoursOfOperation_Click(object sender, RoutedEventArgs e)
+        {
+            HoursOfOperation hoursOfOperation = new HoursOfOperation(_manager, _currentShelter, _windowMode);
+            hoursOfOperation.ShowDialog();
         }
     }
 }
