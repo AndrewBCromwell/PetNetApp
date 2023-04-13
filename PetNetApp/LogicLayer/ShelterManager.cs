@@ -219,5 +219,40 @@ namespace LogicLayer
                 throw new ApplicationException("Failed deactivate shelter.", ex);
             }
         }
+
+        public List<HoursOfOperation> RetrieveHoursOfOperationByShelterID(int shelterID)
+        {
+            try
+            {
+                List<HoursOfOperation> activeHours = _shelterAccessor.SelectHoursOfOperationByShelterID(shelterID);
+                return activeHours;
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Failed to retrieve hours of operation.", ex);
+            }
+        }
+
+        public bool EditHoursOfOperationByShelterID(int shelterID, int dayOfWeek, HoursOfOperation hours)
+        {
+            try
+            {
+                int hoursUpdated = 0;
+                hoursUpdated = _shelterAccessor.UpdateHoursOfOperationByShelterID(shelterID, dayOfWeek, hours);
+                if (hoursUpdated == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to update hours of operation.", ex);
+            }
+        }
     }
 }

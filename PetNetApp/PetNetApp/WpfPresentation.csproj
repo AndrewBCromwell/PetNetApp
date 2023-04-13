@@ -122,15 +122,21 @@
     <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
       <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
+      <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
       <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Donations\ViewDonationReceiptWindow.xaml.cs">
+      <DependentUpon>ViewDonationReceiptWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\Library\AddCategoryTagPage.xaml.cs">
       <DependentUpon>AddCategoryTagPage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
@@ -220,6 +226,9 @@
     </Compile>
     <Compile Include="Management\ViewTicketPage.xaml.cs">
       <DependentUpon>ViewTicketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shelters\HoursOfOperation.xaml.cs">
+      <DependentUpon>HoursOfOperation.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NewItemRequestUserControl.xaml.cs">
       <DependentUpon>NewItemRequestUserControl.xaml</DependentUpon>
@@ -461,13 +470,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
     <Page Include="Management\Inventory\Library\AddCategoryTagPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-	</Page>
+    </Page>
     <Page Include="Fundraising\AddEditInstitutionalEntity.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Donations\ViewDonationReceiptWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\ViewNewItemRequestsPage.xaml">
       <SubType>Designer</SubType>
@@ -760,6 +777,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Shelters\ContactPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shelters\HoursOfOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1121,12 +1142,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Development\Donate\" />
     <Folder Include="Development\Donations\" />
     <Folder Include="Development\Events\" />
     <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
-    <Folder Include="Donations\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
