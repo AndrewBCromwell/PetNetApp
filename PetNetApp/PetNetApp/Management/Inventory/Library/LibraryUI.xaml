@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:WpfPresentation.Management.Inventory.Library"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      MinWidth="800"
       Title="LibraryUI" Loaded="Page_Loaded">
 
     <Grid>
@@ -64,7 +65,7 @@
                 <Button x:Name="btnEditLibraryItem" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="30" Click="btnEditLibraryItem_Click">Edit Library Item</Button>
                 <Button x:Name="btnAddCategory" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="30" Click="btnAddCategory_Click">Add Item Category</Button>
                 <Label x:Name="lblShelterAdminButtons" Style="{StaticResource ResourceKey=rsrcLabel}" HorizontalAlignment="Center">Shelter Administrators</Label>
-                <Button x:Name="btnAddToShelterInventory" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="50" >
+                <Button x:Name="btnAddToShelterInventory" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="50" Click="btnAddToShelterInventory_Click" >
                     <TextBlock TextWrapping="Wrap" TextAlignment="Center">
                         Add to Shelter Inventory
                     </TextBlock>
