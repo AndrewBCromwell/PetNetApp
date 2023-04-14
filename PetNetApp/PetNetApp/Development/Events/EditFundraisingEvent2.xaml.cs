@@ -231,7 +231,7 @@ namespace WpfPresentation.Development.Events
             _fundraisingEventVM = new FundraisingEventVM()
             {
                 FundraisingEventId = _fundraisingEvent.FundraisingEventId,
-                UserId = _fundraisingEvent.UserId,
+                UsersId = _fundraisingEvent.UsersId,
                 CampaignId = _fundraisingEvent.CampaignId == null ? null : _fundraisingEvent.CampaignId,
                 ShelterId = _fundraisingEvent.ShelterId,
                 ImageId = _fundraisingEvent.ImageId,

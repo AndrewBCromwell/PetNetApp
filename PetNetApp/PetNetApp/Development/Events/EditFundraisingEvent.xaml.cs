@@ -62,12 +62,12 @@ namespace WpfPresentation.Development.Events
                     cbCampaign.SelectedItem = "";
                 }
                 datePicker.SelectedDate = _fundraisingEvent.StartTime;
-                cbxStartTimeHour.SelectedItem = _fundraisingEvent.StartTime.Hour.ToString().PadLeft(2, '0');
-                cbxEndTimeHour.SelectedItem = _fundraisingEvent.EndTime.Hour.ToString().PadLeft(2, '0');
-                cbxStartTimeMinutes.SelectedItem = _fundraisingEvent.StartTime.Minute.ToString();
-                cbxEndTimeMinutes.SelectedItem = _fundraisingEvent.EndTime.Minute.ToString();
-                cbxAMorPM.SelectedIndex = _fundraisingEvent.StartTime.Hour >= 12 ? 1 : 0;
-                cbxAMorPMEnd.SelectedIndex = _fundraisingEvent.EndTime.Hour >= 12 ? 1 : 0;
+                cbxStartTimeHour.SelectedItem = _fundraisingEvent.StartTime.Value.Hour.ToString().PadLeft(2, '0');
+                cbxEndTimeHour.SelectedItem = _fundraisingEvent.EndTime.Value.Hour.ToString().PadLeft(2, '0');
+                cbxStartTimeMinutes.SelectedItem = _fundraisingEvent.StartTime.Value.Minute.ToString();
+                cbxEndTimeMinutes.SelectedItem = _fundraisingEvent.EndTime.Value.Minute.ToString();
+                cbxAMorPM.SelectedIndex = _fundraisingEvent.StartTime.Value.Hour >= 12 ? 1 : 0;
+                cbxAMorPMEnd.SelectedIndex = _fundraisingEvent.EndTime.Value.Hour >= 12 ? 1 : 0;
             }
         }
 
@@ -127,7 +127,7 @@ namespace WpfPresentation.Development.Events
                 + cbxEndTimeMinutes.Text + " " + cbxAMorPMEnd.Text;
             _fundraisingEvent.EndTime = DateTime.Parse(endTime);
             // This need to change later
-            _fundraisingEvent.UserId = _users.UsersId;
+            _fundraisingEvent.UsersId = _users.UsersId;
             _fundraisingEvent.ShelterId = _users.ShelterId.Value;
 
             return isSuccess;

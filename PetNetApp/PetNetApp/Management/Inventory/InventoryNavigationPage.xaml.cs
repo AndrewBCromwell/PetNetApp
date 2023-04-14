@@ -83,7 +83,7 @@ namespace WpfPresentation.Management.Inventory
         {
             ChangeSelectedButton(btnViewResourceAddRequest);
             // replace with page name and then delete comment
-            frameInventory.Navigate(null);
+            frameInventory.Navigate(ViewNewItemRequestsPage.GetViewNewItemRequestsPage());
         }
 
         private void btnCheckIn_Click(object sender, RoutedEventArgs e)
@@ -109,8 +109,15 @@ namespace WpfPresentation.Management.Inventory
         private void btnRequestFromShelter_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnRequestFromShelter);
-            // replace with page name and then delete comment
-            frameInventory.Navigate(null);
+            if(CreateShelterRequestPage.GetCreateShelterRequestPage(_manager) == null)
+            {
+                frameInventory.Navigate(SelectShelterForRequestPage.GetSelectShelterForRequestPage(_manager));
+            }
+            else
+            {
+                frameInventory.Navigate(CreateShelterRequestPage.GetCreateShelterRequestPage(_manager));
+            }
+            
         }
     }
 }

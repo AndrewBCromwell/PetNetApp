@@ -176,6 +176,31 @@ namespace DataAccessLayer
             return post;
         }
 
+        public int SelectUserPostReportedByPostIdandUserId(int postId, int userId)
+        {
+            int reportedCount = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmd = new SqlCommand("sp_select_user_post_reported_by_postId_and_userId", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@PostId", SqlDbType.Int).Value = postId;
+            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = userId;
+
+            try
+            {
+                using (conn)
+                {
+                    reportedCount = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return reportedCount;
+        }
+
         public int UpdatePost(Post post, Post newPost)
         {
             int rowsAffected = 0;
@@ -191,6 +216,37 @@ namespace DataAccessLayer
             cmd.Parameters.Add("@PostDate", SqlDbType.NVarChar, 25).Value = newPost.PostDate;
             cmd.Parameters.Add("@OldPostContent", SqlDbType.NVarChar, 250).Value = post.PostContent;
 
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
+
+        public int UpdatePostVisibility(int postId, bool newVisibility, bool oldVisibility)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_post_visibility";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@PostId", postId);
+            cmd.Parameters.AddWithValue("@NewPostVisibility", newVisibility);
+            cmd.Parameters.AddWithValue("@OldPostVisibility", oldVisibility);
 
             try
             {

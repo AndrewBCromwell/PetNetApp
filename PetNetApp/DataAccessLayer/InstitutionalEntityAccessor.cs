@@ -284,11 +284,6 @@ namespace DataAccessLayer
             return institutionalEntities;
         }
 
-        public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
-        {
-            throw new NotImplementedException();
-        }
-
         public int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
         {
             int rows = 0;
@@ -583,6 +578,63 @@ namespace DataAccessLayer
             }
 
             return institutionalEntity;
+        }
+
+        public List<SponsorEvent> SelectSponsorEventByName(String name) 
+        {
+            List<SponsorEvent> institutionalEntities = new List<SponsorEvent>();
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            // command text
+            var cmdText = "sp_select_all_fundraising_sponsors_By_name";
+
+            // command 
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@CompanyName", name);
+            //cmd.AddW["@AnimalId"].Value = name;
+            // try-catch-finally
+            try
+            {
+                // open a connection
+                conn.Open();
+
+                // execute command
+                var reader = cmd.ExecuteReader();
+
+                // process the results
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var sponsorEvent = new SponsorEvent();
+
+                        sponsorEvent.FundraisingEventId = reader.GetInt32(0);
+                        sponsorEvent.Title = reader.GetString(1);
+                        sponsorEvent.StartDate = reader.GetDateTime(2);
+                        sponsorEvent.InstitutionalEntityId = reader.GetInt32(3);
+                        sponsorEvent.ContactType = reader.GetString(4);
+                        sponsorEvent.CompanyName = reader.GetString(5);
+                        sponsorEvent.Address = reader.GetString(6);
+
+                        institutionalEntities.Add(sponsorEvent);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return institutionalEntities;
         }
     }
 }

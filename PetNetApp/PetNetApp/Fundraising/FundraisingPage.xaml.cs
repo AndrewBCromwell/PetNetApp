@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
 using WpfPresentation.Management;
+using DataObjects;
 
 namespace WpfPresentation.Fundraising
 {
@@ -23,6 +24,7 @@ namespace WpfPresentation.Fundraising
     public partial class FundraisingPage : Page
     {
         private static FundraisingPage _existingFundraisingPage = null;
+      
 
         private MasterManager _manager = null;
         private Button[] _fundraisingPageButtons;

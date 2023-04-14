@@ -123,6 +123,11 @@ namespace DataAccessLayerFakes
             return fakePostVMs.Find(p => p.PostId == postId);
         }
 
+        public int SelectUserPostReportedByPostIdandUserId(int postId, int userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public int UpdatePost(Post post, Post newPost)
         {
             int result = 0;
@@ -135,6 +140,21 @@ namespace DataAccessLayerFakes
                     result = 1;
                 }
             }
+            return result;
+        }
+        public int UpdatePostVisibility(int postId, bool newVisibility, bool oldVisibility)
+        {
+            int result = 0;
+
+            foreach (Post post in fakePosts)
+            {
+                if (post.PostId == postId)
+                {
+                    post.PostVisibility = newVisibility;
+                    result = 1;
+                }
+            }
+
             return result;
         }
     }

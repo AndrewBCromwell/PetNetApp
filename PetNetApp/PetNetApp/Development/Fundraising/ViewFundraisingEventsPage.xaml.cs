@@ -105,7 +105,7 @@ namespace WpfPresentation.Development.Fundraising
                     filterMethod = new Func<FundraisingEvent, bool>(fe => fe.Complete && !fe.Hidden);
                     break;
                 case "both":
-                    filterMethod = new Func<FundraisingEvent, bool>(fe => !fe.Complete);
+                    filterMethod = new Func<FundraisingEvent, bool>(fe => !fe.Complete || fe.Complete);
                     break;
                 case "hidden":
                     filterMethod = new Func<FundraisingEventVM, bool>(fe => fe.Hidden);

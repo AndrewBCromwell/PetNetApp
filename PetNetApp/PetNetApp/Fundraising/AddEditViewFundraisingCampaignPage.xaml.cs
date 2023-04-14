@@ -49,7 +49,7 @@ namespace WpfPresentation.Fundraising
         /// Stephen Jaurigue
         /// Created: 2023/02/28
         /// </summary>
-        /// <returns>An empty page to create a new fundraising campiagn</returns>
+        /// <returns>An empty page to create a new fundraising campaign</returns>
         public static AddEditViewFundraisingCampaignPage GetAddFundraisingCampaignPage()
         {
             if (_existingAddEditViewFundraisingCampaignPage == null)

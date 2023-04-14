@@ -24,7 +24,6 @@ namespace DataObjects
         public string PosterGivenName { get; set; }
         public string PosterFamilyName { get; set; }
         public List<ReplyVM> Replies { get; set; }
-        public int ReplyCount { get; set; }
         public int FavoriteCount { get; set; }
         public bool UserFavorited { get; set; }
         public bool UserPostReported { get; set; }

@@ -19,5 +19,16 @@ namespace LogicLayerInterfaces
         /// <exception cref="Exception">Select Fails</exception>
         /// <returns>List of RequestVM</returns>
         List<RequestVM> RetrieveRequestsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/06
+        /// 
+        /// Inserts a new request into the request table
+        /// </summary>        
+        /// <param name="request">The RequestVM with the data to insert</param>
+        /// <exception cref="Exception">Insert Fails</exception>
+        /// <returns>bool of whether the insert was successful</returns>
+        bool AddInventoryItemRequest(RequestVM request);
     }
 }

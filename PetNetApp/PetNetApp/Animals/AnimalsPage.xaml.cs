@@ -73,6 +73,12 @@ namespace WpfPresentation.Animals
             ChangeSelectedButton(btnAdopt);
             // replace with page name and then delete comment
             frameAnimals.Navigate(null);
+
+            // Temp display of Donation Receipt until Donation Creation is pushed. Comment out as needed.
+            Donations.ViewDonationReceiptWindow viewDonationReceiptPopupWindow = new Donations.ViewDonationReceiptWindow(100003);
+            viewDonationReceiptPopupWindow.Owner = Window.GetWindow(this);
+            viewDonationReceiptPopupWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            viewDonationReceiptPopupWindow.ShowDialog();
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)

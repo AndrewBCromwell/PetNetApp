@@ -189,20 +189,18 @@ namespace LogicLayer
             return institutionalEntity;
         }
 
-        public InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalId)
+        public List<SponsorEvent> RetrieveSponsorEventByName(String name)
         {
-            InstitutionalEntity institutionalEntity = null;
-
+            List<SponsorEvent> institutionalEntitys = new List<SponsorEvent>();
             try
             {
-                institutionalEntity = _institutionalEntityAccessor.SelectInstitutionalEntityByInstitutionalEntityId(institutionalId);
+                institutionalEntitys = _institutionalEntityAccessor.SelectSponsorEventByName(name);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Can not find any institutional entity with this Id", ex);
+                throw new ApplicationException("Entity record not found.", ex);
             }
-
-            return institutionalEntity;
+            return institutionalEntitys;
         }
     }
 }

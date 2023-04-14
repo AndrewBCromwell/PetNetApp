@@ -11,7 +11,6 @@ namespace DataObjects
     {
         public int FundraisingEventId { get; set; }
         public int UsersId { get; set; }
-        public int? ImageId { get; set; }
         public int? CampaignId { get; set; }
         public int ShelterId { get; set; }
         public string ImageId { get; set; }
@@ -19,10 +18,7 @@ namespace DataObjects
         public string Title { get; set; }
         public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
-        public bool Hidden { get; set; }
         public bool Complete { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
         public string Description { get; set; }
         public string AdditionalInfo { get; set; }
         public decimal? Cost { get; set; }

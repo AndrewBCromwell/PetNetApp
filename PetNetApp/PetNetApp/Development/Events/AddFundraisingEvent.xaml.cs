@@ -103,7 +103,7 @@ namespace WpfPresentation.Development.Events
                 + cbxEndTimeMinutes.Text + " " + cbxAMorPMEnd.Text;
             _fundraisingEvent.EndTime = DateTime.Parse(endTime);
             // This need to change later
-            _fundraisingEvent.UserId = _users.UsersId;
+            _fundraisingEvent.UsersId = _users.UsersId;
             _fundraisingEvent.ShelterId = _users.ShelterId.Value;
             foreach (FundraisingCampaign campaign in _fundraisingCampaigns)
             {
