@@ -57,6 +57,18 @@ namespace DataAccessLayerInterfaces
         int DeactivateUserAccount(int UserId);
 
         // Zaid
+        /// <summary>
+        /// Zaid Rachman
+        /// Created: 2023/02/12
+        /// 
+        /// Takes a list of usersVM by the userID
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         List<UsersVM> SelectUsersByUsersId(int usersId);
 
         /// <summary>
