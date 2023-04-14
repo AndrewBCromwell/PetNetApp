@@ -15,9 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.UserControls;
-using WpfPresentation.Fundraising;
+using WpfPresentation.Development.Fundraising;
 
-namespace WpfPresentation.Development.Fundraising
+namespace WpfPresentation.Fundraising
 {
     /// <summary>
     /// Interaction logic for AddEditFundraisingEventPage.xaml
@@ -206,14 +206,14 @@ namespace WpfPresentation.Development.Fundraising
         }
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEvents());
+            NavigationService.Navigate(WpfPresentation.Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             switch (_pageMode)
             {
                 case PageMode.New:
-                    NavigationService.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEvents());
+                    NavigationService.Navigate(WpfPresentation.Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
                     break;
                 case PageMode.Edit:
                     setupViewFundraisingEvent(_oldFundraisingEventVM);
@@ -243,7 +243,7 @@ namespace WpfPresentation.Development.Fundraising
         {
             PromptWindow.ShowPrompt("Not Implemented", "Add sponsor is not fully implemented.");
             // return;
-            AddFundraisingCampaignSponsorsWindow addFundraisingCampaignSponsorsWindow = new AddFundraisingCampaignSponsorsWindow(FundraisingEvent.Sponsors, "Sponsor");
+            WpfPresentation.Development.Fundraising.AddFundraisingCampaignSponsorsWindow addFundraisingCampaignSponsorsWindow = new WpfPresentation.Development.Fundraising.AddFundraisingCampaignSponsorsWindow(FundraisingEvent.Sponsors, "Sponsor");
             addFundraisingCampaignSponsorsWindow.Owner = Window.GetWindow(this);
             addFundraisingCampaignSponsorsWindow.ShowDialog();
             ClearAndPopulateContactType("Sponsor");
@@ -253,7 +253,7 @@ namespace WpfPresentation.Development.Fundraising
         {
             PromptWindow.ShowPrompt("Not Implemented", "Add contact is not fully implemented.");
             //return;
-            AddFundraisingCampaignSponsorsWindow addFundraisingCampaignSponsorsWindow = new AddFundraisingCampaignSponsorsWindow(FundraisingEvent.Contacts, "Contact");
+            WpfPresentation.Development.Fundraising.AddFundraisingCampaignSponsorsWindow addFundraisingCampaignSponsorsWindow = new WpfPresentation.Development.Fundraising.AddFundraisingCampaignSponsorsWindow(FundraisingEvent.Contacts, "Contact");
             addFundraisingCampaignSponsorsWindow.Owner = Window.GetWindow(this);
             addFundraisingCampaignSponsorsWindow.ShowDialog();
             ClearAndPopulateContactType("Contact");
@@ -493,6 +493,11 @@ namespace WpfPresentation.Development.Fundraising
             PromptWindow.ShowPrompt("Animal", "Show animal record?");
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_masterManager, animal));
+        }
+
+        private void btnPledgers_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ViewFundraisingEventPledgers(FundraisingEvent, _masterManager));
         }
     }
     public enum PageMode

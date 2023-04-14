@@ -148,7 +148,8 @@ namespace WpfPresentation.Events
         {
             ChangeSelectedButton((Button)sender);
             // replace with events list
-            frameEvents.Navigate(new VolunteerListPage());
+            //frameEvents.Navigate(new VolunteerListPage());
+            frameEvents.Navigate(new ViewEvents(_manager));
         }
 
         private void btnCreateEvents_Click(object sender, RoutedEventArgs e)

@@ -46,11 +46,13 @@
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IFosterAccessor.cs" />
+    <Compile Include="IPledgeAccessor.cs" />
     <Compile Include="IReplyAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
     <Compile Include="IDeathAccessor.cs" />
     <Compile Include="IDonationAccessor.cs" />
     <Compile Include="IFosterApplicationResponseAccessor.cs" />
+    <Compile Include="IEventAccessor.cs" />
     <Compile Include="IFundraisingCampaignAccessor.cs" />
     <Compile Include="IImagesAccessor.cs" />
     <Compile Include="IInstitutionalEntityAccessor.cs" />

@@ -28,7 +28,7 @@ namespace WpfPresentation.Fundraising
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private WindowMode2 _windowMode;
         private string _contactType;
-
+        private SponsorEvent _sponsorEvent = new SponsorEvent();
         private InstitutionalEntity _institutionalEntity;
 
 
@@ -112,6 +112,16 @@ namespace WpfPresentation.Fundraising
             btnClose.IsCancel = true;
             btnSave.IsDefault = false;
             btnEdit.IsDefault = true;
+            if (_contactType != "Sponsor")
+            {
+                btnVeiwEvents.Visibility = Visibility.Collapsed;
+                btnVeiwEvents.IsEnabled = false;
+            }
+            else
+            {
+                btnVeiwEvents.Visibility = Visibility.Visible;
+                btnVeiwEvents.IsEnabled = true;
+            }
         }
 
         private void AddEditMode()
@@ -582,6 +592,14 @@ namespace WpfPresentation.Fundraising
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
             //NavigationService.Navigate(new ViewFundraisingEventContacts());
+        }
+
+        private void btnVeiwEvents_Click(object sender, RoutedEventArgs e)
+        {
+            _sponsorEvent.CompanyName = _institutionalEntity.CompanyName;
+            ViewEventsWin page = new ViewEventsWin(_sponsorEvent, _masterManager);
+            page.Show();
+            this.Close();
         }
     }
 

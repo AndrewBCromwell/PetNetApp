@@ -40,7 +40,7 @@
                 <Button x:Name="btnDeactivate" Grid.Column="1" MaxWidth="120" MaxHeight="40"
                         Content="Deactivate" Click="btnDeactivate_Click"/>
                 <Popup x:Name="popResourceAddRequestNote" IsOpen="False" Width="500" Height="400" AllowsTransparency="True"
-                   StaysOpen="False" HorizontalOffset="415" VerticalOffset="260" Placement="Absolute">
+                   StaysOpen="False" Placement="Center">
                     <Border BorderThickness="3" Background="#FF3D8361" BorderBrush="#FF1C6758" CornerRadius="20">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -50,7 +50,7 @@
                             <Label Grid.Row="0" Content="{Binding ResourceAddRequest.Title}" HorizontalAlignment="Center"
                                    Foreground="#EEEFE1" FontSize="20"/>
                             <!-- Button created by Bryan C. -->
-                            <Button x:Name="btnClosePopupX" Grid.Row="0" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top"
+                            <Button x:Name="btnClosePopupX" Grid.Row="0" Width="38" Height="38" HorizontalAlignment="Right" Margin="0 2 2 0"
                                 BorderBrush="Transparent" Foreground="#FF1C6758" Content="X" Click="btnClosePopupX_Click" />
                             <Border Background="#EEEFE1" Margin="25 0 25 25" CornerRadius="20" Grid.Row="1">
                                 <Grid>

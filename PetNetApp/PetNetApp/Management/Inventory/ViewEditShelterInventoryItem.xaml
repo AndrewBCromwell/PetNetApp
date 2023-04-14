@@ -30,6 +30,7 @@
         <Label x:Name="lblQuantity" VerticalAlignment="Center" Grid.Row="1"  Margin="10 0">Quantity:</Label>
         <TextBox x:Name="txtQuantity" Grid.Row="1" Width=" 150" Height="40" HorizontalAlignment="Left" Margin="85 0" PreviewTextInput="txtQuantity_PreviewTextInput"></TextBox>
         <!--Row 2-->
+        <Label x:Name="lblOverLowStock" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="85 0" Content="Warning!" Foreground="Red" />
 
         <!--Row 3-->
 

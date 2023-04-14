@@ -14,6 +14,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -89,10 +90,12 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItem_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItemCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteItemCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\SelectAllCategories_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertCategory_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingCampaign_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewRequest_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalRecordList.sql
@@ -110,6 +113,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewDonor_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewEditResourceAddRequests_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ToggleFoster_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\MVCSetup_sp.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewEventByName.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewVolunteerByFundraisingEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewCommunityPage_SP.sql
@@ -120,9 +124,16 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateFundraisingEventResults_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\RetrievePledgersByEventId_SP.sql
+
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditUserShelter_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditHoursOfOperation_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\UpdatePostVisibility_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

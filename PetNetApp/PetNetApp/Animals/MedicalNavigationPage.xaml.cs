@@ -41,6 +41,7 @@ namespace WpfPresentation.Animals
         {
             InitializeComponent();
             _manager = manager;
+
             _medicalTabButtons = new Button[] { btnMedProfile, btnVaccinations, btnTreatment, btnTests, btnMedNotes, btnMedProcedures };
             _medicalProfileAnimal = animal;
             _returnPage = MedicalPage.GetMedicalPage(_manager);

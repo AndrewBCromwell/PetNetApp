@@ -35,6 +35,9 @@ namespace WpfPresentation.Fundraising
         private static Regex _isDigit = new Regex(@"^\d+$");
         private string _entityType = "Sponsor";
 
+
+  
+
         private int _currentPage = 1;
         private int _totalPages = 1;
         private int _itemsPerPage = 10;
@@ -448,5 +451,6 @@ namespace WpfPresentation.Fundraising
         {
             TrySearch();
         }
+
     }
 }

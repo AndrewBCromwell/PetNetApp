@@ -9,7 +9,7 @@
 /// Nathan Zumsande
 /// Updated: 2023/03/31
 /// Added methods InsertItem, SelectAllCategories
-/// InsertItemCategory, DeleteItemCategory
+/// InsertItemCategory, DeleteItemCategory, InsertCategory
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -39,6 +39,42 @@ namespace DataAccessLayer
             //set parameters
             cmd.Parameters.AddWithValue("@ItemId", itemId);
             cmd.Parameters.AddWithValue("@CategoryId", category);
+
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute
+                rows = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close connection
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+        public int InsertCategory(string categoryId)
+        {
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_category";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //set parameters
+            cmd.Parameters.AddWithValue("@CategoryId", categoryId);
 
             try
             {

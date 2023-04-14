@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -17,9 +18,23 @@ namespace MVCPresentation.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IEnumerable<String> _genders;
+        private IEnumerable<String> _pronouns;
 
         public AccountController()
         {
+            try
+            {
+                LogicLayer.UsersManager usersManager = new LogicLayer.UsersManager();
+                _genders = usersManager.RetrieveGenders();
+                _pronouns = usersManager.RetrievePronouns();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,6 +154,9 @@ namespace MVCPresentation.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Genders = _genders;
+            ViewBag.Pronouns = _pronouns;
+
             return View();
         }
 
@@ -149,10 +167,12 @@ namespace MVCPresentation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+           
             if (ModelState.IsValid)
             {
-                LogicLayer.UsersManager usrMgr = new LogicLayer.UsersManager();
 
+                LogicLayer.UsersManager usrMgr = new LogicLayer.UsersManager();
+                
                 try
                 {
                     if (usrMgr.RetrieveUserByEmail(model.Email))
@@ -165,6 +185,7 @@ namespace MVCPresentation.Controllers
                             UsersId = oldUser.UsersId,
                             PhoneNumber = oldUser.Phone,
                             PronounId = oldUser.PronounId,
+                            GenderId = oldUser.GenderId,
                             ShelterId = oldUser.ShelterId,
                             Address = oldUser.Address,
                             AddressTwo = oldUser.Address2,
@@ -191,13 +212,12 @@ namespace MVCPresentation.Controllers
                     {
                         var user = new ApplicationUser
                         {
-                            // GivenName = model.GivenName,
-                            // FamilyName = model.FamilyName,
-                            //PhoneNumber = model.Phone,
-                            //PronounId = model.PronounId,
-                            //ShelterId = model.ShelterId,
-                            //Address = model.Address,
-                            //AddressTwo = model.Address2,
+                            GivenName = model.GivenName,
+                            FamilyName = model.FamilyName,
+                            PhoneNumber = model.Phone,
+                            PronounId = model.PronounId[0],
+                            GenderId = model.GenderId[0],
+                            Zipcode = model.Zipcode,
                             UserName = model.Email,
                             Email = model.Email
                         };

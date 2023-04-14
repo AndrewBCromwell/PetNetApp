@@ -158,5 +158,19 @@ namespace LogicLayer
 
             return institutionalEntity;
         }
+
+        public List<SponsorEvent> RetrieveSponsorEventByName(String name)
+        {
+            List<SponsorEvent>  institutionalEntitys = new List<SponsorEvent>();
+            try
+            {
+                institutionalEntitys = _institutionalEntityAccessor.SelectSponsorEventByName(name);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Entity record not found.", ex);
+            }
+            return institutionalEntitys;
+        }
     }
 }

@@ -536,6 +536,22 @@ namespace LogicLayer
             return result;
         }
 
+        public UsersVM RetrieveUserByUserEmail(string email)
+        {
+            UsersVM userVM = new UsersVM();
+
+            try
+            {
+                userVM = _userAccessor.SelectUserByEmail(email);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed retrieving a user.", ex);
+            }
+
+            return userVM;
+        }
+
         public bool EditUserShelterId(int userId, int shelterId, int oldShelterId)
         {
             bool wasAdded = false;
