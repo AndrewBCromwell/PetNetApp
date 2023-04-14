@@ -71,7 +71,19 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddEditInstitutionalEntities_S
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddCampaignUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReactivateAccount_SP.sql
 
-sqlcmd -S localhost -E -i StoredProceduresScripts\Shelter_Stored_Procedures.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeactiveateShelterByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterActiveByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditAreasOfNeedByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditEmailByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditPhoneByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditZipcodeByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditAddressTwoByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditAddressByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterNameByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddShelter_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\SelectShelterByID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\SelectShelterAll_SP.sql
+
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAdoptableAnimalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AccountSettings_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\LogInUser_SP.sql

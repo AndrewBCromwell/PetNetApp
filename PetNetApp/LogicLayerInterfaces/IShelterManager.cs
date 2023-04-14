@@ -19,6 +19,13 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// This returns the list of all Shelters to populate the shelter UI with
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <returns>A list of Shelter objects</returns>
         List<Shelter> GetShelterList();
 

@@ -14,7 +14,7 @@ namespace MVCPresentation.Controllers
         private MasterManager masterManager = MasterManager.GetMasterManager();
 
         // GET: Shelters
-        public ActionResult Index()
+        public ActionResult ShelterNetwork()
         {
             List<Shelter> shelters = new List<Shelter>();
             try
