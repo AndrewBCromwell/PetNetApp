@@ -164,3 +164,9 @@ footer {
 .overflow {
     overflow-y: auto;
 }
+
+.userprofilepic {
+    position: relative;
+    display: inline-block;
+}
+

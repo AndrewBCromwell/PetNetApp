@@ -92,20 +92,23 @@ namespace LogicLayerInterfaces
         /// <param active="Active"></param
         int EditUserActive(int userId, bool active);
 
+        
+        List<UsersAdoptionRecords> RetrieveAdoptionRecordsByUserID(int usersId);
         /// <summary>
-        /// Teft Francisco
-        /// Created: 2023/02/14
+        /// Chris Dreismeier
+        /// Created: 2023/04/13
         /// 
-        /// 
+        /// Updates users shelterid
         /// </summary>
-        /// Retrieves a user's adoption records by their user ID.
         ///
         /// <remarks>
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// 
         /// </remarks>
-        /// <param userId="usersId"></param>
-        List<UsersAdoptionRecords> RetrieveAdoptionRecordsByUserID(int usersId);
+        /// <param name="usersId"></param>
+        /// <param name="shelterId"></param>
+        /// <param name="oldShelterId"></param>
+        bool EditUserShelterId(int userId, int shelterId, int oldShelterId);
     }
 }

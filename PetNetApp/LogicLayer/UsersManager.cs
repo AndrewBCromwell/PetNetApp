@@ -535,5 +535,22 @@ namespace LogicLayer
 
             return result;
         }
+
+        public bool EditUserShelterId(int userId, int shelterId, int oldShelterId)
+        {
+            bool wasAdded = false;
+
+            try
+            {
+                wasAdded = 1 == _userAccessor.UpdateUserShelterid(userId, shelterId, oldShelterId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Database Error.", ex);
+            }
+
+            return wasAdded;
+        }
     }
 }
