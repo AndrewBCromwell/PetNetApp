@@ -96,6 +96,21 @@ namespace MVCPresentation.Controllers
             
         }
 
+        public ActionResult Adoptable()
+        {
+            List<AnimalVM> adoptableAnimals = new List<AnimalVM>();
+            try
+            {
+                adoptableAnimals = _manager.AnimalManager.RetrieveAllAdoptableAnimals();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return View("Error");
+            }
+            return View(adoptableAnimals);
+        }
+
         public ActionResult Foster()
         {
             return View();

@@ -346,6 +346,7 @@
     <Content Include="Views\Community\EditReply.cshtml" />
     <Content Include="Views\Shelters\Index.cshtml" />
     <Content Include="Views\Community\Delete.cshtml" />
+    <Content Include="Views\Animals\Adoptable.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

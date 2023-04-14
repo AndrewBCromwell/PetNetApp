@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace DataObjects
 {
     public class Animal
     {
         public int AnimalId { get; set; }
-        // public int AnimalShelterId { get; set; }   // need tp update all access methods
+        [Display(Name = "Animal Name")]
         public string AnimalName { get; set; }
+        [Display(Name = "Type")]
         public string AnimalTypeId { get; set; }
+        [Display(Name = "Breed")]
         public string AnimalBreedId { get; set; }
         public string Personality { get; set; }
         public string Description { get; set; }

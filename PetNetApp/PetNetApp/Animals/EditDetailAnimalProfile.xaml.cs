@@ -29,9 +29,6 @@ using System.Windows.Shapes;
 
 namespace WpfPresentation.Animals
 {
-    /// <summary>
-    /// Interaction logic for EditDetailAnimalProfile.xaml
-    /// </summary>
     public partial class EditDetailAnimalProfile : Page
     {
         private MasterManager _manager = null;
@@ -67,14 +64,6 @@ namespace WpfPresentation.Animals
             _manager = manager;
             _animalVM = animal;
         }
-
-        // Molly- come back. Need to get an AnimalVM to pass from AnimalList
-        //public EditDetailAnimalProfile(Animal animal)     
-        //{
-        //    InitializeComponent();
-        //    _animal = animal;
-        //    _manager = MasterManager.GetMasterManager();
-        //}
 
         /// <summary>
         /// Andrew Schneider
@@ -148,6 +137,35 @@ namespace WpfPresentation.Animals
             txtChildFriendly.IsReadOnly = true;
             txtNeuterStatus.IsReadOnly = true;
             txtNotes.IsReadOnly = true;
+
+            string[] allowedKennelRoles = { "Admin", "Manager", "Maintenance" };
+            if (_manager.User.Roles.Exists(role => allowedKennelRoles.Contains(role)))
+            {
+                btnKennelPage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnKennelPage.Visibility = Visibility.Collapsed;
+            }
+
+            if (_animalVM.AnimalStatusId == "Healthy")
+            {
+                btnAdoptionProfile.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnAdoptionProfile.Visibility = Visibility.Collapsed;
+            }
+
+            string[] allowedMedicalRoles = { "Admin", "Manager", "Vet" };
+            if (_manager.User.Roles.Exists(role => allowedMedicalRoles.Contains(role)))
+            {
+                btnMedicalProfile.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnMedicalProfile.Visibility = Visibility.Hidden;
+            }
         }
 
         /// <summary>
@@ -301,9 +319,8 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/03/06
         /// 
-        /// Helper method for populating the animal image
-        /// If no image is available a label becomes 
-        /// visible alerting the user to this fact.
+        /// Helper method for populating the animal image. If no image is
+        /// available a label becomes visible alerting the user to this fact.
         /// </summary>
         ///
         /// <remarks>
@@ -554,7 +571,18 @@ namespace WpfPresentation.Animals
                 if (result == PromptSelection.Yes)
                 {
                     setDetailMode();
+                    var page = AnimalsPage.GetAnimalsPage();
+                    page.ChangeSelectedButton(page.btnAdopt);
+                    NavigationService.Navigate(new WpfPresentation.Animals.
+                        ViewAdoptableAnimalProfile(_animalVM.AnimalId));
                 }
+            }
+            else
+            {
+                var page = AnimalsPage.GetAnimalsPage();
+                page.ChangeSelectedButton(page.btnAdopt);
+                NavigationService.Navigate(new WpfPresentation.Animals.
+                        ViewAdoptableAnimalProfile(_animalVM.AnimalId));
             }
         }
 

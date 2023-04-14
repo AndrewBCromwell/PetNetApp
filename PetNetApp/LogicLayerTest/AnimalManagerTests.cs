@@ -206,6 +206,20 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
+        public void TestRetrieveAllAdoptableAnimalsReturnsCorrectList()
+        {
+            // arrange
+            const int expectedCount = 1;
+            int actualcount = 0;
+
+            // act
+            actualcount = _animalManager.RetrieveAllAdoptableAnimals().Count;
+
+            // assert 
+            Assert.AreEqual(expectedCount, actualcount);
+        }
+
+        [TestMethod]
         public void TestRetrieveAnimalMedicalProfileByAnimalId()
         {
             //arrange 

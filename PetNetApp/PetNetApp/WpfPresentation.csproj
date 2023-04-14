@@ -122,13 +122,16 @@
     <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
       <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\ViewAllAdoptableAnimalsPage.xaml.cs">
+      <DependentUpon>ViewAllAdoptableAnimalsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
       <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
       <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Donations\ViewDonationReceiptWindow.xaml.cs">
+    <Compile Include="Fundraising\ViewDonationReceiptWindow.xaml.cs">
       <DependentUpon>ViewDonationReceiptWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
@@ -226,6 +229,9 @@
     </Compile>
     <Compile Include="Management\ViewTicketPage.xaml.cs">
       <DependentUpon>ViewTicketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AdoptableAnimalListUserControl.xaml.cs">
+      <DependentUpon>AdoptableAnimalListUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NewItemRequestUserControl.xaml.cs">
       <DependentUpon>NewItemRequestUserControl.xaml</DependentUpon>
@@ -467,6 +473,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Animals\ViewAllAdoptableAnimalsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
@@ -479,7 +489,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Donations\ViewDonationReceiptWindow.xaml">
+    <Page Include="Fundraising\ViewDonationReceiptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -778,6 +788,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Shelters\ShelterNetworkPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AdoptableAnimalListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1139,6 +1153,7 @@
     <Folder Include="Development\Events\" />
     <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
+    <Folder Include="Donations\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
@@ -1461,6 +1476,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\no_image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
