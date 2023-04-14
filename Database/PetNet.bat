@@ -133,6 +133,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditHoursOfOperation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdatePostVisibility_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ReportPost_SP.sql
 
 
 ECHO .

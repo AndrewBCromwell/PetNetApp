@@ -1210,9 +1210,9 @@ INSERT INTO [dbo].[PostReport]
         [ReportMessageId]
 		)
 	VALUES
-		(100000, 100000, 100000),
-        (100001, 100001, 100001),
-        (100002, 100002, 100002)
+		(100000, 100001, 100000),
+        (100001, 100002, 100001),
+        (100002, 100000, 100002)
 GO
 
 print '' print '*** creating ReplyReport sample data'
