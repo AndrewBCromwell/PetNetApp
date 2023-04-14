@@ -27,7 +27,7 @@ using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
 
-namespace WpfPresentation.Donations
+namespace WpfPresentation.Fundraising
 {
     public partial class ViewDonationReceiptWindow : Window
     {
@@ -72,6 +72,8 @@ namespace WpfPresentation.Donations
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             PopulatePage();
@@ -235,11 +237,11 @@ namespace WpfPresentation.Donations
             AssignNameLabel();
 
             // Assign phone label
-            if (_donationVM.Phone != null)
+            if (_donationVM.Phone != null && _donationVM.Phone != "")
             {
                 lblPhone.Content += Regex.Replace(_donationVM.Phone, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
             }
-            else if (_hasUser)
+            else if (_hasUser && _user.Phone != null && _user.Phone != "")
             {
                 lblPhone.Content += Regex.Replace(_user.Phone, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
             }
@@ -249,7 +251,7 @@ namespace WpfPresentation.Donations
             }
 
             // Assign email label
-            if (_donationVM.Email != null)
+            if (_donationVM.Email != null && _donationVM.Email != "")
             {
                 lblEmail.Content += _donationVM.Email;
             }

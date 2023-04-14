@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataObjects
 {
@@ -16,6 +17,7 @@ namespace DataObjects
         // Data Object by Brian Collum
         // This represents all the fields in the Shelter table
         public int ShelterId { get; set; }
+        [Display(Name = "Shelter")]
         public string ShelterName { get; set; }
         public string Address { get; set; }
         public string Address2 { get; set; }
