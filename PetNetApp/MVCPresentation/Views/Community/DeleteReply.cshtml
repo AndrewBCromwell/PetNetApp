@@ -19,7 +19,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color text-center">
-            @Html.ActionLink("Back to List", "Index", "Community", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Cancel", "ShowReplies", "Community", new { id = Model.PostId }, new { @class = "btn btn-primary" })
             <input type="submit" value="Delete" class="btn btn-danger" />
         </div>
     }

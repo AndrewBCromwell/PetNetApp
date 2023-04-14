@@ -115,7 +115,7 @@ namespace LogicLayer
                 Phone = "319-123-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>() { "Admin" }
+                Roles = new List<string>() { "admin" }
             };
         }
 

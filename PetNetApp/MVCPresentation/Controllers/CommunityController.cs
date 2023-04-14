@@ -552,7 +552,12 @@ namespace MVCPresentation.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/14
+        /// 
+        /// Shows a page where the user will verify if they actualy want to delete the reply.
+        /// </summary>
         // GET: Community/DeleteReply/5
         public ActionResult DeleteReply(int? id)
         {
@@ -577,6 +582,12 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/14
+        /// 
+        /// Causes the reply to no longer be shown and returns to index
+        /// </summary>
         // POST: Community/DeleteReply/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -589,7 +600,7 @@ namespace MVCPresentation.Controllers
                     reply.ReplyVisibility = false;
                     masterManager.ReplyManager.EditReplyVisibilityByReplyId(reply);
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ShowReplies", new { id = reply.PostId });
                 }
                 catch (Exception ex)
                 {
