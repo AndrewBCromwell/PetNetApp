@@ -38,6 +38,24 @@ namespace LogicLayer
         {
             _fundraisingEventAccessor = fundraisingEventAccessor;
         }
+
+        public bool EditFundraisingEventResults(FundraisingEventVM oldFundraisingEventVM, FundraisingEventVM newFundraisingEventVM)
+        {
+            //throw new NotImplementedException();
+
+
+            bool success = false;
+            try
+            {
+                success = 1 == _fundraisingEventAccessor.UpdateFundraisingEventResults(oldFundraisingEventVM, newFundraisingEventVM);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to update event results", ex);
+            }
+            return success;
+        }
+
         public List<FundraisingEventVM> RetrieveAllFundraisingEventsByShelterId(int shelterId)
         {
             //throw new NotImplementedException();
@@ -50,9 +68,25 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Failed to load Events", ex);
+                throw new ApplicationException("Failed to load Events " + ex.Message, ex);
             }
             return events;
+        }
+
+        public FundraisingEventVM RetrieveFundraisingEventByFundraisingEventId(int fundraisingEventId)
+        {
+            //throw new NotImplementedException();
+            FundraisingEventVM fundraisingEvent = null;
+            try
+            {
+                fundraisingEvent = _fundraisingEventAccessor.SelectFundraisingEventByFundraisingEventId(fundraisingEventId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Failed to load Fundraising Event", ex);
+            }
+            return fundraisingEvent;
         }
     }
 }

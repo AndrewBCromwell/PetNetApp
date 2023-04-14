@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.UserControls;
+using System.Text.RegularExpressions;
 
 namespace WpfPresentation.Development.Fundraising
 {
@@ -51,7 +52,7 @@ namespace WpfPresentation.Development.Fundraising
         }
         public AddEditViewUpdateFundraisingEventPage(FundraisingEventVM fundraisingEvent)
         {
-            setupViewFundraisingEvent(fundraisingEvent);
+            SetupViewFundraisingEvent(fundraisingEvent);
 
         }
 
@@ -78,7 +79,7 @@ namespace WpfPresentation.Development.Fundraising
             {
                 _existingAddEditViewUpdateFundraisingEventPage = new AddEditViewUpdateFundraisingEventPage();
             }
-            _existingAddEditViewUpdateFundraisingEventPage.setupViewFundraisingEvent(fundraisingEvent);
+            _existingAddEditViewUpdateFundraisingEventPage.SetupViewFundraisingEvent(fundraisingEvent);
 
 
             return _existingAddEditViewUpdateFundraisingEventPage;
@@ -193,20 +194,49 @@ namespace WpfPresentation.Development.Fundraising
             return _existingAddEditViewUpdateFundraisingEventPage;
         }
 
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Prepares UI for edit mode
+        /// 
+        /// </summary>
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             //PromptWindow.ShowPrompt("Edit", "Edit Clicked");
             setupEditFundraisingEvent(FundraisingEvent);
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Prepares UI for Update mode
+        /// 
+        /// </summary>
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             setupUpdateFundraisingEvent(FundraisingEvent);
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Closes view mode of UI and returns to events list
+        /// 
+        /// </summary>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Ends the addition\edit\update of a view
+        /// Returns to event list on new.
+        /// Returns to view mode of event on edit and update.
+        /// 
+        /// </summary>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             switch (_pageMode)
@@ -215,10 +245,10 @@ namespace WpfPresentation.Development.Fundraising
                     NavigationService.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEvents());
                     break;
                 case PageMode.Edit:
-                    setupViewFundraisingEvent(_oldFundraisingEventVM);
+                    SetupViewFundraisingEvent(_oldFundraisingEventVM);
                     break;
                 case PageMode.Update:
-                    setupViewFundraisingEvent(_oldFundraisingEventVM);
+                    SetupViewFundraisingEvent(_oldFundraisingEventVM);
                     break;
                 default:
                     break;
@@ -227,17 +257,236 @@ namespace WpfPresentation.Development.Fundraising
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("Not Implemented", "Save feature is not implemented.");
+            switch (_pageMode)
+            {
+                // different save methods as update does not allow edits on only 4 fields
+                case PageMode.New:
+                    PromptWindow.ShowPrompt("Not Implemented", "Save feature is not implemented for adding new events.");
+                    break;
+                case PageMode.Edit:
+                    PromptWindow.ShowPrompt("Not Implemented", "Save feature is not implemented for saving event edits.");
+                    break;
+                case PageMode.Update:
+                    SaveEventResultUpdates();
+                    break;
+                case PageMode.View:
+                    break;
+                default:
+                    break;
+            }
         }
 
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 03/30/2023
+        /// 
+        /// Will validate event results fields and then save to database
+        /// 
+        /// </summary>
+        private void SaveEventResultUpdates()
+        {
+            if (!ValidateFundraisingEventResults())
+            {
+                return;
+            }
+            try
+            {
+                if (!_masterManager.FundraisingEventManager.EditFundraisingEventResults(_oldFundraisingEventVM, FundraisingEvent))
+                {
+                    PromptWindow.ShowPrompt("Error", "The fundraising result update was not saved");
+                    ReloadFundraisingEventInViewMode();
+                    return;
+                }
+                PromptWindow.ShowPrompt("Update Saved", FundraisingEvent.Title + "  event has been updated.");
+                SetupViewFundraisingEvent(FundraisingEvent);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+            }
+            ReloadUI();
+
+        }
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// refreshes the UI by faking a change in the fundraising event property
+        /// so all bindings are redrawn in the wpf
+        /// 
+        /// </summary>
+        private void ReloadUI()
+        {
+            var temp = FundraisingEvent;
+            FundraisingEvent = null;
+            FundraisingEvent = temp;
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 04/03/2023
+        /// 
+        /// Reloads a campaign event after a failed update save.
+        /// Usually update save fails when changes made to a fundraising event 
+        /// during the time the user was updating the event.
+        /// 
+        /// </summary>
+        private void ReloadFundraisingEventInViewMode()
+        {
+            var freshCampaignEventLoad = _masterManager.FundraisingEventManager.RetrieveFundraisingEventByFundraisingEventId(_oldFundraisingEventVM.FundraisingEventId);
+            GetSponsorsContactsHostPets(freshCampaignEventLoad);
+            SetupViewFundraisingEvent(freshCampaignEventLoad);
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 04/03/2023
+        /// 
+        /// 
+        /// </summary>
+        /// <returns>bool true if event results fields validate</returns>
+        private bool ValidateFundraisingEventResults()
+        {
+            bool updateDataValid = true;
+            decimal eventCost = 0.00m;
+            int numOfAttendees = 0;
+            int numAnimalsAdopted = 0;
+
+            if (!FundraisingEvent.UpdateNotes.IsValidLongDescription())
+            {
+                lblNotesError.Visibility = Visibility.Visible;
+                updateDataValid = false;
+            }
+            else
+            {
+                lblNotesError.Visibility = Visibility.Collapsed;
+            }
+
+            // Parse and validate event cost
+            if (!decimal.TryParse(tbEventCost.Text, out eventCost))
+            {
+                DisplayResultError(1);
+                return false;
+            }
+            else
+            {
+                if (eventCost < 0 || eventCost > 9999.99m)
+                {
+                    DisplayResultError(1);
+                    return false;
+                }
+                else
+                {
+                    lblEventCostError.Visibility = Visibility.Collapsed;
+                }
+            }
+
+            //parse and validate number of attendees
+            if (!int.TryParse(tbNumAttendees.Text, out numOfAttendees))
+            {
+                DisplayResultError(2);
+                return false;
+            }
+            else
+            {
+                if (numOfAttendees < 0 || numOfAttendees > 9999)
+                {
+                    DisplayResultError(2);
+                    return false;
+                }
+                else
+                {
+                    lblNumAttendeesError.Visibility = Visibility.Collapsed;
+                }
+            }
+
+            //parse and validate number of animals adopted
+            if (!int.TryParse(tbNumAnimalsAdopted.Text, out numAnimalsAdopted))
+            {
+                DisplayResultError(3);
+                return false;
+            }
+            else
+            {
+                if (numAnimalsAdopted < 0 || numAnimalsAdopted > 999)
+                {
+                    DisplayResultError(3);
+                    return false;
+                }
+                else
+                {
+                    lblNumAnimalsAdoptedError.Visibility = Visibility.Collapsed;
+                }
+            }
+
+
+            return updateDataValid;
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 04/03/2023
+        /// 
+        ///  Helper  method that displays one of 3 UI error messages 
+        ///  and hides the others
+        /// 
+        /// </summary>
+        private void DisplayResultError(int errorNum)
+        {
+            switch (errorNum)
+            {
+                case 1:
+                    lblEventCostError.Visibility = Visibility.Visible;
+                    lblNumAttendeesError.Visibility = Visibility.Collapsed;
+                    lblNumAnimalsAdoptedError.Visibility = Visibility.Collapsed;
+                    break;
+                case 2:
+                    lblEventCostError.Visibility = Visibility.Collapsed;
+                    lblNumAttendeesError.Visibility = Visibility.Visible;
+                    lblNumAnimalsAdoptedError.Visibility = Visibility.Collapsed;
+                    break;
+                case 3:
+                    lblEventCostError.Visibility = Visibility.Collapsed;
+                    lblNumAttendeesError.Visibility = Visibility.Collapsed;
+                    lblNumAnimalsAdoptedError.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Opens add host dialog - not implemented as add host done in othe area
+        /// 
+        /// </summary>
         private void btnAddHost_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("Add Host", "Add Host Not implemented");
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Opens add campaign dialog - not implemented as add host done in othe area
+        /// 
+        /// </summary>
         private void btnAddCampaign_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("Add Campaign", "Add Campaign Not implemented");
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Opens add sponsor dialog - not implemented as add host done in othe area
+        /// 
+        /// </summary>
         private void btnAddSponsors_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("Not Implemented", "Add sponsor is not fully implemented.");
@@ -248,6 +497,13 @@ namespace WpfPresentation.Development.Fundraising
             ClearAndPopulateContactType("Sponsor");
 
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Opens add contact dialog - not implemented as add host done in othe area
+        /// 
+        /// </summary>
         private void btnAddContacts_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("Not Implemented", "Add contact is not fully implemented.");
@@ -258,14 +514,26 @@ namespace WpfPresentation.Development.Fundraising
             ClearAndPopulateContactType("Contact");
 
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Opens add pet dialog - not implemented as add host done in othe area
+        /// 
+        /// </summary>
         private void btnAddPet_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("Not Implemented", "Add pet is not implemented.");
 
         }
 
-
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Sets up page for addition of a new event.
+        /// 
+        /// </summary>
         private void setupNewFundraisingEvent()
         {
             _pageMode = PageMode.New;
@@ -287,7 +555,14 @@ namespace WpfPresentation.Development.Fundraising
             AddEditMode();
             SaveCloseButtonsEnabled();
         }
-        private void setupViewFundraisingEvent(FundraisingEventVM fundraisingEvent)
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Sets up page for viewing of an exisitng event.
+        /// 
+        /// </summary>
+        private void SetupViewFundraisingEvent(FundraisingEventVM fundraisingEvent)
         {
             _pageMode = PageMode.View;
             lblHeader.Content = "View Fundraising Event #" + fundraisingEvent.FundraisingEventId;
@@ -300,6 +575,13 @@ namespace WpfPresentation.Development.Fundraising
             ClearAndPopulateContactType("Contact");
             //add pets
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Sets up page for editing of an exisitng event.
+        /// 
+        /// </summary>
         private void setupEditFundraisingEvent(FundraisingEventVM fundraisingEvent)
         {
             _pageMode = PageMode.Edit;
@@ -314,6 +596,13 @@ namespace WpfPresentation.Development.Fundraising
             ClearAndPopulateContactType("Contact");
             //add pets
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Sets up page for updating of an exisitng event.
+        /// 
+        /// </summary>
         private void setupUpdateFundraisingEvent(FundraisingEventVM fundraisingEvent)
         {
             _pageMode = PageMode.Update;
@@ -329,6 +618,13 @@ namespace WpfPresentation.Development.Fundraising
             //add pets
         }
 
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// loads the contact and sponsor for view and edit mode
+        /// 
+        /// </summary>
         private void ClearAndPopulateContactType(string contactType)
         {
             switch (contactType)
@@ -355,18 +651,39 @@ namespace WpfPresentation.Development.Fundraising
                     break;
             }
         }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Removed sponsor from list when remove clicked in add sponsor popup
+        /// 
+        /// </summary>
         private void btnRemoveSponsor_Click(object sender, RoutedEventArgs args, InstitutionalEntity institutionalEntity)
         {
             FundraisingEvent.Sponsors.Remove(institutionalEntity);
             ClearAndPopulateContactType("Sponsor"); ;
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Removed contact from list when remove clicked in add sponsor popup
+        /// 
+        /// </summary>        
         private void btnRemoveContact_Click(object sender, RoutedEventArgs args, InstitutionalEntity institutionalEntity)
         {
             FundraisingEvent.Contacts.Remove(institutionalEntity);
             ClearAndPopulateContactType("Contact"); ;
         }
 
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// sets up page for view mode.
+        /// 
+        /// </summary> 
         private void ViewMode()
         {
             tbEventTitle.IsEnabled = false;
@@ -388,8 +705,19 @@ namespace WpfPresentation.Development.Fundraising
             btnAddContacts.IsEnabled = false;
             btnAddPet.IsEnabled = false;
             btnAddSponsors.IsEnabled = false;
+            gridDescriptionContacts.Visibility = Visibility.Visible;
+            gridSponsorsPets.Visibility = Visibility.Visible;
+            ckbComplete.Visibility = Visibility.Visible;
+            ckbComplete.IsEnabled = false;
             lblHeader.Focus();
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// sets up page for add and edit modes.
+        /// 
+        /// </summary> 
         private void AddEditMode()
         {
             tbEventTitle.IsEnabled = true;
@@ -403,7 +731,7 @@ namespace WpfPresentation.Development.Fundraising
             dpStartTime.IsEnabled = true;
             dpEndTime.IsEnabled = true;
             tbDescription.IsEnabled = true;
-            tbNotes.IsEnabled = true;
+            tbNotes.IsEnabled = false;
             tbAmountRaised.IsEnabled = false;
             tbEventCost.IsEnabled = false;
             tbNumAttendees.IsEnabled = false;
@@ -414,9 +742,20 @@ namespace WpfPresentation.Development.Fundraising
             btnAddContacts.Visibility = Visibility.Visible;
             btnAddPet.Visibility = Visibility.Visible;
             btnAddSponsors.Visibility = Visibility.Visible;
+            gridDescriptionContacts.Visibility = Visibility.Visible;
+            gridSponsorsPets.Visibility = Visibility.Visible;
+            ckbComplete.Visibility = Visibility.Hidden;
+            ckbComplete.IsEnabled = false;
             tbEventTitle.Focus();
             tbEventTitle.SelectAll();
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// sets up page for update mode.
+        /// 
+        /// </summary> 
         private void UpdateMode()
         {
             tbEventTitle.IsEnabled = false;
@@ -441,22 +780,47 @@ namespace WpfPresentation.Development.Fundraising
             btnAddContacts.Visibility = Visibility.Collapsed;
             btnAddPet.Visibility = Visibility.Collapsed;
             btnAddSponsors.Visibility = Visibility.Collapsed;
+            gridDescriptionContacts.Visibility = Visibility.Collapsed;
+            gridSponsorsPets.Visibility = Visibility.Collapsed;
+            ckbComplete.Visibility = Visibility.Visible;
+            ckbComplete.IsEnabled = true;
             tbEventCost.Focus();
             tbEventCost.SelectAll();
         }
 
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Sets up button panels on page for edit, add, and update modes.
+        /// 
+        /// </summary> 
         private void SaveCloseButtonsEnabled()
         {
+            if (_pageMode == PageMode.Update)
+            {
+                stackSaveCancel.IsEnabled = false;
+                stackSaveCancel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                stackSaveCancel.IsEnabled = true;
+                stackSaveCancel.Visibility = Visibility.Visible;
+            }
             stackEditUpdateDelete.IsEnabled = false;
             stackEditUpdateDelete.Visibility = Visibility.Collapsed;
-            stackSaveCancel.IsEnabled = true;
-            stackSaveCancel.Visibility = Visibility.Visible;
             stackSaveCancelBottom.IsEnabled = true;
             stackSaveCancelBottom.Visibility = Visibility.Visible;
             stackEditCloseBottom.IsEnabled = false;
             stackEditCloseBottom.Visibility = Visibility.Collapsed;
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created on: 2023/04/03
+        /// 
+        /// Sets up button panels on page for view mode.
+        /// 
+        /// </summary> 
         private void EditUpdateDeleteButtonsEnabled()
         {
             btnAddContacts.Visibility = Visibility.Collapsed;
@@ -472,27 +836,148 @@ namespace WpfPresentation.Development.Fundraising
             stackEditCloseBottom.Visibility = Visibility.Visible;
         }
 
-
-        private void dpStartTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// When a user types in a textbox this will prevent them from entering anything but a digit
+        /// this is based on https://stackoverflow.com/a/12721673
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// When a user types in a textbox this will prevent them from entering anything but a decimal with 2 decimal places
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void DecimalNumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[0-9]+(\.[0-9]{0,2})?$");
+            string amount = tbEventCost.Text.Insert(tbEventCost.CaretIndex, e.Text);
+            if (!regex.IsMatch(amount))
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// handler that checks that calls a method to check input in text box
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void tbNumAttendees_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidationTextBox(sender, e);
+        }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// handler that checks that calls a method to check input in text box
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void tbNumAnimalsAdopted_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidationTextBox(sender, e);
+        }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// handler that checks that calls a method to check input in text box
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void tbEventCost_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            DecimalNumberValidationTextBox(sender, e);
+        }
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// handler that checks validation of text entry after field looses focus
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void tbEventCost_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateFundraisingEventResults();
+        }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// handler that checks validation of text entry after field looses focus
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void tbNumAttendees_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateFundraisingEventResults();
+        }
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// handler that checks validation of text entry after field looses focus
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        private void tbNumAnimalsAdopted_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateFundraisingEventResults();
 
         }
 
-        private void dpEndTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
 
-        }
-
-        private void btn_ViewAnimal(object sender, RoutedEventArgs e)
-        {
-            //not implemented
-           return;
-            string animalId = ((Button)sender).Tag.ToString();
-            AnimalVM animal = FundraisingEvent.Animals.Where(am => am.AnimalId.ToString().Equals(animalId)).FirstOrDefault();
-            PromptWindow.ShowPrompt("Animal", "Show animal record?");
-            NavigationService nav = NavigationService.GetNavigationService(this);
-            nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_masterManager, animal));
-        }
     }
     public enum PageMode
     {
