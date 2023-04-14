@@ -180,6 +180,9 @@
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="true">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -230,6 +233,9 @@
                             <Setter Property="Background" TargetName="border" Value="{StaticResource LightGreenButton.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource LightGreenButton.Disabled.Border}"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource LightGreenButton.Disabled.Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="true">
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -282,6 +288,9 @@
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource WarningButton.Disabled.Border}"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource WarningButton.Disabled.Foreground}"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="true">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -332,6 +341,9 @@
                             <Setter Property="Background" TargetName="border" Value="{StaticResource SafeButton.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource SafeButton.Disabled.Border}"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource SafeButton.Disabled.Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="true">
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

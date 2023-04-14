@@ -151,5 +151,9 @@ namespace LogicLayerInterfaces
         /// <exception cref="SQLException">Retrieve fails.</exception>
         /// <returns>List of InstitutionalEntity</returns>
         List<SponsorEvent> RetrieveSponsorEventByName(String name);
+
+        List<InstitutionalEntity> RetrieveAllHosts();
+
+        List<InstitutionalEntity> RetrieveAllContact();
     }
 }

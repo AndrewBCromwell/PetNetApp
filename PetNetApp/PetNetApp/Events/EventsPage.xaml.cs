@@ -156,7 +156,7 @@ namespace WpfPresentation.Events
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameEvents.Navigate(null);
+            frameEvents.Navigate(new AddFundraisingEvent());
         }
 
         private void btnEventHistory_Click(object sender, RoutedEventArgs e)

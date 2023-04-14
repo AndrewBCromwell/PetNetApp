@@ -55,6 +55,176 @@ namespace MVCPresentation.Controllers
             return View(posts);
         }
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Returns the form to select a report reason
+        /// </summary>
+        /// <param name="post">post to report</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult BeginReportPost(int? post)
+        {
+            ViewBag.User = masterManager.User;
+            try
+            {
+                if (post == null)
+                {
+                    throw new ApplicationException("No post to Report");
+                }
+                var postVM = masterManager.PostManager.RetrievePostByPostId(post.Value);
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (postVM.UserPostReported)
+                {
+                    throw new ApplicationException("You already reported this post");
+                }
+                if (postVM.PostAuthor == masterManager.User.UsersId)
+                {
+                    throw new ApplicationException("You cannot report your own post");
+                }
+                // add logic here
+                postVM.UserPostReported = !postVM.UserPostReported;
+                var reportReasons = masterManager.PostManager.RetrieveReportMessages();
+                ViewBag.ReportReasons = reportReasons;
+
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("BeginPostReport", postVM);
+                }
+                return View("BeginPostReport", postVM);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + "\n" + ex.InnerException;
+                if (Request.IsAjaxRequest())
+                {
+                    return Content("Error");
+                }
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Stephen Jaurgiue
+        /// 2023/04/13
+        /// 
+        /// removes the report from the current user for the post
+        /// </summary>
+        /// <param name="post">Post to unreport</param>
+        /// <returns>Updated Report form or full page</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UnreportPost(int? post)
+        {
+            PostVM postVM = null;
+            ViewBag.User = masterManager.User;
+            try
+            {
+                if (post == null)
+                {
+                    throw new ApplicationException("No post to unreport");
+                }
+                postVM = masterManager.PostManager.RetrievePostByPostId(post.Value);
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (!postVM.UserPostReported)
+                {
+                    throw new ApplicationException("You haven't reported this post");
+                }
+
+                if (!masterManager.PostManager.RemovePostReport(post.Value, masterManager.User.UsersId))
+                {
+                    throw new ApplicationException("Something went wrong");
+                }
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("ReportPartial", postVM);
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + "\n" + ex.InnerException;
+                ViewBag.ReportError = ex.Message;
+                if (Request.IsAjaxRequest())
+                {
+                    if (postVM != null)
+                    {
+                        return PartialView("ReportPartial", postVM);
+                    }
+                    Content("Error");
+                }
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Adds a report to the post for the currently logged in user
+        /// </summary>
+        /// <param name="post">post to report</param>
+        /// <param name="reason">the reason for the report</param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ReportPost(int? post, int? reason)
+        {
+            ViewBag.User = masterManager.User;
+            Debug.WriteLine(post + " " + reason);
+            PostVM postVM = null;
+            try
+            {
+                if (post == null)
+                {
+                    throw new ApplicationException("No post to unreport");
+                }
+                postVM = masterManager.PostManager.RetrievePostByPostId(post.Value);
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (postVM.UserPostReported)
+                {
+                    throw new ApplicationException("You already reported this post");
+                }
+
+                if (reason == null)
+                {
+                    throw new ApplicationException("Select a reason");
+                }
+
+                if (postVM.PostAuthor == masterManager.User.UsersId)
+                {
+                    throw new ApplicationException("You cannot report your own post");
+                }
+
+                if (!masterManager.PostManager.AddPostReport(post.Value, masterManager.User.UsersId,reason.Value))
+                {
+                    throw new ApplicationException("Something went wrong");
+                }
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("ReportPartial", postVM);
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + "\n" + ex.InnerException;
+                ViewBag.ReportError = ex.Message;
+                if (Request.IsAjaxRequest())
+                {
+                    if (postVM == null)
+                    {
+                        return Content(ex.Message);
+                    }
+                    return PartialView("ReportPartial", postVM);
+                }
+                return View("Error");
+            }
+        }
+
         public ActionResult ShowReplies(int? id)
         {
             if(id != null)

@@ -39,6 +39,5 @@ namespace MVCPresentation.Models
         {
             return new ApplicationDbContext();
         }
-
     }
 }

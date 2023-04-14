@@ -43,6 +43,23 @@ namespace LogicLayer
             return isSuccess;
         }
 
+        public List<AnimalUpdates> RetrieveAllAnimalUpdatesByAnimalId(int animalId)
+        {
+            List<AnimalUpdates> animalNotes = new List<AnimalUpdates>();
+
+            try
+            {
+                animalNotes = _animalUpdatesAccessor.SelectAllAnimalUpdateByAnimalId(animalId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Can not get animal note updates.", ex);
+            }
+
+            return animalNotes;
+        }
+
         public string RetrieveAnimalUpdatesByAnimal(int animalId)
         {
             string result = "";
