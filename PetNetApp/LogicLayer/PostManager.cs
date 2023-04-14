@@ -116,7 +116,7 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Failed to check if the post has been reported");
+                throw new ApplicationException("Failed to check if the post has been reported", ex);
             }
 
             return reported;
@@ -138,6 +138,44 @@ namespace LogicLayer
                 throw new ApplicationException("deletion of post failed", ex);
             }
             return result;
+        }
+
+        public List<ReportMessage> RetrieveReportMessages()
+        {
+            List<ReportMessage> messages = null;
+            try
+            {
+                messages = postAccessor.SelectReportMessages();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load report reasons", ex);
+            }
+            return messages;
+        }
+
+        public bool AddPostReport(int postId, int userId, int reportMessageId)
+        {
+            try
+            {
+                return postAccessor.InsertPostReport(postId, userId, reportMessageId) == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to report the post", ex);
+            }
+        }
+
+        public bool RemovePostReport(int postId, int userId)
+        {
+            try
+            {
+                return postAccessor.DeletePostReport(postId, userId) == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to report the post", ex);
+            }
         }
     }
 }

@@ -342,5 +342,22 @@ namespace LogicLayerTest
             // Assert
             Assert.AreEqual(expectedRowResult, actualRowResult);
         }
+
+        [TestMethod]
+        public void TestEditUserShelterId()
+        {
+            // Arrange
+            bool wasAffected = false;
+            int userId = 1001;
+            int shelterId = 3;
+            int oldShelterId = 1;
+
+
+            // Act
+            wasAffected = _userManager.EditUserShelterId(userId,shelterId,oldShelterId);
+
+            // Assert
+            Assert.IsTrue(wasAffected);
+        }
     }
 }

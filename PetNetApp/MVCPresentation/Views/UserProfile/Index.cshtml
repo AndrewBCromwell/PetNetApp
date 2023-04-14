@@ -1,0 +1,142 @@
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Request.IsAuthenticated)
+{
+    ApplicationUserManager userManager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+    var user = userManager.FindById(User.Identity.GetUserId());
+
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <!-- Profile picture -->
+                <img src="https://www.example.com/profile-pic.jpg" alt="Profile picture" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+                <!-- User information -->
+                <div class="card ">
+                    <div class="card-header">
+                        User Information
+                    </div>
+                    <div class="card-body">
+                        <!-- User information content -->
+                        <div>
+                            <div>
+                                <h4>Name</h4>
+                            </div>
+                            <div>
+                                <p class="card-text"> @user.GivenName @user.FamilyName</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <h4>UserName</h4>
+                            </div>
+                            <div>
+                                <p class="card-text">@user.Email</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <h4>Email</h4>
+                            </div>
+                            <div>
+                                <p class="card-text">@user.Email</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <h4>Adress</h4>
+                            </div>
+                            <div>
+                                <p class="card-text">@user.Address</p>
+                            </div>
+                        </div>
+
+
+                        @if (user.AddressTwo != null)
+                        {
+                            <div>
+                                <div>
+                                    <h4>Adress two</h4>
+                                </div>
+                                <div>
+                                    <p class="card-text">@user.AddressTwo</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    @Html.ActionLink("Manage Account", "Index","Manage","", new { @class = "btn btn-primary btn-block m-3" })
+                </div>
+                <div>
+                    @*<btn class="btn btn-primary btn-block m-3">Test</btn>*@
+                    @Html.ActionLink("Change Your Shelter", "SelectShelter", "Shelters", new { @class = "btn btn-primary btn-block m-3" })
+                </div>
+                <div>
+                    <btn class="btn btn-primary btn-block m-3">Test</btn>
+                    @*@Html.ActionLink("Test", "Details", new { @class = "btn btn-primary btn-block m-3" })*@
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                       aria-selected="true">Pending Application</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                       aria-selected="false">Animal Updates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                       aria-selected="false">User Information</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    Raw denim you
+                    probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master
+                    cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
+                    keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                    placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi
+                    qui.
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    Food truck fixie
+                    locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit,
+                    blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                    Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum
+                    PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS
+                    salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit,
+                    sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
+                    stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    Etsy mixtape
+                    wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack
+                    lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard
+                    locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify
+                    squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie
+                    etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog
+                    stumptown. Pitchfork sustainable tofu synth chambray yr.
+                </div>
+            </div>
+        </div>
+     </div>
+
+
+
+        }
+

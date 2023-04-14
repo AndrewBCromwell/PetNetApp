@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.UserControls;
 
-namespace WpfPresentation.Development.Fundraising
+namespace WpfPresentation.Fundraising
 {
     /// <summary>
     /// Interaction logic for AddEditViewFundraisingCampaign.xaml

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataObjects;
 
 namespace LogicLayerInterfaces
 {
@@ -53,5 +54,14 @@ namespace LogicLayerInterfaces
         /// <param name="fundraisingEventId">the id of the event to retrieve.</param>
         /// <returns>FundraisingEventVM</returns>
         FundraisingEventVM RetrieveFundraisingEventByFundraisingEventId(int fundraisingEventId);
+        int AddFundraisingEvent(FundraisingEvent fundraisingEvent);
+        bool AddFundraiserAnimal(int fundRaisingEventId, int animalId);
+        bool AddFundraisingEventEntity(int eventId, int contactId);
+        FundraisingEvent FindFundraisingEvent(int eventId);
+        List<InstitutionalEntity> RetrieveSponsorByEventId(int eventId);
+        List<InstitutionalEntity> RetrieveContactByEventId(int eventId);
+        List<Animal> RetrieveAnimalByEventId(int eventId, int shelterId);
+        bool UpdateFundraisingEvent(FundraisingEventVM fundraisingEvent);
+        bool DeactivateFundraisingEvent(int eventId);
     }
 }

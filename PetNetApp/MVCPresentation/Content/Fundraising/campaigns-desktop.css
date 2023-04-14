@@ -2,7 +2,7 @@
     color: #1C6758;
     display: grid;
     height: 100%;
-    grid-template-rows: 150px minmax(100px, calc(100% - 250px)) 100px;
+    grid-template-rows: 150px minmax(100px, 1fr) 100px;
 }
 
 .campaigns-title-and-filter-grid {

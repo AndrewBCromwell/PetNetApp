@@ -92,7 +92,25 @@ namespace LogicLayerInterfaces
         /// <param active="Active"></param
         int EditUserActive(int userId, bool active);
 
+        
+      
         /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/04/13
+        /// 
+        /// Updates users shelterid
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        /// <param name="usersId"></param>
+        /// <param name="shelterId"></param>
+        /// <param name="oldShelterId"></param>
+        bool EditUserShelterId(int userId, int shelterId, int oldShelterId);
+
         /// Teft Francisco
         /// Created: 2023/02/14
         /// 
