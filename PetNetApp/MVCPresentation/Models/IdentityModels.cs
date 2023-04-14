@@ -40,6 +40,5 @@ namespace MVCPresentation.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<DataObjects.Shelter> Shelters { get; set; }
     }
 }

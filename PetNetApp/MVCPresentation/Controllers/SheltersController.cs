@@ -7,19 +7,19 @@ using System.Web;
 using System.Web.Mvc;
 using LogicLayer;
 using DataObjects;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
+using MVCPresentation.Models;
+
 
 
 namespace MVCPresentation.Controllers
 {
     public class SheltersController : Controller
     {
-        private MasterManager masterManager = MasterManager.GetMasterManager();
-
-        private ShelterManager _shelterManager = new ShelterManager();
-        private UsersManager _userManager = new UsersManager();
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
         private List<Shelter> _shelters;
-
-
+        private ApplicationUserManager applicationUserManager;
 
 
 
@@ -27,7 +27,7 @@ namespace MVCPresentation.Controllers
         {
             try
             {
-                _shelters = _shelterManager.GetShelterList();
+                _shelters = _masterManager.ShelterManager.GetShelterList();
             }
             catch (Exception)
             {
@@ -42,7 +42,7 @@ namespace MVCPresentation.Controllers
             List<Shelter> shelters = new List<Shelter>();
             try
             {
-                shelters = masterManager.ShelterManager.GetShelterList();
+                shelters = _masterManager.ShelterManager.GetShelterList();
                 if (shelters == null)
                 {
                     throw new Exception("Shelter data could not be found.");
@@ -56,13 +56,19 @@ namespace MVCPresentation.Controllers
             return View(shelters);
         }
 
+
+
         // GET: SelectedShelters
         public ActionResult SelectedShelter(int id)
         {
+            applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = applicationUserManager.FindById(User.Identity.GetUserId());
+
             try
             {
-                var user = _userManager.RetrieveUserByUsersId(100003);
-                _userManager.EditUserShelterId(user.UsersId, id, (int)user.ShelterId);
+                //var user = _masterManager.UsersManager.RetrieveUserByUsersId(100003);
+
+                _masterManager.UsersManager.EditUserShelterId((int)user.UsersId, id, user.ShelterId);
 
                 // update asp users shelterid
 

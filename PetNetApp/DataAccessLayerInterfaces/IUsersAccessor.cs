@@ -118,6 +118,6 @@ namespace DataAccessLayerInterfaces
         /// <param name="shelterid"></param>
         /// <param name="userid"></param>
         /// <returns>int count rows affected</returns>
-        int UpdateUserShelterid(int userid, int shelterid, int oldShelterId);
+        int UpdateUserShelterid(int userid, int shelterid, int? oldShelterId);
     }
 }
