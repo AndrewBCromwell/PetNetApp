@@ -49,6 +49,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Returns a list of all the categories in the category table
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <returns>A list of all the categories</returns>
         List<string> SelectAllCategories();
 
@@ -69,6 +76,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Inserts a Category
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="categoryId"></param>
         /// <returns>Number of rows affected</returns>
         int InsertCategory(string categoryId);
