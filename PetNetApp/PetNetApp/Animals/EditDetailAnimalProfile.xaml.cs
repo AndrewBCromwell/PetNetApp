@@ -547,14 +547,12 @@ namespace WpfPresentation.Animals
         /// </remarks>
         private void btnAdoptionProfile_Click(object sender, RoutedEventArgs e)
         {
-            if (btnEditSave.Content.ToString() == "Save")
-            {
-                var result = PromptWindow.ShowPrompt("Discard Changes", "Are you sure you want to leave?\n" +
+            var result = PromptWindow.ShowPrompt("Discard Changes", "Are you sure you want to leave?\n" +
                                                     "Changes will not be saved.", ButtonMode.YesNo);
-                if (result == PromptSelection.Yes)
-                {
-                    setDetailMode();
-                }
+            if (result == PromptSelection.Yes)
+            {
+                AnimalsPage animalsPage = AnimalsPage.GetAnimalsPage();
+                animalsPage.frameAnimals.Navigate(new ViewAdoptableAnimalProfile(_animalVM.AnimalId));
             }
         }
 

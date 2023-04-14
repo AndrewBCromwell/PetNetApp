@@ -113,6 +113,12 @@
     <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
       <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\AnimalUpdatesWindow.xaml.cs">
+      <DependentUpon>AnimalUpdatesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\UCAnimalUpdates.xaml.cs">
+      <DependentUpon>UCAnimalUpdates.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Community\CustomerRecordsPage.xaml.cs">
       <DependentUpon>CustomerRecordsPage.xaml</DependentUpon>
     </Compile>
@@ -300,49 +306,49 @@
     <Compile Include="Animals\VaccinationsPage.xaml.cs">
       <DependentUpon>VaccinationsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\AddFundraisingEvent.xaml.cs">
+    <Compile Include="Events\AddFundraisingEvent.xaml.cs">
       <DependentUpon>AddFundraisingEvent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\AddFundraisingEvent2.xaml.cs">
+    <Compile Include="Events\AddFundraisingEvent2.xaml.cs">
       <DependentUpon>AddFundraisingEvent2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\AnimalListWindow.xaml.cs">
+    <Compile Include="Events\AnimalListWindow.xaml.cs">
       <DependentUpon>AnimalListWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\ContactListWindow.xaml.cs">
+    <Compile Include="Events\ContactListWindow.xaml.cs">
       <DependentUpon>ContactListWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\EditFundraisingEvent.xaml.cs">
+    <Compile Include="Events\EditFundraisingEvent.xaml.cs">
       <DependentUpon>EditFundraisingEvent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\EditFundraisingEvent2.xaml.cs">
+    <Compile Include="Events\EditFundraisingEvent2.xaml.cs">
       <DependentUpon>EditFundraisingEvent2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Events\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\SponsorListWindow.xaml.cs">
+    <Compile Include="Events\SponsorListWindow.xaml.cs">
       <DependentUpon>SponsorListWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\UCAnimalCanTakeToEvent.xaml.cs">
+    <Compile Include="Events\UCAnimalCanTakeToEvent.xaml.cs">
       <DependentUpon>UCAnimalCanTakeToEvent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\UCAnimalTakeToEvent.xaml.cs">
+    <Compile Include="Events\UCAnimalTakeToEvent.xaml.cs">
       <DependentUpon>UCAnimalTakeToEvent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\UCContact.xaml.cs">
+    <Compile Include="Events\UCContact.xaml.cs">
       <DependentUpon>UCContact.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\UCEventContact.xaml.cs">
+    <Compile Include="Events\UCEventContact.xaml.cs">
       <DependentUpon>UCEventContact.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\UCEventSponsor.xaml.cs">
+    <Compile Include="Events\UCEventSponsor.xaml.cs">
       <DependentUpon>UCEventSponsor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\UCSponsor.xaml.cs">
+    <Compile Include="Events\UCSponsor.xaml.cs">
       <DependentUpon>UCSponsor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\UploadEventImageWindow.xaml.cs">
+    <Compile Include="Events\UploadEventImageWindow.xaml.cs">
       <DependentUpon>UploadEventImageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
@@ -510,6 +516,14 @@
     <Compile Include="Management\AddEditSchedule.xaml.cs">
       <DependentUpon>AddEditSchedule.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AnimalUpdatesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\UCAnimalUpdates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Community\CustomerRecordsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -634,27 +648,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\AddFundraisingEvent.xaml">
+    <Page Include="Events\AddFundraisingEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\AddFundraisingEvent2.xaml">
+    <Page Include="Events\AddFundraisingEvent2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\AnimalListWindow.xaml">
+    <Page Include="Events\AnimalListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\ContactListWindow.xaml">
+    <Page Include="Events\ContactListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\EditFundraisingEvent.xaml">
+    <Page Include="Events\EditFundraisingEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\EditFundraisingEvent2.xaml">
+    <Page Include="Events\EditFundraisingEvent2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -662,35 +676,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\SponsorListWindow.xaml">
+    <Page Include="Events\SponsorListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\UCAnimalCanTakeToEvent.xaml">
+    <Page Include="Events\UCAnimalCanTakeToEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\UCAnimalTakeToEvent.xaml">
+    <Page Include="Events\UCAnimalTakeToEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\UCContact.xaml">
+    <Page Include="Events\UCContact.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\UCEventContact.xaml">
+    <Page Include="Events\UCEventContact.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\UCEventSponsor.xaml">
+    <Page Include="Events\UCEventSponsor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\UCSponsor.xaml">
+    <Page Include="Events\UCSponsor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\UploadEventImageWindow.xaml">
+    <Page Include="Events\UploadEventImageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -29,6 +29,7 @@ namespace WpfPresentation.Animals
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private int curImageIdx = 0;
         private List<Images> _animalImages = null;
+        private List<AnimalUpdates> _animalUpdates = null;
 
         public ViewAdoptableAnimalProfile(int animalId)
         {
@@ -52,7 +53,7 @@ namespace WpfPresentation.Animals
         {
             lblAnimalProfileName.Content = animalVM.AnimalName;
             lblAnimalBreed.Content = animalVM.AnimalBreedId;
-
+            lblAnimalShelter.Content = animalVM.AnimalShelterId;
             txtAnimalDescription.Text = animalVM.Description;
         }
 
@@ -181,6 +182,7 @@ namespace WpfPresentation.Animals
             try
             {
                 animalVM = _masterManager.AnimalManager.RetriveAnimalAdoptableProfile(_animalId);
+                
             }
             catch (Exception ex)
             {
@@ -281,6 +283,11 @@ namespace WpfPresentation.Animals
                 {
                     tbkAnimalNote.Text = result;
                 }
+                _animalUpdates = _masterManager.AnimalUpdatesManager.RetrieveAllAnimalUpdatesByAnimalId(_animalId);
+                if (_animalUpdates.Count == 0)
+                {
+                    _animalUpdates = new List<AnimalUpdates>();
+                }
             }
             catch (Exception ex)
             {
@@ -296,6 +303,12 @@ namespace WpfPresentation.Animals
             {
                 SaveAnimalUpdateToDataBase();
             }
+        }
+
+        private void btnViewAllComment_Click(object sender, RoutedEventArgs e)
+        {
+            var animalNoteWindow = new AnimalUpdatesWindow(_animalUpdates);
+            animalNoteWindow.ShowDialog();
         }
     }
 }
