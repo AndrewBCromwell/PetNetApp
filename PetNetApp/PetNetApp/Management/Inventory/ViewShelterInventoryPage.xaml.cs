@@ -81,9 +81,9 @@ namespace WpfPresentation.Management.Inventory
 
                 PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter list");
                 return;
-            } */
+            }
 
-            //cboShelter.DisplayMemberPath = "ShelterName";
+            cboShelter.DisplayMemberPath = "ShelterName";*/
 
             Users user;
             try
@@ -101,16 +101,16 @@ namespace WpfPresentation.Management.Inventory
 
             if (shelterId != null)
             {
-                /* try
-                 {
-                     cboShelter.SelectedItem = _masterManager.ShelterManager.RetrieveShelterVMByShelterID((int)shelterId);
-                 }
-                 catch (Exception)
-                 {
+               /* try
+                {
+                    cboShelter.SelectedItem = _masterManager.ShelterManager.RetrieveShelterVMByShelterID((int)shelterId);
+                }
+                catch (Exception)
+                {
 
-                     PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter");
-                     return;
-                 }*/
+                    PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter");
+                    return;
+                }*/
                 try
                 {
                     _shelterInventoryItemVMList = _masterManager.ShelterInventoryItemManager.RetrieveInventoryByShelterId((int)shelterId);
@@ -142,8 +142,12 @@ namespace WpfPresentation.Management.Inventory
         /// <summary>
         /// Zaid Rachman
         /// Created: 2023/03/19
-        /// 
         /// Populates the flags column
+        /// Zaid Rachman
+        /// Updated: 2023/04/04
+        /// Added Low Stock and Over Stock indicators 
+        /// 
+        /// 
         /// </summary>
         private void UpdateFlags()
         {
@@ -175,6 +179,14 @@ namespace WpfPresentation.Management.Inventory
                 {
                     Flags.Add(shelter.CustomFlag);
                 }
+                if (shelter.Quantity < shelter.LowInventoryThreshold) //Checks to see if quantity is lower than the threshold set
+                {
+                    Flags.Add("Low Quantity"); 
+                }
+                if (shelter.Quantity > shelter.HighInventoryThreshold) //Checks to see if quantity is higher than the threshold set
+                {
+                    Flags.Add("Overstocked");
+                }
 
                 //Formating
                 for (int i = 0; i < Flags.Count; i++)
@@ -194,6 +206,8 @@ namespace WpfPresentation.Management.Inventory
                         flagsList += ",";
                     }
                 }
+
+                
                 shelter.DisplayFlags = flagsList; //Using the CustomFlag property as a way to show all flags
 
 

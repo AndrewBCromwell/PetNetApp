@@ -30,6 +30,13 @@ namespace MVCPresentation.Controllers
                 {
                     posts = masterManager.PostManager.RetrieveActivePosts();
                 }
+                //if (User.Identity.IsAuthenticated)
+                //{
+                foreach (var post in posts)
+                {
+                    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
+                }
+                //}
             }
             catch (Exception ex)
             {
@@ -320,25 +327,55 @@ namespace MVCPresentation.Controllers
         }
 
         // GET: Community/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id != null)
+            {
+                Post post = new Post();
+                try
+                {
+                    post = masterManager.PostManager.RetrieveActivePosts().Find(p => p.PostId == id);
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message + ex.InnerException;
+                    return View("Error");
+                }
+                return View(post);
+            }
+            else
+            {
+                ViewBag.Message = "You need to specify a post to view";
+                return View("Error");
+            }
         }
 
         // POST: Community/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            if (id != null)
+                try
+                {
+                    Post oldPost = masterManager.PostManager.RetrieveActivePosts().
+                            First(p => p.PostId == id);
+                    Post newPost = masterManager.PostManager.RetrieveActivePosts().
+                            First(p => p.PostId == id);
+                    newPost.PostVisibility = false;
+                    masterManager.PostManager.EditPostVisibility(newPost.PostId, newPost.PostVisibility, oldPost.PostVisibility);
 
-                return RedirectToAction("Index");
-            }
-            catch
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = ex.Message;
+                    return View("Error");
+                }
+            else
             {
-                return View();
+                ViewBag.Message = "You need to specify a post to delete";
+                return View("Error");
             }
         }
     }

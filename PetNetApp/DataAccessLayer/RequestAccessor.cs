@@ -91,5 +91,62 @@ namespace DataAccessLayer
             }
             return request;
         }
+
+        public bool InsertInventoryItemRequest(RequestVM request)
+        {
+            bool success = true;
+            int newRequestId = -1;
+
+            var conn = new DBConnection().GetConnection();
+            SqlCommand cmdInsertRequest = new SqlCommand("sp_insert_inventoryitem_request", conn);
+            cmdInsertRequest.CommandType = CommandType.StoredProcedure;
+            cmdInsertRequest.Parameters.Add("@userid", SqlDbType.Int).Value = request.RequestedByUserId;
+            cmdInsertRequest.Parameters.Add("@shelterid", SqlDbType.Int).Value = request.RecievingShelterId;
+            try
+            {
+                conn.Open();
+                newRequestId = Convert.ToInt32(cmdInsertRequest.ExecuteScalar());  
+                if(newRequestId == -1)
+                {
+                    success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            foreach(RequestResourceLine line in request.RequestLines)
+            {
+                SqlCommand cmdInsertRequestLine = new SqlCommand("sp_insert_requestresourceline_by_requestid", conn);
+                cmdInsertRequestLine.CommandType = CommandType.StoredProcedure;
+                cmdInsertRequestLine.Parameters.Add("@requestid", SqlDbType.Int).Value = newRequestId;
+                cmdInsertRequestLine.Parameters.Add("@itemid", SqlDbType.NVarChar, 50).Value = line.ItemId;
+                cmdInsertRequestLine.Parameters.Add("@quantityRequested", SqlDbType.Int).Value = line.QuantityRequested;
+                cmdInsertRequestLine.Parameters.Add("@notes", SqlDbType.NVarChar, 1000).Value = line.Notes;
+                try
+                {
+                    conn.Open();
+                    if(cmdInsertRequestLine.ExecuteNonQuery() != 1)
+                    {
+                        success = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+            return success;
+        }
     }
 }

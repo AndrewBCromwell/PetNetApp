@@ -523,5 +523,91 @@ namespace DataAccessLayer
             }
             return result;
         }
+
+        public List<HoursOfOperation> SelectHoursOfOperationByShelterID(int shelterID)
+        {
+            var hoursOfOperation = new List<HoursOfOperation>();
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdtext = "sp_select_hours_of_operation_by_shelter_id";
+
+            var cmd = new SqlCommand(cmdtext, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int);
+
+            cmd.Parameters["@ShelterId"].Value = shelterID;
+
+
+
+            try
+            {
+
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var hours = new HoursOfOperation();
+                        hours.OpenHour = reader.GetTimeSpan(0);
+                        hours.CloseHour = reader.GetTimeSpan(1);
+                        hoursOfOperation.Add(hours);
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return hoursOfOperation;
+        }
+
+        public int UpdateHoursOfOperationByShelterID(int shelterID, int dayOfWeek, HoursOfOperation hours)
+        {
+            int result = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_update_hours_of_operation_by_shelter_id";
+
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("ShelterId", SqlDbType.Int);
+            cmd.Parameters.Add("OpenTime", SqlDbType.Time);
+            cmd.Parameters.Add("CloseTime", SqlDbType.Time);
+            cmd.Parameters.Add("DayOfWeek", SqlDbType.TinyInt);
+            cmd.Parameters["ShelterId"].Value = shelterID;
+            cmd.Parameters["OpenTime"].Value = hours.OpenHour;
+            cmd.Parameters["CloseTime"].Value = hours.CloseHour;
+            cmd.Parameters["DayOfWeek"].Value = dayOfWeek;
+            try
+            {
+                conn.Open();
+                result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
+        }
     }
 }

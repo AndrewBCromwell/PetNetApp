@@ -162,8 +162,26 @@ namespace DataAccessLayerInterfaces
         /// <returns>A ShelterVM object</returns>
         ShelterVM SelectShelterVMByShelterID(int shelterID);
 
-        // Hours of Operation are a separate use case
-        // EditHoursOfOperation-618-dsk
-        // int HoursOfOperationByShelterID(int shelterID);
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/02/23
+        /// Gets the hours of operation for a shelter on a specific day.
+        /// </summary>
+        /// <param name="shelterID">The ID of the shelter</param>
+        /// <exception cref="SQLException">All can throw SQLExceptions</exception>
+        /// <returns>A ShelterVM object</returns>
+        List<HoursOfOperation> SelectHoursOfOperationByShelterID(int shelterID);
+
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/02/23
+        /// Sets the hours of operation for a shelter on a specific day.
+        /// </summary>
+        /// <param name="shelterID">The ID of the shelter</param>
+        /// <param name="dayOfWeek">The day of the week as 1 for sunday through 7 as saturday</param>
+        /// <param name="hours">Hours to update</param>
+        /// <exception cref="SQLException">All can throw SQLExceptions</exception>
+        /// <returns>A ShelterVM object</returns>
+        int UpdateHoursOfOperationByShelterID(int shelterID, int dayOfWeek, HoursOfOperation hours);
     }
 }

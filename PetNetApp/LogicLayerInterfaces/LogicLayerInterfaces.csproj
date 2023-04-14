@@ -49,6 +49,7 @@
     <Compile Include="IDonationManager.cs" />
     <Compile Include="IFosterApplicationResponseManager.cs" />
     <Compile Include="IFosterManager.cs" />
+    <Compile Include="IEventManager.cs" />
     <Compile Include="IFundraisingCampaignManager.cs" />
     <Compile Include="IFundraisingEventManager.cs" />
     <Compile Include="IImagesManager.cs" />
@@ -57,8 +58,10 @@
     <Compile Include="IKennelManager.cs" />
     <Compile Include="ILibraryManager.cs" />
     <Compile Include="IMedicalRecordManager.cs" />
+    <Compile Include="IPledgeManager.cs" />
     <Compile Include="IPostManager.cs" />
     <Compile Include="IReplyManager.cs" />
+    <Compile Include="IResourceAddRequestManager.cs" />
     <Compile Include="IShelterInventoryItemManager.cs" />
     <Compile Include="IProcedureManager.cs" />
     <Compile Include="IRequestManager.cs" />

@@ -95,6 +95,7 @@ namespace WpfPresentation.Management
                 btnKennel.Visibility = Visibility.Visible;
             }
         }
+
         public void ShowTicketsButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager", "Helpdesk", "Maintenance" };

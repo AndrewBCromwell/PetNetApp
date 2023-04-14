@@ -9,7 +9,7 @@
 /// Nathan Zumsande
 /// Updated: 2023/03/31
 /// Added methods InsertItem, SelectAllCategories
-/// InsertItemCategory, DeleteItemCategory
+/// InsertItemCategory, DeleteItemCategory, InsertCategory
 /// </remarks>
 
 using System;
@@ -49,6 +49,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Returns a list of all the categories in the category table
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <returns>A list of all the categories</returns>
         List<string> SelectAllCategories();
 
@@ -62,6 +69,23 @@ namespace DataAccessLayerInterfaces
         /// <param name="category"></param>
         /// <returns>Number of rows affected</returns>
         int InsertItemCategory(string itemId, string category);
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/06
+        /// 
+        /// Inserts a Category
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
+        /// <param name="categoryId"></param>
+        /// <returns>Number of rows affected</returns>
+        int InsertCategory(string categoryId);
 
         /// <summary>
         /// Nathan Zumsande

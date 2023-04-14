@@ -32,6 +32,14 @@ namespace DataObjects
     public class ShelterVM : Shelter    // This will extend Shelter with Hours of Operation
     {
         // Shelter hours of operation
-        // DO THIS LATER
+
+        // If you're confused, the hours of operation within here is a part of the ShelterVM object, while the other instance is it's own class containing the opening and closing hours of the shelter.
+        public List<HoursOfOperation> HoursOfOperation { get; set; }
+    }
+    // The way this is set up in the database means that this can only allow times for one day so it must be made into it's own object.
+    public class HoursOfOperation
+    {
+        public TimeSpan OpenHour { get; set; }
+        public TimeSpan CloseHour { get; set; }
     }
 }
