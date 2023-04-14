@@ -181,6 +181,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SheltersController.cs" />
     <Compile Include="Controllers\UserDonationsController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -347,6 +348,8 @@
     <Content Include="Views\Community\ShowReplies.cshtml" />
     <Content Include="Views\Community\CreateReply.cshtml" />
     <Content Include="Views\Community\EditReply.cshtml" />
+    <Content Include="Views\UserProfile\Index.cshtml" />
+    <Content Include="Views\Shelters\SelectShelter.cshtml" />
     <Content Include="Views\Shelters\Index.cshtml" />
     <Content Include="Views\Community\Delete.cshtml" />
     <Content Include="Views\Animals\AdoptableAnimal.cshtml" />
