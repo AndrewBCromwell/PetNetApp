@@ -215,8 +215,8 @@ namespace MVCPresentation.Controllers
                             GivenName = model.GivenName,
                             FamilyName = model.FamilyName,
                             PhoneNumber = model.Phone,
-                            PronounId = model.PronounId[0],
-                            GenderId = model.GenderId[0],
+                            PronounId = model.PronounId.First(),
+                            GenderId = model.GenderId.First(),
                             Zipcode = model.Zipcode,
                             UserName = model.Email,
                             Email = model.Email
