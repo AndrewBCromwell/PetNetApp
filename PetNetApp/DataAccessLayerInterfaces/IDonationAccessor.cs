@@ -36,6 +36,12 @@ namespace DataAccessLayerInterfaces
         /// Date: 2023/03/08
         /// Description: Selects all inkinds by donation id
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="donationId"></param>
         /// <returns></returns>
         List<InKind> SelectInKindsByDonationId(int donationId);
@@ -44,6 +50,12 @@ namespace DataAccessLayerInterfaces
         /// Date: 2023/03/08
         /// Description: Selects donation by donation id
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="donationID"></param>
         /// <returns></returns>
         DonationVM SelectDonationByDonationId(int donationID);

@@ -6,10 +6,11 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/14
+/// 
+/// FinalQA
 /// </remarks>
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,9 +50,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="donationId">The Id of the donation to be displayed</param>
         public ViewDonationReceiptWindow(int donationId)
@@ -68,9 +70,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -85,9 +88,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         private void PopulatePage()
         {
@@ -117,9 +121,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <exception cref="Exception">Retrieve DonationVM fails</exception>
         private void GetDonationVM()
@@ -143,9 +148,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <exception cref="Exception">Retrieve user object fails</exception>
         private void GetUser()
@@ -170,9 +176,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <exception cref="Exception">Retrieve in-kind list fails</exception>
         private void GetInKindList()
@@ -197,9 +204,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <exception cref="Exception">Retrieve shelter object fails</exception>
         /// <returns>Shelter name</returns>
@@ -225,9 +233,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         private void PopulateContactInfoStackPanel()
         {
@@ -285,9 +294,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         private void PopulateFinancialStackPanel()
         {
@@ -317,9 +327,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         private void AssignNameLabel()
         {
@@ -360,9 +371,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         private void PopulateInKindListWrapPanel()
         {
@@ -393,9 +405,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <returns>FlowDocument object</returns>
         private FlowDocument CreateReceipt()
@@ -472,9 +485,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -491,9 +505,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -511,9 +526,10 @@ namespace WpfPresentation.Donations
         /// </summary>
         ///
         /// <remarks>
-        /// Updater: Andrew Schneider
-        /// Updated: 2023/04/11
-        /// example: Added FlowDocument functionality modeled by Jim in WpfApp2.sln
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
