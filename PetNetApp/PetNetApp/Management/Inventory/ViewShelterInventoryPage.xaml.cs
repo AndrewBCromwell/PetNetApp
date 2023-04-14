@@ -6,8 +6,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Brian Collum
+/// Updated: 2023/04/07
+/// 
+/// Added refreshShelterInventoryList and btnEdit_Click
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -337,6 +339,80 @@ namespace WpfPresentation.Management.Inventory
                 var selectedShelterItem = (ShelterInventoryItemVM)datShelterInventory.SelectedItem;
                 NavigationService.Navigate(new ViewEditShelterInventoryItem(selectedShelterItem));
             }
+        }
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/07
+        /// Refresh the list of Inventory items by loading them from the database
+        /// </summary>
+        public void refreshShelterInventoryList()
+        {
+            Users user;
+            try
+            {
+                user = _masterManager.UsersManager.RetrieveUserByUsersId(MasterManager.GetMasterManager().User.UsersId);
+            }
+            catch (Exception)
+            {
+                PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve user's shelter ID");
+                return;
+            }
+
+            int? shelterId = user.ShelterId;
+
+            if (shelterId != null)
+            {
+                try
+                {
+                    _shelterInventoryItemVMList = _masterManager.ShelterInventoryItemManager.RetrieveInventoryByShelterId((int)shelterId);
+                }
+                catch (Exception)
+                {
+
+                    PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter inventory");
+                    return;
+                }
+                try
+                {
+                    UpdateFlags();
+                    datShelterInventory.ItemsSource = _shelterInventoryItemVMList;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            lblItemsInCart.Content = "Items In Cart: " + _shelterInventoryItemVMCart.Count.ToString();
+        }
+        /// <summary>
+        /// Brian Collum
+        /// Created 2023/04/07
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (datShelterInventory.SelectedItem != null)
+            {
+                var selectedShelterItem = (ShelterInventoryItemVM)datShelterInventory.SelectedItem;
+                try
+                {
+                    PromptSelection result = PromptWindow.ShowPrompt("Remove Item?", "Do you want to remove " + selectedShelterItem.ItemId + " from your shelter?", ButtonMode.YesNo);
+                    if (result == PromptSelection.Yes)
+                    {
+                        _masterManager.ShelterInventoryItemManager.DisableShelterInventoryItem(selectedShelterItem.ShelterId, selectedShelterItem.ItemId);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", "Failed to remove that item from your shelter.", ButtonMode.Ok);
+                }
+            }
+            else
+            {
+                PromptWindow.ShowPrompt("Error", "Please select an item from the list to remove from your shelter.", ButtonMode.Ok);
+            }
+            refreshShelterInventoryList();
         }
     }
 }

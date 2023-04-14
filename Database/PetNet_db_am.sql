@@ -609,6 +609,7 @@ CREATE TABLE [dbo].[ShelterInventoryItem] (
 	[Processing]				[bit]			NOT NULL DEFAULT 0,
 	[DoNotOrder]				[bit]			NOT NULL DEFAULT 0,
 	[CustomFlag]				[nvarchar](250)	NULL,
+	[ItemDisabled]				[bit]			NOT NULL DEFAULT 0,
 	
 	CONSTRAINT	[fk_ShelterInventoryItem_ShelterId] FOREIGN KEY ([ShelterId])
 		REFERENCES [dbo].[Shelter]([ShelterId]),
