@@ -55,6 +55,14 @@ namespace MVCPresentation.Controllers
             return View(posts);
         }
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Returns the form to select a report reason
+        /// </summary>
+        /// <param name="post">post to report</param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult BeginReportPost(int? post)
         {
@@ -97,6 +105,14 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Stephen Jaurgiue
+        /// 2023/04/13
+        /// 
+        /// removes the report from the current user for the post
+        /// </summary>
+        /// <param name="post">Post to unreport</param>
+        /// <returns>Updated Report form or full page</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UnreportPost(int? post)
@@ -143,7 +159,15 @@ namespace MVCPresentation.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Adds a report to the post for the currently logged in user
+        /// </summary>
+        /// <param name="post">post to report</param>
+        /// <param name="reason">the reason for the report</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ReportPost(int? post, int? reason)

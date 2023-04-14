@@ -2,7 +2,7 @@
 
 @if (Model.PostVisibility && ViewBag.User.UsersId != Model.PostAuthor)
 {
-    <text> | </text>
+    <text> &nbsp;| </text>
     if (!Model.UserPostReported)
     {
         AjaxOptions options = new AjaxOptions()

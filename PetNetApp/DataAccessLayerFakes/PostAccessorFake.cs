@@ -124,8 +124,9 @@ namespace DataAccessLayerFakes
 
         public int InsertPostReport(int postId, int userId, int reportMessageId)
         {
+            int current = reports.Count;
             reports.Add(new Tuple<int, int>(postId, userId));
-            return 1;
+            return reports.Count - current;
         }
 
         public List<PostVM> SelectActivePosts()

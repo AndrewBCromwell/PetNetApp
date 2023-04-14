@@ -49,6 +49,15 @@ namespace DataAccessLayerInterfaces
         /// <returns></returns>
         PostVM SelectPostByPostId(int postId);
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Selects the count of reports this user has on this post
+        /// </summary>
+        /// <param name="postId">the post</param>
+        /// <param name="userId"> the user</param>
+        /// <returns>count of reports user has on post</returns>
         int SelectUserPostReportedByPostIdandUserId(int postId, int userId);
 
         /// <summary>
