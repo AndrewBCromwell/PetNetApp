@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.UserControls;
 
-namespace WpfPresentation.Fundraising
+namespace WpfPresentation.Development.Fundraising
 {
     /// <summary>
     /// Interaction logic for AddEditViewFundraisingCampaign.xaml
@@ -49,7 +49,7 @@ namespace WpfPresentation.Fundraising
         /// Stephen Jaurigue
         /// Created: 2023/02/28
         /// </summary>
-        /// <returns>An empty page to create a new fundraising campiagn</returns>
+        /// <returns>An empty page to create a new fundraising campaign</returns>
         public static AddEditViewFundraisingCampaignPage GetAddFundraisingCampaignPage()
         {
             if (_existingAddEditViewFundraisingCampaignPage == null)

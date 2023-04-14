@@ -47,12 +47,14 @@ namespace LogicLayerInterfaces
         bool EditUserDetails(Users oldUser, Users updatedUser);
         bool ResetPassword(string email, string oldPassword, string newPassword);
         bool UpdateEmail(string oldEmail, string newEmail, string passwordHash);
+        List<string> RetrieveAllRoles();
+        List<string> RetrieveRolesByUsersId(int usersId);
+        bool RetrieveUserByEmail(string email);
+        UsersVM AuthenticateUser(string email, string passwordHash);
 
         // Alex Oetken
         bool DeactivateUserAccount(int UserId);
         bool AddUser(Users user, string password);
-
-        // Zaid Rachman
 
         /// <summary>
         /// 
@@ -105,5 +107,6 @@ namespace LogicLayerInterfaces
         /// </remarks>
         /// <param userId="usersId"></param>
         List<UsersAdoptionRecords> RetrieveAdoptionRecordsByUserID(int usersId);
+        UsersVM RetrieveUserByUserEmail(string email);
     }
 }

@@ -22,6 +22,8 @@ namespace WpfPresentation.Management.Inventory
     /// </summary>
     public partial class ViewRequestListPage : Page
     {
+        private static ViewRequestListPage _existingViewRequestListPage = null;
+
         private MasterManager _manager;
         private List<RequestVM> _requests;
 
@@ -29,6 +31,15 @@ namespace WpfPresentation.Management.Inventory
         {
             InitializeComponent();
             _manager = manager;
+        }
+
+        public static ViewRequestListPage GetViewRequestListPage(MasterManager manager)
+        {
+            if (_existingViewRequestListPage == null)
+            {
+                _existingViewRequestListPage = new ViewRequestListPage(manager);
+            }
+            return _existingViewRequestListPage;
         }
 
         /// <summary>

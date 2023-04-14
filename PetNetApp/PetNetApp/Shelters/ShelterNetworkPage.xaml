@@ -35,7 +35,7 @@
                         <DataGridTemplateColumn Header="Contact" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button x:Name="btnContact" Click="btnContact_Click">Contact</Button>
+                                    <Button x:Name="btnContact" Click="btnContact_Click">Contact Info</Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

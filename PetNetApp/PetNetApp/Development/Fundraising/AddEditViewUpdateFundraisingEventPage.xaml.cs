@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPresentation.Fundraising;
 using WpfPresentation.UserControls;
 using System.Text.RegularExpressions;
 
@@ -977,7 +978,21 @@ namespace WpfPresentation.Development.Fundraising
 
         }
 
+        private void btn_ViewAnimal(object sender, RoutedEventArgs e)
+        {
+            //not implemented
+           return;
+            string animalId = ((Button)sender).Tag.ToString();
+            AnimalVM animal = FundraisingEvent.Animals.Where(am => am.AnimalId.ToString().Equals(animalId)).FirstOrDefault();
+            PromptWindow.ShowPrompt("Animal", "Show animal record?");
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_masterManager, animal));
+        }
 
+        private void btnPledgers_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ViewFundraisingEventPledgers(FundraisingEvent, _masterManager));
+        }
     }
     public enum PageMode
     {

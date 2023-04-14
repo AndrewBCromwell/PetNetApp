@@ -14,13 +14,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25" />
             <ColumnDefinition />
-            <ColumnDefinition Width="25" />
-        </Grid.ColumnDefinitions>
-        <Rectangle Fill="#9EC1B0" Grid.Column="0" Grid.RowSpan="2" />
-        <Rectangle Fill="#9EC1B0" Grid.Column="2" Grid.RowSpan="2" />
-        <Label x:Name="lblViewInventoryChanges" Grid.Row="0" Grid.Column="1" Content="List of Shelter Requests" VerticalContentAlignment="Center"
+        </Grid.ColumnDefinitions>        
+        <Label x:Name="lblViewRequests" Grid.Row="0" Grid.Column="1" Content="List of Shelter Requests" VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center" FontSize="24"/>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <StackPanel x:Name="stpRequestList">

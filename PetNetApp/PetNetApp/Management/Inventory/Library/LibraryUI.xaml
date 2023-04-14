@@ -60,8 +60,9 @@
             </DataGrid>
             <StackPanel x:Name="stackLibraryUIPageRight" Grid.Column="1" Grid.Row="1" >
                 <Label x:Name="lblPetNetAdminButtons" Style="{StaticResource ResourceKey=rsrcLabel}" HorizontalAlignment="Center">PetNet Administrators</Label>
-                <Button x:Name="btnAddLibraryItem" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="30">Add Library Item</Button>
-                <Button x:Name="btnEditLibraryItem" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="30">Edit Library Item</Button>
+                <Button x:Name="btnAddLibraryItem" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="30" Click="btnAddLibraryItem_Click">Add Library Item</Button>
+                <Button x:Name="btnEditLibraryItem" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="30" Click="btnEditLibraryItem_Click">Edit Library Item</Button>
+                <Button x:Name="btnAddCategory" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="30" Click="btnAddCategory_Click">Add Item Category</Button>
                 <Label x:Name="lblShelterAdminButtons" Style="{StaticResource ResourceKey=rsrcLabel}" HorizontalAlignment="Center">Shelter Administrators</Label>
                 <Button x:Name="btnAddToShelterInventory" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" MinHeight="50" >
                     <TextBlock TextWrapping="Wrap" TextAlignment="Center">
@@ -71,5 +72,6 @@
                 <Button x:Name="btnRequestLibraryAddition" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5">Request a New Item</Button>
             </StackPanel>
         </Grid>
+        <Frame x:Name="frmLibrary" Grid.RowSpan="1" Margin="0,0,0,0"/>
     </Grid>
 </Page>

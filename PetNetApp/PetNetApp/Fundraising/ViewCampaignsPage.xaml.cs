@@ -228,8 +228,9 @@ namespace WpfPresentation.Fundraising
         }
         private void btnAddCampaign_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage());
+            NavigationService.Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage());
         }
+        //AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage()
         private void btnNavigatePage_Click(object sender, RoutedEventArgs e)
         {
             NavigateToTypedPage();

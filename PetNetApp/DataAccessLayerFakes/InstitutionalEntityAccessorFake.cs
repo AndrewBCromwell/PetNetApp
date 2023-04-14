@@ -21,6 +21,7 @@ namespace DataAccessLayerFakes
         private List<Tuple<int, int>> _fundraisingCampaignEntities = FundraisingFakeData.FundraisingCampaignEntities;
         public List<InstitutionalEntity> _institutionalEntitiesWithShelterId = new List<InstitutionalEntity>();
         private List<Tuple<int, int>> _fundraisingEventEntities = FundraisingFakeData.FundraisingEventEntities;
+        public List<SponsorEvent> _sponsorEvents = new List<SponsorEvent>();
 
         public InstitutionalEntityAccessorFake()
         {
@@ -367,6 +368,11 @@ namespace DataAccessLayerFakes
                                       select institutionalEntityRecord;
 
             return (InstitutionalEntity)institutionalEntity.FirstOrDefault();
+        }
+
+        public List<SponsorEvent> SelectSponsorEventByName(string name)
+        {
+            return _sponsorEvents.Where(i => i.CompanyName == name).ToList();
         }
     }
 }

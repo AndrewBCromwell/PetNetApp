@@ -16,16 +16,13 @@ namespace DataAccessLayer
 {
     public class ImagesAccessor : IImagesAccessor
     {
-        private static readonly string baseDirectory = Environment.CurrentDirectory;
-        private static readonly string imageFolder = @"\Images\";
-        private static readonly string fullImagePath = baseDirectory + imageFolder;
         private static readonly ImageFormat imageFormat = ImageFormat.Png;
         private static readonly int maxImageWidth = 720;
         private static readonly int maxImageHeight = 720;
 
-        static ImagesAccessor()
+        public ImagesAccessor()
         {
-            //Directory.CreateDirectory(fullImagePath);
+            Directory.CreateDirectory(DataPathInformation.ImagePath);
         }
 
         /// <summary>
@@ -118,7 +115,7 @@ namespace DataAccessLayer
         {
             Image image = Image.FromFile(imageUri);
             image = ResizeImage(image);
-            image.Save(fullImagePath + imageGuid, imageFormat);
+            image.Save(DataPathInformation.ImagePath + imageGuid, imageFormat);
         }
 
         public List<Images> InsertImagesByUris(IEnumerable<string> imageUris)
@@ -200,7 +197,7 @@ namespace DataAccessLayer
             BitmapImage image = null;
             try
             {
-                Uri imageUri = new Uri(fullImagePath + images.ImageId);
+                Uri imageUri = new Uri(DataPathInformation.ImagePath + images.ImageId);
                 image = new BitmapImage(imageUri);
             }
             catch (Exception ex)
@@ -298,7 +295,7 @@ namespace DataAccessLayer
         {
             try
             {
-                File.Delete(fullImagePath + images.ImageId);
+                File.Delete(DataPathInformation.ImagePath + images.ImageId);
             }
             catch (Exception ex)
             {

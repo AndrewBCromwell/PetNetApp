@@ -105,5 +105,39 @@ namespace LogicLayer
 
             return post;
         }
+
+        public bool RetrieveUserPostReportedByPostIdAndUserId(int postId, int userId)
+        {
+            bool reported = false;
+
+            try
+            {
+                reported = postAccessor.SelectUserPostReportedByPostIdandUserId(postId, userId) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to check if the post has been reported");
+            }
+
+            return reported;
+        }
+
+        public bool EditPostVisibility(int postId, bool newVisibility, bool oldVisibility)
+        {
+            bool result = false;
+            try
+            {
+                result = 1 == postAccessor.UpdatePostVisibility(postId, newVisibility, oldVisibility);
+                if (!result)
+                {
+                    throw new ApplicationException("deletion of post failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("deletion of post failed", ex);
+            }
+            return result;
+        }
     }
 }

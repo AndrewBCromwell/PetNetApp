@@ -28,7 +28,7 @@
     color: #3d8361;
 }
 
-.postText {
+.communityText {
     font-size: 18px;
 }
 
@@ -38,6 +38,10 @@
 
 .deactive {
     color: #C02825;
+}
+
+.lower {
+    margin-top: 25px;
 }
 
 @media only screen and (max-width: 800px) {

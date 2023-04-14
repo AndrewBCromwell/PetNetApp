@@ -1,4 +1,17 @@
-﻿using System;
+﻿/// <summary>
+/// Brian Collum
+/// Created: 2023/02/23
+/// ShelterAccessor governs access to the shelter entries in the database
+/// </summary>
+///
+/// <remarks>
+/// Brian Collum
+/// Updated: 2023/03/30
+/// 
+/// Further cleanup from the AddressTwo => Address2 refactor
+/// </remarks>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +24,7 @@ using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
-    /// <summary>
-    /// Brian Collum
-    /// Created: 2023/02/23
-    /// ShelterAccessor governs access to the shelter entries in the database
-    /// </summary>
+    
     public class ShelterAccessor : IShelterAccessor
     {
         public List<Shelter> RetrieveShelterList()
@@ -105,7 +114,7 @@ namespace DataAccessLayer
             // Parameters
             cmd.Parameters.Add("ShelterName", SqlDbType.NVarChar, 50);
             cmd.Parameters.Add("Address", SqlDbType.NVarChar, 50);
-            cmd.Parameters.Add("Address2", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("AddressTwo", SqlDbType.NVarChar, 50);
             cmd.Parameters.Add("Zipcode", SqlDbType.Char, 9);
             cmd.Parameters.Add("Phone", SqlDbType.NVarChar, 13);
             cmd.Parameters.Add("Email", SqlDbType.NVarChar, 254);
@@ -114,7 +123,7 @@ namespace DataAccessLayer
 
             cmd.Parameters["ShelterName"].Value = shelterName;
             cmd.Parameters["Address"].Value = address;
-            cmd.Parameters["Address2"].Value = Address2;
+            cmd.Parameters["AddressTwo"].Value = Address2;
             cmd.Parameters["Zipcode"].Value = zipCode;
             cmd.Parameters["Phone"].Value = phone;
             cmd.Parameters["Email"].Value = email;
@@ -326,15 +335,15 @@ namespace DataAccessLayer
             var connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
             // Command Text
-            var cmdText = "sp_edit_Address2_by_shelter_id";
+            var cmdText = "sp_edit_addresstwo_by_shelter_id";
             // Command
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             // Parameters
             cmd.Parameters.Add("ShelterId", SqlDbType.Int);
-            cmd.Parameters.Add("newAddress2", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("newAddressTwo", SqlDbType.NVarChar, 50);
             cmd.Parameters["ShelterId"].Value = shelterID;
-            cmd.Parameters["newAddress2"].Value = newAddress2;
+            cmd.Parameters["newAddressTwo"].Value = newAddress2;
             try
             {
                 conn.Open();
@@ -499,6 +508,92 @@ namespace DataAccessLayer
             // Parameters
             cmd.Parameters.Add("ShelterId", SqlDbType.Int);
             cmd.Parameters["ShelterId"].Value = shelterID;
+            try
+            {
+                conn.Open();
+                result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
+        }
+
+        public List<HoursOfOperation> SelectHoursOfOperationByShelterID(int shelterID)
+        {
+            var hoursOfOperation = new List<HoursOfOperation>();
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdtext = "sp_select_hours_of_operation_by_shelter_id";
+
+            var cmd = new SqlCommand(cmdtext, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int);
+
+            cmd.Parameters["@ShelterId"].Value = shelterID;
+
+
+
+            try
+            {
+
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var hours = new HoursOfOperation();
+                        hours.OpenHour = reader.GetTimeSpan(0);
+                        hours.CloseHour = reader.GetTimeSpan(1);
+                        hoursOfOperation.Add(hours);
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return hoursOfOperation;
+        }
+
+        public int UpdateHoursOfOperationByShelterID(int shelterID, int dayOfWeek, HoursOfOperation hours)
+        {
+            int result = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_update_hours_of_operation_by_shelter_id";
+
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("ShelterId", SqlDbType.Int);
+            cmd.Parameters.Add("OpenTime", SqlDbType.Time);
+            cmd.Parameters.Add("CloseTime", SqlDbType.Time);
+            cmd.Parameters.Add("DayOfWeek", SqlDbType.TinyInt);
+            cmd.Parameters["ShelterId"].Value = shelterID;
+            cmd.Parameters["OpenTime"].Value = hours.OpenHour;
+            cmd.Parameters["CloseTime"].Value = hours.CloseHour;
+            cmd.Parameters["DayOfWeek"].Value = dayOfWeek;
             try
             {
                 conn.Open();

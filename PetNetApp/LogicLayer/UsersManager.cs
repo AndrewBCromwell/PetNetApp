@@ -465,5 +465,91 @@ namespace LogicLayer
             }
             return userAdoptionRecords;
         }
+
+        public List<string> RetrieveRolesByUsersId(int usersId)
+        {
+            List<string> userRoles = new List<string>();
+
+            try
+            {
+                userRoles = _userAccessor.SelectRolesByUserID(usersId);
+            }
+            catch (Exception e)
+            {
+
+                throw new ApplicationException("An error has occured", e);
+            }
+
+            return userRoles;
+        }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/03/29]
+        /// Returns all entries from Role table.
+        /// </summary>
+        /// <returns>List of strings</returns>
+        public List<string> RetrieveAllRoles()
+        {
+            List<string> roles = new List<string>();
+
+            try
+            {
+                roles = _userAccessor.SelectAllRoles();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return roles;
+        }
+
+        public bool RetrieveUserByEmail(string email)
+        {
+            try
+            {
+                return _userAccessor.SelectUserByEmail(email) != null;
+            }
+            catch (Exception up)
+            {
+
+                throw new ApplicationException("Database Error.", up);
+            }
+        }
+
+        public UsersVM AuthenticateUser(string email, string passwordHash)
+        {
+            UsersVM result = null;
+
+            var password = HashSha256(passwordHash);
+            passwordHash = null;
+
+            try
+            {
+               result = _userAccessor.AuthenticateUser(email, password);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Login failed!", up);
+            }
+
+            return result;
+        }
+
+        public UsersVM RetrieveUserByUserEmail(string email)
+        {
+            UsersVM userVM = new UsersVM();
+
+            try
+            {
+                userVM = _userAccessor.SelectUserByEmail(email);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed retrieving a user.", ex);
+            }
+
+            return userVM;
+        }
     }
 }

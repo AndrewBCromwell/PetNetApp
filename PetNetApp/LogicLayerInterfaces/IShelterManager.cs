@@ -144,6 +144,22 @@ namespace LogicLayerInterfaces
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
         bool DeactivateShelter(Shelter shelter);
 
-        // bool HoursOfOperationByShelterID(int shelterID);
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/04/07
+        /// Deactivates a shelter
+        /// </summary>
+        /// <param name="shelterID">The shelter object to update</param>
+        /// <returns>List of HoursOfOperation objects</returns>
+        List<HoursOfOperation> RetrieveHoursOfOperationByShelterID(int shelterID);
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/07
+        /// Deactivates a shelter
+        /// </summary>
+        /// <param name="shelter">The shelter object to update</param>
+        /// <returns>Boolean containing whether the operation succeeded or failed</returns>
+        bool EditHoursOfOperationByShelterID(int shelterID, int dayOfWeek, HoursOfOperation hours);
     }
 }

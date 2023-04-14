@@ -6,7 +6,7 @@ Gwen Arman
 Created: 2023/03/24
 
 Description:
-File containing the stored procedures for AddPost use case
+File containing the stored procedures for EditPost use case
 **************************************************************
 <Updater Name>
 Updated: yyyy/mm/dd

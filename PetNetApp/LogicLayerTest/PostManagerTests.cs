@@ -49,7 +49,7 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
-        public void TestUpdatePost()
+        public void TestEditPost()
         {
             bool expectedResult = true;
             bool actualResult = false;
@@ -72,6 +72,21 @@ namespace LogicLayerTest
 
             actualId = postManager.RetrievePostByPostId(1).PostId;
             Assert.AreEqual(expectedId, actualId);
+        }
+
+        [TestMethod]
+        public void TestEditPostVisibility()
+        {
+            bool expectedResult = true;
+            bool actualResult = false;
+            PostVM post = new PostVM();
+            post.PostId = 5;
+
+            bool newVisibility = true;
+
+
+            actualResult = postManager.EditPostVisibility(post.PostId, newVisibility, post.PostVisibility);
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }

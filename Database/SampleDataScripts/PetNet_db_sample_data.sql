@@ -229,7 +229,8 @@ INSERT INTO [dbo].[Item]
 		 ('Cat Food'),
 		 ('Dog Food'),
 		 ('Rabbit Food'),
-		 ('Rodent Food')
+		 ('Rodent Food'),
+		 ('Mysterious Item')
 GO
 
 print '' print '*** Inserting AnimalType Records'
@@ -380,7 +381,10 @@ INSERT INTO [dbo].[Users]
 		('Male', 'He/Him', 100001, 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777'),
 		('Male', "He/Him", 100000, "Barry", "Mikulas", "bmikulas@company.com", "2 Kirkwood Parkway", "Apt 4", '50001', "3198675309"),
         ('Male', "He/Him", 100001, 'Chris','Dreismeier','Chris@gmail.com','4150 Riverview rd', "Apt 16", 50001, '3192948541'),
-		('Male', "He/Him", 100001, 'Asa','Armstrong','Asa@gmail.com','1234 Chestnut rd', "Apt 420", 50001, '3191234321')
+		('Male', "He/Him", 100001, 'Asa','Armstrong','Asa@gmail.com','1234 Chestnut rd', "Apt 420", 50001, '3191234321'),
+		('Female', "She/Her", 100001, 'Amy','Smith','as@gmail.com','1234 Chestnut rd', "Apt 420", 50001, '7854254789'),
+		('Male', "He/Him", 100001, 'Marc','Smith','ms@gmail.com','1234 Nutchest rd', "Apt 420", 50001, '8754142586'),
+		('Male', "He/Him", 100001, 'John','Smith','js@gmail.com','1234 RiverRoad rd', "Apt 420", 50001, '8759860214')
 GO
 
 print '' print '*** creating Animal sample data'
@@ -514,6 +518,7 @@ print '' print '*** Creating ResourceAddRequest sample data'
 GO
 INSERT INTO [dbo].[ResourceAddRequest]
 		(
+		[ShelterId],
 		[UsersId], 
 		[Title],   
 		[Note],    
@@ -521,10 +526,10 @@ INSERT INTO [dbo].[ResourceAddRequest]
 		[Date]    
 		)
 	VALUES
-		(100000,"Need food","Yo we need cat food",1,GETDATE()),
-		(100001,"Need food","Yo we need dog food",1,GETDATE()),
-		(100002,"Need food","Yo we need rabbit food",1,GETDATE()),
-		(100002,"Need food","Yo we need rodent food",1,GETDATE())
+		(100000, 100000,"Gourmet cat food","We need gourmet cat food",1,GETDATE()),
+		(100000, 100001,"Gourmet dog food","We need gourmet dog food",1,GETDATE()),
+		(100000, 100002,"Gourmet rabbit food","We need gourmet rabbit food",1,GETDATE()),
+		(100000, 100002,"Gourmet snake food","We need gourmet snake food",1,GETDATE())
 GO
 
 print '' print '*** Creating Suspension sample data'
@@ -773,6 +778,7 @@ INSERT INTO [dbo].[FundraisingEvent]
 		(
         [UsersId],
 		[ShelterId],
+		[CampaignId],
         [Title],
         [StartTime],
         [EndTime],
@@ -780,9 +786,9 @@ INSERT INTO [dbo].[FundraisingEvent]
         [AdditionalInfo]
 		)
 	VALUES
-		(100001, 100000, 'Shelter in Need', '2023-07-12', '2023-07-14', 'You got a shelter in need', 'It will be fun!'),
-        (100001, 100000, 'Puppy Fun Day', '2023-07-16', '2023-07-18', 'Watch cute puppies play', 'It will be fun!'),
-        (100001, 100000, 'Give me your money', '2023-07-20', '2023-07-21', 'I want money', 'It will be fun!')
+		(100001, 100000,100000, 'Shelter in Need', '2023-07-12', '2023-07-14', 'You got a shelter in need', 'It will be fun!'),
+        (100001, 100000,100000, 'Puppy Fun Day', '2023-07-16', '2023-07-18', 'Watch cute puppies play', 'It will be fun!'),
+        (100001, 100000,100000, 'Give me your money', '2023-07-20', '2023-07-21', 'I want money', 'It will be fun!')
 GO
 
 print '' print '*** Creating Donation sample data'
@@ -801,7 +807,7 @@ INSERT INTO [dbo].[Donation]
 		[FundraisingEventId]
 		)
 	VALUES
-		(100001, 100000, 100.00, 'In honor of Mr.Spots', 0, 0,'I hope this helps the shelter','Visa', NULL),
+		(100001, 100000, 100.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmoident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 0,'Dogs','Visa', NULL),
         (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', NULL),
         (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', NULL),
         (100002, 100000, 12.99, '', 1, 0, ':)', 'Visa', NULL),
@@ -853,10 +859,10 @@ INSERT INTO [dbo].[InKind]
         [Received]
 		)
 	VALUES
-		(100002, 'Dog food leftover by my previous dog', 1, 1),
-        (100003, 'Some toys that were lying around', 5, 1),
-        (100003, 'Some food that was lying around', 15, 1),
-        (100003, 'Some cages that was lying around', 3, 1),
+		(100002, 'Dog food', 1, 1),
+        (100003, 'Cat toys', 5, 1),
+        (100003, 'Cat food', 15, 1),
+        (100003, 'Bird Cages', 3, 1),
         (100004, 'Cages', 5, 1)
 GO
 
@@ -1226,6 +1232,7 @@ print '' print '*** creating Pledge sample data'
 GO 
 INSERT INTO [dbo].[Pledge]
 		(
+		[UsersId],
 		[FundraisingEventId],
 		[Amount],
         [Message],
@@ -1235,9 +1242,19 @@ INSERT INTO [dbo].[Pledge]
         [Email]
 		)
 	VALUES
-		(100000, 100.00, 'Giving back', 'John', 'Smith', 6546546544, 'js@gmail.com'),
-        (100000, 50.00, 'Here you go', 'Marc', 'Smith', 6546546544, 'ms@gmail.com'),
-        (100000, 50.00, 'Here you go again', 'Amy', 'Smith', 6546546544, 'as@gmail.com')
+		(100007,100000, 100.00, 'Giving back', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+		(100007,100000, 200.00, 'Take it', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+		(100007,100000, 300.00, 'For dog', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+		(100007,100000, 400.00, 'For cat', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+		(100007,100000, 500.00, 'For rat', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+        (100008,100000, 50.00, 'Here you go', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
+		(100008,100000, 50.00, 'Take it', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
+		(100008,100000, 50.00, 'For rat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
+		(100008,100000, 50.00, 'For cat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
+        (100009,100000, 50.00, 'Here you go again', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
+		(100009,100000, 50.00, 'For cat', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
+		(100009,100000, 50.00, 'For rat', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
+		(100009,100000, 50.00, 'Here you go again 3rd time', 'Amy', 'Smith', '6546546544', 'as@gmail.com')
 GO
 
 print '' print '*** creating AdoptionApplication sample data'

@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,9 +53,17 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -102,8 +125,32 @@
     <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
       <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
+      <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Donations\ViewDonationReceiptWindow.xaml.cs">
+      <DependentUpon>ViewDonationReceiptWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\Library\AddCategoryTagPage.xaml.cs">
+      <DependentUpon>AddCategoryTagPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
+      <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewNewItemRequestsPage.xaml.cs">
+      <DependentUpon>ViewNewItemRequestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\CreateNewPledge.xaml.cs">
+      <DependentUpon>CreateNewPledge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewFundraisingEventPledgers.xaml.cs">
+      <DependentUpon>ViewFundraisingEventPledgers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewSpecificPledger.xaml.cs">
+      <DependentUpon>ViewSpecificPledger.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\UpdateFundraisingCampaign.xaml.cs">
       <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
@@ -123,11 +170,23 @@
     <Compile Include="Events\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Events\ViewEvents.xaml.cs">
+      <DependentUpon>ViewEvents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Events\VolunteerListPage.xaml.cs">
       <DependentUpon>VolunteerListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\VolunteerListUserControl.xaml.cs">
       <DependentUpon>VolunteerListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewEvents.xaml.cs">
+      <DependentUpon>ViewEvents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewEventsWin.xaml.cs">
+      <DependentUpon>ViewEventsWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\AddFundraisingEventHostWindow.xaml.cs">
+      <DependentUpon>AddFundraisingEventHostWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\ViewFundraisingEventSponsors.xaml.cs">
       <DependentUpon>ViewFundraisingEventSponsors.xaml</DependentUpon>
@@ -135,11 +194,29 @@
     <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\Inventory\InventoryPage.xaml.cs">
-      <DependentUpon>InventoryPage.xaml</DependentUpon>
+    <Compile Include="Management\Inventory\AddRequestLinePage.xaml.cs">
+      <DependentUpon>AddRequestLinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\CreateShelterRequestPage.xaml.cs">
+      <DependentUpon>CreateShelterRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\Library\AddResourceItemPage.xaml.cs">
+      <DependentUpon>AddResourceItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\InventoryNavigationPage.xaml.cs">
+      <DependentUpon>InventoryNavigationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\Library\LibraryUI.xaml.cs">
       <DependentUpon>LibraryUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\RequestInProgress.xaml.cs">
+      <DependentUpon>RequestInProgress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\SelectShelterForRequestPage.xaml.cs">
+      <DependentUpon>SelectShelterForRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\ViewEditCartPage.xaml.cs">
+      <DependentUpon>ViewEditCartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\ViewEditShelterInventoryItem.xaml.cs">
       <DependentUpon>ViewEditShelterInventoryItem.xaml</DependentUpon>
@@ -150,11 +227,26 @@
     <Compile Include="Management\ViewTicketPage.xaml.cs">
       <DependentUpon>ViewTicketPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Shelters\HoursOfOperation.xaml.cs">
+      <DependentUpon>HoursOfOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NewItemRequestUserControl.xaml.cs">
+      <DependentUpon>NewItemRequestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FundraisingEventPledgerHeaderControl.xaml.cs">
+      <DependentUpon>FundraisingEventPledgerHeaderControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewEventsFundraisingEventUserControl.xaml.cs">
       <DependentUpon>ViewEventsFundraisingEventUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ViewFundraisingEventPledgersControl.xaml.cs">
+      <DependentUpon>ViewFundraisingEventPledgersControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ViewFundraisingInstitutionalEntityControl.xaml.cs">
       <DependentUpon>ViewFundraisingInstitutionalEntityControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewSpecificPledgerControl.xaml.cs">
+      <DependentUpon>ViewSpecificPledgerControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Animals\AddEditAnimalDeath.xaml">
       <SubType>Designer</SubType>
@@ -205,7 +297,7 @@
     <Compile Include="Animals\VaccinationsPage.xaml.cs">
       <DependentUpon>VaccinationsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
+    <Compile Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
       <DependentUpon>AddEditViewFundraisingCampaignPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\AddFundraisingCampaignSponsorsWindow.xaml.cs">
@@ -235,14 +327,14 @@
     <Compile Include="Management\Inventory\SpecificRequestPage.xaml.cs">
       <DependentUpon>SpecificRequestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\ViewRequestListPage.xaml.cs">
+      <DependentUpon>ViewRequestListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Shelters\ContactPage.xaml.cs">
       <DependentUpon>ContactPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shelters\ShelterNetworkPage.xaml.cs">
       <DependentUpon>ShelterNetworkPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
-      <DependentUpon>AddEditViewFundraisingCampaignPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\AddFundraisingCampaignSponsorsWindow.xaml.cs">
       <DependentUpon>AddFundraisingCampaignSponsorsWindow.xaml</DependentUpon>
@@ -296,7 +388,7 @@
     <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
       <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\SchedulePage.xaml.cs">
+    <Compile Include="Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\MedicalTreatmentPage.xaml.cs">
@@ -367,7 +459,7 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\AddEditSchedule.xaml.cs">
+    <Compile Include="Management\AddEditSchedule.xaml.cs">
       <DependentUpon>AddEditSchedule.xaml</DependentUpon>
     </Compile>
     <Page Include="Community\CustomerRecordsPage.xaml">
@@ -378,15 +470,47 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Management\Inventory\Library\AddCategoryTagPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\AddEditInstitutionalEntity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Donations\ViewDonationReceiptWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\ViewNewItemRequestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\CreateNewPledge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewFundraisingEventPledgers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewSpecificPledger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Fundraising\UpdateFundraisingCampaign.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
+    <Page Include="Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Management\AddEditSchedule.xaml">
+    <Page Include="Management\AddEditSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -430,11 +554,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Events\ViewEvents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Events\VolunteerListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Events\VolunteerListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\AddFundraisingEventHostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewEvents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\ViewEventsWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -480,7 +620,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Fundraising\AddEditViewFundraisingCampaignPage.xaml">
+    <Page Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -500,14 +640,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Fundraising\AddEditInstitutionalEntity.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Fundraising\AddFundraisingCampaignSponsorsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -520,11 +652,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Management\Inventory\AddRequestLinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\CreateShelterRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\Library\AddResourceItemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\InventoryNavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\RequestInProgress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\SelectShelterForRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Management\Inventory\SpecificRequestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\Inventory\InventoryPage.xaml">
+    <Page Include="Management\Inventory\ViewEditCartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\ViewRequestListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -620,6 +780,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Shelters\HoursOfOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Shelters\ShelterNetworkPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -628,11 +792,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\FundraisingEventPledgerHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\InstitutionalEntityUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\InKindUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\NewItemRequestUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -744,11 +916,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Management\SchedulePage.xaml">
+    <Page Include="Management\SchedulePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Management\VolunteerManagment.xaml">
+    <Page Include="Management\VolunteerManagment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -817,7 +989,7 @@
     <Compile Include="Development\Management\ManagementPage.xaml.cs">
       <DependentUpon>ManagementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\VolunteerManagment.xaml.cs">
+    <Compile Include="Management\VolunteerManagment.xaml.cs">
       <DependentUpon>VolunteerManagment.xaml</DependentUpon>
     </Compile>
     <Compile Include="PromptWindow.xaml.cs">
@@ -902,7 +1074,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ViewFundraisingEventPledgersControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\ViewFundraisingInstitutionalEntityControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewSpecificPledgerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -928,6 +1108,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -961,12 +1142,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Development\Donate\" />
     <Folder Include="Development\Donations\" />
     <Folder Include="Development\Events\" />
     <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
-    <Folder Include="Donations\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
@@ -1277,6 +1456,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\outlined_placeholder-519.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

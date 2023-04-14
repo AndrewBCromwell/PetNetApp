@@ -72,6 +72,22 @@ namespace LogicLayer
             }
             return events;
         }
+        public List<FundraisingEventVM> RetrieveAllFundraisingEventsByCampaignId(int campaignId)
+        {
+            //throw new NotImplementedException();
+
+            List<FundraisingEventVM> events = null;
+            try
+            {
+                events = _fundraisingEventAccessor.SelectAllFundraisingEventsByCampaignId(campaignId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Failed to load Events", ex);
+            }
+            return events;
+        }
 
         public FundraisingEventVM RetrieveFundraisingEventByFundraisingEventId(int fundraisingEventId)
         {
