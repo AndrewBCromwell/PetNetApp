@@ -14,7 +14,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\EditHoursOfOperation_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
