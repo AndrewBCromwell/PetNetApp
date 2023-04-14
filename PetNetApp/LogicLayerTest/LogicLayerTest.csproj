@@ -80,6 +80,7 @@
     <Compile Include="AdoptionApplicationManagerTests.cs" />
     <Compile Include="ResourceAddRequestManagerTests.cs" />
     <Compile Include="FosterManagerTests.cs" />
+    <Compile Include="FundraisingEventManagerTest.cs" />
     <Compile Include="VaccinationManagerTests.cs" />
     <Compile Include="FundraisingCampaignManagerTests.cs" />
     <Compile Include="ValidationiHelpersTests.cs" />

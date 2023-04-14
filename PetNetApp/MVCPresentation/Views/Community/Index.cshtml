@@ -6,6 +6,21 @@
 @{
     ViewBag.Title = "Community Page";
 }
+<div class="modal" tabindex="-1" role="dialog" id="report-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="report-modal-content">
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <h2>Community</h2>
     <div class="flex overflow">
@@ -62,11 +77,15 @@
                     {
                         @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId });
                     }
+                    <div id="report-post-@item.PostId" class="float-right">
+                        @Html.Partial("ReportPartial", item)
+                    </div>
                 </div>
             </div>
         </div>
     }
 </div>
-@section Scripts {
+@section scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/report.js"></script>
 }
