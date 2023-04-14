@@ -698,7 +698,7 @@ namespace DataAccessLayer
                         /*
                            [AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId],		
                            [Personality], [Description], [AnimalStatusId], [RecievedDate], [MicrochipSerialNumber], 	
-                           [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
+                           [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId]
                         */
 
                         animal.AnimalId = reader.GetInt32(0);
@@ -716,6 +716,7 @@ namespace DataAccessLayer
                         animal.ChildFriendly = reader.GetBoolean(12);
                         animal.NeuterStatus = reader.GetBoolean(13);
                         animal.Notes = reader.IsDBNull(14) ? null : reader.GetString(14);
+                        animal.AnimalShelterId = reader.GetInt32(15);
                     }
                 }
             }
@@ -873,6 +874,46 @@ namespace DataAccessLayer
             }
 
             return animals;
+        }
+
+        public List<AnimalVM> SelectAllAdoptableAnimals()
+        {
+            List<AnimalVM> adoptableAnimals = new List<AnimalVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_adoptable_animals";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var animal = new AnimalVM();
+
+                        animal.AnimalId = reader.GetInt32(0);
+                        animal.AnimalShelterId = reader.GetInt32(1);
+                        animal.AnimalName = reader.GetString(2);
+                        animal.AnimalTypeId = reader.GetString(3);
+                        animal.AnimalBreedId = reader.GetString(4);
+                        adoptableAnimals.Add(animal);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return adoptableAnimals;
         }
     }
 }

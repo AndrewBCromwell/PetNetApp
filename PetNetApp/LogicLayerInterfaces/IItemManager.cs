@@ -57,6 +57,13 @@ namespace LogicLayerInterfaces
         /// 
         /// Adds an ItemCategory
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <param name="category"></param>
         /// <returns>True or false if row was added</returns>
@@ -68,6 +75,13 @@ namespace LogicLayerInterfaces
         /// 
         /// Adds a Category
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="categoryId"></param>
         /// <returns>True or false if row was added</returns>
         bool AddCategory(string categoryId);

@@ -72,7 +72,7 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton(btnAdopt);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(WpfPresentation.Animals.ViewAllAdoptableAnimalsPage.GetViewAllAdoptableAnimalsPage());
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)

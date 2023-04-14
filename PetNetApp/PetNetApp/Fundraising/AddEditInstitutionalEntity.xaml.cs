@@ -112,6 +112,16 @@ namespace WpfPresentation.Fundraising
             btnClose.IsCancel = true;
             btnSave.IsDefault = false;
             btnEdit.IsDefault = true;
+            if (_contactType != "Sponsor")
+            {
+                btnVeiwEvents.Visibility = Visibility.Collapsed;
+                btnVeiwEvents.IsEnabled = false;
+            }
+            else
+            {
+                btnVeiwEvents.Visibility = Visibility.Visible;
+                btnVeiwEvents.IsEnabled = true;
+            }
         }
 
         private void AddEditMode()

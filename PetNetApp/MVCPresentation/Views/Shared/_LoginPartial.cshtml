@@ -2,8 +2,8 @@
 @if (Request.IsAuthenticated)
 {
     <li>
-        <a href="@Url.Action("Index", "Manage")">
-            <img src="~/Images/user_hover.png" height="45" />
+        <a href="@Url.Action("Index", "UserProfile")">
+            <img src="~/Images/abstract-user-flat-4.png" height="45" />
         </a>
     </li>
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
@@ -17,7 +17,8 @@ else
 {
     <li>
         <a href="@Url.Action("Login",  "Account")">
-            <img src="~/Images/user_hover.png" height="45" />
+            <img src="~/Images/abstract-user-flat-4.png" height="45" class="userprofilepic" />
+            @*<img src="~/Images/user_hover.png" height="45" class="userprofilepichover" />*@
         </a>
     </li>
 

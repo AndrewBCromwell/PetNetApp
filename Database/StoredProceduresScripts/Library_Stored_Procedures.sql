@@ -20,3 +20,47 @@ AS
 		GROUP BY [Item].[ItemID];
 	END
 GO
+
+
+/* Library <=> Shelter inventory interaction */
+
+/*
+Add a new Inventory Item to a shelter's inventory by creating an instance of a Library item
+*/
+print '' print '*** Creating sp_insert_shelterinventoryitem_from_library (Brian Collum)'
+GO
+CREATE PROCEDURE	[dbo].[sp_insert_shelterinventoryitem_from_library]
+(
+	@ShelterId	[int],
+	@ItemId		[nvarchar](50)
+)
+AS
+	BEGIN
+		INSERT INTO [dbo].[ShelterInventoryItem]
+			([ShelterId],	[ItemId],	[UseStatistic],	[LowInventoryThreshold],	[HighInventoryThreshold])
+		VALUES
+			(@ShelterId,	@ItemId,	0,				0,							0)
+		RETURN	@@ROWCOUNT
+	END
+GO
+
+/*
+This stored procedures enables or disables a ShelterInventoryItem's visibility from a shelter's inventory.
+ShelterInventoryItems must be disabled rather than deleted to avoid data integrity issues with things like inventory change histories.
+*/
+print '' print '*** Creating sp_update_shelterinventoryitem_enabled_disabled (Brian Collum)'
+GO
+CREATE PROCEDURE [dbo].[sp_update_shelterinventoryitem_enabled_disabled]
+(
+	@ShelterId					[int],
+	@ItemId						[nvarchar](50),
+	@ItemDisabled				[bit]
+)
+AS
+	BEGIN
+			UPDATE 	[ShelterInventoryItem]
+			   SET 	[ItemDisabled]	=	@ItemDisabled
+			WHERE	[ShelterId]		=	@ShelterId
+			  AND	[ItemId]		=	@ItemId
+	END
+GO

@@ -468,5 +468,50 @@ namespace LogicLayerTest
                 Assert.Fail();
             }
         }
+
+        [TestMethod]
+        public void TestRetrieveHoursOfOperationByShelterID()
+        {
+            ShelterVM testShelter = new ShelterVM();
+            List<HoursOfOperation> fakeHoursOfOperation = new List<HoursOfOperation>
+                {
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")}
+                };
+            testShelter = _shelterManager.RetrieveShelterVMByShelterID(0);
+            Assert.AreEqual(testShelter.HoursOfOperation[0].OpenHour.ToString(), fakeHoursOfOperation[0].OpenHour.ToString());
+            Assert.AreEqual(testShelter.HoursOfOperation[0].CloseHour.ToString(), fakeHoursOfOperation[0].CloseHour.ToString());
+
+
+        }
+
+        [TestMethod]
+        public void TestEditHoursOfOperationByShelterID()
+        {
+            bool updateSuccessful = false;
+            ShelterVM testShelter = new ShelterVM();
+            List<HoursOfOperation> fakeHoursOfOperation = new List<HoursOfOperation>
+                {
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")}
+                };
+            HoursOfOperation hoursToUpdate = new HoursOfOperation { OpenHour = TimeSpan.Parse("02:00:00"), CloseHour = TimeSpan.Parse("04:00:00") };
+            testShelter = _shelterManager.RetrieveShelterVMByShelterID(0);
+
+            updateSuccessful = _shelterManager.EditHoursOfOperationByShelterID(0, 1, hoursToUpdate);
+            testShelter = _shelterManager.RetrieveShelterVMByShelterID(0);
+            Assert.IsTrue(updateSuccessful);
+
+        }
     }
 }

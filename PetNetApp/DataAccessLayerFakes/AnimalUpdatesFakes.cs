@@ -77,6 +77,11 @@ namespace DataAccessLayerFakes
             return rowAffected;
         }
 
+        public List<AnimalUpdates> SelectAllAnimalUpdateByAnimalId(int animalId)
+        {
+            throw new NotImplementedException();
+        }
+
         public string SelectAnimalUpdatesByAnimal(int animalId)
         {
             string result = "";

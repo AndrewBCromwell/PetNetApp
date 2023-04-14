@@ -1,4 +1,15 @@
-﻿using System;
+﻿/// <summary>
+/// Created: 2023/02/01
+/// 
+/// Items object
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/13
+/// 
+/// FinalQA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +33,8 @@ namespace DataObjects
         public string PaymentMethod { get; set; }
         public int? ScheduledDonationId { get; set; }
         public int? FundraisingEventId { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
     }
 
     public class DonationVM : Donation

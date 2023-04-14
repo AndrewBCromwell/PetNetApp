@@ -181,6 +181,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SheltersController.cs" />
     <Compile Include="Controllers\UserDonationsController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,6 +210,8 @@
   <ItemGroup>
     <Content Include="Content\animals.css" />
     <Content Include="colors.css" />
+    <Content Include="Content\Animal\adoptableAnimal-desktop.css" />
+    <Content Include="Content\Animal\adoptableAnimal.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -232,6 +235,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Animal\0c126019-3b6a-49a2-9103-d57ddaffaa69.png" />
+    <Content Include="Images\Animal\0f19e696-2a27-41ce-b267-21ff8197cb4b.png" />
+    <Content Include="Images\Animal\314a2539-5dee-40ce-ac5b-026d53750c92.png" />
+    <Content Include="Images\application_light.png" />
+    <Content Include="Images\download_light.png" />
+    <Content Include="Scripts\Animal\animalImage.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -241,10 +250,13 @@
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Scripts\fundraising-campaigns.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\report.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -336,17 +348,19 @@
     <Content Include="Views\Fundraising\Campaigns.Mobile.cshtml" />
     <Content Include="Views\Fundraising\Campaign.cshtml" />
     <Content Include="Views\Community\Edit.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
     <Content Include="Views\Community\ShowReplies.cshtml" />
     <Content Include="Views\Community\CreateReply.cshtml" />
     <Content Include="Views\Community\EditReply.cshtml" />
-    <Content Include="Views\Shelters\Index.cshtml" />
+    <Content Include="Views\Shelters\ShelterNetwork.cshtml" />
+    <Content Include="Views\UserProfile\Index.cshtml" />
+    <Content Include="Views\Shelters\SelectShelter.cshtml" />
     <Content Include="Views\Community\Delete.cshtml" />
     <Content Include="Views\Community\DeleteReply.cshtml" />
+    <Content Include="Views\Animals\Adoptable.cshtml" />
+    <Content Include="Views\Community\ReportPartial.cshtml" />
+    <Content Include="Views\Community\BeginPostReport.cshtml" />
+    <Content Include="Views\Animals\AdoptableAnimal.cshtml" />
+    <Content Include="Views\Animals\AnimalImageForAdoptableAnimal.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

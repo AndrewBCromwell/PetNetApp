@@ -36,12 +36,12 @@
                 </ul>
             </div>
         </nav>
-        
+
 
         <div class="header-menu">
             <ul class="header-menu-list">
                 <li class="header-menu-list-item">@Html.ActionLink("Animals", "AdoptionApplication", "Animals")</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "Index", "Shelters")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "ShelterNetwork", "Shelters")</li>
                 <li class="header-menu-list-item">@Html.ActionLink("Events", "Submenu", "Events")</li>
                 <li class="header-menu-list-item">@Html.ActionLink("Community", "Index", "Community")</li>
                 <li class="header-menu-list-item">@Html.ActionLink("Donate", "Index", "Donate")</li>
@@ -58,6 +58,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     @RenderSection("scripts", required: false)
 
     <footer>

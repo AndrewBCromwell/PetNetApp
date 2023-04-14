@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:WpfPresentation.Development.Management"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      MinWidth="700"
       Title="ViewShelterInventoryPage" Loaded="Page_Loaded">
 
     <Grid>
@@ -52,6 +53,6 @@
         <Button x:Name="btnEdit" Grid.Row="2" Width="100" Height="40"
                 HorizontalAlignment="Left" Margin="20 0" Content="Edit" Click="btnEdit_Click"/>
         <Button x:Name="btnDelete" Grid.Row="2" Width="110" Height="40"
-                HorizontalAlignment="Left" Margin="140 0" Content="Remove Item"/>
+                HorizontalAlignment="Left" Margin="140 0" Content="Remove Item" Click="btnDelete_Click"/>
     </Grid>
 </Page> 

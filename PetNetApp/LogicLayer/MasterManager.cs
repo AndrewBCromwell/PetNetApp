@@ -105,7 +105,7 @@ namespace LogicLayer
             //for testing from dev page
             User = new UsersVM()
             {
-                UsersId = 100000,
+                UsersId = 100001,
                 ShelterId = 100000,
                 GivenName = "Barry",
                 FamilyName = "Mikulas",
