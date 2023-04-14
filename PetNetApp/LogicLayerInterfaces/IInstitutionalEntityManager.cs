@@ -143,6 +143,5 @@ namespace LogicLayerInterfaces
         List<InstitutionalEntity> RetrieveAllHosts();
 
         List<InstitutionalEntity> RetrieveAllContact();
-        InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalId);
     }
 }

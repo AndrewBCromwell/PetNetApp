@@ -91,7 +91,10 @@ INSERT INTO [dbo].[Images]
 		('6efa448e-cead-4619-bb55-b9c078375404', '6efa448e-cead-4619-bb55-b9c078375404'),
 		('0238caf0-9398-4c32-aeb8-bcf151f300ef', '0238caf0-9398-4c32-aeb8-bcf151f300ef'),
 		('abacccd4-2844-4573-8c1d-5d668cc34953', 'abacccd4-2844-4573-8c1d-5d668cc34953'),
-		('eecea43f-3749-4f62-b70b-4381530618d9', 'eecea43f-3749-4f62-b70b-4381530618d9')
+		('eecea43f-3749-4f62-b70b-4381530618d9', 'eecea43f-3749-4f62-b70b-4381530618d9'),
+		('0c126019-3b6a-49a2-9103-d57ddaffaa69', 'DogImage1.png'),
+		('0f19e696-2a27-41ce-b267-21ff8197cb4b', 'DogImage2.png')
+
         
 GO
 
@@ -1271,17 +1274,17 @@ INSERT INTO [dbo].[InstitutionalEntity]
         [ShelterId]
 		)
 	VALUES
-		('US Animals', 'Bob', 'Doe', 'bd@gmail.com', '1231233333', '121 Place Street', 50001, 'Sponsor'),
-        ('CA Animals', 'Stephanie', 'Doe', 'sd@gmail.com', '1231233334', '122 Place Street', 50001, 'Sponsor'),
-        ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor'),
-		('BA Animals', 'Cam', 'Doe', 'cd@gmail.com', '1231233335', '124 Place Street', 50001, 'Host'),
-		('DA Animals', 'Jack', 'Doe', 'jkd@gmail.com', '1231233335', '126 Place Street', 50001, 'Host'),
-		('LA Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Host'),
-		('DF Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Host'),
-		('WG Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact'),
-		('PK Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact'),
-		('NS Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact'),
-		('ST Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact')
+		('US Animals', 'Bob', 'Doe', 'bd@gmail.com', '1231233333', '121 Place Street', 50001, 'Sponsor', 100000),
+        ('CA Animals', 'Stephanie', 'Doe', 'sd@gmail.com', '1231233334', '122 Place Street', 50001, 'Sponsor', 100000),
+        ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor', 100000),
+		('BA Animals', 'Cam', 'Doe', 'cd@gmail.com', '1231233335', '124 Place Street', 50001, 'Host', 100000),
+		('DA Animals', 'Jack', 'Doe', 'jkd@gmail.com', '1231233335', '126 Place Street', 50001, 'Host', 100000),
+		('LA Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Host', 100000),
+		('DF Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Host', 100000),
+		('WG Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact', 100000),
+		('PK Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact', 100000),
+		('NS Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact', 100000),
+		('ST Animals', 'River', 'Doe', 'rd@gmail.com', '1231233335', '127 Place Street', 50001, 'Contact', 100000),
 		('US Animals', 'Bob', 'Doe', 'bd@gmail.com', '1231233333', '121 Place Street', 50001, 'Sponsor', 100000),
         ('CA Animals', 'Stephanie', 'Doe', 'sd@gmail.com', '1231233334', '122 Place Street', 50001, 'Sponsor', 100000),
         ('SA Animals', 'Jess', 'Doe', 'jd@gmail.com', '1231233335', '123 Place Street', 50001, 'Sponsor', 100000)
@@ -1310,7 +1313,6 @@ INSERT INTO [dbo].[FundraisingEventEntity]
 	VALUES
 		(100000, 100000),
 		(100000, 100001),
-		(100000, 100007),
 		(100000, 100008),
         (100001, 100001),
         (100002, 100002)
@@ -1326,10 +1328,7 @@ INSERT INTO [dbo].[InspectionImage]
 	VALUES
 		(100000, '314a2539-5dee-40ce-ac5b-026d53750c86'),
         (100001, '314a2539-5dee-40ce-ac5b-026d53750c87'),
-        (100002, '314a2539-5dee-40ce-ac5b-026d53750c88'),
-        (100000, '314a2539-5dee-40ce-ac5b-026d53750c89'),
-        (100001, '314a2539-5dee-40ce-ac5b-026d53750c90'),
-        (100002, '314a2539-5dee-40ce-ac5b-026d53750c91')
+        (100002, '314a2539-5dee-40ce-ac5b-026d53750c88')
 GO
 
 print '' print '*** creating AdoptionPlacement sample data'
@@ -1539,6 +1538,8 @@ INSERT INTO [dbo].[AnimalImage]
 		)
 	VALUES
 		(100000, '314a2539-5dee-40ce-ac5b-026d53750c92'),
+		(100000, '0c126019-3b6a-49a2-9103-d57ddaffaa69'),
+		(100000, '0f19e696-2a27-41ce-b267-21ff8197cb4b'),
         (100001, '314a2539-5dee-40ce-ac5b-026d53750c93'),
         (100002, '314a2539-5dee-40ce-ac5b-026d53750c94'),
         (100003, '314a2539-5dee-40ce-ac5b-026d53750c95'),

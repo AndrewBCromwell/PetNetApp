@@ -62,7 +62,7 @@ namespace LogicLayerTest
             FundraisingEvent fundraisingEvent = new FundraisingEvent { 
                 FundraisingEventId = 100000,
                 Title = "This is a test",
-                UserId = 100000,
+                UsersId = 100000,
                 ShelterId = 100000,
                 ImageId = "100000",
                 Hidden = false,

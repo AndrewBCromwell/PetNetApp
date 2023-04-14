@@ -136,6 +136,5 @@ namespace DataAccessLayerInterfaces
         InstitutionalEntity SelectInstitutionalEntityByFundraisingEventIdAndContactType(int fundraisingEventId, string contactType);
         List<InstitutionalEntity> SelectAllHosts();
         List<InstitutionalEntity> SelectAllContact();
-        InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId);
     }
 }

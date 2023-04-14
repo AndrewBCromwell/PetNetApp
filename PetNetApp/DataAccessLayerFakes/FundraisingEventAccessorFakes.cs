@@ -18,6 +18,26 @@ namespace DataAccessLayerFakes
 
         }
 
+        public int DeactivateFundraisingEvent(int fundraisingEventId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertFundraiserAnimal(int fundraisingEventId, int animalId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertFundraisingEvent(FundraisingEvent fundraisingEvent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertFundraisingEventEntity(int eventId, int contactId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<FundraisingEventVM> SelectAllFundraisingEventsByShelterId(int shelterId)
         {
             //throw new NotImplementedException();
@@ -25,12 +45,12 @@ namespace DataAccessLayerFakes
             string[] etList = { "Dogs", "Cats", "Frogs", "Snakes", "Turtles" };
             fakeFundraisingEvents = new List<FundraisingEventVM>()
             {
-                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
-                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
-                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
-                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
-                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
-                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"}
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageIds = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageIds = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageIds = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageIds = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageIds = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageIds = 0,  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = "Nothing to report"}
             };
 
             for (int i = 0; i < 3000; i++)
@@ -43,7 +63,7 @@ namespace DataAccessLayerFakes
                     UsersId = 100000,
                     CampaignId = 100000,
                     ShelterId = 100000 + siRand,
-                    ImageId = 0,
+                    ImageIds = 0,
                     Complete = false,
                     Hidden = false,
                     Title = "Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),
@@ -59,6 +79,31 @@ namespace DataAccessLayerFakes
             }
 
             return fakeFundraisingEvents.Where(fe => fe.ShelterId == shelterId).ToList();
+        }
+
+        public List<int> SelectAnimalByFundraisingEvent(int eventId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> SelectContactByFundraisingEvent(int eventId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FundraisingEvent SelectFundraisingEvent(int eventId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> SelectSponsorByFundraisingEvent(int eventId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdateFundraisingEvent(FundraisingEventVM fundraisingEvent)
+        {
+            throw new NotImplementedException();
         }
     }
 }

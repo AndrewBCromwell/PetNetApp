@@ -284,10 +284,6 @@ namespace DataAccessLayer
             return institutionalEntities;
         }
 
-        public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
-        {
-            throw new NotImplementedException();
-        }
 
         public int UpdateInstitutionalEntity(InstitutionalEntity oldEntity, InstitutionalEntity newEntity)
         {

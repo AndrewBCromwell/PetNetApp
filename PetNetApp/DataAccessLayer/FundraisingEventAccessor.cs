@@ -90,7 +90,7 @@ namespace DataAccessLayer
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@UsersId", fundraisingEvent.UserId);
+            cmd.Parameters.AddWithValue("@UsersId", fundraisingEvent.UsersId);
             if (fundraisingEvent.ImageId == null)
             {
                 cmd.Parameters.AddWithValue("@ImageId", DBNull.Value);
@@ -270,7 +270,7 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         fundraisingEvent.FundraisingEventId = eventId;
-                        fundraisingEvent.UserId = reader.GetInt32(0);
+                        fundraisingEvent.UsersId = reader.GetInt32(0);
                         fundraisingEvent.ImageId = reader.IsDBNull(1) ? null : reader.GetString(1);
                         if (reader.IsDBNull(2))
                         {
@@ -288,9 +288,8 @@ namespace DataAccessLayer
                         fundraisingEvent.Description = reader.GetString(8);
                         fundraisingEvent.AdditionalInfo = reader.GetString(9);
                         fundraisingEvent.NumOfAttendees = reader.GetInt32(10);
-                    });
+                    }
                 }
-            }
             }
             catch (Exception ex)
             {
@@ -300,9 +299,9 @@ namespace DataAccessLayer
             {
                 conn.Close();
             }
-return fundraisingEvent;
-}
-                        public List<FundraisingEventVM> SelectAllFundraisingEventsByShelterId(int shelterId)
+            return fundraisingEvent;
+        }
+        public List<FundraisingEventVM> SelectAllFundraisingEventsByShelterId(int shelterId)
         {
             //throw new NotImplementedException();
             List<FundraisingEventVM> fundraisingEvents = new List<FundraisingEventVM>();
@@ -320,35 +319,37 @@ return fundraisingEvent;
                 conn.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    fundraisingEvents.Add(new FundraisingEventVM()
+                    if (reader.HasRows)
                     {
-                        // [FundraisingEventId], [UsersId], [ImageId], [CampaignId], [ShelterId], [Title], [StartTime], [EndTime],
-                        // [Hidden], [Complete], [Description], [AdditionalInfo], [Cost], [NumOfAttendees], [NumAnimalsAdopted], [UpdateNotes]
-                        FundraisingEventId = reader.GetInt32(0),
-                        UsersId = reader.GetInt32(1),
-                        ImageId = reader.IsDBNull(2) ? null : (int?)reader.GetInt32(2),
-                        CampaignId = reader.IsDBNull(3) ? null : (int?)reader.GetInt32(3),
-                        ShelterId = reader.GetInt32(4),
-                        Title = reader.GetString(5),
-                        StartTime = reader.IsDBNull(6) ? new DateTime?() : reader.GetDateTime(6),
-                        EndTime = reader.IsDBNull(7) ? new DateTime?() : reader.GetDateTime(7),
-                        Hidden = reader.GetBoolean(8),
-                        Complete = reader.GetBoolean(9),
-                        Description = reader.IsDBNull(10) ? null : reader.GetString(10),
-                        AdditionalInfo = reader.IsDBNull(11) ? null : reader.GetString(11),
-                        Cost = reader.IsDBNull(12) ? null : (decimal?)reader.GetDecimal(12),
-                        NumOfAttendees = reader.IsDBNull(13) ? null : (int?)reader.GetInt32(13),
-                        NumAnimalsAdopted = reader.IsDBNull(14) ? null : (int?)reader.GetInt32(14),
-                        UpdateNotes = reader.IsDBNull(15) ? null : reader.GetString(15),
-                        Sponsors = new List<InstitutionalEntity>(),
-                        Contacts = new List<InstitutionalEntity>(),
-                        Host = new InstitutionalEntity()
+                        while (reader.Read())
+                        {
+                            fundraisingEvents.Add(new FundraisingEventVM()
+                            {
+                                // [FundraisingEventId], [UsersId], [ImageId], [CampaignId], [ShelterId], [Title], [StartTime], [EndTime],
+                                // [Hidden], [Complete], [Description], [AdditionalInfo], [Cost], [NumOfAttendees], [NumAnimalsAdopted], [UpdateNotes]
+                                FundraisingEventId = reader.GetInt32(0),
+                                UsersId = reader.GetInt32(1),
+                                ImageIds = reader.IsDBNull(2) ? null : (int?)reader.GetInt32(2),
+                                CampaignId = reader.IsDBNull(3) ? null : (int?)reader.GetInt32(3),
+                                ShelterId = reader.GetInt32(4),
+                                Title = reader.GetString(5),
+                                StartTime = reader.IsDBNull(6) ? new DateTime?() : reader.GetDateTime(6),
+                                EndTime = reader.IsDBNull(7) ? new DateTime?() : reader.GetDateTime(7),
+                                Hidden = reader.GetBoolean(8),
+                                Complete = reader.GetBoolean(9),
+                                Description = reader.IsDBNull(10) ? null : reader.GetString(10),
+                                AdditionalInfo = reader.IsDBNull(11) ? null : reader.GetString(11),
+                                Cost = reader.IsDBNull(12) ? null : (decimal?)reader.GetDecimal(12),
+                                NumOfAttendees = reader.IsDBNull(13) ? null : (int?)reader.GetInt32(13),
+                                NumAnimalsAdopted = reader.IsDBNull(14) ? null : (int?)reader.GetInt32(14),
+                                UpdateNotes = reader.IsDBNull(15) ? null : reader.GetString(15),
+                                Sponsors = new List<InstitutionalEntity>(),
+                                Contacts = new List<InstitutionalEntity>(),
+                                Host = new InstitutionalEntity()
 
-                    });
+                            });
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -453,7 +454,7 @@ return fundraisingEvent;
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@FundraisingEventId", fundraisingEvent.FundraisingEventId);
-                cmd.Parameters.AddWithValue("@UsersId", fundraisingEvent.UserId);
+                cmd.Parameters.AddWithValue("@UsersId", fundraisingEvent.UsersId);
                 cmd.Parameters.AddWithValue("@ShelterId", fundraisingEvent.ShelterId);
                 cmd.Parameters.AddWithValue("@Title", fundraisingEvent.Title);
                 cmd.Parameters.AddWithValue("@Hidden", fundraisingEvent.Hidden);

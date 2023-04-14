@@ -384,10 +384,5 @@ namespace DataAccessLayerFakes
                         select institutionalEntityRecord;
             return contact.ToList();
         }
-
-        public InstitutionalEntity SelectInstitutionalEntityByInstitutionalEntityId(int institutionalEntityId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

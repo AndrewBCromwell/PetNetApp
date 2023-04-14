@@ -188,21 +188,5 @@ namespace LogicLayer
 
             return institutionalEntity;
         }
-
-        public InstitutionalEntity RetrieveInstitutionalEntityByInstitutionalEntityId(int institutionalId)
-        {
-            InstitutionalEntity institutionalEntity = null;
-
-            try
-            {
-                institutionalEntity = _institutionalEntityAccessor.SelectInstitutionalEntityByInstitutionalEntityId(institutionalId);
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Can not find any institutional entity with this Id", ex);
-            }
-
-            return institutionalEntity;
-        }
     }
 }

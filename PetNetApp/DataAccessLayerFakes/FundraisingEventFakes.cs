@@ -20,21 +20,21 @@ namespace DataAccessLayerFakes
             {
                 FundraisingEventId = 100000,
                 Title = "Test 1",
-                UserId = 100000,
+                UsersId = 100000,
                 Description = "This is a test"
             });
             fundraisingEventsFake.Add(new FundraisingEventVM()
             {
                 FundraisingEventId = 100001,
                 Title = "Test 2",
-                UserId = 100000,
+                UsersId = 100000,
                 Description = "This is a test"
             });
             fundraisingEventsFake.Add(new FundraisingEventVM()
             {
                 FundraisingEventId = 100003,
                 Title = "Test 3",
-                UserId = 100000,
+                UsersId = 100000,
                 Description = "This is a test"
             });
 
@@ -114,6 +114,11 @@ namespace DataAccessLayerFakes
             return rowAffected;
         }
 
+        public List<FundraisingEventVM> SelectAllFundraisingEventsByShelterId(int shelterId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<int> SelectAnimalByFundraisingEvent(int eventId)
         {
             List<int> animalIdList = new List<int>();
@@ -179,7 +184,7 @@ namespace DataAccessLayerFakes
             {
                 if (fEvent.FundraisingEventId == fundraisingEvent.FundraisingEventId)
                 {
-                    fEvent.UserId = fundraisingEvent.UserId;
+                    fEvent.UsersId = fundraisingEvent.UsersId;
                     fEvent.CampaignId = fundraisingEvent.CampaignId == null ? null : fundraisingEvent.CampaignId;
                     fEvent.ShelterId = fundraisingEvent.ShelterId;
                     fEvent.ImageId = fundraisingEvent.ImageId;
