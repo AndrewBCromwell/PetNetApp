@@ -1115,7 +1115,40 @@ namespace DataAccessLayer
             return result;
         }
 
-        
+
+        public int UpdateUserShelterid(int userid, int shelterid, int oldShelterId)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            string cmdText = "sp_update_usershelter";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Usersid", userid);
+            cmd.Parameters.AddWithValue("@OldShelterid", oldShelterId);
+            cmd.Parameters.AddWithValue("@NewShelterid", shelterid);
+
+            try
+            {
+                conn.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
     }
 }
 

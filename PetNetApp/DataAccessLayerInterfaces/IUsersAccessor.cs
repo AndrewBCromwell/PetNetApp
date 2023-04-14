@@ -109,5 +109,15 @@ namespace DataAccessLayerInterfaces
         /// <param name="roleId"></param>
         /// <returns>int count of accounts</returns>
         List<UsersAdoptionRecords> SelectAdoptionRecordsByUserID(int usersId);
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/04/13
+        /// 
+        /// takes in a userid and shelterid and assigns that shelterid to the user
+        /// </summary>
+        /// <param name="shelterid"></param>
+        /// <param name="userid"></param>
+        /// <returns>int count rows affected</returns>
+        int UpdateUserShelterid(int userid, int shelterid, int oldShelterId);
     }
 }

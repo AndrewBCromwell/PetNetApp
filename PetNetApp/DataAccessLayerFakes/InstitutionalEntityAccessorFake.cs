@@ -370,6 +370,22 @@ namespace DataAccessLayerFakes
             return (InstitutionalEntity)institutionalEntity.FirstOrDefault();
         }
 
+        public List<InstitutionalEntity> SelectAllHosts()
+        {
+            var hosts = from institutionalEntityRecord in _institutionalEntities
+                           where institutionalEntityRecord.ContactType == "Host"
+                        select institutionalEntityRecord;
+            return hosts.ToList();
+        }
+
+        public List<InstitutionalEntity> SelectAllContact()
+        {
+            var contact = from institutionalEntityRecord in _institutionalEntities
+                        where institutionalEntityRecord.ContactType == "Contact"
+                        select institutionalEntityRecord;
+            return contact.ToList();
+        }
+
         public List<SponsorEvent> SelectSponsorEventByName(string name)
         {
             return _sponsorEvents.Where(i => i.CompanyName == name).ToList();

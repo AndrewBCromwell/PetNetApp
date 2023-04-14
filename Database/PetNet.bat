@@ -124,17 +124,19 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Library_Stored_Procedures.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\FosterApplicationResponse_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AdoptionApplicationSPs.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\CloseTicket_SP.sql
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateFundraisingEventResults_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\RetrievePledgersByEventId_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditReply_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditUserShelter_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditHoursOfOperation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdatePostVisibility_SP.sql
 
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddFundRaisingEvent_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditFundRaisingEvent_SP.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

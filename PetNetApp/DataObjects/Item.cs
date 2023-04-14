@@ -11,6 +11,11 @@
 /// Updated Item's default getter to always initialize the list of tags
 /// Updated: 2023/04/01
 /// Removed explicit tag initialization, not needed for lists
+/// 
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/13
+/// 
+/// FinalQA
 /// </remarks>
 using System;
 using System.Collections.Generic;

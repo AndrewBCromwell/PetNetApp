@@ -698,7 +698,7 @@ namespace DataAccessLayer
                         /*
                            [AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId],		
                            [Personality], [Description], [AnimalStatusId], [RecievedDate], [MicrochipSerialNumber], 	
-                           [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
+                           [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId]
                         */
 
                         animal.AnimalId = reader.GetInt32(0);
@@ -716,6 +716,7 @@ namespace DataAccessLayer
                         animal.ChildFriendly = reader.GetBoolean(12);
                         animal.NeuterStatus = reader.GetBoolean(13);
                         animal.Notes = reader.IsDBNull(14) ? null : reader.GetString(14);
+                        animal.AnimalShelterId = reader.GetInt32(15);
                     }
                 }
             }

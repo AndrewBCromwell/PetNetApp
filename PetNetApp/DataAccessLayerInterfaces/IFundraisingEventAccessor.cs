@@ -30,5 +30,36 @@ namespace DataAccessLayerInterfaces
         /// <param name="campaignId">the campaign to get events for</param>
         /// <returns>a list of events for the campaign</returns>
         List<FundraisingEventVM> SelectAllFundraisingEventsByCampaignId(int campaignId);
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/30
+        /// 
+        /// A method to update a fundraising event object, with event update information
+        /// </summary>
+        /// <param name="oldFundraisingEventVM">the original funraising event object</param>
+        /// <param name="newFundraisingEventVM">the updated fundraising event objecxt</param>
+        /// <returns>the number of events updated</returns>
+        int UpdateFundraisingEventResults(FundraisingEventVM oldFundraisingEventVM, FundraisingEventVM newFundraisingEventVM);
+
+        /// <summary>
+        /// Barry Mikulas 
+        /// 2023/03/30
+        /// 
+        /// Loads a fundraising event by its event id
+        /// </summary>
+        /// <param name="fundraisingEventId">The id of the fundraising event to load</param>
+        /// <returns>A Fundraising Event VM</returns>
+        FundraisingEventVM SelectFundraisingEventByFundraisingEventId(int fundraisingEventId);
+        int InsertFundraisingEvent(FundraisingEvent fundraisingEvent);
+        int InsertFundraiserAnimal(int fundraisingEventId, int animalId);
+        int InsertFundraisingEventEntity(int eventId, int contactId);
+        FundraisingEvent SelectFundraisingEvent(int eventId);
+        List<int> SelectContactByFundraisingEvent(int eventId);
+        List<int> SelectSponsorByFundraisingEvent(int eventId);
+        List<int> SelectAnimalByFundraisingEvent(int eventId);
+        int UpdateFundraisingEvent(FundraisingEventVM fundraisingEvent);
+        int DeactivateFundraisingEvent(int fundraisingEventId);
     }
 }
