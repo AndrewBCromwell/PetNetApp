@@ -25,18 +25,10 @@ namespace MVCPresentation.Controllers
                 if (masterManager.User.Roles.Contains("Admin") || masterManager.User.Roles.Contains("Moderator"))
                 {
                     posts = masterManager.PostManager.RetrieveAllPosts();
-                    //foreach (var post in posts)
-                    //{
-                    //    post.ReplyCount = masterManager.ReplyManager.RetrieveCountRepliesByPostId(post.PostId);
-                    //}
                 }
                 else
                 {
                     posts = masterManager.PostManager.RetrieveActivePosts();
-                    //foreach (var post in posts)
-                    //{
-                    //    post.ReplyCount = masterManager.ReplyManager.RetrieveCountActiveRepliesByPostId(post.PostId);
-                    //}
                 }
             }
             catch (Exception ex)
@@ -68,6 +60,11 @@ namespace MVCPresentation.Controllers
                         {
                             postVM.Replies = masterManager.ReplyManager.RetrieveActiveRepliesByPostId(postVM.PostId);
                         }
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Invaild Request";
+                        return View("Error");
                     }
                 }
                 catch (Exception ex)
