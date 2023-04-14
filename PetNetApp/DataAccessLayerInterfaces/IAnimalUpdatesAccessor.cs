@@ -29,5 +29,6 @@ namespace DataAccessLayerInterfaces
         /// <param name="animalId"></param>
         /// <returns></returns>
         string SelectAnimalUpdatesByAnimal(int animalId);
+        List<AnimalUpdates> SelectAllAnimalUpdateByAnimalId(int animalId);
     }
 }

@@ -189,14 +189,16 @@ namespace DataAccessLayer
 
             try
             {
-                using (conn)
-                {
+                conn.Open();
                     reportedCount = Convert.ToInt32(cmd.ExecuteScalar());
-                }
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                conn.Close();
             }
             return reportedCount;
         }
@@ -263,6 +265,110 @@ namespace DataAccessLayer
             }
 
             return rowsAffected;
+        }
+
+        public List<ReportMessage> SelectReportMessages()
+        {
+            List<ReportMessage> messages = new List<ReportMessage>();
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdText = "sp_select_report_messages";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            messages.Add(new ReportMessage()
+                            {
+                                ReportMessageId = reader.GetInt32(0),
+                                ReportMessageDescription = reader.GetString(1)
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return messages;
+        }
+
+        public int InsertPostReport(int postId, int userId, int reportMessageId)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_post_report";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@PostReporter", SqlDbType.Int).Value = userId;
+            cmd.Parameters.Add("@PostId", SqlDbType.Int).Value = postId;
+            cmd.Parameters.Add("@ReportMessageId", SqlDbType.Int).Value = reportMessageId;
+
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+        public int DeletePostReport(int postId, int userId)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_delete_post_report";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@PostReporter", SqlDbType.Int).Value = userId;
+            cmd.Parameters.Add("@PostId", SqlDbType.Int).Value = postId;
+
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
         }
     }
 }

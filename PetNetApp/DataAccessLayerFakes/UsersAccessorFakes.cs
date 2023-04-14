@@ -640,5 +640,30 @@ namespace DataAccessLayerFakes
         {
             throw new NotImplementedException();
         }
+
+        public int UpdateUserShelterid(int userid, int shelterid, int oldShelterId)
+        {
+            int rowsAffected = 0;
+
+            try
+            {
+                fakeUsers.FirstOrDefault(u => u.UsersId == userid && u.ShelterId == oldShelterId).ShelterId = shelterid;
+                if (fakeUsers.FirstOrDefault(u => u.UsersId == userid).ShelterId == shelterid)
+                {
+                    rowsAffected = 1;
+                }
+                else
+                {
+                    rowsAffected = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return rowsAffected;
+        }
     }
 }

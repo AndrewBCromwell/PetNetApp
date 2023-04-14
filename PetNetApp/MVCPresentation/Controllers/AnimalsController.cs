@@ -106,5 +106,33 @@ namespace MVCPresentation.Controllers
             return View();
         }
 
+        public ActionResult AdoptableAnimal(int? animalId)
+        {
+            AnimalVM animal = new AnimalVM();
+            string animalNote = "";
+            IEnumerable<Images> animalImages;
+            try
+            {
+                if (animalId == null)
+                {
+                    ViewBag.Message = "AnimalId is null";
+                    return View("Error");
+                }
+                else
+                {
+                    animal = _manager.AnimalManager.RetriveAnimalAdoptableProfile((int)animalId);
+                    animalNote = _manager.AnimalUpdatesManager.RetrieveAnimalUpdatesByAnimal((int)animalId);
+                    ViewBag.AnimalNote = animalNote;
+                    animalImages = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId((int)animalId);
+                    ViewBag.AnimalImages = animalImages;
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return View("Error");
+            }
+            return View(animal);
+        }
     }
 }

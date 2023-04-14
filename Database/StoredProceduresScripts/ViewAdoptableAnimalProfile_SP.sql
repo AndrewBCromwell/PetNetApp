@@ -24,7 +24,7 @@ AS
 	BEGIN
 		SELECT [AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId],		
             [Personality], [Description], [AnimalStatusId], [RecievedDate], [MicrochipSerialNumber], 	
-            [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]		
+            [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId]
         FROM [Animal]
         WHERE [AnimalId] = @AnimalId			
 	END

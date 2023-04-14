@@ -231,8 +231,7 @@ namespace WpfPresentation.Development.Fundraising
         }
         private void btnAddEvent_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("Not Implemented", "Feature Add new Event not implemented");
-            NavigationService.GetNavigationService(this).Navigate(AddEditViewUpdateFundraisingEventPage.GetAddFundraisingEventPage());
+            NavigationService.Navigate(new WpfPresentation.Events.AddFundraisingEvent());
         }
         private void btnNavigatePage_Click(object sender, RoutedEventArgs e)
         {
