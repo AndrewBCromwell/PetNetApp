@@ -42,7 +42,7 @@ namespace MVCPresentation.Controllers
                 //{
                 foreach (var post in posts)
                 {
-                    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
+                //    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
                 }
                 //}
             }
@@ -378,6 +378,57 @@ namespace MVCPresentation.Controllers
             else
             {
                 ViewBag.Message = "You need to specify a post to delete";
+                return View("Error");
+            }
+        }
+
+
+        // GET: Community/DeleteReply/5
+        public ActionResult DeleteReply(int? id)
+        {
+            if (id != null)
+            {
+                ReplyVM reply = new ReplyVM();
+                try
+                {
+                    reply = masterManager.ReplyManager.RetrieveReplyByReplyId(id.Value);
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message + ex.InnerException;
+                    return View("Error");
+                }
+                return View(reply);
+            }
+            else
+            {
+                ViewBag.Message = "You need to specify a Reply to delete.";
+                return View("Error");
+            }
+        }
+
+        // POST: Community/DeleteReply/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteReply(int? id, FormCollection collection)
+        {
+            if (id != null)
+                try
+                {
+                    ReplyVM reply = masterManager.ReplyManager.RetrieveReplyByReplyId(id.Value);
+                    reply.ReplyVisibility = false;
+                    masterManager.ReplyManager.EditReplyVisibilityByReplyId(reply);
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = ex.Message;
+                    return View("Error");
+                }
+            else
+            {
+                ViewBag.Message = "You need to specify a reply to delete";
                 return View("Error");
             }
         }

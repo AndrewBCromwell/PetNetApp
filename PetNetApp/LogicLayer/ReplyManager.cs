@@ -58,6 +58,24 @@ namespace LogicLayer
             return rowAffected == 1;
         }
 
+        public bool EditReplyVisibilityByReplyId(ReplyVM reply)
+        {
+            bool result = false;
+            try
+            {
+                int rows = replyAccessor.UpdateReplyVisibilityByReplyId(reply);
+                if(rows == 1)
+                {
+                    result = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new ApplicationException("Faild to delete the reply.", ex);
+            }
+            return result;
+        }
+
         public List<ReplyVM> RetrieveActiveRepliesByPostId(int postId)
         {
             List<ReplyVM> replies = new List<ReplyVM>();

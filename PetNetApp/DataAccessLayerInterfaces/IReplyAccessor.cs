@@ -66,5 +66,14 @@ namespace DataAccessLayerInterfaces
         /// <param name="replyid"></param>
         /// <returns></returns>
         ReplyVM SelectReplyByReplyId(int replyId);
+        /// <summary>
+        /// Author: Andrew Cromwell
+        /// Date: 2023-04-14
+        /// 
+        /// Description: Makes it so that a reply will no longer be visible
+        /// </summary>
+        /// <param name="reply">The reply to update</param>
+        /// <returns>int rows affected</returns>
+        int UpdateReplyVisibilityByReplyId(ReplyVM reply);
     }
 }

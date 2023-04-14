@@ -119,5 +119,21 @@ namespace DataAccessLayerFakes
             }
             return result;
         }
+
+        public int UpdateReplyVisibilityByReplyId(ReplyVM reply)
+        {
+            int rowsAffected = 0;
+            foreach (var item in fakeRepliesVM)
+            {
+                if (item.ReplyId == reply.ReplyId && item.ReplyContent == reply.ReplyContent &&
+                    item.PostId == reply.PostId && item.ReplyAuthor == reply.ReplyAuthor)
+                {
+                    item.ReplyVisibility = reply.ReplyVisibility;
+                    rowsAffected = 1;
+                }
+            }
+
+             return rowsAffected;
+        }
     }
 }

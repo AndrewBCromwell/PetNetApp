@@ -176,6 +176,7 @@ namespace DataAccessLayer
             return post;
         }
 
+
         public int SelectUserPostReportedByPostIdandUserId(int postId, int userId)
         {
             int reportedCount = 0;
@@ -189,14 +190,17 @@ namespace DataAccessLayer
 
             try
             {
-                using (conn)
-                {
-                    reportedCount = Convert.ToInt32(cmd.ExecuteScalar());
-                }
+                conn.Open(); // I did not make this method, but I found it having "using (conn)" which is not right so I changed it  -Andy
+                             // It was not working before, it is still not working.
+                reportedCount = Convert.ToInt32(cmd.ExecuteScalar());
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                conn.Close();
             }
             return reportedCount;
         }
