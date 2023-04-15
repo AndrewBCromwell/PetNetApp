@@ -177,6 +177,29 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@DoNotOrder", newShelterInventoryItemVM.DoNotOrder);
             cmd.Parameters.AddWithValue("@CustomFlag", newShelterInventoryItemVM.CustomFlag);
 
+            cmd.Parameters.AddWithValue("@OldQuantity", oldShelterInventoryItemVM.Quantity);
+            cmd.Parameters.AddWithValue("@OldUseStatistic", oldShelterInventoryItemVM.UseStatistic);
+            cmd.Parameters.AddWithValue("@OldLastUpdated", oldShelterInventoryItemVM.LastUpdated);
+            cmd.Parameters.AddWithValue("@OldLowInventoryThreshold", oldShelterInventoryItemVM.LowInventoryThreshold);
+            cmd.Parameters.AddWithValue("@OldHighInventoryThreshold", oldShelterInventoryItemVM.HighInventoryThreshold);
+            cmd.Parameters.AddWithValue("@OldInTransit", oldShelterInventoryItemVM.InTransit);
+            cmd.Parameters.AddWithValue("@OldUrgent", oldShelterInventoryItemVM.Urgent);
+            cmd.Parameters.AddWithValue("@OldProcessing", oldShelterInventoryItemVM.Processing);
+            cmd.Parameters.AddWithValue("@OldDoNotOrder", oldShelterInventoryItemVM.DoNotOrder);
+
+            if (oldShelterInventoryItemVM.CustomFlag == null)
+            {
+                cmd.Parameters.AddWithValue("@OldCustomFlag", DBNull.Value);
+                
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldCustomFlag", oldShelterInventoryItemVM.CustomFlag);
+            }
+            
+
+
+
             try
             {
                 conn.Open();

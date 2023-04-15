@@ -677,9 +677,11 @@ INSERT INTO [dbo].[ShelterInventoryItem]
 		(100000, 'Cat Food', 1, 50.99, 1, 99), 
         (100000, 'Dog Food', 5, 30.99, 1, 99),
         (100000, 'Rabbit Food', 10, 42.99, 1, 99),
+		(100000, 'Mysterious Item', 1, 30.43, 1, 99),
         (100001, 'Cat Food', 1, 50.99, 1, 50), 
         (100001, 'Dog Food', 5, 30.99, 1, 50),
         (100001, 'Rabbit Food', 10, 42.99, 1, 50)
+		
         
 GO
 

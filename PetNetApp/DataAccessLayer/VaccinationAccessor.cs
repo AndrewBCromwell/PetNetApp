@@ -246,14 +246,11 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@OldVaccineName", oldVaccination.VaccineName);
             cmd.Parameters.AddWithValue("@OldVaccineAdminsterDate", oldVaccination.VaccineAdminsterDate);
 
+            cmd.Parameters.AddWithValue("@UsersId", newVaccination.UserId);
+            cmd.Parameters.AddWithValue("@VaccineName", newVaccination.VaccineName);
+            cmd.Parameters.AddWithValue("@VaccineAdminsterDate", newVaccination.VaccineAdminsterDate);
 
-            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
-            cmd.Parameters.Add("@VaccineName", SqlDbType.NVarChar, 50);
-            cmd.Parameters.Add("@VaccineAdminsterDate", SqlDbType.DateTime);
-
-            cmd.Parameters["@UsersId"].Value = newVaccination.UserId;
-            cmd.Parameters["@VaccineName"].Value = newVaccination.VaccineName;
-            cmd.Parameters["@VaccineAdminsterDate"].Value = newVaccination.VaccineAdminsterDate;
+           
 
             try
             {

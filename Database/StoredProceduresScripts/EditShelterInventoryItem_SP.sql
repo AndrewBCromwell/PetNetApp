@@ -1,29 +1,4 @@
-/*
-CREATE TABLE [dbo].[ShelterInventoryItem] (
-	
-	[ShelterId]					[int]			NOT NULL,
-	[ItemId]					[nvarchar](50)	NOT NULL,
-	
-	[Quantity]					[int]			NOT NULL DEFAULT 0,
-	[UseStatistic]				[decimal](4,2)	NULL,
-	[LastUpdated]				[date]			NOT NULL DEFAULT GETDATE(),
-	[LowInventoryThreshold]		[int]			NULL,
-	[HighInventoryThreshold]	[int]			NULL,
-	
-	[InTransit]					[bit]			NOT NULL DEFAULT 0,
-	[Urgent]					[bit]			NOT NULL DEFAULT 0,
-	[Processing]				[bit]			NOT NULL DEFAULT 0,
-	[DoNotOrder]				[bit]			NOT NULL DEFAULT 0,
-	[CustomFlag]				[nvarchar](250)	NULL,
-	
-	CONSTRAINT	[fk_ShelterInventoryItem_ShelterId] FOREIGN KEY ([ShelterId])
-		REFERENCES [dbo].[Shelter]([ShelterId]),
-	CONSTRAINT	[fk_ShelterInventoryItem_ItemId] FOREIGN KEY ([ItemId])
-		REFERENCES [dbo].[Item]([ItemId]) ON UPDATE CASCADE,
-	CONSTRAINT	[pk_ShelterInventoryItem_ShelterId_ItemId] PRIMARY KEY ([ItemId], [ShelterId])
-)
-GO
-*/
+/*Created by Zaid Rachman*/
 
 USE [PetNet_db_am]
 
@@ -44,7 +19,20 @@ CREATE PROCEDURE [dbo].[sp_update_shelterInventoryItem]
 	@Urgent						[bit],
 	@Processing					[bit],
 	@DoNotOrder					[bit],
-	@CustomFlag					[nvarchar](250)
+	@CustomFlag					[nvarchar](250),
+	
+	@OldQuantity					[int],
+	@OldUseStatistic				[decimal](4,2),
+	@OldLastUpdated					[date],
+	@OldLowInventoryThreshold		[int],
+	@OldHighInventoryThreshold		[int],
+	@OldInTransit					[bit],
+	@OldUrgent						[bit],
+	@OldProcessing					[bit],
+	@OldDoNotOrder					[bit],
+	@OldCustomFlag					[nvarchar](250)
+	
+	
 	
 	
 )
@@ -62,35 +50,21 @@ AS
 					[DoNotOrder] = 				@DoNotOrder,
 					[CustomFlag] = 				@CustomFlag
 					
-			WHERE	[ShelterId] = 				@ShelterId
-			  AND	[ItemId] = 					@ItemId
+			WHERE	@ShelterId =					[ShelterId] 			
+			  AND	@ItemId =                   	[ItemId] 				
+			  AND	@OldQuantity =             		[Quantity]			
+			  AND	@OldUseStatistic =          	[UseStatistic]			
+			  AND	@OldLastUpdated =           	[LastUpdated]		
+			  AND	@OldLowInventoryThreshold =  	[LowInventoryThreshold]	
+			  AND	@OldHighInventoryThreshold =	[HighInventoryThreshold]
+			  AND	@OldInTransit =             	[InTransit]			
+			  AND	@OldUrgent =              		[Urgent]			
+			  AND	@OldProcessing =            	[Processing]			
+			  AND	@OldDoNotOrder =             	[DoNotOrder]			
+			  AND	(@OldCustomFlag =             	[CustomFlag]
+					OR ([CustomFlag] IS NULL AND @OldCustomFlag IS NULL))
 			  
+			RETURN 	@@ROWCOUNT
 			  
-			  
-			  
-			  SELECT 	[ShelterInventoryItem].[ShelterId],
-				[ShelterInventoryItem].[ItemId],
-				[Quantity],
-				[UseStatistic],
-				[LastUpdated],
-				[LowInventoryThreshold],
-				[HighInventoryThreshold],
-				[InTransit],
-				[Urgent],
-				[Processing],
-				[DoNotOrder],
-				[CustomFlag],
-				[ShelterName]
-				
-				
-				
-		FROM [dbo].[ShelterInventoryItem]
-		JOIN [Shelter]
-			ON [Shelter].[ShelterId] = [ShelterInventoryItem].[ShelterId]
-		WHERE [ShelterInventoryItem].[ShelterId] = @ShelterId
-		AND	  [ShelterInventoryItem].[ItemId] = @ItemId
-			  
-			 
-		
 	END
 GO

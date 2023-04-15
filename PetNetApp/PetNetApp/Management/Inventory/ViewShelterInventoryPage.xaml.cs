@@ -189,10 +189,12 @@ namespace WpfPresentation.Management.Inventory
                 {
                     Flags.Add("Overstocked");
                 }
+                Console.WriteLine(Flags.Count);
 
                 //Formating
                 for (int i = 0; i < Flags.Count; i++)
                 {
+                    Console.WriteLine(Flags[i]);
                     flagsList += " " + Flags[i];
 
                     if (i == Flags.Count - 2)

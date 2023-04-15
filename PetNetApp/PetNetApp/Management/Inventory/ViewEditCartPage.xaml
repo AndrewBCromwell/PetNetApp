@@ -23,8 +23,7 @@
         <Label x:Name="lblOrderList" FontSize="24" FontWeight="bold" Grid.Row="0"
                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0"
                Content="Order List"/>
-        <Button x:Name="btnRequestSupplies" Grid.Row="0" HorizontalAlignment="Right"
-                Margin="20 0" Width="200" Height="60" Content="Request Supplies"/>
+       
 
         <DataGrid x:Name="datCartList" Grid.Row="1" Margin="20 0 20 0" 
                   CanUserResizeRows="False" CanUserResizeColumns="True"
@@ -44,7 +43,7 @@
         <Button x:Name="btnBack" Grid.Row="2" HorizontalAlignment="Left" Margin="20 0" Width="120"
                 Height="50" Content="Back" Click="btnBack_Click"/>
         <Button x:Name="btnClearCart" Grid.Row="2" HorizontalAlignment="Right" Margin="20 0" Width="120"
-                Height="50" Content="Clear Cart" Background="Maroon" Click="btnClearCart_Click"/>
+                Height="50" Content="Clear Cart" Background="#FFC02825" Click="btnClearCart_Click"/>
 
 
 
