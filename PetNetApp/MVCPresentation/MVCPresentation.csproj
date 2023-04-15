@@ -355,6 +355,8 @@
     <Content Include="Views\UserProfile\Index.cshtml" />
     <Content Include="Views\Shelters\SelectShelter.cshtml" />
     <Content Include="Views\Community\Delete.cshtml" />
+    <Content Include="Views\Community\DeleteReply.cshtml" />
+    <Content Include="Views\Animals\Adoptable.cshtml" />
     <Content Include="Views\Community\ReportPartial.cshtml" />
     <Content Include="Views\Community\BeginPostReport.cshtml" />
     <Content Include="Views\Animals\AdoptableAnimal.cshtml" />

@@ -29,6 +29,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\MedicalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddAnimal_to_kennel_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalTests_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalAnimals_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAllAdoptableAnimals_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewTreatment_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewKennel_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAnimalProfile_SP.sql
@@ -146,6 +147,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditHoursOfOperation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdatePostVisibility_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReportPost_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddFundRaisingEvent_SP.sql

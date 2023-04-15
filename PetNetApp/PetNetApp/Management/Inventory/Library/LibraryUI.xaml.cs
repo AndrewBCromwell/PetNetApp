@@ -7,8 +7,8 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Brian Collum
+/// Updated: 2023/04/07
 /// </remarks>
 
 using System;
@@ -146,6 +146,50 @@ namespace WpfPresentation.Management.Inventory.Library
         private void btnAddCategory_Click(object sender, RoutedEventArgs e)
         {
             frmLibrary.Navigate(new AddCategoryTagPage(_masterManager, this));
+        }
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/07
+        /// Adds the selected Library item to the currently selected shelter's inventory
+        /// </summary>
+        private void btnAddToShelterInventory_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = (Item)datLibraryInventory.SelectedItem;
+            var currentShelter = _masterManager.User.ShelterId;
+            if (currentShelter != null)
+            {
+                if (selectedItem == null)
+                {
+                    PromptWindow.ShowPrompt("Error", "Please select an item from the list to add to your shelter.", ButtonMode.Ok);
+                }
+                else
+                {
+                    try
+                    {
+                        PromptSelection result = PromptWindow.ShowPrompt("Add Item?", "Do you want to add this item to Shelter " + currentShelter, ButtonMode.YesNo);
+                        if (result == PromptSelection.Yes)
+                        {
+                            if(_masterManager.ShelterInventoryItemManager.AddToShelterInventory((int)currentShelter, selectedItem.ItemId))
+                            {
+                                PromptWindow.ShowPrompt("Item Added", "Added " + selectedItem.ItemId + " to " + currentShelter, ButtonMode.Ok);
+                            }
+                            else
+                            {
+                                PromptWindow.ShowPrompt("Item visible", selectedItem.ItemId + " is active in " + currentShelter, ButtonMode.Ok);
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        PromptWindow.ShowPrompt("Error", "Failed to add that item to your shelter.", ButtonMode.Ok);
+                    }
+                }
+            }
+            else
+            {
+                PromptWindow.ShowPrompt("Error", "You must have a shelter associated with your account in order to use this feature.", ButtonMode.Ok);
+            }
         }
     }
 }

@@ -179,5 +179,22 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">No animals retrieved with that event id</exception>
         /// <returns>List of AnimalVM objects</returns>
         List<AnimalVM> SelectAnimalsByFundraisingEventId(int fundraisingEventId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/04/12
+        /// 
+        /// Selects a list of all animals available for
+        /// adoption at all shelters.
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <exception cref="Exception">No animals retrieved with that event id</exception>
+        /// <returns>List of AnimalVM objects</returns>
+        List<AnimalVM> SelectAllAdoptableAnimals();
     }
 }
