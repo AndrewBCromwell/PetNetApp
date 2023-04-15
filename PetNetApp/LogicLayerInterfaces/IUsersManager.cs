@@ -63,6 +63,8 @@ namespace LogicLayerInterfaces
         List<string> RetrieveRolesByUsersId(int usersId);
         bool RetrieveUserByEmail(string email);
         UsersVM AuthenticateUser(string email, string passwordHash);
+        bool AddUserRole(int usersId, string role);
+        bool DeleteUserRole(int usersId, string role);
 
         // Alex Oetken
         bool DeactivateUserAccount(int UserId);

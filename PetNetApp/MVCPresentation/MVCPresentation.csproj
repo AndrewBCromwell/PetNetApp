@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AnimalsController.cs" />
     <Compile Include="Controllers\CommunityController.cs" />
     <Compile Include="Controllers\DonateController.cs" />
@@ -361,6 +362,8 @@
     <Content Include="Views\Community\BeginPostReport.cshtml" />
     <Content Include="Views\Animals\AdoptableAnimal.cshtml" />
     <Content Include="Views\Animals\AnimalImageForAdoptableAnimal.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

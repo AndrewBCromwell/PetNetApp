@@ -44,6 +44,7 @@ namespace DataAccessLayerInterfaces
         List<string> SelectRolesByUserID(int userId);
         List<string> SelectAllRoles();
         UsersVM AuthenticateUser(string email, string passwordHash);
+        int InsertOrDeleteUserRole(int usersId, string role, bool delete = false);
 
         // Mads - ACCOUNT SETTINGS
         List<string> SelectAllPronouns();

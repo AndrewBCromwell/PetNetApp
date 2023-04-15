@@ -665,5 +665,10 @@ namespace DataAccessLayerFakes
 
             return rowsAffected;
         }
+
+        public int InsertOrDeleteUserRole(int usersId, string role, bool delete = false)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
