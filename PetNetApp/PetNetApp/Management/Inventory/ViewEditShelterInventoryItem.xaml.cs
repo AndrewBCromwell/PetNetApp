@@ -147,7 +147,7 @@ namespace WpfPresentation.Management.Inventory
         public string UpdateCategory(List<string> categories)
         {
             string categoryString = "";
-            if (categories == null)
+            if (categories != null)
             {
                 //Formating
                 for (int i = 0; i < categories.Count; i++)

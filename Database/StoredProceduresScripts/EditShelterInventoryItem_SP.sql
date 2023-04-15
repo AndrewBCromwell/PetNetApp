@@ -61,8 +61,8 @@ AS
 			  AND	@OldUrgent =              		[Urgent]			
 			  AND	@OldProcessing =            	[Processing]			
 			  AND	@OldDoNotOrder =             	[DoNotOrder]			
-			  AND	@OldCustomFlag =             	[CustomFlag]
-					OR ([CustomFlag] IS NULL AND @OldCustomFlag IS NULL)
+			  AND	(@OldCustomFlag =             	[CustomFlag]
+					OR ([CustomFlag] IS NULL AND @OldCustomFlag IS NULL))
 			  
 			RETURN 	@@ROWCOUNT
 			  
