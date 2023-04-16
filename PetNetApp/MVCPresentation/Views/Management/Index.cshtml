@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DataObjects.TicketVM>
+
+@{
+    ViewBag.Title = "Ticket List";
+}
+
+@section styles
+{
+    <link href="~/Content/Ticket/TicketList.css" rel="stylesheet" />
+}
+
+<h2 class="text-center">Ticket List</h2>
+
+<p class="btn btn-primary">
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketStatusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketContext)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketStatusId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketContext)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.TicketId })
+            </td>
+        </tr>
+    }
+
+</table>

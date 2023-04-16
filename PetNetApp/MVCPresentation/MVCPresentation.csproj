@@ -180,6 +180,7 @@
     <Compile Include="Controllers\FundraisingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\SheltersController.cs" />
     <Compile Include="Controllers\UserDonationsController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
@@ -233,6 +234,7 @@
     <Content Include="Content\Fundraising\campaigns.css" />
     <Content Include="Content\Fundraising\page-navigation.css" />
     <Content Include="Content\ShelterNetwork.css" />
+    <Content Include="Content\Ticket\TicketList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -364,6 +366,8 @@
     <Content Include="Views\Animals\AnimalImageForAdoptableAnimal.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Management\Index.cshtml" />
+    <Content Include="Views\Management\Create.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

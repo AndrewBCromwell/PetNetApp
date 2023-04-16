@@ -1,0 +1,57 @@
+﻿@model DataObjects.Ticket
+
+@{
+    ViewBag.Title = "Create New Ticket";
+}
+
+<h2>Create New Ticket</h2>
+
+@Html.AntiForgeryToken()
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.HiddenFor(model => model.TicketStatusId, htmlAttributes: new { Value = "Open" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TicketTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TicketTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TicketTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TicketContext, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TicketContext, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TicketContext, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>        
+    </div>
+    <p>@ViewBag.result</p>
+
+}
+
+@if (User.IsInRole("Administrator") || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
+    <p class="btn btn-primary">
+        @Html.ActionLink("View all tickets", "Index")
+    </p>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
