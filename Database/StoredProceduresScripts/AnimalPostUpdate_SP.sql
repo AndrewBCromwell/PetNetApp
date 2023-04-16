@@ -45,3 +45,18 @@ AS
 		ORDER BY [AnimalRecordId] DESC
 	END
 GO
+
+print '' print '*** creating sp_select_all_animal_updates_by_animalid (Hoang Chu)'
+GO
+CREATE PROCEDURE [dbo].[sp_select_all_animal_updates_by_animalid]
+(
+    @AnimalId                   [int]
+)
+AS
+	BEGIN
+		SELECT [AnimalRecordNotes], [AnimalRecordId], [AnimalRecordDate]
+		FROM 			[AnimalUpdates]
+        WHERE [AnimalId] = @AnimalId
+		ORDER BY [AnimalRecordId] DESC
+	END
+GO

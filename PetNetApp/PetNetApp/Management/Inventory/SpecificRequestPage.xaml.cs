@@ -123,7 +123,7 @@ namespace WpfPresentation.Management.Inventory
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(ViewRequestListPage.GetViewRequestListPage(_manager));
         }
 
         

@@ -34,7 +34,7 @@ namespace MVCPresentation.Controllers
                 //{
                 foreach (var post in posts)
                 {
-                    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
+                //    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
                 }
                 //}
             }
@@ -45,6 +45,176 @@ namespace MVCPresentation.Controllers
             }
             ViewBag.User = masterManager.User;
             return View(posts);
+        }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Returns the form to select a report reason
+        /// </summary>
+        /// <param name="post">post to report</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult BeginReportPost(int? post)
+        {
+            ViewBag.User = masterManager.User;
+            try
+            {
+                if (post == null)
+                {
+                    throw new ApplicationException("No post to Report");
+                }
+                var postVM = masterManager.PostManager.RetrievePostByPostId(post.Value);
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (postVM.UserPostReported)
+                {
+                    throw new ApplicationException("You already reported this post");
+                }
+                if (postVM.PostAuthor == masterManager.User.UsersId)
+                {
+                    throw new ApplicationException("You cannot report your own post");
+                }
+                // add logic here
+                postVM.UserPostReported = !postVM.UserPostReported;
+                var reportReasons = masterManager.PostManager.RetrieveReportMessages();
+                ViewBag.ReportReasons = reportReasons;
+
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("BeginPostReport", postVM);
+                }
+                return View("BeginPostReport", postVM);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + "\n" + ex.InnerException;
+                if (Request.IsAjaxRequest())
+                {
+                    return Content("Error");
+                }
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Stephen Jaurgiue
+        /// 2023/04/13
+        /// 
+        /// removes the report from the current user for the post
+        /// </summary>
+        /// <param name="post">Post to unreport</param>
+        /// <returns>Updated Report form or full page</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UnreportPost(int? post)
+        {
+            PostVM postVM = null;
+            ViewBag.User = masterManager.User;
+            try
+            {
+                if (post == null)
+                {
+                    throw new ApplicationException("No post to unreport");
+                }
+                postVM = masterManager.PostManager.RetrievePostByPostId(post.Value);
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (!postVM.UserPostReported)
+                {
+                    throw new ApplicationException("You haven't reported this post");
+                }
+
+                if (!masterManager.PostManager.RemovePostReport(post.Value, masterManager.User.UsersId))
+                {
+                    throw new ApplicationException("Something went wrong");
+                }
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("ReportPartial", postVM);
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + "\n" + ex.InnerException;
+                ViewBag.ReportError = ex.Message;
+                if (Request.IsAjaxRequest())
+                {
+                    if (postVM != null)
+                    {
+                        return PartialView("ReportPartial", postVM);
+                    }
+                    Content("Error");
+                }
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Adds a report to the post for the currently logged in user
+        /// </summary>
+        /// <param name="post">post to report</param>
+        /// <param name="reason">the reason for the report</param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ReportPost(int? post, int? reason)
+        {
+            ViewBag.User = masterManager.User;
+            Debug.WriteLine(post + " " + reason);
+            PostVM postVM = null;
+            try
+            {
+                if (post == null)
+                {
+                    throw new ApplicationException("No post to unreport");
+                }
+                postVM = masterManager.PostManager.RetrievePostByPostId(post.Value);
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (postVM.UserPostReported)
+                {
+                    throw new ApplicationException("You already reported this post");
+                }
+
+                if (reason == null)
+                {
+                    throw new ApplicationException("Select a reason");
+                }
+
+                if (postVM.PostAuthor == masterManager.User.UsersId)
+                {
+                    throw new ApplicationException("You cannot report your own post");
+                }
+
+                if (!masterManager.PostManager.AddPostReport(post.Value, masterManager.User.UsersId,reason.Value))
+                {
+                    throw new ApplicationException("Something went wrong");
+                }
+                postVM.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(postVM.PostId, masterManager.User.UsersId);
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("ReportPartial", postVM);
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + "\n" + ex.InnerException;
+                ViewBag.ReportError = ex.Message;
+                if (Request.IsAjaxRequest())
+                {
+                    if (postVM == null)
+                    {
+                        return Content(ex.Message);
+                    }
+                    return PartialView("ReportPartial", postVM);
+                }
+                return View("Error");
+            }
         }
 
         public ActionResult ShowReplies(int? id)
@@ -375,6 +545,68 @@ namespace MVCPresentation.Controllers
             else
             {
                 ViewBag.Message = "You need to specify a post to delete";
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/14
+        /// 
+        /// Shows a page where the user will verify if they actualy want to delete the reply.
+        /// </summary>
+        // GET: Community/DeleteReply/5
+        public ActionResult DeleteReply(int? id)
+        {
+            if (id != null)
+            {
+                ReplyVM reply = new ReplyVM();
+                try
+                {
+                    reply = masterManager.ReplyManager.RetrieveReplyByReplyId(id.Value);
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message + ex.InnerException;
+                    return View("Error");
+                }
+                return View(reply);
+            }
+            else
+            {
+                ViewBag.Message = "You need to specify a Reply to delete.";
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/14
+        /// 
+        /// Causes the reply to no longer be shown and returns to index
+        /// </summary>
+        // POST: Community/DeleteReply/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteReply(int? id, FormCollection collection)
+        {
+            if (id != null)
+                try
+                {
+                    ReplyVM reply = masterManager.ReplyManager.RetrieveReplyByReplyId(id.Value);
+                    reply.ReplyVisibility = false;
+                    masterManager.ReplyManager.EditReplyVisibilityByReplyId(reply);
+
+                    return RedirectToAction("ShowReplies", new { id = reply.PostId });
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = ex.Message;
+                    return View("Error");
+                }
+            else
+            {
+                ViewBag.Message = "You need to specify a reply to delete";
                 return View("Error");
             }
         }

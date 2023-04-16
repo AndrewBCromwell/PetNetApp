@@ -6,8 +6,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Brian Collum
+/// Updated: 2023/04/06
+/// 
+/// Added InsertNewShelterInventoryItemFromLibrary and EnableOrDisableShelterInventoryItem methods and descriptions
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -51,5 +53,33 @@ namespace DataAccessLayerInterfaces
         /// <param name="newShelterInventoryItemVM"></param>
         /// <returns></returns>
         int UpdateShelterInventoryItem(ShelterInventoryItemVM oldShelterInventoryItemVM, ShelterInventoryItemVM newShelterInventoryItemVM);
+
+        /// <summary>
+        ///  
+        /// Brian Collum
+        /// Created: 2023/04/06
+        /// 
+        /// Adds a new ShelterInventoryItem to a shelter's inventory by instantiating an item from the Library
+        /// 
+        /// </summary>
+        /// <param name="shelterID">The ID of the shelter that will recieve the new ShelterInventoryItem</param>
+        /// <param name="itemID">The ItemID of the Library item that will be instantiated as a new ShelterInventoryItem</param>
+        /// <returns>Number of rows affected</returns>
+        int InsertNewShelterInventoryItemFromLibrary(int shelterID, string itemID);
+
+        /// <summary>
+        ///  
+        /// Brian Collum
+        /// Created: 2023/04/06
+        /// 
+        /// Enables or Disables a ShelterInventoryItem's ItemDisabled field
+        /// This determines if the item will appear in a shelter's inventory
+        /// 
+        /// </summary>
+        /// <param name="shelterID">The ID of the shelter that will recieve the new ShelterInventoryItem</param>
+        /// <param name="itemID">The ItemID of the Library item that will be instantiated as a new ShelterInventoryItem</param>
+        /// <param name="disableItem">if disableItem is true, this will set disableItem to true. If it is false, it will set it to false.</param>
+        /// <returns>Number of rows affected</returns>
+        int EnableOrDisableShelterInventoryItem(int shelterID, string itemID, bool disableItem = false);
     }
 }

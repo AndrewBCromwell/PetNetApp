@@ -144,5 +144,7 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="ApplicationException">Retrieval Fails</exception>
         List<SponsorEvent> SelectSponsorEventByName(String name);
 
+        List<InstitutionalEntity> SelectAllHosts();
+        List<InstitutionalEntity> SelectAllContact();
     }
 }

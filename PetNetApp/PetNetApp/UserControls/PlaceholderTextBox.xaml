@@ -24,6 +24,7 @@
         <Setter Property="Foreground" Value="{StaticResource TextBox.Static.Foreground}"/>
         <Setter Property="SelectionBrush"  Value="{StaticResource TextBox.Highlight}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="5"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -38,7 +39,7 @@
                     <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" CornerRadius="10">
                         <Grid>
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                            <TextBlock x:Name="defaultText" FontSize="{TemplateBinding FontSize}" Opacity=".7" Text="{TemplateBinding DefaultText}" FontStyle="{TemplateBinding FontStyle}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="5 0 0 0" Foreground="{TemplateBinding Foreground}"/>
+                            <TextBlock x:Name="defaultText" FontSize="{TemplateBinding FontSize}" Opacity=".7" Text="{TemplateBinding DefaultText}" FontStyle="{TemplateBinding FontStyle}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}"  Foreground="{TemplateBinding Foreground}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

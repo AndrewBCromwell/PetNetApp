@@ -16,6 +16,7 @@ namespace LogicLayerTest
         public void SetupTests()
         {
             _institutionalEntityManager = new InstitutionalEntityManager(new InstitutionalEntityAccessorFake());
+            FundraisingFakeData.ResetFakeFundraisingCampaignData();
         }
 
         [TestCleanup]

@@ -82,77 +82,101 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// dynamically creates the ui elements for the list of requests received
         /// </summary>
+        /// <remarks>
+        /// Andrew Cromwell
+        /// 2023/04/14
+        /// 
+        /// Altered the page and this method so that when a checkbox is checked, acknowleged requests are shown,
+        /// but are not shown if the box is not checked.
+        /// </remarks>
         /// <param name="request">The request to add to the list</param>
         /// <param name="index">int used to alternate the background color of list items</param>
         private void AddRequestToList(RequestVM request, int index)
         {
-            Grid grid = new Grid();
-            grid.Height = 100;
-            ColumnDefinition col1 = new ColumnDefinition();
-            col1.Width = GridLength.Auto;
-            ColumnDefinition col2 = new ColumnDefinition();
-            col2.Width = GridLength.Auto;
-            ColumnDefinition col3 = new ColumnDefinition();
-            col3.Width = GridLength.Auto;
-            grid.ColumnDefinitions.Add(col1);
-            grid.ColumnDefinitions.Add(col2);
-            grid.ColumnDefinitions.Add(col3);
-
-            var bc = new BrushConverter();
-            if (index % 2 == 0)
+            if(request.Acknowledged == false || chkShowAcknowleged.IsChecked == true)
             {
-                grid.Background = (Brush)bc.ConvertFrom("#3D8361");
+                Grid grid = new Grid();
+                grid.Height = 100;
+                ColumnDefinition col1 = new ColumnDefinition();
+                col1.Width = GridLength.Auto;
+                ColumnDefinition col2 = new ColumnDefinition();
+                col2.Width = GridLength.Auto;
+                ColumnDefinition col3 = new ColumnDefinition();
+                col3.Width = GridLength.Auto;
+                grid.ColumnDefinitions.Add(col1);
+                grid.ColumnDefinitions.Add(col2);
+                grid.ColumnDefinitions.Add(col3);
+
+                var bc = new BrushConverter();
+                if (index % 2 == 0)
+                {
+                    grid.Background = (Brush)bc.ConvertFrom("#3D8361");
+                }
+                else
+                {
+                    grid.Background = (Brush)bc.ConvertFrom("#D6CDA4");
+                }
+
+                Label lblFromShelter = new Label();
+                lblFromShelter.Content = "Request from " + request.RequestingShelterName + " on " + request.RequestDate.ToString("yyyy'-'MM'-'dd") + ".";
+                lblFromShelter.Margin = new Thickness(20, 20, 20, 20);
+                Grid.SetColumn(lblFromShelter, 0);
+                lblFromShelter.FontSize = 20;
+                lblFromShelter.Foreground = (Brush)bc.ConvertFrom("#000000");
+                lblFromShelter.HorizontalContentAlignment = HorizontalAlignment.Center;
+                lblFromShelter.VerticalContentAlignment = VerticalAlignment.Center;
+
+                int totalItemsRequested = 0;
+                foreach(RequestResourceLine line in request.RequestLines)
+                {
+                    totalItemsRequested += line.QuantityRequested;
+                }
+                Label lblTotalItems = new Label();
+                lblTotalItems.Content = totalItemsRequested.ToString("#,##0") + " items requested.";
+                lblTotalItems.Margin = new Thickness(20, 32, 20, 20);
+                Grid.SetColumn(lblTotalItems, 1);
+                lblTotalItems.FontSize = 20;
+                lblTotalItems.Foreground = (Brush)bc.ConvertFrom("#000000");
+                lblFromShelter.HorizontalContentAlignment = HorizontalAlignment.Center;
+                lblFromShelter.VerticalContentAlignment = VerticalAlignment.Center;
+
+                Button button = new Button();
+                button.Content = "View Request";
+                button.Width = 125;
+                button.Margin = new Thickness(20, 20, 20, 20);
+                button.Height = 50;
+                button.Click += (s, e) =>
+                {
+                    NavigationService.Navigate(new SpecificRequestPage(_manager, request));
+                };
+                Grid.SetColumn(button, 2);
+                lblFromShelter.HorizontalContentAlignment = HorizontalAlignment.Center;
+                lblFromShelter.VerticalContentAlignment = VerticalAlignment.Center;
+                if(index % 2 == 0)
+                {
+                    button.Background = (Brush)bc.ConvertFrom("#D6CDA4");
+                    button.Foreground = (Brush)bc.ConvertFrom("#000000");
+                }
+
+                grid.Children.Add(lblFromShelter);
+                grid.Children.Add(lblTotalItems);
+                grid.Children.Add(button);
+                stpRequestList.Children.Add(grid);
             }
-            else
-            {
-                grid.Background = (Brush)bc.ConvertFrom("#D6CDA4");
-            }
+            
+        }
 
-            Label lblFromShelter = new Label();
-            lblFromShelter.Content = "Request from " + request.RequestingShelterName + " on " + request.RequestDate.ToString("yyyy'-'MM'-'dd") + ".";
-            lblFromShelter.Margin = new Thickness(20, 20, 20, 20);
-            Grid.SetColumn(lblFromShelter, 0);
-            lblFromShelter.FontSize = 20;
-            lblFromShelter.Foreground = (Brush)bc.ConvertFrom("#000000");
-            lblFromShelter.HorizontalContentAlignment = HorizontalAlignment.Center;
-            lblFromShelter.VerticalContentAlignment = VerticalAlignment.Center;
-
-            int totalItemsRequested = 0;
-            foreach(RequestResourceLine line in request.RequestLines)
-            {
-                totalItemsRequested += line.QuantityRequested;
-            }
-            Label lblTotalItems = new Label();
-            lblTotalItems.Content = totalItemsRequested.ToString("#,##0") + " items requested.";
-            lblTotalItems.Margin = new Thickness(20, 32, 20, 20);
-            Grid.SetColumn(lblTotalItems, 1);
-            lblTotalItems.FontSize = 20;
-            lblTotalItems.Foreground = (Brush)bc.ConvertFrom("#000000");
-            lblFromShelter.HorizontalContentAlignment = HorizontalAlignment.Center;
-            lblFromShelter.VerticalContentAlignment = VerticalAlignment.Center;
-
-            Button button = new Button();
-            button.Content = "View Request";
-            button.Width = 125;
-            button.Margin = new Thickness(20, 20, 20, 20);
-            button.Height = 50;
-            button.Click += (s, e) =>
-            {
-                NavigationService.Navigate(new SpecificRequestPage(_manager, request));
-            };
-            Grid.SetColumn(button, 2);
-            lblFromShelter.HorizontalContentAlignment = HorizontalAlignment.Center;
-            lblFromShelter.VerticalContentAlignment = VerticalAlignment.Center;
-            if(index % 2 == 0)
-            {
-                button.Background = (Brush)bc.ConvertFrom("#D6CDA4");
-                button.Foreground = (Brush)bc.ConvertFrom("#000000");
-            }
-
-            grid.Children.Add(lblFromShelter);
-            grid.Children.Add(lblTotalItems);
-            grid.Children.Add(button);
-            stpRequestList.Children.Add(grid);
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/14
+        /// 
+        /// refreshes the page when the box to show acknowleged requests is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkShowAcknowleged_Click(object sender, RoutedEventArgs e)
+        {
+            Page_Loaded(sender, e);
         }
     }
 }

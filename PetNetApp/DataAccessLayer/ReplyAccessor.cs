@@ -273,5 +273,36 @@ namespace DataAccessLayer
 
             return rowsAffected;
         }
+
+        public int UpdateReplyVisibilityByReplyId(ReplyVM reply)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_reply_visibility_by_replyid";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@replyid", SqlDbType.Int).Value = reply.ReplyId;
+            cmd.Parameters.Add("@reply_content", SqlDbType.NVarChar, 250).Value = reply.ReplyContent;
+            cmd.Parameters.Add("@reply_visiblility", SqlDbType.Bit).Value = reply.ReplyVisibility;
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
     }
 }

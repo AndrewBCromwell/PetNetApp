@@ -123,8 +123,16 @@ namespace WpfPresentation.Management.Inventory
 
 
             lblLocation.Content = "Shelter: " + _shelterInventoryItemVM.ShelterName;
-
-            lblCategory.Content = UpdateCategory(_item.CategoryId);
+            
+            if(_item.CategoryId == null)
+            {
+                lblCategory.Content = "";
+            }
+            else
+            {
+                 lblCategory.Content = UpdateCategory(_item.CategoryId);
+            }
+           
 
 
         }
@@ -138,26 +146,30 @@ namespace WpfPresentation.Management.Inventory
         /// <returns></returns>
         public string UpdateCategory(List<string> categories)
         {
-
             string categoryString = "";
-            //Formating
-            for (int i = 0; i < categories.Count; i++)
+            if (categories != null)
             {
-                categoryString += " " + categories[i];
-
-                if (i == categories.Count - 2)
+                //Formating
+                for (int i = 0; i < categories.Count; i++)
                 {
-                    if (categories.Count > 2)
+                    categoryString += " " + categories[i];
+
+                    if (i == categories.Count - 2)
+                    {
+                        if (categories.Count > 2)
+                        {
+                            categoryString += ",";
+                        }
+                        categoryString += " and";
+                    }
+                    else if (i < categories.Count - 2)
                     {
                         categoryString += ",";
                     }
-                    categoryString += " and";
-                }
-                else if (i < categories.Count - 2)
-                {
-                    categoryString += ",";
                 }
             }
+            
+            
             return categoryString; //Using the CustomFlag property as a way to show all flags
         }
 
@@ -277,6 +289,7 @@ namespace WpfPresentation.Management.Inventory
                 txtUseStatistic.Focus();
                 return;
             }
+            
 
             ShelterInventoryItemVM updatedShelterItemVM = new ShelterInventoryItemVM
             {
