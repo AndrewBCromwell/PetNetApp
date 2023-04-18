@@ -17,6 +17,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
+        <Button Grid.Row="0" HorizontalAlignment="Right" Margin="25 5 45 3" Click="Button_Click">Add Animal</Button>
 
 
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Grid.Row="1" Padding="20, 20, 20, 0" Margin="38, 10, 38, 0" Background="#EEEFE1">

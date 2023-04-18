@@ -107,11 +107,23 @@
     <Compile Include="Animals\AddTestPage.xaml.cs">
       <DependentUpon>AddTestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\AdoptionApplicationResponse.xaml.cs">
+      <DependentUpon>AdoptionApplicationResponse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
       <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
       <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AdoptionApplicantsWindow.xaml.cs">
+      <DependentUpon>AdoptionApplicantsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\ApplicationResponseWindow.xaml.cs">
+      <DependentUpon>ApplicationResponseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\ViewApplication.xaml.cs">
+      <DependentUpon>ViewApplication.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\AnimalUpdatesWindow.xaml.cs">
       <DependentUpon>AnimalUpdatesWindow.xaml</DependentUpon>
@@ -124,6 +136,9 @@
     </Compile>
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ApplicantUC.xaml.cs">
+      <DependentUpon>ApplicantUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
       <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
@@ -522,6 +537,22 @@
     <Compile Include="Management\AddEditSchedule.xaml.cs">
       <DependentUpon>AddEditSchedule.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AdoptionApplicationResponse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AdoptionApplicantsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ApplicationResponseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ViewApplication.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AnimalUpdatesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -531,6 +562,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Community\CustomerRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ApplicantUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
