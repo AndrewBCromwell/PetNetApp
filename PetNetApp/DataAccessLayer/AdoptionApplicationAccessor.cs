@@ -34,7 +34,8 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@HomeOwnershipId", app.AdoptionApplicant.HomeOwnershipId);
             cmd.Parameters.AddWithValue("@NumberOfChildren", app.AdoptionApplicant.NumberOfChildren);
             cmd.Parameters.AddWithValue("@NumberOfPets", app.AdoptionApplicant.NumberOfPets);
-            cmd.Parameters.AddWithValue("@AnimalId", 100008);
+            // come back once have animal passed in to application
+            cmd.Parameters.AddWithValue("@AnimalId", app.AnimalId);
             cmd.Parameters.AddWithValue("@ApplicationDate", app.AdoptionApplicationDate);
 
 
@@ -53,6 +54,69 @@ namespace DataAccessLayer
                 conn.Close();
             }
             return result;
+        }
+
+        public List<AdoptionApplicationVM> SelectAllAdoptionApplicationsByAnimalId(int animalId)
+        {
+            List<AdoptionApplicationVM> applications = new List<AdoptionApplicationVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_adoption_applications_by_animal_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@animalId", animalId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        AdoptionApplicationVM application = new AdoptionApplicationVM()
+                        {
+                            AdoptionApplicationId = reader.GetInt32(0),
+                            AnimalId = reader.GetInt32(1),
+                            ApplicationStatusId = reader.GetString(2),
+                            AdoptionApplicationDate = reader.GetDateTime(3),
+                            ApplicantId = reader.GetInt32(4)
+                        };
+
+                        Applicant applicant = new Applicant()
+                        {
+                            ApplicantId = reader.GetInt32(4),
+                            UserId = reader.IsDBNull(5) ? null : (int?)reader.GetInt32(5),
+                            ApplicantGivenName = reader.GetString(6),
+                            ApplicantFamilyName = reader.GetString(7),
+                            ApplicantAddress = reader.GetString(8),
+                            ApplicantAddress2 = reader.IsDBNull(9) ? "" : reader.GetString(9),
+                            ApplicantZipCode = reader.GetString(10),
+                            ApplicantPhoneNumber = reader.GetString(11),
+                            ApplicantEmail = reader.GetString(12),
+                            HomeTypeId = reader.GetString(13),
+                            HomeOwnershipId = reader.GetString(14),
+                            NumberOfChildren = reader.GetInt32(15),
+                            NumberOfPets = reader.GetInt32(16),
+                            CurrentlyAcceptingAnimals = reader.GetBoolean(17)
+                        };
+
+                        application.AdoptionApplicant = applicant;
+                        applications.Add(application);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return applications;
         }
 
         public List<string> SelectAllHomeOwnershipTypes()
@@ -125,6 +189,37 @@ namespace DataAccessLayer
             }
 
             return homeTypeList;
+        }
+
+        public int UpdateAdoptionApplicationStatusByAnimalIdForApprovedApplication(AdoptionApplicationResponse response)
+        {
+            int rowsAffected = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmdText = "sp_update_application_status_by_animal_id_for_approved_application";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@adoptionApplicationId", response.AdoptionApplicationId);
+            cmd.Parameters.AddWithValue("@usersId", response.ResponderUserId);
+            cmd.Parameters.AddWithValue("@approved", response.Approved);
+            cmd.Parameters.AddWithValue("@adoptionApplicationResponseDate", response.AdoptionApplicationResponseDate);
+            cmd.Parameters.AddWithValue("@adoptionApplicationResponseNotes", response.AdoptionApplicationResponseNotes);
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
         }
     }
 }
