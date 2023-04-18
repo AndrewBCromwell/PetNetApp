@@ -2,6 +2,7 @@
 /// Ethan Kline
 /// Created: 2023/03/3
 /// 
+/// Final QA
 /// Interaction logic for Medical_Notes.xaml
 /// </summary>
 using System;
@@ -37,6 +38,8 @@ namespace WpfPresentation.Animals
         /// Created: 2023/03/3
         /// 
         /// Constructor that is used when a new medicalnote is being added
+        /// 
+        /// Final QA
         /// </summary>
         public Medical_Notes(Animal animal, MasterManager manager)
         {
@@ -51,6 +54,8 @@ namespace WpfPresentation.Animals
         /// Puts the columns of the medical notes datagrid  in the correct order by animalid
         /// for the animal, displays "No Notes Available" if there are no medicalnotes for 
         /// the animal.
+        /// 
+        /// Final QA
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -95,12 +100,29 @@ namespace WpfPresentation.Animals
             }   
         }
 
+        /// <summary>
+        /// Ethan Kline
+        /// 2023/03/10
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void datMedicalRecordGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var MedicalRecordVM = (MedicalRecordVM)datMedicalRecordGrid.SelectedItem;
             NavigationService.Navigate(new Edit_Medical_Notes(MedicalRecordVM, _manager));
         }
 
+        /// <summary>
+        /// Molly Meister
+        /// 2023/03/27
+        ///
+        /// Final QA
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_upload_file_Click(object sender, RoutedEventArgs e)
         {
             var uploadAdditionalFileWindow = new UploadAdditionalFileWindow(_medicalnoteAnimal, _manager);
@@ -109,6 +131,14 @@ namespace WpfPresentation.Animals
             NavigationService.Navigate(new Medical_Notes(_medicalnoteAnimal, _manager));
         }
 
+        /// <summary>
+        /// Ethan Kline
+        /// 2023/03/10
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_edit_Click(object sender, RoutedEventArgs e)
         {
             if (datMedicalRecordGrid.SelectedItems.Count == 0)
@@ -119,6 +149,14 @@ namespace WpfPresentation.Animals
             NavigationService.Navigate(new Edit_Medical_Notes(MedicalRecordVM, _manager));
         }
 
+        /// <summary>
+        /// Ethan Kline
+        /// 2023/03/10
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Edit_Medical_Notes(_medicalnoteAnimal, _manager));

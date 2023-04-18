@@ -19,6 +19,7 @@ namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for MedicalFilesPage.xaml
+    /// Final QA
     /// </summary>
     public partial class MedicalFilesPage : Page
     {
@@ -28,7 +29,14 @@ namespace WpfPresentation.Animals
         private ToolTip _rowImageTooltip;
         private Image _rowTooltipImage = new Image() { MaxHeight = 500, MaxWidth = 500, Stretch = Stretch.Uniform, StretchDirection = StretchDirection.Both };
 
-
+        /// <summary>
+        /// Stephen Jaurique
+        /// 2023/02/26
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <param name="masterManager"></param>
         public MedicalFilesPage(Animal animal, MasterManager masterManager)
         {
             _rowImageTooltip = new ToolTip();
@@ -37,12 +45,24 @@ namespace WpfPresentation.Animals
             _manager = masterManager;
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Stephen Jaurique
+        /// 2023/02/26
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
             PopulatePage();
         }
-
+        /// <summary>
+        /// Stephen Jaurique
+        /// 2023/02/26
+        /// 
+        /// Final QA
+        /// </summary>
         private void PopulatePage()
         {
             if (_imagesList == null || _imagesList.Count == 0)
@@ -60,7 +80,15 @@ namespace WpfPresentation.Animals
                 }
             }
         }
-
+        /// <summary>
+        /// Andrew Cromwell
+        /// 
+        /// 2023/02/26
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridRow_MouseEnter(object sender, MouseEventArgs e)
         {
             var row = e.Source as DataGridRow;
