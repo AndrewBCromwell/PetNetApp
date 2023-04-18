@@ -1,4 +1,17 @@
-﻿using System;
+﻿/// <summary>
+/// Andrew Cromwell
+/// Created: 2023/03/16
+/// 
+/// A page that contains a list of shelter requests
+/// </summary>
+/// 
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/17
+/// 
+/// Final QA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,12 +40,40 @@ namespace WpfPresentation.Management.Inventory
         private MasterManager _manager;
         private List<RequestVM> _requests;
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/03/16
+        /// 
+        /// Initial constructor for the shelter request list page
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="manager"></param>
         public ViewRequestListPage(MasterManager manager)
         {
             InitializeComponent();
             _manager = manager;
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/03/16
+        /// 
+        /// Gets the shelter request list page
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="manager"></param>
+        /// <returns></returns>
         public static ViewRequestListPage GetViewRequestListPage(MasterManager manager)
         {
             if (_existingViewRequestListPage == null)
@@ -48,6 +89,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// retreives a list of requests and displays them
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -88,7 +136,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Altered the page and this method so that when a checkbox is checked, acknowleged requests are shown,
         /// but are not shown if the box is not checked.
+        /// 
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
         /// </remarks>
+        /// 
         /// <param name="request">The request to add to the list</param>
         /// <param name="index">int used to alternate the background color of list items</param>
         private void AddRequestToList(RequestVM request, int index)
@@ -172,6 +226,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// refreshes the page when the box to show acknowleged requests is clicked
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void chkShowAcknowleged_Click(object sender, RoutedEventArgs e)

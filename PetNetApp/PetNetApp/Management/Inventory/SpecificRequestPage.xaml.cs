@@ -1,4 +1,17 @@
-﻿using System;
+﻿/// <summary>
+/// Andrew Cromwell
+/// Created: 2023/03/16
+/// 
+/// A page that is for a specific shelter request 
+/// </summary>
+/// 
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/17
+/// 
+/// Final QA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +51,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Displays the items that were requested
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -55,6 +75,12 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// dynamically creates the ui elements to show what resources have been requested
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="line">The RequestResourceLine to display data from.</param>
         private void DisplayLine(RequestResourceLine line)
         {
@@ -120,12 +146,24 @@ namespace WpfPresentation.Management.Inventory
 
             wrpRequestItems.Children.Add(border);
         }
-
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/03/16
+        /// 
+        /// returns the user to the shelter request list page
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(ViewRequestListPage.GetViewRequestListPage(_manager));
         }
-
-        
     }
 }

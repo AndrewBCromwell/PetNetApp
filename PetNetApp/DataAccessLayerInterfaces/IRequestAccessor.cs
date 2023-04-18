@@ -14,7 +14,14 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/03/10
         /// 
         /// Selects the requests sent to a spcific shelter
-        /// </summary>        
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId">The shelter Id of the shelter the request was sent to</param>
         /// <exception cref="Exception">Select Fails</exception>
         /// <returns>List of RequestVM</returns>
