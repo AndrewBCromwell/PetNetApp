@@ -35,7 +35,7 @@
             <p class="animal-description">@Model.Description</p>
             <button class="btn" onclick="location.href='@Url.Action("AdoptionApplication", "Animals", new {animalId=Model.AnimalId})'"><span class="fill-application-icon"></span><span>Fill out Application</span></button>
             <form method="get" action="@Url.Content("/Files/AdoptionApplication.docx")">
-                <button type="submit" class="btn"><span class="download-application-icon"></span> <span class="hide">Download Application</span></button>
+                <button type="submit" class="btn"><span class="download-application-icon"></span> <span>Download Application</span></button>
             </form>
             
         </div>
