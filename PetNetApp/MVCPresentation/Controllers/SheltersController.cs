@@ -10,8 +10,7 @@ using DataObjects;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using MVCPresentation.Models;
-
-
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MVCPresentation.Controllers
 {
@@ -19,7 +18,7 @@ namespace MVCPresentation.Controllers
     {
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private List<Shelter> _shelters;
-        private ApplicationUserManager applicationUserManager;
+        //private ApplicationUserManager applicationUserManager;
 
 
 
@@ -37,7 +36,7 @@ namespace MVCPresentation.Controllers
         }
 
         // GET: Shelters
-        public ActionResult Index()
+        public ActionResult SelectShelter()
         {
             List<Shelter> shelters = new List<Shelter>();
             try
@@ -61,8 +60,9 @@ namespace MVCPresentation.Controllers
         // GET: SelectedShelters
         public ActionResult SelectedShelter(int id)
         {
-            applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var user = applicationUserManager.FindById(User.Identity.GetUserId());
+            var dbContext = new ApplicationDbContext();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
+            var user = userManager.FindById(User.Identity.GetUserId());
 
             try
             {
@@ -71,12 +71,15 @@ namespace MVCPresentation.Controllers
                 _masterManager.UsersManager.EditUserShelterId((int)user.UsersId, id, user.ShelterId);
 
                 // update asp users shelterid
+                user.ShelterId = id;
+                dbContext.SaveChanges();
 
-                return RedirectToAction("Index", "Community");
+                return RedirectToAction("Index", "UserProfile");
             }
             catch (Exception)
             {
-                return View();
+                ViewBag.ErrorMessage = "There was a problem saving your data";
+                return View("Error");
             }
         }
     }
