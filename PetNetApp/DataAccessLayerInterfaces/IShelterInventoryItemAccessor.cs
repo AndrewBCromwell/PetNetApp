@@ -28,6 +28,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Retrieves list of inventory items by shelterId. Takes in ShelterId as a parameter
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId"></param>
         /// <returns></returns>
         List<ShelterInventoryItemVM> SelectInventoryByShelter(int shelterId);
@@ -76,6 +83,13 @@ namespace DataAccessLayerInterfaces
         /// This determines if the item will appear in a shelter's inventory
         /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter that will recieve the new ShelterInventoryItem</param>
         /// <param name="itemID">The ItemID of the Library item that will be instantiated as a new ShelterInventoryItem</param>
         /// <param name="disableItem">if disableItem is true, this will set disableItem to true. If it is false, it will set it to false.</param>

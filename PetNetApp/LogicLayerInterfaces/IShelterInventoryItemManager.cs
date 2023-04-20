@@ -31,6 +31,13 @@ namespace LogicLayerInterfaces
         /// Does NOT display items that have been disabled from the shelter's inventory
         /// Full inventory display is still available in ShelterInventoryItemManager.RetrieveFullInventoryByShelterId(int shelterId)
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId"></param>
         /// <returns></returns>
         List<ShelterInventoryItemVM> RetrieveInventoryByShelterId(int shelterId);
@@ -91,6 +98,13 @@ namespace LogicLayerInterfaces
         /// This is to disable display of an item from a shelter's inventory
         /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the Shelter of the item to disable</param>
         /// <param name="itemID">The ID of the ShelterInventoryItem to disable</param>
         /// <returns>returns true if item's ItemDisabled was updated</returns>
