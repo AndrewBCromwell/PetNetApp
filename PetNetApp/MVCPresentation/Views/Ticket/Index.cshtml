@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DataObjects.TicketVM>
 
 @{
-    ViewBag.Title = "Ticket List";
+    ViewBag.Title = "Tickets";
 }
 
 @section styles
@@ -9,30 +9,30 @@
     <link href="~/Content/Ticket/TicketList.css" rel="stylesheet" />
 }
 
-<h2 class="text-center">Ticket List</h2>
+<h2>Tickets List</h2>
 
-<p class="btn btn-primary">
+<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TicketStatusId)
+            Ticket Status
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TicketTitle)
+            Ticket Title
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TicketContext)
+            Ticket Context
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TicketDate)
+            Ticket Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TicketActive)
+            Ticket Active
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            Ticket Email
         </th>
         <th></th>
     </tr>
@@ -59,7 +59,9 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.TicketId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.TicketId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TicketId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TicketId })
             </td>
         </tr>
     }
