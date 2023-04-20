@@ -29,6 +29,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Returns an Item by Item Id. Takes in itemId as a parameter
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="ItemId"></param>
         /// <returns></returns>
         Item SelectItemByItemId(string ItemId);
