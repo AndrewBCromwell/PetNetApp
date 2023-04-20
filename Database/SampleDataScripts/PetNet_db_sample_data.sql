@@ -41,6 +41,7 @@ INSERT INTO [dbo].[Role]
 	VALUES
         ('Admin','Someone who oversees Petnet'),
         ('Employee','A worker'),
+		('Fosterer', 'Someone who cares for animals outside the shelter'),
 		('Helpdesk', 'Someone who assists with PetNet app use'),
         ('Inspector', 'Someone who inspects'),
         ('Manager','Someone who oversees specific parts of shelters'),
@@ -56,9 +57,15 @@ GO
 INSERT INTO [dbo].[Pronoun]
 	([PronounId])
 VALUES 
-	('He/Him'),
 	('She/Her'),
-	('They/Them')
+	('He/Him'),
+	('He/Her'),
+	('They/Them'),
+	('It/Its'),
+	('She/Him'),
+	('She/They'),
+	('He/They'),
+	('Any/All')
 GO
 
 /* Update by: Stephen Jaurigue" */
@@ -340,6 +347,7 @@ INSERT INTO [dbo].[Gender]
 	VALUES 
 		('Female'), 
 		('Male'),
+		('Non-Binary'),
 		('Unknown'),
 		('Other')
 GO
@@ -378,7 +386,7 @@ INSERT INTO [dbo].[Users]
 		[Phone]
 		)
     VALUES
-		("Unknown", "They/Them", 100000, "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 207", '50001', "3195943138"),
+		("Unknown", "She/Him", 100000, "Mads", "Rhea", "madsrhea@company.com", "811 Kirkwood Parkway", "Apt 207", '50001', "3195943138"),
 		("Male", "He/Him", 100000, "Stephen", "Jaurigue", "stephenjaurigue@company.com", "123 Kirkwood Parkway", "Apt 210", "50001", "3195555555"),
 		('Female', "She/Her", 100000, "Molly", "Meister", "mollymeister@company.com", "456 Kirkwood Parkway", "Apt 256", "50001", "3196666666"),
 		('Male', 'He/Him', 100001, 'Tyler', 'Hand', 'tylerhand@company.com', '789 Kirkwood Parkway', 'Apt 240', '50002', '3197777777'),
@@ -669,9 +677,11 @@ INSERT INTO [dbo].[ShelterInventoryItem]
 		(100000, 'Cat Food', 1, 50.99, 1, 99), 
         (100000, 'Dog Food', 5, 30.99, 1, 99),
         (100000, 'Rabbit Food', 10, 42.99, 1, 99),
+		(100000, 'Mysterious Item', 1, 30.43, 1, 99),
         (100001, 'Cat Food', 1, 50.99, 1, 50), 
         (100001, 'Dog Food', 5, 30.99, 1, 50),
         (100001, 'Rabbit Food', 10, 42.99, 1, 50)
+		
         
 GO
 
@@ -722,6 +732,7 @@ INSERT INTO [dbo].[UserRoles]
         ('Vet', 100000),
         ('Volunteer', 100000),
         ('Inspector', 100000),
+		('Fosterer', 100000),
         ('Volunteer', 100001),
         ('Vet', 100002),
         ('Inspector', 100003),

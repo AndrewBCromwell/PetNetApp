@@ -14,7 +14,7 @@ namespace MVCPresentation.Controllers
         MasterManager _manager = null;
         Animal _animal = null;
 
-        public AnimalsController(MasterManager manager)     // need to pass in animal id once adoptable animal profile done
+        public AnimalsController(MasterManager manager)     
         {
             _manager = manager;
             //_animal = animal;
@@ -31,12 +31,15 @@ namespace MVCPresentation.Controllers
         }
 
         // GET: Animals
-        public ActionResult AdoptionApplication()
+        public ActionResult AdoptionApplication(int animalId)
         {
             try
             {
                 ViewBag.HomeTypes = _manager.AdoptionApplicationManager.RetrieveAllHomeTypes();
                 ViewBag.HomeOwnershipTypes = _manager.AdoptionApplicationManager.RetrieveAllHomeOwnershipTypes();
+                ViewBag.AnimalId = animalId.ToString();
+                ViewBag.AnimalName = _manager.AnimalManager.RetriveAnimalAdoptableProfile((int)animalId).AnimalName;
+
             }
             catch (Exception up)
             {
@@ -47,29 +50,29 @@ namespace MVCPresentation.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdoptionApplication(Applicant _applicant)
+        public ActionResult AdoptionApplication(AdoptionApplicationVM _application)
         {
             if(!ModelState.IsValid)
             {
-                return View(_applicant);
+                return View(_application);
             }
             else
             {
                 try
                 {
-                    ApplicantVM applicant = new ApplicantVM()
+                    Applicant applicant = new Applicant()
                     {
-                        ApplicantGivenName = _applicant.ApplicantGivenName,
-                        ApplicantFamilyName = _applicant.ApplicantFamilyName,
-                        ApplicantAddress = _applicant.ApplicantAddress,
-                        ApplicantAddress2 = _applicant.ApplicantAddress2 == null ? "" : _applicant.ApplicantAddress2,
-                        ApplicantZipCode = _applicant.ApplicantZipCode,
-                        ApplicantPhoneNumber = _applicant.ApplicantPhoneNumber,
-                        ApplicantEmail = _applicant.ApplicantPhoneNumber,
-                        HomeTypeId = _applicant.HomeTypeId,
-                        HomeOwnershipId = _applicant.HomeOwnershipId,
-                        NumberOfChildren = _applicant.NumberOfChildren,
-                        NumberOfPets = _applicant.NumberOfPets
+                        ApplicantGivenName = _application.AdoptionApplicant.ApplicantGivenName,
+                        ApplicantFamilyName = _application.AdoptionApplicant.ApplicantFamilyName,
+                        ApplicantAddress = _application.AdoptionApplicant.ApplicantAddress,
+                        ApplicantAddress2 = _application.AdoptionApplicant.ApplicantAddress2 == null ? "" : _application.AdoptionApplicant.ApplicantAddress2,
+                        ApplicantZipCode = _application.AdoptionApplicant.ApplicantZipCode,
+                        ApplicantPhoneNumber = _application.AdoptionApplicant.ApplicantPhoneNumber,
+                        ApplicantEmail = _application.AdoptionApplicant.ApplicantEmail,
+                        HomeTypeId = _application.AdoptionApplicant.HomeTypeId,
+                        HomeOwnershipId = _application.AdoptionApplicant.HomeOwnershipId,
+                        NumberOfChildren = _application.AdoptionApplicant.NumberOfChildren,
+                        NumberOfPets = _application.AdoptionApplicant.NumberOfPets
                     };
                     if(_manager.User != null)
                     {
@@ -79,7 +82,8 @@ namespace MVCPresentation.Controllers
                     AdoptionApplicationVM application = new AdoptionApplicationVM()
                     {
                         AdoptionApplicant = applicant,
-                        AdoptionApplicationDate = DateTime.Now
+                        AdoptionApplicationDate = DateTime.Now,
+                        AnimalId = _application.AnimalId
                     };
                     
                     _manager.AdoptionApplicationManager.AddAdoptionApplication(application);
@@ -94,6 +98,21 @@ namespace MVCPresentation.Controllers
             ViewBag.Message = "Your application has been submitted!";
             return View("Success");
             
+        }
+
+        public ActionResult Adoptable()
+        {
+            List<AnimalVM> adoptableAnimals = new List<AnimalVM>();
+            try
+            {
+                adoptableAnimals = _manager.AnimalManager.RetrieveAllAdoptableAnimals();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return View("Error");
+            }
+            return View(adoptableAnimals);
         }
 
         public ActionResult Foster()

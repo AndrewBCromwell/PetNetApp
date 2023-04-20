@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DataObjects.AnimalVM>
+
+@{
+    ViewBag.Title = "Adoptable";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimalTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimalBreedId)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnimalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnimalTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnimalBreedId)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Details", "AdoptableAnimal", new { animalId = item.AnimalId })
+        </td>
+    </tr>
+}
+
+</table>

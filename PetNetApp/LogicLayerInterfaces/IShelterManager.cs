@@ -19,6 +19,13 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// This returns the list of all Shelters to populate the shelter UI with
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <returns>A list of Shelter objects</returns>
         List<Shelter> GetShelterList();
 
@@ -131,6 +138,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Retrieves a shelterVM object by looking up its shelter ID
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="shelterID">The shelter ID of the shelter to retrieve</param>
         /// <returns>Returns a ShelterVM object</returns>
         ShelterVM RetrieveShelterVMByShelterID(int shelterID);

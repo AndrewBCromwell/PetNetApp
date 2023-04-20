@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAdoptionApplicationManager.cs" />
+    <Compile Include="IAdoptionApplicationResponseManager.cs" />
     <Compile Include="IDeathManager.cs" />
     <Compile Include="IAnimalManager.cs" />
     <Compile Include="IAnimalUpdatesManager.cs" />

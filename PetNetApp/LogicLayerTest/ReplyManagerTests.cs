@@ -96,5 +96,32 @@ namespace LogicLayerTest
             actualId = replyManager.RetrieveReplyByReplyId(1).ReplyId;
             Assert.AreEqual(expectedId, actualId);
         }
+
+        /// <summary>
+		/// Andrew Cromwell
+		/// Created: 2023/04/14
+		/// </summary>
+        [TestMethod]
+        public void TestEditReplyVisibilityByReplyIdReturnsTrueWhenTheReplyIsUpdated()
+        {
+            ReplyVM replyToEdit = new ReplyVM()
+            {
+                ReplyId = 1,
+                PostId = 1,
+                ReplyAuthor = 1,
+                ReplyContent = "Post Contents",
+                ReplyDate = DateTime.Today,
+                ReplyVisibility = true,
+                ReplierGivenName = "Gwen",
+                ReplierFamilyName = "Arman",
+                UserReplyReport = false
+            };
+            replyToEdit.ReplyVisibility = false;
+
+            bool result = replyManager.EditReplyVisibilityByReplyId(replyToEdit);
+
+            Assert.IsTrue(result);
+        }
+                
     }
 }

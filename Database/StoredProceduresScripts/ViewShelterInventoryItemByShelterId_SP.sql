@@ -48,7 +48,8 @@ AS
 				[Processing],
 				[DoNotOrder],
 				[CustomFlag],
-				[ShelterName]
+				[ShelterName],
+				[ItemDisabled]
 				
 		FROM [dbo].[ShelterInventoryItem]
 		JOIN [Shelter]

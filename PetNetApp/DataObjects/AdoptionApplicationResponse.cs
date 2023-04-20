@@ -16,7 +16,7 @@ namespace DataObjects
         public string AdoptionApplicationResponseNotes { get; set; }
     }
 
-    public class AdoptionApplicationResponseVM : AdoptionApplication
+    public class AdoptionApplicationResponseVM : AdoptionApplicationResponse
     {
         public AdoptionApplication Application { get; set; }
         public Users Responder { get; set; }

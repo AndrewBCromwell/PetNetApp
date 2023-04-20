@@ -154,5 +154,20 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException">Retrieve Fails</exception>
         /// <returns>List of AnimalVMs</returns>
         List<AnimalVM> RetrieveAnimalsByFundrasingEventId(int fundraisingEventId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/04/12
+        /// 
+        /// Retrieves all animals available for adoption at all shelters
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// <exception cref="ApplicationException">Retrieve Fails</exception>
+        /// <returns>List of AnimalVM objects</returns>
+        List<AnimalVM> RetrieveAllAdoptableAnimals();
     }
 }

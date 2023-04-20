@@ -14,7 +14,13 @@ namespace LogicLayerInterfaces
         /// Created: 2023/03/10
         /// 
         /// Retrieves the requests sent to a spcific shelter
-        /// </summary>        
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId">The shelter Id of the shelter the request was sent to</param>
         /// <exception cref="Exception">Select Fails</exception>
         /// <returns>List of RequestVM</returns>
@@ -30,5 +36,16 @@ namespace LogicLayerInterfaces
         /// <exception cref="Exception">Insert Fails</exception>
         /// <returns>bool of whether the insert was successful</returns>
         bool AddInventoryItemRequest(RequestVM request);
+
+        /// <summary>
+        /// Author: Matthew Meppelink
+        /// Date: 2023-04-13
+        /// Description: Updates a request by requestId
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <param name="newAcknowledge"></param>
+        /// <param name="oldAcknowledge"></param>
+        /// <returns>true or false; whether or not the update was a success</returns>
+        bool EditRequestAcknowledge(int requestId, bool oldAcknowledge, bool newAcknowledge);
     }
 }

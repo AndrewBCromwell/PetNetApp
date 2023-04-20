@@ -14,7 +14,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
-sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\EditHoursOfOperation_SD.sql
 
 rem Add your stored procedure scripts to the bottom of this list
 rem Follow this example (but without rem):
@@ -29,6 +29,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\MedicalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddAnimal_to_kennel_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalTests_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewMedicalAnimals_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAllAdoptableAnimals_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewTreatment_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewKennel_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAnimalProfile_SP.sql
@@ -71,7 +72,19 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddEditInstitutionalEntities_S
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddCampaignUpdate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReactivateAccount_SP.sql
 
-sqlcmd -S localhost -E -i StoredProceduresScripts\Shelter_Stored_Procedures.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeactiveateShelterByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterActiveByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditAreasOfNeedByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditEmailByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditPhoneByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditZipcodeByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditAddressTwoByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditAddressByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditShelterNameByShelterID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddShelter_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\SelectShelterByID_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\SelectShelterAll_SP.sql
+
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAdoptableAnimalProfile_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\AccountSettings_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\LogInUser_SP.sql
@@ -134,10 +147,13 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\Viewallevents.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InNetworkRequestCreate_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditHoursOfOperation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdatePostVisibility_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReportPost_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddFundRaisingEvent_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditFundRaisingEvent_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\approve_deny_application_sps.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateRequestAcknowledged.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

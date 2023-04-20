@@ -312,21 +312,6 @@ namespace LogicLayer
             }
             return usersList;
         }
-        /// <summary>
-        /// Barry Mikulas
-        /// Created: 2023/02/09
-        /// 
-        /// 
-        /// </summary>
-        /// Retrieves a users with given usersId
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// 
-        /// </remarks>
-        /// <param usersId="UsersId"></param>
-        /// 
         public Users RetrieveUserByUsersId(int UsersId)
         {
             //throw new NotImplementedException();
@@ -510,9 +495,19 @@ namespace LogicLayer
             {
                 return _userAccessor.SelectUserByEmail(email) != null;
             }
+            catch (ApplicationException ae) 
+            {
+                if (ae.Message == "User not found.")
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
             catch (Exception up)
             {
-
                 throw new ApplicationException("Database Error.", up);
             }
         }
@@ -567,6 +562,34 @@ namespace LogicLayer
             }
 
             return wasAdded;
+        }
+
+        public bool AddUserRole(int usersId, string role)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _userAccessor.InsertOrDeleteUserRole(usersId, role));
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Role not added!", ex);
+            }
+            return result;
+        }
+
+        public bool DeleteUserRole(int usersId, string role)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _userAccessor.InsertOrDeleteUserRole(usersId, role, delete: true));
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Role not removed!", ex);
+            }
+            return result;
         }
     }
 }

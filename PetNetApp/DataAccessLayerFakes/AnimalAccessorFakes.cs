@@ -443,5 +443,10 @@ namespace DataAccessLayerFakes
 
             return fundraisingEventAnimals.ToList();
         }
+
+        public List<AnimalVM> SelectAllAdoptableAnimals()
+        {
+            return fakeAnimals.Where(animal => animal.AnimalStatusId == "Test status 3").ToList();
+        }
     }
 }

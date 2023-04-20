@@ -6,8 +6,9 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Brian Collum
+/// Updated: 2023/04/06
+/// Added ItemDisabled property, which indicates whether or not an item is visible in a shelter's inventory
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace DataObjects
         public bool Processing { get; set; }
         public bool DoNotOrder { get; set; }
         public string CustomFlag { get; set; }
+        public bool ItemDisabled { get; set; }
     }
     public class ShelterInventoryItemVM : ShelterInventoryItem
     {

@@ -12,7 +12,19 @@ namespace LogicLayerInterfaces
         List<UsersVM> RetrieveUserByRole(string roleId, int shelterId);
         List<UsersVM> RetriveAllEmployees();
 
-        // Barry Mikulas
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
+        /// <param name="UsersId"></param>
+        /// <returns></returns>
         Users RetrieveUserByUsersId(int UsersId);
         /// <summary>
         /// created 02/26/2023
@@ -51,6 +63,8 @@ namespace LogicLayerInterfaces
         List<string> RetrieveRolesByUsersId(int usersId);
         bool RetrieveUserByEmail(string email);
         UsersVM AuthenticateUser(string email, string passwordHash);
+        bool AddUserRole(int usersId, string role);
+        bool DeleteUserRole(int usersId, string role);
 
         // Alex Oetken
         bool DeactivateUserAccount(int UserId);

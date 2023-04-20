@@ -64,6 +64,7 @@ namespace LogicLayer
         public IFosterManager FosterManager { get; set; }
         public IPledgeManager PledgeManager { get; set; }
         public IEventManager EventManager { get; set; }
+        public IAdoptionApplicationResponseManager AdoptionApplicationResponseManager { get; set; }
 
 
         private MasterManager()
@@ -101,6 +102,7 @@ namespace LogicLayer
             FosterManager = new FosterManager();
             PledgeManager = new PledgeManager();
             EventManager = new EventManager();
+            AdoptionApplicationResponseManager = new AdoptionApplicationResponseManager();
 
             //for testing from dev page
             User = new UsersVM()
@@ -115,7 +117,7 @@ namespace LogicLayer
                 Phone = "319-123-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>() { "Admin" }
+                Roles = new List<string>() { "admin" }
             };
         }
 

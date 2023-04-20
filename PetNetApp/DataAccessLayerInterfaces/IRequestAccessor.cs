@@ -14,7 +14,14 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/03/10
         /// 
         /// Selects the requests sent to a spcific shelter
-        /// </summary>        
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId">The shelter Id of the shelter the request was sent to</param>
         /// <exception cref="Exception">Select Fails</exception>
         /// <returns>List of RequestVM</returns>
@@ -41,5 +48,18 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Insert Fails</exception>
         /// <returns>bool of whether the insert was successful</returns>
         bool InsertInventoryItemRequest(RequestVM request);
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/04/13
+        /// 
+        /// updates an inventory requests acknowledgment
+        /// </summary>        
+        /// <param name="requestId">
+        /// <param name="oldAcknowledge">
+        /// <param name="newAcknowledge">
+        /// <exception cref="Exception">Update Fails</exception>
+        /// <returns>int of number of rows affected</returns>
+        int UpdateRequestAcknowledge(int requestId, bool oldAcknowledge, bool newAcknowledge);
     }
 }

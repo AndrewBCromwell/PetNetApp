@@ -275,6 +275,10 @@ namespace DataAccessLayer
                         user.Address2 = reader.GetString(8);
                     }
                 }
+                else
+                {
+                    throw new ApplicationException("User not found.");
+                }
                 reader.Close();
             }
             catch (Exception up)
@@ -1156,6 +1160,38 @@ namespace DataAccessLayer
             }
 
             return rowsAffected;
+        }
+
+        public int InsertOrDeleteUserRole(int usersId, string role, bool delete = false)
+        {
+            int rows = 0;
+
+            string cmdText = delete ? "sp_delete_user_role" : "sp_insert_user_role";
+
+            DBConnection connectionFactory = new DBConnection();
+
+            var conn = connectionFactory.GetConnection();
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UsersId", usersId);
+            cmd.Parameters.AddWithValue("@RoleId", role);
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
         }
     }
 }

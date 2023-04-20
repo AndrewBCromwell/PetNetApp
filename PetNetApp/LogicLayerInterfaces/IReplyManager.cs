@@ -66,5 +66,14 @@ namespace LogicLayerInterfaces
         /// <param name="replyId"></param>
         /// <returns></returns>
         ReplyVM RetrieveReplyByReplyId(int replyId);
+
+        /// <summary>
+        /// Author: Andrew Cromwell
+        /// Date: 2023-04-14
+        /// Description: Retrieves reply by reply id
+        /// </summary>
+        /// <param name="reply"></param>
+        /// <returns></returns>
+        bool EditReplyVisibilityByReplyId(ReplyVM reply);
     }
 }

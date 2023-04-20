@@ -42,7 +42,7 @@ namespace MVCPresentation.Controllers
                 //{
                 foreach (var post in posts)
                 {
-                    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
+                //    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
                 }
                 //}
             }
@@ -548,6 +548,68 @@ namespace MVCPresentation.Controllers
             else
             {
                 ViewBag.Message = "You need to specify a post to delete";
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/14
+        /// 
+        /// Shows a page where the user will verify if they actualy want to delete the reply.
+        /// </summary>
+        // GET: Community/DeleteReply/5
+        public ActionResult DeleteReply(int? id)
+        {
+            if (id != null)
+            {
+                ReplyVM reply = new ReplyVM();
+                try
+                {
+                    reply = masterManager.ReplyManager.RetrieveReplyByReplyId(id.Value);
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message + ex.InnerException;
+                    return View("Error");
+                }
+                return View(reply);
+            }
+            else
+            {
+                ViewBag.Message = "You need to specify a Reply to delete.";
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/14
+        /// 
+        /// Causes the reply to no longer be shown and returns to index
+        /// </summary>
+        // POST: Community/DeleteReply/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteReply(int? id, FormCollection collection)
+        {
+            if (id != null)
+                try
+                {
+                    ReplyVM reply = masterManager.ReplyManager.RetrieveReplyByReplyId(id.Value);
+                    reply.ReplyVisibility = false;
+                    masterManager.ReplyManager.EditReplyVisibilityByReplyId(reply);
+
+                    return RedirectToAction("ShowReplies", new { id = reply.PostId });
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = ex.Message;
+                    return View("Error");
+                }
+            else
+            {
+                ViewBag.Message = "You need to specify a reply to delete";
                 return View("Error");
             }
         }

@@ -44,6 +44,7 @@ namespace DataAccessLayerInterfaces
         List<string> SelectRolesByUserID(int userId);
         List<string> SelectAllRoles();
         UsersVM AuthenticateUser(string email, string passwordHash);
+        int InsertOrDeleteUserRole(int usersId, string role, bool delete = false);
 
         // Mads - ACCOUNT SETTINGS
         List<string> SelectAllPronouns();
@@ -57,6 +58,18 @@ namespace DataAccessLayerInterfaces
         int DeactivateUserAccount(int UserId);
 
         // Zaid
+        /// <summary>
+        /// Zaid Rachman
+        /// Created: 2023/02/12
+        /// 
+        /// Takes a list of usersVM by the userID
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         List<UsersVM> SelectUsersByUsersId(int usersId);
 
         /// <summary>

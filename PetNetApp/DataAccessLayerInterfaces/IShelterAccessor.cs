@@ -20,6 +20,13 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// This returns the list of all Shelters so that the list of shelter objects can be populated
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <exception cref="SQLException">Can throw an SQL Exception if retrieval fails</exception>
         /// <returns>A list of Shelter objects</returns>
         List<Shelter> RetrieveShelterList();
@@ -157,6 +164,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Selects a ShelterVM object to pass on
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <exception cref="SQLException">All can throw SQLExceptions</exception>
         /// <returns>A ShelterVM object</returns>
