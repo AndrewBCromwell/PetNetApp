@@ -28,6 +28,13 @@ namespace LogicLayerInterfaces
         /// 
         /// Returns an Item by Item Id. Takes in itemId as a parameter
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <returns></returns>
         Item RetrieveItemByItemId(string itemId);

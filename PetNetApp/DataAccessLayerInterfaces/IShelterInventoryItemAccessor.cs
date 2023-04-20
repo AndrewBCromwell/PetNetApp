@@ -56,6 +56,13 @@ namespace DataAccessLayerInterfaces
         /// Edits ShelterInventoryItem. Takes in the oldShelterInventoryItemVM and newShelterInventoryItemVM objects as parameters.
         /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="oldShelterInventoryItemVM"></param>
         /// <param name="newShelterInventoryItemVM"></param>
         /// <returns></returns>
