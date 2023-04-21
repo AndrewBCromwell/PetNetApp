@@ -426,5 +426,14 @@ namespace WpfPresentation.Management.Inventory.Library
                 }
             }
         }
+
+        /// Andrew Cromwell
+        /// Created: 2023/04/20
+        /// Opens the page where the user can request for a new item to be added to the library
+        /// </summary>
+        private void btnRequestLibraryAddition_Click(object sender, RoutedEventArgs e)
+        {
+            frmLibrary.Navigate(new RequestNewLibraryItem(_masterManager));
+        }
     }
 }

@@ -11,6 +11,21 @@
     <title>ShowReplies</title>
 </head>
 <body>
+    <div class="modal" tabindex="-1" role="dialog" id="report-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Report</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="report-modal-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container lower">
         <div class="flex overflow">
             <div class="flexSmall">
@@ -51,7 +66,9 @@
                 <div class="table">
                     <div class="row">
                         <div class="cell">
-
+                            @{
+                                bool hasPrevious = false;
+                            }
                             @if (reply.ReplyVisibility && ViewBag.UserId == reply.ReplyAuthor)
                             {
 
@@ -61,12 +78,25 @@
 
                             @if (reply.ReplyVisibility && (ViewBag.UserId == reply.ReplyAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                             {
-                                @Html.ActionLink("Delete Reply", "DeleteReply", new { id = reply.ReplyId }, new { @class = "report-button" });
+                                @Html.ActionLink("Delete Reply", "DeleteReply", new { id = reply.ReplyId });
+                                hasPrevious = true;
                             }
 
                             @if (!reply.ReplyVisibility && (ViewBag.UserId == reply.ReplyAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                             {
-                                @Html.ActionLink("Reinstate Reply", "ReinstateReply", new { id = reply.ReplyId }, new { @class = "report-button" });
+                                @Html.ActionLink("Reinstate Reply", "ReinstateReply", new { id = reply.ReplyId });
+                                hasPrevious = true;
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (hasPrevious && reply.ReplyAuthor != ViewBag.UserId)
+                                {
+                                    <text> &nbsp;| </text>
+                                }
+                                ViewBag.HasPrevious = hasPrevious;
+                                <div id="report-post-@reply.ReplyId" class="float-right">
+                                    @Html.Partial("ReportReplyPartial", reply)
+                                </div>
                             }
                         </div>
                     </div>
@@ -82,6 +112,7 @@
     <div class="container">
         @Html.ActionLink("Back", "Index", new { textarea = "" }, new { @class = "btn btn-primary" })
     </div>
+    <script src="~/Scripts/report.js"></script>
     <br />
 </body>
 </html>

@@ -158,6 +158,9 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\Library\RequestNewLibraryItem.xaml.cs">
+      <DependentUpon>RequestNewLibraryItem.xaml</DependentUpon>
+	</Compile>
     <Compile Include="Development\Events\ViewEventGraphsPage.xaml.cs">
       <DependentUpon>ViewEventGraphsPage.xaml</DependentUpon>
     </Compile>
@@ -589,6 +592,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Community\CustomerRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\Library\RequestNewLibraryItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

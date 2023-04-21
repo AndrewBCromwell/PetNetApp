@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\PledgeController.cs" />
     <Compile Include="Controllers\SheltersController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserDonationsController.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Binders\UsersModelBinder.cs" />
     <Compile Include="Migrations\202304070738315_InitialCreate.cs" />
     <Compile Include="Migrations\202304070738315_InitialCreate.Designer.cs">
       <DependentUpon>202304070738315_InitialCreate.cs</DependentUpon>
@@ -359,7 +361,6 @@
     <Content Include="Views\Fundraising\FundraisingCampaignForCampaigns.cshtml" />
     <Content Include="Views\Fundraising\Campaigns.Mobile.cshtml" />
     <Content Include="Views\Fundraising\Campaign.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
     <Content Include="Views\Community\ShowReplies.cshtml" />
     <Content Include="Views\Community\CreateReply.cshtml" />
     <Content Include="Views\Community\EditReply.cshtml" />
@@ -377,6 +378,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Community\ReportReplyPartial.cshtml" />
+    <Content Include="Views\Community\BeginReplyReport.cshtml" />
+    <Content Include="Views\Pledge\Create.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
