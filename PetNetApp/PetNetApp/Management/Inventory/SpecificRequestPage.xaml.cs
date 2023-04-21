@@ -165,5 +165,35 @@ namespace WpfPresentation.Management.Inventory
         {
             NavigationService.Navigate(ViewRequestListPage.GetViewRequestListPage(_manager));
         }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/04/14
+        /// 
+        /// Acknowledges an inventory request
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAcknowledge_Click(object sender, RoutedEventArgs e)
+        {
+            if (_request.Acknowledged == true)
+            {
+                PromptWindow.ShowPrompt("Request Acknowledgment", "This request has already been acknowledged", ButtonMode.Ok);
+            }
+            else
+            {
+                try
+                {
+                    bool newAcnowledged = true;
+                    _manager.RequestManager.EditRequestAcknowledge(_request.RequestId, _request.Acknowledged, newAcnowledged);
+                    NavigationService.GoBack();
+                    PromptWindow.ShowPrompt("Request Acknowledgment", "This request has been acknowledged", ButtonMode.Ok);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message, ButtonMode.Ok);
+                }
+            }
+        }
     }
 }

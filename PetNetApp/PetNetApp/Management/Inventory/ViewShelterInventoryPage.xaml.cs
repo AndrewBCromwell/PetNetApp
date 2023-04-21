@@ -11,6 +11,12 @@
 /// 
 /// Added refreshShelterInventoryList and btnEdit_Click
 /// </remarks>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/19
+/// 
+/// Final QA
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,18 +48,29 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/03/19
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         public ViewShelterInventoryPage()
         {
-
             InitializeComponent();
-
-
         }
         /// <summary>
         /// Zaid Rachman
         /// Created: 2023/03/29
         /// This constructor is for when the user presses the back button on the "ViewItemCart" page. This way the user doesn't lose their list of items
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterInventoryItemVMs"></param>
         public ViewShelterInventoryPage(List<ShelterInventoryItemVM> shelterInventoryItemVMs)
         {
@@ -70,23 +87,17 @@ namespace WpfPresentation.Management.Inventory
         /// Updated: 2023/03/31
         /// Code regarding the cboShelter is currently commented out. This feature is being moved to another page. 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA and removed commented out code regarding cboShelter
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            /*try
-            {
-                cboShelter.ItemsSource = _masterManager.ShelterManager.GetShelterList().OrderBy(shelter => shelter.ShelterName);
-            }
-            catch (Exception)
-            {
-
-                PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter list");
-                return;
-            }
-
-            cboShelter.DisplayMemberPath = "ShelterName";*/
-
             Users user;
             try
             {
@@ -103,16 +114,6 @@ namespace WpfPresentation.Management.Inventory
 
             if (shelterId != null)
             {
-               /* try
-                {
-                    cboShelter.SelectedItem = _masterManager.ShelterManager.RetrieveShelterVMByShelterID((int)shelterId);
-                }
-                catch (Exception)
-                {
-
-                    PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter");
-                    return;
-                }*/
                 try
                 {
                     _shelterInventoryItemVMList = _masterManager.ShelterInventoryItemManager.RetrieveInventoryByShelterId((int)shelterId);
@@ -147,10 +148,15 @@ namespace WpfPresentation.Management.Inventory
         /// Populates the flags column
         /// Zaid Rachman
         /// Updated: 2023/04/04
+        /// 
         /// Added Low Stock and Over Stock indicators 
-        /// 
-        /// 
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         private void UpdateFlags()
         {
 
@@ -219,46 +225,6 @@ namespace WpfPresentation.Management.Inventory
             }
 
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// Created: 2023/03/19
-        /// 
-        /// Populates datagrid once the combobox closes
-        /// 
-        /// Zaid Rachman
-        /// Created: 2023/03/31
-        /// CboShelter is going to be moved to another page.
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /*private void cboShelter_DropDownClosed(object sender, EventArgs e)
-        {
-            ShelterVM selectedShelter;
-            if (cboShelter.SelectedItem != null)
-            {
-                selectedShelter = (ShelterVM)cboShelter.SelectedItem;
-
-                try
-                {
-                    _shelterInventoryItemVMList = _masterManager.ShelterInventoryItemManager.RetrieveInventoryByShelterId(selectedShelter.ShelterId);
-                }
-                catch (Exception)
-                {
-
-                    PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter inventory");
-                    return;
-                }
-
-
-                UpdateFlags();
-                datShelterInventory.ItemsSource = _shelterInventoryItemVMList;
-
-            }
-
-
-
-        }*/
 
         /// <summary>
         /// Zaid Rachman
@@ -266,6 +232,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Directs user to the viewedit page for the inventory item.
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void datShelterInventory_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -281,6 +254,13 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/03/29
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnViewCart_Click(object sender, RoutedEventArgs e)
@@ -295,6 +275,13 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/02/31
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnAddToCart_Click(object sender, RoutedEventArgs e)
@@ -332,6 +319,13 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created 2023/02/31
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -347,7 +341,14 @@ namespace WpfPresentation.Management.Inventory
         /// Created: 2023/04/07
         /// Refresh the list of Inventory items by loading them from the database
         /// </summary>
-        public void refreshShelterInventoryList()
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA and fixed method name to follow standard practices
+        /// </remarks>
+        public void RefreshShelterInventoryList()
         {
             Users user;
             try
@@ -390,6 +391,13 @@ namespace WpfPresentation.Management.Inventory
         /// Brian Collum
         /// Created 2023/04/07
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -414,7 +422,7 @@ namespace WpfPresentation.Management.Inventory
             {
                 PromptWindow.ShowPrompt("Error", "Please select an item from the list to remove from your shelter.", ButtonMode.Ok);
             }
-            refreshShelterInventoryList();
+            RefreshShelterInventoryList();
         }
     }
 }

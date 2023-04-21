@@ -154,7 +154,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\AddFundRaisingEvent_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditFundRaisingEvent_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\approve_deny_application_sps.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertResourceAddRequest_SP.sql
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateRequestAcknowledged.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

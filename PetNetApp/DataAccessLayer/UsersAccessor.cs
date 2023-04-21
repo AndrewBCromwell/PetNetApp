@@ -1120,7 +1120,7 @@ namespace DataAccessLayer
         }
 
 
-        public int UpdateUserShelterid(int userid, int shelterid, int oldShelterId)
+        public int UpdateUserShelterid(int userid, int shelterid, int? oldShelterId)
         {
             int rowsAffected = 0;
 
@@ -1133,7 +1133,15 @@ namespace DataAccessLayer
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@Usersid", userid);
-            cmd.Parameters.AddWithValue("@OldShelterid", oldShelterId);
+            if(oldShelterId == null)
+            {
+                cmd.Parameters.AddWithValue("@OldShelterid", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldShelterid", oldShelterId);
+            }
+            
             cmd.Parameters.AddWithValue("@NewShelterid", shelterid);
 
             try
