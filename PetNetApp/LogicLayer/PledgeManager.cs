@@ -42,6 +42,20 @@ namespace LogicLayer
             return result;
         }
 
+        public List<PledgeVM> RetrieveAllPledges()
+        {
+            List<PledgeVM> pledgeVMs = null;
+            try
+            {
+                pledgeVMs = _pledgeAccessor.SelectAllPledges();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("There was an error retrieving pledge data.", ex);
+            }
+            return pledgeVMs;
+        }
+
         public List<PledgeVM> RetrieveAllPledgesByEventId(int eventId)
         {
             List<PledgeVM> pledgeVMs = null;

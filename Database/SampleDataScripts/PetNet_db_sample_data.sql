@@ -825,10 +825,10 @@ INSERT INTO [dbo].[Donation]
         (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', NULL),
         (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', NULL),
         (100002, 100000, 12.99, '', 1, 0, ':)', 'Visa', NULL),
-        (100000, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa', NULL),
-        (100000, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa', NULL),
-        (100000, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL),
-        (100000, 100001, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL)
+        (100009, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa', NULL),
+        (100008, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa', NULL),
+        (100007, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL),
+        (100007, 100001, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL)
 GO
 
 /* Insert donation records with dates and no messages */
@@ -1247,6 +1247,7 @@ GO
 INSERT INTO [dbo].[Pledge]
 		(
 		[UsersId],
+		[DonationId],
 		[FundraisingEventId],
 		[Amount],
         [Message],
@@ -1256,19 +1257,19 @@ INSERT INTO [dbo].[Pledge]
         [Email]
 		)
 	VALUES
-		(100007,100000, 100.00, 'Giving back', 'John', 'Smith', '6546546544', 'js@gmail.com'),
-		(100007,100000, 200.00, 'Take it', 'John', 'Smith', '6546546544', 'js@gmail.com'),
-		(100007,100000, 300.00, 'For dog', 'John', 'Smith', '6546546544', 'js@gmail.com'),
-		(100007,100000, 400.00, 'For cat', 'John', 'Smith', '6546546544', 'js@gmail.com'),
-		(100007,100000, 500.00, 'For rat', 'John', 'Smith', '6546546544', 'js@gmail.com'),
-        (100008,100000, 50.00, 'Here you go', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
-		(100008,100000, 50.00, 'Take it', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
-		(100008,100000, 50.00, 'For rat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
-		(100008,100000, 50.00, 'For cat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
-        (100009,100000, 50.00, 'Here you go again', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
-		(100009,100000, 50.00, 'For cat', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
-		(100009,100000, 50.00, 'For rat', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
-		(100009,100000, 50.00, 'Here you go again 3rd time', 'Amy', 'Smith', '6546546544', 'as@gmail.com')
+		(100007,100000,100000, 100.00, 'Giving back', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+		(100007,null,100000, 200.00, 'Take it', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+		(100007,100002,100000, 300.00, 'For dog', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+		(100007,100003,100000, 400.00, 'For cat', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+		(100007,100004,100000, 500.00, 'For rat', 'John', 'Smith', '6546546544', 'js@gmail.com'),
+        (100008,100005,100000, 50.00, 'Here you go', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
+		(100008,null,100000, 50.00, 'Take it', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
+		(100008,null,100000, 50.00, 'For rat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
+		(100008,null,100000, 50.00, 'For cat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com'),
+        (100009,null,100000, 50.00, 'Here you go again', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
+		(100009,null,100000, 50.00, 'For cat', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
+		(100009,100006,100000, 50.00, 'For rat', 'Amy', 'Smith', '6546546544', 'as@gmail.com'),
+		(100009,null,100000, 50.00, 'Here you go again 3rd time', 'Amy', 'Smith', '6546546544', 'as@gmail.com')
 GO
 
 print '' print '*** creating AdoptionApplication sample data'

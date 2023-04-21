@@ -61,5 +61,10 @@ namespace WpfPresentation.Development.Events
         {
 
         }
+
+        private void btnEventResults_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
