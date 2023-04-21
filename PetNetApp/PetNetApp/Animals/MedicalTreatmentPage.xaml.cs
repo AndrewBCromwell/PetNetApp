@@ -234,7 +234,7 @@ namespace WpfPresentation.Animals
 
                 // add Quarantine window to be opened here and remove PromptWindow
 
-                //PromptWindow.ShowPrompt("Quarantine", "TODO", ButtonMode.Ok);
+                
                 frmDiagnosisTreatment.Navigate(new QuarantinePage(medicalRecord, _medicalRecordManager, this));
             };
 

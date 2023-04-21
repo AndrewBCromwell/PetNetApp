@@ -2,9 +2,14 @@
 /// Ethan Kline
 /// Created: 2023/03/3
 /// 
-/// Final QA
+/// 
 /// Interaction logic for Medical_Notes.xaml
 /// </summary>
+/// <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/17
+/// Final QA
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +44,13 @@ namespace WpfPresentation.Animals
         /// 
         /// Constructor that is used when a new medicalnote is being added
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         public Medical_Notes(Animal animal, MasterManager manager)
         {
             InitializeComponent();
@@ -55,8 +65,13 @@ namespace WpfPresentation.Animals
         /// for the animal, displays "No Notes Available" if there are no medicalnotes for 
         /// the animal.
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -104,8 +119,14 @@ namespace WpfPresentation.Animals
         /// Ethan Kline
         /// 2023/03/10
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void datMedicalRecordGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -118,7 +139,7 @@ namespace WpfPresentation.Animals
         /// Molly Meister
         /// 2023/03/27
         ///
-        /// Final QA
+        /// 
         /// 
         /// </summary>
         /// <param name="sender"></param>
@@ -135,8 +156,13 @@ namespace WpfPresentation.Animals
         /// Ethan Kline
         /// 2023/03/10
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_edit_Click(object sender, RoutedEventArgs e)
@@ -153,8 +179,13 @@ namespace WpfPresentation.Animals
         /// Ethan Kline
         /// 2023/03/10
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_add_Click(object sender, RoutedEventArgs e)
