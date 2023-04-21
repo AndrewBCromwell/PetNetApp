@@ -75,5 +75,41 @@ namespace LogicLayerInterfaces
         /// <param name="reply"></param>
         /// <returns></returns>
         bool EditReplyVisibilityByReplyId(ReplyVM reply);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Adds a new report to the database for the selected post
+        /// </summary>
+        /// <param name="replyId"></param>
+        /// <param name="userId"></param>
+        /// <param name="reportMessageId"></param>
+        /// <returns></returns>
+        bool AddReplyReport(int replyId, int userId, int reportMessageId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Removes a report from the database for the selected post
+        /// </summary>
+        /// <param name="replyId"></param>
+        /// <param name="userId"></param>
+        /// <param name="reportMessageId"></param>
+        /// <returns></returns>
+        bool RemoveReplyReport(int replyId, int userId);
+
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/06
+        /// 
+        /// Gets whether the current user has reported the post
+        /// </summary>
+        /// <param name="replyId">user to check</param>
+        /// <param name="userId">post to check</param>
+        /// <returns>Whether the user has reported the post</returns>
+        bool RetrieveUserReplyReportedByReplyIdAndUserId(int replyId, int userId);
     }
 }

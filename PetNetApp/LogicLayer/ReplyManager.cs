@@ -153,5 +153,45 @@ namespace LogicLayer
 
             return reply;
         }
+
+        public bool AddReplyReport(int replyId, int userId, int reportMessageId)
+        {
+            try
+            {
+                return replyAccessor.InsertReplyReport(replyId, userId, reportMessageId) == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to report the reply", ex);
+            }
+        }
+
+        public bool RemoveReplyReport(int replyId, int userId)
+        {
+            try
+            {
+                return replyAccessor.DeleteReplyReport(replyId, userId) == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to unreport the reply", ex);
+            }
+        }
+
+        public bool RetrieveUserReplyReportedByReplyIdAndUserId(int replyId, int userId)
+        {
+            bool reported = false;
+
+            try
+            {
+                reported = replyAccessor.SelectUserReplyReportedByReplyIdandUserId(replyId, userId) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to check if the post has been reported", ex);
+            }
+
+            return reported;
+        }
     }
 }
