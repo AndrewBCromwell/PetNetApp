@@ -70,7 +70,7 @@
                         Add to Shelter Inventory
                     </TextBlock>
                 </Button>
-                <Button x:Name="btnRequestLibraryAddition" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5">Request a New Item</Button>
+                <Button x:Name="btnRequestLibraryAddition" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="5" Padding="5" Click="btnRequestLibraryAddition_Click">Request a New Item</Button>
             </StackPanel>
         </Grid>
         <Frame x:Name="frmLibrary" Grid.RowSpan="1" Margin="0,0,0,0"/>

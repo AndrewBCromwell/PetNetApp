@@ -82,5 +82,27 @@ namespace LogicLayerTest
             // Assert
             Assert.IsTrue(actualResult);
         }
+
+
+        [TestMethod]
+        public void TestAddResourceAddRequestReturnsTrueWhenRequestIsAdded()
+        {
+            int expectedResourceAddRequestCountAfterAddition = _resourceAddRequestManager.RetrieveActiveResourceAddRequestsByShelterId(100000).Count + 1;
+            int actualCount;
+            ResourceAddRequest requestToAdd = new ResourceAddRequest()
+            {
+                ShelterId = 100000,
+                UsersId = 100000,
+                Title = "Grapes",
+                Note = "An annoying duck keeps asking for these",
+                Active = true
+            };
+
+            bool added = _resourceAddRequestManager.AddResourceAddRequest(requestToAdd);
+            actualCount = _resourceAddRequestManager.RetrieveActiveResourceAddRequestsByShelterId(100000).Count;
+
+            Assert.IsTrue(added);
+            Assert.AreEqual(expectedResourceAddRequestCountAfterAddition, actualCount);
+        }
     }
 }

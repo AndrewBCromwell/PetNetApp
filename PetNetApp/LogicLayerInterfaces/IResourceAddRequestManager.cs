@@ -55,5 +55,16 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException">Edit Fails</exception>
         /// <returns>Boolean representing success or failure</returns>
         bool EditResourceAddRequestActiveField(ResourceAddRequest oldResourceAddRequest, ResourceAddRequest newResourceAddRequest);
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/19
+        /// 
+        /// Adds a new ResourceAddRequest to the database
+        /// </summary>
+        /// <param name="resourceAddRequest">ResourceAddRequest to add</param>
+        /// <exception cref="ApplicationException">Addition Fails</exception>
+        /// <returns>Boolean representing success or failure</returns>
+        bool AddResourceAddRequest(ResourceAddRequest resourceAddRequest);
     }
 }

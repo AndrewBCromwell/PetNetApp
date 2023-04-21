@@ -24,6 +24,46 @@ namespace DataAccessLayer
 {
     public class ResourceAddRequestAccessor : IResourceAddRequestAccessor
     {
+        public int InsertResourceAddRequest(ResourceAddRequest resourceAddRequest)
+        {
+            int rows = 0;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_ResourceAddRequest";
+
+            //command
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // parameters
+            cmd.Parameters.AddWithValue("@shelterid", resourceAddRequest.ShelterId);
+            cmd.Parameters.AddWithValue("@usersid", resourceAddRequest.UsersId);
+            cmd.Parameters.AddWithValue("@title", resourceAddRequest.Title);
+            cmd.Parameters.AddWithValue("@note", resourceAddRequest.Note);
+            cmd.Parameters.AddWithValue("@active", resourceAddRequest.Active);
+
+            try
+            {
+                conn.Open();
+
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return rows;
+        }
+    
+
         public List<ResourceAddRequest> SelectActiveResourceAddRequestsByShelterId(int shelterId)
         {
             List<ResourceAddRequest> resourceAddRequests = new List<ResourceAddRequest>();

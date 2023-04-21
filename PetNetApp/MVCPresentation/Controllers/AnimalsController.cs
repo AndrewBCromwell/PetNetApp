@@ -100,6 +100,7 @@ namespace MVCPresentation.Controllers
             
         }
 
+        
         public ActionResult Adoptable()
         {
             List<AnimalVM> adoptableAnimals = new List<AnimalVM>();
@@ -115,6 +116,7 @@ namespace MVCPresentation.Controllers
             return View(adoptableAnimals);
         }
 
+        
         public ActionResult Foster()
         {
             return View();
