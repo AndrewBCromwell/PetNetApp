@@ -422,10 +422,14 @@ namespace MVCPresentation.Controllers
                         {
                             postVM.Replies = masterManager.ReplyManager.RetrieveActiveRepliesByPostId(postVM.PostId);
                         }
-                        foreach (ReplyVM reply in postVM.Replies)
+                        if (User.Identity.IsAuthenticated)
                         {
-                            reply.UserReplyReport = masterManager.ReplyManager.RetrieveUserReplyReportedByReplyIdAndUserId(reply.ReplyId, user.UsersId);
+                            foreach (ReplyVM reply in postVM.Replies)
+                            {
+                                reply.UserReplyReport = masterManager.ReplyManager.RetrieveUserReplyReportedByReplyIdAndUserId(reply.ReplyId, user.UsersId);
+                            }
                         }
+                        
                     }
                     else
                     {
