@@ -9,6 +9,12 @@
 /// <remarks>
 /// Brian Collum
 /// Updated: 2023/04/07
+/// 
+/// 
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
+/// 
 /// </remarks>
 
 using System;
@@ -45,6 +51,12 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/02/23
         /// Constructor for the ShelterVM List UI
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="manager">The MasterManager from the parent UI</param>
         public LibraryUI(MasterManager manager)
         {
@@ -52,6 +64,16 @@ namespace WpfPresentation.Management.Inventory.Library
             _masterManager = manager;
             _libraryManager = new LibraryManager();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="manager"></param>
+        /// <returns></returns>
         public static LibraryUI GetLibraryUI(MasterManager manager)
         {
             if (_existingLibraryUI == null)
@@ -61,6 +83,14 @@ namespace WpfPresentation.Management.Inventory.Library
             return _existingLibraryUI;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         public LibraryUI()
         {
             InitializeComponent();
@@ -70,7 +100,13 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/02/24
         /// Refresh the list of library items by loading them from the database
         /// </summary>
-        public void refreshLibraryList()
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        public void RefreshLibraryList()
         {
             try
             {
@@ -88,6 +124,12 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/02/24
         /// Displays an explanation of what this UI is for
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         private void btnLibraryHelp_Click(object sender, RoutedEventArgs e)
         {
             PromptWindow.ShowPrompt("What is this page for?", "PetNet Inventory Library" +
@@ -102,11 +144,17 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/02/24
         /// Refresh the list of library items on page load
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_libraryItemList == null)
             {
-                refreshLibraryList();
+                RefreshLibraryList();
             }
         }
 
@@ -115,6 +163,11 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/04/06
         /// Navigates to the AddResourceItemPage
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         private void btnAddLibraryItem_Click(object sender, RoutedEventArgs e)
         {
             frmLibrary.Navigate(new AddResourceItemPage(_masterManager.ItemManager, this));
@@ -125,10 +178,16 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/04/06
         /// Navigates to the EditResourceItemPage
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         private void btnEditLibraryItem_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = (Item) datLibraryInventory.SelectedItem;
-            if(selectedItem == null)
+            var selectedItem = (Item)datLibraryInventory.SelectedItem;
+            if (selectedItem == null)
             {
                 PromptWindow.ShowPrompt("Error", "Please select an item to edit from the list to edit.", ButtonMode.Ok);
             }
@@ -143,6 +202,11 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/04/06
         /// Navigates to the AddCategoryTagPage
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         private void btnAddCategory_Click(object sender, RoutedEventArgs e)
         {
             frmLibrary.Navigate(new AddCategoryTagPage(_masterManager, this));
@@ -152,6 +216,11 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/04/07
         /// Adds the selected Library item to the currently selected shelter's inventory
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         private void btnAddToShelterInventory_Click(object sender, RoutedEventArgs e)
         {
             var selectedItem = (Item)datLibraryInventory.SelectedItem;
@@ -169,7 +238,7 @@ namespace WpfPresentation.Management.Inventory.Library
                         PromptSelection result = PromptWindow.ShowPrompt("Add Item?", "Do you want to add this item to Shelter " + currentShelter, ButtonMode.YesNo);
                         if (result == PromptSelection.Yes)
                         {
-                            if(_masterManager.ShelterInventoryItemManager.AddToShelterInventory((int)currentShelter, selectedItem.ItemId))
+                            if (_masterManager.ShelterInventoryItemManager.AddToShelterInventory((int)currentShelter, selectedItem.ItemId))
                             {
                                 PromptWindow.ShowPrompt("Item Added", "Added " + selectedItem.ItemId + " to " + currentShelter, ButtonMode.Ok);
                             }

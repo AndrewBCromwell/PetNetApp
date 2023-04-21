@@ -99,7 +99,7 @@ namespace WpfPresentation.Management.Inventory.Library
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", "Failed to get Categories" + "\n" + ex.Message, ButtonMode.Ok);
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
         }
@@ -147,7 +147,7 @@ namespace WpfPresentation.Management.Inventory.Library
                 result = _masterManager.ItemManager.AddCategory(categoryId);
                 if (result)
                 {
-                    _libraryUI.refreshLibraryList();
+                    _libraryUI.RefreshLibraryList();
                     NavigationService.Navigate(null);
                 }
                 else
@@ -158,7 +158,7 @@ namespace WpfPresentation.Management.Inventory.Library
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
         }
@@ -181,7 +181,7 @@ namespace WpfPresentation.Management.Inventory.Library
             PromptSelection selection = PromptWindow.ShowPrompt("Cancel?", "Are you sure you wish to cancel? Changes will not be saved.", ButtonMode.YesNo);
             if (selection == PromptSelection.Yes)
             {
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
         }
