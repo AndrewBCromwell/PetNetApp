@@ -62,7 +62,11 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Inserts a new ResourceAddRequest into the database
         /// </summary>
-        ///
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// final QA
+        /// </remarks>
         /// <param name="resourceAddRequest">ResourceAddRequest to insert</param>
         /// <exception cref="ApplicationException">Insert Fails</exception>
         /// <returns>Int represting rows affected</returns>

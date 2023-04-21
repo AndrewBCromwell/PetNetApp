@@ -57,6 +57,7 @@ namespace LogicLayer
             _resourceAddRequestAccessor = resourceAddRequestAccessor;
         }
 
+        
         public bool AddResourceAddRequest(ResourceAddRequest resourceAddRequest)
         {
             try

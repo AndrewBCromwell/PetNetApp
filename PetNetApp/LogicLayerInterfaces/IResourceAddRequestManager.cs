@@ -62,6 +62,11 @@ namespace LogicLayerInterfaces
         /// 
         /// Adds a new ResourceAddRequest to the database
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// final QA
+        /// </remarks>
         /// <param name="resourceAddRequest">ResourceAddRequest to add</param>
         /// <exception cref="ApplicationException">Addition Fails</exception>
         /// <returns>Boolean representing success or failure</returns>

@@ -27,6 +27,19 @@ namespace WpfPresentation.Management.Inventory.Library
     {
         private MasterManager _manager;
 
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/19
+        /// 
+        /// Constructor of RequestNewLibraryItem
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// final QA
+        /// </remarks>
+        /// <param name="manager"></param>
         public RequestNewLibraryItem(MasterManager manager)
         {
             InitializeComponent();
@@ -40,6 +53,11 @@ namespace WpfPresentation.Management.Inventory.Library
         /// 
         /// Method to add a ResourceAddRequest
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnMakeRequest_Click(object sender, RoutedEventArgs e)
@@ -111,6 +129,11 @@ namespace WpfPresentation.Management.Inventory.Library
         /// 
         /// Method to cancel the Request Library Item
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
