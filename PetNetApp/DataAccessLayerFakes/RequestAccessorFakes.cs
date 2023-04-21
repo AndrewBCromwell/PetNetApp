@@ -151,5 +151,21 @@ namespace DataAccessLayerFakes
         {
             return _requests.Where(r => r.RecievingShelterId == ShelterId).OrderByDescending(r => r.RequestDate).ToList();
         }
+
+        public int UpdateRequestAcknowledge(int requestId, bool oldAcknowledge, bool newAcknowledge)
+        {
+            int result = 0;
+
+            foreach (Request request in _requests)
+            {
+                if (request.RequestId == requestId)
+                {
+                    request.Acknowledged = newAcknowledge;
+                    result = 1;
+                }
+            }
+
+            return result;
+        }
     }
 }

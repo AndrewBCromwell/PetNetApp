@@ -16,9 +16,9 @@ namespace LogicLayerInterfaces
         /// Passes an adoptionApplication to the AdoptionApplicationAccessor to add an adoption application into the database.
         /// Returns a bool if the insert passes or fails
         /// </summary>
-        /// <param name="adoptionApplication">the animalId of the animal retrieving medical records for</param>
+        /// <param name="adoptionApplication">the animalId of the animal inserting an adoption application for</param>
         /// <exception cref="ApplicationException">Add Fails</exception>
-        /// <returns>Bool</returns>
+        /// <returns>bool</returns>
         bool AddAdoptionApplication(AdoptionApplicationVM adoptionApplication);
 
         /// <summary>
@@ -40,5 +40,27 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException">If the retrieval fails</exception>
         /// <returns>List</returns>
         List<string> RetrieveAllHomeOwnershipTypes();
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/04/03
+        /// 
+        /// Calls the Accessor method to retrieve all adoption applications for an animal.
+        /// </summary>
+        /// /// <param name="animalId">the animalId of the animal retrieving adoption applications for</param>
+        /// <exception cref="ApplicationException">If the retrieval fails</exception>
+        /// <returns>List of AdoptionApplicationVM</returns>
+        List<AdoptionApplicationVM> RetrieveAllAdoptionApplicationsByAnimalId(int animalId);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/04/03
+        /// 
+        /// Calls the Accessor method to edit all adoption application status for an animal.
+        /// </summary>
+        /// /// <param name="response">the adoption application response to update an application status for</param>
+        /// <exception cref="ApplicationException">If the retrieval fails</exception>
+        /// <returns>bool</returns>
+        bool EditAdoptionApplicationStatusByAnimalIdForApprovedApplication(AdoptionApplicationResponse response);
     }
 }

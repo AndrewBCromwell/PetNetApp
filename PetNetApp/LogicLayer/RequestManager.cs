@@ -37,6 +37,24 @@ namespace LogicLayer
             return success;
         }
 
+        public bool EditRequestAcknowledge(int requestId, bool oldAcknowledge, bool newAcknowledge)
+        {
+            bool result = false;
+            try
+            {
+                result = 1 == _requestAccessor.UpdateRequestAcknowledge(requestId, oldAcknowledge, newAcknowledge);
+                if (!result)
+                {
+                    throw new ApplicationException("update of request failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("update of request failed", ex);
+            }
+            return result;
+        }
+
         public List<RequestVM> RetrieveRequestsByShelterId(int shelterId)
         {
             List<RequestVM> requests = null;

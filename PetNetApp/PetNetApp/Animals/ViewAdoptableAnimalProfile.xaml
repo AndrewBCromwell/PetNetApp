@@ -126,6 +126,7 @@
                                 <RowDefinition Height="150"/>
                                 <RowDefinition Height="70"/>
                                 <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"></RowDefinition>
                             </Grid.RowDefinitions>
 
                             <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
@@ -156,6 +157,9 @@
                                     <Image Grid.Column="0" Source="../Images/download_light.png" HorizontalAlignment="Left"/>
                                     <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">| Download Application</Label>
                                 </Grid>
+                            </Button>
+                            <Button x:Name="btnViewApplications" Grid.Row="3" Margin="5" Click="btnViewApplications_Click">
+                                <Label>View All Applications</Label>
                             </Button>
                         </Grid>
                         <!--End Description part-->

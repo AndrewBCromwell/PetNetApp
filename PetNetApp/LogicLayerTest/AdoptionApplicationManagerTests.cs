@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -85,6 +85,36 @@ namespace LogicLayerTest
             };
 
             actualResult = _manager.AddAdoptionApplication(application);
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestRetrieveAllAdoptionApplicationsByAnimalId()
+        {
+            int expectedResult = 1;
+            int animalId = 1;
+
+            int actualResult = _manager.RetrieveAllAdoptionApplicationsByAnimalId(animalId).Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+        public void TestEditAdoptionApplicationStatusByAnimalIdForApprovedApplication()
+        {
+            bool expectedResult = true;
+            AdoptionApplicationResponse response = new AdoptionApplicationResponse()
+            {
+                AdoptionApplicationResponseId = 1,
+                AdoptionApplicationId = 1,
+                ResponderUserId = 1,
+                Approved = true,
+                AdoptionApplicationResponseDate = DateTime.Now,
+                AdoptionApplicationResponseNotes = "Approved"
+            };
+
+            bool actualResult = _manager.EditAdoptionApplicationStatusByAnimalIdForApprovedApplication(response);
 
             Assert.AreEqual(expectedResult, actualResult);
         }

@@ -3,6 +3,7 @@
 /// Created: 2023/02/18
 /// 
 /// Interaction logic for Edit_Medical_Notes.xaml
+/// Final QA
 /// </summary>
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,7 @@ namespace WpfPresentation.Animals
         /// Created: 2023/03/2
         /// 
         /// Constructor that is used when a Medicalnote is being edited
+        /// Final QA
         /// </summary>
         /// <param name="medicalRecord">the medicalRecord that will be overwriten</param>
         /// <param name="manager">the MasterManager being used through out the program</param>
@@ -52,6 +54,14 @@ namespace WpfPresentation.Animals
             _manager = manager;
             add = false;
         }
+        /// <summary>
+        /// Ethan Kline
+        /// 2023/03/10
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <param name="manager"></param>
         public Edit_Medical_Notes(Animal animal, MasterManager manager)
         {
             InitializeComponent();
@@ -60,6 +70,14 @@ namespace WpfPresentation.Animals
             _manager = manager;
         }
 
+        /// <summary>
+        /// Ethan Kline
+        /// 2023/03/10
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (add == false)
@@ -67,6 +85,12 @@ namespace WpfPresentation.Animals
                 Populate();
             }
         }
+        /// <summary>
+        /// Ethan Kline
+        /// 2023/03/10
+        /// 
+        /// Final QA
+        /// </summary>
         private void Populate()
         {
             if (_MedicalRecordVM != null)
@@ -135,7 +159,14 @@ namespace WpfPresentation.Animals
                 }
             }
         }
-
+        /// <summary>
+        /// Ethan Kline
+        /// 2023/03/10
+        /// 
+        /// Final QA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

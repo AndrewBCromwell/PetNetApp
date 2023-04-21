@@ -41,6 +41,36 @@ namespace LogicLayer
             return success;
         }
 
+        public bool EditAdoptionApplicationStatusByAnimalIdForApprovedApplication(AdoptionApplicationResponse response)
+        {
+            bool updated = false;
+
+            try
+            {
+                updated = 0 < _adoptionApplicationAccessor.UpdateAdoptionApplicationStatusByAnimalIdForApprovedApplication(response);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return updated;
+        }
+
+        public List<AdoptionApplicationVM> RetrieveAllAdoptionApplicationsByAnimalId(int animalId)
+        {
+            List<AdoptionApplicationVM> applications = null;
+            try
+            {
+                applications = _adoptionApplicationAccessor.SelectAllAdoptionApplicationsByAnimalId(animalId);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve adoption applications", e);
+            }
+            return applications;
+        }
+
         public List<string> RetrieveAllHomeOwnershipTypes()
         {
             List<string> types = null;
