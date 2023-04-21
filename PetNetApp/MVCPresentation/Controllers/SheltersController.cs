@@ -7,19 +7,18 @@ using System.Web;
 using System.Web.Mvc;
 using LogicLayer;
 using DataObjects;
-
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
+using MVCPresentation.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MVCPresentation.Controllers
 {
     public class SheltersController : Controller
     {
-        private MasterManager masterManager = MasterManager.GetMasterManager();
-
-        private ShelterManager _shelterManager = new ShelterManager();
-        private UsersManager _userManager = new UsersManager();
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
         private List<Shelter> _shelters;
-
-
+        //private ApplicationUserManager applicationUserManager;
 
 
 
@@ -27,7 +26,7 @@ namespace MVCPresentation.Controllers
         {
             try
             {
-                _shelters = _shelterManager.GetShelterList();
+                _shelters = _masterManager.ShelterManager.GetShelterList();
             }
             catch (Exception)
             {
@@ -37,12 +36,12 @@ namespace MVCPresentation.Controllers
         }
 
         // GET: Shelters
-        public ActionResult ShelterNetwork()
+        public ActionResult SelectShelter()
         {
             List<Shelter> shelters = new List<Shelter>();
             try
             {
-                shelters = masterManager.ShelterManager.GetShelterList();
+                shelters = _masterManager.ShelterManager.GetShelterList();
                 if (shelters == null)
                 {
                     throw new Exception("Shelter data could not be found.");
@@ -56,21 +55,31 @@ namespace MVCPresentation.Controllers
             return View(shelters);
         }
 
+
+
         // GET: SelectedShelters
         public ActionResult SelectedShelter(int id)
         {
+            var dbContext = new ApplicationDbContext();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
+            var user = userManager.FindById(User.Identity.GetUserId());
+
             try
             {
-                var user = _userManager.RetrieveUserByUsersId(100003);
-                _userManager.EditUserShelterId(user.UsersId, id, (int)user.ShelterId);
+                //var user = _masterManager.UsersManager.RetrieveUserByUsersId(100003);
+
+                _masterManager.UsersManager.EditUserShelterId((int)user.UsersId, id, user.ShelterId);
 
                 // update asp users shelterid
+                user.ShelterId = id;
+                dbContext.SaveChanges();
 
-                return RedirectToAction("Index", "Community");
+                return RedirectToAction("Index", "UserProfile");
             }
             catch (Exception)
             {
-                return View();
+                ViewBag.ErrorMessage = "There was a problem saving your data";
+                return View("Error");
             }
         }
     }

@@ -148,5 +148,38 @@ namespace DataAccessLayer
 
             return success;
         }
+
+        public int UpdateRequestAcknowledge(int requestId, bool oldAcknowledge, bool newAcknowledge)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_request_acknowledged";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@RequestId", requestId);
+            cmd.Parameters.AddWithValue("@NewRequestAcknowledgment", newAcknowledge);
+            cmd.Parameters.AddWithValue("@OldRequestAcknowledgment", oldAcknowledge);
+
+
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
     }
 }

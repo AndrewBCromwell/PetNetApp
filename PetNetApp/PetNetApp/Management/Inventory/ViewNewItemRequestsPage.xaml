@@ -8,12 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ViewNewItemRequestsPage">
 
-    <Grid Background="#9EC1B0">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
-        <Grid Background="#EEEFE1" Margin="26 0 26 0" Grid.Row="0">
+        <Grid Margin="26 0 26 0" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition />
@@ -31,6 +31,6 @@
                 </Grid>
             </ScrollViewer>
         </Grid>
-        <Rectangle Grid.Row="1" Fill="#1C6758"></Rectangle>
+        <Rectangle Grid.Row="1"></Rectangle>
     </Grid>
 </Page>

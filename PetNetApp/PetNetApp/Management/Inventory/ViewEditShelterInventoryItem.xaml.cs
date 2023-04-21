@@ -7,8 +7,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/20
+/// 
+/// Final QA
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -42,8 +44,14 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/03/19
         /// 
-        /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterInventoryItemVM"></param>
         public ViewEditShelterInventoryItem(ShelterInventoryItemVM shelterInventoryItemVM)
         {
@@ -55,8 +63,14 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/03/19
         /// 
-        /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -142,6 +156,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// This method takes in the category list from the Items object and returns them into a displayable string.
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="categories"></param>
         /// <returns></returns>
         public string UpdateCategory(List<string> categories)
@@ -180,6 +201,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Saves changes made to page
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
@@ -331,6 +359,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Take user back to ViewShelterInventory page
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -344,14 +379,19 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Validation tool: Prevents User from being able to type anything other than numers 0-9
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtQuantity_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-
-            
         }
 
 
@@ -361,14 +401,19 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Validation tool: Prevents User from being able to type anything other than numers 0-9
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtLowThreshold_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-
-         
         }
         /// <summary>
         /// Zaid Rachman
@@ -376,6 +421,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Validation tool: Prevents User from being able to type anything other than numers 0-9
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtHighThreshold_PreviewTextInput(object sender, TextCompositionEventArgs e)
