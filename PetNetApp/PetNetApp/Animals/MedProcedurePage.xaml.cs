@@ -52,6 +52,12 @@ namespace WpfPresentation.Animals
         /// for the animal, displays "no procedure records available" if there are no procedures for 
         /// the animal.
         /// </summary>
+        /// <remarks>
+        /// Andrew Cromwell
+        /// Updated: 2023/04/21
+        /// 
+        /// Reformated datagrid to look better at the request of final QA Team
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -66,28 +72,8 @@ namespace WpfPresentation.Animals
                 _procedures = new List<ProcedureVM>();
             }
 
-            if(_procedures.Count != 0){
-                datMedProcedure.ItemsSource = _procedures;
-                try
-                {
-                    datMedProcedure.Columns.RemoveAt(2);
-                    datMedProcedure.Columns.RemoveAt(2);
-                    datMedProcedure.Columns.RemoveAt(2);
-                    datMedProcedure.Columns.RemoveAt(3);
-                    datMedProcedure.Columns[0].DisplayIndex = 2;
-                    datMedProcedure.Columns[1].DisplayIndex = 2;
-                    datMedProcedure.Columns[4].DisplayIndex = 1;
-                }
-                catch (ArgumentOutOfRangeException) { }
-            }
-            else
-            {
-                List<string> noRecordMessage = new List<string>();
-                datMedProcedure.ItemsSource = noRecordMessage;
-                datMedProcedure.Columns[0].Header = "No procedure records available";
-            }
-            
-            
+            datMedProcedure.ItemsSource = _procedures;
+                    
         }
 
         private void displayProcedureAnimalId()
