@@ -55,24 +55,24 @@
                             @if (reply.ReplyVisibility && ViewBag.UserId == reply.ReplyAuthor)
                             {
 
-                                @Html.ActionLink("Edit Reply", "EditReply", new { id = reply.ReplyId });
+                                @Html.ActionLink("Edit Reply", "EditReply", new { id = reply.ReplyId }, new { @class = "report-button" });
                                 <text> | </text>
                             }
 
                             @if (reply.ReplyVisibility && (ViewBag.UserId == reply.ReplyAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                             {
-                                @Html.ActionLink("Delete Reply", "DeleteReply", new { id = reply.ReplyId });
+                                @Html.ActionLink("Delete Reply", "DeleteReply", new { id = reply.ReplyId }, new { @class = "report-button" });
                             }
 
                             @if (!reply.ReplyVisibility && (ViewBag.UserId == reply.ReplyAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                             {
-                                @Html.ActionLink("Reinstate Reply", "ReinstateReply", new { id = reply.ReplyId });
+                                @Html.ActionLink("Reinstate Reply", "ReinstateReply", new { id = reply.ReplyId }, new { @class = "report-button" });
                             }
                         </div>
                     </div>
                 </div>
             }
-        } 
+        }
         else
         {
             <h5>Be the first to reply!</h5>
@@ -80,7 +80,8 @@
 
     </div>
     <div class="container">
-        @Html.ActionLink("Back", "Index")
+        @Html.ActionLink("Back", "Index", new { textarea = "" }, new { @class = "btn btn-primary" })
     </div>
+    <br />
 </body>
 </html>

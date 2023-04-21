@@ -1,9 +1,10 @@
-﻿@model IEnumerable<DataObjects.AnimalVM>
+﻿@model IEnumerable<MVCPresentation.Models.AdoptableAnimalModel>
 
 @{
     ViewBag.Title = "Adoptable";
 }
 
+<<<<<<< HEAD
 
 <table class="table">
     <tr>
@@ -40,3 +41,23 @@
     }
 
 </table>
+=======
+<div class="container my-4">
+    <div class="row">
+        @foreach (var animal in Model)
+        {
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3"> 
+                <div class="card mb-4" style="background: #9EC1B0;" >
+                    <img src="@animal.AnimalImageSource" class="card-img-top p-2" alt="Image of @animal.AnimalVM.AnimalName" />
+                    <div class="card-body" >
+                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => animal.AnimalVM.AnimalName)</h5>
+                        <p class="cart-text text-center">@Html.DisplayFor(modelItem => animal.AnimalVM.AnimalBreedId)@Html.DisplayFor(modelItem => animal.ShelterName)</p>
+                        @Html.ActionLink(" ", "AdoptableAnimal", "Animals", new { animalId = animal.AnimalVM.AnimalId }, new { @class = "stretched-link" })
+                    </div>
+                    
+                </div>
+            </div>
+        }
+    </div>
+</div>
+>>>>>>> origin/main

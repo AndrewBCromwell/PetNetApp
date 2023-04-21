@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,8 @@ using System.Web.Mvc;
 using DataObjects;
 using LogicLayerInterfaces;
 using LogicLayer;
+using MVCPresentation.Models;
+using System.Drawing;
 
 namespace MVCPresentation.Controllers
 {
@@ -100,20 +103,63 @@ namespace MVCPresentation.Controllers
             
         }
 
-        
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/04/19
+        /// 
+        /// Controller method for /Animals/Adoptable to view a list of adoptable animals
+        /// </summary>
+        /// <returns>Adoptable View</returns>
         public ActionResult Adoptable()
         {
-            List<AnimalVM> adoptableAnimals = new List<AnimalVM>();
+            List<AdoptableAnimalModel> adoptableAnimalModels = new List<AdoptableAnimalModel>();
+            List<AnimalVM> animalVMs = new List<AnimalVM>();
             try
             {
-                adoptableAnimals = _manager.AnimalManager.RetrieveAllAdoptableAnimals();
+                animalVMs = _manager.AnimalManager.RetrieveAllAdoptableAnimals();
             }
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
                 return View("Error");
             }
-            return View(adoptableAnimals);
+
+            foreach (var animal in animalVMs)
+            {
+                AdoptableAnimalModel adoptableAnimalModel = new AdoptableAnimalModel();
+                adoptableAnimalModel.AnimalVM = animal;
+                List<Images> imagesList = new List<Images>();
+                try
+                {
+                    imagesList = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(animal.AnimalId);
+                }
+                catch
+                {
+                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/BrokenImage.png";
+                }
+
+                if(imagesList.Count == 0)
+                {
+                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/no_image.png";
+                }
+                else
+                {
+                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/" + imagesList[0].ImageId + ".png";
+                }
+
+                try
+                {
+                    adoptableAnimalModel.ShelterName = " | " + _manager.ShelterManager.
+                        RetrieveShelterVMByShelterID(animal.AnimalShelterId).ShelterName;
+                }
+                catch
+                {
+                    adoptableAnimalModel.ShelterName = "";
+                }
+                adoptableAnimalModels.Add(adoptableAnimalModel);
+            }
+            return View(adoptableAnimalModels);
         }
 
         
@@ -127,6 +173,7 @@ namespace MVCPresentation.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult AdoptableAnimal(int? animalId)
         {
             AnimalVM animal = new AnimalVM();

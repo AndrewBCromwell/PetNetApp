@@ -3,8 +3,13 @@
 /// Created: 2023/02/18
 /// 
 /// Interaction logic for Edit_Medical_Notes.xaml
-/// Final QA
+/// 
 /// </summary>
+/// <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/17
+/// Final QA
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +32,11 @@ namespace WpfPresentation.Animals
     /// <summary>
     /// Interaction logic for Edit_Medical_Notes.xaml
     /// </summary>
+    /// <remarks>
+    /// Zaid Rachman
+    /// Updated: 2023/04/17
+    /// Final QA
+    /// </remarks>
     public partial class Edit_Medical_Notes : Page
     {
         private MasterManager _manager;
@@ -43,8 +53,13 @@ namespace WpfPresentation.Animals
         /// Created: 2023/03/2
         /// 
         /// Constructor that is used when a Medicalnote is being edited
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// <param name="medicalRecord">the medicalRecord that will be overwriten</param>
         /// <param name="manager">the MasterManager being used through out the program</param>
         public Edit_Medical_Notes(MedicalRecordVM medicalRecord, MasterManager manager)
@@ -58,8 +73,13 @@ namespace WpfPresentation.Animals
         /// Ethan Kline
         /// 2023/03/10
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// <param name="animal"></param>
         /// <param name="manager"></param>
         public Edit_Medical_Notes(Animal animal, MasterManager manager)
@@ -74,8 +94,13 @@ namespace WpfPresentation.Animals
         /// Ethan Kline
         /// 2023/03/10
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -89,8 +114,13 @@ namespace WpfPresentation.Animals
         /// Ethan Kline
         /// 2023/03/10
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         private void Populate()
         {
             if (_MedicalRecordVM != null)
@@ -104,6 +134,11 @@ namespace WpfPresentation.Animals
         /// 
         /// When the save buttton is clicked, the input on the edit medical notes page is cheked. 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// 
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -163,8 +198,13 @@ namespace WpfPresentation.Animals
         /// Ethan Kline
         /// 2023/03/10
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/17
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
