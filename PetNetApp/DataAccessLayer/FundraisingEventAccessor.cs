@@ -6,8 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DataObjects;
 using DataAccessLayerInterfaces;
-using DataObjects;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace DataAccessLayer
@@ -364,7 +362,6 @@ namespace DataAccessLayer
         {
             //throw new NotImplementedException();
             List<FundraisingEventVM> fundraisingEvents = new List<FundraisingEventVM>();
-            
 
             var connectionFactory = new DBConnection();
             var conn = connectionFactory.GetConnection();
@@ -402,10 +399,11 @@ namespace DataAccessLayer
                                 NumOfAttendees = reader.IsDBNull(13) ? null : (int?)reader.GetInt32(13),
                                 NumAnimalsAdopted = reader.IsDBNull(14) ? null : (int?)reader.GetInt32(14),
                                 UpdateNotes = reader.IsDBNull(15) ? null : reader.GetString(15),
-                                Sponsors = new List<InstitutionalEntity>(),
                                 Contacts = new List<InstitutionalEntity>(),
-                                Host = new InstitutionalEntity()
-
+                                Sponsors = new List<InstitutionalEntity>(),
+                                Host = new InstitutionalEntity(),
+                                Campaign = new FundraisingCampaignVM(),
+                                Animals = new List<AnimalVM>()
                             });
                         }
                     }
@@ -481,7 +479,7 @@ namespace DataAccessLayer
                 removeFundraisingInstitutionalcmd.Parameters.AddWithValue("@EventId", fundraisingEvent.FundraisingEventId);
                 rowAffected += removeFundraisingInstitutionalcmd.ExecuteNonQuery();
 
-                
+
                 foreach (var animal in fundraisingEvent.Animals)
                 {
                     var addFundraiserAnimalcmd = new SqlCommand("sp_insert_fundraiser_animal", conn, transaction);
@@ -491,7 +489,7 @@ namespace DataAccessLayer
                     rowAffected += addFundraiserAnimalcmd.ExecuteNonQuery();
                 }
 
-               
+
                 List<InstitutionalEntity> institutionalEntitiesToAdd = fundraisingEvent.Contacts;
                 foreach (InstitutionalEntity institutional in fundraisingEvent.Sponsors)
                 {
@@ -505,7 +503,7 @@ namespace DataAccessLayer
                     addFundraisingInstitutionalcmd.Parameters.AddWithValue("@ContactId", institutional.InstitutionalEntityId);
                     rowAffected += addFundraisingInstitutionalcmd.ExecuteNonQuery();
                 }
-                
+
 
                 var cmdText = "sp_update_fundrasing_event";
                 var cmd = new SqlCommand(cmdText, conn, transaction);
@@ -552,7 +550,7 @@ namespace DataAccessLayer
             var cmdText = "sp_select_fundraising_event_by_fundraising_event_id";
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@EventId", SqlDbType.Int).Value = fundraisingEventId;
+            cmd.Parameters.Add("@FundraisingEventId", SqlDbType.Int).Value = fundraisingEventId;
 
             try
             {
@@ -664,6 +662,129 @@ namespace DataAccessLayer
             }
 
             return recordsUpdated;
+        }
+
+        public List<FundraisingEventVM> SelectAllActiveFundraisingEventsByShelterId(int shelterId)
+        {
+            //throw new NotImplementedException();
+            List<FundraisingEventVM> fundraisingEvents = new List<FundraisingEventVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_active_fundraising_events_by_shelterId";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int).Value = shelterId;
+
+            try
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            fundraisingEvents.Add(new FundraisingEventVM()
+                            {
+                                // [FundraisingEventId], [UsersId], [ImageId], [CampaignId], [ShelterId], [Title], [StartTime], [EndTime],
+                                // [Hidden], [Complete], [Description], [AdditionalInfo], [Cost], [NumOfAttendees], [NumAnimalsAdopted], [UpdateNotes]
+                                FundraisingEventId = reader.GetInt32(0),
+                                UsersId = reader.GetInt32(1),
+                                ImageId = reader.IsDBNull(2) ? null : reader.GetString(2),
+                                CampaignId = reader.IsDBNull(3) ? null : (int?)reader.GetInt32(3),
+                                ShelterId = reader.GetInt32(4),
+                                Title = reader.GetString(5),
+                                StartTime = reader.IsDBNull(6) ? new DateTime?() : reader.GetDateTime(6),
+                                EndTime = reader.IsDBNull(7) ? new DateTime?() : reader.GetDateTime(7),
+                                Hidden = reader.GetBoolean(8),
+                                Complete = reader.GetBoolean(9),
+                                Description = reader.IsDBNull(10) ? null : reader.GetString(10),
+                                AdditionalInfo = reader.IsDBNull(11) ? null : reader.GetString(11),
+                                Cost = reader.IsDBNull(12) ? null : (decimal?)reader.GetDecimal(12),
+                                NumOfAttendees = reader.IsDBNull(13) ? null : (int?)reader.GetInt32(13),
+                                NumAnimalsAdopted = reader.IsDBNull(14) ? null : (int?)reader.GetInt32(14),
+                                UpdateNotes = reader.IsDBNull(15) ? null : reader.GetString(15),
+                                Contacts = new List<InstitutionalEntity>(),
+                                Sponsors = new List<InstitutionalEntity>(),
+                                Host = new InstitutionalEntity(),
+                                Campaign = new FundraisingCampaignVM(),
+                                Animals = new List<AnimalVM>()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return fundraisingEvents;
+        }
+
+        public List<FundraisingEventVM> SelectAllActiveFundraisingEvents()
+        {
+            //throw new NotImplementedException();
+            List<FundraisingEventVM> fundraisingEvents = new List<FundraisingEventVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_active_fundraising_events";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            fundraisingEvents.Add(new FundraisingEventVM()
+                            {
+                                // [FundraisingEventId], [UsersId], [ImageId], [CampaignId], [ShelterId], [Title], [StartTime], [EndTime],
+                                // [Hidden], [Complete], [Description], [AdditionalInfo], [Cost], [NumOfAttendees], [NumAnimalsAdopted], [UpdateNotes]
+                                FundraisingEventId = reader.GetInt32(0),
+                                UsersId = reader.GetInt32(1),
+                                ImageId = reader.IsDBNull(2) ? null : reader.GetString(2),
+                                CampaignId = reader.IsDBNull(3) ? null : (int?)reader.GetInt32(3),
+                                ShelterId = reader.GetInt32(4),
+                                Title = reader.GetString(5),
+                                StartTime = reader.IsDBNull(6) ? new DateTime?() : reader.GetDateTime(6),
+                                EndTime = reader.IsDBNull(7) ? new DateTime?() : reader.GetDateTime(7),
+                                Hidden = reader.GetBoolean(8),
+                                Complete = reader.GetBoolean(9),
+                                Description = reader.IsDBNull(10) ? null : reader.GetString(10),
+                                AdditionalInfo = reader.IsDBNull(11) ? null : reader.GetString(11),
+                                Cost = reader.IsDBNull(12) ? null : (decimal?)reader.GetDecimal(12),
+                                NumOfAttendees = reader.IsDBNull(13) ? null : (int?)reader.GetInt32(13),
+                                NumAnimalsAdopted = reader.IsDBNull(14) ? null : (int?)reader.GetInt32(14),
+                                UpdateNotes = reader.IsDBNull(15) ? null : reader.GetString(15),
+                                Contacts = new List<InstitutionalEntity>(),
+                                Sponsors = new List<InstitutionalEntity>(),
+                                Host = new InstitutionalEntity(),
+                                Campaign = new FundraisingCampaignVM(),
+                                Animals = new List<AnimalVM>()
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return fundraisingEvents;
         }
     }
 }

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfPresentation.Management.Inventory.Library"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       MinWidth="800"
@@ -24,10 +25,10 @@
             <StackPanel x:Name="stackLibraryUIPageTop" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" >
                 <Button x:Name="btnLibraryHelp" Content="?" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"
                     Margin="10" MinHeight="50" MinWidth="50" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Click="btnLibraryHelp_Click"/>
+                <xctk:CheckComboBox x:Name="comboFilterLibraryByTag" HorizontalAlignment="Right"
+                          Margin="10" MinWidth="180" ItemSelectionChanged="comboFilterLibraryByTag_ItemSelectionChanged"/>
                 <TextBox x:Name="txtFilterLibraryByName" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=rsrcTextBox}"
-                         Margin="10" MinWidth="180">Filter by name</TextBox>
-                <ComboBox x:Name="comboFilterLibraryByTag" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=rsrcComboBox}" 
-                          Margin="10" MinWidth="180">Filter by tag</ComboBox>
+                         Margin="10" MinWidth="180" GotFocus="txtFilterLibraryByName_GotFocus" LostFocus="txtFilterLibraryByName_LostFocus" KeyDown="txtFilterLibraryByName_KeyDown">Filter by Name</TextBox>
             </StackPanel>
             <DataGrid Grid.Column="0" Grid.Row="1"
                 x:Name="datLibraryInventory" IsReadOnly="True" Style="{StaticResource ResourceKey=rsrcDataGrid}"
