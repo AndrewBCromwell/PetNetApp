@@ -103,13 +103,22 @@ namespace MVCPresentation.Controllers
             
         }
 
+
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/04/19
         /// 
         /// Controller method for /Animals/Adoptable to view a list of adoptable animals
         /// </summary>
+        /// 
+        /// /// <remarks>
+        /// Andrew Cromwell
+        /// Updated 2023/04/20
+        /// 
+        /// Added the Viewbag.DisplayedAnimals and FilterOptions to allow for filtering by animal type
+        /// </remarks>
         /// <returns>Adoptable View</returns>
+        [HttpGet]
         public ActionResult Adoptable()
         {
             List<AdoptableAnimalModel> adoptableAnimalModels = new List<AdoptableAnimalModel>();
@@ -117,6 +126,16 @@ namespace MVCPresentation.Controllers
             try
             {
                 animalVMs = _manager.AnimalManager.RetrieveAllAdoptableAnimals();
+                ViewBag.DisplayedAnimals = "All Animals";
+                List<string> filterOptions = new List<string>()
+                {
+                    "All",
+                    "Cats",
+                    "Dogs",
+                    "Birds",
+                    "Other"
+                };
+                ViewBag.FilterOptions = filterOptions;
             }
             catch (Exception ex)
             {
@@ -161,6 +180,105 @@ namespace MVCPresentation.Controllers
             return View(adoptableAnimalModels);
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/04/21
+        /// 
+        /// Displays the animals of the type selected by the user.
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
+        [HttpPost, ActionName("Adoptable")]
+        public ActionResult FilterAdoptable()
+        {
+            string filterFromForm = Convert.ToString(Request["FilterAnimal"].ToString());
+            List<AdoptableAnimalModel> adoptableAnimalModels = new List<AdoptableAnimalModel>();
+            List<AnimalVM> animalVMs = new List<AnimalVM>();
+            try
+            {
+                switch (filterFromForm)
+                {
+                    case "All":
+                        animalVMs = _manager.AnimalManager.RetrieveAllAdoptableAnimals();
+                        ViewBag.DisplayedAnimals = "All Animals";
+                        break;
+                    case "Dogs":
+                        animalVMs = _manager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Dog").ToList();
+                        ViewBag.DisplayedAnimals = "Dogs";
+                        break;
+                    case "Cats":
+                        animalVMs = _manager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Cat").ToList();
+                        ViewBag.DisplayedAnimals = "Cats";
+                        break;
+                    case "Birds":
+                        animalVMs = _manager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Bird").ToList();
+                        ViewBag.DisplayedAnimals = "Birds";
+                        break;
+                    case "Other":
+                        animalVMs = _manager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId != "Dog" && A.AnimalTypeId != "Cat" &&
+                            A.AnimalTypeId != "Bird").ToList();
+                        ViewBag.DisplayedAnimals = "Other Animals";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return View("Error");
+            }
+            List<string> filterOptions = new List<string>()
+                {
+                    "All",
+                    "Cats",
+                    "Dogs",
+                    "Birds",
+                    "Other"
+                };
+            ViewBag.FilterOptions = filterOptions;
+            foreach (var animal in animalVMs)
+            {
+                AdoptableAnimalModel adoptableAnimalModel = new AdoptableAnimalModel();
+                adoptableAnimalModel.AnimalVM = animal;
+                List<Images> imagesList = new List<Images>();
+                try
+                {
+                    imagesList = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(animal.AnimalId);
+                }
+                catch
+                {
+                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/BrokenImage.png";
+                }
+
+                if (imagesList.Count == 0)
+                {
+                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/no_image.png";
+                }
+                else
+                {
+                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/" + imagesList[0].ImageId + ".png";
+                }
+
+                try
+                {
+                    adoptableAnimalModel.ShelterName = " | " + _manager.ShelterManager.
+                        RetrieveShelterVMByShelterID(animal.AnimalShelterId).ShelterName;
+                }
+                catch
+                {
+                    adoptableAnimalModel.ShelterName = "";
+                }
+                adoptableAnimalModels.Add(adoptableAnimalModel);
+            }
+
+            return View(adoptableAnimalModels);
+        }
+
         public ActionResult Foster()
         {
             return View();
@@ -170,7 +288,7 @@ namespace MVCPresentation.Controllers
         {
             return View();
         }
-
+                
         [HttpGet]
         public ActionResult AdoptableAnimal(int? animalId)
         {

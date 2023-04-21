@@ -439,9 +439,6 @@ namespace MVCPresentation.Controllers
                     return View("Error");
                 }
 
-                //ViewBag.UserId = masterManager.User.UsersId;
-                //ViewBag.HasAdminRole = masterManager.User.Roles.Contains("Admin");
-                //ViewBag.HasModeratorRole = masterManager.User.Roles.Contains("Moderator");
                 ViewBag.UserId = GetLoggedInUser() == null ? -1 : GetLoggedInUser().UsersId;
                 ViewBag.HasAdminRole = User.IsInRole("Admin");
                 ViewBag.HasModeratorRole = User.IsInRole("Moderator");
@@ -454,12 +451,6 @@ namespace MVCPresentation.Controllers
                 return View("Error");
             }
         }
-
-        // GET: Community/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
 
         // POST: Community/Create
         [Authorize]

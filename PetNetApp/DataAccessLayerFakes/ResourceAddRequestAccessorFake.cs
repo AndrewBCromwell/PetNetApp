@@ -55,6 +55,12 @@ namespace DataAccessLayerFakes
             });
         }
 
+        public int InsertResourceAddRequest(ResourceAddRequest resourceAddRequest)
+        {
+            _fakeResourceAddRequsts.Add(resourceAddRequest);
+            return 1;
+        }
+
         public List<ResourceAddRequest> SelectActiveResourceAddRequestsByShelterId(int shelterId)
         {
             return _fakeResourceAddRequsts.Where(r => r.Active == true && r.ShelterId == shelterId).ToList();
