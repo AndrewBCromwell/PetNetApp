@@ -188,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Binders\UsersModelBinder.cs" />
     <Compile Include="Migrations\202304070738315_InitialCreate.cs" />
     <Compile Include="Migrations\202304070738315_InitialCreate.Designer.cs">
       <DependentUpon>202304070738315_InitialCreate.cs</DependentUpon>
@@ -377,6 +378,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Community\ReportReplyPartial.cshtml" />
+    <Content Include="Views\Community\BeginReplyReport.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

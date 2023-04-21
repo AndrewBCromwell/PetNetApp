@@ -174,7 +174,7 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Failed to report the post", ex);
+                throw new ApplicationException("Failed to unreport the post", ex);
             }
         }
     }
