@@ -89,5 +89,20 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedRequests, returnedRequests.Count);
             Assert.AreEqual(expectedRequestLines, returnedRequests[0].RequestLines.Count);
         }
+
+        [TestMethod]
+        public void TestEditRequestAcknowledge()
+        {
+            bool expectedResult = true;
+            bool actualResult = false;
+            Request request = new Request();
+            request.RequestId = 1;
+
+            bool newAcknowledged = true;
+
+
+            actualResult = _requestManager.EditRequestAcknowledge(request.RequestId, newAcknowledged, request.Acknowledged);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

@@ -310,5 +310,13 @@ namespace WpfPresentation.Animals
             var animalNoteWindow = new AnimalUpdatesWindow(_animalUpdates);
             animalNoteWindow.ShowDialog();
         }
+
+        private void btnViewApplications_Click(object sender, RoutedEventArgs e)
+        {
+            //NavigationService nav = NavigationService.GetNavigationService(this);
+            //nav.Navigate(new WpfPresentation.Animals.);
+            AdoptionApplicantsWindow adoptionApplicantsWindow = new AdoptionApplicantsWindow(animalVM, _masterManager);
+            adoptionApplicantsWindow.Show();
+        }
     }
 }

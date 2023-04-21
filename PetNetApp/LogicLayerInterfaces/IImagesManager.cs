@@ -36,6 +36,11 @@ namespace LogicLayerInterfaces
         /// 
         /// Uses the Accessor method to retrieve the actual file from its storage location
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="images">The images object to fetch the displayable bitmap for</param>
         /// <returns>A displayable bitmap image</returns>
         BitmapImage RetrieveImageByImages(Images images);
@@ -46,6 +51,11 @@ namespace LogicLayerInterfaces
         /// 
         /// Uses the accessors method to retrieve a list of images objects for the specified animals medical records
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="animalId">The id of the animal to get the medical record images for</param>
         /// <returns>A list of Images objects</returns>
         List<Images> RetrieveMedicalImagesByAnimalId(int animalId);

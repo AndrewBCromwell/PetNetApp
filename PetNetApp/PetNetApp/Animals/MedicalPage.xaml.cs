@@ -7,8 +7,9 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,17 @@ namespace WpfPresentation.Animals.Medical
         private List<Animal> _animals = null;
 
         private Grid grid = null;
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/02/11
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="manager"></param>
         public MedicalPage(MasterManager manager)
         {
             InitializeComponent();
@@ -50,6 +61,18 @@ namespace WpfPresentation.Animals.Medical
             _manager = manager;
         }
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/02/11
+        /// 
+        /// </summary>
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="manager"></param>
+        /// <returns></returns>
         public static MedicalPage GetMedicalPage(MasterManager manager)
         {
             if (_existingMedicalPage == null)
@@ -59,7 +82,16 @@ namespace WpfPresentation.Animals.Medical
             return _existingMedicalPage;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pgMedicalAnimalsView_Loaded(object sender, RoutedEventArgs e)
         {
             wrpMedicalAnimalList.Children.Clear(); // this prevents getting dupe animals when loading page a second time
@@ -68,7 +100,7 @@ namespace WpfPresentation.Animals.Medical
                 _animals = _animalManager.RetrieveAllAnimals("");
                 foreach (Animal animal in _animals)
                 {
-                    createAnimalBox(animal);
+                    CreateAnimalBox(animal);
                 }
             }
             catch (Exception ex)
@@ -89,8 +121,13 @@ namespace WpfPresentation.Animals.Medical
         /// Updated: 2023/02/16 
         /// removed reduntant code
         /// </remarks>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="animal"></param>
-        private void createAnimalBox(Animal animal)
+        private void CreateAnimalBox(Animal animal)
         {
             grid = new Grid();
             grid.Width = 250;
@@ -151,12 +188,12 @@ namespace WpfPresentation.Animals.Medical
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// 
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="animalName"></param>
-        private void refreshListOfAnimals(String animalName)
+        private void RefreshListOfAnimals(String animalName)
         {
             try
             {
@@ -171,15 +208,26 @@ namespace WpfPresentation.Animals.Medical
 
             foreach (Animal animal in _animals)
             {
-                createAnimalBox(animal);
+                CreateAnimalBox(animal);
             }
         }
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/02/11
+        /// 
+        /// </summary>
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearchMedicalAnimals_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                refreshListOfAnimals(txtSearchMedicalAnimals.Text);
+                RefreshListOfAnimals(txtSearchMedicalAnimals.Text);
             }
         }
     }

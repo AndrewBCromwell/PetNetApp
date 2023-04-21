@@ -34,9 +34,9 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="medicalRecordId">medical record id</param>
         /// <param name="diagnosis">A name of an animal's diagnosis</param>
@@ -87,10 +87,10 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         /// 
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="animalId"></param>
         /// <param name="medicalNotes"></param>
@@ -107,6 +107,11 @@ namespace DataAccessLayerInterfaces
         /// Retireves all medical records for a specified animalId.
         /// Returns a list of MedicalRecordVM.
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="animalId">the animal to retrieve medical records for</param>
         /// <exception cref="SQLException">retrieval fails</exception>
         /// <returns>List of MedicalRecordVM for the specified animalId</returns>

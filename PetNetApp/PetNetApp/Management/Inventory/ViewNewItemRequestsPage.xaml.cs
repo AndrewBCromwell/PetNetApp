@@ -65,7 +65,6 @@ namespace WpfPresentation.Management.Inventory
             }
             _existingViewNewItemRequestsPage.LoadResourceAddRequestsData();
 
-
             return _existingViewNewItemRequestsPage;
         }
 

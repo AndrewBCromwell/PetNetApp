@@ -7,8 +7,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/17
+/// 
+/// Final QA
 /// </remarks>
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -31,12 +33,7 @@ namespace LogicLayerTest
         {
             vaccinationManager = new VaccinationManager(new VaccinationAccessorFake());
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/09
-        /// 
-        /// Tests RetrieveVaccinationsByAnimal
-        /// </summary>
+
         [TestMethod]
         public void TestRetrieveVaccinationsByAnimalId()
         {
@@ -45,12 +42,7 @@ namespace LogicLayerTest
             int actualResult = vaccinationManager.RetrieveVaccinationsByAnimalId(animalId).Count;
             Assert.AreEqual(expectedResult, actualResult);
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/09
-        /// 
-        /// Tests AddVaccination
-        /// </summary>
+
         [TestMethod]
         public void TestAddVaccinationByMedicalRecordId()
         {
@@ -70,12 +62,7 @@ namespace LogicLayerTest
             bool actualResult = vaccinationManager.AddVaccination(testVaccination, animalId);
             Assert.AreEqual(expectedResult, actualResult);
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/09
-        /// TestsEditVaccination
-        /// 
-        /// </summary>
+
         [TestMethod]
         public void TestEditVaccination()
         {

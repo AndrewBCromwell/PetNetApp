@@ -27,7 +27,8 @@ AS
 		UPDATE [Users]
 		SET [ShelterId] = 	@NewShelterid
 		WHERE 	[UsersId] = 	@UsersId
-		AND		[ShelterId] = 	@OldShelterid
+		AND		([ShelterId] = 	@OldShelterid
+			OR	(@OldShelterid IS NULL AND ShelterId IS NULL))
 
 		Return @@ROWCOUNT
     END

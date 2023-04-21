@@ -9,8 +9,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/17
+/// 
+/// Final QA
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -289,7 +291,16 @@ namespace WpfPresentation.Animals
                     UserId = usersId
 
                 };
-                _masterManager.VaccinationManager.EditVaccination(_vaccine, newVaccination);
+
+                try
+                {
+                    _masterManager.VaccinationManager.EditVaccination(_vaccine, newVaccination);
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
 
                 NavigationService.Navigate(new VaccinationsPage(_currentAnimal));
             }
@@ -302,6 +313,13 @@ namespace WpfPresentation.Animals
         /// 
         /// Returns user back to Vaccination Page
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -314,6 +332,13 @@ namespace WpfPresentation.Animals
         /// 
         /// Uses a Regex for the UsersId input. This makes restricts users to only use numbers when inputing the Id.
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtUsersId_PreviewTextInput(object sender, TextCompositionEventArgs e)

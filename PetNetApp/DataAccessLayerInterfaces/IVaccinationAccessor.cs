@@ -28,12 +28,14 @@ namespace DataAccessLayerInterfaces
         /// Inserts new vaccination. Takes in a Vaccination object and animalId as input
         /// return the number of rows updated
         /// 
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="vaccination"></param>
         /// <param name="animalId"></param>
         /// <returns></returns>
@@ -45,12 +47,14 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Retrieves a list of vaccinations by animal Id. Takes in an animal Id as a parameter
         /// returns list of Vaccination objects
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="animalId"></param>
         /// <returns></returns>
         List<Vaccination> SelectVaccinationsByAnimalId(int animalId);
@@ -61,6 +65,13 @@ namespace DataAccessLayerInterfaces
         /// Updates Vaccination object. Takes in oldVaccination and newVaccination objects as parameters.
         /// returns the number of rows updated
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="oldVaccination"></param>
         /// <param name="newVaccination"></param>
         /// <returns></returns>

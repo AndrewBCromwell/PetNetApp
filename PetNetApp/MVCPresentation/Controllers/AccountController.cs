@@ -180,15 +180,16 @@ namespace MVCPresentation.Controllers
                         var oldUser = usrMgr.AuthenticateUser(model.Email, model.Password);
                         var user = new ApplicationUser
                         {
+                            UsersId = oldUser.UsersId,
                             GivenName = oldUser.GivenName,
                             FamilyName = oldUser.FamilyName,
-                            UsersId = oldUser.UsersId,
                             PhoneNumber = oldUser.Phone,
                             PronounId = oldUser.PronounId,
                             GenderId = oldUser.GenderId,
                             ShelterId = oldUser.ShelterId,
                             Address = oldUser.Address,
                             AddressTwo = oldUser.Address2,
+                            Zipcode = oldUser.Zipcode,
 
                             UserName = model.Email,
                             Email = model.Email
@@ -210,26 +211,43 @@ namespace MVCPresentation.Controllers
                     }
                     else // for web-side users
                     {
-                        var user = new ApplicationUser
+                        var newUser = new DataObjects.Users()
                         {
+                            GenderId = model.GenderId.First(),
+                            PronounId = model.PronounId.First(),
                             GivenName = model.GivenName,
                             FamilyName = model.FamilyName,
-                            PhoneNumber = model.Phone,
-                            PronounId = model.PronounId.First(),
-                            GenderId = model.GenderId.First(),
+                            Email = model.Email,
                             Zipcode = model.Zipcode,
-                            UserName = model.Email,
-                            Email = model.Email
+                            Phone = model.Phone
+                            
                         };
 
-                        var result = await UserManager.CreateAsync(user, model.Password);
-
-                        if (result.Succeeded)
+                        if (usrMgr.AddUser(newUser, model.Password))
                         {
-                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                            return RedirectToAction("Index", "Home");
+                            var userId = usrMgr.RetrieveUserByUserEmail(model.Email);
+                            var user = new ApplicationUser
+                            {
+                                UsersId = userId.UsersId,
+                                GivenName = model.GivenName,
+                                FamilyName = model.FamilyName,
+                                PhoneNumber = model.Phone,
+                                PronounId = model.PronounId.First(),
+                                GenderId = model.GenderId.First(),
+                                Zipcode = model.Zipcode,
+                                UserName = model.Email,
+                                Email = model.Email
+                            };
+
+                            var result = await UserManager.CreateAsync(user, model.Password);
+
+                            if (result.Succeeded)
+                            {
+                                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                                return RedirectToAction("Index", "Home");
+                            }
+                            AddErrors(result);
                         }
-                        AddErrors(result);
                     }
                 }
                 catch
@@ -462,6 +480,7 @@ namespace MVCPresentation.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["User"] = null;
             return RedirectToAction("Index", "Home");
         }
 

@@ -641,7 +641,7 @@ namespace DataAccessLayerFakes
             throw new NotImplementedException();
         }
 
-        public int UpdateUserShelterid(int userid, int shelterid, int oldShelterId)
+        public int UpdateUserShelterid(int userid, int shelterid, int? oldShelterId)
         {
             int rowsAffected = 0;
 
@@ -664,6 +664,11 @@ namespace DataAccessLayerFakes
             }
 
             return rowsAffected;
+        }
+
+        public int InsertOrDeleteUserRole(int usersId, string role, bool delete = false)
+        {
+            throw new NotImplementedException();
         }
     }
 }

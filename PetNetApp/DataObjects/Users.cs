@@ -1,4 +1,16 @@
-﻿using System;
+﻿/// <summary>
+/// Mads Rhea
+/// Created: 2023/02/01
+/// 
+/// Items object
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/13
+/// 
+/// FinalQA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

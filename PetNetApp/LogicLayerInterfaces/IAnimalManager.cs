@@ -132,6 +132,19 @@ namespace LogicLayerInterfaces
         /// <returns>Boolean representing success or failure</returns>
         bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
         List<Animal> RetrieveAllAnimals(int shelterId);
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/11
+        /// 
+        /// Retrieve Animal Medical Profile By Animal Id
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="AnimalId"></param>
+        /// <returns></returns>
         AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId);
 
         AnimalVM RetriveAnimalAdoptableProfile(int animalId);
@@ -154,5 +167,20 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException">Retrieve Fails</exception>
         /// <returns>List of AnimalVMs</returns>
         List<AnimalVM> RetrieveAnimalsByFundrasingEventId(int fundraisingEventId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/04/12
+        /// 
+        /// Retrieves all animals available for adoption at all shelters
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// <exception cref="ApplicationException">Retrieve Fails</exception>
+        /// <returns>List of AnimalVM objects</returns>
+        List<AnimalVM> RetrieveAllAdoptableAnimals();
     }
 }

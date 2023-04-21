@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAdoptionApplicationAccessor.cs" />
+    <Compile Include="IAdoptionApplicationResponseAccessor.cs" />
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IFosterAccessor.cs" />

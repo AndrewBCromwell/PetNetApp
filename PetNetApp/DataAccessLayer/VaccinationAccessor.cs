@@ -28,15 +28,6 @@ namespace DataAccessLayer
 {
     public class VaccinationAccessor : IVaccinationAccessor
     {
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/16
-        /// 
-        /// Creates a new medical record, grabs the ID of that record, and then creates new Vaccination
-        /// </summary>
-        /// <param name="vaccination"></param>
-        /// <param name="animalId"></param>
-        /// <returns></returns>
         public int InsertVaccination(Vaccination vaccination, int animalId)
         {
             int ID;
@@ -157,14 +148,6 @@ namespace DataAccessLayer
             return vaccination;
         }
 
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/12
-        /// 
-        /// Selects vaccination by animalId
-        /// </summary>
-        /// <param name="animalId"></param>
-        /// <returns></returns>
         public List<Vaccination> SelectVaccinationsByAnimalId(int animalId)
         {
             List<Vaccination> vaccinations = new List<Vaccination>();
@@ -217,15 +200,6 @@ namespace DataAccessLayer
             return vaccinations;
         }
 
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/12
-        /// 
-        /// Updates vaccination
-        /// </summary>
-        /// <param name="oldVaccination"></param>
-        /// <param name="newVaccination"></param>
-        /// <returns></returns>
         public int UpdateVaccination(Vaccination oldVaccination, Vaccination newVaccination)
         {
             int rows; //rows returned
@@ -246,14 +220,11 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@OldVaccineName", oldVaccination.VaccineName);
             cmd.Parameters.AddWithValue("@OldVaccineAdminsterDate", oldVaccination.VaccineAdminsterDate);
 
+            cmd.Parameters.AddWithValue("@UsersId", newVaccination.UserId);
+            cmd.Parameters.AddWithValue("@VaccineName", newVaccination.VaccineName);
+            cmd.Parameters.AddWithValue("@VaccineAdminsterDate", newVaccination.VaccineAdminsterDate);
 
-            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
-            cmd.Parameters.Add("@VaccineName", SqlDbType.NVarChar, 50);
-            cmd.Parameters.Add("@VaccineAdminsterDate", SqlDbType.DateTime);
-
-            cmd.Parameters["@UsersId"].Value = newVaccination.UserId;
-            cmd.Parameters["@VaccineName"].Value = newVaccination.VaccineName;
-            cmd.Parameters["@VaccineAdminsterDate"].Value = newVaccination.VaccineAdminsterDate;
+           
 
             try
             {

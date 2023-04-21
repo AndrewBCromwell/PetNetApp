@@ -60,10 +60,31 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="ScottPlot, Version=4.1.63.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScottPlot.4.1.63\lib\net462\ScottPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="ScottPlot.WPF, Version=4.1.63.0, Culture=neutral, PublicKeyToken=e53b06131e34a3aa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScottPlot.WPF.4.1.63\lib\net472\ScottPlot.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.7.2\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -107,11 +128,23 @@
     <Compile Include="Animals\AddTestPage.xaml.cs">
       <DependentUpon>AddTestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\AdoptionApplicationResponse.xaml.cs">
+      <DependentUpon>AdoptionApplicationResponse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
       <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\AnimalMedicalTestsPage.xaml.cs">
       <DependentUpon>AnimalMedicalTestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\AdoptionApplicantsWindow.xaml.cs">
+      <DependentUpon>AdoptionApplicantsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\ApplicationResponseWindow.xaml.cs">
+      <DependentUpon>ApplicationResponseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\ViewApplication.xaml.cs">
+      <DependentUpon>ViewApplication.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animals\AnimalUpdatesWindow.xaml.cs">
       <DependentUpon>AnimalUpdatesWindow.xaml</DependentUpon>
@@ -125,8 +158,23 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\Library\RequestNewLibraryItem.xaml.cs">
+      <DependentUpon>RequestNewLibraryItem.xaml</DependentUpon>
+	</Compile>
+    <Compile Include="Development\Events\ViewEventGraphsPage.xaml.cs">
+      <DependentUpon>ViewEventGraphsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\ViewEventGraphsPage.xaml.cs">
+      <DependentUpon>ViewEventGraphsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ApplicantUC.xaml.cs">
+      <DependentUpon>ApplicantUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Community\ViewNearbyResourcesMap.xaml.cs">
       <DependentUpon>ViewNearbyResourcesMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\ViewAllAdoptableAnimalsPage.xaml.cs">
+      <DependentUpon>ViewAllAdoptableAnimalsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
       <DependentUpon>AddEditViewFundraisingCampaignPage.xaml</DependentUpon>
@@ -137,7 +185,7 @@
     <Compile Include="Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
       <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Donations\ViewDonationReceiptWindow.xaml.cs">
+    <Compile Include="Fundraising\ViewDonationReceiptWindow.xaml.cs">
       <DependentUpon>ViewDonationReceiptWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
@@ -235,6 +283,9 @@
     </Compile>
     <Compile Include="Management\ViewTicketPage.xaml.cs">
       <DependentUpon>ViewTicketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AdoptableAnimalListUserControl.xaml.cs">
+      <DependentUpon>AdoptableAnimalListUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shelters\HoursOfOperation.xaml.cs">
       <DependentUpon>HoursOfOperation.xaml</DependentUpon>
@@ -516,6 +567,22 @@
     <Compile Include="Management\AddEditSchedule.xaml.cs">
       <DependentUpon>AddEditSchedule.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AdoptionApplicationResponse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\AdoptionApplicantsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ApplicationResponseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ViewApplication.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Animals\AnimalUpdatesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -528,6 +595,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Management\Inventory\Library\RequestNewLibraryItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Development\Events\ViewEventGraphsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Events\ViewEventGraphsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ApplicantUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Community\ViewNearbyResourcesMap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -535,6 +618,10 @@
     <Page Include="Development\Fundraising\AddEditViewFundraisingCampaignPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animals\ViewAllAdoptableAnimalsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
       <SubType>Designer</SubType>
@@ -548,7 +635,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Donations\ViewDonationReceiptWindow.xaml">
+    <Page Include="Fundraising\ViewDonationReceiptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -914,6 +1001,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\AdoptableAnimalListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\DonationUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1271,6 +1362,7 @@
     <Folder Include="Development\Donations\" />
     <Folder Include="Development\Misc\" />
     <Folder Include="Donate\" />
+    <Folder Include="Donations\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
@@ -1593,6 +1685,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\no_image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

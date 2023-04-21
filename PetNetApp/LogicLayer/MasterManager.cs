@@ -64,6 +64,7 @@ namespace LogicLayer
         public IFosterManager FosterManager { get; set; }
         public IPledgeManager PledgeManager { get; set; }
         public IEventManager EventManager { get; set; }
+        public IAdoptionApplicationResponseManager AdoptionApplicationResponseManager { get; set; }
 
 
         private MasterManager()
@@ -101,22 +102,23 @@ namespace LogicLayer
             FosterManager = new FosterManager();
             PledgeManager = new PledgeManager();
             EventManager = new EventManager();
+            AdoptionApplicationResponseManager = new AdoptionApplicationResponseManager();
 
             //for testing from dev page
-            User = new UsersVM()
-            {
-                UsersId = 100001,
-                ShelterId = 100000,
-                GivenName = "Barry",
-                FamilyName = "Mikulas",
-                Email = "bmikulas@company.com",
-                Address = "4150 riverview road",
-                Zipcode = "52411",
-                Phone = "319-123-1325",
-                Active = true,
-                Suspend = false,
-                Roles = new List<string>() { "Admin" }
-            };
+            //User = new UsersVM()
+            //{
+            //    UsersId = 100000,
+            //    ShelterId = 100000,
+            //    GivenName = "Barry",
+            //    FamilyName = "Mikulas",
+            //    Email = "bmikulas@company.com",
+            //    Address = "4150 riverview road",
+            //    Zipcode = "52411",
+            //    Phone = "319-123-1325",
+            //    Active = true,
+            //    Suspend = false,
+            //    Roles = new List<string>() { "Admin" }
+            //};
         }
 
         public static MasterManager GetMasterManager()
