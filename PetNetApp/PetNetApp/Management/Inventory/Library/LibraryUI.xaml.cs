@@ -15,6 +15,9 @@
 /// Updated: 2023/04/21
 /// Final QA
 /// 
+/// Brian Collum
+/// Updated: 2023/04/21
+/// Added library UI filtering
 /// </remarks>
 
 using System;
@@ -45,6 +48,11 @@ namespace WpfPresentation.Management.Inventory.Library
         private LibraryManager _libraryManager = null;
 
         private List<Item> _libraryItemList = null;
+        // Filter controls
+        private List<string> _categoryList = null;
+        private List<string> _filteredCategoryList = null;
+        private List<Item> _filteredLibraryItemList = null;
+        private string _itemNameFilter = null;
 
         /// <summary>
         /// Brian Collum
@@ -105,13 +113,21 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Zaid Rachman
         /// Updated: 2023/04/21
         /// Final QA
+        /// 
+        /// Brian Collum
+        /// Updated: 2023/04/21
+        /// Added support for filtering
         /// </remarks>
         public void RefreshLibraryList()
         {
             try
             {
+                // Both category and item lists need to be updated in case of additions
+                _categoryList = _masterManager.ItemManager.RetrieveAllCategories();
                 _libraryItemList = _libraryManager.GetLibraryItemList();
-                datLibraryInventory.ItemsSource = _libraryItemList;
+                ApplyFilters();
+                // Set the datagrid to display the filtered list
+                datLibraryInventory.ItemsSource = _filteredLibraryItemList;
             }
             catch (Exception ex)
             {
@@ -149,11 +165,27 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Zaid Rachman
         /// Updated: 2023/04/21
         /// Final QA
+        /// 
+        /// Brian Collum
+        /// Updated 2023/04/21
+        /// Now loads categories for filtering, and initializes filtering lists
         /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_libraryItemList == null)
             {
+                // Initialize filter lists
+                try
+                {
+                    _categoryList = _masterManager.ItemManager.RetrieveAllCategories();
+                    comboFilterLibraryByTag.ItemsSource = _categoryList;
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", "Failed to retrieve list of item categories " + ex.InnerException.Message, ButtonMode.Ok);
+                }
+                _filteredCategoryList = new List<string>();
+                _filteredLibraryItemList = new List<Item>();
                 RefreshLibraryList();
             }
         }
@@ -262,6 +294,139 @@ namespace WpfPresentation.Management.Inventory.Library
         }
 
         /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Apply the user's selected search filters to the Library UI
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        private void ApplyFilters()
+        {
+            // Update category filters
+            try
+            {
+                _filteredCategoryList = new List<string>();
+                foreach (var tag in comboFilterLibraryByTag.SelectedItems)
+                {
+                    _filteredCategoryList.Add(tag.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Failed to update category filters " + ex.InnerException.Message, ButtonMode.Ok);
+            }
+            // Update name filter
+            if (_itemNameFilter == null)
+            {
+                _itemNameFilter = "";
+            }
+            // Reset the list
+            _filteredLibraryItemList = new List<Item>();
+            // If no items are selected, apply no category filters
+            if (_filteredCategoryList.Count > 0)
+            {
+                // Find tags common to selected filters and add those items to the new Library display
+                IEnumerable<string> commonItems;
+                foreach (Item item in _libraryItemList)
+                {
+                    commonItems = item.CategoryId.Intersect(_filteredCategoryList); // OR style tag matching => Match any selected tags
+                    if (commonItems.Count() > 0 && item.ItemId.IndexOf(_itemNameFilter, 0, StringComparison.OrdinalIgnoreCase) != -1)
+                    {
+                        _filteredLibraryItemList.Add(item);
+                    }
+                }
+            }
+            // No category filters set, filtre by name only
+            else
+            {
+                foreach (Item item in _libraryItemList)
+                {
+                    // Match name search string
+                    if (item.ItemId.IndexOf(_itemNameFilter, 0, StringComparison.OrdinalIgnoreCase) != -1)
+                    {
+                        _filteredLibraryItemList.Add(item);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Register changes to the combobox when the user clicks a tag to filter by
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void comboFilterLibraryByTag_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
+        {
+            RefreshLibraryList();
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Clear the placeholder text from the search by name textbox when the user selects it
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtFilterLibraryByName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            // Clear search box on select
+            if (txtFilterLibraryByName.Text == "" || txtFilterLibraryByName.Text == "Filter by Name")
+            {
+                txtFilterLibraryByName.Text = "";
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Restore the placeholder text to the search by name textbox when the user deselects it
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtFilterLibraryByName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Reset placeholder text when text box is empty and user deselects
+            if (txtFilterLibraryByName.Text == "")
+            {
+                txtFilterLibraryByName.Text = "Filter by Name";
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Apply search by name filtering when user presses enter after entering their search query
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtFilterLibraryByName_KeyDown(object sender, KeyEventArgs e)
+        {
+            // When user hits Return after entering text
+            if (e.Key == Key.Return)
+            {
+                try
+                {
+                    _itemNameFilter = txtFilterLibraryByName.Text;
+                    RefreshLibraryList();
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", "Failed to apply item name filter, " + ex.InnerException.Message, ButtonMode.Ok);
+                }
+            }
+        }
+
         /// Andrew Cromwell
         /// Created: 2023/04/20
         /// Opens the page where the user can request for a new item to be added to the library

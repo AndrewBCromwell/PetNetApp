@@ -61,5 +61,27 @@ namespace DataAccessLayerInterfaces
         List<int> SelectAnimalByFundraisingEvent(int eventId);
         int UpdateFundraisingEvent(FundraisingEventVM fundraisingEvent);
         int DeactivateFundraisingEvent(int fundraisingEventId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/04/15
+        /// 
+        /// A method to get the Active Fundraising Events for a shelter id
+        /// 
+        /// </summary>
+        /// <param name="shelterId">ShelterId to select all the Fundraising Events for</param>
+        /// <exception cref="SQLException">Load Fails</exception>
+        /// <returns>List of Fundraising Events</returns>
+        List<FundraisingEventVM> SelectAllActiveFundraisingEventsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/04/15
+        /// 
+        /// A method to get all Active Fundraising Events
+        /// 
+        /// </summary>
+        /// <returns>List of Fundraising Events</returns>
+        List<FundraisingEventVM> SelectAllActiveFundraisingEvents();
     }
 }

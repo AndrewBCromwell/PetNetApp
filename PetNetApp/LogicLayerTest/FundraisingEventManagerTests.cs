@@ -2,14 +2,15 @@
 using LogicLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using DataObjects; 
+using DataObjects;
+using LogicLayerInterfaces;
 
 namespace LogicLayerTest
 {
     [TestClass]
     public class FundraisingEventManagerTests
     {
-        private FundraisingEventManager _fundraisingEventManager = null;
+        private IFundraisingEventManager _fundraisingEventManager = null;
 
         [TestInitialize]
         public void SetupTests()
@@ -75,6 +76,36 @@ namespace LogicLayerTest
             Assert.AreEqual(70, _fundraisingEventManager.RetrieveFundraisingEventByFundraisingEventId(100000).NumOfAttendees);
             Assert.AreEqual(5, _fundraisingEventManager.RetrieveFundraisingEventByFundraisingEventId(100000).NumAnimalsAdopted);
             Assert.AreEqual("Event costs low, adoptions good", _fundraisingEventManager.RetrieveFundraisingEventByFundraisingEventId(100000).UpdateNotes);
+        }
+
+        [TestMethod]
+        public void RetrieveActiveFundraisingEventsByShelterIdReturnsTheCorrectList()
+        {
+            //arrange
+            int expectedEventCount = 1;
+            int actualEventCount = 0;
+            int shelterId = 100005;
+
+            //act
+            actualEventCount = _fundraisingEventManager.RetrieveAllActiveFundraisingEventsByShelterId(shelterId).Count;
+            //assert
+
+            Assert.AreEqual(expectedEventCount, actualEventCount);
+
+        }
+
+        [TestMethod]
+        public void RetrieveAllActiveFundraisingEventsReturnsTheCorrectList()
+        {
+            //arrange
+            int expectedEventCount = 4;
+            int actualEventCount = 0;
+
+            //act
+            actualEventCount = _fundraisingEventManager.RetrieveAllActiveFundraisingEvents().Count;
+            //assert
+
+            Assert.AreEqual(expectedEventCount, actualEventCount);
         }
     }
 }

@@ -89,5 +89,10 @@ namespace WpfPresentation.UserControls
         {
             NavigationService.GetNavigationService(this).Navigate(new CreateNewPledge(FundraisingEvent.FundraisingEventId, _masterManager));
         }
+
+        private void menuAddDonation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
