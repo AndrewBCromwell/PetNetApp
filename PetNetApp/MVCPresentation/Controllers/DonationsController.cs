@@ -13,6 +13,7 @@ namespace MVCPresentation.Controllers
         private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<DonationVM> donationVMs;
         private DonationVM donationVM;
+
         // GET: Donations
         public ActionResult Index()
         {
@@ -56,7 +57,8 @@ namespace MVCPresentation.Controllers
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        ViewBag.Message = ex.Message;
+                        return View("Error");
                     }
                 }
 

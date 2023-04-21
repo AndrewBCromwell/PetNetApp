@@ -46,6 +46,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Inserts an Item
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <returns>Number of rows affected</returns>
         int InsertItem(string itemId);
@@ -100,6 +107,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Deletes an ItemCategory
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <param name="category"></param>
         /// <returns>Number of rows affected</returns>

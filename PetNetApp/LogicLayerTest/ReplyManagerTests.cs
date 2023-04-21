@@ -122,6 +122,26 @@ namespace LogicLayerTest
 
             Assert.IsTrue(result);
         }
-                
+
+        [TestMethod]
+        public void TestAddPostReport()
+        {
+            bool result = false;
+
+            result = replyManager.AddReplyReport(1, 1, 1);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestRemovePostReport()
+        {
+            bool result = false;
+
+            result = replyManager.RemoveReplyReport(1, 1);
+
+            Assert.IsTrue(result);
+        }
+
     }
 }
