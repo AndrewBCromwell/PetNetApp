@@ -107,6 +107,11 @@ namespace DataAccessLayerInterfaces
         /// Retireves all medical records for a specified animalId.
         /// Returns a list of MedicalRecordVM.
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="animalId">the animal to retrieve medical records for</param>
         /// <exception cref="SQLException">retrieval fails</exception>
         /// <returns>List of MedicalRecordVM for the specified animalId</returns>

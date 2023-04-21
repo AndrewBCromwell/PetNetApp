@@ -67,9 +67,9 @@ namespace LogicLayerInterfaces
         /// 
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="animalId"></param>
         /// <param name="medicalNotes"></param>
