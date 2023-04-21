@@ -22,6 +22,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Label x:Name="lblDonorProfile" Content="Donor Profile" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="37" Width="800" Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_GenerateReport" Grid.Column="1" Grid.Row="2" Margin="0 0 20 0" HorizontalAlignment="Right" Content="Generate Report" Height="35" Width="150" Click="btn_GenerateReport_Click"></Button>
         <StackPanel x:Name="spDonorName" Orientation="Horizontal" Grid.Row="1">
             <Label x:Name="lblNameSpacer" Content=""/>
             <Label x:Name="lblName" Content="Donor Name: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.024,0.308" Height="40"/>

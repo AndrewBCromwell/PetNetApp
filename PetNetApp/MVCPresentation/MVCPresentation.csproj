@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\PledgeController.cs" />
     <Compile Include="Controllers\SheltersController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserDonationsController.cs" />
@@ -370,6 +371,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Pledge\Create.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
