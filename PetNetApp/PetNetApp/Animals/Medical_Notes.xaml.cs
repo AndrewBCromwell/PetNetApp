@@ -142,6 +142,11 @@ namespace WpfPresentation.Animals
         /// 
         /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_upload_file_Click(object sender, RoutedEventArgs e)
