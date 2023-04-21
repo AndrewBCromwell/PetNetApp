@@ -225,9 +225,6 @@ namespace MVCPresentation.Controllers
             }
         }
 
-
-
-
         /// <summary>
         /// Stephen Jaurigue
         /// 2023/04/13
@@ -406,11 +403,6 @@ namespace MVCPresentation.Controllers
                 return View("Error");
             }
         }
-
-
-
-
-
 
         public ActionResult ShowReplies(int? id, Users user)
         {
