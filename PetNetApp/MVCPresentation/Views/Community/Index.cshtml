@@ -77,9 +77,12 @@
                     {
                         @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId });
                     }
-                    <div id="report-post-@item.PostId" class="float-right">
-                        @Html.Partial("ReportPartial", item)
-                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div id="report-post-@item.PostId" class="float-right">
+                            @Html.Partial("ReportPartial", item)
+                        </div>
+                    }
                 </div>
             </div>
         </div>
