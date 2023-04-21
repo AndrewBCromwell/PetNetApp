@@ -115,7 +115,7 @@ namespace DataAccessLayer
         {
             Image image = Image.FromFile(imageUri);
             image = ResizeImage(image);
-            image.Save(DataPathInformation.ImagePath + imageGuid, imageFormat);
+            image.Save(DataPathInformation.ImagePath + imageGuid + ".png", imageFormat);
         }
 
         public List<Images> InsertImagesByUris(IEnumerable<string> imageUris)
@@ -197,7 +197,7 @@ namespace DataAccessLayer
             BitmapImage image = null;
             try
             {
-                Uri imageUri = new Uri(DataPathInformation.ImagePath + images.ImageId);
+                Uri imageUri = new Uri(DataPathInformation.ImagePath + images.ImageId + ".png");
                 image = new BitmapImage(imageUri);
             }
             catch (Exception ex)
