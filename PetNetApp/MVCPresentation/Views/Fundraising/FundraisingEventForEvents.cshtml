@@ -7,7 +7,7 @@
     </div>
     @using (Html.BeginForm("Create", "Pledge", FormMethod.Get, new { @class = "event-control-button-group2" }))
     {
-        @Html.Hidden("fundraisingEventId", Model.FundraisingEvent.FundraisingEventId);
+        @Html.Hidden("fundrasingEventId", Model.FundraisingEvent.FundraisingEventId);
         <input type="submit" value="Pledge" data-title="@Model.FundraisingEvent.Title" data-id="@Model.FundraisingEvent.FundraisingEventId" class="@("pledge-link " + (!Model.AlternateColor ? "event-link-primary" : "event-link-alternate"))" />
     }
     @using (Html.BeginForm("Event", "Fundraising", FormMethod.Get, new { @class = "event-control-button-group" }))
