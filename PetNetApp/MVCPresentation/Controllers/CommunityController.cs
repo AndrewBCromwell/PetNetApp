@@ -8,6 +8,8 @@ using DataObjects;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Diagnostics;
+using MVCPresentation.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MVCPresentation.Controllers
 {
@@ -17,30 +19,21 @@ namespace MVCPresentation.Controllers
         private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<PostVM> posts;
         private PostVM postVM;
+
         // GET: Community
         public ActionResult Index()
         {
             try
             {
-                if (masterManager.User.Roles.Contains("Admin") || masterManager.User.Roles.Contains("Moderator"))
+                if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                 {
                     posts = masterManager.PostManager.RetrieveAllPosts();
-                    //foreach (var post in posts)
-                    //{
-                    //    post.ReplyCount = masterManager.ReplyManager.RetrieveCountRepliesByPostId(post.PostId);
-                    //}
                 }
                 else
                 {
                     posts = masterManager.PostManager.RetrieveActivePosts();
-                    //foreach (var post in posts)
-                    //{
-                    //    post.ReplyCount = masterManager.ReplyManager.RetrieveCountActiveRepliesByPostId(post.PostId);
-                    //}
                 }
-                //if (User.Identity.IsAuthenticated)
-                //{
-                foreach (var post in posts)
+                    foreach (var post in posts)
                 {
                 //    post.UserPostReported = masterManager.PostManager.RetrieveUserPostReportedByPostIdAndUserId(post.PostId, masterManager.User.UsersId);
                 }
@@ -51,7 +44,9 @@ namespace MVCPresentation.Controllers
                 ViewBag.Message = ex.Message + "\n" + ex.InnerException;
                 return View("Error");
             }
-            ViewBag.User = masterManager.User;
+            ViewBag.UserId = GetLoggedInUser() == null ? -1 : GetLoggedInUser().UsersId;
+            ViewBag.HasAdminRole = User.IsInRole("Admin");
+            ViewBag.HasModeratorRole = User.IsInRole("Moderator");
             return View(posts);
         }
 
@@ -235,9 +230,7 @@ namespace MVCPresentation.Controllers
 
                     if(postVM.PostVisibility)
                     {
-                        //if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
-
-                        if (masterManager.User.Roles.Contains("Admin") || masterManager.User.Roles.Contains("Moderator"))
+                        if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                         {
                             postVM.Replies = masterManager.ReplyManager.RetrieveAllRepliesByPostId(postVM.PostId);
                         }
@@ -246,6 +239,11 @@ namespace MVCPresentation.Controllers
                             postVM.Replies = masterManager.ReplyManager.RetrieveActiveRepliesByPostId(postVM.PostId);
                         }
                     }
+                    else
+                    {
+                        ViewBag.Message = "Invaild Request";
+                        return View("Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -253,12 +251,12 @@ namespace MVCPresentation.Controllers
                     return View("Error");
                 }
 
-                ViewBag.UserId = masterManager.User.UsersId;
-                ViewBag.HasAdminRole = masterManager.User.Roles.Contains("Admin");
-                ViewBag.HasModeratorRole = masterManager.User.Roles.Contains("Moderator");
-
-                //ViewBag.HasAdminRole = User.IsInRole("Admin");
-                //ViewBag.HasModeratorRole = User.IsInRole("Moderator");
+                //ViewBag.UserId = masterManager.User.UsersId;
+                //ViewBag.HasAdminRole = masterManager.User.Roles.Contains("Admin");
+                //ViewBag.HasModeratorRole = masterManager.User.Roles.Contains("Moderator");
+                ViewBag.UserId = GetLoggedInUser() == null ? -1 : GetLoggedInUser().UsersId;
+                ViewBag.HasAdminRole = User.IsInRole("Admin");
+                ViewBag.HasModeratorRole = User.IsInRole("Moderator");
                 Session["PostId"] = id;
                 return View(postVM);
             }
@@ -276,11 +274,13 @@ namespace MVCPresentation.Controllers
         //}
 
         // POST: Community/Create
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Post post)
         {
-            post.PostAuthor = masterManager.User.UsersId;
+            post.PostAuthor = GetLoggedInUser().UsersId.Value;
+
             post.PostDate = DateTime.Now;
             if (ModelState.IsValid)
             {
@@ -302,14 +302,15 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateReply(Reply reply)
         {
-            reply.ReplyAuthor = masterManager.User.UsersId;
+            reply.ReplyAuthor = GetLoggedInUser().UsersId.Value;
             reply.ReplyDate = DateTime.Now;
             reply.PostId = (int)Session["PostId"];
-            ViewBag.UserId = masterManager.User.UsersId;
+            ViewBag.UserId = GetLoggedInUser() == null ? -1 : GetLoggedInUser().UsersId;
             ViewBag.HasAdminRole = User.IsInRole("Admin");
             ViewBag.HasModeratorRole = User.IsInRole("Moderator");
 
@@ -319,9 +320,7 @@ namespace MVCPresentation.Controllers
 
                 if (postVM.PostVisibility)
                 {
-                    //if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
-
-                    if (masterManager.User.Roles.Contains("Admin") || masterManager.User.Roles.Contains("Moderator"))
+                    if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                     {
                         postVM.Replies = masterManager.ReplyManager.RetrieveAllRepliesByPostId(postVM.PostId);
                     }
@@ -367,12 +366,11 @@ namespace MVCPresentation.Controllers
                 {
                     postToEdit = masterManager.PostManager.RetrievePostByPostId(id.Value);
 
-                    if(postToEdit.PostAuthor != masterManager.User.UsersId)
+                    if(postToEdit.PostAuthor != GetLoggedInUser().UsersId)
                     {
                         ViewBag.Message = "Invaild Request";
                         return View("Error");
                     }
-
 
                     Session["postToEdit"] = postToEdit;
 
@@ -400,7 +398,7 @@ namespace MVCPresentation.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Post newPost)
         {
-            if (((Post)Session["postToEdit"]).PostAuthor != masterManager.User.UsersId)
+            if (((Post)Session["postToEdit"]).PostAuthor != GetLoggedInUser().UsersId)
             {
                 ViewBag.Message = "Invaild Request";
                 return View("Error");
@@ -437,7 +435,7 @@ namespace MVCPresentation.Controllers
                 {
                     replyToEdit = masterManager.ReplyManager.RetrieveReplyByReplyId(id.Value);
 
-                    if (replyToEdit.ReplyAuthor != masterManager.User.UsersId)
+                    if (replyToEdit.ReplyAuthor != GetLoggedInUser().UsersId)
                     {
                         ViewBag.Message = "Invaild Request";
                         return View("Error");
@@ -470,7 +468,7 @@ namespace MVCPresentation.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditReply(Reply newReply)
         {
-            if (((Reply)Session["replyToEdit"]).ReplyAuthor != masterManager.User.UsersId)
+            if (((Reply)Session["replyToEdit"]).ReplyAuthor != GetLoggedInUser().UsersId)
             {
                 ViewBag.Message = "Invaild Request";
                 return View("Error");
@@ -612,6 +610,14 @@ namespace MVCPresentation.Controllers
                 ViewBag.Message = "You need to specify a reply to delete";
                 return View("Error");
             }
+        }
+
+        [NonAction]
+        public ApplicationUser GetLoggedInUser()
+        {
+            var dbContext = new ApplicationDbContext();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
+            return userManager.FindById(User.Identity.GetUserId());
         }
     }
 }

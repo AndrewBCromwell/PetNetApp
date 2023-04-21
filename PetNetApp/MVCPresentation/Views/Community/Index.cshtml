@@ -54,28 +54,28 @@
                 <div class="cell">
                     @if (item.PostVisibility)
                     {
-                        @Html.ActionLink("Show Replies", "ShowReplies", new { id = item.PostId });
-                        if (ViewBag.User.UsersId == item.PostAuthor || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator"))
+                        @Html.ActionLink("Show Replies", "ShowReplies", new { id = item.PostId }, new { @class = "report-button" });
+                        if (ViewBag.UserId == item.PostAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole)
                         {
                             <text> | </text>
                         }
                     }
 
-                    @if (item.PostVisibility && ViewBag.User.UsersId == item.PostAuthor)
+                    @if (item.PostVisibility && ViewBag.UserId == item.PostAuthor)
                     {
 
-                        @Html.ActionLink("Edit Post", "Edit", new { id = item.PostId });
+                        @Html.ActionLink("Edit Post", "Edit", new { id = item.PostId }, new { @class = "report-button" });
                         <text> | </text>
                     }
 
-                    @if (item.PostVisibility && (ViewBag.User.UsersId == item.PostAuthor || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator")))
+                    @if (item.PostVisibility && (ViewBag.UserId == item.PostAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                     {
-                        @Html.ActionLink("Delete Post", "Delete", new { id = item.PostId });
+                        @Html.ActionLink("Delete Post", "Delete", new { id = item.PostId }, new { @class = "report-button" });
                     }
 
-                    @if (!item.PostVisibility && (ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator")))
+                    @if (!item.PostVisibility && (ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                     {
-                        @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId });
+                        @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId }, new { @class = "report-button" });
                     }
                     <div id="report-post-@item.PostId" class="float-right">
                         @Html.Partial("ReportPartial", item)
