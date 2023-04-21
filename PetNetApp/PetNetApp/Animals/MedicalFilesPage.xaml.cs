@@ -1,4 +1,14 @@
-﻿using DataObjects;
+﻿///<summary>
+///Molly Meister
+///2023/02/17
+/// 
+/// </summary>
+/// <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -19,7 +29,7 @@ namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for MedicalFilesPage.xaml
-    /// Final QA
+   
     /// </summary>
     public partial class MedicalFilesPage : Page
     {
@@ -33,8 +43,13 @@ namespace WpfPresentation.Animals
         /// Stephen Jaurique
         /// 2023/02/26
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="animal"></param>
         /// <param name="masterManager"></param>
         public MedicalFilesPage(Animal animal, MasterManager masterManager)
@@ -49,8 +64,13 @@ namespace WpfPresentation.Animals
         /// Stephen Jaurique
         /// 2023/02/26
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded_1(object sender, RoutedEventArgs e)
@@ -61,8 +81,13 @@ namespace WpfPresentation.Animals
         /// Stephen Jaurique
         /// 2023/02/26
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         private void PopulatePage()
         {
             if (_imagesList == null || _imagesList.Count == 0)
@@ -85,8 +110,13 @@ namespace WpfPresentation.Animals
         /// 
         /// 2023/02/26
         /// 
-        /// Final QA
+        /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DataGridRow_MouseEnter(object sender, MouseEventArgs e)

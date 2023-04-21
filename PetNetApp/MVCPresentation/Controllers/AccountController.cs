@@ -480,6 +480,7 @@ namespace MVCPresentation.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["User"] = null;
             return RedirectToAction("Index", "Home");
         }
 

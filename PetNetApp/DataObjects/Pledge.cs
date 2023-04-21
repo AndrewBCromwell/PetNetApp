@@ -1,4 +1,14 @@
-﻿using System;
+﻿///<summary>
+/// William Rients
+/// Created: 2023/04/07
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/20
+/// Final QA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;

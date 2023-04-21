@@ -83,5 +83,14 @@ namespace LogicLayerTest
             // Arrange
             Assert.AreEqual(expectedResult, actualResult);
         }
+        [TestMethod]
+        public void TestRetrieveAllPledges()
+        {
+            int expected = 100;
+
+            int actual = _manager.RetrieveAllPledges().Count;
+
+            Assert.AreEqual(expected, actual);
+        } 
     }
 }

@@ -165,5 +165,12 @@ namespace WpfPresentation.Events
             // replace with page name and then delete comment
             frameEvents.Navigate(null);
         }
+
+        private void btnEventResults_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+
+            frameEvents.Navigate(Events.ViewEventGraphsPage.GetViewEventGraphsPage());
+        }
     }
 }

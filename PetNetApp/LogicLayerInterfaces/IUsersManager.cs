@@ -123,7 +123,7 @@ namespace LogicLayerInterfaces
         /// <param name="usersId"></param>
         /// <param name="shelterId"></param>
         /// <param name="oldShelterId"></param>
-        bool EditUserShelterId(int userId, int shelterId, int oldShelterId);
+        bool EditUserShelterId(int userId, int shelterId, int? oldShelterId);
 
         /// Teft Francisco
         /// Created: 2023/02/14

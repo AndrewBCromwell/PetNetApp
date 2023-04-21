@@ -101,9 +101,9 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="AnimalId">int for the the specific kennel</param>
         /// <exception cref="Exception">No kennel is retrived witht that AnimalId</exception>

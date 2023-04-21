@@ -641,7 +641,7 @@ namespace DataAccessLayerFakes
             throw new NotImplementedException();
         }
 
-        public int UpdateUserShelterid(int userid, int shelterid, int oldShelterId)
+        public int UpdateUserShelterid(int userid, int shelterid, int? oldShelterId)
         {
             int rowsAffected = 0;
 

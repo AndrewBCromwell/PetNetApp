@@ -5,10 +5,13 @@
 /// Presentation layer methods for the Add Test Page
 /// </summary>
 ///
+///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
 /// </remarks>
+/// 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +34,12 @@ namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for AddTestPage.xaml
+    /// 
+    /// <remarks>
+    /// Zaid Rachman
+    /// Updated: 2023/04/21
+    /// Final QA
+    /// </remarks>
     /// </summary>
     public partial class AddTestPage : Page
     {
@@ -55,9 +64,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="animalId"></param>
         /// <param name="userId"></param>
@@ -86,9 +95,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="medicalRecord"></param>
         /// <param name="userId"></param>
@@ -113,9 +122,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -133,9 +142,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -221,9 +230,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
