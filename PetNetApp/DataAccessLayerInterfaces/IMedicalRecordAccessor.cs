@@ -34,9 +34,9 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="medicalRecordId">medical record id</param>
         /// <param name="diagnosis">A name of an animal's diagnosis</param>

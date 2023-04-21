@@ -10,6 +10,7 @@ namespace LogicLayerInterfaces
     public interface IMedicalRecordManager
     {
         int RetrieveLastMedicalRecordIdByAnimalId(int animalId);
+
         List<MedicalRecordVM> RetrieveMedicalRecordDiagnosisByAnimalId(int animalId);
 
         /// <summary>
@@ -18,6 +19,11 @@ namespace LogicLayerInterfaces
         /// 
         /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="medicalRecordId"></param>
         /// /// <param name="newDiagnosis"></param>
         /// /// <param name="newMedicalNotes"></param>
@@ -120,6 +126,11 @@ namespace LogicLayerInterfaces
         /// Takes a medical record, passes it to the MedicalRecordAccessor, receives a response 
         /// from the accessor, and returns a respnonse about whether the  medical record was added
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="medicalRecord">the medical record to be added</param>
         /// <exception cref="ApplicationException">add Failed</exception>
         /// <returns>Rows affected</returns>

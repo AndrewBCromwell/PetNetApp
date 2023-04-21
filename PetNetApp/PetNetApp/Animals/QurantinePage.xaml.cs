@@ -144,7 +144,7 @@ namespace WpfPresentation.Animals
                 if (_medicalRecordManager.EditQuarantineStatusByMedicalRecordId(_medicalRecordID, _quarantineStatus, _oldQuarantineStatus))
                 {
                     NavigationService.Navigate(null);
-                    _medicalTreatmentPage.refreshPage();
+                    _medicalTreatmentPage.RefreshPage();
                 }
 
                 // prompt window
@@ -153,7 +153,7 @@ namespace WpfPresentation.Animals
             {
                 PromptWindow.ShowPrompt("Update Failed", "Update Failed" + "\n" + ex.Message, ButtonMode.Ok);
                 NavigationService.Navigate(null);
-                _medicalTreatmentPage.refreshPage();
+                _medicalTreatmentPage.RefreshPage();
             }
         }
 
