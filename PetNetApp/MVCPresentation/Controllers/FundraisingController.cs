@@ -17,6 +17,7 @@ namespace MVCPresentation.Controllers
         // GET: Fundraising
         public ActionResult Index()
         {
+            @ViewBag.Tab = "Fundraising";
             return View();
         }
 
@@ -108,6 +109,7 @@ namespace MVCPresentation.Controllers
         /// <returns></returns>
         public ActionResult Campaigns(CampaignsViewModel campaignsViewModel, int Page = 1)
         {
+            @ViewBag.Tab = "Fundraising";
             PagingInfo pagingInfo = campaignsViewModel.PagingInfo;
             pagingInfo.CurrentPage = Page;
             pagingInfo.ItemsPerPage = 10;
@@ -336,6 +338,7 @@ namespace MVCPresentation.Controllers
         /// <returns></returns>
         public ActionResult Events(FundraisingEventsViewModel fundraisingEventsViewModel, int Page = 1)
         {
+            @ViewBag.Tab = "Fundraising";
             PagingInfo pagingInfo = fundraisingEventsViewModel.PagingInfo;
             pagingInfo.CurrentPage = Page;
             pagingInfo.ItemsPerPage = 10;

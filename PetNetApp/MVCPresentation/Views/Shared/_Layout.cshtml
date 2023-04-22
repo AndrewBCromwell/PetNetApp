@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="header ">
-        <nav class="navbar navbar-expand-lg container-fluid">
+        <nav class="navbar navbar-expand-sm container-fluid">
             <div class="header-images ">
                 <!-- Petnet Logo -->
                 <a href="@Url.Action("About", "Home")">
@@ -50,6 +50,10 @@
                 <li class="header-menu-list-item">@Html.ActionLink("Fundraising", "Index", "Fundraising")</li>
             </ul>
         </div>
+        @if (ViewBag.Tab == "Fundraising")
+        {
+            @Html.Partial("_PartialFundraisingSubMenu")
+        }
     </div>
 
 

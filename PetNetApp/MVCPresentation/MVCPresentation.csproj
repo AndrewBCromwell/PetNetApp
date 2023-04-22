@@ -242,6 +242,7 @@
     <Content Include="Content\Fundraising\campaigns-mobile.css" />
     <Content Include="Content\Fundraising\campaigns.css" />
     <Content Include="Content\Fundraising\events.css" />
+    <Content Include="Content\Fundraising\fundraising-sub-menu.css" />
     <Content Include="Content\Fundraising\page-navigation.css" />
     <Content Include="Content\ShelterNetwork.css" />
     <Content Include="Content\Ticket\TicketList.css" />
@@ -251,6 +252,7 @@
     <Content Include="Images\Animal\0c126019-3b6a-49a2-9103-d57ddaffaa69.png" />
     <Content Include="Images\Animal\0f19e696-2a27-41ce-b267-21ff8197cb4b.png" />
     <Content Include="Images\Animal\314a2539-5dee-40ce-ac5b-026d53750c92.png" />
+    <Content Include="Views\Fundraising\_PartialFundraisingSubMenu.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
     <Resource Include="Images\Animal\BrokenImage.png">
