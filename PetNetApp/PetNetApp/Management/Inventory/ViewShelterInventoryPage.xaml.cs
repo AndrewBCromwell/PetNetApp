@@ -10,6 +10,11 @@
 /// Updated: 2023/04/07
 /// 
 /// Added refreshShelterInventoryList and btnEdit_Click
+/// 
+/// Nathan Zumsande
+/// Updated: 2023/04/20
+/// Added the ShowRolesByButton and HideAllButton methods and modifyed
+/// the onload to provide role access
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -38,6 +43,7 @@ namespace WpfPresentation.Management.Inventory
         MasterManager _masterManager = MasterManager.GetMasterManager();
         List<ShelterInventoryItemVM> _shelterInventoryItemVMList = null; //used to populate the datagrid
         List<ShelterInventoryItemVM> _shelterInventoryItemVMCart = new List<ShelterInventoryItemVM>(); //used to collect items to buy
+
         /// <summary>
         /// Zaid Rachman
         /// Created: 2023/03/19
@@ -58,7 +64,6 @@ namespace WpfPresentation.Management.Inventory
         public ViewShelterInventoryPage(List<ShelterInventoryItemVM> shelterInventoryItemVMs)
         {
             _shelterInventoryItemVMCart = shelterInventoryItemVMs;
-
             InitializeComponent();
         }
         /// <summary>
@@ -70,6 +75,12 @@ namespace WpfPresentation.Management.Inventory
         /// Updated: 2023/03/31
         /// Code regarding the cboShelter is currently commented out. This feature is being moved to another page. 
         /// </summary>
+        /// <remarks>
+        /// Nathan Zumsande
+        /// Updated: 2023/04/20
+        /// Added the Show buttons by role to onload
+        /// so roles can only see assigned features.
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -103,16 +114,16 @@ namespace WpfPresentation.Management.Inventory
 
             if (shelterId != null)
             {
-               /* try
-                {
-                    cboShelter.SelectedItem = _masterManager.ShelterManager.RetrieveShelterVMByShelterID((int)shelterId);
-                }
-                catch (Exception)
-                {
+                /* try
+                 {
+                     cboShelter.SelectedItem = _masterManager.ShelterManager.RetrieveShelterVMByShelterID((int)shelterId);
+                 }
+                 catch (Exception)
+                 {
 
-                    PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter");
-                    return;
-                }*/
+                     PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter");
+                     return;
+                 }*/
                 try
                 {
                     _shelterInventoryItemVMList = _masterManager.ShelterInventoryItemManager.RetrieveInventoryByShelterId((int)shelterId);
@@ -139,6 +150,7 @@ namespace WpfPresentation.Management.Inventory
 
             lblItemsInCart.Content = "Items In Cart: " + _shelterInventoryItemVMCart.Count.ToString();
 
+            ShowButtonsByRole();
         }
 
         /// <summary>
@@ -183,7 +195,7 @@ namespace WpfPresentation.Management.Inventory
                 }
                 if (shelter.Quantity < shelter.LowInventoryThreshold) //Checks to see if quantity is lower than the threshold set
                 {
-                    Flags.Add("Low Quantity"); 
+                    Flags.Add("Low Quantity");
                 }
                 if (shelter.Quantity > shelter.HighInventoryThreshold) //Checks to see if quantity is higher than the threshold set
                 {
@@ -211,7 +223,7 @@ namespace WpfPresentation.Management.Inventory
                     }
                 }
 
-                
+
                 shelter.DisplayFlags = flagsList; //Using the CustomFlag property as a way to show all flags
 
 
@@ -266,11 +278,16 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Directs user to the viewedit page for the inventory item.
         /// </summary>
+        /// <remarks>
+        /// Nathan Zumsande
+        /// Updated: 2023/04/20
+        /// Double click wont direct to the edit page if the edit and delete buttons are not visible
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void datShelterInventory_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (datShelterInventory.SelectedItem != null)
+            if (datShelterInventory.SelectedItem != null && btnDelete.Visibility == Visibility.Visible && btnEdit.Visibility == Visibility.Visible)
             {
                 var selectedShelterItem = (ShelterInventoryItemVM)datShelterInventory.SelectedItem;
                 NavigationService.Navigate(new ViewEditShelterInventoryItem(selectedShelterItem));
@@ -415,6 +432,35 @@ namespace WpfPresentation.Management.Inventory
                 PromptWindow.ShowPrompt("Error", "Please select an item from the list to remove from your shelter.", ButtonMode.Ok);
             }
             refreshShelterInventoryList();
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Shows the edit and delete buttons if the user is a admin or manager,
+        ///  and hides them if they are an employee
+        /// </summary>
+        private void ShowButtonsByRole()
+        {
+
+            HideAllButtons();
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_masterManager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnEdit.Visibility = Visibility.Visible;
+                btnDelete.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Hides the edit and delete button
+        /// </summary>
+        private void HideAllButtons()
+        {
+            btnEdit.Visibility = Visibility.Hidden;
+            btnDelete.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -137,6 +137,12 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inventory\CheckInCheckOutPage.xaml.cs">
+      <DependentUpon>CheckInCheckOutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inventory\EditInventoryQuantityPage.xaml.cs">
+      <DependentUpon>EditInventoryQuantityPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ApplicantUC.xaml.cs">
       <DependentUpon>ApplicantUC.xaml</DependentUpon>
     </Compile>
@@ -562,6 +568,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Community\CustomerRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\CheckInCheckOutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\Inventory\EditInventoryQuantityPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

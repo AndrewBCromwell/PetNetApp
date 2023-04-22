@@ -9,6 +9,10 @@
 /// <remarks>
 /// Brian Collum
 /// Updated: 2023/04/07
+/// 
+/// Nathan Zumsande
+/// Updated: 2023/04/20
+/// Added User role access
 /// </remarks>
 
 using System;
@@ -102,12 +106,18 @@ namespace WpfPresentation.Management.Inventory.Library
         /// Created: 2023/02/24
         /// Refresh the list of library items on page load
         /// </summary>
+        /// <remarks>
+        /// Nathan Zumsande
+        /// Updated 2023/04/20
+        /// Added the call to the ShowButtonsByRoles method
+        /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_libraryItemList == null)
             {
                 refreshLibraryList();
             }
+            ShowButtonsByRoles();
         }
 
         /// <summary>
@@ -189,6 +199,30 @@ namespace WpfPresentation.Management.Inventory.Library
             else
             {
                 PromptWindow.ShowPrompt("Error", "You must have a shelter associated with your account in order to use this feature.", ButtonMode.Ok);
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        /// Shows and hides admin functions based on if the logged in user
+        /// has the admin role assigned to them
+        /// </summary>
+        private void ShowButtonsByRoles()
+        {
+            if (!_masterManager.User.Roles.Contains("Admin"))
+            {
+                lblPetNetAdminButtons.Visibility = Visibility.Collapsed;
+                btnAddCategory.Visibility = Visibility.Collapsed;
+                btnAddLibraryItem.Visibility = Visibility.Collapsed;
+                btnEditLibraryItem.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                lblPetNetAdminButtons.Visibility = Visibility.Visible;
+                btnAddCategory.Visibility = Visibility.Visible;
+                btnAddLibraryItem.Visibility = Visibility.Visible;
+                btnEditLibraryItem.Visibility = Visibility.Visible;
             }
         }
     }

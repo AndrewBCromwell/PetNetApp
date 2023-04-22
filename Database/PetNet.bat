@@ -104,6 +104,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItemCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteItemCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\SelectAllCategories_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertCategory_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItemTransaction_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql

@@ -47,7 +47,13 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/03/19
         /// 
         /// Edits ShelterInventoryItem. Takes in the oldShelterInventoryItemVM and newShelterInventoryItemVM objects as parameters.
+        /// <remarks>
+        /// Nathan Zumsande
+        /// Updated: 2023/04/19
         /// 
+        /// Updated the method in the accessor to check if the custom flag for the updated item
+        /// is null otherwise set the parameter to the passed value
+        /// </remarks>
         /// </summary>
         /// <param name="oldShelterInventoryItemVM"></param>
         /// <param name="newShelterInventoryItemVM"></param>
