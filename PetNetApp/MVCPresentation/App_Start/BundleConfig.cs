@@ -27,7 +27,7 @@ namespace MVCPresentation
                       "~/Content/bootstrap-override.css",
                       "~/Content/Site.css",
                       "~/Content/button-styles.css",
-                      "~/Content/Fundraising/fundraising-sub-menu.css"));
+                      "~/Content/sub-menu.css"));
         }
     }
 }

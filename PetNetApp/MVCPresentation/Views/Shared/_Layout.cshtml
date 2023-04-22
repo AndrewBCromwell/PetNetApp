@@ -41,8 +41,8 @@
         <div class="header-menu">
             <ul class="header-menu-list">
                 <li class="header-menu-list-item">@Html.ActionLink("Adopt", "Adoptable", "Animals")</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "ShelterNetwork", "Shelters")</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Events", "Submenu", "Events")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "Index", "Shelters")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Events", "Index", "Events")</li>
                 <li class="header-menu-list-item">@Html.ActionLink("Community", "Index", "Community")</li>
                 @* Waiting until subtabs are created *@
                 @*<li class="header-menu-list-item">@Html.ActionLink("Management", "Create", "Management")</li>*@
@@ -50,9 +50,10 @@
                 <li class="header-menu-list-item">@Html.ActionLink("Fundraising", "Index", "Fundraising")</li>
             </ul>
         </div>
-        @if (ViewBag.Tab == "Fundraising")
+        @if (ViewBag.Tab == "Fundraising" || ViewBag.Tab == "Events" || ViewBag.Tab == "Shelters" || ViewBag.Tab == "Adopt" || ViewBag.Tab == "Donate" || ViewBag.Tab == "Community" )
         {
-            @Html.Partial("_PartialFundraisingSubMenu")
+            @Html.Partial("_PartialSubMenu")
+            @*<a href="~/Views/Shared/_PartialSubMenu.cshtml">~/Views/Shared/_PartialSubMenu.cshtml</a>*@
         }
     </div>
 

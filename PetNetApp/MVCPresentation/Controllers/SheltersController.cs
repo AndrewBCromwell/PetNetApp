@@ -20,10 +20,16 @@ namespace MVCPresentation.Controllers
         private List<Shelter> _shelters;
         //private ApplicationUserManager applicationUserManager;
 
-
+        // GET: Events
+        public ActionResult Index()
+        {
+            ViewBag.Tab = "Shelters";
+            return View();
+        }
 
         public SheltersController()
         {
+            ViewBag.Tab = "Shelters";
             try
             {
                 _shelters = _masterManager.ShelterManager.GetShelterList();
@@ -38,6 +44,7 @@ namespace MVCPresentation.Controllers
         // GET: Shelters
         public ActionResult SelectShelter()
         {
+            ViewBag.Tab = "Shelters";
             List<Shelter> shelters = new List<Shelter>();
             try
             {
@@ -55,11 +62,10 @@ namespace MVCPresentation.Controllers
             return View(shelters);
         }
 
-
-
         // GET: SelectedShelters
         public ActionResult SelectedShelter(int id)
         {
+            ViewBag.Tab = "Shelters";
             var dbContext = new ApplicationDbContext();
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
             var user = userManager.FindById(User.Identity.GetUserId());

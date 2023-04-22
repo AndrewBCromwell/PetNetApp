@@ -23,6 +23,7 @@ namespace MVCPresentation.Controllers
         // GET: Community
         public ActionResult Index(Users user)
         {
+            ViewBag.Tab = "Community";
             try
             {
                 if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
