@@ -13,9 +13,11 @@ namespace MVCPresentation.Controllers
         private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<DonationVM> donationVMs;
         private DonationVM donationVM;
+
         // GET: Donations
         public ActionResult Index()
         {
+            ViewBag.Tab = "Donate";
             try
             {
                 donationVMs = masterManager.DonationManager.RetrieveAllDonations();
@@ -31,6 +33,7 @@ namespace MVCPresentation.Controllers
         // GET: Donations/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Tab = "Donate";
             if (id != null)
             {
                 try
@@ -56,7 +59,8 @@ namespace MVCPresentation.Controllers
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        ViewBag.Message = ex.Message;
+                        return View("Error");
                     }
                 }
 

@@ -1,6 +1,6 @@
 ﻿@model DataObjects.PostVM
 
-@if (Model.PostVisibility && ViewBag.User.UsersId != Model.PostAuthor)
+@if (Model.PostVisibility && ViewBag.UserId != Model.PostAuthor)
 {
     <text> &nbsp;| </text>
     if (!Model.UserPostReported)

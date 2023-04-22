@@ -19,32 +19,9 @@ namespace MVCPresentation.Controllers
     /// </summary>
     public class ManagementController : Controller
     {
-        private MasterManager masterManager = MasterManager.GetMasterManager();
-        private ApplicationUserManager applicationUserManager;
-        private List<TicketVM> ticketVMs;
-
-        /// <summary>
-        /// William Rients
-        /// Created: 2023/04/16
-        /// 
-        /// Retrieves a list of tickets
-        /// </summary>
-        /// <returns></returns>
-        // GET: Management
-        [Authorize(Roles = "Admin, Administration")]
         public ActionResult Index()
         {
-            try
-            {
-                ticketVMs = masterManager.TicketManager.RetrieveAllTickets();
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message + "<br /><br />" + ex.InnerException.Message;
-
-                return View("Error");
-            }
-            return View(ticketVMs);
+            return View();
         }
 
         // GET: Management/Details/5
@@ -52,64 +29,24 @@ namespace MVCPresentation.Controllers
         {
             return View();
         }
-
-        /// <summary>
-        /// William Rients
-        /// Created: 2023/04/16
-        /// 
-        /// Get method for create ticket page,
-        /// checks if there is a status message to be 
-        /// displayed
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        // GET: Management/Create       
+      
         public ActionResult Create()
         {
-            if (TempData["status"] != null)
-            {
-                ViewBag.result = TempData["status"].ToString();
-                TempData.Remove("status");
-            }
             return View();
         }
 
-        /// <summary>
-        /// William Rients
-        /// Created: 2023/04/16
-        /// 
-        /// Post method for creating a ticket, gets
-        /// the current user logged in and checks if model state
-        /// is valid, and that the user is indeed logged in
-        /// 
-        /// </summary>
-        /// <param name="ticket"></param>
-        /// <returns></returns>
-        // POST: Management/Create
         [HttpPost]
         public ActionResult Create(Ticket ticket)
         {
-            applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var user = applicationUserManager.FindById(User.Identity.GetUserId());
-            if (user != null && ModelState.IsValid)
+            try
             {
-                try
-                {
-                    masterManager.TicketManager.CreateNewTicket((int)user.UsersId, ticket.TicketStatusId, ticket.TicketTitle, ticket.TicketContext);
-                    TempData["status"] = "Ticket Created!";
-                    return RedirectToAction("Create");
-                }
-                catch (Exception ex)
-                {
-                    ViewBag.Message = ex.Message;
+                // TODO: Add insert logic here
 
-                    return View("Error");
-                }
+                return RedirectToAction("Index");
             }
-            else
+            catch
             {
-                TempData["status"] = "Please login before creating a ticket.";
-                return RedirectToAction("Create");
+                return View();
             }
         }
 

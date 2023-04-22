@@ -16,6 +16,16 @@
 /// Added the ShowRolesByButton and HideAllButton methods and modifyed
 /// the onload to provide role access
 /// </remarks>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/19
+/// 
+/// Final QA
+/// 
+/// Brian Collum
+/// Updated: 2023/04/21
+/// Added Inventory UI filtering
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,22 +54,38 @@ namespace WpfPresentation.Management.Inventory
         List<ShelterInventoryItemVM> _shelterInventoryItemVMList = null; //used to populate the datagrid
         List<ShelterInventoryItemVM> _shelterInventoryItemVMCart = new List<ShelterInventoryItemVM>(); //used to collect items to buy
 
+        // Item Filtering
+        string _itemNameFilter = null;
+        List<ShelterInventoryItemVM> _shelterFilteredInventoryItemVMList = null;
+
+
         /// <summary>
         /// Zaid Rachman
         /// Created: 2023/03/19
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         public ViewShelterInventoryPage()
         {
-
             InitializeComponent();
-
-
         }
         /// <summary>
         /// Zaid Rachman
         /// Created: 2023/03/29
         /// This constructor is for when the user presses the back button on the "ViewItemCart" page. This way the user doesn't lose their list of items
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterInventoryItemVMs"></param>
         public ViewShelterInventoryPage(List<ShelterInventoryItemVM> shelterInventoryItemVMs)
         {
@@ -80,24 +106,17 @@ namespace WpfPresentation.Management.Inventory
         /// Updated: 2023/04/20
         /// Added the Show buttons by role to onload
         /// so roles can only see assigned features.
+        /// 
+        /// 
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA and removed commented out code regarding cboShelter
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            /*try
-            {
-                cboShelter.ItemsSource = _masterManager.ShelterManager.GetShelterList().OrderBy(shelter => shelter.ShelterName);
-            }
-            catch (Exception)
-            {
-
-                PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter list");
-                return;
-            }
-
-            cboShelter.DisplayMemberPath = "ShelterName";*/
-
             Users user;
             try
             {
@@ -114,16 +133,6 @@ namespace WpfPresentation.Management.Inventory
 
             if (shelterId != null)
             {
-                /* try
-                 {
-                     cboShelter.SelectedItem = _masterManager.ShelterManager.RetrieveShelterVMByShelterID((int)shelterId);
-                 }
-                 catch (Exception)
-                 {
-
-                     PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter");
-                     return;
-                 }*/
                 try
                 {
                     _shelterInventoryItemVMList = _masterManager.ShelterInventoryItemManager.RetrieveInventoryByShelterId((int)shelterId);
@@ -159,10 +168,15 @@ namespace WpfPresentation.Management.Inventory
         /// Populates the flags column
         /// Zaid Rachman
         /// Updated: 2023/04/04
+        /// 
         /// Added Low Stock and Over Stock indicators 
-        /// 
-        /// 
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         private void UpdateFlags()
         {
 
@@ -231,46 +245,6 @@ namespace WpfPresentation.Management.Inventory
             }
 
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// Created: 2023/03/19
-        /// 
-        /// Populates datagrid once the combobox closes
-        /// 
-        /// Zaid Rachman
-        /// Created: 2023/03/31
-        /// CboShelter is going to be moved to another page.
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /*private void cboShelter_DropDownClosed(object sender, EventArgs e)
-        {
-            ShelterVM selectedShelter;
-            if (cboShelter.SelectedItem != null)
-            {
-                selectedShelter = (ShelterVM)cboShelter.SelectedItem;
-
-                try
-                {
-                    _shelterInventoryItemVMList = _masterManager.ShelterInventoryItemManager.RetrieveInventoryByShelterId(selectedShelter.ShelterId);
-                }
-                catch (Exception)
-                {
-
-                    PromptWindow.ShowPrompt("Missing Data", "Failed to retrieve shelter inventory");
-                    return;
-                }
-
-
-                UpdateFlags();
-                datShelterInventory.ItemsSource = _shelterInventoryItemVMList;
-
-            }
-
-
-
-        }*/
 
         /// <summary>
         /// Zaid Rachman
@@ -282,6 +256,12 @@ namespace WpfPresentation.Management.Inventory
         /// Nathan Zumsande
         /// Updated: 2023/04/20
         /// Double click wont direct to the edit page if the edit and delete buttons are not visible
+        /// 
+        ///
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -298,6 +278,13 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/03/29
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnViewCart_Click(object sender, RoutedEventArgs e)
@@ -312,6 +299,13 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/02/31
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnAddToCart_Click(object sender, RoutedEventArgs e)
@@ -349,6 +343,13 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created 2023/02/31
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -364,7 +365,18 @@ namespace WpfPresentation.Management.Inventory
         /// Created: 2023/04/07
         /// Refresh the list of Inventory items by loading them from the database
         /// </summary>
-        public void refreshShelterInventoryList()
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA and fixed method name to follow standard practices
+        /// 
+        /// Brian Collum
+        /// Updated: 2023/04/21
+        /// Added search filter support
+        /// </remarks>
+        public void RefreshShelterInventoryList()
         {
             Users user;
             try
@@ -394,7 +406,8 @@ namespace WpfPresentation.Management.Inventory
                 try
                 {
                     UpdateFlags();
-                    datShelterInventory.ItemsSource = _shelterInventoryItemVMList;
+                    ApplyFilters(); // Apply filtering
+                    datShelterInventory.ItemsSource = _shelterFilteredInventoryItemVMList;  // Load filtered Inventory
                 }
                 catch (Exception ex)
                 {
@@ -407,6 +420,13 @@ namespace WpfPresentation.Management.Inventory
         /// Brian Collum
         /// Created 2023/04/07
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/19
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -431,7 +451,104 @@ namespace WpfPresentation.Management.Inventory
             {
                 PromptWindow.ShowPrompt("Error", "Please select an item from the list to remove from your shelter.", ButtonMode.Ok);
             }
-            refreshShelterInventoryList();
+            RefreshShelterInventoryList();
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Apply the user's selected search filter to the Inventory UI
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        private void ApplyFilters()
+        {
+            // Update item name filter
+            if (_itemNameFilter == null || _itemNameFilter.Equals("Filter by Name"))
+            {
+                _itemNameFilter = "";
+            }
+            // Reset filter list
+            _shelterFilteredInventoryItemVMList = new List<ShelterInventoryItemVM>();
+            try
+            {
+                foreach (ShelterInventoryItemVM item in _shelterInventoryItemVMList)
+                {
+                    // Match name search string
+                    if (item.ItemId.IndexOf(_itemNameFilter, 0, StringComparison.OrdinalIgnoreCase) != -1)
+                    {
+                        _shelterFilteredInventoryItemVMList.Add(item);  // Populate the filtered list
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Failed to apply item name filter, " + ex.InnerException.Message, ButtonMode.Ok);
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Clear the placeholder text from the search by name textbox when the user selects it
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtSearchFilter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            // Clear search box on select
+            if (txtSearchFilter.Text == "" || txtSearchFilter.Text == "Filter by Name")
+            {
+                txtSearchFilter.Text = "";
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Restore the placeholder text to the search by name textbox when the user deselects it
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtSearchFilter_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Reset placeholder text when text box is empty and user deselects
+            if (txtSearchFilter.Text == "")
+            {
+                txtSearchFilter.Text = "Filter by Name";
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Apply search by name filtering when user presses enter after entering their search query
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtSearchFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            // When user hits Return after entering text
+            if (e.Key == Key.Return)
+            {
+                try
+                {
+                    _itemNameFilter = txtSearchFilter.Text;
+                    RefreshShelterInventoryList();
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", "Failed to apply item name filter, " + ex.InnerException.Message, ButtonMode.Ok);
+                }
+            }
         }
 
         /// <summary>

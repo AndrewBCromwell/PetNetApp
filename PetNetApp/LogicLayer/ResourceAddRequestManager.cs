@@ -57,6 +57,19 @@ namespace LogicLayer
             _resourceAddRequestAccessor = resourceAddRequestAccessor;
         }
 
+        
+        public bool AddResourceAddRequest(ResourceAddRequest resourceAddRequest)
+        {
+            try
+            {
+                return 1 == _resourceAddRequestAccessor.InsertResourceAddRequest(resourceAddRequest);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while adding the request.", ex);
+            }
+        }
+
         public bool EditResourceAddRequestActiveField(ResourceAddRequest oldResourceAddRequest, ResourceAddRequest newResourceAddRequest)
         {
             try

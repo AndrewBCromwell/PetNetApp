@@ -12,8 +12,10 @@ namespace DataAccessLayerFakes
     {
         List<ReplyVM> fakeRepliesVM = new List<ReplyVM>();
         List<Reply> fakeReplies = new List<Reply>();
+        List<Tuple<int, int>> reports = new List<Tuple<int, int>>();
         public ReplyAccessorFake()
         {
+            reports.Add(new Tuple<int, int>(1, 1));
             fakeRepliesVM.Add(new ReplyVM
             {
                 ReplyId= 1,
@@ -63,6 +65,32 @@ namespace DataAccessLayerFakes
                 ReplierFamilyName = "Arman",
                 UserReplyReport = false
             });
+        }
+
+
+        public int InsertReplyReport(int replyId, int userId, int reportMessageId)
+        {
+            int current = reports.Count;
+            reports.Add(new Tuple<int, int>(replyId, userId));
+            return reports.Count - current;
+        }
+
+
+        public int DeleteReplyReport(int replyId, int userId)
+        {
+            var report = reports.Find(tuple => tuple.Item1 == replyId && tuple.Item2 == userId);
+            if (report == null)
+            {
+                return 0;
+            }
+            reports.Remove(report);
+            return 1;
+        }
+
+
+        public int SelectUserReplyReportedByReplyIdandUserId(int postId, int userId)
+        {
+            return reports.Count(join => join.Item1 == postId && join.Item2 == userId);
         }
 
         public int InsertReply(Reply reply)

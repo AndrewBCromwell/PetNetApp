@@ -107,7 +107,7 @@ namespace LogicLayer
             //for testing from dev page
             User = new UsersVM()
             {
-                UsersId = 100001,
+                UsersId = 100000,
                 ShelterId = 100000,
                 GivenName = "Barry",
                 FamilyName = "Mikulas",
@@ -117,7 +117,7 @@ namespace LogicLayer
                 Phone = "319-123-1325",
                 Active = true,
                 Suspend = false,
-                Roles = new List<string>() { "admin" }
+                Roles = new List<string>() { "Admin" }
             };
         }
 

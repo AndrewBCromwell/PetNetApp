@@ -312,21 +312,6 @@ namespace LogicLayer
             }
             return usersList;
         }
-        /// <summary>
-        /// Barry Mikulas
-        /// Created: 2023/02/09
-        /// 
-        /// 
-        /// </summary>
-        /// Retrieves a users with given usersId
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// 
-        /// </remarks>
-        /// <param usersId="UsersId"></param>
-        /// 
         public Users RetrieveUserByUsersId(int UsersId)
         {
             //throw new NotImplementedException();
@@ -562,7 +547,7 @@ namespace LogicLayer
             return userVM;
         }
 
-        public bool EditUserShelterId(int userId, int shelterId, int oldShelterId)
+        public bool EditUserShelterId(int userId, int shelterId, int? oldShelterId)
         {
             bool wasAdded = false;
 

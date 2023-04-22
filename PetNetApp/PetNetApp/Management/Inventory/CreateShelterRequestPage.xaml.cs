@@ -1,4 +1,18 @@
-﻿using System;
+﻿/// <summary>
+/// Andrew Cromwell
+/// 2023/04/04
+/// 
+/// Interaction logic for CreateShelterRequestPage.xaml
+/// </summary>
+///
+/// <remarks>
+/// Brian Collum
+/// Updated: 2023/04/21
+/// 
+/// Added Inventory UI filtering
+/// </remarks>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,11 +44,14 @@ namespace WpfPresentation.Management.Inventory
         private MasterManager _manager = null;
         private List<ShelterInventoryItemVM> _shelterInventoryItemVMList = null;
         private RequestVM _request = new RequestVM();
-        
+
+        // Item Filtering
+        string _itemNameFilter = null;
+        List<ShelterInventoryItemVM> _shelterFilteredInventoryItemVMList = null;
 
         public CreateShelterRequestPage(MasterManager manager, Shelter shelter)
         {
-            InitializeComponent();  
+            InitializeComponent();
             _manager = manager;
             _shelter = shelter;
             _existingCreateShelterRequestPage = this;
@@ -44,8 +61,8 @@ namespace WpfPresentation.Management.Inventory
         }
 
         public static CreateShelterRequestPage GetCreateShelterRequestPage(MasterManager manager)
-        {       
-            if(manager == null)
+        {
+            if (manager == null)
             {
                 _existingCreateShelterRequestPage = null;
             }
@@ -62,7 +79,7 @@ namespace WpfPresentation.Management.Inventory
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if(_request == null)
+            if (_request == null)
             {
                 NavigationService.Navigate(SelectShelterForRequestPage.GetSelectShelterForRequestPage(_manager));
                 return;
@@ -248,7 +265,7 @@ namespace WpfPresentation.Management.Inventory
 
             PromptSelection selection = PromptWindow.ShowPrompt("Send Request", "Are you sure you are ready to send your Request."
                 , ButtonMode.YesNo);
-            if(selection == PromptSelection.Yes)
+            if (selection == PromptSelection.Yes)
             {
                 try
                 {
@@ -265,9 +282,108 @@ namespace WpfPresentation.Management.Inventory
                         PromptWindow.ShowPrompt("Error", "Something went wrong. The request was not sent", ButtonMode.Ok);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message, ButtonMode.Ok);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Apply the user's selected search filter to the Inventory UI
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// 
+        /// </remarks>
+        private void ApplyFilters()
+        {
+            // Update item name filter
+            if (_itemNameFilter == null || _itemNameFilter.Equals("Filter by Name"))
+            {
+                _itemNameFilter = "";
+            }
+            // Reset filter list
+            _shelterFilteredInventoryItemVMList = new List<ShelterInventoryItemVM>();
+            try
+            {
+                foreach (ShelterInventoryItemVM item in _shelterInventoryItemVMList)
+                {
+                    // Match name search string
+                    if (item.ItemId.IndexOf(_itemNameFilter, 0, StringComparison.OrdinalIgnoreCase) != -1)
+                    {
+                        _shelterFilteredInventoryItemVMList.Add(item);  // Populate the filtered list
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Failed to apply item name filter, " + ex.InnerException.Message, ButtonMode.Ok);
+            }
+            // Refresh the actual view
+            datShelterInventory.ItemsSource = _shelterFilteredInventoryItemVMList;  //RefreshShelterInventoryList() doesn't exist in this class so set datagrid here
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Clear the placeholder text from the search by name textbox when the user selects it
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtSearchFilter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            // Clear search box on select
+            if (txtSearchFilter.Text == "" || txtSearchFilter.Text == "Filter by Name")
+            {
+                txtSearchFilter.Text = "";
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Restore the placeholder text to the search by name textbox when the user deselects it
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtSearchFilter_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Reset placeholder text when text box is empty and user deselects
+            if (txtSearchFilter.Text == "")
+            {
+                txtSearchFilter.Text = "Filter by Name";
+            }
+        }
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/21
+        /// 
+        /// Apply search by name filtering when user presses enter after entering their search query
+        /// </summary>
+        /// <remarks>
+        /// </remarks>
+        private void txtSearchFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            // When user hits Return after entering text
+            if (e.Key == Key.Return)
+            {
+                try
+                {
+                    _itemNameFilter = txtSearchFilter.Text;
+                    ApplyFilters();
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", "Failed to apply item name filter, " + ex.InnerException.Message, ButtonMode.Ok);
                 }
             }
         }
