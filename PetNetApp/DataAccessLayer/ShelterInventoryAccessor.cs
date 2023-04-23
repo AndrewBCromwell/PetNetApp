@@ -10,7 +10,13 @@
 /// Updated: 2023/04/06
 /// Added support for ItemDisabled property
 /// Added EnableOrDisableShelterInventoryItem and InsertNewShelterInventoryItemFromLibrary
+///
+/// Nathan Zumsande
+/// Updated: 2023/04/19
+/// Updated the update to check if the custom flag for the updated item
+/// is null otherwise set the parameter to the passed value
 /// </remarks>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -175,7 +181,16 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@Urgent", newShelterInventoryItemVM.Urgent);
             cmd.Parameters.AddWithValue("@Processing", newShelterInventoryItemVM.Processing);
             cmd.Parameters.AddWithValue("@DoNotOrder", newShelterInventoryItemVM.DoNotOrder);
-            cmd.Parameters.AddWithValue("@CustomFlag", newShelterInventoryItemVM.CustomFlag);
+            //cmd.Parameters.AddWithValue("@CustomFlag", newShelterInventoryItemVM.CustomFlag);
+
+            if(newShelterInventoryItemVM.CustomFlag == null)
+            {
+                cmd.Parameters.AddWithValue("@CustomFlag", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@CustomFlag", newShelterInventoryItemVM.CustomFlag);
+            }
 
             cmd.Parameters.AddWithValue("@OldQuantity", oldShelterInventoryItemVM.Quantity);
             cmd.Parameters.AddWithValue("@OldUseStatistic", oldShelterInventoryItemVM.UseStatistic);
@@ -186,7 +201,7 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@OldUrgent", oldShelterInventoryItemVM.Urgent);
             cmd.Parameters.AddWithValue("@OldProcessing", oldShelterInventoryItemVM.Processing);
             cmd.Parameters.AddWithValue("@OldDoNotOrder", oldShelterInventoryItemVM.DoNotOrder);
-
+            
             if (oldShelterInventoryItemVM.CustomFlag == null)
             {
                 cmd.Parameters.AddWithValue("@OldCustomFlag", DBNull.Value);

@@ -24,8 +24,6 @@ namespace WpfPresentation.Community
     /// Barry Mikulas
     /// Created: 2023/02/11
     /// 
-    /// 
-    /// 
     /// </summary>
     /// Window for managing a single user's roles.
     /// 
@@ -48,8 +46,15 @@ namespace WpfPresentation.Community
             this._users = user;
         }
 
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/15
+        /// 
+        /// Event handler for the click of the add role button.
+        ///
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_AddRole_Click(object sender, RoutedEventArgs e)
         {
             Role newUserRole = new Role();
@@ -61,7 +66,6 @@ namespace WpfPresentation.Community
                 //if no role selected tell user
                 PromptWindow.ShowPrompt("Error", "Please select a role to add and try again", ButtonMode.Ok);
                 return;
-
             }
             else
             {
@@ -94,37 +98,45 @@ namespace WpfPresentation.Community
             }
 
         }
+
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/11
+        /// 
+        /// Event handler for clicking the previous button. Was never implemented.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Previous_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Previous", "Go to edit user info screen?", ButtonMode.YesNo) == PromptSelection.Yes)
             {
                 //navigate back to edit user details
             }
-            else
-            {
-                //do nothing
-            }
-
         }
+
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/11
+        /// Event handler for clicking the finish button - Button was renamed "done".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Finish_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Save", "Are you finished editing roles for: " + _users.GivenName + " " + _users.FamilyName + "?", ButtonMode.YesNo) == PromptSelection.Yes)
             {
-                //save user roles list to database this is no longer need as the add and remove roles updates the database
                 this.Close();
             }
-            else
-            {
-                //close prompt
-            }
-        }
+         }
+
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/11
         /// Prompts user for confirmation of cancelation, closes window if confirmed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             // verify person wants to close the window
@@ -138,6 +150,7 @@ namespace WpfPresentation.Community
                 this.Close();
             }
         }
+
         /// Barry Mikulas
         /// Created: 2023/02/11
         /// Modified: 2023/03/01
@@ -184,8 +197,13 @@ namespace WpfPresentation.Community
             }
         }
 
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/11
+        /// Populates the window with user roles and drop down list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // retrieve role list for combo box
@@ -215,8 +233,11 @@ namespace WpfPresentation.Community
             PopulateUserRoleGrid();
         }
 
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/11
+        /// Retrieves user's role list and populates the grid.
+        /// </summary>
         private void PopulateUserRoleGrid()
         {
             //retrieve user's roles
@@ -228,15 +249,29 @@ namespace WpfPresentation.Community
             }
             catch (Exception ex)
             {
-                throw ex;
+                PromptWindow.ShowPrompt("Error", ex.Message);
             }
         }
 
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/11
+        /// Event Handler for clicking the X in the upper right of the window/
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCloseWindowX_Click(object sender, RoutedEventArgs e)
         {
             btn_Cancel_Click(sender, e);
         }
 
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/11
+        /// Event handler for clicking the remove button on the roles grid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void contextRemoveRole_Click(object sender, RoutedEventArgs e)
         {
             btn_RemoveRole(sender, e);

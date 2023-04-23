@@ -800,9 +800,9 @@ INSERT INTO [dbo].[FundraisingEvent]
         [AdditionalInfo]
 		)
 	VALUES
-		(100001, 100000,100000, 'Shelter in Need', '2023-07-12', '2023-07-14', 'You got a shelter in need', 'It will be fun!'),
-        (100001, 100000,100000, 'Puppy Fun Day', '2023-07-16', '2023-07-18', 'Watch cute puppies play', 'It will be fun!'),
-        (100001, 100000,100000, 'Give me your money', '2023-07-20', '2023-07-21', 'I want money', 'It will be fun!')
+		(100001, 100000,100000, 'Shelter in Need', '2023-07-12 10:00:00 AM', '2023-07-12 10:00:00 PM', 'You got a shelter in need', 'It will be fun!'),
+        (100001, 100000,100000, 'Puppy Fun Day', '2023-07-16 10:30:00 AM', '2023-07-16 10:00:00 PM', 'Watch cute puppies play', 'It will be fun!'),
+        (100001, 100000,100000, 'Give me your money', '2023-07-20 11:00:00 AM', '2023-07-20  05:00:00 PM', 'I want money', 'It will be fun!')
 GO
 
 print '' print '*** Creating Donation sample data'
@@ -821,13 +821,13 @@ INSERT INTO [dbo].[Donation]
 		[FundraisingEventId]
 		)
 	VALUES
-		(100001, 100000, 100.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmoident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 0,'Dogs','Visa', NULL),
+		(100001, 100000, 100.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmoident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 0,'Dogs','Visa', 100000),
         (100002, 100000, 56.00, 'Because you helped me find my little guy', 0, 0, 'Trying to help', 'visa', NULL),
-        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', NULL),
-        (100002, 100000, 12.99, '', 1, 0, ':)', 'Visa', NULL),
-        (100009, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa', NULL),
-        (100008, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa', NULL),
-        (100007, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL),
+        (100003, 100000, 12.99, 'Daily good deed', 1, 0, 'Have a good day', 'Visa', 100000),
+        (100002, 100000, 12.99, '', 1, 0, ':)', 'Visa', 100000),
+        (100009, 100000, 12.99, 'Daily good deed', 1, 0, 'Yay', 'Visa', 100000),
+        (100008, 100000, 99.99, 'Today was a good day', 0, 1, 'Im writing this off in my taxes', 'Visa', 100000),
+        (100007, 100000, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', 100000),
         (100007, 100001, 150.00, 'I won at the Casino', 0, 1, 'Too much money for one person', 'Visa', NULL)
 GO
 

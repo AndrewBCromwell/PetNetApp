@@ -23,6 +23,7 @@ namespace MVCPresentation.Controllers
         // GET: Community
         public ActionResult Index(Users user)
         {
+            ViewBag.Tab = "Community";
             try
             {
                 if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
@@ -422,10 +423,14 @@ namespace MVCPresentation.Controllers
                         {
                             postVM.Replies = masterManager.ReplyManager.RetrieveActiveRepliesByPostId(postVM.PostId);
                         }
-                        foreach (ReplyVM reply in postVM.Replies)
+                        if (User.Identity.IsAuthenticated)
                         {
-                            reply.UserReplyReport = masterManager.ReplyManager.RetrieveUserReplyReportedByReplyIdAndUserId(reply.ReplyId, user.UsersId);
+                            foreach (ReplyVM reply in postVM.Replies)
+                            {
+                                reply.UserReplyReport = masterManager.ReplyManager.RetrieveUserReplyReportedByReplyIdAndUserId(reply.ReplyId, user.UsersId);
+                            }
                         }
+                        
                     }
                     else
                     {

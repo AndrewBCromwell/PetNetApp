@@ -33,6 +33,11 @@ namespace WpfPresentation.Management.Inventory
     /// 
     /// Interaction logic for InventoryNavigationPage.xaml
     /// </summary>
+    /// <remarks>
+    /// Nathan Zumsande
+    /// Updated: 2023/04/20
+    /// Added role access for the inventory navigation
+    /// </remarks>
     public partial class InventoryNavigationPage : Page
     {
         public static InventoryNavigationPage _existingInventoryNavigationPage = null;
@@ -76,6 +81,7 @@ namespace WpfPresentation.Management.Inventory
             {
                 _existingInventoryNavigationPage = new InventoryNavigationPage(manager);
             }
+            _existingInventoryNavigationPage.ShowButtonsByRole();
             return _existingInventoryNavigationPage;
         }
         /// <summary>
@@ -195,8 +201,7 @@ namespace WpfPresentation.Management.Inventory
         private void btnCheckIn_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnCheckIn);
-            // replace with page name and then delete comment
-            frameInventory.Navigate(null);
+            frameInventory.Navigate(new CheckInCheckOutPage(_manager));
         }
         /// <summary>
         /// Andrew Cromwell
@@ -258,6 +263,135 @@ namespace WpfPresentation.Management.Inventory
                 frameInventory.Navigate(CreateShelterRequestPage.GetCreateShelterRequestPage(_manager));
             }
             
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Method to allow access to features of the inventory navigation
+        ///  based on the users roles
+        /// </summary>
+        private void ShowButtonsByRole()
+        {
+            HideAllButtons();
+            ShowShelterInventoryButtonByRole();
+            ShowItemLibraryButtonByRole();
+            ShowViewRequestsButtonByRole();
+            ShowViewResourceAddRequestsButtonByRole();
+            ShowCheckInCheckOutButtonByRole();
+            ShowInventoryChangesButtonByRole();
+            ShowRequestFromShelterButtonByRole();
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Initalizes buttons to be hidden
+        /// </summary>
+        private void HideAllButtons()
+        {
+            foreach(var btn in _inventoryTabButtons)
+            {
+                btn.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Access for shelter inventory page
+        /// </summary>
+        private void ShowShelterInventoryButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Employee" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnShelterInventory.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Access for item library page
+        /// </summary>
+        private void ShowItemLibraryButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnItemLibrary.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Access for requests page
+        /// </summary>
+        private void ShowViewRequestsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnViewRequests.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Access for additional recource requests page
+        /// </summary>
+        private void ShowViewResourceAddRequestsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+               btnViewResourceAddRequest.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Access for check in and check out page
+        /// </summary>
+        private void ShowCheckInCheckOutButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Employee" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnCheckIn.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Access for inventory changes page
+        /// </summary>
+        private void ShowInventoryChangesButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Employee" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnInventoryChanges.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/04/20
+        ///  Access for requests from shelter page
+        /// </summary>
+        private void ShowRequestFromShelterButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager"};
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnRequestFromShelter.Visibility = Visibility.Visible;
+            }
         }
     }
 }

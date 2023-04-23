@@ -30,6 +30,7 @@ namespace MVCPresentation.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Tab = "Adopt";
             return View();
         }
 
@@ -55,7 +56,9 @@ namespace MVCPresentation.Controllers
         [HttpPost]
         public ActionResult AdoptionApplication(AdoptionApplicationVM _application)
         {
-            if(!ModelState.IsValid)
+            ViewBag.Tab = "Adopt";
+
+            if (!ModelState.IsValid)
             {
                 return View(_application);
             }
@@ -121,6 +124,8 @@ namespace MVCPresentation.Controllers
         [HttpGet]
         public ActionResult Adoptable()
         {
+            ViewBag.Tab = "Adopt";
+
             List<AdoptableAnimalModel> adoptableAnimalModels = new List<AdoptableAnimalModel>();
             List<AnimalVM> animalVMs = new List<AnimalVM>();
             try
@@ -195,6 +200,7 @@ namespace MVCPresentation.Controllers
         [HttpPost, ActionName("Adoptable")]
         public ActionResult FilterAdoptable()
         {
+            ViewBag.Tab = "Adopt";
             string filterFromForm = Convert.ToString(Request["FilterAnimal"].ToString());
             List<AdoptableAnimalModel> adoptableAnimalModels = new List<AdoptableAnimalModel>();
             List<AnimalVM> animalVMs = new List<AnimalVM>();
@@ -281,17 +287,20 @@ namespace MVCPresentation.Controllers
 
         public ActionResult Foster()
         {
+            ViewBag.Tab = "Adopt";
             return View();
         }
 
         public ActionResult Surrender()
         {
+            ViewBag.Tab = "Adopt";
             return View();
         }
                 
         [HttpGet]
         public ActionResult AdoptableAnimal(int? animalId)
         {
+            ViewBag.Tab = "Adopt";
             AnimalVM animal = new AnimalVM();
             string animalNote = "";
             IEnumerable<Images> animalImages;

@@ -83,7 +83,7 @@ body {
     border-top-right-radius: 25px;
     border-color: #1c6758;
     float: left;
-    width: 10%;
+    /*width: 10%;*/
     min-width: 150px;
     background-color: #d6cda4;
     font-size: 16px;

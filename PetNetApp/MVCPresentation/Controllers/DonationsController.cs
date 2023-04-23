@@ -17,6 +17,7 @@ namespace MVCPresentation.Controllers
         // GET: Donations
         public ActionResult Index()
         {
+            ViewBag.Tab = "Donate";
             try
             {
                 donationVMs = masterManager.DonationManager.RetrieveAllDonations();
@@ -32,6 +33,7 @@ namespace MVCPresentation.Controllers
         // GET: Donations/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Tab = "Donate";
             if (id != null)
             {
                 try
