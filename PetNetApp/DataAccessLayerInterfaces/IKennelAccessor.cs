@@ -143,10 +143,9 @@ namespace DataAccessLayerInterfaces
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <param name="ShelterId">int for the the specific shelter</param>
-        /// /// <param name="AnimalTypeId">string for the the specific type of animal</param>
         /// <exception cref="Exception">Failed to retrived a list of animals</exception>
         /// <returns>List of animals</returns>
-        List<Animal> SelectAllAnimalsForKennel(int ShelterId, string AnimalTypeId);
+        List<Animal> SelectAllAnimalsForKennel(int ShelterId);
 
         /// <summary>
         /// Asa Armstrong

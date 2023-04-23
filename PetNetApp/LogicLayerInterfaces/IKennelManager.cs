@@ -53,7 +53,7 @@ namespace LogicLayerInterfaces
         /// </remarks>
         /// <exception cref="ApplicationException"></exception>
         /// <returns>List<KennelVM></returns>
-        List<Animal> RetrieveAllAnimalsForKennel(int ShelterId, string AnimalTypeId);
+        List<Animal> RetrieveAllAnimalsForKennel(int ShelterId);
         List<string> RetrieveAnimalTypes();
 
         /// <summary>
