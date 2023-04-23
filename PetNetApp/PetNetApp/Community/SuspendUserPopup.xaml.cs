@@ -42,6 +42,15 @@ namespace WpfPresentation.Community
             this._users = user;
         }
 
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/26
+        /// 
+        /// Setup user interface for user account suspend status.
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //populate window based on user's suspend status
@@ -59,9 +68,15 @@ namespace WpfPresentation.Community
 
         }
 
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/26
+        /// 
         /// Prompts user for confirmation of cancelation, closes window if confirmed
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // verify person wants to close the window
@@ -71,16 +86,32 @@ namespace WpfPresentation.Community
             }
         }
 
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/26
+        /// 
         /// Prompts user for confirmation of user suspension
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
             bool userSuspendStatus = _users.Suspend;
             int adminCount = 0;
             string password = txtConfirmPassword.Password;
             UsersVM testPasswordUser;
-            List<Role> userRoles = _masterManager.RoleManager.RetrieveRoleListByUserId(_users.UsersId);
+            List<Role> userRoles;
+
+            try
+            {
+                 userRoles = _masterManager.RoleManager.RetrieveRoleListByUserId(_users.UsersId);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Unable to complete user suspension." + ex);
+                return;
+            }
 
             //check to see if user is trying to suspend own account
             if (_masterManager.User.UsersId == _users.UsersId)
@@ -112,15 +143,23 @@ namespace WpfPresentation.Community
             }
             //check to see if user to be suspended is an admin if they are then
             //check to make sure there will be at least 2 active admin accounts
-            var matches = userRoles.Any(p => p.RoleId == "Admin");
-            if (matches && !userSuspendStatus)
+            try
             {
-                adminCount = _masterManager.UsersManager.RetrieveCountActiveUnsuspendUserAccountsByRoleId("Admin");
-                if (adminCount < 2)
+                var matches = userRoles.Any(p => p.RoleId == "Admin");
+                if (matches && !userSuspendStatus)
                 {
-                    PromptWindow.ShowPrompt("Suspend Error", "There must be at least one active 'Admin' acount. \n Another user must be given the Admin role before this account can be suspended.");
-                    return;
+                    adminCount = _masterManager.UsersManager.RetrieveCountActiveUnsuspendUserAccountsByRoleId("Admin");
+                    if (adminCount < 2)
+                    {
+                        PromptWindow.ShowPrompt("Suspend Error", "There must be at least one active 'Admin' acount. \n Another user must be given the Admin role before this account can be suspended.");
+                        return;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Unable to complete user suspension." + ex);
+                return;
             }
 
             //attempt to suspend the user's account
@@ -160,6 +199,15 @@ namespace WpfPresentation.Community
             this.DialogResult = true;
         }
 
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/26
+        /// 
+        /// Event handler for pressing the enter key while in the Confirm Password textbox
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtConfirmPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -168,6 +216,15 @@ namespace WpfPresentation.Community
             }
         }
 
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/02/26
+        /// 
+        /// Event handler for clicking the x in the corner.
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCloseWindowX_Click(object sender, RoutedEventArgs e)
         {
             btnCancel_Click(sender, e);

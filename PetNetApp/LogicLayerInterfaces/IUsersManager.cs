@@ -26,6 +26,7 @@ namespace LogicLayerInterfaces
         /// <param name="UsersId"></param>
         /// <returns></returns>
         Users RetrieveUserByUsersId(int UsersId);
+
         /// <summary>
         /// created 02/26/2023
         /// created by Barry Mikulas
@@ -34,6 +35,7 @@ namespace LogicLayerInterfaces
         /// <param name="UserId"></param>
         /// <returns>bool of success status</returns>
         bool SuspendUserAccount(int UserId);
+
         /// <summary>
         /// created 02/26/2023
         /// created by Barry Mikulas
@@ -42,6 +44,7 @@ namespace LogicLayerInterfaces
         /// <param name="UserId"></param>
         /// <returns>bool of success status</returns>
         bool UnsuspendUserAccount(int UserId);
+
         /// <summary>
         /// created 02/26/2023
         /// created by Barry Mikulas
