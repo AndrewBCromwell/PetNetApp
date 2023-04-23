@@ -56,7 +56,10 @@ namespace WpfPresentation.Fundraising
             "$1000 or Less"
         };
 
-
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         public static ViewDonationsPage ExistingDonationPage 
         {
             get 
@@ -70,6 +73,10 @@ namespace WpfPresentation.Fundraising
              private set { }
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         public ViewDonationsPage()
         {
             InitializeComponent();
