@@ -792,7 +792,7 @@ CREATE TABLE [dbo].[Donation](
 	[ShelterId]	                [int]	                  NOT NULL,
 	[Amount]	                [decimal](7,2)	              NULL,
 	[Message]	                [nvarchar](255)	              NULL,
-	[Date]	                    [DATE] 	DEFAULT GETDATE()     NULL,
+	[Date]	                    [DATETIME] 	DEFAULT GETDATE()     NULL,
 	[GivenName]	                [nvarchar](50)	              NULL,
 	[FamilyName]	            [nvarchar](50)	              NULL,
 	[HasInKindDonation]	        [bit]          NOT NULL  DEFAULT 0,
@@ -801,6 +801,8 @@ CREATE TABLE [dbo].[Donation](
 	[PaymentMethod]	            [nvarchar](50)	              NULL,
 	[ScheduledDonationId]	    [int]	                      NULL,
 	[FundraisingEventId]	    [int]	                      NULL,
+	[Email]					    [nvarchar](254)	              NULL,
+	[Phone]	  					[nvarchar](13)                NULL,
 
 	CONSTRAINT [pk_DonationId] PRIMARY KEY([DonationId] ASC),
 	CONSTRAINT [fk_Donation_UsersId] FOREIGN KEY([UsersId])

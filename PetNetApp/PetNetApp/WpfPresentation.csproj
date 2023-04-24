@@ -131,6 +131,9 @@
     <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fundraising\EnterDonation.xaml.cs">
+      <DependentUpon>EnterDonation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\Inventory\ViewNewItemRequestsPage.xaml.cs">
       <DependentUpon>ViewNewItemRequestsPage.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,9 @@
     </Compile>
     <Compile Include="Management\ViewTicketPage.xaml.cs">
       <DependentUpon>ViewTicketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InKindDonationUserControl.xaml.cs">
+      <DependentUpon>InKindDonationUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NewItemRequestUserControl.xaml.cs">
       <DependentUpon>NewItemRequestUserControl.xaml</DependentUpon>
@@ -426,6 +432,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Community\ViewNearbyResourcesMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fundraising\EnterDonation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -702,6 +712,10 @@
     <Page Include="UserControls\DonationUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\InKindDonationUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\InstitutionalEntityUserControl.xaml">
       <SubType>Designer</SubType>

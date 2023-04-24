@@ -41,6 +41,12 @@ namespace WpfPresentation.Animals
         private AdoptionApplicationResponseVM _oldAdoptionApplicationResponse = new AdoptionApplicationResponseVM();
         private AdoptionApplicationResponseVM _response = new AdoptionApplicationResponseVM();
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Constructor for page AddEditReportOnAdopter
+        /// </summary>
+        /// <param name="adoptionApplicationId"></param>
         public AddEditReportOnAdopter(int adoptionApplicationId)
         {
             _adoptionApplicationId = adoptionApplicationId;
@@ -48,6 +54,12 @@ namespace WpfPresentation.Animals
             setupPage();
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Constructor for page AddEditReportOnAdopter
+        /// </summary>
+        /// <param name="adoptionApplication"></param>
         /*
         public AddEditReportOnAdopter(AdoptionApplication adoptionApplication)
         {
@@ -95,6 +107,13 @@ namespace WpfPresentation.Animals
             txt_DateCreated.Text = _oldAdoptionApplicationResponse.AdoptionApplicationResponseDate.ToLongDateString();
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Adds a new record to the DB or Edits an existing one.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -139,6 +158,13 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Cancels the Add/Edit and returns from the page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Confirm Cancel", "Cancel and return?", ButtonMode.YesNo).Equals(PromptSelection.Yes))

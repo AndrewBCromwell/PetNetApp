@@ -262,7 +262,7 @@ namespace DataAccessLayer
                         inKind.InKindId = reader.GetInt32(0);
                         inKind.DonationId = reader.GetInt32(1);
                         inKind.Description = reader.GetString(2);
-                        inKind.Quanity = reader.GetInt32(3);
+                        inKind.Quantity = reader.GetInt32(3);
                         inKind.Target = reader.IsDBNull(4) ? null : reader.GetString(4);
                         inKind.Recieved = reader.GetBoolean(5);
 
@@ -368,6 +368,174 @@ namespace DataAccessLayer
             }
 
             return donationTotal;
+        }
+
+        public int InsertDonation(Donation donation)
+        {
+            int newDonationId = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmdText = "sp_insert_donation";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@ShelterId", donation.ShelterId);
+            cmd.Parameters.AddWithValue("@HasInKindDonation", donation.HasInKindDonation);
+            cmd.Parameters.AddWithValue("@Anonymous", donation.Anonymous);
+
+            if (donation.UserId == null)
+            {
+                cmd.Parameters.AddWithValue("@UsersId", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@UsersId", donation.UserId);
+            }
+
+            if (donation.Amount == null)
+            {
+                cmd.Parameters.AddWithValue("@Amount", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Amount", donation.Amount);
+            }
+
+            if (donation.Message == null || donation.Message.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@Message", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Message", donation.Message);
+            }
+
+            if (donation.GivenName == null || donation.GivenName.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@GivenName", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@GivenName", donation.GivenName);
+            }
+
+            if (donation.FamilyName == null || donation.FamilyName.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@FamilyName", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@FamilyName", donation.FamilyName);
+            }
+
+            if (donation.Target == null || donation.Target.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@Target", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Target", donation.Target);
+            }
+
+            if (donation.PaymentMethod == null || donation.PaymentMethod.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@PaymentMethod", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@PaymentMethod", donation.PaymentMethod);
+            }
+
+            if (donation.ScheduledDonationId == null)
+            {
+                cmd.Parameters.AddWithValue("@ScheduledDonationId", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ScheduledDonationId", donation.ScheduledDonationId);
+            }
+
+            if (donation.FundraisingEventId == null)
+            {
+                cmd.Parameters.AddWithValue("@FundraisingEventId", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@FundraisingEventId", donation.FundraisingEventId);
+            }
+
+            if (donation.Email == null || donation.Email.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@Email", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Email", donation.Email);
+            }
+
+            if (donation.Email == null || donation.Email.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Phone", donation.Phone);
+            }
+            
+            try
+            {
+                conn.Open();
+                newDonationId = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return newDonationId;
+        }
+
+        public int InsertInKind(InKind inKind)
+        {
+            int rowsAffected = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmdText = "sp_insert_in_kind";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@DonationId", inKind.DonationId);
+            cmd.Parameters.AddWithValue("@Description", inKind.Description);
+            cmd.Parameters.AddWithValue("@Quantity", inKind.Quantity);
+            cmd.Parameters.AddWithValue("@Received", inKind.Recieved);
+
+            if (inKind.Target == null || inKind.Target.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@Target", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Target", inKind.Target);
+            }
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
         }
     }
 }

@@ -62,7 +62,7 @@ namespace WpfPresentation.Fundraising
         {
             lblInKind.Visibility = Visibility.Hidden;
             lblDesc.Visibility = Visibility.Hidden;
-            lblQuanity.Visibility = Visibility.Hidden;
+            lblQuantity.Visibility = Visibility.Hidden;
             svInkind.Visibility = Visibility.Hidden;
             spInKindDonations.Visibility = Visibility.Hidden;
         }

@@ -11,7 +11,7 @@ namespace DataObjects
         public int InKindId { get; set; }
         public int DonationId { get; set; }
         public string Description { get; set; }
-        public int Quanity { get; set; }
+        public int Quantity { get; set; }
         public string Target { get; set; }
         public bool Recieved { get; set; }
     }

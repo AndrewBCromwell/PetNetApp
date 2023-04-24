@@ -603,5 +603,10 @@ namespace WpfPresentation.Fundraising
         {
             lblFilter.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFEEF2E6");
         }
+
+        private void btnEnterDonation_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EnterDonation());
+        }
     }
 }

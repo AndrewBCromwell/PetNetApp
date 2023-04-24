@@ -22,6 +22,8 @@ namespace DataObjects
         public string PaymentMethod { get; set; }
         public int? ScheduledDonationId { get; set; }
         public int? FundraisingEventId { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
     }
 
     public class DonationVM : Donation
