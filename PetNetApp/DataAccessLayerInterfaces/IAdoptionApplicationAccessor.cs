@@ -16,7 +16,7 @@ namespace DataAccessLayerInterfaces
         /// Inserts an adoption application.
         /// Returns rows affected.
         /// </summary>
-        /// <param name="adoptionApplication">the AdoptionApplication object to insert</param>
+        /// <param name="adoptionApplication">the AdoptionApplicationVM object to insert</param>
         /// <exception cref="SQLException">insert fails</exception>
         /// <returns>Rows affected.</returns>
         int InsertAdoptionApplication(AdoptionApplicationVM adoptionApplication);
@@ -69,5 +69,17 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="SQLException">update fails</exception>
         /// <returns>rows affected</returns>
         int  UpdateAdoptionApplicationStatusByAnimalIdForApprovedApplication(AdoptionApplicationResponse response);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/04/19
+        /// 
+        /// Retrieves all adoption applications for a user.
+        /// Returns rows affected.
+        /// </summary>
+        /// <param name="usersId">the ID of the user to get applications for.</param>
+        /// <exception cref="SQLException">retrieval fails</exception>
+        /// <returns>List of AdoptionApplicationVM</returns>
+        List<AdoptionApplicationVM> SelectAllAdoptionApplicationsByUsersId(int usersId);
     }
 }

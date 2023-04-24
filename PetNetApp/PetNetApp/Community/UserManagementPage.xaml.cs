@@ -49,7 +49,7 @@ namespace WpfPresentation.Community
         /// <param name="user"></param>
         /// <param name="index"></param>
 
-        public void DisplayUsers(Users user, int index)
+        public void DisplayUsers(UsersVM user, int index)
         {
             UCPreviewUser ucPreviewUser = new UCPreviewUser();
             if (user.Active)
@@ -66,7 +66,7 @@ namespace WpfPresentation.Community
             }
             ucPreviewUser.lblUserAccountName.Content = user.GivenName + " " + user.FamilyName;
             ucPreviewUser.lblUserEmailName.Content = user.Email;
-            ucPreviewUser.btnUsersProfile.Click += (obj, arg) => usersProfile_MouseClick();
+            ucPreviewUser.btnUsersProfile.Click += (obj, arg) => usersProfile_MouseClick(user);
             ucPreviewUser.btnUsersMoreDetails.Click += (obj, arg) =>
                     {
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu = new ContextMenu();
@@ -143,9 +143,9 @@ namespace WpfPresentation.Community
             NavigationService.Navigate(new CustomerRecordsPage(user));
         }
 
-        private void usersProfile_MouseClick()
+        private void usersProfile_MouseClick(UsersVM user)
         {
-            MessageBox.Show("User's profile");
+            NavigationService.Navigate(new WpfPresentation.Misc.UserProfilePage(user));
         }
 
         // MenuItem Click

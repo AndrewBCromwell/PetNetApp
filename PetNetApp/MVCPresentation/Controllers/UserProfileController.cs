@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataObjects;
+using LogicLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,7 @@ namespace MVCPresentation.Controllers
 {
     public class UserProfileController : Controller
     {
+        MasterManager _manager = MasterManager.GetMasterManager();
         // GET: UserProfile
         public ActionResult Index()
         {
@@ -86,5 +89,31 @@ namespace MVCPresentation.Controllers
                 return View();
             }
         }
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/04/23
+        /// 
+        /// Displays the adoption applications for the user.
+        /// <paramref name="userId"/>
+        /// </summary>
+        //GET: UserProfile/MyApplications/6
+        [ChildActionOnly]
+        public ActionResult AdoptionApplicationsPartial(int userId)
+        {
+            try
+            {
+                List<AdoptionApplicationVM> applications = _manager.AdoptionApplicationManager.RetrieveAllAdoptionApplicationsByUsersId(userId);
+                return PartialView(applications);
+            }
+            catch (Exception up)
+            {
+                ViewBag.Message = up.Message;
+                return View("Error");
+                //return View("Error");
+            }
+        }
+
+
     }
 }

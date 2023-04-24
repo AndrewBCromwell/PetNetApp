@@ -932,8 +932,6 @@ CREATE TABLE [dbo].[Applicant] (
 	[NumberOfPets]			[int]						NOT NULL,
 	[CurrentlyAcceptingAnimals]	[bit]					NOT NULL DEFAULT 1,
 	
-	CONSTRAINT [fk_Applicant_UsersID] FOREIGN KEY([UsersId])
-		REFERENCES [dbo].[Users]([UsersId]),
 	CONSTRAINT [fk_Applicant_Zipcode] FOREIGN KEY([ApplicantZipCode])
 		REFERENCES [dbo].[Zipcode]([Zipcode]),	
 	CONSTRAINT [fk_Applicant_HomeTypeId] FOREIGN KEY([HomeTypeId])

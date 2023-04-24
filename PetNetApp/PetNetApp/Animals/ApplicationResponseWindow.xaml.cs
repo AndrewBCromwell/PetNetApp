@@ -26,7 +26,8 @@ namespace WpfPresentation.Animals
     /// </summary>
     public partial class ApplicationResponseWindow : Window
     {
-        private AdoptionApplicationVM _application = null;
+        private AdoptionApplicationVM _adoptionApplication = null;
+        private FosterApplicationVM _fosterApplication = null;
 
         /// <summary>
         /// Molly Meister
@@ -37,9 +38,24 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <param name="application"></param>
-        public ApplicationResponseWindow(AdoptionApplicationVM application)
+        public ApplicationResponseWindow(AdoptionApplicationVM adoptionApplication)
         {
-            _application = application;
+            _adoptionApplication = adoptionApplication;
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 04/22/2023
+        /// 
+        /// Custom constructor for the ApplicationResponseWindow that requires a FosterApplicationVM object.
+        /// Initalizes the _application.
+        /// </summary>
+        ///
+        /// <param name="application"></param>
+        public ApplicationResponseWindow(FosterApplicationVM fosterApplication)
+        {
+            _fosterApplication = fosterApplication;
             InitializeComponent();
         }
 
@@ -66,13 +82,44 @@ namespace WpfPresentation.Animals
         /// Created: 04/14/2023
         /// 
         /// Logic for ApplicationResponseWindow load.
-        /// Fills the frmApplicationResponse content to a new AdoptionApplicationResposne page.
+        /// Fills the frmApplicationResponse content to a new AdoptionApplicationRespone or AddEditReportOnFoster page
+        /// dependant on IsAdoptionApplication().
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            frmApplicationResponse.Content = new AdoptionApplicationResponse(_application);
+            if(IsAdoptionApplication())
+            {
+                frmApplicationResponse.Content = new AdoptionApplicationResponse(_adoptionApplication);
+            }
+            else
+            {
+                frmApplicationResponse.Content = new AddEditReportOnFoster(_fosterApplication.FosterApplicationId);
+            }
+            
+        }
+
+        /// <summary>
+        /// Molly Meister
+        /// Created 2023/04/23
+        /// 
+        /// Helper method to determine if the instance of the ApplicationResponseWindow is for an adoption or foster application
+        /// for conditional logic throughout the class.
+        /// </summary>
+        /// <returns>bool</returns>
+        private bool IsAdoptionApplication()
+        {
+            bool adoptionApplication;
+            if (_adoptionApplication != null && _fosterApplication == null)
+            {
+                adoptionApplication = true;
+            }
+            else
+            {
+                adoptionApplication = false;
+            }
+            return adoptionApplication;
         }
     }
 }

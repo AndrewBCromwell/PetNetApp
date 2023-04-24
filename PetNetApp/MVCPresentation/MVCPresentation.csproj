@@ -255,6 +255,7 @@
     <Content Include="Views\Shared\_PartialSubMenu.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Shelters\Index.cshtml" />
+    <Content Include="Views\UserProfile\AdoptionApplicationsPartial.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
     <Resource Include="Images\Animal\BrokenImage.png">

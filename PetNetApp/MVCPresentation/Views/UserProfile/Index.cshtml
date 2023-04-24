@@ -1,8 +1,12 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using System.Collections.Generic
+@using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.Owin
+@using DataObjects
+
 @{
     ViewBag.Title = "Index";
 }
+
 
 @if (Request.IsAuthenticated)
 {
@@ -34,6 +38,15 @@
 
                         <div>
                             <div>
+                                <h4>UserID</h4>
+                            </div>
+                            <div>
+                                <p class="card-text"> @user.UsersId</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
                                 <h4>UserName</h4>
                             </div>
                             <div>
@@ -52,7 +65,7 @@
 
                         <div>
                             <div>
-                                <h4>Adress</h4>
+                                <h4>Address</h4>
                             </div>
                             <div>
                                 <p class="card-text">@user.Address</p>
@@ -76,11 +89,11 @@
             </div>
             <div class="col-md-4">
                 <div>
-                    @Html.ActionLink("Manage Account", "Index","Manage","", new { @class = "btn btn-primary btn-block m-3" })
+                    @Html.ActionLink("Manage Account", "Index", "Manage", "", new { @class = "btn btn-primary btn-block m-3" })
                 </div>
                 <div>
                     @*<btn class="btn btn-primary btn-block m-3">Test</btn>*@
-                    @Html.ActionLink("Change Your Shelter", "SelectShelter", "Shelters","", new { @class = "btn btn-primary btn-block m-3" })
+                    @Html.ActionLink("Change Your Shelter", "SelectShelter", "Shelters", "", new { @class = "btn btn-primary btn-block m-3" })
                 </div>
                 <div>
                     <btn class="btn btn-primary btn-block m-3">Test</btn>
@@ -92,8 +105,8 @@
         <div class="row">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                       aria-selected="true">Pending Application</a>
+                    <a class="nav-link" id="application-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="home"
+                       aria-selected="false">My Applications</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
@@ -104,14 +117,10 @@
                        aria-selected="false">User Information</a>
                 </li>
             </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    Raw denim you
-                    probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master
-                    cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
-                    keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
-                    placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi
-                    qui.
+            <div class="tab-content container" id="myTabContent">
+                <div class="tab-pane fade" id="applications" role="tabpanel" aria-labelledby="application-tab">
+                    @Html.Action("AdoptionApplicationsPartial", "UserProfile", new { userId = user.UsersId })
+
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     Food truck fixie
@@ -134,9 +143,9 @@
                 </div>
             </div>
         </div>
-     </div>
+    </div>
 
 
 
-        }
+}
 

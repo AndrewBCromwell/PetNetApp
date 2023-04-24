@@ -45,8 +45,8 @@
                     <RadioButton x:Name="rad_ApprovedNo" Grid.Row="7" GroupName="Approved" IsChecked="True">No</RadioButton>
                 </StackPanel>
                 <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Grid.Row="8" x:Name="btn_Save" Content="Save" Style="{StaticResource ResourceKey=rsrcDefaultButton}" VerticalAlignment="Center" Width="125" Height="35" Margin="0,0,10,0" />
-                    <Button Grid.Row="8" x:Name="btn_Cancel" Content="Cancel" Style="{StaticResource ResourceKey=rsrcSafeButton}" VerticalAlignment="Center" Width="125" Height="35" />
+                    <Button Grid.Row="8" x:Name="btn_Save" Content="Save" Style="{StaticResource ResourceKey=rsrcDefaultButton}" VerticalAlignment="Center" Width="125" Height="35" Margin="0,0,10,0" Click="btn_Save_Click" />
+                    <Button Grid.Row="8" x:Name="btn_Cancel" Content="Cancel" Style="{StaticResource ResourceKey=rsrcSafeButton}" VerticalAlignment="Center" Width="125" Height="35" Click="btn_Cancel_Click" />
                 </StackPanel>
             </Grid>
         </Grid>

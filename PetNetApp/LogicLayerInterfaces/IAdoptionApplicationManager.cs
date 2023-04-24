@@ -62,5 +62,16 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException">If the retrieval fails</exception>
         /// <returns>bool</returns>
         bool EditAdoptionApplicationStatusByAnimalIdForApprovedApplication(AdoptionApplicationResponse response);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/04/19
+        /// 
+        /// Calls the Accessor method to retrieve all adoption applications for an animal.
+        /// </summary>
+        /// /// <param name="usersId">the animalId of the animal retrieving adoption applications for</param>
+        /// <exception cref="ApplicationException">If the retrieval fails</exception>
+        /// <returns>List of AdoptionApplicationVM</returns>
+        List<AdoptionApplicationVM> RetrieveAllAdoptionApplicationsByUsersId(int usersId);
     }
 }
