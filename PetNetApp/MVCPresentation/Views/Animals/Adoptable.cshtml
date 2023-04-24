@@ -22,9 +22,9 @@
                 {                    
                     @Html.Label("Show")
                     <span></span>
-                    @Html.DropDownList("FilterAnimal", new SelectList(ViewBag.FilterOptions))                    
+                    @Html.DropDownList("FilterAnimal", new SelectList(ViewBag.FilterOptions), new { @class = "custom-select-sm"})                    
 
-                    <button>Filter</button>
+                    <button class="btn-sm btn-primary">Filter</button>
 
                 }
             </fieldset>

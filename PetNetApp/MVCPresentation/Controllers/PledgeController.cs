@@ -45,6 +45,7 @@ namespace MVCPresentation.Controllers
         // GET: Pledge/Create
         public ActionResult Create(int? fundrasingEventId)
         {
+            ViewBag.Tab = "Fundraising";
             if (fundrasingEventId == null)
             {
                 ViewBag.Message = "You must have an Event Id to create a pledge";
