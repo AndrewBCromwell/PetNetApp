@@ -48,6 +48,9 @@ else if (ViewBag.Tab == "Adopt")
             <li class="nav-item">
                 @Html.ActionLink("Adoptable", "Adoptable", "Animals", new { @class = (ViewBag.Title == "Adoptable" ? "nav-link active" : "nav-link") })
             </li>
+            <li class="nav-item">
+                @Html.ActionLink("Surrender", "SurrenderSplash", "Animals", new { @class = (ViewBag.Title == "Adoptable" ? "nav-link active" : "nav-link") })
+            </li>
         </ul>
     </nav>
 }

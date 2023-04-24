@@ -143,6 +143,9 @@
     <Compile Include="Animals\ApplicationResponseWindow.xaml.cs">
       <DependentUpon>ApplicationResponseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\SurrenderFormsPage.xaml.cs">
+      <DependentUpon>SurrenderFormsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\ViewApplication.xaml.cs">
       <DependentUpon>ViewApplication.xaml</DependentUpon>
     </Compile>
@@ -160,7 +163,7 @@
     </Compile>
     <Compile Include="Management\Inventory\Library\RequestNewLibraryItem.xaml.cs">
       <DependentUpon>RequestNewLibraryItem.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Development\Events\ViewEventGraphsPage.xaml.cs">
       <DependentUpon>ViewEventGraphsPage.xaml</DependentUpon>
     </Compile>
@@ -576,6 +579,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\ApplicationResponseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\SurrenderFormsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -46,6 +46,7 @@
     <Compile Include="IAdoptionApplicationResponseAccessor.cs" />
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
+    <Compile Include="IBookmarkAccessor.cs" />
     <Compile Include="IFosterAccessor.cs" />
     <Compile Include="IPledgeAccessor.cs" />
     <Compile Include="IReplyAccessor.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="IShelterAccessor.cs" />
     <Compile Include="IShelterInventoryItemAccessor.cs" />
     <Compile Include="IShelterItemTransactionAccessor.cs" />
+    <Compile Include="ISurrenderFormAccesor.cs" />
     <Compile Include="ITestAccessor.cs" />
     <Compile Include="ITicketAccessor.cs" />
     <Compile Include="IUsersAccessor.cs" />

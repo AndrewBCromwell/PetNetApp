@@ -1661,3 +1661,20 @@ CREATE TABLE [dbo].[AnimalImage] (
 )
 GO
 
+/*  Created by: Alex Oetken*/
+print '' print '*** creating SurrenderForms table'
+GO
+CREATE TABLE [dbo].[SurrenderForms]
+(
+	[SurrenderFormID]		[int]					IDENTITY(100000,1)	NOT NULL,
+	[AnimalType]			[nvarchar](50)      	NOT NULL,
+	[ReasonForSurrender]	[nvarchar](500)		NOT NULL,
+	[SpayOrNeuterStatus]	[bit]					NOT NULL DEFAULT 0,
+	[ContactPhone]			[nvarchar](13) 			NOT NULL,
+	[ContactEmail]			[nvarchar](245) 		NOT NULL
+	
+	CONSTRAINT [pk_SurrenderFormID] PRIMARY KEY ([SurrenderFormID])
+)
+GO
+
+

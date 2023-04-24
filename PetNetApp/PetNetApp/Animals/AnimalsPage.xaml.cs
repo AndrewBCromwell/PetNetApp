@@ -92,7 +92,8 @@ namespace WpfPresentation.Animals
         {
             ChangeSelectedButton(btnSurrender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
+            frameAnimals.Navigate(new SurrenderFormsPage()); 
+
         }
 
         private void btnAnimalList_Click(object sender, RoutedEventArgs e)
