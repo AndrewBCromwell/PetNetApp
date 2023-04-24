@@ -44,10 +44,12 @@
   <ItemGroup>
     <Compile Include="IAdoptionApplicationManager.cs" />
     <Compile Include="IAdoptionApplicationResponseManager.cs" />
+    <Compile Include="IBookmarkManager.cs" />
     <Compile Include="IDeathManager.cs" />
     <Compile Include="IAnimalManager.cs" />
     <Compile Include="IAnimalUpdatesManager.cs" />
     <Compile Include="IDonationManager.cs" />
+    <Compile Include="IFosterApplicationManager.cs" />
     <Compile Include="IFosterApplicationResponseManager.cs" />
     <Compile Include="IFosterManager.cs" />
     <Compile Include="IEventManager.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="IScheduleManager.cs" />
     <Compile Include="IShelterItemTransactionManager.cs" />
     <Compile Include="IShelterManager.cs" />
+    <Compile Include="ISurrenderFormManager.cs" />
     <Compile Include="ITestManager.cs" />
     <Compile Include="ITicketManager.cs" />
     <Compile Include="IUsersManager.cs" />

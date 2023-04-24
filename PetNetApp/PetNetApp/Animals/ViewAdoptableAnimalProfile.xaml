@@ -136,7 +136,7 @@
                             </ScrollViewer>
                             
 
-                            <Button x:Name="btnFillApplication" Grid.Row="1" Margin="5" HorizontalContentAlignment="Left">
+                            <Button x:Name="btnFillApplication" Grid.Row="1" Margin="5" HorizontalContentAlignment="Left" Visibility="Hidden">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="70"/>
@@ -148,7 +148,7 @@
                             </Button>
 
 
-                            <Button x:Name="btnDownloadApplication" Grid.Row="2" Margin="5" HorizontalContentAlignment="Left">
+                            <Button x:Name="btnDownloadApplication" Grid.Row="2" Margin="5" HorizontalContentAlignment="Left" Visibility="Hidden">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="70"/>

@@ -49,10 +49,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\PledgeController.cs" />
     <Compile Include="Controllers\SheltersController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserDonationsController.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Binders\UsersModelBinder.cs" />
     <Compile Include="Migrations\202304070738315_InitialCreate.cs" />
     <Compile Include="Migrations\202304070738315_InitialCreate.Designer.cs">
       <DependentUpon>202304070738315_InitialCreate.cs</DependentUpon>
@@ -230,11 +232,17 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\community.css" />
     <Content Include="Content\button-styles.css" />
+    <Content Include="Content\Fundraising\events-mobile.css" />
+    <Content Include="Content\Fundraising\event.css" />
+    <Content Include="Content\Fundraising\event-partial.css" />
     <Content Include="Content\Fundraising\campaign-partial.css" />
     <Content Include="Content\Fundraising\campaign.css" />
+    <Content Include="Content\Fundraising\events-desktop.css" />
     <Content Include="Content\Fundraising\campaigns-desktop.css" />
     <Content Include="Content\Fundraising\campaigns-mobile.css" />
     <Content Include="Content\Fundraising\campaigns.css" />
+    <Content Include="Content\Fundraising\events.css" />
+    <Content Include="Content\sub-menu.css" />
     <Content Include="Content\Fundraising\page-navigation.css" />
     <Content Include="Content\ShelterNetwork.css" />
     <Content Include="Content\Ticket\TicketList.css" />
@@ -244,6 +252,17 @@
     <Content Include="Images\Animal\0c126019-3b6a-49a2-9103-d57ddaffaa69.png" />
     <Content Include="Images\Animal\0f19e696-2a27-41ce-b267-21ff8197cb4b.png" />
     <Content Include="Images\Animal\314a2539-5dee-40ce-ac5b-026d53750c92.png" />
+    <Content Include="Images\bookmark_dark.png" />
+    <Content Include="Images\bookmark_light.png" />
+    <Content Include="Views\Shared\_PartialSubMenu.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Shelters\Index.cshtml" />
+    <Content Include="Views\UserProfile\BookmarksView.cshtml" />
+    <Content Include="Views\Animals\SurrenderSplash.cshtml" />
+    <Content Include="Views\Animals\SurrenderAnimalForm.cshtml" />
+    <Content Include="Views\Animals\SurrenderAnimalFormSubmit.cshtml" />
+    <Content Include="Views\UserProfile\AdoptionApplicationsPartial.cshtml" />
+    <Content Include="Views\Animals\Index.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
     <Resource Include="Images\Animal\BrokenImage.png">
@@ -261,6 +280,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\fundraising-events.js" />
     <Content Include="Scripts\fundraising-campaigns.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -359,7 +379,6 @@
     <Content Include="Views\Fundraising\FundraisingCampaignForCampaigns.cshtml" />
     <Content Include="Views\Fundraising\Campaigns.Mobile.cshtml" />
     <Content Include="Views\Fundraising\Campaign.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
     <Content Include="Views\Community\ShowReplies.cshtml" />
     <Content Include="Views\Community\CreateReply.cshtml" />
     <Content Include="Views\Community\EditReply.cshtml" />
@@ -373,10 +392,18 @@
     <Content Include="Views\Community\BeginPostReport.cshtml" />
     <Content Include="Views\Animals\AdoptableAnimal.cshtml" />
     <Content Include="Views\Animals\AnimalImageForAdoptableAnimal.cshtml" />
+    <Content Include="Views\Fundraising\Events.cshtml" />
+    <Content Include="Views\Fundraising\Index.cshtml" />
+    <Content Include="Views\Fundraising\FundraisingEventForEvents.cshtml" />
+    <Content Include="Views\Fundraising\Event.cshtml" />
+    <Content Include="Views\Fundraising\Events.Mobile.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Community\ReportReplyPartial.cshtml" />
+    <Content Include="Views\Community\BeginReplyReport.cshtml" />
+    <Content Include="Views\Pledge\Create.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -639,8 +666,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Default\" />
     <Folder Include="Views\Donate\" />
-    <Folder Include="Views\Events\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>

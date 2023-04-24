@@ -5,9 +5,10 @@
 /// Interaction logic for ViewAllAdoptableAnimalsPage.xaml
 /// </summary>
 ///
-/// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+///  <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
 /// </remarks>
 
 using System;
@@ -44,10 +45,10 @@ namespace WpfPresentation.Animals
         /// Private constructor for ViewAllAdoptableAnimalsPage
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         private ViewAllAdoptableAnimalsPage()
         {
@@ -63,9 +64,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         /// 
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <returns>ViewAllAdoptableAnimalsPage</returns>
         public static ViewAllAdoptableAnimalsPage GetViewAllAdoptableAnimalsPage()
@@ -86,9 +87,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -113,10 +114,10 @@ namespace WpfPresentation.Animals
         /// there are no animals in the system a message is displayed informing the user.
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         private void DisplayUserControls()
         {
@@ -159,10 +160,10 @@ namespace WpfPresentation.Animals
         /// BrokenImage.png is displayed. Is no image is available no_image.png is displayed.
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="animalId">Id of the animal</param>
         /// <returns>A BitmapImage</returns>
@@ -210,10 +211,10 @@ namespace WpfPresentation.Animals
         /// name, otherwise the name is an empty string.
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="shelterId">The Id of the shelter</param>
         /// <exception cref="Exception">Retrieve shelter object fails</exception>

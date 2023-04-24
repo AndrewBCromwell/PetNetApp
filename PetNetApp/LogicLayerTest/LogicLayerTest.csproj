@@ -54,6 +54,7 @@
     <Compile Include="Animals\AnimalDeathTests.cs" />
     <Compile Include="AnimalManagerTests.cs" />
     <Compile Include="AnimalUpdatesTests.cs" />
+    <Compile Include="BookmarkManagerTests.cs" />
     <Compile Include="EventManagerTests.cs" />
     <Compile Include="FundraisingEventManagerTests.cs" />
     <Compile Include="MedicalRecordManagerTests.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="ProcedureManagerTests.cs" />
     <Compile Include="RoleManagerTests.cs" />
     <Compile Include="ScheduleManagerTests.cs" />
+    <Compile Include="SurrenderFormManagerTests.cs" />
     <Compile Include="TestManagerTests.cs" />
     <Compile Include="ShelterManagerTests.cs" />
     <Compile Include="ImagesManagerTests.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="FosterManagerTests.cs" />
     <Compile Include="FundraisingEventManagerTest.cs" />
     <Compile Include="AdoptionApplicationResponseTests.cs" />
+    <Compile Include="FosterApplicationManagerTests.cs" />
     <Compile Include="VaccinationManagerTests.cs" />
     <Compile Include="FundraisingCampaignManagerTests.cs" />
     <Compile Include="ValidationiHelpersTests.cs" />

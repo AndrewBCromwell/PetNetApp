@@ -8,8 +8,6 @@ using DataObjects;
 using DataAccessLayer;
 using LogicLayerInterfaces;
 using DataAccessLayerInterfaces;
-using LogicLayerInterfaces;
-using DataAccessLayer;
 
 namespace LogicLayer
 {
@@ -275,8 +273,8 @@ namespace LogicLayer
                 throw new ApplicationException("Can not update data", ex);
             }
 
-    return isSuccess;
-}
+            return isSuccess;
+        }
 
         public FundraisingEventVM RetrieveFundraisingEventByFundraisingEventId(int fundraisingEventId)
         {
@@ -292,6 +290,36 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to load Fundraising Event", ex);
             }
             return fundraisingEvent;
+        }
+
+        public List<FundraisingEventVM> RetrieveAllActiveFundraisingEventsByShelterId(int shelterId)
+        {
+            List<FundraisingEventVM> fundraisingEvents = null;
+            try
+            {
+                fundraisingEvents = _fundraisingEventAccessor.SelectAllActiveFundraisingEventsByShelterId(shelterId);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load Fundraising Event list", ex);
+            }
+
+            return fundraisingEvents;
+        }
+
+        public List<FundraisingEventVM> RetrieveAllActiveFundraisingEvents()
+        {
+            List<FundraisingEventVM> fundraisingEvents = null;
+            try
+            {
+                fundraisingEvents = _fundraisingEventAccessor.SelectAllActiveFundraisingEvents();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load Fundraising Event list", ex);
+            }
+
+            return fundraisingEvents;
         }
     }
 }

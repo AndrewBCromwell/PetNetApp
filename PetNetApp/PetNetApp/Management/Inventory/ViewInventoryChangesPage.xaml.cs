@@ -56,6 +56,12 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Formats a ShelterItemTransaction to a lable to display on the page.
         /// </summary>
+        /// <rmarks>
+        /// Nathan Zumsande
+        /// Updated : 2023/04/21
+        /// Fixed the diplay for the date time so it displayed the actual time and not
+        /// just 12:00:00
+        /// </rmarks>
         /// <param name="transaction">The ShelterItemTransactionVM to be displayed</param>
         /// <param name="index">int that helps determin which background color to use so that it alternates</param>
         private void DisplayInventoryChangeRecord(ShelterItemTransactionVM transaction, int index)
@@ -80,7 +86,7 @@ namespace WpfPresentation.Management.Inventory
             {
                 transactionTag = transactionTag + Math.Abs(transaction.QuantityIncrement) + " units ";
             }
-            transactionTag = transactionTag + "of " + transaction.ItemId + " on " + transaction.DateChanged.Date + ".";
+            transactionTag = transactionTag + "of " + transaction.ItemId + " on " + transaction.DateChanged  + ".";
             lblTransaction.Content = transactionTag;
 
             var bc = new BrushConverter();

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataObjects;
 
 namespace LogicLayerInterfaces
 {
@@ -63,5 +62,22 @@ namespace LogicLayerInterfaces
         List<Animal> RetrieveAnimalByEventId(int eventId, int shelterId);
         bool UpdateFundraisingEvent(FundraisingEventVM fundraisingEvent);
         bool DeactivateFundraisingEvent(int eventId);
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/04/15
+        /// A method to to get a list of all Active Fundraising Events for a shelter
+        /// </summary>
+        /// <param name="shelterId">id of the shelter to view events for</param>
+        /// <returns>List of all active fundraising events by shelterId</returns>
+        List<FundraisingEventVM> RetrieveAllActiveFundraisingEventsByShelterId(int shelterId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/04/15
+        /// A method to to get a list of all Active Fundraising Events
+        /// </summary>
+        /// <returns>List of all active fundraising events</returns>
+        List<FundraisingEventVM> RetrieveAllActiveFundraisingEvents();
+
     }
 }

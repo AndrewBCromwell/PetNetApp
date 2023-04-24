@@ -16,6 +16,8 @@ namespace DataAccessLayerFakes
         private List<Tuple<int, int>> fundraisingEventEntity = new List<Tuple<int, int>>();
         private List<FundraisingEventVM> fakeFundraisingEvents = null;
         private List<FundraisingEventVM> _fundraisingEvents = FundraisingFakeData.FundraisingEvents;
+        private List<FundraisingEventVM> fakeFundraisingEventsActive = FundraisingFakeData.FundraisingEventsActive;
+        private List<Shelter> fakeShelterList = FundraisingFakeData.Shelters;
 
         public FundraisingEventAccessorFakes()
         {
@@ -281,6 +283,38 @@ namespace DataAccessLayerFakes
                 return recordsChanged;
 
             }
+        }
+
+        public List<FundraisingEventVM> SelectAllActiveFundraisingEventsByShelterId(int shelterId)
+        {
+            //throw new NotImplementedException();
+            //List<FundraisingEventVM> fundraisingEvents = new List<FundraisingEventVM>();
+            //fundraisingEvents.Add(new FundraisingEventVM { FundraisingEventId = 1000006, Description = "Test Event", ShelterId = 1000006 });
+            
+        var fundraisingEvents = from eventrecord in fakeFundraisingEventsActive
+                                join shelter in fakeShelterList on eventrecord.ShelterId equals shelter.ShelterId
+                                where eventrecord.Hidden == false && eventrecord.Complete == false && eventrecord.ShelterId == shelterId && shelter.ShelterActive == true
+                                select eventrecord;
+
+            return fundraisingEvents.ToList();
+        }
+
+        public List<FundraisingEventVM> SelectAllActiveFundraisingEvents()
+        {
+            //throw new NotImplementedException();
+            //List<FundraisingEventVM> fundraisingEvents = new List<FundraisingEventVM>();
+            //fundraisingEvents.Add(new FundraisingEventVM { FundraisingEventId = 1000006, Description = "Test Event", ShelterId = 1000006 });
+            //fundraisingEvents.Add(new FundraisingEventVM { FundraisingEventId = 1000006, Description = "Test Event", ShelterId = 1000006 });
+            //fundraisingEvents.Add(new FundraisingEventVM { FundraisingEventId = 1000006, Description = "Test Event", ShelterId = 1000006 });
+            //fundraisingEvents.Add(new FundraisingEventVM { FundraisingEventId = 1000006, Description = "Test Event", ShelterId = 1000006 });
+
+            var fundraisingEvents = from eventrecord in fakeFundraisingEventsActive
+                                    join shelter in fakeShelterList on eventrecord.ShelterId equals shelter.ShelterId
+                                    where eventrecord.Hidden == false && eventrecord.Complete == false && shelter.ShelterActive == true
+                                    select eventrecord;
+
+            return fundraisingEvents.ToList();
+
         }
     }
 }

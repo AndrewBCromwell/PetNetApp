@@ -311,10 +311,17 @@ namespace WpfPresentation.Animals
             animalNoteWindow.ShowDialog();
         }
 
+        /// <summary>
+        /// Molly Meister
+        /// 2023/04/23
+        /// 
+        /// Button click handler to view a list of pending applications for the animal.
+        /// Creates and navigates to a new instance of AdoptionApplicantsWindow, passing the animalVM and _masterManager.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnViewApplications_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService nav = NavigationService.GetNavigationService(this);
-            //nav.Navigate(new WpfPresentation.Animals.);
             AdoptionApplicantsWindow adoptionApplicantsWindow = new AdoptionApplicantsWindow(animalVM, _masterManager);
             adoptionApplicantsWindow.Show();
         }

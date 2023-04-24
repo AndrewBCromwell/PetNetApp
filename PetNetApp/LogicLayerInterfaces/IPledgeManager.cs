@@ -57,5 +57,20 @@ namespace LogicLayerInterfaces
         /// <exception cref="Exception">Failed to create new pledge.</exception>
         /// <returns>bool if rows affected is greater tha 0</returns>
         bool CreatePledge(PledgeVM pledgeVM);
+
+        /// <summary>
+        /// Zaid Rachman
+        /// Created: 2023/04/13
+        /// 
+        /// Retrieves all pledges
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
+        List<PledgeVM> RetrieveAllPledges();
     }
 }

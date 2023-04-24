@@ -45,6 +45,11 @@ namespace LogicLayerInterfaces
         /// 
         /// Adds an Item
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <returns>True or false if row was added</returns>
         bool AddItem(string itemId);
@@ -55,6 +60,11 @@ namespace LogicLayerInterfaces
         /// 
         /// Returns a list of strings that are the item categories
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <returns>A list of the string categories</returns>
         List<string> RetrieveAllCategories();
 
@@ -99,6 +109,12 @@ namespace LogicLayerInterfaces
         /// 
         /// Removes an ItemCategory
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <param name="category"></param>
         /// <returns>True or false if row was removed</returns>

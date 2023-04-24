@@ -26,12 +26,21 @@ namespace WpfPresentation.Fundraising
         public static Donation Donation { get; set; }
         private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<InKind> inKinds;
+
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         public ViewSpecificDonationPage(Donation donation)
         {
             Donation = donation;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         private void this_Loaded(object sender, RoutedEventArgs e)
         {
             if(Donation.HasInKindDonation)
@@ -58,6 +67,10 @@ namespace WpfPresentation.Fundraising
 
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         public void HideInKindElements()
         {
             lblInKind.Visibility = Visibility.Hidden;

@@ -1,7 +1,7 @@
 ﻿:root {
     --campaign-input-x-margin: 5px;
     --campaign-input-y-margin: 0px;
-    --header-height: 160px;
+    --header-height: 220px;
 }
 
 #campaignModal > .modal-dialog
@@ -30,7 +30,7 @@
 
 @media only screen and (max-width: 1680px) {
     :root {
-        --header-height: 205px;
+        --header-height: 220px;
     }
 }
 
