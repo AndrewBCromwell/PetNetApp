@@ -28,7 +28,7 @@
         text-align: center;
     }
 
-    #petnetSubmenu > .nav-pills .nav-link.active {
-        background-color: var(--control-background-color);
-        color: var(--color-green);
-    }
+#petnetSubmenu > .nav-pills .nav-link.active, #petnetSubmenu > .nav-pills .nav-link:hover {
+    background-color: var(--control-background-color);
+    color: var(--color-green);
+}
