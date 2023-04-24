@@ -1,7 +1,7 @@
 ﻿:root {
     --event-input-x-margin: 5px;
     --event-input-y-margin: 0px;
-    --header-height: 205px;
+    --header-height: 220px;
 }
 
 #eventModal > .modal-dialog {
@@ -27,7 +27,7 @@
 
 @media only screen and (max-width: 1680px) {
     :root {
-        --header-height: 205px;
+        --header-height: 220px;
     }
 }
 

@@ -28,6 +28,10 @@ namespace WpfPresentation.Animals
         private MasterManager _manager = MasterManager.GetMasterManager();
         private Button[] _animalsTabButtons;
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         static AnimalsPage()
         {
             MasterManager manager = MasterManager.GetMasterManager();
@@ -38,12 +42,20 @@ namespace WpfPresentation.Animals
                 _existingAnimalsPage?.frameAnimals.Navigate(null);
             };
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private AnimalsPage()
         {
             InitializeComponent();
             _animalsTabButtons = new Button[] { btnAdopt, btnFoster, btnSurrender, btnAnimalList, btnMedical };
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <returns></returns>
         public static AnimalsPage GetAnimalsPage()
         {
             if (_existingAnimalsPage == null)
@@ -53,13 +65,20 @@ namespace WpfPresentation.Animals
             }
             return _existingAnimalsPage;
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="selectedButton"></param>
         public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void UnselectAllButtons()
         {
             foreach (Button button in _animalsTabButtons)
@@ -87,27 +106,48 @@ namespace WpfPresentation.Animals
             PromptWindow.ShowPrompt("Edit in future", "Need to replace the foster application response page here and relink it correctly.");
             frameAnimals.Navigate(new AddEditReportOnFoster(100000)); // need to replace with actual foster page and add report to Foster application
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSurrender_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnSurrender);
             // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
-        }
+            frameAnimals.Navigate(new SurrenderFormsPage()); 
 
+        }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnimalList_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnAnimalList);
             // replace with page name and then delete comment
             frameAnimals.Navigate(new AnimalListPage(_manager));
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMedical_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnMedical);
             frameAnimals.Navigate(MedicalPage.GetMedicalPage(_manager));
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;
@@ -121,6 +161,10 @@ namespace WpfPresentation.Animals
             }
             e.Handled = true;
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void UpdateScrollButtons()
         {
             if (svAnimalTabs.HorizontalOffset > svAnimalTabs.ScrollableWidth - 0.05)
@@ -141,21 +185,40 @@ namespace WpfPresentation.Animals
                 btnScrollLeft.Visibility = Visibility.Visible;
             }
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void svAnimalTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             UpdateScrollButtons();
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnScrollRight_Click(object sender, RoutedEventArgs e)
         {
             svAnimalTabs.ScrollToHorizontalOffset(svAnimalTabs.HorizontalOffset + 130);
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
         {
             svAnimalTabs.ScrollToHorizontalOffset(svAnimalTabs.HorizontalOffset - 130);
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void HideAllButtons()
         {
             UnselectAllButtons();
@@ -164,6 +227,10 @@ namespace WpfPresentation.Animals
                 btn.Visibility = Visibility.Collapsed;
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void ShowButtonsByRole()
         {
             HideAllButtons();
@@ -173,6 +240,10 @@ namespace WpfPresentation.Animals
             ShowMedicalButtonByRole();
             ShowSurrenderButtonByRole();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void ShowAdoptButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager", "Employee" };
@@ -181,6 +252,10 @@ namespace WpfPresentation.Animals
                 btnAdopt.Visibility = Visibility.Visible;
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void ShowAnimalListButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager", "Vet","Employee" };
@@ -189,6 +264,10 @@ namespace WpfPresentation.Animals
                 btnAnimalList.Visibility = Visibility.Visible;
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void ShowFosterButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager", "Employee" };
@@ -197,6 +276,10 @@ namespace WpfPresentation.Animals
                 btnFoster.Visibility = Visibility.Visible;
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void ShowMedicalButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager","Vet" };
@@ -205,6 +288,10 @@ namespace WpfPresentation.Animals
                 btnMedical.Visibility = Visibility.Visible;
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void ShowSurrenderButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager" , "Employee" };

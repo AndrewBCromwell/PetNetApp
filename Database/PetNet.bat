@@ -140,10 +140,12 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\approve_deny_application_sps.s
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertResourceAddRequest_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAllPledges_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateRequestAcknowledged.sql
-
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEventsMVC_SP.sql
 
+sqlcmd -S localhost -E -i StoredProceduresScripts\Bookmark_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\Surrender_SPs.sql
 
+sqlcmd -S localhost -E -i StoredProceduresScripts\sp_view_foster_applications.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

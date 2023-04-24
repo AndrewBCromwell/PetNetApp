@@ -49,10 +49,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -252,9 +252,16 @@
     <Content Include="Images\Animal\0c126019-3b6a-49a2-9103-d57ddaffaa69.png" />
     <Content Include="Images\Animal\0f19e696-2a27-41ce-b267-21ff8197cb4b.png" />
     <Content Include="Images\Animal\314a2539-5dee-40ce-ac5b-026d53750c92.png" />
+    <Content Include="Images\bookmark_dark.png" />
+    <Content Include="Images\bookmark_light.png" />
     <Content Include="Views\Shared\_PartialSubMenu.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Shelters\Index.cshtml" />
+    <Content Include="Views\UserProfile\BookmarksView.cshtml" />
+    <Content Include="Views\Animals\SurrenderSplash.cshtml" />
+    <Content Include="Views\Animals\SurrenderAnimalForm.cshtml" />
+    <Content Include="Views\Animals\SurrenderAnimalFormSubmit.cshtml" />
+    <Content Include="Views\UserProfile\AdoptionApplicationsPartial.cshtml" />
     <Content Include="Views\Animals\Index.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
@@ -659,6 +666,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Default\" />
     <Folder Include="Views\Donate\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Views\Test\" />
