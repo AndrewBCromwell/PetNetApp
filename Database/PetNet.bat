@@ -133,6 +133,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\EditHoursOfOperation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdatePostVisibility_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReportPost_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ReportReply_SP.sql
 
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddFundRaisingEvent_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditFundRaisingEvent_SP.sql
