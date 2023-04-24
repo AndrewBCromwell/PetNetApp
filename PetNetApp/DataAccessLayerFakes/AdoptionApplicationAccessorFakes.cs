@@ -76,6 +76,11 @@ namespace DataAccessLayerFakes
             return adoptionApplications;
         }
 
+        public List<AdoptionApplicationVM> SelectAllAdoptionApplicationsByUsersId(int usersId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<string> SelectAllHomeOwnershipTypes()
         {
             return fakeHomeOwnershipTypes;

@@ -261,6 +261,7 @@
     <Content Include="Views\Animals\SurrenderSplash.cshtml" />
     <Content Include="Views\Animals\SurrenderAnimalForm.cshtml" />
     <Content Include="Views\Animals\SurrenderAnimalFormSubmit.cshtml" />
+    <Content Include="Views\UserProfile\AdoptionApplicationsPartial.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
     <Resource Include="Images\Animal\BrokenImage.png">

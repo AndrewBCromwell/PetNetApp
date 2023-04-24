@@ -20,6 +20,13 @@ namespace MVCPresentation.Controllers
         private List<PostVM> posts;
         private PostVM postVM;
 
+
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 4/21/23
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         // GET: Community
         public ActionResult Index(Users user)
         {
@@ -405,6 +412,13 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 4/21/23
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public ActionResult ShowReplies(int? id, Users user)
         {
             if(id != null)
@@ -457,6 +471,12 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 4/21/23
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns></returns>
         // POST: Community/Create
         [Authorize]
         [HttpPost]
@@ -486,6 +506,12 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 4/21/23
+        /// </summary>
+        /// <param name="reply"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -540,6 +566,12 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 4/21/23
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: Community/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -577,6 +609,12 @@ namespace MVCPresentation.Controllers
             return View(postToEdit);
         }
 
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 4/21/23
+        /// </summary>
+        /// <param name="newPost"></param>
+        /// <returns></returns>
         // POST: Community/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -609,6 +647,12 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 4/21/23
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: Community/EditReply/5
         public ActionResult EditReply(int? id)
         {
@@ -647,6 +691,12 @@ namespace MVCPresentation.Controllers
             return View(replyToEdit);
         }
 
+        /// <summary>
+        /// Author: Gwen Arman
+        /// Date: 4/21/23
+        /// </summary>
+        /// <param name="newReply"></param>
+        /// <returns></returns>
         // POST: Community/EditReply/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -796,6 +846,10 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Description: Helper method that gets the logged in Application User
+        /// </summary>
+        /// <returns></returns>
         [NonAction]
         public ApplicationUser GetLoggedInUser()
         {

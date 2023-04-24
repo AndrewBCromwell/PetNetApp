@@ -10,7 +10,7 @@ namespace DataObjects
     {
         public int FosterApplicationId { get; set; }
         public int ApplicantId { get; set; }
-        public int ApplicationStatusId { get; set; }
+        public string ApplicationStatusId { get; set; }
         public DateTime FosterApplicationDate { get; set; }
         public DateTime FosterApplicationStartDate { get; set; }
         public int FosterApplicationMaxAnimals { get; set; }

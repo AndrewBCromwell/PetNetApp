@@ -672,8 +672,6 @@ namespace DataAccessLayer
             }
 
             return user;
-
-            //throw new NotImplementedException();
         }
         /// <summary>
         /// By: Barry Mikulas
@@ -1193,6 +1191,7 @@ namespace DataAccessLayer
 
             return rows;
         }
+
     }
 }
 

@@ -48,6 +48,7 @@
     <Compile Include="IAnimalUpdatesAccessor.cs" />
     <Compile Include="IBookmarkAccessor.cs" />
     <Compile Include="IFosterAccessor.cs" />
+    <Compile Include="IFosterApplicationAccessor.cs" />
     <Compile Include="IPledgeAccessor.cs" />
     <Compile Include="IReplyAccessor.cs" />
     <Compile Include="IDBConnection.cs" />

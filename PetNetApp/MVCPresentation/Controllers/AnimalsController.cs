@@ -11,13 +11,19 @@ using MVCPresentation.Models;
 using System.Drawing;
 using System.Threading.Tasks;
 using static DataObjects.SurrenderForm;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace MVCPresentation.Controllers
 {
     public class AnimalsController : Controller
     {
-        MasterManager _manager = null;
-        Animal _animal = null;
+        private MasterManager _manager = null;
+        private Animal _animal = null;
+        private ApplicationUserManager userManager;
+
+
+
 
         public AnimalsController(MasterManager manager)     
         {
@@ -37,7 +43,7 @@ namespace MVCPresentation.Controllers
         }
 
         // GET: Animals
-        public ActionResult AdoptionApplication(int animalId)
+        public ActionResult AdoptionApplication(int animalId, Users user)
         {
             try
             {
@@ -45,6 +51,12 @@ namespace MVCPresentation.Controllers
                 ViewBag.HomeOwnershipTypes = _manager.AdoptionApplicationManager.RetrieveAllHomeOwnershipTypes();
                 ViewBag.AnimalId = animalId.ToString();
                 ViewBag.AnimalName = _manager.AnimalManager.RetriveAnimalAdoptableProfile((int)animalId).AnimalName;
+                if(user != null)
+                {
+                    ViewBag.UserId = user.UsersId;
+                }
+                
+                // pass user to view in a hidden field
 
             }
             catch (Exception up)
@@ -82,16 +94,22 @@ namespace MVCPresentation.Controllers
                         NumberOfChildren = _application.AdoptionApplicant.NumberOfChildren,
                         NumberOfPets = _application.AdoptionApplicant.NumberOfPets
                     };
-                    if(_manager.User != null)
+
+                    userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                    var user = userManager.FindById(User.Identity.GetUserId());
+                    if(user != null)
                     {
-                        applicant.UserId = _manager.User.UsersId;
+                        applicant.UserId = user.UsersId;
                     }
+
+                    //AnimalVM animal = _manager.AnimalManager.RetriveAnimalAdoptableProfile(_application.AnimalId);
 
                     AdoptionApplicationVM application = new AdoptionApplicationVM()
                     {
                         AdoptionApplicant = applicant,
                         AdoptionApplicationDate = DateTime.Now,
                         AnimalId = _application.AnimalId
+                        //AdoptionAnimal = animal
                     };
                     
                     _manager.AdoptionApplicationManager.AddAdoptionApplication(application);

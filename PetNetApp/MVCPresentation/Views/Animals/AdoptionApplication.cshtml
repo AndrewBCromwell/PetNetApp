@@ -3,23 +3,24 @@
 {
     <link href="~/Content/animals.css" rel="stylesheet" />
 }
+    <h3 class="adoption-application-header mt-3 ml-5 mr-5">Adoption Application for @ViewBag.AnimalName, @ViewBag.AnimalId</h3>
 
-
-<h3 class="adoption-application-header mt-3 ml-5 mr-5">Adoption Application for @ViewBag.AnimalName, @ViewBag.AnimalId</h3>
-
-@*will pass animal id once available*@
-<div class="container-fluid" style="height: 100%;">
-    <div class="row">
-        <div class="col mr-5 ml-5 mt-2" style="background-color: #9EC1B0; min-height: 90vh;"></div>
-        <div class="col-6 mt-2" id="adoption-application-form">
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-                //TODO: link to sign in/create account once created
-
+    @*will pass animal id once available*@
+    <div class="container-fluid" style="height: 100%;">
+        <div class="row">
+            <div class="col mr-5 ml-5 mt-2" style="background-color: #9EC1B0; min-height: 90vh;"></div>
+            <div class="col-6 mt-2" id="adoption-application-form">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    //TODO: link to sign in/create account once created
+                    
 
                 <div class="form-horizontal text-center">
-                    <h4 class="subheader-with-link" style="color: #9EC1B0;">To link this application to an account, <a href="#">@Html.ActionLink("Sign In", "Adopt", "Animals")</a> or <a href="#">@Html.ActionLink("Create An Account", "Adopt", "Animals")</a> now!</h4>
+                    @if (Html.HiddenFor(model => model.AdoptionApplicant.UserId, new { @Value = ViewBag.UserId }) == null)
+                    {
+                        <h4 class="subheader-with-link" style="color: #9EC1B0;">To link this application to an account, <a href="#">@Html.ActionLink("Sign In", "Adopt", "Animals")</a> or <a href="#">@Html.ActionLink("Create An Account", "Adopt", "Animals")</a> now!</h4>
+                    }
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -114,17 +115,17 @@
                         </div>
                     </div>
                 </div>
-            }
-            <div>
-                @*TODO:* Link back to adoptable animal profile, not currently a page to go back to*@
-                <center>@Html.ActionLink("Back to Index", "Index")</center>
+                }
+                <div>
+                    @*TODO:* Link back to adoptable animal profile, not currently a page to go back to*@
+                    @Html.ActionLink("Back to Profile", "Adoptable", new { @class = "btn btn-md" })
+                </div>
             </div>
+            <div class="col mr-5 ml-5 mt-2" style="background-color: #9EC1B0; min-height: 90vh;"></div>
         </div>
-        <div class="col mr-5 ml-5 mt-2" style="background-color: #9EC1B0; min-height: 90vh;"></div>
     </div>
-</div>
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -93,6 +93,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItemCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteItemCategory_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\SelectAllCategories_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertCategory_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\InsertItemTransaction_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewSpecificDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewInstitutionalEntity_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEvents_SP.sql
@@ -144,6 +145,7 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEventsMVC_SP.sq
 sqlcmd -S localhost -E -i StoredProceduresScripts\Bookmark_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Surrender_SPs.sql
 
+sqlcmd -S localhost -E -i StoredProceduresScripts\sp_view_foster_applications.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE
