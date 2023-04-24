@@ -40,6 +40,19 @@ namespace WpfPresentation.Fundraising
         private int _displayedTotalNumAnimalsAdopted = 0;
         private bool _campgainComplete = false;
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// Public constructor for UpdateFundraisingCampaign which assigns values and calls
+        /// InitializeComponent().
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// <param name="fundraisingCampaignVM">The Campaign to be updated</param>
         public UpdateFundraisingCampaign(FundraisingCampaignVM fundraisingCampaignVM)
         {
             _oldFundraisingCampaignVM = fundraisingCampaignVM;
@@ -50,6 +63,19 @@ namespace WpfPresentation.Fundraising
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// Page Loaded method. Calls UpdateUI() helper method.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateUI();
@@ -89,10 +115,9 @@ namespace WpfPresentation.Fundraising
         /// Andrew Schneider
         /// Created: 2023/03/23
         /// 
-        /// Click event method for the "Update" button. Calls ValidateAndAssignInput
-        /// method and if it returns true an attempt is made add a Campaign Update
-        /// record and to update the Campaign Results. If successful a popup is shown
-        /// and the UI is updated so new totals can be seen.
+        /// Click event method for the "Update" button. Calls ValidateAndAssignInput method and if
+        /// it returns true an attempt is made add a Campaign Update record and to update the Campaign
+        /// Results. If successful a popup is shown and the UI is updated so new totals can be seen.
         /// </summary>
         ///
         /// <remarks>

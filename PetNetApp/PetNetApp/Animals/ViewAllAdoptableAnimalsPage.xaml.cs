@@ -41,7 +41,7 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/04/12
         /// 
-        /// Public constructor for ViewAllAdoptableAnimalsPage
+        /// Private constructor for ViewAllAdoptableAnimalsPage
         /// </summary>
         ///
         /// <remarks>
@@ -67,6 +67,7 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <returns>ViewAllAdoptableAnimalsPage</returns>
         public static ViewAllAdoptableAnimalsPage GetViewAllAdoptableAnimalsPage()
         {
             if (_existingViewAllAdoptableAnimalsPage == null)
@@ -89,7 +90,7 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        /// /// <param name="sender"></param>
+        /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

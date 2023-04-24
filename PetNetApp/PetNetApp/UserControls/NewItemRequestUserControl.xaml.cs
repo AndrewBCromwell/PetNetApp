@@ -46,8 +46,7 @@ namespace WpfPresentation.UserControls
         /// Andrew Schneider
         /// Created: 2023/03/31
         /// 
-        /// Constructor method that assigns paramters and calls
-        /// necessary methods
+        /// Constructor method that assigns parameters and calls necessary methods
         /// </summary>
         ///
         /// <remarks>
@@ -55,9 +54,9 @@ namespace WpfPresentation.UserControls
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        /// <param name="resourceAddRequest">ResourceAddRequest
-        ///     that needs a user control</param>
+        /// <param name="resourceAddRequest">ResourceAddRequest that needs a user control</param>
         /// <param name="useAlternateColors">Bool for control color</param>
+        /// <param name="svItemRequestList">Parent ScrollViewer the popup will be centered on</param>
         public NewItemRequestUserControl(ResourceAddRequest resourceAddRequest, bool useAlternateColors, ScrollViewer svItemRequestList)
         {
             ResourceAddRequest = resourceAddRequest;
@@ -92,10 +91,9 @@ namespace WpfPresentation.UserControls
         /// Andrew Schneider
         /// Created: 2023/03/31
         /// 
-        /// Event handler for the "Deactivate" button. Calls the Edit
-        /// method to update the ResourceAddRequest's "Active" field
-        /// in the database. Shows confirmaition, success, and error
-        /// dialogs as needed.
+        /// Event handler for the "Deactivate" button. Calls the Edit method to update the
+        /// ResourceAddRequest's "Active" field in the database. Shows confirmaition, success,
+        /// and error dialogs as needed.
         /// </summary>
         ///
         /// <remarks>
@@ -137,9 +135,8 @@ namespace WpfPresentation.UserControls
         /// Andrew Schneider
         /// Created: 2023/04/01
         /// 
-        /// Helper method that obtains the user Id for the user that
-        /// created the ResourceAddRequest, calls the accessor method
-        /// to obtain the user name of the user, and then assigns the
+        /// Helper method that obtains the user Id for the user that created the ResourceAddRequest,
+        /// calls the accessor method to obtain the user name of the user, and then assigns the
         /// name to lblUsersName.
         /// </summary>
         ///
@@ -174,8 +171,7 @@ namespace WpfPresentation.UserControls
         /// Andrew Schneider
         /// Created: 2023/03/31
         /// 
-        /// Event handler that calls AssinUsersName() and then
-        /// displays the Notes popup.
+        /// Event handler that calls AssinUsersName() and then displays the Notes popup.
         /// </summary>
         ///
         /// <remarks>
@@ -190,15 +186,13 @@ namespace WpfPresentation.UserControls
             AssignUsersName();
             popResourceAddRequestNote.PlacementTarget = _svItemRequestList;
             popResourceAddRequestNote.IsOpen = true;
-            
         }
 
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/03/31
         /// 
-        /// Event handler that keeps the Notes popup open when
-        /// _this_MouseDown event ends
+        /// Event handler that keeps the Notes popup open when _this_MouseDown event ends
         /// </summary>
         ///
         /// <remarks>
@@ -217,8 +211,7 @@ namespace WpfPresentation.UserControls
         /// Andrew Schneider
         /// Created: 2023/04/01
         /// 
-        /// Event handler that closes the Notes
-        /// popup when the "X" button is clicked.
+        /// Event handler that closes the Notes popup when the "X" button is clicked.
         /// </summary>
         ///
         /// <remarks>
@@ -237,8 +230,7 @@ namespace WpfPresentation.UserControls
         /// Andrew Schneider
         /// Created: 2023/04/01
         /// 
-        /// Event handler that closes the Notes
-        /// popup when the "Close" button is clicked.
+        /// Event handler that closes the Notes popup when the "Close" button is clicked.
         /// </summary>
         ///
         /// <remarks>
