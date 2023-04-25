@@ -266,6 +266,7 @@
     <Content Include="Views\UserProfile\AdoptionApplicationsPartial.cshtml" />
     <Content Include="Views\Animals\Index.cshtml" />
     <Content Include="Views\Manage\AccountSettings.cshtml" />
+    <Content Include="Views\Community\ReinstatePost.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
     <Resource Include="Images\Animal\BrokenImage.png">
