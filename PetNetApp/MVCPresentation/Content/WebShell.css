@@ -116,7 +116,7 @@ button.shellrow-2 :hover {
 
 .shellrow-3 {
     grid-area: submenu;
-    height: 45px;
+    height: 15px;
     background-color: #9EC1B0; /* #EEF2E6 */
     z-index: 3;
 }
