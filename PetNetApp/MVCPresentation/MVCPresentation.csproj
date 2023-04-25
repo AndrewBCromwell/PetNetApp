@@ -246,6 +246,7 @@
     <Content Include="Content\Fundraising\page-navigation.css" />
     <Content Include="Content\ShelterNetwork.css" />
     <Content Include="Content\Ticket\TicketList.css" />
+    <Content Include="Content\WebShell.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -263,6 +264,7 @@
     <Content Include="Views\Animals\SurrenderAnimalFormSubmit.cshtml" />
     <Content Include="Views\UserProfile\AdoptionApplicationsPartial.cshtml" />
     <Content Include="Views\Animals\Index.cshtml" />
+    <Content Include="Views\Manage\AccountSettings.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
     <Resource Include="Images\Animal\BrokenImage.png">

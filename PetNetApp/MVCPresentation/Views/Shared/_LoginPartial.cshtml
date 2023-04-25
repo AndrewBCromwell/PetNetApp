@@ -1,15 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("Index", "UserProfile")">
-            <div class="user-image-wrapper">
-                <img src="~/Images/abstract-user-flat-4.png" height="45" />
-                <img src="~/Images/user_hover.png" height="45" class="hover-img" />
-
-            </div>
-        </a>
-    </li>
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logoutForm", @class = "my-auto" }))
     {
         @Html.AntiForgeryToken()
@@ -19,14 +10,6 @@
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("Login",  "Account")">
-            <div class="user-image-wrapper">
-                <img src="~/Images/abstract-user-flat-4.png" height="45" class="userprofilepic" />
-                <img src="~/Images/user_hover.png" height="45" class="userprofilepic hover-img" />
-            </div>
-        </a>
-    </li>
-
+        <li><a class="nav-link" href="@Url.Action("Login",  "Account")">Log In</a></li>
 
 }

@@ -252,11 +252,16 @@ namespace MVCPresentation.Controllers
                 }
                 catch
                 {
+                    ViewBag.Genders = _genders;
+                    ViewBag.Pronouns = _pronouns;
                     return View(model);
                 }
             }
 
+
             // If we got this far, something failed, redisplay form
+            ViewBag.Genders = _genders;
+            ViewBag.Pronouns = _pronouns;
             return View(model);
         }
 
