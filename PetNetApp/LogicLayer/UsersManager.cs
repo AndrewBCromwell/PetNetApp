@@ -547,7 +547,7 @@ namespace LogicLayer
             return userVM;
         }
 
-        public bool EditUserShelterId(int userId, int shelterId, int oldShelterId)
+        public bool EditUserShelterId(int userId, int shelterId, int? oldShelterId)
         {
             bool wasAdded = false;
 

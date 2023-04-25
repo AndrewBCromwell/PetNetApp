@@ -23,6 +23,11 @@ namespace WpfPresentation.Management
     public partial class AddKennelPage : Page
     {
         private MasterManager masterManager = MasterManager.GetMasterManager();
+
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         public AddKennelPage()
         {
             InitializeComponent();
@@ -38,11 +43,19 @@ namespace WpfPresentation.Management
             }
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ViewKennelPage());
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateInputs()) 
@@ -67,6 +80,10 @@ namespace WpfPresentation.Management
             }
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         private bool ValidateInputs()
         {
             if (txtKennelName.Text.Equals("") || cbAnimalType.SelectedItem == null)

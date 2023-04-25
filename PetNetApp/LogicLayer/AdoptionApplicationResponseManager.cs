@@ -29,7 +29,7 @@ namespace LogicLayer
 
             try
             {
-                result = 1 == _adoptionApplicationResponseAccessor.InsertAdoptionApplicationResponseByAdoptionApplicationId(adoptionApplicationResponseVM);
+                result = 1 >= _adoptionApplicationResponseAccessor.InsertAdoptionApplicationResponseByAdoptionApplicationId(adoptionApplicationResponseVM);
             }
             catch (Exception ex)
             {

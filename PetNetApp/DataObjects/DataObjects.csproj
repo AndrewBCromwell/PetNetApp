@@ -47,6 +47,7 @@
     <Compile Include="AdoptionPlacement.cs" />
     <Compile Include="AnimalType.cs" />
     <Compile Include="Applicant.cs" />
+    <Compile Include="Bookmark.cs" />
     <Compile Include="DataPathInformation.cs" />
     <Compile Include="CampaignUpdate.cs" />
     <Compile Include="ApplicationStatus.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="FosterPlacement.cs" />
     <Compile Include="FosterPlacementRecord.cs" />
     <Compile Include="Donation.cs" />
-    <Compile Include="FosterApplicationResponse.cs" />
     <Compile Include="FosterRequest.cs" />
     <Compile Include="FosterRequestResponse.cs" />
     <Compile Include="FundraisingCampaign.cs" />
@@ -89,6 +89,7 @@
     <Compile Include="ShelterItemTransaction.cs" />
     <Compile Include="InstitutionalEntity.cs" />
     <Compile Include="SponsorEvent.cs" />
+    <Compile Include="SurrenderForm.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TimeClock.cs" />

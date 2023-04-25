@@ -205,7 +205,8 @@ namespace WpfPresentation.Development.Fundraising
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             //PromptWindow.ShowPrompt("Edit", "Edit Clicked");
-            setupEditFundraisingEvent(FundraisingEvent);
+            //setupEditFundraisingEvent(FundraisingEvent);
+            NavigationService.GetNavigationService(this).Navigate(new WpfPresentation.Events.EditFundraisingEvent(FundraisingEvent));
         }
         /// <summary>
         /// Barry Mikulas
@@ -869,7 +870,7 @@ namespace WpfPresentation.Development.Fundraising
         /// </remarks>
         private void DecimalNumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex(@"^[0-9]+(\.[0-9]{0,2})?$");
+            Regex regex = new Regex(@"^[0-9]{0,4}(\.[0-9]{0,2})?$");
             string amount = tbEventCost.Text.Insert(tbEventCost.CaretIndex, e.Text);
             if (!regex.IsMatch(amount))
             {

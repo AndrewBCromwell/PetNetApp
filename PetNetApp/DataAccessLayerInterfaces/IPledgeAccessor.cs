@@ -57,5 +57,16 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Could not create pledge</exception>
         /// <returns>int of rows affected</returns>
         int InsertPledge(PledgeVM pledgeVM);
+        /// <summary>
+        /// Zaid Rachman
+        /// 2023/04/18
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
+        List<PledgeVM> SelectAllPledges();
     }
 }

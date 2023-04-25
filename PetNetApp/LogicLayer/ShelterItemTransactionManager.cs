@@ -37,5 +37,23 @@ namespace LogicLayer
             }
             return shelterItemTransactions;
         }
+
+        public bool AddItemTransaction(ShelterItemTransaction transaction)
+        {
+            bool result = false;
+            try
+            {
+                result = 1 == _shelterItemTransactionAccessor.InsertItemTransaction(transaction);
+                if (!result)
+                {
+                    throw new ApplicationException("Insert Failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
     }
 }

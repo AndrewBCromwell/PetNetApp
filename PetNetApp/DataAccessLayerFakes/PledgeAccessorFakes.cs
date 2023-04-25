@@ -134,6 +134,15 @@ namespace DataAccessLayerFakes
             return result;
         }
 
+        public List<PledgeVM> SelectAllPledges()
+        {
+            List<PledgeVM> fakes = new List<PledgeVM>();
+
+            fakes = _fakePledgeVMs;
+
+            return fakes;
+        }
+
         public List<PledgeVM> SelectAllPledgesByEventId(int eventId)
         {
             List<PledgeVM> fakes = new List<PledgeVM>();

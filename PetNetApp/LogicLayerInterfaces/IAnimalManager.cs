@@ -132,6 +132,19 @@ namespace LogicLayerInterfaces
         /// <returns>Boolean representing success or failure</returns>
         bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
         List<Animal> RetrieveAllAnimals(int shelterId);
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/11
+        /// 
+        /// Retrieve Animal Medical Profile By Animal Id
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="AnimalId"></param>
+        /// <returns></returns>
         AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId);
 
         AnimalVM RetriveAnimalAdoptableProfile(int animalId);

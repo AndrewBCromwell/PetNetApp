@@ -39,12 +39,15 @@ CREATE PROCEDURE [dbo].[sp_select_all_adoption_applications_by_animal_id]
 )
 AS 
 	BEGIN 
-		SELECT 	AdoptionApplicationId,AnimalId, ApplicationStatusId, AdoptionApplicationDate, Applicant.ApplicantId, UsersId, 
+		SELECT 	AdoptionApplication.AdoptionApplicationId, AdoptionApplication.AnimalId, ApplicationStatusId, AdoptionApplicationDate, Applicant.ApplicantId, Applicant.UsersId, 
 				ApplicantGivenName, ApplicantFamilyName, ApplicantAddress, ApplicantAddress2, ApplicantZipCode,
-				ApplicantPhoneNumber, ApplicantEmail, HomeTypeId, HomeOwnershipId, NumberOfChildren, NumberOfPets, CurrentlyAcceptingAnimals
+				ApplicantPhoneNumber, ApplicantEmail, HomeTypeId, HomeOwnershipId, NumberOfChildren, NumberOfPets, CurrentlyAcceptingAnimals,
+				AnimalShelterId, AnimalName, AnimalGender, AnimalTypeId, AnimalBreedId, Personality, Description, AnimalStatusId, RecievedDate,
+				MicrochipSerialNumber, Aggressive, AggressiveDescription, ChildFriendly, NeuterStatus, Notes
 		FROM 	AdoptionApplication
 		JOIN	Applicant on AdoptionApplication.ApplicantId = Applicant.ApplicantId
-		WHERE	AnimalId = @animalId
+		JOIN	Animal on AdoptionApplication.AnimalId = Animal.AnimalId
+		WHERE	AdoptionApplication.AnimalId = @animalId
 	END
 GO 
 
@@ -75,3 +78,23 @@ AS
 	END
 GO
 
+print '' print'*** creating sp_select_all_adoption_applications_by_users_id'
+GO 
+
+CREATE PROCEDURE [dbo].[sp_select_all_adoption_applications_by_users_id]
+(
+	@usersId int
+)
+AS 
+	BEGIN 
+		SELECT 	AdoptionApplication.AdoptionApplicationId, AdoptionApplication.AnimalId, ApplicationStatusId, AdoptionApplicationDate, Applicant.ApplicantId, Applicant.UsersId, 
+				ApplicantGivenName, ApplicantFamilyName, ApplicantAddress, ApplicantAddress2, ApplicantZipCode,
+				ApplicantPhoneNumber, ApplicantEmail, HomeTypeId, HomeOwnershipId, NumberOfChildren, NumberOfPets, CurrentlyAcceptingAnimals,
+				AnimalShelterId, AnimalName, AnimalGender, AnimalTypeId, AnimalBreedId, Personality, Description, AnimalStatusId, RecievedDate,
+				MicrochipSerialNumber, Aggressive, AggressiveDescription, ChildFriendly, NeuterStatus, Notes
+		FROM 	AdoptionApplication
+		JOIN	Applicant on AdoptionApplication.ApplicantId = Applicant.ApplicantId
+		JOIN 	Animal on AdoptionApplication.AnimalId = Animal.AnimalId
+		WHERE	Applicant.UsersId = @usersId
+	END
+GO

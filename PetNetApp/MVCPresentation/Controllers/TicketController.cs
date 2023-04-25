@@ -64,6 +64,12 @@ namespace MVCPresentation.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            if (Session["ticketStatus"] != null)
+            {
+                ViewBag.TicketStatus = Session["ticketStatus"].ToString();
+                Session["ticketStatus"] = null;
+            }
+            
             return View();
         }
 
@@ -93,7 +99,7 @@ namespace MVCPresentation.Controllers
                 {
                     ticket.UserId = (int)user.UsersId;
                     masterManager.TicketManager.CreateNewTicket(ticket.UserId, ticket.TicketStatusId, ticket.TicketTitle, ticket.TicketContext);
-                    Session["status"] = "Your Ticket Created!";
+                    Session["ticketStatus"] = "Your Ticket has been Created!";
                     return RedirectToAction("Create");
                 }
                 catch (Exception ex)

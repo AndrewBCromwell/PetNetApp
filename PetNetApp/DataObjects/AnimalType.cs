@@ -8,6 +8,6 @@ namespace DataObjects
 {
     public class AnimalType
     {
-        public int AnimalTypeId { get; set; }
+        public string AnimalTypeId { get; set; }
     }
 }

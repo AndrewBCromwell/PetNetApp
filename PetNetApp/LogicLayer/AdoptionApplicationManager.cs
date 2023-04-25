@@ -98,5 +98,19 @@ namespace LogicLayer
             }
             return types;
         }
+
+        public List<AdoptionApplicationVM> RetrieveAllAdoptionApplicationsByUsersId(int usersId)
+        {
+            List<AdoptionApplicationVM> applications = null;
+            try
+            {
+                applications = _adoptionApplicationAccessor.SelectAllAdoptionApplicationsByUsersId(usersId);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve adoption applications", e);
+            }
+            return applications;
+        }
     }
 }
