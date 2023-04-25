@@ -255,6 +255,7 @@
     <Content Include="Images\Animal\314a2539-5dee-40ce-ac5b-026d53750c92.png" />
     <Content Include="Images\bookmark_dark.png" />
     <Content Include="Images\bookmark_light.png" />
+    <Content Include="Images\logo.ico" />
     <Content Include="Views\Shared\_PartialSubMenu.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Shelters\Index.cshtml" />
@@ -714,7 +715,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>Images\logo.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

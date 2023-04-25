@@ -11,13 +11,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", false)
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/WebShell.css" rel="stylesheet" />
 
 
 </head>
@@ -27,30 +21,30 @@
         <!------------>
         <!-- HEADER -->
         <!------------>
-        <div class="row-1">
+        <div class="shellrow-1">
 
-            <div class="col-1"></div>
+            <div class="shellcol-1"></div>
 
             <!-- petnet logo -->
-            <div class="col-2" style="width: 8.5%;">
+            <div class="shellcol-2" style="width: 8.5%;">
                 <a href="@Url.Action("Index", "Home")">
                     <img src="~/Images/petnetLogo_hover.png" height="75" onmouseover="logoHover(this, true)" onmouseout="logoHover(this, false)" />
                 </a>
             </div>
 
-            <div class="col-3" style="width: 7%;"></div>
-            <div class="col-4" style="width: 7%;"></div>
-            <div class="col-5" style="width: 7%;"></div>
-            <div class="col-6" style="width: 7%;"></div>
-            <div class="col-7" style="width: 7%;"></div>
-            <div class="col-8" style="width: 7%;"></div>
-            <div class="col-9" style="width: 7%;"></div>
-            <div class="col-10" style="width: 7%;"></div>
-            <div class="col-11" style="width: 7%;"></div>
-            <div class="col-12" style="width: 7%;"></div>
+            <div class="shellcol-3" style="width: 7%;"></div>
+            <div class="shellcol-4" style="width: 7%;"></div>
+            <div class="shellcol-5" style="width: 7%;"></div>
+            <div class="shellcol-6" style="width: 7%;"></div>
+            <div class="shellcol-7" style="width: 7%;"></div>
+            <div class="shellcol-8" style="width: 7%;"></div>
+            <div class="shellcol-9" style="width: 7%;"></div>
+            <div class="shellcol-10" style="width: 7%;"></div>
+            <div class="shellcol-11" style="width: 7%;"></div>
+            <div class="shellcol-12" style="width: 7%;"></div>
 
             <!-- petnet notif -->
-            <div class="col-13" style="width: 55px;">
+            <div class="shellcol-13" style="width: 55px;">
                 @if (Request.IsAuthenticated)
                 {
                     // no link because no notif screen exists
@@ -69,7 +63,7 @@
 
 
             <!-- petnet profile -->
-            <div class="col-14" style="width: 55px;">
+            <div class="shellcol-14" style="width: 55px;">
                 @if (Request.IsAuthenticated)
                 {
                     <a href="@Url.Action("Index", "UserProfile")">
@@ -85,7 +79,7 @@
             </div>
 
             <!-- petnet menu -->
-            <div class="col-15" style="width: 55px;">
+            <div class="shellcol-15" style="width: 55px;">
                 <div class="dropdown">
                     <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         <img src="~/Images/menuIcon.png" height="50" class="dropbtn" onmouseover="menuHover(this, true)" onmouseout="menuHover(this, false)" />
@@ -131,26 +125,26 @@
         </div>
 
         <!-- MENU -->
-        <div class="row-2 header-menu">
-            <div class="col-1"></div>
-            <div class="col-2 animalButton" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Animals", "Adoptable", "Animals", null, new { @class = (ViewBag.Tab == "Adopt" ? "active-main-tab" : "") })</button></div>
-            <div class="col-3" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Shelters", "SelectShelter", "Shelters", null, new { @class = (ViewBag.Tab == "Shelters" ? "active-main-tab" : "") })</button></div>
-            <div class="col-4 fundraisingButton" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Community", "Index", "Community", null, new { @class = (ViewBag.Tab == "Community" ? "active-main-tab" : "") })</button></div>
-            <div class="col-5" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Donate", "Index", "Donate", null, new { @class = (ViewBag.Tab == "Donate" ? "active-main-tab" : "") })</button></div>
-            <div class="col-6" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Events", "Index", "Events", null, new { @class = (ViewBag.Tab == "Events" ? "active-main-tab" : "") })</button></div>
-            <div class="col-7" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Fundraising", "Index", "Fundraising", null, new { @class = (ViewBag.Tab == "Fundraising" ? "active-main-tab" : "") })</button></div>
-            <div class="col-8" style="width: 3.5%"></div>
-            <div class="col-9" style="width: 3.5%"></div>
-            <div class="col-10" style="width: 3.5%"></div>
-            <div class="col-11" style="width: 3.5%"></div>
-            <div class="col-12" style="width: 3.5%"></div>
-            <div class="col-13" style="width: 3.5%"></div>
-            <div class="col-14" style="width: 3.5%"></div>
-            <div class="col-15" style="width: 3.5%"></div>
-            <div class="col-16">.</div>
+        <div class="shellrow-2 header-menu">
+            <div class="shellcol-1"></div>
+            <div class="shellcol-2 animalButton" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Animals", "Adoptable", "Animals", null, new { @class = (ViewBag.Tab == "Adopt" ? "active-main-tab" : "") })</button></div>
+            <div class="shellcol-3" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Shelters", "SelectShelter", "Shelters", null, new { @class = (ViewBag.Tab == "Shelters" ? "active-main-tab" : "") })</button></div>
+            <div class="shellcol-4 fundraisingButton" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Community", "Index", "Community", null, new { @class = (ViewBag.Tab == "Community" ? "active-main-tab" : "") })</button></div>
+            <div class="shellcol-5" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Donate", "Index", "Donate", null, new { @class = (ViewBag.Tab == "Donate" ? "active-main-tab" : "") })</button></div>
+            <div class="shellcol-6" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Events", "Index", "Events", null, new { @class = (ViewBag.Tab == "Events" ? "active-main-tab" : "") })</button></div>
+            <div class="shellcol-7" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Fundraising", "Index", "Fundraising", null, new { @class = (ViewBag.Tab == "Fundraising" ? "active-main-tab" : "") })</button></div>
+            <div class="shellcol-8" style="width: 3.5%"></div>
+            <div class="shellcol-9" style="width: 3.5%"></div>
+            <div class="shellcol-10" style="width: 3.5%"></div>
+            <div class="shellcol-11" style="width: 3.5%"></div>
+            <div class="shellcol-12" style="width: 3.5%"></div>
+            <div class="shellcol-13" style="width: 3.5%"></div>
+            <div class="shellcol-14" style="width: 3.5%"></div>
+            <div class="shellcol-15" style="width: 3.5%"></div>
+            <div class="shellcol-16">.</div>
         </div>
 
-        <div class="row-3">
+        <div class="shellrow-3">
             @* To have your sub menu show up the tab name must be in the tabs variable at the top of the page*@
             @if (tabs.Contains((string)ViewBag.Tab))
             {
