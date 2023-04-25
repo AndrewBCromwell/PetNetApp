@@ -137,6 +137,9 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Events\AddVolunteerToEvent.xaml.cs">
+      <DependentUpon>AddVolunteerToEvent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ApplicantUC.xaml.cs">
       <DependentUpon>ApplicantUC.xaml</DependentUpon>
     </Compile>
@@ -203,7 +206,7 @@
     <Compile Include="Events\VolunteerListPage.xaml.cs">
       <DependentUpon>VolunteerListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Events\VolunteerListUserControl.xaml.cs">
+    <Compile Include="UserControls\VolunteerListUserControl.xaml.cs">
       <DependentUpon>VolunteerListUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\ViewEvents.xaml.cs">
@@ -565,6 +568,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Events\AddVolunteerToEvent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ApplicantUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -673,7 +680,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Events\VolunteerListUserControl.xaml">
+    <Page Include="UserControls\VolunteerListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

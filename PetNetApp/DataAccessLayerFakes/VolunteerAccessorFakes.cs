@@ -5,10 +5,11 @@
 /// 
 /// Class for the creation of Volunteer Accessor Fakes
 /// </summary>
-/// 
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/24
+/// 
+/// Final QA
 /// </remarks>
 using DataAccessLayerInterfaces;
 using DataObjects;
@@ -52,6 +53,45 @@ namespace DataAccessLayerFakes
                 UsersId = 100003,
                 FundraisingEventId = 100001
             });
+        }
+
+        public int DeleteVolunteerFromEventbyUsersIdAndFundraisingEventId(int usersId, int fundraisingEventId)
+        {
+            int rowsAffected = 0;
+
+            if(fakeVolunteers.Remove(fakeVolunteers.FirstOrDefault(v => v.UsersId == usersId && v.FundraisingEventId == fundraisingEventId)))
+            {
+                rowsAffected++;
+            }
+
+            return rowsAffected;
+        }
+
+        public int InsertVolunteerToEventbyVolunteerAndEventId(int userId, int fundraisingEventId)
+        {
+            int rowsAffected = 0;
+
+            int existingRows = fakeVolunteers.Count;
+            fakeVolunteers.Add(new VolunteerVM
+            {
+                UsersId = userId,
+                FundraisingEventId = fundraisingEventId
+            });
+            rowsAffected = fakeVolunteers.Count - existingRows;
+
+            return rowsAffected;
+        }
+
+        public List<int> SelectAllVolunteers()
+        {
+            List<int> volunteers = new List<int>();
+
+            foreach (VolunteerVM volunteer in fakeVolunteers)
+            {
+                volunteers.Add(volunteer.UsersId);
+            }
+
+            return volunteers;
         }
 
         public List<VolunteerVM> SelectVolunteersbyFundraisingEventId(int fundraisingEventId)
