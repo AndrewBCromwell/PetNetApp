@@ -3,6 +3,9 @@ Oleksiy Fedchuk
 Created: 2023/03/03
 Description:
 File containing the stored procedure to view volunteers by a fundraising event id
+
+Update:
+Added a where clause so it doesn't just grab every single volunteer
 ****************************************************************/
 USE [PetNet_db_am]
 GO
@@ -22,5 +25,6 @@ AS
 				[FundraiserVolunteerUser].[UsersId], [Users].[GivenName], [Users].[FamilyName]
 		FROM 	[FundraiserVolunteerUser] JOIN [Users]
 		ON 		[FundraiserVolunteerUser].[UsersId] = [Users].[UsersId]
+		WHERE	[FundraiserVolunteerUser].[FundraisingEventId] = @FundraisingEventId
 	END
 GO
