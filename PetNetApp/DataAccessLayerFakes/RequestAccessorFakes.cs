@@ -116,6 +116,31 @@ namespace DataAccessLayerFakes
             };
         }
 
+        public bool InsertInventoryItemRequest(RequestVM request)
+        {
+            bool success = false;
+            int startCountOfRequests = _requests.Count;
+            int newRequestId = 4;
+            if(request.RequestLines != null)
+            {
+                foreach (RequestResourceLine line in request.RequestLines)
+                {
+                    line.RequestId = newRequestId;
+                    _requestLines.Add(line);
+                }
+            }
+            
+            request.RequestId = newRequestId;
+            request.RequestLines = new List<RequestResourceLine>();
+            _requests.Add(request);
+            int currentCountOfRequests = _requests.Count;
+            if (currentCountOfRequests == startCountOfRequests + 1)
+            {
+                success = true;
+            }
+            return success;
+        }
+
         public RequestVM SelectRequestResourceLinesByRequestId(RequestVM request)
         {
             request.RequestLines = _requestLines.Where(r => r.RequestId == request.RequestId).ToList();
@@ -125,6 +150,22 @@ namespace DataAccessLayerFakes
         public List<RequestVM> SelectRequestsByShelterSentTo(int ShelterId)
         {
             return _requests.Where(r => r.RecievingShelterId == ShelterId).OrderByDescending(r => r.RequestDate).ToList();
+        }
+
+        public int UpdateRequestAcknowledge(int requestId, bool oldAcknowledge, bool newAcknowledge)
+        {
+            int result = 0;
+
+            foreach (Request request in _requests)
+            {
+                if (request.RequestId == requestId)
+                {
+                    request.Acknowledged = newAcknowledge;
+                    result = 1;
+                }
+            }
+
+            return result;
         }
     }
 }

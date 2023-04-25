@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:WpfPresentation.Development.Management"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      MinWidth="700"
       Title="ViewShelterInventoryPage" Loaded="Page_Loaded">
 
     <Grid>
@@ -20,11 +21,10 @@
             <!--Spacer-->
 
         </Grid.RowDefinitions>
-        <!-- Feature is being moved <ComboBox x:Name="cboShelter" Grid.Row="0" Width="200" Height="60" HorizontalAlignment="Right" Margin="20 0 20 0" 
-                  ToolTip="{Binding SelectedItem.ShelterName, RelativeSource={RelativeSource Self}}" Text="Choose a Shelter" DropDownClosed="cboShelter_DropDownClosed"></ComboBox>-->
+        <!-- <ComboBox x:Name="cboShelter" Grid.Row="0" Width="200" Height="60" HorizontalAlignment="Right" Margin="20 0 400 0" 
+                  ToolTip="{Binding SelectedItem.ShelterName, RelativeSource={RelativeSource Self}}" Text="Choose a Shelter" DropDownClosed="cboShelter_DropDownClosed"></ComboBox> -->
         <Label x:Name="lblMyShelter" Grid.Row="0" Content="My Shelter" FontSize="36" FontWeight="Bold" VerticalAlignment="Center" Margin="20 0"/>
-        <TextBox x:Name="txtSearchFilter" Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20 0"/>
-        <ComboBox x:Name="cboFilter" Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="200 0"/>
+        <TextBox x:Name="txtSearchFilter" Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20 0" GotFocus="txtSearchFilter_GotFocus" LostFocus="txtSearchFilter_LostFocus" KeyDown="txtSearchFilter_KeyDown">Filter by Name</TextBox>
         <DataGrid x:Name="datShelterInventory" Grid.Row="1" Margin="20 0 20 0" 
                   CanUserResizeRows="False" CanUserResizeColumns="True"
                   CanUserReorderColumns="False" 
@@ -52,6 +52,6 @@
         <Button x:Name="btnEdit" Grid.Row="2" Width="100" Height="40"
                 HorizontalAlignment="Left" Margin="20 0" Content="Edit" Click="btnEdit_Click"/>
         <Button x:Name="btnDelete" Grid.Row="2" Width="110" Height="40"
-                HorizontalAlignment="Left" Margin="140 0" Content="Remove Item"/>
+                HorizontalAlignment="Left" Margin="140 0" Content="Remove Item" Click="btnDelete_Click"/>
     </Grid>
 </Page> 

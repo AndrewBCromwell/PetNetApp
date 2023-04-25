@@ -139,5 +139,21 @@ namespace LogicLayerInterfaces
         /// <param name="contactType"></param>
         /// <returns></returns>
         InstitutionalEntity RetrieveInstitutionalEntityByEventIdAndContactType(int fundraisingEventId, string contactType);
+
+        /// <summary>
+        /// Ethan Kline 
+        /// Created: 2023/03/30
+        /// 
+        /// Retrieves a list of all InstitutionalEntities by name
+        /// </summary>
+        ///
+        /// <param name="name"/>
+        /// <exception cref="SQLException">Retrieve fails.</exception>
+        /// <returns>List of InstitutionalEntity</returns>
+        List<SponsorEvent> RetrieveSponsorEventByName(String name);
+
+        List<InstitutionalEntity> RetrieveAllHosts();
+
+        List<InstitutionalEntity> RetrieveAllContact();
     }
 }

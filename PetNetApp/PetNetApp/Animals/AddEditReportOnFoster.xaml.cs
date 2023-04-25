@@ -79,8 +79,8 @@ namespace WpfPresentation.Animals
                 }
                 else // not edit mode
                 {
-                    // txt_FosterName.Text = _fosterApplication -> Given and Family name
-                    // txt_FosterAccountID.Text = _fosterApplication -> ApplicantId
+                    //txt_FosterName.Text = _fosterApplication -> Given and Family name
+                    //txt_FosterAccountID.Text = _fosterApplication -> ApplicantId
                 }
             }
             catch (Exception ex)
@@ -166,17 +166,25 @@ namespace WpfPresentation.Animals
         /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            if (PromptWindow.ShowPrompt("Confirm Cancel", "Cancel and return?", ButtonMode.YesNo).Equals(PromptSelection.Yes))
+            //if (PromptWindow.ShowPrompt("Confirm Cancel", "Cancel and return?", ButtonMode.YesNo).Equals(PromptSelection.Yes))
+            //{
+            //    if (NavigationService.CanGoBack)
+            //    {
+            //        NavigationService.GoBack();
+            //    }
+            //    else
+            //    {
+            //        //NavigationService.Navigate(new WpfPresentation.Animals.AnimalsPage());
+            //    }
+            //}
+
+            PromptSelection result = PromptWindow.ShowPrompt("Confirm", "Are you sure you want to cancel? \n\n Your response will not be saved.", ButtonMode.YesNo);
+            if (result == PromptSelection.Yes)
             {
-                if (NavigationService.CanGoBack)
-                {
-                    NavigationService.GoBack();
-                }
-                else
-                {
-                    //NavigationService.Navigate(new WpfPresentation.Animals.AnimalsPage());
-                }
+                var window = Window.GetWindow(this);
+                window.Close();
             }
+
         }
     }
 }

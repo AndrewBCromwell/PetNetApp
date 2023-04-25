@@ -14,11 +14,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="2.3*" />
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>        
-        <Label x:Name="lblViewInventoryChanges" Grid.Row="0" Grid.Column="1" Content="List of Shelter Requests" VerticalContentAlignment="Center"
+        <Label x:Name="lblViewRequests" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="List of Shelter Requests" VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center" FontSize="24"/>
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
+        <CheckBox x:Name="chkShowAcknowleged" Grid.Row="0" Grid.Column="1" Click="chkShowAcknowleged_Click">Show Acknowleged Requests</CheckBox>
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel x:Name="stpRequestList">
 
             </StackPanel>

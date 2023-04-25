@@ -94,8 +94,8 @@ namespace WpfPresentation.Animals
         {
             lbl_Title.Content = "Update Adoption Application Response";
             txt_Comments.Text = _oldAdoptionApplicationResponse.AdoptionApplicationResponseNotes;
-            txt_AdopterAccountID.Text = _oldAdoptionApplicationResponse.ApplicantId.ToString();
-            txt_AdopterName.Text = _oldAdoptionApplicationResponse.AdoptionApplicantGivenName + " " + _oldAdoptionApplicationResponse.AdoptionApplicantFamilyName;
+            //txt_AdopterAccountID.Text = _oldAdoptionApplicationResponse.ApplicantId.ToString();
+            //txt_AdopterName.Text = _oldAdoptionApplicationResponse.AdoptionApplicantGivenName + " " + _oldAdoptionApplicationResponse.AdoptionApplicantFamilyName;
             txt_AdoptionResponseID.Text = _oldAdoptionApplicationResponse.AdoptionApplicationResponseId.ToString();
             rad_ApprovedYes.IsChecked = _oldAdoptionApplicationResponse.Approved;
 
@@ -129,15 +129,15 @@ namespace WpfPresentation.Animals
 
                 if (!isEditMode)// not edit mode
                 {
-                    if (_masterManager.AdoptionApplicationResponseManager.AddAdoptionApplicationResponse(_response))
-                    {
-                        PromptWindow.ShowPrompt("Congratulations!", "Record Added", ButtonMode.Ok);
-                        setupPage();
-                    }
-                    else
-                    {
-                        PromptWindow.ShowPrompt("Error", "Record Not Added", ButtonMode.Ok);
-                    }
+                    //if (_masterManager.AdoptionApplicationResponseManager.AddAdoptionApplicationResponse(_response))
+                    //{
+                    //    PromptWindow.ShowPrompt("Congratulations!", "Record Added", ButtonMode.Ok);
+                    //    setupPage();
+                    //}
+                    //else
+                    //{
+                    //    PromptWindow.ShowPrompt("Error", "Record Not Added", ButtonMode.Ok);
+                    //}
                 }
                 else // edit mode
                 {

@@ -18,19 +18,7 @@ namespace LogicLayerInterfaces
 {
     public interface IAdoptionApplicationResponseManager
     {
-        /// <summary>
-        /// Asa Armstrong
-        /// Created: 2023/03/30
-        /// 
-        /// Adds an Adoption Application Response record.
-        /// </summary>
-        ///
-        /// <remarks>
-        /// </remarks>
-        /// <param name="adoptionApplicationResponse">AdoptionApplicationResponse</param>
-        /// <exception cref="SQLException">Insert fails.</exception>
-        /// <returns>True if the record was added</returns>
-        bool AddAdoptionApplicationResponse(AdoptionApplicationResponse adoptionApplicationResponse);
+        bool AddAdoptionApplicationResponseByAdoptionApplicationId(AdoptionApplicationResponseVM adoptionApplicationResponseVM);
 
         /// <summary>
         /// Asa Armstrong

@@ -17,6 +17,8 @@ namespace DataAccessLayerFakes
     public class ShelterAccessorFakes : IShelterAccessor
     {
         List<Shelter> shelterList = new List<Shelter>();
+        List<ShelterVM> shelterVMList = new List<ShelterVM>();
+        List<List<HoursOfOperation>> hoursOfOperationList = new List<List<HoursOfOperation>>();
 
         public ShelterAccessorFakes()
         {
@@ -56,6 +58,44 @@ namespace DataAccessLayerFakes
                 AreasOfNeed = null,
                 ShelterActive = false
             });
+
+            // New shelter hours list not to mess with existing tests
+
+            List<HoursOfOperation> HoursOfOperation1 = new List<HoursOfOperation>
+                {
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")}
+                };
+            List<HoursOfOperation> HoursOfOperation2 = new List<HoursOfOperation>
+                {
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:40:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:23:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:03:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:43:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:03:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:32:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:40:00"), CloseHour = TimeSpan.Parse("05:00:00")}
+                };
+            List<HoursOfOperation> HoursOfOperation3 = new List<HoursOfOperation>
+                {
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:59:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:58:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:57:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:56:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:55:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:54:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:53:00"), CloseHour = TimeSpan.Parse("05:00:00")}
+                };
+
+            hoursOfOperationList.Add(HoursOfOperation1);
+            hoursOfOperationList.Add(HoursOfOperation2);
+            hoursOfOperationList.Add(HoursOfOperation3);
+
         }
         public int DeactivateShelterByShelterID(int shelterID)
         {
@@ -83,6 +123,27 @@ namespace DataAccessLayerFakes
         }
         public ShelterVM SelectShelterVMByShelterID(int shelterID)
         {
+            int i = 0;
+            List<ShelterVM> shelterVMs = new List<ShelterVM>();
+            foreach (var shelter in shelterList)
+            {
+                shelterVMs.Add(new ShelterVM
+                {
+                    ShelterId = shelter.ShelterId,
+                    ShelterName = shelter.ShelterName,
+                    Address = shelter.Address,
+                    Address2 = shelter.Address,
+                    ZipCode = shelter.ZipCode,
+                    Phone = shelter.Phone,
+                    Email = shelter.Email,
+                    AreasOfNeed = shelter.AreasOfNeed,
+                    ShelterActive = shelter.ShelterActive,
+                    HoursOfOperation = hoursOfOperationList[i]
+                });
+                i++;
+            }
+            shelterVMList = shelterVMs;
+
             ShelterVM returnShelter = new ShelterVM();
             returnShelter.ShelterId = shelterList[shelterID].ShelterId;
             returnShelter.ShelterName = shelterList[shelterID].ShelterName;
@@ -93,6 +154,7 @@ namespace DataAccessLayerFakes
             returnShelter.Email = shelterList[shelterID].Email;
             returnShelter.AreasOfNeed = shelterList[shelterID].AreasOfNeed;
             returnShelter.ShelterActive = shelterList[shelterID].ShelterActive;
+            returnShelter.HoursOfOperation = shelterVMs[shelterID].HoursOfOperation;
             return returnShelter;
         }
         public int UpdateActiveStatusByShelterID(int shelterID, bool oldActiveStatus, bool newActiveStatus)
@@ -156,6 +218,24 @@ namespace DataAccessLayerFakes
             if (oldZipCode != newZipCode)
             {
                 shelterList[shelterID].ZipCode = newZipCode;
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public List<HoursOfOperation> SelectHoursOfOperationByShelterID(int shelterID)
+        {
+            List<ShelterVM> shelterVM = shelterVMList;
+            return shelterVMList[shelterID].HoursOfOperation;
+        }
+
+        public int UpdateHoursOfOperationByShelterID(int shelterID, int dayOfWeek, HoursOfOperation hours)
+        {
+            if ((hours.OpenHour.ToString() != shelterVMList[shelterID].HoursOfOperation[dayOfWeek - 1].OpenHour.ToString()) || (hours.CloseHour.ToString() != shelterVMList[shelterID].HoursOfOperation[dayOfWeek - 1].CloseHour.ToString()))
+            {
                 return 1;
             }
             else

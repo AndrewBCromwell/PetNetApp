@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using DataObjects;
 using WpfPresentation.Development.Fundraising;
 using LogicLayer;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.UserControls
 {
@@ -43,7 +44,7 @@ namespace WpfPresentation.UserControls
         private void menuEdit_Click(object sender, RoutedEventArgs e)
         {
             //PromptWindow.ShowPrompt("Edit", "Editing " + FundraisingEvent.Title + " event for date: " + FundraisingEvent.StartTime);
-            NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewUpdateFundraisingEventPage.GetEditFundraisingEventPage(FundraisingEvent));
+            NavigationService.GetNavigationService(this).Navigate(new Events.EditFundraisingEvent(FundraisingEvent));
         }
         private void menuView_Click(object sender, RoutedEventArgs e)
         {
@@ -84,6 +85,14 @@ namespace WpfPresentation.UserControls
             NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewUpdateFundraisingEventPage.GetUpdateFundraisingEventPage(FundraisingEvent));
         }
 
+        private void menuAddPledge_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new CreateNewPledge(FundraisingEvent.FundraisingEventId, _masterManager));
+        }
 
+        private void menuAddDonation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

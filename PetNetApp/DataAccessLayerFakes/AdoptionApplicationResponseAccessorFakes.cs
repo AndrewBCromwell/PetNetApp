@@ -1,6 +1,4 @@
-﻿// Created By Asa Armstrong
-// Created On 2023/04/04
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,75 +10,64 @@ namespace DataAccessLayerFakes
 {
     public class AdoptionApplicationResponseAccessorFakes : IAdoptionApplicationResponseAccessor
     {
-        private List<AdoptionApplicationResponse> _responses;
-
+        private List<AdoptionApplicationResponseVM> fakeResponses = new List<AdoptionApplicationResponseVM>();
         public AdoptionApplicationResponseAccessorFakes()
         {
-            _responses = new List<AdoptionApplicationResponse>()
+            fakeResponses.Add(new AdoptionApplicationResponseVM
             {
-                new AdoptionApplicationResponse()
-                {
-                    AdoptionApplicationResponseId = 999_999,
-                    AdoptionApplicationId = 999_999,
-                    ResponderUserId = 999_999,
-                    Approved = false,
-                    AdoptionApplicationResponseDate = DateTime.Now,
-                    AdoptionApplicationResponseNotes = "notes"
-                }
-            };
+                AdoptionApplicationResponseId = 1,
+                AdoptionApplicationId = 1,
+                ResponderUserId = 100000,
+                Approved = true,
+                AdoptionApplicationResponseDate = DateTime.Now,
+                AdoptionApplicationResponseNotes = "dog did a heckin like",
+                Application = new AdoptionApplication(),
+                Responder = new Users()
+            });
         }
 
-        public int InsertAdoptionApplicationResponse(AdoptionApplicationResponse adoptionApplicationResponse)
+        public int InsertAdoptionApplicationResponseByAdoptionApplicationId(AdoptionApplicationResponseVM adoptionApplicationResponseVM)
         {
-            int result = 0;
-            int oldCount = _responses.Count;
-
-            try
+            fakeResponses.Add(adoptionApplicationResponseVM);
+            int rows = 0;
+            for (int i = 0; i < fakeResponses.Count; i++)
             {
-                _responses.Add(adoptionApplicationResponse);
-                result = _responses.Count - oldCount;
+                if (fakeResponses[i].AdoptionApplicationResponseId == adoptionApplicationResponseVM.AdoptionApplicationResponseId)
+                {
+                    rows = 1;
+                }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return result;
+            return rows;
         }
 
         public AdoptionApplicationResponseVM SelectAdoptionApplicationResponseByAdoptionApplicationId(int adoptionApplicationId)
         {
-            AdoptionApplicationResponseVM response = new AdoptionApplicationResponseVM();
-
             try
             {
-                var tempResponse = _responses.FirstOrDefault(d => d.AdoptionApplicationId == adoptionApplicationId);
-                response.AdoptionApplicationResponseDate = tempResponse.AdoptionApplicationResponseDate;
-                response.AdoptionApplicationResponseId = tempResponse.AdoptionApplicationResponseId;
-                response.AdoptionApplicationResponseNotes = tempResponse.AdoptionApplicationResponseNotes;
-                response.Approved = tempResponse.Approved;
-                response.ResponderUserId = tempResponse.ResponderUserId;
-                response.AdoptionApplicationId = tempResponse.AdoptionApplicationId;
+                var response = fakeResponses.FirstOrDefault(d => d.AdoptionApplicationResponseId == adoptionApplicationId);
+                return response;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            return response;
         }
 
         public int UpdateAdoptionApplicationResponse(AdoptionApplicationResponse newAdoptionApplicationResponse, AdoptionApplicationResponse oldAdoptionApplicationResponse)
         {
             int result = 0;
 
-            var response = _responses.FirstOrDefault(d => d.AdoptionApplicationResponseId == oldAdoptionApplicationResponse.AdoptionApplicationResponseId);
-            if (!response.Equals(null))
+            var response = fakeResponses.FirstOrDefault(d => d.AdoptionApplicationResponseId == oldAdoptionApplicationResponse.AdoptionApplicationResponseId);
+            if (!(response == null))
             {
-                response = newAdoptionApplicationResponse;
+                response = (AdoptionApplicationResponseVM)newAdoptionApplicationResponse;
             }
 
-            if (_responses.FirstOrDefault(d => d.AdoptionApplicationResponseId == oldAdoptionApplicationResponse.AdoptionApplicationResponseId).Equals(newAdoptionApplicationResponse))
+            if (response.AdoptionApplicationResponseId == newAdoptionApplicationResponse.AdoptionApplicationResponseId &&
+                response.AdoptionApplicationResponseDate == newAdoptionApplicationResponse.AdoptionApplicationResponseDate &&
+                response.AdoptionApplicationId == newAdoptionApplicationResponse.AdoptionApplicationId &&
+                response.AdoptionApplicationResponseNotes == newAdoptionApplicationResponse.AdoptionApplicationResponseNotes &&
+                response.ResponderUserId == newAdoptionApplicationResponse.ResponderUserId)
             {
                 result = 1;
             }

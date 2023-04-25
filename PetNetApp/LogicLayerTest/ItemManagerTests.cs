@@ -75,6 +75,21 @@ namespace LogicLayerTest
         }
 
         [TestMethod]
+        public void TestAddCategory()
+        {
+            //arrange
+            string category = "Cleaning";
+            bool expected = true;
+            bool actual;
+
+            //act
+            actual = _itemManager.AddCategory(category);
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void TestRemoveItemCategory()
         {
             //arrange

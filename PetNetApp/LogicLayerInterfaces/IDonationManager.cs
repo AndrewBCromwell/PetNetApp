@@ -30,6 +30,12 @@ namespace LogicLayerInterfaces
         /// Description: Retrieves inkinds by donationsId
         /// </summary>
         /// <param name="donationId"></param>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <returns></returns>
         List<InKind> RetrieveInKindsByDonationId(int donationId);
         /// <summary>
@@ -37,6 +43,12 @@ namespace LogicLayerInterfaces
         /// Date: 2023/03/02
         /// Description: Retrieves donation by donationsId
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="donationId"></param>
         /// <returns></returns>
         DonationVM RetrieveDonationByDonationId(int donationId);

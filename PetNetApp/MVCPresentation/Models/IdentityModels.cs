@@ -13,9 +13,11 @@ namespace MVCPresentation.Models
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
         public string PronounId { get; set; }
+        public string GenderId { get; set; }
         public int? ShelterId { get; set; }
         public string Address { get; set; }
         public string AddressTwo { get; set; }
+        public string Zipcode { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -37,5 +39,7 @@ namespace MVCPresentation.Models
         {
             return new ApplicationDbContext();
         }
+
+        // public System.Data.Entity.DbSet<MVCPresentation.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

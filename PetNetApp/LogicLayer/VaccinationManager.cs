@@ -10,8 +10,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/17
+/// 
+/// Final QA
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -36,15 +38,7 @@ namespace LogicLayer
         {
             vaccinationAccessor = vaccineAccessor;
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/11
-        /// 
-        /// Logic for AddVaccination.
-        /// </summary>
-        /// <param name="vaccine"></param>
-        /// <param name="animalId"></param>
-        /// <returns></returns>
+
         public bool AddVaccination(Vaccination vaccine, int animalId)
         {
             bool result = false;
@@ -58,15 +52,7 @@ namespace LogicLayer
             }
             return result;
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/11
-        /// 
-        /// Logic for EditVaccination
-        /// </summary>
-        /// <param name="oldVaccine"></param>
-        /// <param name="newVaccine"></param>
-        /// <returns></returns>
+
         public bool EditVaccination(Vaccination oldVaccine, Vaccination newVaccine)
         {
             bool result = false;
@@ -95,14 +81,6 @@ namespace LogicLayer
             return vaccination;
         }
 
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/11
-        /// 
-        /// Logic for RetrieveVaccinationsByAnimalId
-        /// </summary>
-        /// <param name="animalId"></param>
-        /// <returns></returns>
         public List<Vaccination> RetrieveVaccinationsByAnimalId(int animalId)
         {
             List<Vaccination> vaccinations = null;

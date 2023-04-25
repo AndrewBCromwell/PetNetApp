@@ -74,6 +74,8 @@
                             <MenuItem Name="menuEdit" Click="menuEdit_Click" Header="Edit"/>
                             <MenuItem Name="menuUpdate" Click="menuUpdate_Click" Header="Update"/>
                             <MenuItem Name="menuDelete" Click="menuDelete_Click" Header="Delete"/>
+                            <MenuItem Name="menuAddDonation"  Header="Add Donation" Click="menuAddDonation_Click" />
+                            <MenuItem Name="menuAddPledge"  Header="Add Pledger" Click="menuAddPledge_Click"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

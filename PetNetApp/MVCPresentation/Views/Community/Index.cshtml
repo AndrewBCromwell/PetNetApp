@@ -6,6 +6,21 @@
 @{
     ViewBag.Title = "Community Page";
 }
+<div class="modal" tabindex="-1" role="dialog" id="report-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="report-modal-content">
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <h2>Community</h2>
     <div class="flex overflow">
@@ -39,34 +54,41 @@
                 <div class="cell">
                     @if (item.PostVisibility)
                     {
-                        @Html.ActionLink("Show Replies", "ShowReplies", new { id = item.PostId });
-                        if (ViewBag.User.UsersId == item.PostAuthor || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator"))
+                        @Html.ActionLink("Show Replies", "ShowReplies", new { id = item.PostId }, new { @class = "report-button" });
+                        if (ViewBag.UserId == item.PostAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole)
                         {
                             <text> | </text>
                         }
                     }
 
-                    @if (item.PostVisibility && ViewBag.User.UsersId == item.PostAuthor)
+                    @if (item.PostVisibility && ViewBag.UserId == item.PostAuthor)
                     {
 
-                        @Html.ActionLink("Edit Post", "Edit", new { id = item.PostId });
+                        @Html.ActionLink("Edit Post", "Edit", new { id = item.PostId }, new { @class = "report-button" });
                         <text> | </text>
                     }
 
-                    @if (item.PostVisibility && (ViewBag.User.UsersId == item.PostAuthor || ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator")))
+                    @if (item.PostVisibility && (ViewBag.UserId == item.PostAuthor || ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                     {
-                        @Html.ActionLink("Delete Post", "Delete", new { id = item.PostId });
+                        @Html.ActionLink("Delete Post", "Delete", new { id = item.PostId }, new { @class = "report-button" });
                     }
 
-                    @if (!item.PostVisibility && (ViewBag.User.Roles.Contains("Admin") || ViewBag.User.Roles.Contains("Moderator")))
+                    @if (!item.PostVisibility && (ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                     {
-                        @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId });
+                        @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId }, new { @class = "report-button" });
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div id="report-post-@item.PostId" class="float-right">
+                            @Html.Partial("ReportPartial", item)
+                        </div>
                     }
                 </div>
             </div>
         </div>
     }
 </div>
-@section Scripts {
+@section scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/report.js"></script>
 }

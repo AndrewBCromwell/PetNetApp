@@ -21,19 +21,17 @@ namespace DataAccessLayerInterfaces
     public interface IAdoptionApplicationResponseAccessor
     {
         /// <summary>
-        /// Asa Armstrong
-        /// Created: 2023/03/23
+        /// Molly Meister
+        /// Created: 2023/04/03
         /// 
-        /// Inserts a Adoption Application Response record.
+        /// Inserts an adoption application response.
+        /// Returns rows affected.
         /// </summary>
-        ///
-        /// <remarks>
-        /// </remarks>
-        /// <param name="AdoptionApplicationResponse">AdoptionApplicationResponse</param>
-        /// <exception cref="SQLException">Insert fails.</exception>
-        /// <returns>Rows edited</returns>
-        int InsertAdoptionApplicationResponse(AdoptionApplicationResponse adoptionApplicationResponse);
-
+        /// <param name="adoptionApplicationResponseVM">the AdoptionApplicationResponseVM object to insert</param>
+        /// <exception cref="SQLException">insert fails</exception>
+        /// <returns>Rows affected.</returns>
+        int InsertAdoptionApplicationResponseByAdoptionApplicationId(AdoptionApplicationResponseVM adoptionApplicationResponseVM);
+        
         /// <summary>
         /// Asa Armstrong
         /// Created: 2023/03/23

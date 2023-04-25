@@ -105,5 +105,77 @@ namespace LogicLayer
 
             return post;
         }
+
+        public bool RetrieveUserPostReportedByPostIdAndUserId(int postId, int userId)
+        {
+            bool reported = false;
+
+            try
+            {
+                reported = postAccessor.SelectUserPostReportedByPostIdandUserId(postId, userId) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to check if the post has been reported", ex);
+            }
+
+            return reported;
+        }
+
+        public bool EditPostVisibility(int postId, bool newVisibility, bool oldVisibility)
+        {
+            bool result = false;
+            try
+            {
+                result = 1 == postAccessor.UpdatePostVisibility(postId, newVisibility, oldVisibility);
+                if (!result)
+                {
+                    throw new ApplicationException("deletion of post failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("deletion of post failed", ex);
+            }
+            return result;
+        }
+
+        public List<ReportMessage> RetrieveReportMessages()
+        {
+            List<ReportMessage> messages = null;
+            try
+            {
+                messages = postAccessor.SelectReportMessages();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to load report reasons", ex);
+            }
+            return messages;
+        }
+
+        public bool AddPostReport(int postId, int userId, int reportMessageId)
+        {
+            try
+            {
+                return postAccessor.InsertPostReport(postId, userId, reportMessageId) == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to report the post", ex);
+            }
+        }
+
+        public bool RemovePostReport(int postId, int userId)
+        {
+            try
+            {
+                return postAccessor.DeletePostReport(postId, userId) == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to unreport the post", ex);
+            }
+        }
     }
 }

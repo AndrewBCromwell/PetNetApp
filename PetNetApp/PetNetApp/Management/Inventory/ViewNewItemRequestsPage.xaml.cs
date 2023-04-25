@@ -65,7 +65,6 @@ namespace WpfPresentation.Management.Inventory
             }
             _existingViewNewItemRequestsPage.LoadResourceAddRequestsData();
 
-
             return _existingViewNewItemRequestsPage;
         }
 
@@ -127,7 +126,7 @@ namespace WpfPresentation.Management.Inventory
 
                 foreach (ResourceAddRequest resourceAddRequest in _resourceAddRequests)
                 {
-                    NewItemRequestUserControl item = new NewItemRequestUserControl(resourceAddRequest, alternate);
+                    NewItemRequestUserControl item = new NewItemRequestUserControl(resourceAddRequest, alternate, svItemRequestList);
                     stackRequests.Children.Add(item);
                     alternate = !alternate;
                 }

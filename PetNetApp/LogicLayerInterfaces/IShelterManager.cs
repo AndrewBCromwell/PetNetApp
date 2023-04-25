@@ -19,6 +19,13 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// This returns the list of all Shelters to populate the shelter UI with
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <returns>A list of Shelter objects</returns>
         List<Shelter> GetShelterList();
 
@@ -131,6 +138,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Retrieves a shelterVM object by looking up its shelter ID
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="shelterID">The shelter ID of the shelter to retrieve</param>
         /// <returns>Returns a ShelterVM object</returns>
         ShelterVM RetrieveShelterVMByShelterID(int shelterID);
@@ -144,6 +157,22 @@ namespace LogicLayerInterfaces
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
         bool DeactivateShelter(Shelter shelter);
 
-        // bool HoursOfOperationByShelterID(int shelterID);
+        /// <summary>
+        /// Teft Francisco
+        /// Created: 2023/04/07
+        /// Deactivates a shelter
+        /// </summary>
+        /// <param name="shelterID">The shelter object to update</param>
+        /// <returns>List of HoursOfOperation objects</returns>
+        List<HoursOfOperation> RetrieveHoursOfOperationByShelterID(int shelterID);
+
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/04/07
+        /// Deactivates a shelter
+        /// </summary>
+        /// <param name="shelter">The shelter object to update</param>
+        /// <returns>Boolean containing whether the operation succeeded or failed</returns>
+        bool EditHoursOfOperationByShelterID(int shelterID, int dayOfWeek, HoursOfOperation hours);
     }
 }

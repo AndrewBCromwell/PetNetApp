@@ -1,99 +1,53 @@
-﻿// Created by Asa Armstrong
-// Created on 2023/03/30
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataObjects;
 using DataAccessLayerInterfaces;
-using System.Data.SqlClient;
-using System.Data;
+using DataObjects;
 
 namespace DataAccessLayer
 {
     public class AdoptionApplicationResponseAccessor : IAdoptionApplicationResponseAccessor
     {
-        public int InsertAdoptionApplicationResponse(AdoptionApplicationResponse adoptionApplicationResponse)
+        public int InsertAdoptionApplicationResponseByAdoptionApplicationId(AdoptionApplicationResponseVM adoptionApplicationResponseVM)
         {
-            int rowsAffected = 0;
+            int result = 0;
 
-            var conn = new DBConnection().GetConnection();
-            var cmdText = "sp_insert_adoption_application_response_by_adoption_application_id";
+            DBConnection factory = new DBConnection();
+            var conn = factory.GetConnection();
+            var cmdText = "sp_add_adoption_application_response";
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@AdoptionApplicationId", adoptionApplicationResponse.AdoptionApplicationId);
-            cmd.Parameters.AddWithValue("@UsersId", adoptionApplicationResponse.ResponderUserId);
-            cmd.Parameters.AddWithValue("@Approved", adoptionApplicationResponse.Approved);
 
-            //cmd.Parameters.AddWithValue("@AdoptionApplicationResponseNotes", adoptionApplicationResponse.AdoptionApplicationResponseNotes);
-            if (adoptionApplicationResponse.AdoptionApplicationResponseNotes == null || adoptionApplicationResponse.AdoptionApplicationResponseNotes.Length == 0)
-            {
-                cmd.Parameters.AddWithValue("@AdoptionApplicationResponseNotes", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@AdoptionApplicationResponseNotes", adoptionApplicationResponse.AdoptionApplicationResponseNotes);
-            }
+            cmd.Parameters.AddWithValue("@AdoptionApplicationId", adoptionApplicationResponseVM.AdoptionApplicationId);
+            cmd.Parameters.AddWithValue("@UsersId", adoptionApplicationResponseVM.ResponderUserId);
+            cmd.Parameters.AddWithValue("@Approved", adoptionApplicationResponseVM.Approved);
+            cmd.Parameters.AddWithValue("@AdoptionApplicationResponseDate", adoptionApplicationResponseVM.AdoptionApplicationResponseDate);
+            cmd.Parameters.AddWithValue("@AdoptionApplicationResponseNotes", adoptionApplicationResponseVM.AdoptionApplicationResponseNotes);
 
             try
             {
                 conn.Open();
-
-                rowsAffected = cmd.ExecuteNonQuery();
+                result = Convert.ToInt32(cmd.ExecuteScalar());
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
             finally
             {
                 conn.Close();
             }
-            return rowsAffected;
+            return result;
         }
 
         public AdoptionApplicationResponseVM SelectAdoptionApplicationResponseByAdoptionApplicationId(int adoptionApplicationId)
         {
-            AdoptionApplicationResponseVM responseVM = new AdoptionApplicationResponseVM();
-
-            var conn = new DBConnection().GetConnection();
-            var cmdText = "sp_select_adoption_application_response_by_adoption_application_id";
-            var cmd = new SqlCommand(cmdText, conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@AdoptionApplicationId", adoptionApplicationId);
-
-            try
-            {
-                conn.Open();
-                var reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    if (reader.Read())
-                    {
-                        responseVM.AdoptionApplicationResponseId = reader.GetInt32(0);
-                        responseVM.AdoptionApplicationId = reader.GetInt32(1);
-                        responseVM.ResponderUserId = reader.GetInt32(2);
-                        responseVM.Approved = reader.GetBoolean(3);
-                        responseVM.AdoptionApplicationResponseDate = reader.GetDateTime(4);
-                        responseVM.AdoptionApplicationResponseNotes = reader.IsDBNull(5) ? null : reader.GetString(5);
-                        responseVM.ApplicantId = reader.GetInt32(6);
-                        responseVM.AdoptionApplicantGivenName = reader.IsDBNull(7) ? null : reader.GetString(7);
-                        responseVM.AdoptionApplicantFamilyName = reader.GetString(8);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return responseVM;
+            throw new NotImplementedException();
         }
 
         public int UpdateAdoptionApplicationResponse(AdoptionApplicationResponse newAdoptionApplicationResponse, AdoptionApplicationResponse oldAdoptionApplicationResponse)

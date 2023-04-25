@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
 using WpfPresentation.Management;
+using DataObjects;
 
 namespace WpfPresentation.Fundraising
 {
@@ -23,9 +24,14 @@ namespace WpfPresentation.Fundraising
     public partial class FundraisingPage : Page
     {
         private static FundraisingPage _existingFundraisingPage = null;
+      
 
         private MasterManager _manager = null;
         private Button[] _fundraisingPageButtons;
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         static FundraisingPage()
         {
             MasterManager manager = MasterManager.GetMasterManager();
@@ -36,7 +42,11 @@ namespace WpfPresentation.Fundraising
                 _existingFundraisingPage?.frameFundraising.Navigate(null);
             };
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="manager"></param>
         private FundraisingPage(MasterManager manager)
         {
             InitializeComponent();
@@ -60,13 +70,20 @@ namespace WpfPresentation.Fundraising
             }
             return _existingFundraisingPage;
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="selectedButton"></param>
         private void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void UnselectAllButtons()
         {
             foreach (Button button in _fundraisingPageButtons)
@@ -74,7 +91,12 @@ namespace WpfPresentation.Fundraising
                 button.Style = (Style)Application.Current.Resources["rsrcUnselectedButton"];
             }
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;
@@ -88,11 +110,20 @@ namespace WpfPresentation.Fundraising
             }
             e.Handled = true;
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void svManagementPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             UpdateScrollButtons();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void UpdateScrollButtons()
         {
             if (svManagementPageTabs.HorizontalOffset > svManagementPageTabs.ScrollableWidth - 0.05)
@@ -113,17 +144,32 @@ namespace WpfPresentation.Fundraising
                 btnScrollLeft.Visibility = Visibility.Visible;
             }
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnScrollRight_Click(object sender, RoutedEventArgs e)
         {
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset + 130);
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnScrollLeft_Click(object sender, RoutedEventArgs e)
         {
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCampaigns_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnCampaigns);
@@ -135,7 +181,10 @@ namespace WpfPresentation.Fundraising
             ChangeSelectedButton(btnDonations);
             frameFundraising.Navigate(ViewDonationsPage.ExistingDonationPage);
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void HideAllButtons()
         {
             UnselectAllButtons();
@@ -181,7 +230,6 @@ namespace WpfPresentation.Fundraising
                 btnEvents.Visibility = Visibility.Visible;
             }
         }
-
         public void ShowCampaignsButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager", "Marketing" };
@@ -190,6 +238,10 @@ namespace WpfPresentation.Fundraising
                 btnCampaigns.Visibility = Visibility.Visible;
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         public void ShowDonationsButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager", "Marketing" };

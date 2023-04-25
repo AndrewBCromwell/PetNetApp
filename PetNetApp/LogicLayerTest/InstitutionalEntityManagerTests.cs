@@ -16,6 +16,7 @@ namespace LogicLayerTest
         public void SetupTests()
         {
             _institutionalEntityManager = new InstitutionalEntityManager(new InstitutionalEntityAccessorFake());
+            FundraisingFakeData.ResetFakeFundraisingCampaignData();
         }
 
         [TestCleanup]
@@ -288,6 +289,19 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedResult3.FamilyName, actualResult3.FamilyName);
             Assert.AreEqual(expectedResult3.GivenName, actualResult3.GivenName);
             Assert.AreEqual(expectedResult3.Phone, actualResult3.Phone);
+        }
+        [TestMethod]
+        public void TestSelectSponsorEventByName()
+        {
+            String name = "US Animals";
+            int expectedCount = 0;
+            int actualCount = 0;
+
+            var _sponsorEvents = _institutionalEntityManager.RetrieveSponsorEventByName(name);
+            actualCount = _sponsorEvents.Count;
+
+            Assert.AreEqual(expectedCount, actualCount);
+          
         }
     }
 }

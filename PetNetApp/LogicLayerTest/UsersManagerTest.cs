@@ -32,8 +32,7 @@ namespace LogicLayerTest
         [TestInitialize]
         public void TestSetup()
         {
-            _userManager = new UsersManager(new UsersAccessorFakes()); // Fake Data
-            // _userManager = new UsersManager(new UsersAccessor()); // Actual Data
+            _userManager = new UsersManager(new UsersAccessorFakes()); 
         }
 
         [TestCleanup]
@@ -57,8 +56,6 @@ namespace LogicLayerTest
 
             // assert
             Assert.AreEqual(expectedCount, actualCount);
-
-
         }
 
         // Hoang
@@ -121,6 +118,7 @@ namespace LogicLayerTest
             Assert.AreEqual(expectedResult, actualResult);
 
         }
+
         /// <summary>
         /// [Barry Mikulas - 2023/02/17]
         /// Tests to see if a user can be found within the Users table based off UsersId
@@ -341,6 +339,23 @@ namespace LogicLayerTest
 
             // Assert
             Assert.AreEqual(expectedRowResult, actualRowResult);
+        }
+
+        [TestMethod]
+        public void TestEditUserShelterId()
+        {
+            // Arrange
+            bool wasAffected = false;
+            int userId = 1001;
+            int shelterId = 3;
+            int oldShelterId = 1;
+
+
+            // Act
+            wasAffected = _userManager.EditUserShelterId(userId,shelterId,oldShelterId);
+
+            // Assert
+            Assert.IsTrue(wasAffected);
         }
     }
 }

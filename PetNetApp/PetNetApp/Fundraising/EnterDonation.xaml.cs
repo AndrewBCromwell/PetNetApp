@@ -107,6 +107,7 @@ namespace WpfPresentation.Fundraising
                         txt_PhoneNumber.Text = _user.Phone;
                         Donation.GivenName = _user.GivenName;
                         Donation.FamilyName = _user.FamilyName;
+                        Donation.Phone = _user.Phone;
                     }
                     else
                     {
@@ -133,7 +134,7 @@ namespace WpfPresentation.Fundraising
         {
             try
             {
-                if (Donation.Amount == 0)
+                if (Donation.Amount == 0 || Donation.Amount == null)
                 {
                     Donation.Amount = null;
                     Donation.PaymentMethod = null;
@@ -142,10 +143,23 @@ namespace WpfPresentation.Fundraising
                 {
                     Donation.HasInKindDonation = true;
                 }
+                if((Donation.GivenName == null || Donation.GivenName.Length == 0) &&
+                    (Donation.FamilyName == null || Donation.FamilyName.Length == 0) &&
+                    Donation.UserId == null)
+                {
+                    Donation.Anonymous = true;
+                }
 
                 if (Donation.HasInKindDonation || Donation.Amount != null)
                 {
-                    Donation.ShelterId = (int)_masterManager.User.ShelterId;
+                    foreach (InKind inKind in _inKinds)
+                    {
+                        if ((inKind.Description == null || inKind.Description.Length == 0 || inKind.Description.Length > 225) && inKind.Recieved)
+                        {
+                            throw new ApplicationException("In-Kind items must have a name.");
+                        }
+                    }
+                        Donation.ShelterId = (int)_masterManager.User.ShelterId;
                     int donationId = _masterManager.DonationManager.AddDonation(Donation);
                     foreach (InKind inKind in _inKinds)
                     {
@@ -155,11 +169,9 @@ namespace WpfPresentation.Fundraising
                             _masterManager.DonationManager.AddInKind(inKind);
                         }
                     }
-                    PromptWindow.ShowPrompt("Congratulations!", "Your Donation was added!");
-                    // andrew's receipt
-                    // var viewDonationReceiptWindow = new WpfPresentation.Fundraising.ViewDonationReceiptWindow(Donation.DonationId);
-                    // viewDonationReceiptWindow.Owner = Window.GetWindow(this);
-                    // viewDonationReceiptWindow.ShowDialog();
+                    var viewDonationReceiptWindow = new WpfPresentation.Fundraising.ViewDonationReceiptWindow(donationId);
+                    viewDonationReceiptWindow.Owner = Window.GetWindow(this);
+                    viewDonationReceiptWindow.ShowDialog();
                     NavigateBackToPreviousPage();
                 }
                 else

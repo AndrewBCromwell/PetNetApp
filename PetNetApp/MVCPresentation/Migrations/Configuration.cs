@@ -1,13 +1,12 @@
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using MVCPresentation.Models;
-
 namespace MVCPresentation.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using MVCPresentation.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MVCPresentation.Models.ApplicationDbContext>
     {
@@ -48,7 +47,8 @@ namespace MVCPresentation.Migrations
                     UserName = admin,
                     Email = admin,
                     GivenName = "Admin",
-                    FamilyName = "Company"
+                    FamilyName = "Company",
+                    UsersId = 999999
                 };
 
                 // updates database

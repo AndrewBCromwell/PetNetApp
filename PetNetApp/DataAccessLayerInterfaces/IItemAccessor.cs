@@ -9,7 +9,7 @@
 /// Nathan Zumsande
 /// Updated: 2023/03/31
 /// Added methods InsertItem, SelectAllCategories
-/// InsertItemCategory, DeleteItemCategory
+/// InsertItemCategory, DeleteItemCategory, InsertCategory
 /// </remarks>
 
 using System;
@@ -29,6 +29,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Returns an Item by Item Id. Takes in itemId as a parameter
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="ItemId"></param>
         /// <returns></returns>
         Item SelectItemByItemId(string ItemId);
@@ -39,6 +46,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Inserts an Item
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <returns>Number of rows affected</returns>
         int InsertItem(string itemId);
@@ -49,6 +63,13 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Returns a list of all the categories in the category table
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <returns>A list of all the categories</returns>
         List<string> SelectAllCategories();
 
@@ -65,10 +86,33 @@ namespace DataAccessLayerInterfaces
 
         /// <summary>
         /// Nathan Zumsande
+        /// Created: 2023/04/06
+        /// 
+        /// Inserts a Category
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
+        /// <param name="categoryId"></param>
+        /// <returns>Number of rows affected</returns>
+        int InsertCategory(string categoryId);
+
+        /// <summary>
+        /// Nathan Zumsande
         /// Created: 2023/03/22
         /// 
         /// Deletes an ItemCategory
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <param name="category"></param>
         /// <returns>Number of rows affected</returns>

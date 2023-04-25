@@ -5,9 +5,11 @@
 /// Presentation layer methods for the Edit Quarantine Page
 /// </summary>
 ///
-/// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+///  <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
+/// </remarks>
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -32,7 +34,14 @@ namespace WpfPresentation.Animals
 {
     /// <summary>
     /// Interaction logic for QuarantinePage.xaml
+    /// 
+    /// 
     /// </summary>
+    /// <remarks>
+    /// Zaid Rachman
+    /// Updated: 2023/04/21
+    /// Final QA
+    /// </remarks>
     public partial class QuarantinePage : Page
     {
 
@@ -53,9 +62,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: 
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="medicalRecord"></param>
         /// <param name="medicalRecordManager"></param>
@@ -69,7 +78,16 @@ namespace WpfPresentation.Animals
 
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/01/31
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         public QuarantinePage()
         {
             InitializeComponent();
@@ -85,9 +103,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: 
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -111,10 +129,10 @@ namespace WpfPresentation.Animals
         /// Method that Edits the Quarantine Status
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: 
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -126,7 +144,7 @@ namespace WpfPresentation.Animals
                 if (_medicalRecordManager.EditQuarantineStatusByMedicalRecordId(_medicalRecordID, _quarantineStatus, _oldQuarantineStatus))
                 {
                     NavigationService.Navigate(null);
-                    _medicalTreatmentPage.refreshPage();
+                    _medicalTreatmentPage.RefreshPage();
                 }
 
                 // prompt window
@@ -135,7 +153,7 @@ namespace WpfPresentation.Animals
             {
                 PromptWindow.ShowPrompt("Update Failed", "Update Failed" + "\n" + ex.Message, ButtonMode.Ok);
                 NavigationService.Navigate(null);
-                _medicalTreatmentPage.refreshPage();
+                _medicalTreatmentPage.RefreshPage();
             }
         }
 
@@ -147,9 +165,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: 
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>

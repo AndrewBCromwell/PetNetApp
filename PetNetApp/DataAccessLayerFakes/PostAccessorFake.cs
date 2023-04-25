@@ -12,8 +12,11 @@ namespace DataAccessLayerFakes
     {
         List<PostVM> fakePostVMs = new List<PostVM>();
         List<Post> fakePosts = new List<Post>();
+        List<Tuple<int, int>> reports = new List<Tuple<int, int>>();
         public PostAccessorFake()
         {
+
+            reports.Add(new Tuple<int, int>(1, 1));
             fakePostVMs.Add(new PostVM
             {
                 PostId = 1,
@@ -94,6 +97,17 @@ namespace DataAccessLayerFakes
 
         }
 
+        public int DeletePostReport(int postId, int userId)
+        {
+            var report = reports.Find(tuple => tuple.Item1 == postId && tuple.Item2 == userId);
+            if (report == null)
+            {
+                return 0;
+            }
+            reports.Remove(report);
+            return 1;
+        }
+
         public int InsertPost(Post post)
         {
             int result = 0;
@@ -106,6 +120,13 @@ namespace DataAccessLayerFakes
                 }
             }
             return result;
+        }
+
+        public int InsertPostReport(int postId, int userId, int reportMessageId)
+        {
+            int current = reports.Count;
+            reports.Add(new Tuple<int, int>(postId, userId));
+            return reports.Count - current;
         }
 
         public List<PostVM> SelectActivePosts()
@@ -123,6 +144,19 @@ namespace DataAccessLayerFakes
             return fakePostVMs.Find(p => p.PostId == postId);
         }
 
+        public List<ReportMessage> SelectReportMessages()
+        {
+            List<ReportMessage> messages = new List<ReportMessage>();
+            messages.Add(new ReportMessage() { ReportMessageDescription = "Foul Language", ReportMessageId = 1 });
+            messages.Add(new ReportMessage() { ReportMessageDescription = "Harrassment", ReportMessageId = 2 });
+            return messages;
+        }
+
+        public int SelectUserPostReportedByPostIdandUserId(int postId, int userId)
+        {
+            return reports.Count(join => join.Item1 == postId && join.Item2 == userId);
+        }
+
         public int UpdatePost(Post post, Post newPost)
         {
             int result = 0;
@@ -135,6 +169,21 @@ namespace DataAccessLayerFakes
                     result = 1;
                 }
             }
+            return result;
+        }
+        public int UpdatePostVisibility(int postId, bool newVisibility, bool oldVisibility)
+        {
+            int result = 0;
+
+            foreach (Post post in fakePosts)
+            {
+                if (post.PostId == postId)
+                {
+                    post.PostVisibility = newVisibility;
+                    result = 1;
+                }
+            }
+
             return result;
         }
     }

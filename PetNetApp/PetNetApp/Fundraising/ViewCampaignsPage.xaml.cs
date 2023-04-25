@@ -39,7 +39,10 @@ namespace WpfPresentation.Fundraising
         private int _totalPages = 1;
         private int _itemsPerPage = 10;
 
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private ViewCampaignsPage()
         {
             InitializeComponent();
@@ -64,12 +67,19 @@ namespace WpfPresentation.Fundraising
             _existingViewCampaignsPage._needsReloaded = false;
             return _existingViewCampaignsPage;
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void UpdateUI()
         {
             PopulateNavigationButtons();
             PopulateCampaignList();
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void LoadFundraisingCampaignData()
         {
             try
@@ -83,6 +93,11 @@ namespace WpfPresentation.Fundraising
             }
             ApplyFundraisingCampaignFilterAndSort(false);
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="resetPage"></param>
         private void ApplyFundraisingCampaignFilterAndSort(bool resetPage = true)
         {
             Func<FundraisingCampaignVM, string> sortMethod = null;
@@ -120,6 +135,12 @@ namespace WpfPresentation.Fundraising
             _currentPage = resetPage ? 1 : _currentPage > _totalPages ? _totalPages : _currentPage;
             UpdateUI();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="fundraisingCampaign"></param>
+        /// <returns></returns>
         private bool SearchForTextInFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
         {
             return fundraisingCampaign.Title?.IndexOf(_currentSearchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
@@ -129,10 +150,18 @@ namespace WpfPresentation.Fundraising
                     (fundraisingCampaign.StartDate != null ? fundraisingCampaign.StartDate.Value.ToString("M/d/yyyy").Contains(_currentSearchText) : false) ||
                     (fundraisingCampaign.EndDate != null ? fundraisingCampaign.EndDate.Value.ToString("M/d/yyyy").Contains(_currentSearchText) : false);
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void UpdateNavigationInformation()
         {
             _totalPages = (_filteredFundraisingCampaigns.Count - 1) / _itemsPerPage + 1;
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void PopulateNavigationButtons()
         {
             btnPreviousPage.Visibility = _currentPage == 1 ? Visibility.Collapsed : Visibility.Visible;
@@ -186,11 +215,20 @@ namespace WpfPresentation.Fundraising
             }
 
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="page"></param>
         private void NavigateToPage(int page)
         {
             _currentPage = page;
             UpdateUI();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void PopulateCampaignList()
         {
             stackCampaigns.Children.Clear();
@@ -216,24 +254,42 @@ namespace WpfPresentation.Fundraising
                 stackCampaigns.Children.Add(item);
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage++;
             UpdateUI();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage--;
             UpdateUI();
         }
+        ///
         private void btnAddCampaign_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage());
+            NavigationService.Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage());
         }
+        //AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage()
         private void btnNavigatePage_Click(object sender, RoutedEventArgs e)
         {
             NavigateToTypedPage();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void NavigateToTypedPage()
         {
             if (IsValidPage(tbPage.Text))
@@ -246,18 +302,42 @@ namespace WpfPresentation.Fundraising
                 tbPage.Text = _currentPage.ToString();
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             TrySearch();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboChanged(object sender, RoutedEventArgs e)
         {
             ApplyFundraisingCampaignFilterAndSort();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             _needsReloaded = true;
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_needsReloaded)
@@ -266,16 +346,34 @@ namespace WpfPresentation.Fundraising
                 _needsReloaded = false;
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage = 1;
             UpdateUI();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
             _currentPage = _totalPages;
             UpdateUI();
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         private bool IsValidPage(string page)
         {
             if (page.Length < 8 && _isDigit.IsMatch(page))
@@ -288,6 +386,12 @@ namespace WpfPresentation.Fundraising
             }
             return false;
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbPage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -295,6 +399,12 @@ namespace WpfPresentation.Fundraising
                 NavigateToTypedPage();
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -302,6 +412,10 @@ namespace WpfPresentation.Fundraising
                 TrySearch();
             }
         }
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
         private void TrySearch()
         {
             string newSearchText = tbSearch.Text.ToLower().Trim();

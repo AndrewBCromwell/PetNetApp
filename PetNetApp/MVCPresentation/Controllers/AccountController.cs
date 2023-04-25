@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -17,9 +18,23 @@ namespace MVCPresentation.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IEnumerable<String> _genders;
+        private IEnumerable<String> _pronouns;
 
         public AccountController()
         {
+            try
+            {
+                LogicLayer.UsersManager usersManager = new LogicLayer.UsersManager();
+                _genders = usersManager.RetrieveGenders();
+                _pronouns = usersManager.RetrievePronouns();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,6 +154,9 @@ namespace MVCPresentation.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Genders = _genders;
+            ViewBag.Pronouns = _pronouns;
+
             return View();
         }
 
@@ -149,10 +167,12 @@ namespace MVCPresentation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+           
             if (ModelState.IsValid)
             {
-                LogicLayer.UsersManager usrMgr = new LogicLayer.UsersManager();
 
+                LogicLayer.UsersManager usrMgr = new LogicLayer.UsersManager();
+                
                 try
                 {
                     if (usrMgr.RetrieveUserByEmail(model.Email))
@@ -160,14 +180,16 @@ namespace MVCPresentation.Controllers
                         var oldUser = usrMgr.AuthenticateUser(model.Email, model.Password);
                         var user = new ApplicationUser
                         {
+                            UsersId = oldUser.UsersId,
                             GivenName = oldUser.GivenName,
                             FamilyName = oldUser.FamilyName,
-                            UsersId = oldUser.UsersId,
                             PhoneNumber = oldUser.Phone,
                             PronounId = oldUser.PronounId,
+                            GenderId = oldUser.GenderId,
                             ShelterId = oldUser.ShelterId,
                             Address = oldUser.Address,
                             AddressTwo = oldUser.Address2,
+                            Zipcode = oldUser.Zipcode,
 
                             UserName = model.Email,
                             Email = model.Email
@@ -189,27 +211,43 @@ namespace MVCPresentation.Controllers
                     }
                     else // for web-side users
                     {
-                        var user = new ApplicationUser
+                        var newUser = new DataObjects.Users()
                         {
-                            // GivenName = model.GivenName,
-                            // FamilyName = model.FamilyName,
-                            //PhoneNumber = model.Phone,
-                            //PronounId = model.PronounId,
-                            //ShelterId = model.ShelterId,
-                            //Address = model.Address,
-                            //AddressTwo = model.Address2,
-                            UserName = model.Email,
-                            Email = model.Email
+                            GenderId = model.GenderId.First(),
+                            PronounId = model.PronounId.First(),
+                            GivenName = model.GivenName,
+                            FamilyName = model.FamilyName,
+                            Email = model.Email,
+                            Zipcode = model.Zipcode,
+                            Phone = model.Phone
+                            
                         };
 
-                        var result = await UserManager.CreateAsync(user, model.Password);
-
-                        if (result.Succeeded)
+                        if (usrMgr.AddUser(newUser, model.Password))
                         {
-                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                            return RedirectToAction("Index", "Home");
+                            var userId = usrMgr.RetrieveUserByUserEmail(model.Email);
+                            var user = new ApplicationUser
+                            {
+                                UsersId = userId.UsersId,
+                                GivenName = model.GivenName,
+                                FamilyName = model.FamilyName,
+                                PhoneNumber = model.Phone,
+                                PronounId = model.PronounId.First(),
+                                GenderId = model.GenderId.First(),
+                                Zipcode = model.Zipcode,
+                                UserName = model.Email,
+                                Email = model.Email
+                            };
+
+                            var result = await UserManager.CreateAsync(user, model.Password);
+
+                            if (result.Succeeded)
+                            {
+                                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                                return RedirectToAction("Index", "Home");
+                            }
+                            AddErrors(result);
                         }
-                        AddErrors(result);
                     }
                 }
                 catch
@@ -442,6 +480,7 @@ namespace MVCPresentation.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["User"] = null;
             return RedirectToAction("Index", "Home");
         }
 

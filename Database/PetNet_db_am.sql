@@ -609,6 +609,7 @@ CREATE TABLE [dbo].[ShelterInventoryItem] (
 	[Processing]				[bit]			NOT NULL DEFAULT 0,
 	[DoNotOrder]				[bit]			NOT NULL DEFAULT 0,
 	[CustomFlag]				[nvarchar](250)	NULL,
+	[ItemDisabled]				[bit]			NOT NULL DEFAULT 0,
 	
 	CONSTRAINT	[fk_ShelterInventoryItem_ShelterId] FOREIGN KEY ([ShelterId])
 		REFERENCES [dbo].[Shelter]([ShelterId]),
@@ -933,8 +934,6 @@ CREATE TABLE [dbo].[Applicant] (
 	[NumberOfPets]			[int]						NOT NULL,
 	[CurrentlyAcceptingAnimals]	[bit]					NOT NULL DEFAULT 1,
 	
-	CONSTRAINT [fk_Applicant_UsersID] FOREIGN KEY([UsersId])
-		REFERENCES [dbo].[Users]([UsersId]),
 	CONSTRAINT [fk_Applicant_Zipcode] FOREIGN KEY([ApplicantZipCode])
 		REFERENCES [dbo].[Zipcode]([Zipcode]),	
 	CONSTRAINT [fk_Applicant_HomeTypeId] FOREIGN KEY([HomeTypeId])
@@ -1661,4 +1660,21 @@ CREATE TABLE [dbo].[AnimalImage] (
 	CONSTRAINT [pk_AnimalImageId] PRIMARY KEY([AnimalId], [ImageId])
 )
 GO
+
+/*  Created by: Alex Oetken*/
+print '' print '*** creating SurrenderForms table'
+GO
+CREATE TABLE [dbo].[SurrenderForms]
+(
+	[SurrenderFormID]		[int]					IDENTITY(100000,1)	NOT NULL,
+	[AnimalType]			[nvarchar](50)      	NOT NULL,
+	[ReasonForSurrender]	[nvarchar](500)		NOT NULL,
+	[SpayOrNeuterStatus]	[bit]					NOT NULL DEFAULT 0,
+	[ContactPhone]			[nvarchar](13) 			NOT NULL,
+	[ContactEmail]			[nvarchar](245) 		NOT NULL
+	
+	CONSTRAINT [pk_SurrenderFormID] PRIMARY KEY ([SurrenderFormID])
+)
+GO
+
 

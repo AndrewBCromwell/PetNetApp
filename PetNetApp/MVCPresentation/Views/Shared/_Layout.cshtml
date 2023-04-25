@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@{string[] tabs = { "Adopt", "Community", "Donate", "Events", "Fundraising", "Shelters" };}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,39 +7,63 @@
     <title>@ViewBag.Title - PETNET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    @RenderSection("styles", false) 
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    @RenderSection("styles", false)
 
 </head>
 <body>
-    <div class="header">
-        <div class="header-images">
-            <!-- Petnet Logo -->
-            <a href="@Url.Action("About", "Home")">
-                <img src="~/Images/petnetLogo_hover.png" height="75" />
-            </a>
-            <span></span>
-            <a href="@Url.Action("About", "Home")">
-                <img src="~/Images/bell_notification.png" height="45" />
-            </a>
-            <a href="@Url.Action("About", "Home")">
-                <img src="~/Images/user_hover.png" height="45" />
-            </a>
-            <a href=@Url.Action("LogIn", "Account")>
-                <img src="~/Images/menuIcon.png" height="45" />
-            </a>
-        </div>
+    <div class="header" id="mainHeader">
+        <nav class="navbar">
+            <div class="header-images">
+                <!-- Petnet Logo -->
+                <a class="nav-link navbar-brand" href="@Url.Action("About", "Home")">
+                    <img src="~/Images/petnetLogo_hover.png" height="75" alt="petnet logo" id="header_logo"/>
+                </a>
+            </div>
+
+            @*<div class="collapse navbar-collapse d-flex flex-row-reverse">*@
+                <ul class="nav justify-content-end">
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="@Url.Action("About", "Home")">
+                            <div class="notification-image">
+                                <img src="~/Images/bell.png" height="45" />
+                                <img src="~/Images/bell_hover.png" height="45" class="hover-img" />
+                            </div>
+                        </a>
+                    </li>
+                    @Html.Partial("_LoginPartial")
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("About", "Home")">
+                            <div class="menu-icon-image">
+                                <img src="~/Images/menuIcon.png" height="45" />
+                                <img src="~/Images/menuIcon_hover.png" height="45" class="hover-img"/>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </@*div*@>
+        </nav>
+
 
         <div class="header-menu">
             <ul class="header-menu-list">
-                <li class="header-menu-list-item">@Html.ActionLink("Animals", "AdoptionApplication", "Animals")</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "Submenu", "Shelters")</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Events", "Submenu", "Events")</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Community", "Index", "Community")</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Donate", "Index", "Donate")</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Fundraising", "Index", "Fundraising")</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Adopt", "Adoptable", "Animals", null, new { @class = (ViewBag.Tab == "Adopt" ? "active-main-tab" : "") })</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "Index", "Shelters", null, new { @class = (ViewBag.Tab == "Shelters" ? "active-main-tab" : "") })</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Events", "Index", "Events", null, new { @class = (ViewBag.Tab == "Events" ? "active-main-tab" : "") })</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Community", "Index", "Community", null, new { @class = (ViewBag.Tab == "Community" ? "active-main-tab" : "") })</li>
+                @* Waiting until subtabs are created *@
+                @*<li class="header-menu-list-item">@Html.ActionLink("Management", "Create", "Management")</li>*@
+                <li class="header-menu-list-item">@Html.ActionLink("Donate", "Index", "Donate", null, new { @class = (ViewBag.Tab == "Donate" ? "active-main-tab" : "") })</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Fundraising", "Index", "Fundraising", null, new { @class = (ViewBag.Tab == "Fundraising" ? "active-main-tab" : "") })</li>
             </ul>
         </div>
+
+        @* To have your sub menu show up the tab name must be in the tabs variable at the top of the page*@
+        @if (tabs.Contains((string)ViewBag.Tab))
+        {
+            @Html.Partial("_PartialSubMenu");
+        }
+
     </div>
 
 
@@ -49,13 +74,12 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     @RenderSection("scripts", required: false)
 
     <footer>
         <div class="footer-images">
-
         </div>
-
     </footer>
 </body>
 </html>

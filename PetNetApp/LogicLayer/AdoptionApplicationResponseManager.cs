@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicLayerInterfaces;
 using DataObjects;
+using LogicLayerInterfaces;
 using DataAccessLayerInterfaces;
 using DataAccessLayer;
 
@@ -25,21 +25,20 @@ namespace LogicLayer
         {
             _adoptionApplicationResponseAccessor = adoptionApplicationResponseAccessor;
         }
-
-        public bool AddAdoptionApplicationResponse(AdoptionApplicationResponse adoptionApplicationResponse)
+        public bool AddAdoptionApplicationResponseByAdoptionApplicationId(AdoptionApplicationResponseVM adoptionApplicationResponseVM)
         {
-            bool wasAdded = false;
+            bool result = false;
 
             try
             {
-                wasAdded = (0 < _adoptionApplicationResponseAccessor.InsertAdoptionApplicationResponse(adoptionApplicationResponse));
+                result = 1 >= _adoptionApplicationResponseAccessor.InsertAdoptionApplicationResponseByAdoptionApplicationId(adoptionApplicationResponseVM);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
-            return wasAdded;
+            return result;
         }
 
         public bool EditAdoptionApplicationResponse(AdoptionApplicationResponse newAdoptionApplicationResponse, AdoptionApplicationResponse oldAdoptionApplicationResponse)

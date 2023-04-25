@@ -273,5 +273,128 @@ namespace DataAccessLayer
 
             return rowsAffected;
         }
+
+        public int UpdateReplyVisibilityByReplyId(ReplyVM reply)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_reply_visibility_by_replyid";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@replyid", SqlDbType.Int).Value = reply.ReplyId;
+            cmd.Parameters.Add("@reply_content", SqlDbType.NVarChar, 250).Value = reply.ReplyContent;
+            cmd.Parameters.Add("@reply_visiblility", SqlDbType.Bit).Value = reply.ReplyVisibility;
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
+
+
+        public int InsertReplyReport(int replyId, int userId, int reportMessageId)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_reply_report";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ReplyReporter", SqlDbType.Int).Value = userId;
+            cmd.Parameters.Add("@ReplyId", SqlDbType.Int).Value = replyId;
+            cmd.Parameters.Add("@ReportMessageId", SqlDbType.Int).Value = reportMessageId;
+
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
+
+
+        public int SelectUserReplyReportedByReplyIdandUserId(int replyId, int userId)
+        {
+            int reportedCount = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmd = new SqlCommand("sp_select_user_reply_reported_by_replyId_and_userId", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ReplyId", SqlDbType.Int).Value = replyId;
+            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = userId;
+
+            try
+            {
+                conn.Open();
+                reportedCount = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return reportedCount;
+        }
+
+        public int DeleteReplyReport(int replyId, int userId)
+        {
+            int rows = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_delete_reply_report";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ReplyReporter", SqlDbType.Int).Value = userId;
+            cmd.Parameters.Add("@ReplyId", SqlDbType.Int).Value = replyId;
+
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
     }
 }

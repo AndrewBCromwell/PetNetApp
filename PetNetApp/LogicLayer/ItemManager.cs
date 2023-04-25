@@ -9,7 +9,7 @@
 /// Nathan Zumsande
 /// Updated: 2023/03/31
 /// Added methods AddItem, RetrieveAllCategories
-/// AddItemCategory, RemoveItemCategory
+/// AddItemCategory, RemoveItemCategory, AddCategory
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -78,7 +78,7 @@ namespace LogicLayer
             try
             {
                 categories = _itemAccessor.SelectAllCategories();
-                if(categories.Count == 0)
+                if(categories == null)
                 {
                     throw new ApplicationException("Items not found");
                 }
@@ -118,10 +118,23 @@ namespace LogicLayer
             }
             catch (Exception ex)
             {
-
                 throw new ApplicationException("Items not found", ex);
             }
             return item;
+        }
+
+        public bool AddCategory(string categoryId)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _itemAccessor.InsertCategory(categoryId));
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(ex.Message);
+            }
+            return result;
         }
     }
 }

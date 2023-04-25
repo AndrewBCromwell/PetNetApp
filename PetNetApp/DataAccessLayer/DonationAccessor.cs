@@ -473,7 +473,7 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@Email", donation.Email);
             }
 
-            if (donation.Email == null || donation.Email.Length == 0)
+            if (donation.Phone == null || donation.Phone.Length == 0)
             {
                 cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
             }

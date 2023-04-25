@@ -7,8 +7,9 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
 /// </remarks>
 /// 
 using DataObjects;
@@ -40,6 +41,19 @@ namespace WpfPresentation.Animals
         private MedicalRecord _medicalRecord = null;
         private string _oldDiagnosisName = null;
         private string _oldNotes = null;
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="medicalRecord"></param>
+        /// <param name="medicalTreatmentPage"></param>
         public EditTreatment(MedicalRecord medicalRecord, MedicalTreatmentPage medicalTreatmentPage)
         {
             InitializeComponent();
@@ -66,8 +80,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// 
         private void btnSave_click(object sender, RoutedEventArgs e)
@@ -78,12 +93,12 @@ namespace WpfPresentation.Animals
                 try
                 {
                     _medicalRecordManager.EditTreatmentByMedicalRecordId(_medicalRecord.MedicalRecordId, txtDiagnosisUpdate.Text.ToString(), txtNotesUpdate.Text.ToString(), _oldDiagnosisName, _oldNotes);
-                    _medicalTreatmentPage.refreshPage();
+                    _medicalTreatmentPage.RefreshPage();
                 }
                 catch (Exception ex)
                 {
                     PromptWindow.ShowPrompt("Error", ex.Message + "\n" + ex.InnerException.Message, ButtonMode.Ok);
-                    _medicalTreatmentPage.refreshPage();
+                    _medicalTreatmentPage.RefreshPage();
                 }
             }
             else
@@ -103,9 +118,10 @@ namespace WpfPresentation.Animals
         /// 
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
+        ///<remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// 
         private void btnCancel_click(object sender, RoutedEventArgs e)

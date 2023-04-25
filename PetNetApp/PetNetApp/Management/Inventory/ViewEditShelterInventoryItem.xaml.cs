@@ -7,8 +7,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/20
+/// 
+/// Final QA
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -42,8 +44,14 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/03/19
         /// 
-        /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterInventoryItemVM"></param>
         public ViewEditShelterInventoryItem(ShelterInventoryItemVM shelterInventoryItemVM)
         {
@@ -55,8 +63,14 @@ namespace WpfPresentation.Management.Inventory
         /// Zaid Rachman
         /// Created: 2023/03/19
         /// 
-        /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -79,6 +93,19 @@ namespace WpfPresentation.Management.Inventory
             txtLowThreshold.Text = _shelterInventoryItemVM.LowInventoryThreshold.ToString();
             txtHighThreshold.Text = _shelterInventoryItemVM.HighInventoryThreshold.ToString();
             txtUseStatistic.Text = _shelterInventoryItemVM.UseStatistic.ToString();
+
+            lblOverLowStock.Visibility = Visibility.Hidden;
+            if(_shelterInventoryItemVM.Quantity < _shelterInventoryItemVM.LowInventoryThreshold)
+            {
+                lblOverLowStock.Visibility = Visibility.Visible;
+                lblOverLowStock.Content = "Low Quantity!";
+            }
+
+            if (_shelterInventoryItemVM.Quantity > _shelterInventoryItemVM.HighInventoryThreshold)
+            {
+                lblOverLowStock.Visibility = Visibility.Visible;
+                lblOverLowStock.Content = "Overstocked!";
+            }
 
             if (_shelterInventoryItemVM.CustomFlag != null)
             {
@@ -110,8 +137,16 @@ namespace WpfPresentation.Management.Inventory
 
 
             lblLocation.Content = "Shelter: " + _shelterInventoryItemVM.ShelterName;
-
-            lblCategory.Content = UpdateCategory(_item.CategoryId);
+            
+            if(_item.CategoryId == null)
+            {
+                lblCategory.Content = "";
+            }
+            else
+            {
+                 lblCategory.Content = UpdateCategory(_item.CategoryId);
+            }
+           
 
 
         }
@@ -121,30 +156,41 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// This method takes in the category list from the Items object and returns them into a displayable string.
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="categories"></param>
         /// <returns></returns>
         public string UpdateCategory(List<string> categories)
         {
-
             string categoryString = "";
-            //Formating
-            for (int i = 0; i < categories.Count; i++)
+            if (categories != null)
             {
-                categoryString += " " + categories[i];
-
-                if (i == categories.Count - 2)
+                //Formating
+                for (int i = 0; i < categories.Count; i++)
                 {
-                    if (categories.Count > 2)
+                    categoryString += " " + categories[i];
+
+                    if (i == categories.Count - 2)
+                    {
+                        if (categories.Count > 2)
+                        {
+                            categoryString += ",";
+                        }
+                        categoryString += " and";
+                    }
+                    else if (i < categories.Count - 2)
                     {
                         categoryString += ",";
                     }
-                    categoryString += " and";
-                }
-                else if (i < categories.Count - 2)
-                {
-                    categoryString += ",";
                 }
             }
+            
+            
             return categoryString; //Using the CustomFlag property as a way to show all flags
         }
 
@@ -155,6 +201,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Saves changes made to page
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
@@ -264,6 +317,7 @@ namespace WpfPresentation.Management.Inventory
                 txtUseStatistic.Focus();
                 return;
             }
+            
 
             ShelterInventoryItemVM updatedShelterItemVM = new ShelterInventoryItemVM
             {
@@ -305,6 +359,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Take user back to ViewShelterInventory page
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -318,6 +379,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Validation tool: Prevents User from being able to type anything other than numers 0-9
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtQuantity_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -333,6 +401,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Validation tool: Prevents User from being able to type anything other than numers 0-9
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtLowThreshold_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -346,6 +421,13 @@ namespace WpfPresentation.Management.Inventory
         /// 
         /// Validation tool: Prevents User from being able to type anything other than numers 0-9
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/20
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtHighThreshold_PreviewTextInput(object sender, TextCompositionEventArgs e)

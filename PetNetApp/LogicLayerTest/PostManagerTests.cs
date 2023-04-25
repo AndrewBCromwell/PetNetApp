@@ -73,5 +73,51 @@ namespace LogicLayerTest
             actualId = postManager.RetrievePostByPostId(1).PostId;
             Assert.AreEqual(expectedId, actualId);
         }
+
+        [TestMethod]
+        public void TestEditPostVisibility()
+        {
+            bool expectedResult = true;
+            bool actualResult = false;
+            PostVM post = new PostVM();
+            post.PostId = 5;
+
+            bool newVisibility = true;
+
+
+            actualResult = postManager.EditPostVisibility(post.PostId, newVisibility, post.PostVisibility);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestRetrieveReportMessages()
+        {
+            int expected = 2;
+            int actual = 0;
+
+            actual = postManager.RetrieveReportMessages().Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestAddPostReport()
+        {
+            bool result = false;
+
+            result = postManager.AddPostReport(1, 1, 1);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestRemovePostReport()
+        {
+            bool result = false;
+
+            result = postManager.RemovePostReport(1, 1);
+
+            Assert.IsTrue(result);
+        }
     }
 }

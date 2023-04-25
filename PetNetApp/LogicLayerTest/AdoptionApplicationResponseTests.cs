@@ -5,76 +5,78 @@ using System;
 using DataAccessLayerFakes;
 using DataObjects;
 using LogicLayer;
-using LogicLayerInterfaces;
 
 namespace LogicLayerTest
 {
     [TestClass]
     public class AdoptionApplicationResponseTests
     {
-        private IAdoptionApplicationResponseManager _responseManager = null;
-        readonly static DateTime dt = DateTime.Now;
-
-        private AdoptionApplicationResponse _response = new AdoptionApplicationResponse()
-        {
-            AdoptionApplicationResponseId = 999_998,
-            AdoptionApplicationId = 999_998,
-            ResponderUserId = 999_998,
-            Approved = false,
-            AdoptionApplicationResponseDate = dt,
-            AdoptionApplicationResponseNotes = "notes"
-        };
-
-        private AdoptionApplicationResponse _response2 = new AdoptionApplicationResponse()
-        {
-            AdoptionApplicationResponseId = 999_998,
-            AdoptionApplicationId = 999_998,
-            ResponderUserId = 999_998,
-            Approved = false,
-            AdoptionApplicationResponseDate = dt,
-            AdoptionApplicationResponseNotes = "notes"
-        };
+        private AdoptionApplicationResponseManager _manager = null;
+        private AdoptionApplicationResponseVM _response = null;
 
         [TestInitialize]
         public void TestSetup()
         {
-            _responseManager = new AdoptionApplicationResponseManager(new AdoptionApplicationResponseAccessorFakes());
+            _manager = new AdoptionApplicationResponseManager(new AdoptionApplicationResponseAccessorFakes());
+
+            _response = new AdoptionApplicationResponseVM() 
+            {
+                AdoptionApplicationResponseId = 1,
+                AdoptionApplicationId = 1,
+                ResponderUserId = 1,
+                Approved = false,
+                AdoptionApplicationResponseDate = DateTime.Now,
+                AdoptionApplicationResponseNotes = "denied, too stinky",
+                Application = new AdoptionApplication(),
+                Responder = new Users()
+            };
         }
 
-        [TestCleanup]
-        public void TestTearDown()
-        {
-            _responseManager = null;
-        }
 
         [TestMethod]
-        public void TestAddAdoptionApplicationResponse()
+        public void TestAddAdoptionApplicationResponseByAdoptionApplicationId()
         {
-            Assert.IsTrue(_responseManager.AddAdoptionApplicationResponse(_response));
+            bool expectedResult = true;
+            bool actualResult = false;
+            
+
+            actualResult = _manager.AddAdoptionApplicationResponseByAdoptionApplicationId(_response);
+
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
         public void TestRetrieveAdoptionApplicationResponse()
         {
-            _responseManager.AddAdoptionApplicationResponse(_response);
-            var response = _responseManager.RetrieveAdoptionApplicationResponse(_response.AdoptionApplicationId);
-            Assert.IsTrue(response.Equals(_response));
+            var response = _manager.RetrieveAdoptionApplicationResponse(_response.AdoptionApplicationId);
+            Assert.AreEqual(response.AdoptionApplicationResponseId, _response.AdoptionApplicationResponseId);
         }
 
         [TestMethod]
         public void TestAdoptionApplicationResponseEquals()
         {
-            Assert.IsTrue(_response.Equals(_response2));
+            var response2 = new AdoptionApplicationResponseVM()
+            {
+                AdoptionApplicationResponseId = 1,
+                AdoptionApplicationId = 1,
+                ResponderUserId = 1,
+                Approved = false,
+                AdoptionApplicationResponseDate = DateTime.Now,
+                AdoptionApplicationResponseNotes = "denied, too stinky",
+                Application = new AdoptionApplication(),
+                Responder = new Users()
+            };
+            Assert.IsTrue(_response.Equals(response2));
         }
 
         [TestMethod]
         public void TestEditAdoptionApplicationResponse()
         {
-            _responseManager.AddAdoptionApplicationResponse(_response);
+            _manager.AddAdoptionApplicationResponseByAdoptionApplicationId(_response);
             AdoptionApplicationResponse response = _response;
             response.AdoptionApplicationResponseNotes = "new comments";
 
-            Assert.IsTrue(_responseManager.EditAdoptionApplicationResponse(response, _response));
+            Assert.IsTrue(_manager.EditAdoptionApplicationResponse(response, _response));
         }
     }
 }
