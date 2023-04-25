@@ -118,6 +118,7 @@ namespace WpfPresentation.Animals
         /// <summary>
         /// Ethan Kline
         /// 2023/03/10
+        /// if a row is selected edit the medical note
         /// 
         /// 
         /// </summary>
@@ -160,6 +161,7 @@ namespace WpfPresentation.Animals
         /// <summary>
         /// Ethan Kline
         /// 2023/03/10
+        /// if a row is selected edit the medical note
         /// 
         /// 
         /// </summary>
@@ -183,6 +185,7 @@ namespace WpfPresentation.Animals
         /// <summary>
         /// Ethan Kline
         /// 2023/03/10
+        /// on click go to add a medical note
         /// 
         /// 
         /// </summary>
