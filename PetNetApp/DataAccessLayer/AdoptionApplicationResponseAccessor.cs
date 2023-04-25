@@ -44,5 +44,57 @@ namespace DataAccessLayer
             }
             return result;
         }
+
+        public AdoptionApplicationResponseVM SelectAdoptionApplicationResponseByAdoptionApplicationId(int adoptionApplicationId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdateAdoptionApplicationResponse(AdoptionApplicationResponse newAdoptionApplicationResponse, AdoptionApplicationResponse oldAdoptionApplicationResponse)
+        {
+            int rowsAffected = 0;
+
+            var conn = new DBConnection().GetConnection();
+            var cmdText = "sp_update_adoption_application_response";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@AdoptionApplicationResponseId", oldAdoptionApplicationResponse.AdoptionApplicationResponseId);
+            cmd.Parameters.AddWithValue("@AdoptionApplicationId", oldAdoptionApplicationResponse.AdoptionApplicationId);
+            cmd.Parameters.AddWithValue("@UsersId", oldAdoptionApplicationResponse.ResponderUserId);
+
+            cmd.Parameters.AddWithValue("@OldApproved", oldAdoptionApplicationResponse.Approved);
+            //cmd.Parameters.AddWithValue("@OldAdoptionApplicationResponseNotes", oldAdoptionApplicationResponse.AdoptionApplicationResponseNotes);
+            if (oldAdoptionApplicationResponse.AdoptionApplicationResponseNotes == null || oldAdoptionApplicationResponse.AdoptionApplicationResponseNotes.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@OldAdoptionApplicationResponseNotes", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldAdoptionApplicationResponseNotes", oldAdoptionApplicationResponse.AdoptionApplicationResponseNotes);
+            }
+
+            cmd.Parameters.AddWithValue("@NewApproved", newAdoptionApplicationResponse.Approved);
+            //cmd.Parameters.AddWithValue("@NewAdoptionApplicationResponseNotes", newAdoptionApplicationResponse.AdoptionApplicationResponseNotes);
+            if (newAdoptionApplicationResponse.AdoptionApplicationResponseNotes == null || newAdoptionApplicationResponse.AdoptionApplicationResponseNotes.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@NewAdoptionApplicationResponseNotes", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@NewAdoptionApplicationResponseNotes", newAdoptionApplicationResponse.AdoptionApplicationResponseNotes);
+            }
+
+            try
+            {
+                conn.Open();
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return rowsAffected;
+        }
     }
 }

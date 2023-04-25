@@ -38,6 +38,12 @@ namespace WpfPresentation.Animals
         private bool isEditMode = false;
         private DeathVM _oldDeathVM = new DeathVM();
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Constructor for page AddAnimalDOD513
+        /// </summary>
+        /// <param name="animal"></param>
         public AddAnimalDOD513(Animal animal)
         {
             _animal = animal;
@@ -98,6 +104,13 @@ namespace WpfPresentation.Animals
             txt_Notes.Text = _oldDeathVM.DeathNotes;
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Adds a new record to the DB or Edits an existing one.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -168,6 +181,13 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Cancels the Add/Edit and returns from the page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Confirm Cancel", "Cancel and return?", ButtonMode.YesNo).Equals(PromptSelection.Yes))

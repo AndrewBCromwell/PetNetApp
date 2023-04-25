@@ -38,6 +38,13 @@ namespace WpfPresentation.Animals
         private FosterApplicationResponseVM _oldFosterApplicationResponse = new FosterApplicationResponseVM();
         private FosterApplicationResponseVM _responseVM = new FosterApplicationResponseVM();
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Constructor for page AddEditReportOnFoster
+        /// </summary>
+        /// <param name="fosterApplicationId">The int Id of the FosterApplication</param>
+        /// <returns>AddEditReportOnFoster</returns>
         public AddEditReportOnFoster(int fosterApplicationId)
         {
             _fosterApplicationId = fosterApplicationId;
@@ -45,10 +52,17 @@ namespace WpfPresentation.Animals
             setupPage();
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Constructor for page AddEditReportOnFoster
+        /// </summary>
+        /// <param name="fosterApplication">The FosterApplication that this response is for</param>
+        /// <returns>AddEditReportOnFoster</returns>
         /*
-        public AddEditReportOnFoster(FosterApplication FosterApplication)
+        public AddEditReportOnFoster(FosterApplication fosterApplication)
         {
-            _fosterApplication = FosterApplication;
+            _fosterApplication = fosterApplication;
             InitializeComponent();
         }
         */
@@ -58,7 +72,7 @@ namespace WpfPresentation.Animals
             try
             {
                 _oldFosterApplicationResponse = _masterManager.FosterApplicationResponseManager.RetrieveFosterApplicationResponse(_fosterApplicationId);
-                if (!_oldFosterApplicationResponse.FosterApplicationResponseId.Equals(0)) // a record exists so edit mode
+                if (!(_oldFosterApplicationResponse.FosterApplicationResponseId == 0)) // a record exists so edit mode
                 {
                     isEditMode = true;
                     setPageForEditMode();
@@ -83,8 +97,22 @@ namespace WpfPresentation.Animals
             txt_FosterName.Text = _oldFosterApplicationResponse.FosterApplicantGivenName + " " + _oldFosterApplicationResponse.FosterApplicantFamilyName;
             txt_FosterReportID.Text = _oldFosterApplicationResponse.FosterApplicationResponseId.ToString();
             rad_ApprovedYes.IsChecked = _oldFosterApplicationResponse.Approved;
+
+            txt_FosterAccountID.Visibility = Visibility.Hidden;
+            txt_DateCreated.Visibility = Visibility.Visible;
+            lbl_FosterAccountID.Visibility = Visibility.Hidden;
+            lbl_DateCreated.Visibility = Visibility.Visible;
+
+            txt_DateCreated.Text = _oldFosterApplicationResponse.FosterApplicationResponseDate.ToLongDateString();
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Adds a new record to the DB or Edits an existing one.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -129,6 +157,13 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Cancels the Add/Edit and returns from the page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             //if (PromptWindow.ShowPrompt("Confirm Cancel", "Cancel and return?", ButtonMode.YesNo).Equals(PromptSelection.Yes))

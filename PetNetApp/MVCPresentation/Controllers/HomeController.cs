@@ -10,6 +10,7 @@ namespace MVCPresentation.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Welcome to Pet.Net!";
             return View();
         }
 

@@ -35,6 +35,12 @@ namespace WpfPresentation.Management
         private KennelVM _kennel = new KennelVM();
         private MasterManager _masterManager = MasterManager.GetMasterManager();
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Constructor for page KenOccupancyUpdate_333
+        /// </summary>
+        /// <param name="kennel"></param>
         public KenOccupancyUpdate_333(KennelVM kennel)
         {
             _kennel = kennel;
@@ -52,6 +58,13 @@ namespace WpfPresentation.Management
             lbl_Intake.Content = _kennel.Animal.BroughtIn.ToShortDateString();
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Removes the animal from the kennel in the DB.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Remove_Click(object sender, RoutedEventArgs e)
         {
             bool result = false;
@@ -75,6 +88,13 @@ namespace WpfPresentation.Management
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Returns from the page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());

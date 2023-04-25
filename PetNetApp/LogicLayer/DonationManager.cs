@@ -123,5 +123,37 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to retrieve sum of donations by EventId", ex);
             }
         }
+
+        public int AddDonation(Donation donation)
+        {
+            int newDonationId = 0;
+
+            try
+            {
+                newDonationId = donationAccessor.InsertDonation(donation);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to add new Donation record. ", ex);
+            }
+
+            return newDonationId;
+        }
+
+        public bool AddInKind(InKind inKind)
+        {
+            bool wasInserted = false;
+
+            try
+            {
+                wasInserted = (0 < donationAccessor.InsertInKind(inKind));
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to add new InKind record for " + inKind.Description, ex);
+            }
+
+            return wasInserted;
+        }
     }
 }

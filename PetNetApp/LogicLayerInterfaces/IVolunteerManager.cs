@@ -7,8 +7,10 @@
 /// </summary>
 /// 
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/24
+/// 
+/// Final QA
 /// </remarks>
 using DataObjects;
 using System;
@@ -27,9 +29,57 @@ namespace LogicLayerInterfaces
 		/// 
 		/// Retrieves Volunteers by fundrasing event Id
 		/// </summary>
-		///
+		/// <remarks>
+		/// Zaid Rachman
+		/// Updated: 2023/04/24
+		/// 
+		/// Final QA
+		/// </remarks>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		List<VolunteerVM> RetrieveVolunteersbyFundraisingEventId(int fundraisingEventId);
+		/// <summary>
+		/// Oleksiy Fedchuk
+		/// Create: 2023/04/20
+		/// 
+		/// </summary>
+		/// <remarks>
+		/// Zaid Rachman
+		/// Updated: 2023/04/24
+		/// 
+		/// Final QA
+		/// </remarks>
+		/// <returns></returns>
+		List<int> RetrieveAllVolunteers();
+		/// <summary>
+		/// Oleksiy Fedchuk
+		/// Create: 2023/04/20
+		/// 
+		/// </summary>
+		/// <remarks>
+		/// Zaid Rachman
+		/// Updated: 2023/04/24
+		/// 
+		/// Final QA
+		/// </remarks>
+		/// <param name="usersId"></param>
+		/// <param name="fundraisingEventId"></param>
+		/// <returns></returns>
+		bool AddVolunteerToEventbyVolunteerAndEventId(int usersId, int fundraisingEventId);
+		/// <summary>
+		/// Oleksiy Fedchuk
+		/// Create: 2023/04/20
+		/// 
+		/// </summary>
+		/// <remarks>
+		/// Zaid Rachman
+		/// Updated: 2023/04/24
+		/// 
+		/// Final QA
+		/// </remarks>
+		/// <param name="usersId"></param>
+		/// <param name="fundraisingEventId"></param>
+		/// <returns></returns>
+		bool RemoveVolunteerFromEventbyUsersIdAndFundraisingEventId(int usersId, int fundraisingEventId);
 	}
 }

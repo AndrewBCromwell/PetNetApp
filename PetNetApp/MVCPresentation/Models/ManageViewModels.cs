@@ -66,6 +66,11 @@ namespace MVCPresentation.Models
         public string Number { get; set; }
     }
 
+    public class AccountSettingsViewModel
+    { 
+     // add
+    }
+
     public class VerifyPhoneNumberViewModel
     {
         [Required]

@@ -38,7 +38,7 @@
             {
                 var date = item.DateDonated.Value.ToString("MM/dd/yyyy");
                 string shortMessage = "";
-                if (item.Message.Length > 45)
+                if (item.Message != null && item.Message.Length > 45)
                 {
                     shortMessage = item.Message.Substring(0, 45) + "...";
                 }
@@ -75,7 +75,7 @@
                     <th>
                         @Html.DisplayFor(modelItem => date)
                     </th>
-                    @if (item.Message.Length > 45)
+                    @if (item.Message != null && item.Message.Length > 45)
                     {
                         <th>
                             @Html.DisplayFor(modelItem => shortMessage)
