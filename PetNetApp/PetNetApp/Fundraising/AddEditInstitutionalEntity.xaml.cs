@@ -593,7 +593,14 @@ namespace WpfPresentation.Fundraising
         {
             //NavigationService.Navigate(new ViewFundraisingEventContacts());
         }
-
+        /// <summary>
+        /// Ethan Kline
+        /// Created: 2023/04/3
+        /// 
+        /// on click open the view event window and close this window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnVeiwEvents_Click(object sender, RoutedEventArgs e)
         {
             _sponsorEvent.CompanyName = _institutionalEntity.CompanyName;
