@@ -1,4 +1,9 @@
-﻿<div class="petnetSubmenuDiv">
+﻿<style>
+    .shellrow-3 {
+        height: 45px;
+    }
+</style>
+<div class="petnetSubmenuDiv">
     @if (ViewBag.Tab == "Adopt")
     {
         <nav class="navbar" id="petnetSubmenu">
@@ -8,6 +13,12 @@
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Find a Pet", "Adoptable", "Animals", null, new { @class = (ViewBag.Title == "Adoptable" ? "nav-link active" : "nav-link") })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Foster", "Adoptable", "Animals", null, new { @class = (ViewBag.Title == "Become a Fosterer" ? "nav-link active" : "nav-link") })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Surrender", "Surrender", "Animals", null, new { @class = (ViewBag.Title == "Rehome Your Pet" ? "nav-link active" : "nav-link") })
                 </li>
             </ul>
         </nav>

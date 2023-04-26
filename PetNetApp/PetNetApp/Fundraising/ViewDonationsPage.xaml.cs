@@ -674,5 +674,17 @@ namespace WpfPresentation.Fundraising
                 }
             }
         }
+
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Navigates to the EnterDonation Page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEnterDonation_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EnterDonation());
+        }
     }
 }

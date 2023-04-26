@@ -102,6 +102,7 @@ namespace WpfPresentation.Events
             {
                 _allPledges = _masterManager.PledgeManager.RetrieveAllPledges();
                 _allDonations = _masterManager.DonationManager.RetrieveAllDonations();
+                _allDonations.RemoveAll(d => d.Amount == null);
 
             }
             catch (Exception ex)

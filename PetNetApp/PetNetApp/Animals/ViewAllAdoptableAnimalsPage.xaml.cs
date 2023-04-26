@@ -84,10 +84,17 @@ namespace WpfPresentation.Animals
         /// 
         /// Window loaded method
         /// </summary>
-        ///
+        /// <remarks>
+        /// Andrew Cromwell
+        /// Updated: 2023/04/25
+        /// 
+        /// Made the method call cmbAnimalFilter_DropDownClosed so that the fillter
+        /// will still be applied when the page is left and then returned to
+        /// </remarks>
+        /// 
         /// <remarks>
         /// Zaid Rachman
-        /// Updated: 2023/04/21
+        /// Updated: 2023/04/25
         /// Final QA
         /// </remarks>
         /// /// <param name="sender"></param>
@@ -96,8 +103,7 @@ namespace WpfPresentation.Animals
         {
             try
             {
-                _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals();
-                DisplayUserControls();
+                cmbAnimalFilter_DropDownClosed(sender, e);
             }
             catch (Exception ex)
             {
@@ -120,6 +126,7 @@ namespace WpfPresentation.Animals
         /// </remarks>
         private void DisplayUserControls()
         {
+            grdAdoptableAnimalsList.Children.Clear();
             if (_adoptableAnimals.Count == 0)
             {
                 nothingToShowMessage.Visibility = Visibility.Visible;
@@ -230,6 +237,53 @@ namespace WpfPresentation.Animals
                 shelterName = "";
             }
             return shelterName;
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created 2023/04/24
+        /// 
+        /// Populates the page with only the type of animal the user selected from the combo box.
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/25
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbAnimalFilter_DropDownClosed(object sender, EventArgs e)
+        {
+            string filter = (string)cmbAnimalFilter.SelectionBoxItem;
+            try
+            {
+                switch (filter)
+                {
+                    case "All":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals();
+                        break;
+                    case "Dogs":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Dog").ToList();
+                        break;
+                    case "Cats":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Cat").ToList();
+                        break;
+                    case "Birds":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Bird").ToList();
+                        break;
+                    case "Other":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId != "Dog" && A.AnimalTypeId != "Cat" &&
+                            A.AnimalTypeId != "Bird").ToList();
+                        break;
+                    default:
+                        break;
+                }
+                DisplayUserControls();
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException, ButtonMode.Ok);
+            }
         }
     }
 }

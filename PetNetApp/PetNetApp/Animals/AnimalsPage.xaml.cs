@@ -93,9 +93,7 @@ namespace WpfPresentation.Animals
             // replace with page name and then delete comment
             frameAnimals.Navigate(WpfPresentation.Animals.ViewAllAdoptableAnimalsPage.GetViewAllAdoptableAnimalsPage());
 
-            //var viewDonationReceiptWindow = new WpfPresentation.Fundraising.ViewDonationReceiptWindow(100001);
-            //viewDonationReceiptWindow.Owner = Window.GetWindow(this);
-            //viewDonationReceiptWindow.ShowDialog();
+            
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)

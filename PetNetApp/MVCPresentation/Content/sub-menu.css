@@ -1,11 +1,12 @@
 ﻿.petnetSubmenuDiv {
-    background-color: var(--submenu-background-color);
-    padding-top: 3px;
+    /*background-color: var(--submenu-background-color);*/
+    padding-top: 2px;
 }
 #petnetSubmenu {
-    margin-left: 34px;
+    margin-left: 35px;
     padding-top: 0px;
     padding-bottom: 0;
+    width: 100%;
 }
 .nav-pills .nav-link {
      border-radius: 0; 

@@ -76,5 +76,23 @@ namespace LogicLayerInterfaces
         /// <param name="UsersId"></param>
         /// <returns></returns>
         List<DonationVM> RetrieveDonationsByUserId(int usersId);
+
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/03
+        /// Description: Adds a new Donation record
+        /// </summary>
+        /// <param name="donation">The donation to add</param>
+        /// <returns>The DonationId of the newly added Donation</returns>
+        int AddDonation(Donation donation);
+
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/03
+        /// Description: Adds a new InKind record
+        /// </summary>
+        /// <param name="donation">The inKind to add</param>
+        /// <returns>True if the record was added</returns>
+        bool AddInKind(InKind inKind);
     }
 }

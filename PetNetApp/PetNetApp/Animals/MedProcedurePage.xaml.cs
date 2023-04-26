@@ -81,16 +81,40 @@ namespace WpfPresentation.Animals
             lblProcedureAnimalId.Content = "Animal ID #" + _procedureAnimal.AnimalId;
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/16
+        /// 
+        /// Navigates to the page for adding a medical procedure.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddMedProcedure_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new EditProcedurePage(_procedureAnimal, _manager));
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/16
+        /// 
+        /// Returns to the previous page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMedProcedureCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/16
+        /// 
+        /// If a procedure is selected, the page to edit it is brought up.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void datMedProcedure_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ProcedureVM selecteProcedure = (ProcedureVM)datMedProcedure.SelectedItem;

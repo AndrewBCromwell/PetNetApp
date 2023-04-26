@@ -25,6 +25,9 @@ using LogicLayer;
 namespace WpfPresentation.Animals
 {
     /// <summary>
+    /// Andrew Cromwell
+    /// Created: 2023/02/08
+    /// 
     /// Interaction logic for EditProcedurePage.xaml
     /// </summary>
     public partial class EditProcedurePage : Page
@@ -193,6 +196,14 @@ namespace WpfPresentation.Animals
             
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/08
+        /// 
+        /// closes the page to edit a procedure
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMedProcedureEditCancel_Click(object sender, RoutedEventArgs e)
         {
             PromptSelection selection = PromptWindow.ShowPrompt("Really Cancel?", "Do you really want to cancel? The data you entered will not be saved.", ButtonMode.YesNo);

@@ -209,6 +209,8 @@ namespace LogicLayerTest
         public void TestAddMedicalNote()
         {
             bool realResult = _medicalRecordManager.AddMedicalNote(fake.addmedicalRecord);
+
+            //int r = _medicalRecordManager.AddMedicalNote(fake.InsertMedicalRecords).c
             Assert.IsTrue( realResult);
         }
     }

@@ -388,7 +388,7 @@ namespace WpfPresentation.Fundraising
                 {
                     target = target.Substring(0, 20) + "...";
                 }
-                string donationString = donation.Description + "  x" + donation.Quanity + "  " + target;
+                string donationString = donation.Description + "  x" + donation.Quantity + "  " + target;
                 _inKindStringsList.Add(donationString);
                 Label label = new Label();
                 label.Content = donationString;

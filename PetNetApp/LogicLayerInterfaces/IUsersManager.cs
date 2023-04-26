@@ -143,5 +143,14 @@ namespace LogicLayerInterfaces
         /// <param userId="usersId"></param>
         List<UsersAdoptionRecords> RetrieveAdoptionRecordsByUserID(int usersId);
         UsersVM RetrieveUserByUserEmail(string email);
+
+        /// <summary>
+        /// Asa Armstrong
+        /// Created: 2023/04/13
+        /// 
+        /// Retrieves a user object by an email
+        /// </summary>
+        /// <param name="email">email to search</param>
+        Users RetrieveUserObjectByEmail(string email);
     }
 }

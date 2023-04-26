@@ -18,6 +18,7 @@ namespace DataObjects
         public String EventAddress { get; set; }
         public String EventZipcode { get; set; }
         public bool EventVisible { get; set; }
+        public String Zipcode { get; set; }
     }
     public class EventVM : Event
     {
