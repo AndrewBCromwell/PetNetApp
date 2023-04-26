@@ -34,7 +34,7 @@ namespace DataAccessLayerInterfaces
         /// </remarks>
         /// <param name="test"></param>
         /// <param name="medicalRecordId"></param>
-        /// /// <exception cref="SQLException">Insert Fails</exception>
+        /// <exception cref="SQLException">Insert Fails</exception>
         /// <returns>Rows edited</returns>
         int InsertTestByMedicalRecordId(Test test, int medicalRecordId);
 

@@ -48,7 +48,7 @@
         <div class="header-menu">
             <ul class="header-menu-list">
                 <li class="header-menu-list-item">@Html.ActionLink("Adopt", "Adoptable", "Animals", null, new { @class = (ViewBag.Tab == "Adopt" ? "active-main-tab" : "") })</li>
-                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "Index", "Shelters", null, new { @class = (ViewBag.Tab == "Shelters" ? "active-main-tab" : "") })</li>
+                <li class="header-menu-list-item">@Html.ActionLink("Shelters", "ShelterNetwork", "Shelters", null, new { @class = (ViewBag.Tab == "Shelters" ? "active-main-tab" : "") })</li>
                 <li class="header-menu-list-item">@Html.ActionLink("Events", "Index", "Events", null, new { @class = (ViewBag.Tab == "Events" ? "active-main-tab" : "") })</li>
                 <li class="header-menu-list-item">@Html.ActionLink("Community", "Index", "Community", null, new { @class = (ViewBag.Tab == "Community" ? "active-main-tab" : "") })</li>
                 @* Waiting until subtabs are created *@

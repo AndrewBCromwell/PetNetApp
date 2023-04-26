@@ -100,6 +100,11 @@ namespace WpfPresentation.Shelters
             }
         }
 
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/02/28
+        /// Access for shelter network page
+        /// </summary>
         public void ShowShelterNetworkButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager" };
@@ -193,6 +198,13 @@ namespace WpfPresentation.Shelters
             UpdateScrollButtons();
         }
 
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/02/28
+        ///  Click event to navigate to the shelter network page
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="sender"></param>
         private void btnShelterNetwork_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);

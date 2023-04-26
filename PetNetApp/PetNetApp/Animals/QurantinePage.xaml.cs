@@ -82,6 +82,7 @@ namespace WpfPresentation.Animals
         /// Nathan Zumsande
         /// Created: 2023/01/31
         /// 
+        /// Empty constructor
         /// </summary>
         /// <remarks>
         /// Zaid Rachman

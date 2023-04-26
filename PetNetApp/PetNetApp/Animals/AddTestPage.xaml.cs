@@ -49,6 +49,17 @@ namespace WpfPresentation.Animals
         private MedicalRecordManager _medicalRecordManager;
         private TestManager _testManager;
 
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/02/07
+        /// 
+        /// Empty constructor
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         public AddTestPage()
         {
             InitializeComponent();
@@ -91,7 +102,8 @@ namespace WpfPresentation.Animals
         /// Parameter to add a test to the passed Medical Record instead
         /// of creating a new one
         /// 
-        /// NOT CURRENTLY IN USE, MIGHT BE HELPFUL LATER
+        /// NOT CURRENTLY IN USE, MIGHT BE HELPFUL LATER TO ADD MULTIPLE
+        /// TESTS TO ONE MEDICALRECORD THAT IS ALREAD MADE
         /// </summary>
         ///
         /// <remarks>

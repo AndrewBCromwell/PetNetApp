@@ -42,6 +42,26 @@ namespace MVCPresentation.Controllers
         }
 
         // GET: Shelters
+        public ActionResult ShelterNetwork()
+        {
+            List<Shelter> shelters = new List<Shelter>();
+            try
+            {
+                shelters = _masterManager.ShelterManager.GetShelterList();
+                if (shelters == null)
+                {
+                    throw new Exception("Shelter data could not be found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View("Error");
+            }
+            return View(shelters);
+        }
+
+        // GET: Shelters
         public ActionResult SelectShelter()
         {
             ViewBag.Tab = "Shelters";

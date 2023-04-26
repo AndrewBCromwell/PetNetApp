@@ -54,6 +54,7 @@ namespace DataAccessLayerInterfaces
         /// Final QA
         /// </remarks>
         /// <param name="itemId"></param>
+        /// <exception cref="SQLException">Insert Fails</exception>
         /// <returns>Number of rows affected</returns>
         int InsertItem(string itemId);
 
@@ -70,6 +71,7 @@ namespace DataAccessLayerInterfaces
         /// 
         /// FinalQA
         /// </remarks>
+        /// <exception cref="SQLException">Select Fails</exception>
         /// <returns>A list of all the categories</returns>
         List<string> SelectAllCategories();
 
@@ -81,6 +83,7 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         /// <param name="itemId"></param>
         /// <param name="category"></param>
+        /// <exception cref="SQLException">Insert Fails</exception>
         /// <returns>Number of rows affected</returns>
         int InsertItemCategory(string itemId, string category);
 
@@ -98,6 +101,7 @@ namespace DataAccessLayerInterfaces
         /// FinalQA
         /// </remarks>
         /// <param name="categoryId"></param>
+        /// <exception cref="SQLException">Insert Fails</exception>
         /// <returns>Number of rows affected</returns>
         int InsertCategory(string categoryId);
 
@@ -115,6 +119,7 @@ namespace DataAccessLayerInterfaces
         /// </remarks>
         /// <param name="itemId"></param>
         /// <param name="category"></param>
+        /// <exception cref="SQLException">Delete Fails</exception>
         /// <returns>Number of rows affected</returns>
         int DeleteItemCategory(string itemId, string category);
     }
