@@ -52,14 +52,78 @@ namespace DataAccessLayerInterfaces
         /// <param name="fundraisingEventId">The id of the fundraising event to load</param>
         /// <returns>A Fundraising Event VM</returns>
         FundraisingEventVM SelectFundraisingEventByFundraisingEventId(int fundraisingEventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="fundraisingEvent"></param>
+        /// <returns></returns>
         int InsertFundraisingEvent(FundraisingEvent fundraisingEvent);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="fundraisingEventId"></param>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
         int InsertFundraiserAnimal(int fundraisingEventId, int animalId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="contactId"></param>
+        /// <returns></returns>
         int InsertFundraisingEventEntity(int eventId, int contactId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         FundraisingEvent SelectFundraisingEvent(int eventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         List<int> SelectContactByFundraisingEvent(int eventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         List<int> SelectSponsorByFundraisingEvent(int eventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         List<int> SelectAnimalByFundraisingEvent(int eventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="fundraisingEvent"></param>
+        /// <returns></returns>
         int UpdateFundraisingEvent(FundraisingEventVM fundraisingEvent);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="fundraisingEventId"></param>
+        /// <returns></returns>
         int DeactivateFundraisingEvent(int fundraisingEventId);
 
         /// <summary>

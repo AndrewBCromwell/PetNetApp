@@ -45,6 +45,12 @@ namespace WpfPresentation.Events
             _fundraisingEvent = fundraisingEvent;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sponsor"></param>
         private void DisplaySponsor(InstitutionalEntity sponsor)
         {
             UCSponsor ucSponsor = new UCSponsor();
@@ -54,6 +60,12 @@ namespace WpfPresentation.Events
             stpSponsorList.Children.Add(ucSponsor);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="contact"></param>
         private void DisplayContact(InstitutionalEntity contact)
         {
             UCContact ucContact = new UCContact();
@@ -63,6 +75,12 @@ namespace WpfPresentation.Events
             stpContactList.Children.Add(ucContact);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="animal"></param>
         private void DisplayAnimal(Animal animal)
         {
             UCAnimalTakeToEvent ucAnimalTakeToEvent = new UCAnimalTakeToEvent();
@@ -72,24 +90,47 @@ namespace WpfPresentation.Events
             stpAnimalList.Children.Add(ucAnimalTakeToEvent);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="animal"></param>
         private void RemoveAnimal_MouseClick(Animal animal)
         {
             animalsSelected.Remove(animal);
             PopulateAnimalList();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="contact"></param>
         private void RemoveContact_MouseClick(InstitutionalEntity contact)
         {
             contactSelected.Remove(contact);
             PopulateContactList();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sponsor"></param>
         private void RemoveSponsor_MouseClick(InstitutionalEntity sponsor)
         {
             sponsorSelected.Remove(sponsor);
             PopulateSponsorList();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void PopulateSponsorList()
         {
             stpSponsorList.Children.Clear();
@@ -99,6 +140,11 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void PopulateContactList()
         {
             stpContactList.Children.Clear();
@@ -108,6 +154,11 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void PopulateAnimalList()
         {
             stpAnimalList.Children.Clear();
@@ -117,6 +168,13 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSponsorContact_Click(object sender, RoutedEventArgs e)
         {
             var sponsorContactWindow = new SponsorListWindow(_sponsorList);
@@ -137,6 +195,13 @@ namespace WpfPresentation.Events
             PopulateSponsorList();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChooseContact_Click(object sender, RoutedEventArgs e)
         {
             var contactWindow = new ContactListWindow(_contactList);
@@ -156,6 +221,13 @@ namespace WpfPresentation.Events
             PopulateContactList();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChooseAnimal_Click(object sender, RoutedEventArgs e)
         {
             var animalTakeToEventWindow = new AnimalListWindow(_animalsList);
@@ -175,6 +247,13 @@ namespace WpfPresentation.Events
             PopulateAnimalList();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -193,6 +272,13 @@ namespace WpfPresentation.Events
             PopulateAnimalList();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUploadImage_Click(object sender, RoutedEventArgs e)
         {
             var uploadImage = new UploadEventImageWindow();
@@ -203,6 +289,12 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private bool PageValidation()
         {
             bool isSuccess = true;
@@ -226,6 +318,13 @@ namespace WpfPresentation.Events
             return isSuccess;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             int id = 0;
@@ -282,6 +381,13 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Cancel", "Are you really want to cancel?", ButtonMode.YesNo)
@@ -291,6 +397,11 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void NavigateToViewFundraisingEvent()
         {
             var mainWindow = (MainWindow)MainWindow.GetWindow(this);

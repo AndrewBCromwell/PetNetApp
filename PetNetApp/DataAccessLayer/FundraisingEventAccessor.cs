@@ -78,6 +78,13 @@ namespace DataAccessLayer
             }
             return fundraisingEvents;
         }
+
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="fundraisingEventId"></param>
+        /// <returns></returns>
         public int DeactivateFundraisingEvent(int fundraisingEventId)
         {
             int rowAffected = 0;
@@ -107,6 +114,13 @@ namespace DataAccessLayer
             return rowAffected;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="fundraisingEventId"></param>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
         public int InsertFundraiserAnimal(int fundraisingEventId, int animalId)
         {
             int rowAffected = 0;
@@ -137,6 +151,12 @@ namespace DataAccessLayer
             return rowAffected;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="fundraisingEvent"></param>
+        /// <returns></returns>
         public int InsertFundraisingEvent(FundraisingEvent fundraisingEvent)
         {
             int id = 0;
@@ -204,6 +224,13 @@ namespace DataAccessLayer
             return id;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="contactId"></param>
+        /// <returns></returns>
         public int InsertFundraisingEventEntity(int eventId, int contactId)
         {
             int rowAffected = 0;
@@ -234,6 +261,12 @@ namespace DataAccessLayer
             return rowAffected;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         public List<int> SelectAnimalByFundraisingEvent(int eventId)
         {
             List<int> animalIdList = new List<int>();
@@ -270,6 +303,12 @@ namespace DataAccessLayer
             return animalIdList;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         public List<int> SelectContactByFundraisingEvent(int eventId)
         {
             List<int> contactIdList = new List<int>();

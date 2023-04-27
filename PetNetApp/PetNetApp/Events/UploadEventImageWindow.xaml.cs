@@ -33,6 +33,13 @@ namespace WpfPresentation.Events
             image = null;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBrowseFiles_Click(object sender, RoutedEventArgs e)
         {
             _fileDialog.Filter = "Images|*.png;*.jpg;*.gif;*.jpeg;*.tiff;*.tif;*.webp;*.wav;*.bmp;*.exif";
@@ -60,11 +67,25 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelUpload_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUploadFile_Click(object sender, RoutedEventArgs e)
         {
             if (_imageSelected)
@@ -82,6 +103,12 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Images GetImage()
         {
             return image;

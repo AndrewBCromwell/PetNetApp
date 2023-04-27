@@ -181,7 +181,7 @@ namespace WpfPresentation.Animals
 
             try
             {
-                animalVM = _masterManager.AnimalManager.RetriveAnimalAdoptableProfile(_animalId);
+                animalVM = _masterManager.AnimalManager.RetrieveAnimalAdoptableProfile(_animalId);
                 
             }
             catch (Exception ex)
