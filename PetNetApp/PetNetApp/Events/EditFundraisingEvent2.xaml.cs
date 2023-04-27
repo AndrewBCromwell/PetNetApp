@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
+using PetNetApp;
 using WpfPresentation.Community;
 
 namespace WpfPresentation.Events
@@ -269,8 +270,7 @@ namespace WpfPresentation.Events
                     if (isSuccess)
                     {
                         PromptWindow.ShowPrompt("Message", "Successful to update fundraising event");
-                        CommunityPage communityPage = CommunityPage.GetCommunityPage();
-                        communityPage.frameCommunity.Navigate(new AddFundraisingEvent());
+                        NavigateToViewFundraisingEvent();
                     }
                 }
                 catch (Exception ex)
@@ -278,6 +278,25 @@ namespace WpfPresentation.Events
                     PromptWindow.ShowPrompt("Error", "Can not update fundraising event \n\n" + ex);
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (PromptWindow.ShowPrompt("Cancel", "Are you really want to cancel?\n\nYour changed will not save!", ButtonMode.YesNo)
+                == PromptSelection.Yes)
+            {
+                NavigateToViewFundraisingEvent();
+            }
+        }
+
+        private void NavigateToViewFundraisingEvent()
+        {
+            var mainWindow = (MainWindow)MainWindow.GetWindow(this);
+            Development.Fundraising.FundraisingPage fundraisingPage = Development.Fundraising.FundraisingPage.GetFundraisingPage(_masterManager);
+            fundraisingPage.ChangeSelectedButton(fundraisingPage.btnEvents);
+            mainWindow.ChangeSelectedButton(mainWindow.btnFundraising);
+            mainWindow.frameMain.Navigate(fundraisingPage);
+            fundraisingPage.frameFundraising.Navigate(Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
     }
 }

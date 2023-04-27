@@ -58,8 +58,10 @@ namespace WpfPresentation.UserControls
             {
                 try
                 {
-        //            _masterManager.FundraisingCampaignManager.RemoveFundraisingEvent(FundraisingEvent);
-                    OnEventDeleted();
+                    if (_masterManager.FundraisingEventManager.DeactivateFundraisingEvent(FundraisingEvent.FundraisingEventId))
+                    {
+                        OnEventDeleted();
+                    }
                 }
                 catch (Exception ex)
                 {

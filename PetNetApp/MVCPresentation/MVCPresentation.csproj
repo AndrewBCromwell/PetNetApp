@@ -215,6 +215,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\about-us.css" />
     <Content Include="Content\animals.css" />
     <Content Include="colors.css" />
     <Content Include="Content\Animal\adoptableAnimal-desktop.css" />
@@ -408,6 +409,9 @@
     <Content Include="Views\Community\ReportReplyPartial.cshtml" />
     <Content Include="Views\Community\BeginReplyReport.cshtml" />
     <Content Include="Views\Pledge\Create.cshtml" />
+    <Content Include="Views\Management\Index.cshtml" />
+    <Content Include="Views\Management\Create.cshtml" />
+    <Content Include="Views\Home\TermsOfService.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

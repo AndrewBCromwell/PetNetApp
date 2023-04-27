@@ -1,5 +1,6 @@
 ﻿using DataObjects;
 using LogicLayer;
+using PetNetApp;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -197,9 +198,27 @@ namespace WpfPresentation.Events
         {
             if (CreateFundraisingEventValidator())
             {
-                // Need to change this code latter
                 NavigationService.Navigate(new EditFundraisingEvent2(_fundraisingEvent));
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (PromptWindow.ShowPrompt("Cancel", "Are you really want to cancel?\n\nYour changed will not save!", ButtonMode.YesNo)
+                == PromptSelection.Yes)
+            {
+                NavigateToViewFundraisingEvent();
+            }
+        }
+
+        private void NavigateToViewFundraisingEvent()
+        {
+            var mainWindow = (MainWindow)MainWindow.GetWindow(this);
+            Development.Fundraising.FundraisingPage fundraisingPage = Development.Fundraising.FundraisingPage.GetFundraisingPage(_masterManager);
+            fundraisingPage.ChangeSelectedButton(fundraisingPage.btnEvents);
+            mainWindow.ChangeSelectedButton(mainWindow.btnFundraising);
+            mainWindow.frameMain.Navigate(fundraisingPage);
+            fundraisingPage.frameFundraising.Navigate(Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
 
         public FundraisingEvent GetFundraisingEvent()
