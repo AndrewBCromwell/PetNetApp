@@ -9,6 +9,13 @@
 /// Updated: 2023/03/30
 /// 
 /// Further cleanup from the AddressTwo => Address2 refactor
+/// 
+/// Brian Collum
+/// Updated: 2023/04/27
+/// 
+/// Added a Trim() method to  data access methods that retrieve shelter zipcodes from the database.
+/// Specifically RetrieveShelterList() and SelectShelterVMByShelterID(int shelterID)
+/// This should prevent the display of trailing whitespace in shelter Zip Code fields.
 /// </remarks>
 
 using System;
@@ -58,7 +65,7 @@ namespace DataAccessLayer
                             shelter.ShelterName = Convert.ToString(reader["ShelterName"]);
                             shelter.Address = Convert.ToString(reader["Address"]);
                             shelter.Address2 = Convert.ToString(reader["AddressTwo"]);
-                            shelter.ZipCode = Convert.ToString(reader["Zipcode"]);
+                            shelter.ZipCode = Convert.ToString(reader["Zipcode"]).Trim();
                             shelter.Phone = Convert.ToString(reader["Phone"]);
                             shelter.Email = Convert.ToString(reader["Email"]);
                             shelter.AreasOfNeed = Convert.ToString(reader["Areasofneed"]);
@@ -186,7 +193,7 @@ namespace DataAccessLayer
                             shelter.ShelterName = Convert.ToString(reader["ShelterName"]);
                             shelter.Address = Convert.ToString(reader["Address"]);
                             shelter.Address2 = Convert.ToString(reader["AddressTwo"]);
-                            shelter.ZipCode = Convert.ToString(reader["Zipcode"]);
+                            shelter.ZipCode = Convert.ToString(reader["Zipcode"]).Trim();
                             shelter.Phone = Convert.ToString(reader["Phone"]);
                             shelter.Email = Convert.ToString(reader["Email"]);
                             shelter.AreasOfNeed = Convert.ToString(reader["Areasofneed"]);
