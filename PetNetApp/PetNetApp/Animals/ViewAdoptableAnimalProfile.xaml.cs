@@ -29,6 +29,7 @@ namespace WpfPresentation.Animals
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private int curImageIdx = 0;
         private List<Images> _animalImages = null;
+        private List<AnimalUpdates> _animalUpdates = null;
 
         public ViewAdoptableAnimalProfile(int animalId)
         {
@@ -52,7 +53,7 @@ namespace WpfPresentation.Animals
         {
             lblAnimalProfileName.Content = animalVM.AnimalName;
             lblAnimalBreed.Content = animalVM.AnimalBreedId;
-
+            lblAnimalShelter.Content = "ShelterID : " + animalVM.AnimalShelterId;
             txtAnimalDescription.Text = animalVM.Description;
         }
 
@@ -181,6 +182,7 @@ namespace WpfPresentation.Animals
             try
             {
                 animalVM = _masterManager.AnimalManager.RetriveAnimalAdoptableProfile(_animalId);
+                
             }
             catch (Exception ex)
             {
@@ -281,6 +283,11 @@ namespace WpfPresentation.Animals
                 {
                     tbkAnimalNote.Text = result;
                 }
+                _animalUpdates = _masterManager.AnimalUpdatesManager.RetrieveAllAnimalUpdatesByAnimalId(_animalId);
+                if (_animalUpdates.Count == 0)
+                {
+                    _animalUpdates = new List<AnimalUpdates>();
+                }
             }
             catch (Exception ex)
             {
@@ -290,12 +297,42 @@ namespace WpfPresentation.Animals
             return result;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/21/2023
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbxAnimalPostUpdate_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
                 SaveAnimalUpdateToDataBase();
             }
+        }
+
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/21/2023
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnViewAllComment_Click(object sender, RoutedEventArgs e)
+        {
+            var animalNoteWindow = new AnimalUpdatesWindow(_animalUpdates);
+            animalNoteWindow.ShowDialog();
+        }
+
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/21/2023
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnViewApplications_Click(object sender, RoutedEventArgs e)
+        {
+            AdoptionApplicantsWindow adoptionApplicantsWindow = new AdoptionApplicantsWindow(animalVM, _masterManager);
+            adoptionApplicantsWindow.Show();
         }
     }
 }

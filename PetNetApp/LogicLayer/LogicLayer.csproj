@@ -47,10 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdoptionApplicationManager.cs" />
+    <Compile Include="AdoptionApplicationResponseManager.cs" />
+    <Compile Include="BookmarkManager.cs" />
     <Compile Include="DeathManager.cs" />
     <Compile Include="AnimalManager.cs" />
     <Compile Include="AnimalUpdatesManager.cs" />
     <Compile Include="DonationManager.cs" />
+    <Compile Include="FosterApplicationManager.cs" />
     <Compile Include="FosterApplicationResponseManager.cs" />
     <Compile Include="FosterManager.cs" />
     <Compile Include="EventManager.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="ShelterInventoryManager.cs" />
     <Compile Include="ShelterItemTransactionManager.cs" />
     <Compile Include="ShelterManager.cs" />
+    <Compile Include="SurrenderFormManager.cs" />
     <Compile Include="TestManager.cs" />
     <Compile Include="TicketManager.cs" />
     <Compile Include="UsersManager.cs" />

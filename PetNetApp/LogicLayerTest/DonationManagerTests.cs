@@ -1,5 +1,6 @@
 ﻿using LogicLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DataObjects;
 
 namespace LogicLayerTest
 {
@@ -112,6 +113,47 @@ namespace LogicLayerTest
             int actualResult = donationManager.RetrieveDonationsByUserId(userId).Count;
 
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        // Created By Asa Armstrong
+        [TestMethod]
+        public void TestInsertDonation()
+        {
+            DonationVM donation = new DonationVM() 
+            { 
+                UserId = 100000,
+                ShelterId = 100000,
+                Amount = 1,
+                Message = "message",
+                DateDonated = System.DateTime.Now,
+                GivenName = "GivenName",
+                FamilyName = "FamilyName",
+                HasInKindDonation = false,
+                Anonymous = false,
+                Target = "target",
+                PaymentMethod = "Card"
+            };
+
+            int actualDonationId = donationManager.AddDonation(donation);
+            int expectedDonationId = donationManager.RetrieveAllDonations().Count;
+
+            Assert.AreEqual(expectedDonationId, actualDonationId);
+        }
+
+        // Created By Asa Armstrong
+        [TestMethod]
+        public void TestInsertInKind()
+        {
+            InKind inKind = new InKind()
+            {
+                DonationId = donationManager.RetrieveAllDonations().Count,
+                Description = "desc",
+                Quantity = 1,
+                Target = "target",
+                Recieved = true
+            };
+
+            Assert.IsTrue(donationManager.AddInKind(inKind));
         }
     }
 }

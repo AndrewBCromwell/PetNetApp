@@ -105,6 +105,19 @@ namespace WpfPresentation.Management
         {
             // Not implemented; enter your method here. According to the UI design this would use the "frameVolunteerDetails" frame.
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// 2023/02/26
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRoleManagement_Click(object sender, RoutedEventArgs e)
         {
             // Not implemented; enter your method here. According to the UI design this would use the "frameVolunteerDetails" frame.

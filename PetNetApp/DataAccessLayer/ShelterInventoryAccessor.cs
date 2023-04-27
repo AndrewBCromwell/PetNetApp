@@ -6,9 +6,17 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Brian Collum
+/// Updated: 2023/04/06
+/// Added support for ItemDisabled property
+/// Added EnableOrDisableShelterInventoryItem and InsertNewShelterInventoryItemFromLibrary
+///
+/// Nathan Zumsande
+/// Updated: 2023/04/19
+/// Updated the update to check if the custom flag for the updated item
+/// is null otherwise set the parameter to the passed value
 /// </remarks>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +72,7 @@ namespace DataAccessLayer
                         shelterInventoryItemVM.DoNotOrder = reader.GetBoolean(10);
                         shelterInventoryItemVM.CustomFlag = reader.IsDBNull(11) ? null : reader.GetString(11);
                         shelterInventoryItemVM.ShelterName = reader.GetString(12);
+                        shelterInventoryItemVM.ItemDisabled = reader.GetBoolean(13);
 
                         _shelterInventoryItemVMs.Add(shelterInventoryItemVM);
 
@@ -129,6 +138,7 @@ namespace DataAccessLayer
                         shelterInventoryItemVM.DoNotOrder = reader.GetBoolean(10);
                         shelterInventoryItemVM.CustomFlag = reader.IsDBNull(11) ? null : reader.GetString(11);
                         shelterInventoryItemVM.ShelterName = reader.GetString(12);
+                        shelterInventoryItemVM.ItemDisabled = reader.GetBoolean(13);
 
                         _shelterInventoryItemVMs = shelterInventoryItemVM;
 
@@ -171,7 +181,39 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@Urgent", newShelterInventoryItemVM.Urgent);
             cmd.Parameters.AddWithValue("@Processing", newShelterInventoryItemVM.Processing);
             cmd.Parameters.AddWithValue("@DoNotOrder", newShelterInventoryItemVM.DoNotOrder);
-            cmd.Parameters.AddWithValue("@CustomFlag", newShelterInventoryItemVM.CustomFlag);
+            //cmd.Parameters.AddWithValue("@CustomFlag", newShelterInventoryItemVM.CustomFlag);
+
+            if(newShelterInventoryItemVM.CustomFlag == null)
+            {
+                cmd.Parameters.AddWithValue("@CustomFlag", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@CustomFlag", newShelterInventoryItemVM.CustomFlag);
+            }
+
+            cmd.Parameters.AddWithValue("@OldQuantity", oldShelterInventoryItemVM.Quantity);
+            cmd.Parameters.AddWithValue("@OldUseStatistic", oldShelterInventoryItemVM.UseStatistic);
+            cmd.Parameters.AddWithValue("@OldLastUpdated", oldShelterInventoryItemVM.LastUpdated);
+            cmd.Parameters.AddWithValue("@OldLowInventoryThreshold", oldShelterInventoryItemVM.LowInventoryThreshold);
+            cmd.Parameters.AddWithValue("@OldHighInventoryThreshold", oldShelterInventoryItemVM.HighInventoryThreshold);
+            cmd.Parameters.AddWithValue("@OldInTransit", oldShelterInventoryItemVM.InTransit);
+            cmd.Parameters.AddWithValue("@OldUrgent", oldShelterInventoryItemVM.Urgent);
+            cmd.Parameters.AddWithValue("@OldProcessing", oldShelterInventoryItemVM.Processing);
+            cmd.Parameters.AddWithValue("@OldDoNotOrder", oldShelterInventoryItemVM.DoNotOrder);
+            
+            if (oldShelterInventoryItemVM.CustomFlag == null)
+            {
+                cmd.Parameters.AddWithValue("@OldCustomFlag", DBNull.Value);
+                
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldCustomFlag", oldShelterInventoryItemVM.CustomFlag);
+            }
+            
+
+
 
             try
             {
@@ -188,6 +230,59 @@ namespace DataAccessLayer
                 conn.Close();
             }
             return rows;
+        }
+        public int InsertNewShelterInventoryItemFromLibrary(int shelterID, string itemID)
+        {
+            int rowsReturned = 0;
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_shelterinventoryitem_from_library";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ShelterId", shelterID);
+            cmd.Parameters.AddWithValue("@ItemId", itemID);
+            try
+            {
+                conn.Open();
+                rowsReturned = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsReturned;
+        }
+        public int EnableOrDisableShelterInventoryItem(int shelterID, string itemID, bool disableItem = false)
+        {
+            int rowsReturned = 0;
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_update_shelterinventoryitem_enabled_disabled";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ShelterId", shelterID);
+            cmd.Parameters.AddWithValue("@ItemId", itemID);
+            cmd.Parameters.AddWithValue("@ItemDisabled", disableItem);
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsReturned;
         }
     }
 }

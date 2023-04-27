@@ -10,7 +10,7 @@
         Loaded="Window_Loaded" 
         WindowStartupLocation="CenterOwner" WindowStyle="None"
         ResizeMode="NoResize"
-        Background="Transparent" Visibility="Visible" AllowsTransparency="True" Closed="Window_Closed" Unloaded="Window_Unloaded"
+        Background="Transparent" Visibility="Visible" AllowsTransparency="True" Closed="Window_Closed"
         >
     <Border BorderThickness="5" Background="#EEF2E6"  BorderBrush="#FF1C6758" CornerRadius="20">
         <Grid Margin="35 0 35 0">
@@ -33,7 +33,7 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="0"/>
             </Grid.ColumnDefinitions>
             <Label x:Name="lblWindowTitle" FontSize="25" Content="View Contact" Margin="10,10,0,0"/>
             <Label x:Name="lblCompanyName" Content="Company Name" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Margin="8,0,0,0"/>
@@ -82,14 +82,14 @@
             </Grid>
             <StackPanel x:Name="stackSaveCancel" Orientation="Horizontal" Grid.Row="14" Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Right">
                 
-                <Button x:Name="btnSave" Margin="5 0" Height="50" Width="150" Content="Save" Click="btnSave_Click"/>
-                <Button x:Name="btnCancel" Margin="5 0" Height="50" Width="150"  Content="Cancel" Click="btnCancel_Click"/>
+                <Button x:Name="btnSave" Margin="5 0" Height="40" Width="125" Content="Save" Click="btnSave_Click"/>
+                <Button x:Name="btnCancel" Margin="5 0" Height="40" Width="125"  Content="Cancel" Style="{StaticResource rsrcWarningButton}" Click="btnCancel_Click"/>
               
             </StackPanel>
             <StackPanel x:Name="stackEditClose" Orientation="Horizontal" Grid.Row="14" Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Right">
-                <Button x:Name="btnVeiwEvents" Margin="5 0" Height="50" Width="150"  Content="View Events" Click="btnVeiwEvents_Click"/>
-                <Button x:Name="btnEdit" Margin="5 0" Height="50" Width="150" Content="Edit" Click="btnEdit_Click"/>
-                <Button x:Name="btnClose" Margin="5 0" Height="50" Width="150"  Content="Close" Click="btnClose_Click" />
+                <Button x:Name="btnVeiwEvents" Margin="5 0" Height="40" Width="125"  Content="View Events" Click="btnVeiwEvents_Click"/>
+                <Button x:Name="btnEdit" Margin="5 0" Height="40" Width="125" Content="Edit" Click="btnEdit_Click"/>
+                <Button x:Name="btnClose" Margin="5 0" Height="40" Width="125"  Content="Close" Style="{StaticResource rsrcSafeButton}" Click="btnClose_Click" />
             </StackPanel>
             <Frame x:Name="frameAddEditInstitutionalEntity" Grid.Row="12"></Frame>
 

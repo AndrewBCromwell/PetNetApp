@@ -275,6 +275,10 @@ namespace DataAccessLayer
                         user.Address2 = reader.GetString(8);
                     }
                 }
+                else
+                {
+                    throw new ApplicationException("User not found.");
+                }
                 reader.Close();
             }
             catch (Exception up)
@@ -668,8 +672,6 @@ namespace DataAccessLayer
             }
 
             return user;
-
-            //throw new NotImplementedException();
         }
         /// <summary>
         /// By: Barry Mikulas
@@ -1115,7 +1117,81 @@ namespace DataAccessLayer
             return result;
         }
 
-        
+
+        public int UpdateUserShelterid(int userid, int shelterid, int? oldShelterId)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            string cmdText = "sp_update_usershelter";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Usersid", userid);
+            if(oldShelterId == null)
+            {
+                cmd.Parameters.AddWithValue("@OldShelterid", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldShelterid", oldShelterId);
+            }
+            
+            cmd.Parameters.AddWithValue("@NewShelterid", shelterid);
+
+            try
+            {
+                conn.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
+
+        public int InsertOrDeleteUserRole(int usersId, string role, bool delete = false)
+        {
+            int rows = 0;
+
+            string cmdText = delete ? "sp_delete_user_role" : "sp_insert_user_role";
+
+            DBConnection connectionFactory = new DBConnection();
+
+            var conn = connectionFactory.GetConnection();
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UsersId", usersId);
+            cmd.Parameters.AddWithValue("@RoleId", role);
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
+
     }
 }
 

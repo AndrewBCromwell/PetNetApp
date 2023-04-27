@@ -29,12 +29,13 @@ namespace LogicLayerInterfaces
         /// 
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="test"></param>
         /// <param name="medicalRecordId"></param>
+        /// <exception cref="ApplicationException">If there is a concurrency issue and no rows where inserted</exception>
         /// <returns>True or false if row was edited</returns>
         bool AddTestByMedicalRecordId(Test test, int medicalRecordId);
 

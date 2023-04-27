@@ -30,6 +30,12 @@ namespace LogicLayerInterfaces
         /// Description: Retrieves inkinds by donationsId
         /// </summary>
         /// <param name="donationId"></param>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <returns></returns>
         List<InKind> RetrieveInKindsByDonationId(int donationId);
         /// <summary>
@@ -37,6 +43,12 @@ namespace LogicLayerInterfaces
         /// Date: 2023/03/02
         /// Description: Retrieves donation by donationsId
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="donationId"></param>
         /// <returns></returns>
         DonationVM RetrieveDonationByDonationId(int donationId);
@@ -64,5 +76,23 @@ namespace LogicLayerInterfaces
         /// <param name="UsersId"></param>
         /// <returns></returns>
         List<DonationVM> RetrieveDonationsByUserId(int usersId);
+
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/03
+        /// Description: Adds a new Donation record
+        /// </summary>
+        /// <param name="donation">The donation to add</param>
+        /// <returns>The DonationId of the newly added Donation</returns>
+        int AddDonation(Donation donation);
+
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/03
+        /// Description: Adds a new InKind record
+        /// </summary>
+        /// <param name="donation">The inKind to add</param>
+        /// <returns>True if the record was added</returns>
+        bool AddInKind(InKind inKind);
     }
 }

@@ -322,6 +322,25 @@ namespace MVCPresentation.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+        //
+        // GET: /Manage/AccountSettings
+        public ActionResult AccountSettings()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/AccountSettings
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AccountSettings(ChangePasswordViewModel model)
+        {
+
+            return View(model);
+
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

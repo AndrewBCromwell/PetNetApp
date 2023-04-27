@@ -28,6 +28,18 @@ namespace DataAccessLayerFakes
                 Status = new ApplicationStatus()
             });
 
+            fakeAdoptionApplicationVMs.Add(new AdoptionApplicationVM
+            {
+                AdoptionApplicationId = 2,
+                ApplicantId = 2,
+                AnimalId = 2,
+                ApplicationStatusId = "Pending",
+                AdoptionApplicationDate = DateTime.Today,
+                AdoptionAnimal = new Animal(),
+                AdoptionApplicant = new Applicant(),
+                Status = new ApplicationStatus()
+            });
+
             fakeHomeOwnershipTypes.Add("Rent");
             fakeHomeOwnershipTypes.Add("Own");
 
@@ -50,6 +62,25 @@ namespace DataAccessLayerFakes
             return rows;
         }
 
+        public List<AdoptionApplicationVM> SelectAllAdoptionApplicationsByAnimalId(int animalId)
+        {
+            List<AdoptionApplicationVM> adoptionApplications = new List<AdoptionApplicationVM>();
+
+            foreach(AdoptionApplicationVM app in fakeAdoptionApplicationVMs)
+            {
+                if(app.AnimalId == animalId)
+                {
+                    adoptionApplications.Add(app);
+                }
+            }
+            return adoptionApplications;
+        }
+
+        public List<AdoptionApplicationVM> SelectAllAdoptionApplicationsByUsersId(int usersId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<string> SelectAllHomeOwnershipTypes()
         {
             return fakeHomeOwnershipTypes;
@@ -58,6 +89,21 @@ namespace DataAccessLayerFakes
         public List<string> SelectAllHomeTypes()
         {
             return fakeHomeTypes;
+        }
+
+        public int UpdateAdoptionApplicationStatusByAnimalIdForApprovedApplication(AdoptionApplicationResponse response)
+        {
+            int rows = 0;
+
+            for (int i = 0; i < fakeAdoptionApplicationVMs.Count; i++)
+            {
+                if (fakeAdoptionApplicationVMs[i].AdoptionApplicationId == response.AdoptionApplicationId)
+                {
+                    fakeAdoptionApplicationVMs[i].ApplicationStatusId = "approved";
+                    rows++;
+                }
+            }
+            return rows;
         }
     }
 }

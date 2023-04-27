@@ -64,6 +64,8 @@ namespace LogicLayer
         public IFosterManager FosterManager { get; set; }
         public IPledgeManager PledgeManager { get; set; }
         public IEventManager EventManager { get; set; }
+        public IAdoptionApplicationResponseManager AdoptionApplicationResponseManager { get; set; }
+        public IFosterApplicationManager FosterApplicationManager { get; set; }
 
 
         private MasterManager()
@@ -101,11 +103,13 @@ namespace LogicLayer
             FosterManager = new FosterManager();
             PledgeManager = new PledgeManager();
             EventManager = new EventManager();
+            AdoptionApplicationResponseManager = new AdoptionApplicationResponseManager();
+            FosterApplicationManager = new FosterApplicationManager();
 
             //for testing from dev page
             User = new UsersVM()
             {
-                UsersId = 100000,
+                UsersId = 100004,
                 ShelterId = 100000,
                 GivenName = "Barry",
                 FamilyName = "Mikulas",
@@ -131,6 +135,7 @@ namespace LogicLayer
         {
             UserChangedAction handler = UserLogout;
             handler?.Invoke();
+            
         }
         protected virtual void OnUserLogin()
         {

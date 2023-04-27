@@ -49,6 +49,11 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Selects all of the medical images for the specified animal id
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="animalId">The animal id to get medical record images for</param>
         /// <returns>List of Images objects</returns>
         List<Images> SelectMedicalImagesByAnimalId(int animalId);

@@ -6,8 +6,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
+/// </remarks>
 using DataObjects;
 using LogicLayer;
 using LogicLayerInterfaces;
@@ -53,9 +55,9 @@ namespace WpfPresentation.Management.Inventory
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="itemManager"></param>
         /// <param name="libraryUI"></param>
@@ -74,9 +76,9 @@ namespace WpfPresentation.Management.Inventory
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="itemManager"></param>
         /// <param name="item"></param>
@@ -99,9 +101,9 @@ namespace WpfPresentation.Management.Inventory
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -161,14 +163,14 @@ namespace WpfPresentation.Management.Inventory
                 }
                 if (result)
                 {
-                    _libraryUI.refreshLibraryList();
+                    _libraryUI.RefreshLibraryList();
                     NavigationService.Navigate(null);
                 }
             }
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
 
@@ -182,9 +184,9 @@ namespace WpfPresentation.Management.Inventory
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -193,7 +195,7 @@ namespace WpfPresentation.Management.Inventory
             PromptSelection selection = PromptWindow.ShowPrompt("Cancel?", "Are you sure you wish to cancel? Changes will not be saved.", ButtonMode.YesNo);
             if (selection == PromptSelection.Yes)
             {
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
         }
@@ -209,9 +211,9 @@ namespace WpfPresentation.Management.Inventory
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -239,7 +241,7 @@ namespace WpfPresentation.Management.Inventory
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", "Failed to get Categories" + "\n" + ex.Message, ButtonMode.Ok);
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
         }

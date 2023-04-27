@@ -25,8 +25,18 @@ using LogicLayer;
 namespace WpfPresentation.Animals
 {
     /// <summary>
+    /// Andrew Cromwell
+    /// Created: 2023/02/08
+    /// 
     /// Interaction logic for EditProcedurePage.xaml
     /// </summary>
+    /// 
+    /// <remarks>
+    /// Zaid Rachman
+    /// Updated: 2023/04/27
+    /// 
+    /// Final QA
+    /// </remarks>
     public partial class EditProcedurePage : Page
     {
         private Animal _medProcedureAnimal;
@@ -40,6 +50,12 @@ namespace WpfPresentation.Animals
         /// 
         /// Constructor that is used when a new procedure is being added
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="animal">the animal that recieved the procedure</param>
         /// <param name="manager">the MasterManager being used through out the program</param>
         public EditProcedurePage(Animal animal, MasterManager manager)
@@ -58,6 +74,12 @@ namespace WpfPresentation.Animals
         /// 
         /// Constructor that is used when a procedure is being edited
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="oldProcedure">the procedure that will be overwriten</param>
         /// <param name="manager">the MasterManager being used through out the program</param>
         public EditProcedurePage(ProcedureVM oldProcedure, MasterManager manager)
@@ -87,6 +109,11 @@ namespace WpfPresentation.Animals
         /// Andrew Cromwell
         /// Updated: 2023/02/16 
         /// Added logic to handle editing an existing procedure record
+        /// 
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -193,6 +220,20 @@ namespace WpfPresentation.Animals
             
         }
 
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created: 2023/02/08
+        /// 
+        /// closes the page to edit a procedure
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMedProcedureEditCancel_Click(object sender, RoutedEventArgs e)
         {
             PromptSelection selection = PromptWindow.ShowPrompt("Really Cancel?", "Do you really want to cancel? The data you entered will not be saved.", ButtonMode.YesNo);

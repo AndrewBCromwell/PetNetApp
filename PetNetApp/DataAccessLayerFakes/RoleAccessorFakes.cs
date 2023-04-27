@@ -97,12 +97,26 @@ namespace DataAccessLayerFakes
             // green test
             return _fakeRoles;
         }
-
+        //updated 2023/04/27 by Zaid Rachman 
         public List<Role> SelectAllRolesByUserId(int userID)
         {
-            //red test
-            //throw new NotImplementedException();
-            return _fakeRoles;
+            List<Role> fakeUsersRoles = new List<Role>();
+            
+            foreach(UserRoles userRoles in _userRoles)
+            {
+                if(userRoles.UsersId == userID)
+                {
+                    foreach(Role role in _fakeRoles)
+                    {
+                        if (role.RoleId.Equals(userRoles.RoleId))
+                        {
+                            fakeUsersRoles.Add(role);
+                        }
+                        
+                    }
+                }
+            }
+            return fakeUsersRoles;
         }
 
     }

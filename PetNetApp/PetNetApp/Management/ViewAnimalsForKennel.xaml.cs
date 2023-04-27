@@ -49,7 +49,7 @@ namespace WpfPresentation.Development.Management
         {
             try
             {
-                _animals = _masterManger.KennelManager.RetrieveAllAnimalsForKennel(_Kennel.ShelterId, _Kennel.AnimalTypeId);
+                _animals = _masterManger.KennelManager.RetrieveAllAnimalsForKennel(_Kennel.ShelterId);
                 if (_animals.Count > 0)
                 {
                     datAnimals.ItemsSource = _animals;

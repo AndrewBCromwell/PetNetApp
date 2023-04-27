@@ -1,7 +1,9 @@
 ﻿using DataObjects;
 using LogicLayer;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -113,6 +115,68 @@ namespace WpfPresentation.Fundraising
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ViewDonationsPage());
+        }
+
+        /// <summary>
+        /// William Rients
+        /// Created: 4/21/23
+        /// 
+        /// Generates a flow document based 
+        /// on the list of donations on the page
+        /// 
+        /// </summary>
+        /// <returns>FlowDocument</returns>
+        private FlowDocument generateReport()
+        {
+            FlowDocument report = new FlowDocument();
+
+            Paragraph heading = new Paragraph(new Run(user.GivenName + " " + user.FamilyName + "'s " + "Donation Report" + "\n"));
+            heading.FontSize = 24;
+            heading.FontWeight = FontWeights.Bold;
+            report.Blocks.Add(heading);
+
+            Paragraph body = new Paragraph();
+            body.FontSize = 12;
+            foreach (DonationVM donation in donorDonationVMs)
+            {
+                body.Inlines.Add("Amount: " + donation.Amount + "\n");
+                body.Inlines.Add("Date: " + donation.DateDonated + "\n");
+                body.Inlines.Add("Message: " + donation.Message + "\n\n");
+
+            }
+            report.Blocks.Add(body);
+
+            return report;
+        }
+
+        /// <summary>
+        /// William Rients
+        /// Created: 4/21/23
+        /// 
+        /// Calls the generateReport method and
+        /// opens a save dialog prompting the user 
+        /// to pick a location to save the report
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private void btn_GenerateReport_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocument document = generateReport();
+
+            TextRange range = new TextRange(document.ContentStart, document.ContentEnd);
+            string plainText = range.Text;
+
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Text files (*.txt)|*.txt";
+            dialog.FileName = "DonationReport.txt";
+            if (dialog.ShowDialog() == true)
+            {
+                using (StreamWriter writer = new StreamWriter(dialog.FileName))
+                {
+                    writer.Write(plainText);
+                }
+            }
+
         }
     }
 }

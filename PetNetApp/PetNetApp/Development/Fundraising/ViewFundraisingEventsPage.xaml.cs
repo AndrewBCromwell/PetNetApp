@@ -105,7 +105,7 @@ namespace WpfPresentation.Development.Fundraising
                     filterMethod = new Func<FundraisingEvent, bool>(fe => fe.Complete && !fe.Hidden);
                     break;
                 case "both":
-                    filterMethod = new Func<FundraisingEvent, bool>(fe => !fe.Complete);
+                    filterMethod = new Func<FundraisingEvent, bool>(fe => !fe.Complete || fe.Complete);
                     break;
                 case "hidden":
                     filterMethod = new Func<FundraisingEventVM, bool>(fe => fe.Hidden);
@@ -213,7 +213,7 @@ namespace WpfPresentation.Development.Fundraising
                 ViewEventsFundraisingEventUserControl item = new ViewEventsFundraisingEventUserControl(fundraisingEvent, i % 2 == 0);
                 item.EventDeleted += () =>
                 {
-                    ApplyFundraisingEventFilterAndSort(false);
+                    LoadFundraisingEventsData();
                 };
                 i++;
                 stackEvents.Children.Add(item);
@@ -231,8 +231,7 @@ namespace WpfPresentation.Development.Fundraising
         }
         private void btnAddEvent_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("Not Implemented", "Feature Add new Event not implemented");
-            NavigationService.GetNavigationService(this).Navigate(AddEditViewUpdateFundraisingEventPage.GetAddFundraisingEventPage());
+            NavigationService.Navigate(new WpfPresentation.Events.AddFundraisingEvent());
         }
         private void btnNavigatePage_Click(object sender, RoutedEventArgs e)
         {

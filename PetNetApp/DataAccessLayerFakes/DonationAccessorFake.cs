@@ -33,17 +33,17 @@ namespace DataAccessLayerFakes
                     new InKind()
                     {
                         InKindId = 1, DonationId = 1, Description = "Dog Toys",
-                        Quanity = 10, Target = "To Help", Recieved = true
+                        Quantity = 10, Target = "To Help", Recieved = true
                     },
                     new InKind()
                     {
                         InKindId = 2, DonationId = 1, Description = "Cat Toys",
-                        Quanity = 10, Target = "To Help", Recieved = true
+                        Quantity = 10, Target = "To Help", Recieved = true
                     },
                     new InKind()
                     {
                         InKindId = 3, DonationId = 1, Description = "Rabbit Food",
-                        Quanity = 15, Target = "To Help", Recieved = true
+                        Quantity = 15, Target = "To Help", Recieved = true
                     }
                 }
             });
@@ -142,6 +142,64 @@ namespace DataAccessLayerFakes
         {
             return fakeDonations.Where(fd => fd.FundraisingEventId == eventId).ToList().Sum(fd => fd.Amount).GetValueOrDefault();
             // throw new NotImplementedException();
+        }
+
+        public int InsertDonation(Donation donation)
+        {
+            int newDonationId = 0;
+            int oldFakeDonationsCount = fakeDonations.Count;
+
+            try
+            {
+                donation.DonationId = fakeDonations.Count + 1;
+                fakeDonations.Add((DonationVM)donation);
+
+                if (fakeDonations.Count > oldFakeDonationsCount)
+                {
+                    newDonationId = donation.DonationId;
+                }
+                else
+                {
+                    throw new ApplicationException("Donation not added.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return newDonationId;
+        }
+
+        public int InsertInKind(InKind inKind)
+        {
+            int rowsAffected = 0;
+
+            try
+            {
+                var donation = fakeDonations.FirstOrDefault(d => d.DonationId == inKind.DonationId);
+
+                if (donation.InKindList == null)
+                {
+                    donation.InKindList = new List<InKind>();
+                }
+
+                int oldInKindCount = donation.InKindList.Count;
+                inKind.InKindId = oldInKindCount + 1;
+                donation.InKindList.Add(inKind);
+                rowsAffected = donation.InKindList.Count - oldInKindCount;
+
+                if (rowsAffected > 0)
+                {
+                    donation.HasInKindDonation = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return rowsAffected;
         }
     }
 }

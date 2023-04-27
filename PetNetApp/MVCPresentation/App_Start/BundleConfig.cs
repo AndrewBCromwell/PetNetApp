@@ -25,8 +25,11 @@ namespace MVCPresentation
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-override.css",
+                      "~/Content/WebShell.css",
                       "~/Content/Site.css",
-                      "~/Content/button-styles.css"));
+                      "~/Content/button-styles.css",
+                      "~/Content/sub-menu.css"
+                      ));
         }
     }
 }

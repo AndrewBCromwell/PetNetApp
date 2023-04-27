@@ -43,9 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAdoptionApplicationAccessor.cs" />
+    <Compile Include="IAdoptionApplicationResponseAccessor.cs" />
     <Compile Include="IAnimalAccessor.cs" />
     <Compile Include="IAnimalUpdatesAccessor.cs" />
+    <Compile Include="IBookmarkAccessor.cs" />
     <Compile Include="IFosterAccessor.cs" />
+    <Compile Include="IFosterApplicationAccessor.cs" />
     <Compile Include="IPledgeAccessor.cs" />
     <Compile Include="IReplyAccessor.cs" />
     <Compile Include="IDBConnection.cs" />
@@ -54,13 +57,13 @@
     <Compile Include="IFosterApplicationResponseAccessor.cs" />
     <Compile Include="IEventAccessor.cs" />
     <Compile Include="IFundraisingCampaignAccessor.cs" />
+    <Compile Include="IFundraisingEventAccessor.cs" />
     <Compile Include="IImagesAccessor.cs" />
     <Compile Include="IInstitutionalEntityAccessor.cs" />
     <Compile Include="IItemAccessor.cs" />
     <Compile Include="IKennelAccessor.cs" />
     <Compile Include="ILibraryAccessor.cs" />
     <Compile Include="IMedicalRecordAccessor.cs" />
-    <Compile Include="IFundraisingEventAccessor.cs" />
     <Compile Include="IPostAccessor.cs" />
     <Compile Include="IProcedureAccessor.cs" />
     <Compile Include="IRequestAccessor.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="IShelterAccessor.cs" />
     <Compile Include="IShelterInventoryItemAccessor.cs" />
     <Compile Include="IShelterItemTransactionAccessor.cs" />
+    <Compile Include="ISurrenderFormAccesor.cs" />
     <Compile Include="ITestAccessor.cs" />
     <Compile Include="ITicketAccessor.cs" />
     <Compile Include="IUsersAccessor.cs" />

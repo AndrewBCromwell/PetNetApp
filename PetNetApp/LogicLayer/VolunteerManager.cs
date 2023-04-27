@@ -7,8 +7,10 @@
 /// </summary>
 /// 
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/24
+/// 
+/// Final QA
 /// </remarks>
 using DataAccessLayer;
 using DataAccessLayerInterfaces;
@@ -35,6 +37,61 @@ namespace LogicLayer
         {
             _volunteerAccessor = volunteerAccessor;
         }
+
+        public bool AddVolunteerToEventbyVolunteerAndEventId(int userId, int fundraisingEventId)
+        {
+            bool result = false;
+            try
+            {
+                if(_volunteerAccessor.InsertVolunteerToEventbyVolunteerAndEventId(userId, fundraisingEventId) == 1)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public bool RemoveVolunteerFromEventbyUsersIdAndFundraisingEventId(int usersId, int fundraisingEventId)
+        {
+            bool result = false;
+            try
+            {
+                if (_volunteerAccessor.DeleteVolunteerFromEventbyUsersIdAndFundraisingEventId(usersId, fundraisingEventId) == 1)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public List<int> RetrieveAllVolunteers()
+        {
+            List<int> volunteers = null;
+
+            try
+            {
+                volunteers = _volunteerAccessor.SelectAllVolunteers();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Data not found.", ex);
+            }
+
+            return volunteers;
+        }
+
         public List<VolunteerVM> RetrieveVolunteersbyFundraisingEventId(int fundraisingEventId)
         {
             List<VolunteerVM> volunteers = null;

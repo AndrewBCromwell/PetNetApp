@@ -41,7 +41,7 @@ namespace WpfPresentation.Events
         public EventsPage()
         {
             InitializeComponent();
-            _eventsTabButtons = new Button[] { btnEvents, btnCreateEvents, btnEventHistory };
+            _eventsTabButtons = new Button[] { btnEvents, btnCreateEvents, btnEventHistory, btnEventResults };
         }
         /// <summary>
         /// Oleksiy Fedchuk
@@ -156,7 +156,7 @@ namespace WpfPresentation.Events
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameEvents.Navigate(null);
+            frameEvents.Navigate(new AddFundraisingEvent());
         }
 
         private void btnEventHistory_Click(object sender, RoutedEventArgs e)
@@ -164,6 +164,13 @@ namespace WpfPresentation.Events
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
             frameEvents.Navigate(null);
+        }
+
+        private void btnEventResults_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+
+            frameEvents.Navigate(Events.ViewEventGraphsPage.GetViewEventGraphsPage());
         }
     }
 }

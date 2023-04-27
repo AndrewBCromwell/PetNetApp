@@ -6,8 +6,11 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/13
+/// 
+/// FinalQA
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,9 +48,10 @@ namespace WpfPresentation.Management.Inventory.Library
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="masterManager"></param>
         /// <param name="libraryUI"></param>
@@ -68,9 +72,10 @@ namespace WpfPresentation.Management.Inventory.Library
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -94,7 +99,7 @@ namespace WpfPresentation.Management.Inventory.Library
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", "Failed to get Categories" + "\n" + ex.Message, ButtonMode.Ok);
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
         }
@@ -107,9 +112,10 @@ namespace WpfPresentation.Management.Inventory.Library
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -141,7 +147,7 @@ namespace WpfPresentation.Management.Inventory.Library
                 result = _masterManager.ItemManager.AddCategory(categoryId);
                 if (result)
                 {
-                    _libraryUI.refreshLibraryList();
+                    _libraryUI.RefreshLibraryList();
                     NavigationService.Navigate(null);
                 }
                 else
@@ -152,7 +158,7 @@ namespace WpfPresentation.Management.Inventory.Library
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
         }
@@ -165,15 +171,17 @@ namespace WpfPresentation.Management.Inventory.Library
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             PromptSelection selection = PromptWindow.ShowPrompt("Cancel?", "Are you sure you wish to cancel? Changes will not be saved.", ButtonMode.YesNo);
             if (selection == PromptSelection.Yes)
             {
-                _libraryUI.refreshLibraryList();
+                _libraryUI.RefreshLibraryList();
                 NavigationService.Navigate(null);
             }
         }

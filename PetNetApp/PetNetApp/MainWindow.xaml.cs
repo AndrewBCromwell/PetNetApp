@@ -127,7 +127,7 @@ namespace PetNetApp
             }
             else
             {
-                frameMain.Navigate(UserProfilePage.GetUserProfilePage(this));
+                frameMain.Navigate(UserProfilePage.GetUserProfilePage(this, _manager.User));
             }
         }
 
@@ -204,6 +204,7 @@ namespace PetNetApp
                 if (result == PromptSelection.Yes)
                 {
                     _manager.User = null;
+
                 }
             }
         }

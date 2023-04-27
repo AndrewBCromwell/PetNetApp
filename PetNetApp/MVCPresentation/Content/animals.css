@@ -30,3 +30,7 @@
 .adoption-applcation-cols {
     margin: 3%,5%,5%,0;
 }
+
+#filterByAnimalType .header{
+    display: none;
+}

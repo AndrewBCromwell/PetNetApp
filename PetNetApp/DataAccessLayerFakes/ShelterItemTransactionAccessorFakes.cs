@@ -59,6 +59,31 @@ namespace DataAccessLayerFakes
             });
         }
 
+        public int InsertItemTransaction(ShelterItemTransaction transaction)
+        {
+            int result = 0;
+            ShelterItemTransactionVM _transaction = new ShelterItemTransactionVM
+            {
+                ShelterItemTransactionId = transaction.ShelterItemTransactionId,
+                ShelterId = transaction.ShelterId,
+                ItemId = transaction.ItemId,
+                ChangedByUsersId = transaction.ChangedByUsersId,
+                InventoryChangeReasonId = transaction.InventoryChangeReasonId,
+                QuantityIncrement = transaction.QuantityIncrement,
+                DateChanged = transaction.DateChanged
+            };
+            shelterItemTransactions.Add(_transaction);
+            foreach (var t in shelterItemTransactions)
+            {
+                if (t.ShelterItemTransactionId == transaction.ShelterItemTransactionId)
+                {
+                    result = 1;
+                    break;
+                }
+            }
+
+            return result;
+        }
 
         public List<ShelterItemTransactionVM> SelcetShelterItemTransactionByShelterId(int shelterId)
         {

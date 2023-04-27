@@ -36,6 +36,12 @@ namespace DataAccessLayerInterfaces
         /// Date: 2023/03/08
         /// Description: Selects all inkinds by donation id
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="donationId"></param>
         /// <returns></returns>
         List<InKind> SelectInKindsByDonationId(int donationId);
@@ -44,6 +50,12 @@ namespace DataAccessLayerInterfaces
         /// Date: 2023/03/08
         /// Description: Selects donation by donation id
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/13
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="donationID"></param>
         /// <returns></returns>
         DonationVM SelectDonationByDonationId(int donationID);
@@ -71,5 +83,23 @@ namespace DataAccessLayerInterfaces
         /// <param name="UsersId"></param>
         /// <returns></returns>
         List<DonationVM> SelectDonationsByUserId(int usersId);
+
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/13
+        /// Description: Inserts a donation record
+        /// </summary>
+        /// <param name="donation">The donation to insert</param>
+        /// <returns>The DonationId of the newly inserted Donation</returns>
+        int InsertDonation(Donation donation);
+
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/13
+        /// Description: Inserts an InKind record
+        /// </summary>
+        /// <param name="inKind">The inkind to insert</param>
+        /// <returns>Rows affected</returns>
+        int InsertInKind(InKind inKind);
     }
 }

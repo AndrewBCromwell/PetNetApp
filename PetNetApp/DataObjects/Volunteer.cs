@@ -4,11 +4,14 @@
 /// 
 /// 
 /// Class for the creation of User Objects with set data fields
+/// This object is also a massive mistake on my part
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/24
+/// 
+/// Final QA
 /// </remarks>
 using System;
 using System.Collections.Generic;

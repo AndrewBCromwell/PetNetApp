@@ -28,13 +28,13 @@ namespace DataAccessLayerInterfaces
         /// 
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="test"></param>
         /// <param name="medicalRecordId"></param>
-        /// /// <exception cref="SQLException">Insert Fails</exception>
+        /// <exception cref="SQLException">Insert Fails</exception>
         /// <returns>Rows edited</returns>
         int InsertTestByMedicalRecordId(Test test, int medicalRecordId);
 

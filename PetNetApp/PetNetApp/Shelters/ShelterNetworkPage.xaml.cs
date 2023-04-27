@@ -6,8 +6,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/14
+/// 
+/// FinalQA
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -33,7 +35,7 @@ namespace WpfPresentation.Shelters
     /// </summary>
     public partial class ShelterNetworkPage : Page
     {
-        private MasterManager _masterManger = null;
+        private MasterManager _masterManager = null;
         private ShelterManager _shelterManager = null;
         private List<Shelter> _shelters = null;
         private static ShelterNetworkPage _page = null;
@@ -52,14 +54,15 @@ namespace WpfPresentation.Shelters
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="masterManager"></param>
         public ShelterNetworkPage(MasterManager masterManager)
         {
-            _masterManger = masterManager;
+            _masterManager = masterManager;
             _shelterManager = new ShelterManager();
             InitializeComponent();
         }
@@ -73,9 +76,10 @@ namespace WpfPresentation.Shelters
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="masterManager"></param>
         public static ShelterNetworkPage GetShelterNetworkPage(MasterManager manager)
@@ -94,11 +98,12 @@ namespace WpfPresentation.Shelters
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA - Updated method name to follow naming conventions
         /// </remarks>
-        private void refreshShelters()
+        private void RefreshShelters()
         {
             try
             {
@@ -119,9 +124,10 @@ namespace WpfPresentation.Shelters
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA - Updated RefreshShelters name to follow naming conventions
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -129,7 +135,7 @@ namespace WpfPresentation.Shelters
         {
             if (_shelters == null)
             {
-                refreshShelters();
+                RefreshShelters();
             }
         }
 
@@ -141,18 +147,17 @@ namespace WpfPresentation.Shelters
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/14
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnContact_Click(object sender, RoutedEventArgs e)
-        {
-            //PromptWindow.ShowPrompt("Todo", "Todo", ButtonMode.Ok);
+        { 
             Shelter shelter = (Shelter)((Button)e.Source).DataContext;
-            frameShelterNetwork.Navigate(new ContactPage(_masterManger, shelter));
+            frameShelterNetwork.Navigate(new ContactPage(_masterManager, shelter));
         }
-
     }
 }

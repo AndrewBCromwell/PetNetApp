@@ -81,7 +81,7 @@ namespace WpfPresentation.Management
         }
         public void ShowInventoryButtonByRole()
         {
-            string[] allowedRoles = { "Admin", "Manager" };
+            string[] allowedRoles = { "Admin", "Manager", "Employee" };
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnInventory.Visibility = Visibility.Visible;

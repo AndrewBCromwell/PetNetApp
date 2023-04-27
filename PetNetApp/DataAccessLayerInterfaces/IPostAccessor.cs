@@ -49,6 +49,15 @@ namespace DataAccessLayerInterfaces
         /// <returns></returns>
         PostVM SelectPostByPostId(int postId);
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Selects the count of reports this user has on this post
+        /// </summary>
+        /// <param name="postId">the post</param>
+        /// <param name="userId"> the user</param>
+        /// <returns>count of reports user has on post</returns>
         int SelectUserPostReportedByPostIdandUserId(int postId, int userId);
 
         /// <summary>
@@ -61,5 +70,40 @@ namespace DataAccessLayerInterfaces
         /// <param name="oldVisibility"></param>
         /// <returns></returns>
         int UpdatePostVisibility(int postId, bool newVisibility, bool oldVisibility);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Gets a List of all the different messages someone can report for
+        /// </summary>
+        /// <returns></returns>
+        List<ReportMessage> SelectReportMessages();
+
+
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Adds a new report to the database for the selected post
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <param name="userId"></param>
+        /// <param name="reportMessageId"></param>
+        /// <returns></returns>
+        int InsertPostReport(int postId, int userId, int reportMessageId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Removes a report from the database for the selected post
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <param name="userId"></param>
+        /// <param name="reportMessageId"></param>
+        /// <returns></returns>
+        int DeletePostReport(int postId, int userId);
     }
 }
