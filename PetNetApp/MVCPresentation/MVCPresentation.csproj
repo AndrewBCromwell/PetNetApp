@@ -196,6 +196,10 @@
     <Compile Include="Migrations\202304070814588_Zipcode.Designer.cs">
       <DependentUpon>202304070814588_Zipcode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304141422458_Repo Cloned.cs" />
+    <Compile Include="Migrations\202304141422458_Repo Cloned.Designer.cs">
+      <DependentUpon>202304141422458_Repo Cloned.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FundraisingViewModels.cs" />
@@ -203,6 +207,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\ShelterViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -346,6 +351,8 @@
     <Content Include="Views\Community\EditReply.cshtml" />
     <Content Include="Views\Shelters\Index.cshtml" />
     <Content Include="Views\Community\Delete.cshtml" />
+    <Content Include="Views\Shelters\HoursOfOperation.cshtml" />
+    <Content Include="Views\Shelters\EditHoursOfOperation.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -519,6 +526,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304070814588_Zipcode.resx">
       <DependentUpon>202304070814588_Zipcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304141422458_Repo Cloned.resx">
+      <DependentUpon>202304141422458_Repo Cloned.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
