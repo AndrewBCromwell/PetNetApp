@@ -92,7 +92,8 @@ namespace WpfPresentation.UserControls
 
         private void menuAddDonation_Click(object sender, RoutedEventArgs e)
         {
-
+            // added by Asa Armstrong
+            NavigationService.GetNavigationService(this).Navigate(new EnterDonation(FundraisingEvent.FundraisingEventId));
         }
     }
 }

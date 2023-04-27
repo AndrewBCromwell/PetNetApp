@@ -32,7 +32,7 @@ namespace WpfPresentation.Animals
     {
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private bool isEditMode = false;
-        // private FosterApplication _fosterApplication = null;
+        private FosterApplicationVM _fosterApplication = null;
         private int _fosterApplicationId = -1;
 
         private FosterApplicationResponseVM _oldFosterApplicationResponse = new FosterApplicationResponseVM();
@@ -59,13 +59,13 @@ namespace WpfPresentation.Animals
         /// </summary>
         /// <param name="fosterApplication">The FosterApplication that this response is for</param>
         /// <returns>AddEditReportOnFoster</returns>
-        /*
-        public AddEditReportOnFoster(FosterApplication fosterApplication)
+        public AddEditReportOnFoster(FosterApplicationVM fosterApplication)
         {
             _fosterApplication = fosterApplication;
+            _fosterApplicationId = fosterApplication.FosterApplicationId;
             InitializeComponent();
+            setupPage();
         }
-        */
 
         private void setupPage()
         {
@@ -79,8 +79,8 @@ namespace WpfPresentation.Animals
                 }
                 else // not edit mode
                 {
-                    //txt_FosterName.Text = _fosterApplication -> Given and Family name
-                    //txt_FosterAccountID.Text = _fosterApplication -> ApplicantId
+                    txt_FosterName.Text = _fosterApplication.FosterApplicationApplicant.ApplicantGivenName.ToString() + " " + _fosterApplication.FosterApplicationApplicant.ApplicantFamilyName.ToString();
+                    txt_FosterAccountID.Text = _fosterApplication.ApplicantId.ToString();
                 }
             }
             catch (Exception ex)
@@ -131,7 +131,8 @@ namespace WpfPresentation.Animals
                     if (_masterManager.FosterApplicationResponseManager.AddFosterApplicationResponse(_responseVM))
                     {
                         PromptWindow.ShowPrompt("Congratulations!", "Record Added", ButtonMode.Ok);
-                        setupPage();
+                        // setupPage();
+                        Window.GetWindow(this).Close();
                     }
                     else
                     {
@@ -143,7 +144,8 @@ namespace WpfPresentation.Animals
                     if(_masterManager.FosterApplicationResponseManager.EditFosterApplicationResponse(_responseVM, _oldFosterApplicationResponse))
                     {
                         PromptWindow.ShowPrompt("Congratulations!", "Record Updated", ButtonMode.Ok);
-                        setupPage();
+                        //setupPage();
+                        Window.GetWindow(this).Close();
                     }
                     else
                     {
@@ -166,19 +168,7 @@ namespace WpfPresentation.Animals
         /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            //if (PromptWindow.ShowPrompt("Confirm Cancel", "Cancel and return?", ButtonMode.YesNo).Equals(PromptSelection.Yes))
-            //{
-            //    if (NavigationService.CanGoBack)
-            //    {
-            //        NavigationService.GoBack();
-            //    }
-            //    else
-            //    {
-            //        //NavigationService.Navigate(new WpfPresentation.Animals.AnimalsPage());
-            //    }
-            //}
-
-            PromptSelection result = PromptWindow.ShowPrompt("Confirm", "Are you sure you want to cancel? \n\n Your response will not be saved.", ButtonMode.YesNo);
+            PromptSelection result = PromptWindow.ShowPrompt("Confirm", "Are you sure you want to cancel? \n\n Any unsaved changes will be lost.", ButtonMode.YesNo);
             if (result == PromptSelection.Yes)
             {
                 var window = Window.GetWindow(this);

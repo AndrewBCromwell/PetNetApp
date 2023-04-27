@@ -206,7 +206,7 @@ namespace WpfPresentation.Fundraising
             {
                 NavigationService.Navigate(WpfPresentation.Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
             }
-            if (Donation.ScheduledDonationId != null)
+            else if (Donation.ScheduledDonationId != null)
             {
                 // navigate to scheduled donation page
                 NavigationService.Navigate(ViewDonationsPage.ExistingDonationPage);

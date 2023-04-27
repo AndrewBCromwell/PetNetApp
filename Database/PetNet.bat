@@ -13,6 +13,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\EditHoursOfOperation_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\FosterApplicationResponse.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewFundraisingEventsMVC_SD.sql
 
