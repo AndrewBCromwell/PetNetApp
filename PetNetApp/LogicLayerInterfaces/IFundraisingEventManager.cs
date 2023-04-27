@@ -67,6 +67,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/04/15
         /// A method to to get a list of all Active Fundraising Events for a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// 2023/04/26
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId">id of the shelter to view events for</param>
         /// <returns>List of all active fundraising events by shelterId</returns>
         List<FundraisingEventVM> RetrieveAllActiveFundraisingEventsByShelterId(int shelterId);
@@ -76,6 +82,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/04/15
         /// A method to to get a list of all Active Fundraising Events
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// 2023/04/26
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <returns>List of all active fundraising events</returns>
         List<FundraisingEventVM> RetrieveAllActiveFundraisingEvents();
 

@@ -69,6 +69,12 @@ namespace DataAccessLayerInterfaces
         /// A method to get the Active Fundraising Events for a shelter id
         /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// 2023/04/26
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId">ShelterId to select all the Fundraising Events for</param>
         /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List of Fundraising Events</returns>
@@ -81,6 +87,12 @@ namespace DataAccessLayerInterfaces
         /// A method to get all Active Fundraising Events
         /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// 2023/04/26
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <returns>List of Fundraising Events</returns>
         List<FundraisingEventVM> SelectAllActiveFundraisingEvents();
     }
