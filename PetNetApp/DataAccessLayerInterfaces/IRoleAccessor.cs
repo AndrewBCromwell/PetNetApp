@@ -68,6 +68,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Takes a usersId and a Role obj and updates the UserRole table
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="usersId">The userId being retrieved</param>
         /// <param name="role">Role object</param>
         /// <returns>int count of records inserted - will be 1 unless error</returns>

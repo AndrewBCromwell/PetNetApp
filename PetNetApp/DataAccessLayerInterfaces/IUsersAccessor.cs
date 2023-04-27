@@ -78,6 +78,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Takes a usersId and returns a users object
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="usersId">The userId being retrieved</param>
         /// <returns>Users object</returns>
         Users SelectUserByUsersId(int usersId);
@@ -88,6 +94,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Takes a usersId and returns a users object
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="usersId">The userId being retrieved</param>
         /// <returns>UsersVM object</returns>
         UsersVM SelectUserByUsersIdWithRoles(int usersId);
@@ -98,6 +110,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Takes a usersId and changes the suspend status to the value of suspend parameter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="usersId">The userId being updated</param>
         /// <param name="suspend">True if suspending, false if unsuspending</param>
         /// <returns>int count of updated users - should be 1</returns>
@@ -109,6 +127,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Takes a roleId and counts the number active, unsuspended accounts with that roleId
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="roleId"></param>
         /// <returns>int count of accounts</returns>
         int SelectCountActiveUnsuspendedUsersByRole(string roleId);

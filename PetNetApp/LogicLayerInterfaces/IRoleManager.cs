@@ -64,6 +64,12 @@ namespace LogicLayerInterfaces
         /// 
         /// Adds a role for a users.
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="role">Role object</param>
         /// <param name="usersId">int for usersId</param>
         /// <returns>bool of success of adding the role for a user</returns>
