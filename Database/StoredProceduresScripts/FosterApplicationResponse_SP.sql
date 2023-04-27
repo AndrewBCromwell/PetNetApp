@@ -107,7 +107,8 @@ AS
 			FosterApplication1.ApplicantId, Users1.GivenName, Users1.FamilyName
 		FROM dbo.FosterApplicationResponse
 			JOIN FosterApplication FosterApplication1 ON FosterApplicationResponse.FosterApplicationId = FosterApplication1.FosterApplicationId
-			JOIN Users Users1 ON FosterApplication1.ApplicantId = Users1.UsersId
+			JOIN Applicant Applicant1 ON FosterApplication1.ApplicantId = Applicant1.ApplicantId
+			JOIN Users Users1 ON Applicant1.UsersId = Users1.UsersId
 		WHERE @FosterApplicationId = FosterApplicationResponse.FosterApplicationId
 	END
 GO

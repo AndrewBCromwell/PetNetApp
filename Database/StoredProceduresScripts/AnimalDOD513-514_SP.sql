@@ -69,20 +69,20 @@ AS
 	BEGIN
 		UPDATE [dbo].[Death]
 		SET
-			DeathDate			= @NewDeathDate,
-			DeathCause			= @NewDeathCause,
-			DeathDisposal		= @NewDeathDisposal,
-			DeathDisposalDate	= @NewDeathDisposalDate,
-			DeathNotes			= @NewDeathNotes
+			Death.DeathDate			= @NewDeathDate,
+			Death.DeathCause			= @NewDeathCause,
+			Death.DeathDisposal		= @NewDeathDisposal,
+			Death.DeathDisposalDate	= @NewDeathDisposalDate,
+			Death.DeathNotes			= @NewDeathNotes
 		WHERE
-			DeathId					= @DeathId
-			AND AnimalId			= @AnimalId
-			AND UsersId				= @UsersId
-			AND DeathDate			= @OldDeathDate
-			AND DeathCause			= @OldDeathCause
-			AND DeathDisposal		= @OldDeathDisposal
-			AND DeathDisposalDate	= @OldDeathDisposalDate
-			AND DeathNotes			= @OldDeathNotes
+			Death.DeathId					= @DeathId
+			AND Death.AnimalId			= @AnimalId
+			AND Death.UsersId				= @UsersId
+			AND Death.DeathDate			= @OldDeathDate
+			AND Death.DeathCause			= @OldDeathCause
+			AND Death.DeathDisposal		= @OldDeathDisposal
+			AND Death.DeathDisposalDate	= @OldDeathDisposalDate
+			AND Death.DeathNotes			= @OldDeathNotes  OR (Death.DeathNotes IS NULL AND @OldDeathNotes IS NULL)
 		RETURN @@ROWCOUNT
 	END
 GO
