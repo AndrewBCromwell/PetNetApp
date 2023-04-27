@@ -156,22 +156,13 @@ namespace DataAccessLayerFakes
             int row;
             int row2;
             row = medicalRecords.Count;
-            //MedicalRecordVM  m = new MedicalRecordVM( medicalRecord);
+       
             MedicalRecordVM m = new MedicalRecordVM();
             m.MedicalNotes = medicalRecord.MedicalNotes;
             medicalRecords.Add(m);
             row2 = medicalRecords.Count - row;
             return row2;
-            //if (addmedicalRecord.AnimalId >= 100000)
-            //{
-            //    return  1;
-            //}
-            //else
-            //{
-            //    return 2;
-            //}
-            //return addmedicalRecords.Count;
-            return row2;
+            
         }
 
         public int UpdateQuarantineStatusByMedicalRecordId(int medicalRecordId, bool quarantineStatus, bool oldQuarantineStatus)
