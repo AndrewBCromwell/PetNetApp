@@ -47,7 +47,7 @@ namespace WpfPresentation.Misc
         {
             _user = user;
             InitializeComponent();
-            _profileTabButtons = new Button[] { btnPendingAdoptionApplications, btnFosterApplications};
+            _profileTabButtons = new Button[] { btnPendingAdoptionApplications, btnFosterApplications, btnUserInformation};
         }
 
         /// <summary>
@@ -353,6 +353,12 @@ namespace WpfPresentation.Misc
             _adoptionApplicationList = null;
             _fosterApplicationList = null;
             lblNoApplications.Visibility = Visibility.Hidden;
+        }
+
+        private void btnUserInformation_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton(btnUserInformation);
+            // logic here for user information page(s)
         }
     }
 }
