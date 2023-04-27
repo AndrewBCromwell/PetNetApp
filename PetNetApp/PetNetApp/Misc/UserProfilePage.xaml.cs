@@ -209,6 +209,8 @@ namespace WpfPresentation.Misc
                 _fosterApplicationList = _manager.FosterApplicationManager.RetrieveAllFosterApplicationsByUsersId(userId);
                 if (_fosterApplicationList.Count > 0)
                 {
+                    scrTabBox.Visibility = Visibility.Visible;
+                    spTabBox.Visibility = Visibility.Visible;
                     foreach (FosterApplicationVM application in _fosterApplicationList)
                     {
                         GetFosterApplicantUC(application);
