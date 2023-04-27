@@ -53,14 +53,72 @@ namespace LogicLayerInterfaces
         /// <param name="fundraisingEventId">the id of the event to retrieve.</param>
         /// <returns>FundraisingEventVM</returns>
         FundraisingEventVM RetrieveFundraisingEventByFundraisingEventId(int fundraisingEventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="fundraisingEvent"></param>
+        /// <returns></returns>
         int AddFundraisingEvent(FundraisingEvent fundraisingEvent);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="fundRaisingEventId"></param>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
         bool AddFundraiserAnimal(int fundRaisingEventId, int animalId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="contactId"></param>
+        /// <returns></returns>
         bool AddFundraisingEventEntity(int eventId, int contactId);
         FundraisingEvent FindFundraisingEvent(int eventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         List<InstitutionalEntity> RetrieveSponsorByEventId(int eventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         List<InstitutionalEntity> RetrieveContactByEventId(int eventId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="shelterId"></param>
+        /// <returns></returns>
         List<Animal> RetrieveAnimalByEventId(int eventId, int shelterId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="fundraisingEvent"></param>
+        /// <returns></returns>
         bool UpdateFundraisingEvent(FundraisingEventVM fundraisingEvent);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         bool DeactivateFundraisingEvent(int eventId);
         /// <summary>
         /// Barry Mikulas

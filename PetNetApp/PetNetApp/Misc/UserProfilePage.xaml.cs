@@ -242,7 +242,7 @@ namespace WpfPresentation.Misc
             AnimalVM animal;
             try
             {
-                animal = _manager.AnimalManager.RetriveAnimalAdoptableProfile(application.AnimalId);
+                animal = _manager.AnimalManager.RetrieveAnimalAdoptableProfile(application.AnimalId);
                 ApplicantUC applicantUC = new ApplicantUC(applicant, application, animal);
 
                 applicantUC.lblUsersAccountName.Content = animal.AnimalName;

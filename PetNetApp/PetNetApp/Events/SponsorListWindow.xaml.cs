@@ -30,12 +30,24 @@ namespace WpfPresentation.Events
             returnValue = null;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCanle_Click(object sender, RoutedEventArgs e)
         {
             returnValue = null;
             this.DialogResult = false;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void SponsorSearching()
         {
             sponsorSearch = new List<InstitutionalEntity>();
@@ -59,6 +71,12 @@ namespace WpfPresentation.Events
             PopulateSponsors();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sponsor"></param>
         private void DisplaySponsors(InstitutionalEntity sponsor)
         {
             UCEventSponsor ucEventSponsor = new UCEventSponsor();
@@ -69,18 +87,35 @@ namespace WpfPresentation.Events
             stpEventSponsors.Children.Add(ucEventSponsor);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sponsor"></param>
         private void BtnAdd_Click(InstitutionalEntity sponsor)
         {
             returnValue = sponsor;
             this.DialogResult = false;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sponsor"></param>
         private void BtnView_Click(InstitutionalEntity sponsor)
         {
             PromptWindow.ShowPrompt("Sponsor Detail", "Name: " + sponsor.CompanyName + "\n\n" 
                 + "Email: " + sponsor.Email + "\n\n" + "Phone Number: " + sponsor.Phone);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void PopulateSponsors()
         {
             stpEventSponsors.Children.Clear();
@@ -90,16 +125,36 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SponsorSearching();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public InstitutionalEntity GetReturnValue()
         {
             return returnValue;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearchSponsor_TextChanged(object sender, TextChangedEventArgs e)
         {
             SponsorSearching();

@@ -14,6 +14,12 @@ namespace MVCPresentation.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult About()
         {
             return View();
@@ -31,6 +37,12 @@ namespace MVCPresentation.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult TermsOfService()
         {
             return View();
