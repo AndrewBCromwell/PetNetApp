@@ -53,7 +53,7 @@ namespace WpfPresentation.Animals
         {
             lblAnimalProfileName.Content = animalVM.AnimalName;
             lblAnimalBreed.Content = animalVM.AnimalBreedId;
-            lblAnimalShelter.Content = animalVM.AnimalShelterId;
+            lblAnimalShelter.Content = "ShelterID : " + animalVM.AnimalShelterId;
             txtAnimalDescription.Text = animalVM.Description;
         }
 
@@ -297,6 +297,12 @@ namespace WpfPresentation.Animals
             return result;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/21/2023
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbxAnimalPostUpdate_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -305,12 +311,24 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/21/2023
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnViewAllComment_Click(object sender, RoutedEventArgs e)
         {
             var animalNoteWindow = new AnimalUpdatesWindow(_animalUpdates);
             animalNoteWindow.ShowDialog();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/21/2023
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnViewApplications_Click(object sender, RoutedEventArgs e)
         {
             //NavigationService nav = NavigationService.GetNavigationService(this);

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.Community;
+using PetNetApp;
 
 namespace WpfPresentation.Events
 {
@@ -272,13 +273,32 @@ namespace WpfPresentation.Events
                     }
 
                     PromptWindow.ShowPrompt("Message", "Successful to add new fundraising event");
-                    NavigationService.Navigate(new Development.Fundraising.ViewFundraisingEventsPage());
+                    NavigateToViewFundraisingEvent();
                 }
                 catch (Exception ex)
                 {
                     PromptWindow.ShowPrompt("Error", "Can not add new fundraising event \n\n" + ex);
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (PromptWindow.ShowPrompt("Cancel", "Are you really want to cancel?", ButtonMode.YesNo)
+                == PromptSelection.Yes)
+            {
+                NavigateToViewFundraisingEvent();
+            }
+        }
+
+        private void NavigateToViewFundraisingEvent()
+        {
+            var mainWindow = (MainWindow)MainWindow.GetWindow(this);
+            Development.Fundraising.FundraisingPage fundraisingPage = Development.Fundraising.FundraisingPage.GetFundraisingPage(_masterManager);
+            fundraisingPage.ChangeSelectedButton(fundraisingPage.btnEvents);
+            mainWindow.ChangeSelectedButton(mainWindow.btnFundraising);
+            mainWindow.frameMain.Navigate(fundraisingPage);
+            fundraisingPage.frameFundraising.Navigate(Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
     }
 }
