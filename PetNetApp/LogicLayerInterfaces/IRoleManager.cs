@@ -26,13 +26,19 @@ namespace LogicLayerInterfaces
         /// <exception cref="SQLException">Delete fails.</exception>
         /// <returns>True if the record was removed</returns>
         bool RemoveRoleByUsersIdAndRoleId(int usersId, string roleId);
-        
+
         /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/11
         /// 
         /// Retrieves a List of Role objects
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <returns>List of Role Objects</returns>
         List<Role> RetrieveAllRoles();
 
@@ -42,6 +48,12 @@ namespace LogicLayerInterfaces
         /// 
         /// Retrieves a List of Role objects for a usersId
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="usersId"></param>
         /// <returns>List of Role Objects</returns>
         List<Role> RetrieveRoleListByUserId(int usersId);

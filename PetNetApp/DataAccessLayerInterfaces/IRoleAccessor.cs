@@ -37,6 +37,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Retrieves a list of all Role objects
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <returns>List of Role objects</returns>
         List<Role> SelectAllRoles();
 
@@ -46,6 +52,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Takes a usersId and returns a List of Role objects
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="usersId">The userId being retrieved</param>
         /// <returns>List of Role objects</returns>
         List<Role> SelectAllRolesByUserId(int userID);
