@@ -97,11 +97,9 @@ namespace DataAccessLayerFakes
             // green test
             return _fakeRoles;
         }
-
+        //updated 2023/04/27 by Zaid Rachman 
         public List<Role> SelectAllRolesByUserId(int userID)
         {
-            //red test
-            //throw new NotImplementedException();
             List<Role> fakeUsersRoles = new List<Role>();
             
             foreach(UserRoles userRoles in _userRoles)
