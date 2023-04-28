@@ -86,6 +86,10 @@ namespace WpfPresentation.Management
                 PromptWindow.ShowPrompt("Congrats", "Animal Kenneling removed.", ButtonMode.Ok);
                 NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
             }
+            else
+            {
+                PromptWindow.ShowPrompt("Error", "Something went wrong. Try again later.", ButtonMode.Ok);
+            }
         }
 
         /// <summary>

@@ -27,6 +27,7 @@ namespace WpfPresentation.UserControls
         public static double DonationAmountWidth { get; set; } = 150;
         public static double GivenNameWidth { get; set; } = 150;
         public static double FamilyNameWidth { get; set; } = 150;
+        public static double DateWidth { get; set; } = 150;
         public PledgeVM PledgeVM { get; set; }
         public FundraisingEvent FundraisingEvent { get; set; }
         public bool UseAlternateColors { get; set; }

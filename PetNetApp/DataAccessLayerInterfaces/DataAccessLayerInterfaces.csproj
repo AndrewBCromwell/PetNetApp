@@ -65,6 +65,7 @@
     <Compile Include="ILibraryAccessor.cs" />
     <Compile Include="IMedicalRecordAccessor.cs" />
     <Compile Include="IPostAccessor.cs" />
+    <Compile Include="IPrescriptionAccessor.cs" />
     <Compile Include="IProcedureAccessor.cs" />
     <Compile Include="IRequestAccessor.cs" />
     <Compile Include="IResourceAddRequestAccessor.cs" />

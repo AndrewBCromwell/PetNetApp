@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfPresentation.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-            <!-- Copied from AnimalListUserControl -->
+            <!-- Copied from AnimalListUserControl created by Molly -->
     <Viewbox StretchDirection="Both" Stretch="Uniform">
 
         <Border BorderBrush="#FF9EC1B0" BorderThickness="5" CornerRadius="5" Background="#9EC1B0" Margin="15" Height="250" Width="200" Padding="10">

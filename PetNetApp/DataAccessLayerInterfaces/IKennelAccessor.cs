@@ -159,6 +159,12 @@ namespace DataAccessLayerInterfaces
         /// Updated: 2023/02/24
         /// Added Comment.
         /// </remarks>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="kennelId">kennelId</param>
         /// <param name="animalId">animalId</param>
         /// <exception cref="SQLException">Delete fails.</exception>

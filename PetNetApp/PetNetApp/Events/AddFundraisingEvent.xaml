@@ -93,7 +93,7 @@
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="btnNext" Grid.Column="0" Width="120" Margin="0 0 10 0" HorizontalAlignment="Right" Content="Next" Height="50" Click="btnNext_Click"/>
-            <Button x:Name="btnCancel" Grid.Column="1" Width="120" Content="Cancel" Height="50"/>
+            <Button x:Name="btnCancel" Grid.Column="1" Width="120" Content="Cancel" Height="50" Click="btnCancel_Click"/>
         </Grid>
         
     </Grid>

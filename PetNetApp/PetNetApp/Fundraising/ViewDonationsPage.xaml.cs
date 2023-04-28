@@ -55,7 +55,8 @@ namespace WpfPresentation.Fundraising
             "$100 or Less",
             "$250 or Less",
             "$500 or Less",
-            "$1000 or Less"
+            "$1000 or Less",
+            "$1000 +"
         };
 
         /// <summary>
@@ -94,15 +95,13 @@ namespace WpfPresentation.Fundraising
         /// Gwen Arman
         /// Created: 2023/03/03
         /// 
-        /// 
         /// </summary>
         ///
         /// <remarks>
         /// Updater: Andrew Schneider
         /// Updated: 2023/03/18
-        /// Originally part of Page_Loaded but moved to a separate methods
-        /// so it could be called from Page_Loaded and the "Reset" button
-        /// on the Filter Donations popup.
+        /// Originally part of Page_Loaded but moved to a separate method so it could be called
+        /// from Page_Loaded and the "Reset" button on the Filter Donations popup.
         /// </remarks>
         private void PopulatePage()
         {
@@ -419,6 +418,20 @@ namespace WpfPresentation.Fundraising
                 case "$1000 or Less":
                     donationFilterAmount = 1000;
                     break;
+                case "$1000 +":
+                    donationFilterAmount = 1000;
+                    for (int i = 0; i < donationVMs.Count; i++)
+                    {
+                        if (donationVMs[i].Amount == null)
+                        {
+                            continue;
+                        }
+                        if (donationVMs[i].Amount > donationFilterAmount)
+                        {
+                            _filteredDonationVMs.Add(donationVMs[i]);
+                        }
+                    }
+                    return;
                 default:
                     break;
             }
@@ -441,8 +454,7 @@ namespace WpfPresentation.Fundraising
         /// Created: 2023/03/20
         /// 
         /// Helper method that sees if any miscellaneous filter checkboxes have been 
-        /// checked, checks the direction of the "Inverse" arrow, and then applies
-        /// any filters accordingly. Takes a bool indicating if combo boxes were used.
+        /// checked and applies filters accordingly.
         /// </summary>
         ///
         /// <remarks>
@@ -524,15 +536,12 @@ namespace WpfPresentation.Fundraising
             PopulatePage();
         }
 
-        // Click events created by Andrew S. to change the checkboxes when their
-        // labels are clicked. All function the same as lblNoMessage_MouseDown.
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/03/16
         /// 
-        /// Click event method to change the accompanying checkbox
-        /// when it's label is clicked. Checks box if unchecked
-        /// and unchecks box if checked.
+        /// Event handler method to change the accompanying checkbox when it's
+        /// label is clicked. Checks box if unchecked and unchecks box if checked.
         /// </summary>
         ///
         /// <remarks>
@@ -554,6 +563,21 @@ namespace WpfPresentation.Fundraising
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/16
+        /// 
+        /// Event handler method to change the accompanying checkbox when it's
+        /// label is clicked. Checks box if unchecked and unchecks box if checked.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblHasMessage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (ckbHasMessage.IsChecked == true)
@@ -566,6 +590,21 @@ namespace WpfPresentation.Fundraising
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/16
+        /// 
+        /// Event handler method to change the accompanying checkbox when it's
+        /// label is clicked. Checks box if unchecked and unchecks box if checked.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblShowFinancialDonations_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (ckbShowFinancialDonations.IsChecked == true)
@@ -578,6 +617,21 @@ namespace WpfPresentation.Fundraising
             }
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/16
+        /// 
+        /// Event handler method to change the accompanying checkbox when it's
+        /// label is clicked. Checks box if unchecked and unchecks box if checked.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblShowInKindDonations_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (ckbShowInKindDonations.IsChecked == true)
@@ -590,24 +644,77 @@ namespace WpfPresentation.Fundraising
             }
         }
 
-
-        // Event methods created by Andrew S. on 3/17/23 to change label colors when
-        // the mouse enters or leaves.
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/17
+        /// 
+        /// Event handler method to change the color of the label when the mouse enters
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblReset_MouseEnter(object sender, MouseEventArgs e)
         {
             lblReset.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF1C6758");
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/17
+        /// 
+        /// Event handler method to change the color of the label when the mouse leaves
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblReset_MouseLeave(object sender, MouseEventArgs e)
         {
             lblReset.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFEEF2E6");
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/17
+        /// 
+        /// Event handler method to change the color of the label when the mouse enters
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblFilter_MouseEnter(object sender, MouseEventArgs e)
         {
             lblFilter.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF1C6758");
         }
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/17
+        /// 
+        /// Event handler method to change the color of the label when the mouse leaves
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd 
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblFilter_MouseLeave(object sender, MouseEventArgs e)
         {
             lblFilter.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFEEF2E6");

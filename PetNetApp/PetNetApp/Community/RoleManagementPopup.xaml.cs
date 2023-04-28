@@ -31,6 +31,11 @@ namespace WpfPresentation.Community
     /// Updater Barry Mikulas
     /// Updated: 2023/02/26
     /// 
+    /// Zaid Rachman
+    /// Updated: 2023/04/27
+    /// 
+    /// Final QA
+    /// 
     /// </remarks>
     public partial class RoleManagementPopup : Window
     {
@@ -53,6 +58,12 @@ namespace WpfPresentation.Community
         /// Event handler for the click of the add role button.
         ///
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_AddRole_Click(object sender, RoutedEventArgs e)
@@ -105,6 +116,12 @@ namespace WpfPresentation.Community
         /// 
         /// Event handler for clicking the previous button. Was never implemented.
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_Previous_Click(object sender, RoutedEventArgs e)
@@ -120,6 +137,12 @@ namespace WpfPresentation.Community
         /// Created: 2023/02/11
         /// Event handler for clicking the finish button - Button was renamed "done".
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_Finish_Click(object sender, RoutedEventArgs e)
@@ -135,6 +158,12 @@ namespace WpfPresentation.Community
         /// Created: 2023/02/11
         /// Prompts user for confirmation of cancelation, closes window if confirmed
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
@@ -151,10 +180,27 @@ namespace WpfPresentation.Community
             }
         }
 
+
+
+
+        /// <summary>
         /// Barry Mikulas
         /// Created: 2023/02/11
+        ///
+        /// </summary>
+        ///  <remark>
+        /// 
         /// Modified: 2023/03/01
         /// by: Asa Armstrong
+        /// 
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// 
+        /// </remark>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_RemoveRole(object sender, RoutedEventArgs e)
         {
             //can get the value of the RoleId from using ((Button)sender).Tag
@@ -202,6 +248,12 @@ namespace WpfPresentation.Community
         /// Created: 2023/02/11
         /// Populates the window with user roles and drop down list.
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -238,6 +290,12 @@ namespace WpfPresentation.Community
         /// Created: 2023/02/11
         /// Retrieves user's role list and populates the grid.
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private void PopulateUserRoleGrid()
         {
             //retrieve user's roles
@@ -258,6 +316,12 @@ namespace WpfPresentation.Community
         /// Created: 2023/02/11
         /// Event Handler for clicking the X in the upper right of the window/
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCloseWindowX_Click(object sender, RoutedEventArgs e)
@@ -270,6 +334,12 @@ namespace WpfPresentation.Community
         /// Created: 2023/02/11
         /// Event handler for clicking the remove button on the roles grid.
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void contextRemoveRole_Click(object sender, RoutedEventArgs e)

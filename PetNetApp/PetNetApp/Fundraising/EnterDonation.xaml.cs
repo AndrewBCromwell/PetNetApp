@@ -206,7 +206,7 @@ namespace WpfPresentation.Fundraising
             {
                 NavigationService.Navigate(WpfPresentation.Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
             }
-            if (Donation.ScheduledDonationId != null)
+            else if (Donation.ScheduledDonationId != null)
             {
                 // navigate to scheduled donation page
                 NavigationService.Navigate(ViewDonationsPage.ExistingDonationPage);
@@ -310,7 +310,7 @@ namespace WpfPresentation.Fundraising
         /// <param name="e"></param>
         private void cbx_Method_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (Donation.PaymentMethod.Equals("Card"))
+            if (Donation.PaymentMethod == "Card")
             {
                 lbl_CardNumber.Visibility = Visibility.Visible;
                 lbl_CardholdersName.Visibility = Visibility.Visible;

@@ -66,7 +66,7 @@ namespace WpfPresentation.UserControls
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        /// /// <param name="sender"></param>
+        /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnViewAdoptableAnimalProfile_Click(object sender, RoutedEventArgs e)
         {
@@ -87,7 +87,7 @@ namespace WpfPresentation.UserControls
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        /// /// <param name="sender"></param>
+        /// <param name="sender"></param>
         /// <param name="e"></param>
         private void imgAdoptableAnimalDisplay_MouseDown(object sender, MouseButtonEventArgs e)
         {

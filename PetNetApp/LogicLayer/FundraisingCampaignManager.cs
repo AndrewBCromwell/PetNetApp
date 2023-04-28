@@ -1,4 +1,15 @@
-﻿using System;
+﻿/// <summary>
+/// Author: Stephen Jaurigue
+/// Date: 2023/04/21
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,25 +31,11 @@ namespace LogicLayer
     {
         private IFundraisingCampaignAccessor _fundraisingCampaignAccessor = null;
 
-        /// <summary>
-        /// Stephen Jaurigue
-        /// Created: 2023/02/23
-        /// 
-        /// </summary>
-        /// <returns>FundraisingCampaignManager</returns>
         public FundraisingCampaignManager()
         {
             _fundraisingCampaignAccessor = new FundraisingCampaignAccessor();
         }
 
-        /// <summary>
-        /// Stephen Jaurigue
-        /// Created: 2023/02/20
-        /// 
-        /// Constructor for fake data and testing
-        /// </summary>
-        /// <param name="fundraisingCampaignAccessor">The instance of the fake dataaccess object</param>
-        /// <returns>FundraisingCampaignManager</returns>
         public FundraisingCampaignManager(IFundraisingCampaignAccessor fundraisingCampaignAccessor)
         {
             _fundraisingCampaignAccessor = fundraisingCampaignAccessor;

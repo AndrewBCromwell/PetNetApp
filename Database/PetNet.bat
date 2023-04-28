@@ -13,6 +13,7 @@ sqlcmd -S localhost -E -i SampleDataScripts\InstitutionalEntity_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\ViewUpdateFromFosterProfile_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\CustomerRecords_SD.sql
 sqlcmd -S localhost -E -i SampleDataScripts\EditHoursOfOperation_SD.sql
+sqlcmd -S localhost -E -i SampleDataScripts\FosterApplicationResponse.sql
 
 sqlcmd -S localhost -E -i SampleDataScripts\ViewFundraisingEventsMVC_SD.sql
 
@@ -134,27 +135,25 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\UpdatePostVisibility_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\DeleteReply_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReportPost_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ReportReply_SP.sql
-
 sqlcmd -S localhost -E -i StoredProceduresScripts\AddFundRaisingEvent_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditFundRaisingEvent_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\approve_deny_application_sps.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertResourceAddRequest_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAllPledges_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\UpdateRequestAcknowledged.sql
-
 sqlcmd -S localhost -E -i StoredProceduresScripts\RemoveVolunteerFromEvent_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\SelectAllVolunteers_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\InsertVolunteerToEventbyVolunteerAndEventId_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\ViewFundraisingEventsMVC_SP.sql
-
 sqlcmd -S localhost -E -i StoredProceduresScripts\Bookmark_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Surrender_SPs.sql
-
 sqlcmd -S localhost -E -i StoredProceduresScripts\sp_view_foster_applications.sql
-
 sqlcmd -S localhost -E -i StoredProceduresScripts\EnterDonation_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\EditEvents_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\Viewalleventsbyvisabilty.sql
 
-
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAllPrescriptions.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddPrescriptions.sql
 ECHO .
 ECHO if no errors appear DB was created
 PAUSE

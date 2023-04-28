@@ -35,10 +35,20 @@ namespace WpfPresentation.Management.Inventory
     public partial class ViewNewItemRequestsPage : Page
     {
         private static ViewNewItemRequestsPage _existingViewNewItemRequestsPage = null;
-
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private List<ResourceAddRequest> _resourceAddRequests = null;
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/30
+        /// 
+        /// Private contstructor for ViewNewItemRequestsPage
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
         private ViewNewItemRequestsPage()
         {
             InitializeComponent();
@@ -57,6 +67,7 @@ namespace WpfPresentation.Management.Inventory
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <returns>An instance of ViewNewItemRequestsPage</returns>
         public static ViewNewItemRequestsPage GetViewNewItemRequestsPage()
         {
             if (_existingViewNewItemRequestsPage == null)
@@ -72,9 +83,8 @@ namespace WpfPresentation.Management.Inventory
         /// Andrew Schneider
         /// Created: 2023/03/31
         /// 
-        /// Tries to retrieve the active resource add requests and
-        /// calls PopulateResourceAddRequestList(). Based on Stephen's
-        /// ViewCampaign methods.
+        /// Tries to retrieve the active resource add requests and calls PopulateResourceAddRequestList().
+        /// Based on Stephen's ViewCampaign methods.
         /// </summary>
         /// 
         /// <remarks>
@@ -86,7 +96,8 @@ namespace WpfPresentation.Management.Inventory
         {
             try
             {
-                _resourceAddRequests = _masterManager.ResourceAddRequestManager.RetrieveActiveResourceAddRequestsByShelterId((int)_masterManager.User.ShelterId);
+                _resourceAddRequests = _masterManager.ResourceAddRequestManager.
+                    RetrieveActiveResourceAddRequestsByShelterId((int)_masterManager.User.ShelterId);
                 PopulateResourceAddRequestList();
             }
             catch (ApplicationException ex)
@@ -100,11 +111,9 @@ namespace WpfPresentation.Management.Inventory
         /// Andrew Schneider
         /// Created: 2023/03/31
         /// 
-        /// If there are no resource add requests displays message
-        /// to that affect, otherwise uses the requests to build
-        /// NewItemRequestUserControls and assigns them to the 
-        /// resource stackpanel. Based on Stephen's method from
-        /// ViewCampaign.
+        /// If there are no resource add requests displays message to that affect, otherwise
+        /// uses the requests to build NewItemRequestUserControls and assigns them to the 
+        /// resource stackpanel. Based on Stephen's method from ViewCampaign.
         /// </summary>
         /// 
         /// <remarks>

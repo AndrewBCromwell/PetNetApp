@@ -95,7 +95,7 @@ namespace WpfPresentation.Animals
             }
             else
             {
-                frmApplicationResponse.Content = new AddEditReportOnFoster(_fosterApplication.FosterApplicationId);
+                frmApplicationResponse.Content = new AddEditReportOnFoster(_fosterApplication);
             }
             
         }

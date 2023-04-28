@@ -44,17 +44,25 @@ namespace WpfPresentation.Development.Fundraising
             DependencyProperty.Register("FundraisingEvent", typeof(FundraisingEventVM), typeof(AddEditViewUpdateFundraisingEventPage), new PropertyMetadata(null));
 
 
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/14
+        /// 
+        /// Default page constructor.
+        /// 
+        /// </summary>
         public AddEditViewUpdateFundraisingEventPage()
         {
             DataContext = this;
-            //_pageMode = PageMode.New;
             InitializeComponent();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fundraisingEvent"></param>
         public AddEditViewUpdateFundraisingEventPage(FundraisingEventVM fundraisingEvent)
         {
             SetupViewFundraisingEvent(fundraisingEvent);
-
         }
 
 
@@ -146,7 +154,14 @@ namespace WpfPresentation.Development.Fundraising
 
             return _existingAddEditViewUpdateFundraisingEventPage;
         }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/14
+        /// 
+        /// Method retrieves information to complete the FunraisinfEventVM.
+        /// 
+        /// </summary>
+        /// <param name="fundraisingEvent"></param>
         private static void GetSponsorsContactsHostPets(FundraisingEventVM fundraisingEvent)
         {
             // get sponsors
@@ -627,6 +642,11 @@ namespace WpfPresentation.Development.Fundraising
         /// loads the contact and sponsor for view and edit mode
         /// 
         /// </summary>
+        /// <remarks>
+        /// Updated:
+        /// Barry Mikulas
+        /// 2023/04/27 - added New User control that shows Company name and added BTNView click to show details
+        /// </remarks>
         private void ClearAndPopulateContactType(string contactType)
         {
             switch (contactType)
@@ -635,8 +655,9 @@ namespace WpfPresentation.Development.Fundraising
                     stackSponsors.Children.Clear();
                     foreach (var sponsor in FundraisingEvent.Sponsors)
                     {
-                        var sponsorControl = new InstitutionalEntityUserControl(sponsor, !(_pageMode != PageMode.Edit), false);
-                        sponsorControl.btnRemove.Click += (sender, args) => btnRemoveSponsor_Click(sender, args, sponsor);
+                        
+                        var sponsorControl = new InstitutionalEntityCompanyNameUserControl(sponsor, !(_pageMode != PageMode.Edit), false);
+                        sponsorControl.btnView.Click += (obj, arg) => BTNView_Click(sponsor, "Sponsor");
                         stackSponsors.Children.Add(sponsorControl);
                     }
                     break;
@@ -644,14 +665,35 @@ namespace WpfPresentation.Development.Fundraising
                     stackContacts.Children.Clear();
                     foreach (var contact in FundraisingEvent.Contacts)
                     {
-                        var sponsorControl = new InstitutionalEntityUserControl(contact, !(_pageMode != PageMode.Edit), false);
-                        sponsorControl.btnRemove.Click += (sender, args) => btnRemoveContact_Click(sender, args, contact);
+                        var sponsorControl = new InstitutionalEntityCompanyNameUserControl(contact, !(_pageMode != PageMode.Edit), false);
+                        sponsorControl.btnView.Click += (obj, arg) => BTNView_Click(contact, "Contact");
                         stackContacts.Children.Add(sponsorControl);
                     }
                     break;
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/04/27
+        /// 
+        /// Used to display Institutional Entity details when clicking view in the user control
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="entityType"></param>
+        private void BTNView_Click(InstitutionalEntity entity, string entityType)
+        {
+            PromptWindow.ShowPrompt(entityType + " Detail", entity.CompanyName + "\n"
+                 + "-----------------\n" 
+                 + entity.GivenName + " " + entity.FamilyName + "\n"
+                 + "-----------------\n"
+                 + entity.Email + "\n"
+                 + "-----------------\n"
+                 + Regex.Replace(entity.Phone, @"(\d{3})(\d{3})(\d{4})", "($1) $2-$3")
+                 );
         }
 
         /// <summary>
@@ -699,6 +741,7 @@ namespace WpfPresentation.Development.Fundraising
             dpStartTime.IsEnabled = false;
             dpEndTime.IsEnabled = false;
             tbDescription.IsEnabled = false;
+            tbAdditionalInfo.IsEnabled = false;
             tbNotes.IsEnabled = false;
             tbAmountRaised.IsEnabled = false;
             tbEventCost.IsEnabled = false;
@@ -733,6 +776,7 @@ namespace WpfPresentation.Development.Fundraising
             dpStartTime.IsEnabled = true;
             dpEndTime.IsEnabled = true;
             tbDescription.IsEnabled = true;
+            tbAdditionalInfo.IsEnabled = true;
             tbNotes.IsEnabled = false;
             tbAmountRaised.IsEnabled = false;
             tbEventCost.IsEnabled = false;
@@ -771,6 +815,7 @@ namespace WpfPresentation.Development.Fundraising
             dpStartTime.IsEnabled = false;
             dpEndTime.IsEnabled = false;
             tbDescription.IsEnabled = false;
+            tbAdditionalInfo.IsEnabled = false;
             tbNotes.IsEnabled = true;
             tbAmountRaised.IsEnabled = false;
             tbEventCost.IsEnabled = true;
@@ -979,17 +1024,15 @@ namespace WpfPresentation.Development.Fundraising
 
         }
 
-        private void btn_ViewAnimal(object sender, RoutedEventArgs e)
-        {
-            //not implemented
-           return;
-            string animalId = ((Button)sender).Tag.ToString();
-            AnimalVM animal = FundraisingEvent.Animals.Where(am => am.AnimalId.ToString().Equals(animalId)).FirstOrDefault();
-            PromptWindow.ShowPrompt("Animal", "Show animal record?");
-            NavigationService nav = NavigationService.GetNavigationService(this);
-            nav.Navigate(new WpfPresentation.Animals.EditDetailAnimalProfile(_masterManager, animal));
-        }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/14
+        /// 
+        /// Event handler for click of the Pledgers button.
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPledgers_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ViewFundraisingEventPledgers(FundraisingEvent, _masterManager));

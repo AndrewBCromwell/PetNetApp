@@ -50,6 +50,11 @@ namespace WpfPresentation.Animals
         /// Final QA
         /// </remarks>
         /// <param name="animal"></param>
+        
+        private ViewPrescriptions _viewPrescriptions = null;
+        
+        
+
         public MedicalTreatmentPage(Animal animal)
         {
             InitializeComponent();
@@ -266,9 +271,8 @@ namespace WpfPresentation.Animals
             btnPrescriptions.Click += (s, e) =>
             {
 
-                // add Prescription window to be opened here and remove PromptWindow
+               NavigationService.Navigate(new ViewPrescriptions(_animal.AnimalId));
 
-                PromptWindow.ShowPrompt("Prescriptions", "TODO", ButtonMode.Ok);
             };
 
             btnEdit.Click += (s, e) =>
@@ -305,6 +309,5 @@ namespace WpfPresentation.Animals
             }
             e.Handled = true;
         }
-
     }
 }

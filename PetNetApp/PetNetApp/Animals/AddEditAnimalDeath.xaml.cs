@@ -10,7 +10,12 @@
 /// Updated: 2023/03/01
 /// Added Comments.
 /// </remarks>
-
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// FinalQA
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +40,7 @@ namespace WpfPresentation.Animals
         private DeathVM _death = new DeathVM();
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private Animal _animal = new Animal();  // the currently selected animal
+        private Kennel _kennel = null;
         private bool isEditMode = false;
         private DeathVM _oldDeathVM = new DeathVM();
 
@@ -43,10 +49,17 @@ namespace WpfPresentation.Animals
         /// Date: 2023/04/23
         /// Description: Constructor for page AddAnimalDOD513
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="animal"></param>
-        public AddAnimalDOD513(Animal animal)
+        public AddAnimalDOD513(Animal animal, Kennel kennel = null)
         {
             _animal = animal;
+            _kennel = kennel;
 
             InitializeComponent();
 
@@ -60,6 +73,17 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         private void retrieveOldDeath()
         {
             try
@@ -71,7 +95,17 @@ namespace WpfPresentation.Animals
                 PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
             }
         }
-
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         private void populateControls()
         {
             txt_Name.Text = (_oldDeathVM.AnimalName == null || _oldDeathVM.AnimalName.Length == 0) ?
@@ -80,7 +114,17 @@ namespace WpfPresentation.Animals
             txt_AnimalID.Text = _animal.AnimalId.Equals(0) ? (_oldDeathVM.AnimalId.Equals(0) ? "UNKNOWN" : _oldDeathVM.AnimalId.ToString()) :
                                 _animal.AnimalId.ToString();
         }
-
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         private void setEditMode()
         {
             // _death = _oldDeathVM; // just creates a pointer instead of a new DeathVM
@@ -109,12 +153,22 @@ namespace WpfPresentation.Animals
         /// Date: 2023/04/23
         /// Description: Adds a new record to the DB or Edits an existing one.
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                if (date_DOD.SelectedDate == null)
+                {
+                    throw new ApplicationException("Death Date cannot be empty.");
+                }
                 _death.DeathDate = date_DOD.SelectedDate.Value;
                 _death.DeathCause = txt_Cause.Text;
                 _death.DeathNotes = txt_Notes.Text;
@@ -143,22 +197,51 @@ namespace WpfPresentation.Animals
                 }
 
                 bool success = false;
+                string successString = "";
                 if (!isEditMode) // if not in edit mode, create new death record
                 {
                     //No field for these in UI?
                     _death.DeathDisposal = "UNKNOWN";
                     _death.DeathDisposalDate = DateTime.Now;
-                    success = _masterManager.DeathManager.AddAnimalDeath(_death);
+                    if (success = _masterManager.DeathManager.AddAnimalDeath(_death))
+                    {
+                        successString += "Death record created. ";
+                    }
                 }
                 else if (isEditMode) // if in edit mode, update existing death record
                 {
+                    if (success = _masterManager.DeathManager.EditAnimalDeath(_death, _oldDeathVM))
+                    {
+                        successString += "Death record updated. ";
+                    }
 
-                    success = _masterManager.DeathManager.EditAnimalDeath(_death, _oldDeathVM);
                 }
 
                 if (success)
                 {
-                    PromptWindow.ShowPrompt("Congratulations", isEditMode ? "Death Record Edited" : "Death Record Created", ButtonMode.Ok);
+                    
+                    if(
+                        (_kennel != null && _kennel.KennelId != 0) &&
+                        PromptSelection.Yes == PromptWindow.ShowPrompt("Animal Kenneling", "Remove " + _animal.AnimalName + " from kennel?", ButtonMode.YesNo)
+                        )
+                    {
+                        try
+                        {
+                            if(_masterManager.KennelManager.RemoveAnimalKennelingByKennelIdAndAnimalId(_kennel.KennelId, _animal.AnimalId))
+                            {
+                                successString += _animal.AnimalName + " removed from kennel.";
+                            }
+                            else
+                            {
+                                throw new ApplicationException();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            PromptWindow.ShowPrompt("Error", "Something went wrong. " + _animal.AnimalName + " wasn't removed from kennel. " + ex.Message);
+                        }
+                    }
+                    PromptWindow.ShowPrompt("Success", successString, ButtonMode.Ok);
                 }
                 else
                 {
@@ -186,6 +269,12 @@ namespace WpfPresentation.Animals
         /// Date: 2023/04/23
         /// Description: Cancels the Add/Edit and returns from the page.
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)

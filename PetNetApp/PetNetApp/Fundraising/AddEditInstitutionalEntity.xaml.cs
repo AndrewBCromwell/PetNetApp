@@ -33,7 +33,7 @@ namespace WpfPresentation.Fundraising
 
 
         /// <summary>
-        /// Used for add entity
+        /// Default constructor for AddEditInstitutionalEnity
         /// </summary>
         /// <param name="entityType">sets the type of institutional being added</param>
         public AddEditInstitutionalEntity(string entityType)
@@ -65,7 +65,13 @@ namespace WpfPresentation.Fundraising
                 SetupViewInstitutionalEntity();
             }
         }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// Sets up window objects for editing.
+        /// 
+        /// </summary>
         private void SetupEditInstitutionalEntity()
         {
             lblWindowTitle.Content = _windowMode + " " + _contactType.Substring(0, 1).ToUpper() + _contactType.Substring(1);
@@ -75,7 +81,13 @@ namespace WpfPresentation.Fundraising
             stackSaveCancel.IsEnabled = true;
             stackSaveCancel.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// Sets up window objects for viewing.
+        /// 
+        /// </summary>
         private void SetupViewInstitutionalEntity()
         {
             lblWindowTitle.Content = _windowMode + " " + _contactType.Substring(0, 1).ToUpper() + _contactType.Substring(1);
@@ -85,7 +97,13 @@ namespace WpfPresentation.Fundraising
             stackSaveCancel.IsEnabled = false;
             stackSaveCancel.Visibility = Visibility.Collapsed;
         }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// Sets up window objects for adding.
+        /// 
+        /// </summary>
         private void SetupAddInstitutionalEntity()
         {
             lblWindowTitle.Content = _windowMode + " " + _contactType.Substring(0, 1).ToUpper() + _contactType.Substring(1);
@@ -95,7 +113,13 @@ namespace WpfPresentation.Fundraising
             stackSaveCancel.IsEnabled = true;
             stackSaveCancel.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// Sets up window objects for viewing.
+        /// 
+        /// </summary>
         private void ViewMode()
         {
             tbCompanyName.IsReadOnly = true;
@@ -123,7 +147,13 @@ namespace WpfPresentation.Fundraising
                 btnVeiwEvents.IsEnabled = true;
             }
         }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// Sets up window objects for adding and editing.
+        /// 
+        /// </summary>
         private void AddEditMode()
         {
             tbCompanyName.IsReadOnly = false;
@@ -201,7 +231,15 @@ namespace WpfPresentation.Fundraising
             e.Handled = regex.IsMatch(e.Text);
         }
 
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// Event handler for Cancel button click
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             switch (_windowMode)
@@ -246,6 +284,8 @@ namespace WpfPresentation.Fundraising
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             _windowMode = WindowMode2.Edit;
@@ -265,9 +305,12 @@ namespace WpfPresentation.Fundraising
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            validateEntityOnSave();
+            ValidateEntityOnSave();
         }
 
         /// <summary>
@@ -281,7 +324,8 @@ namespace WpfPresentation.Fundraising
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
-        private void validateEntityOnSave()
+        /// </remarks>
+        private void ValidateEntityOnSave()
         {
             if (tbGivenName.Text == "" || tbFamilyName.Text == "" || tbEmail.Text == "" || tbPhone.Text == ""
                 || tbAddress.Text == "" || tbZipcode.Text == "")
@@ -473,13 +517,16 @@ namespace WpfPresentation.Fundraising
         /// Andrew Schneider
         /// Created: 2023/03/10
         /// 
-        /// Method with try/catch to save a new institutional entity record
+        /// Method with try/catch to save a new institutional entity record. Prompt window inserts
+        /// contact type into success prompt window.
         /// </summary>
         ///
         /// <remarks>
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="newInstitutionalEntity">The Institutional Entity to be saved</param>
         private void SaveNewEntity(InstitutionalEntity newInstitutionalEntity)
         {
             try
@@ -509,6 +556,8 @@ namespace WpfPresentation.Fundraising
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="newInstitutionalEntity">The updated Institutional Entity</param>
         private void UpdateEntity(InstitutionalEntity newInstitutionalEntity)
         {
             try
@@ -550,7 +599,13 @@ namespace WpfPresentation.Fundraising
                 tbState.Text = "";
             }
         }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// Loads the city and state for a zip code - if it fails displays a message.
+        /// 
+        /// </summary>
         private void LoadCityStateByZipCode()
         {
             Zipcode zipcodeData = new Zipcode();
@@ -570,7 +625,15 @@ namespace WpfPresentation.Fundraising
                 tbZipcode.SelectAll();
             }
         }
-
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/09
+        /// 
+        /// Directs the view to the view page based on the contactype they are working with.
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             switch (_contactType)
@@ -589,11 +652,15 @@ namespace WpfPresentation.Fundraising
             }
         }
 
-        private void Window_Unloaded(object sender, RoutedEventArgs e)
-        {
-            //NavigationService.Navigate(new ViewFundraisingEventContacts());
-        }
 
+        /// <summary>
+        /// Ethan Kline
+        /// Created: 2023/04/3
+        /// 
+        /// on click open the view event window and close this window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnVeiwEvents_Click(object sender, RoutedEventArgs e)
         {
             _sponsorEvent.CompanyName = _institutionalEntity.CompanyName;

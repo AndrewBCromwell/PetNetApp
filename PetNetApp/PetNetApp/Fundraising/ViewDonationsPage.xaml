@@ -18,9 +18,8 @@
             <Button Width="150" Height="50" Margin="0 0 20 0" x:Name="btnReport" Click="btnReport_Click">Generate Report</Button>
             <Button Width="150" Height="50" Margin="0 0 20 0" x:Name="btnFilterDonations" Click="btnFilterDonations_Click">Filter Donations</Button>
             <Button Width="150" Height="50" Margin="0 0 20 0" x:Name="btnEnterDonation" Click="btnEnterDonation_Click">Enter Donation</Button>
-            <Popup x:Name="popFilterDonations" IsOpen="False" Width="255" Height="250" AllowsTransparency="True"
-                   PlacementTarget="{Binding ElementName=btnFilterDonations}" HorizontalOffset="-169" VerticalOffset="12" 
-                   StaysOpen="False">
+            <Popup x:Name="popFilterDonations" Width="255" Height="250" AllowsTransparency="True"
+                   PlacementTarget="{Binding ElementName=btnFilterDonations}" VerticalOffset="12">
                 <Border BorderThickness="3" Background="#FF3D8361" BorderBrush="#FF1C6758" CornerRadius="20">
                     <Grid>
                         <Grid.RowDefinitions>

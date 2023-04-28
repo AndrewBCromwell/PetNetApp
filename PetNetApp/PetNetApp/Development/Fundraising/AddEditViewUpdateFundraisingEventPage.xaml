@@ -83,38 +83,44 @@
             <StackPanel x:Name="stackEditUpdateDelete" Grid.Row="1" Grid.Column="2" Orientation="Vertical" Margin="0 0 0 0">
                 <Button x:Name="btnEdit" Margin="0 5 0 0" Height="40" Width="100"  Content="Edit" Click="btnEdit_Click" />
                 <Button x:Name="btnUpdate" Margin="0 5 0 0" Height="40" Width="100"  Content="Update" Click="btnUpdate_Click" />
-                <Button x:Name="btnDelete" Margin="0 5 0 0" Height="40" Width="100"  Content="Delete" />
+                <Button x:Name="btnDelete" Margin="0 5 0 0" Height="40" Width="100"  Content="Delete" Visibility="Collapsed" />
                 <Button x:Name="btnCloseTop" Margin="0 5 0 0" Height="40" Width="100"  Content="Close" Style="{StaticResource rsrcSafeButton}" VerticalAlignment="Center" Click="btnClose_Click"/>
             </StackPanel>
-            <!--Description - Contacts-->
+            <!--Description - Pets Going-->
             <Grid x:Name="gridDescriptionContacts" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,15,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition MinHeight="55"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <!--Description-->
-                <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0,0,10,0">
+                <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0,0,5,0">
                     <Label Content="Description"/>
                     <Label Content="* Required (5-250 Characters)" Name="lblDescriptionError" Foreground="#b22b29" Margin="10 0 0 0" Visibility="Collapsed"/>
                 </StackPanel>
-                <TextBox x:Name="tbDescription" Grid.Row="2" Margin="0,0,10,0" MinHeight="80" MaxHeight="100" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" MaxLength="250" VerticalScrollBarVisibility="Auto" Text="{Binding FundraisingEvent.Description, Mode=TwoWay}"/>
-                <Label Grid.Row="0" Grid.Column="1" Content="Contacts" VerticalAlignment="Bottom"/>
-                <!--Contacts List-->
-                <Button x:Name="btnAddContacts" Content="Add Contacts" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Height="40" Width="125" VerticalAlignment="Bottom" Margin="12,5,0,5" Click="btnAddContacts_Click"/>
-                <Grid  Grid.Row="1" Grid.Column="1" MinHeight="100" MaxHeight="200" VerticalAlignment="Top">
-                    <Border x:Name="borderAddContacts" CornerRadius="10" Background="#F6F7F3" BorderBrush="#1C6758" BorderThickness="1"/>
+                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,0,5,0" MinHeight="80">
+                    <TextBox x:Name="tbDescription" MinHeight="80" MaxHeight="100" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" MaxLength="250" VerticalScrollBarVisibility="Auto" Text="{Binding FundraisingEvent.Description, Mode=TwoWay}"/>
+                    <TextBox x:Name="tbAdditionalInfo" MinHeight="80" MaxHeight="100" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" MaxLength="250" VerticalScrollBarVisibility="Auto" Text="{Binding FundraisingEvent.AdditionalInfo, Mode=TwoWay}"/>
+                </StackPanel>
+                <!--Pets going List-->
+                <Label Grid.Row="0" Grid.Column="1" Content="Pets going to the event" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
+                <Button x:Name="btnAddPet" Content="Add Pet" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Height="40" Width="125" VerticalAlignment="Bottom" Margin="12,5,0,5" Click="btnAddPet_Click"/>
+                <Grid  Grid.Row="1" Grid.Column="1" MinHeight="100" MaxHeight="200" VerticalAlignment="Top" Margin="5,0,0,0">
+                    <Border x:Name="borderAddPets" CornerRadius="0" Background="#F6F7F3" BorderBrush="#1C6758" BorderThickness="0"/>
                     <ScrollViewer Margin="3"  VerticalScrollBarVisibility="Auto">
-                        <StackPanel x:Name="stackContacts">
-                        </StackPanel>
+                        <DataGrid x:Name="datPets" SelectionMode="Single" IsReadOnly="True" CanUserResizeRows="False" CanUserResizeColumns="True" CanUserReorderColumns="False" AutoGenerateColumns="False" Padding="1.5">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding AnimalName}" Width="3*"/>
+                                <DataGridTextColumn Header="Type" Binding="{Binding AnimalTypeId}" Width="2*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </ScrollViewer>
-
                 </Grid>
             </Grid>
-            <!--Sponsors - Pets Going-->
+            <!--Sponsors - Contacts-->
             <Grid x:Name="gridSponsorsPets" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,15,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
@@ -125,28 +131,25 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="Sponsors" VerticalAlignment="Bottom"/>
-                <Button x:Name="btnAddSponsors" Content="Add Sponsors" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Height="40" Width="125" VerticalAlignment="Bottom" Margin="12,5,0,5" Click="btnAddSponsors_Click"/>
+                <Button x:Name="btnAddSponsors" Content="Add Sponsors" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Height="40" Width="125" VerticalAlignment="Bottom" Margin="12,5,5,5" Click="btnAddSponsors_Click"/>
                 <!--Sponsors List-->
-                <Grid  Grid.Row="1" Grid.Column="0" MinHeight="100" MaxHeight="200" VerticalAlignment="Top">
+                <Grid  Grid.Row="1" Grid.Column="0" MinHeight="100" MaxHeight="200" VerticalAlignment="Top" Margin="0,0,5,0">
                     <Border x:Name="borderAddSponsors" CornerRadius="10" Background="#F6F7F3" BorderBrush="#1C6758" BorderThickness="1"/>
                     <ScrollViewer Margin="3"  VerticalScrollBarVisibility="Auto">
                         <StackPanel x:Name="stackSponsors">
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
-                <!--Pets going List-->
-                <Label Grid.Row="0" Grid.Column="1" Content="Pets going to the event" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
-                <Button x:Name="btnAddPet" Content="Add Pet" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Height="40" Width="125" VerticalAlignment="Bottom" Margin="12,5,0,5" Click="btnAddPet_Click"/>
-                <Grid  Grid.Row="1" Grid.Column="1" MinHeight="100" MaxHeight="200" VerticalAlignment="Top" Margin="10,0,0,0">
-                    <Border x:Name="borderAddPets" CornerRadius="10" Background="#F6F7F3" BorderBrush="#1C6758" BorderThickness="1"/>
+                <!--Contacts List-->
+                <Label Grid.Row="0" Grid.Column="1" Content="Contacts" VerticalAlignment="Bottom"/>
+                <Button x:Name="btnAddContacts" Content="Add Contacts" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Height="40" Width="125" VerticalAlignment="Bottom" Margin="12,5,0,5" Click="btnAddContacts_Click"/>
+                <Grid  Grid.Row="1" Grid.Column="1" MinHeight="100" MaxHeight="200" VerticalAlignment="Top"  Margin="5,0,0,0">
+                    <Border x:Name="borderAddContacts" CornerRadius="10" Background="#F6F7F3" BorderBrush="#1C6758" BorderThickness="1"/>
                     <ScrollViewer Margin="3"  VerticalScrollBarVisibility="Auto">
-                        <DataGrid x:Name="datPets" SelectionMode="Single" IsReadOnly="True" CanUserResizeRows="False" CanUserResizeColumns="True" CanUserReorderColumns="False" AutoGenerateColumns="False" Padding="1.5">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name" Binding="{Binding AnimalName}" Width="3*"/>
-                                <DataGridTextColumn Header="Type" Binding="{Binding AnimalTypeId}" Width="2*"/>                    
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <StackPanel x:Name="stackContacts">
+                        </StackPanel>
                     </ScrollViewer>
+
                 </Grid>
             </Grid>
 
@@ -209,12 +212,12 @@
             <!--Close/Cancel Button-->
             <StackPanel x:Name="stackSaveCancelBottom" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3">
                 <Button x:Name="btnSave2" Margin="0 0 10 0" Height="40" Width="100"  Content="Save" VerticalAlignment="Center" Click="btnSave_Click"/>
-                <Button x:Name="btnCancel2" Margin="10 0 0 0" Height="40" Width="100"  Content="Cancel" Style="{StaticResource rsrcWarningButton}" VerticalAlignment="Center" Click="btnCancel_Click" />
+                <Button x:Name="btnCancel2" Margin="0 0 0 0" Height="40" Width="100"  Content="Cancel" Style="{StaticResource rsrcWarningButton}" VerticalAlignment="Center" Click="btnCancel_Click" />
             </StackPanel>
             <StackPanel x:Name="stackEditCloseBottom" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3">
                 <Button x:Name="btnPledgers" Margin="0 0 10 0" Height="40" Width="100" Content="Pledgers" Click="btnPledgers_Click" ></Button>
                 <Button x:Name="btnEdit2" Margin="0 0 10 0" Height="40" Width="100"  Content="Edit" Click="btnEdit_Click" />
-                <Button x:Name="btnClose" Margin="10 0 0 0" Height="40" Width="100"  Content="Close" Style="{StaticResource rsrcSafeButton}" VerticalAlignment="Center" Click="btnClose_Click"/>
+                <Button x:Name="btnClose" Margin="0 0 0 0" Height="40" Width="100"  Content="Close" Style="{StaticResource rsrcSafeButton}" VerticalAlignment="Center" Click="btnClose_Click"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>
