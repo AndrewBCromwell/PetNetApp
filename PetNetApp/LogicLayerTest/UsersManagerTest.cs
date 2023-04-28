@@ -22,7 +22,7 @@ namespace LogicLayerTest
     /// Updater Name
     /// Updated: yyyy/mm/dd
     /// </remarks>
- 
+
     [TestClass]
     public class UsersManagerTest
     {
@@ -32,7 +32,7 @@ namespace LogicLayerTest
         [TestInitialize]
         public void TestSetup()
         {
-            _userManager = new UsersManager(new UsersAccessorFakes()); 
+            _userManager = new UsersManager(new UsersAccessorFakes());
         }
 
         [TestCleanup]
@@ -52,7 +52,7 @@ namespace LogicLayerTest
             int actualCount = 0;
 
             // act
-            actualCount = _userManager.RetrieveUserByRole(role,shelterId).Count;
+            actualCount = _userManager.RetrieveUserByRole(role, shelterId).Count;
 
             // assert
             Assert.AreEqual(expectedCount, actualCount);
@@ -311,6 +311,7 @@ namespace LogicLayerTest
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
         [TestMethod]
         public void TestEditUserActive()
         {
@@ -352,10 +353,101 @@ namespace LogicLayerTest
 
 
             // Act
-            wasAffected = _userManager.EditUserShelterId(userId,shelterId,oldShelterId);
+            wasAffected = _userManager.EditUserShelterId(userId, shelterId, oldShelterId);
 
             // Assert
             Assert.IsTrue(wasAffected);
         }
+
+        [TestMethod]
+        public void TestUpdateUserDetailsSuccessfully()
+        {
+            bool results = false;
+
+            Users oldUser = new Users()
+            {
+                UsersId = 1000,
+                GivenName = "Stephan",
+                FamilyName = "technowiz",
+                Email = "Stephan@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true,
+                Suspend = false
+            };
+            Users newUser = new Users()
+            {
+                UsersId = 1000,
+                ShelterId = 1,
+                GivenName = "Stephanie",
+                FamilyName = "technowitch",
+                Email = "Stephanie@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true,
+                Suspend = false
+            };
+
+            results = _userManager.EditUserDetails(oldUser, newUser);
+
+            Assert.IsTrue(results);
+        }
+
+        [TestMethod]
+        public void TestUpdateUserEmailSuccessfully()
+        {
+            const string oldEmail = "mads@company.com";
+            const string newEmail = "avery@company.com";
+            const string passwordHash = "newuser";
+
+            bool results = false;
+
+            results = _userManager.UpdateEmail(oldEmail, newEmail, passwordHash);
+
+            Assert.IsFalse(results);
+        }
+
+        [TestMethod]
+        public void TestUpdateUserEmailWithInvalidEmail()
+        {
+            const string oldEmail = "mads@company.com";
+            const string newEmail = "avery company com";
+            const string passwordHash = "newuser";
+
+            bool results = true;
+
+            results = _userManager.UpdateEmail(oldEmail, newEmail, passwordHash);
+
+            Assert.IsFalse(results);
+        }
+
+        [TestMethod]
+        public void TestUpdateUserEmailWithWrongPassword()
+        {
+            const string oldEmail = "mads@company.com";
+            const string newEmail = "avery@company.com";
+            const string passwordHash = "P@ssw0rd";
+
+            bool results = true;
+
+            results = _userManager.UpdateEmail(oldEmail, newEmail, passwordHash);
+
+            Assert.IsFalse(results);
+        }
+
+        [TestMethod]
+        public void TestSelectAllRoles()
+        {
+            List<string> roles = null;
+            roles = _userManager.RetrieveAllRoles();
+
+            int actualResult = roles.Count;
+            int expectedResult = 3;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
     }
 }

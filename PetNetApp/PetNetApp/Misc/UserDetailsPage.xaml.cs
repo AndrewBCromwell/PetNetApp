@@ -1,4 +1,15 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Mads Rhea
+/// Created: 2023/02/05
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/28
+/// 
+/// Final QA
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using PetNetApp;
 using System;
@@ -26,19 +37,42 @@ namespace WpfPresentation.Misc
     /// </summary>
     ///
     /// <remarks>
-    /// Updater Name
-    /// Updated: yyyy/mm/dd
+    /// Oleksiy Fedchuk
+    /// Updated: 2023/04/28
+    /// 
+    /// Final QA
     /// </remarks>
     public partial class UserDetailsPage : Page
     {
         private static UserDetailsPage _existingUserDetails = null;
         private MasterManager _manager = MasterManager.GetMasterManager();
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         public UserDetailsPage()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         public static UserDetailsPage GetUserDetailsPage()
         {
             if (_existingUserDetails == null)
@@ -47,27 +81,81 @@ namespace WpfPresentation.Misc
             }
             return _existingUserDetails;
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmboGender_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> genders = _manager.UsersManager.RetrieveGenders();
+            List<string> genders = new List<string>();
+            try
+            {
+                genders = _manager.UsersManager.RetrieveGenders();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
 
             foreach (var gender in genders)
             {
                 cmboGender.Items.Add(gender);
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmboPronoun_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> pronouns = _manager.UsersManager.RetrievePronouns();
+            List<string> pronouns = new List<string>();
+
+            try
+            {
+                pronouns = _manager.UsersManager.RetrievePronouns();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
             foreach (var pronoun in pronouns)
             {
                 cmboPronoun.Items.Add(pronoun);
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (txtGivenName.Text == _manager.User.GivenName &&
@@ -113,7 +201,17 @@ namespace WpfPresentation.Misc
             }
 
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         private void LoadUserDetails()
         {
             txtGivenName.Text = _manager.User.GivenName;
@@ -125,7 +223,19 @@ namespace WpfPresentation.Misc
             txtPhone.Text = _manager.User.Phone;
             txtZipcode.Text = _manager.User.Zipcode;
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // 2 lines added by Stephen Jaurigue

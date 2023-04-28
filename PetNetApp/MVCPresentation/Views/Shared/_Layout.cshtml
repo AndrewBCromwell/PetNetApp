@@ -96,10 +96,9 @@
                             else
                             {
                                 <p>Hello, Guest!</p>
-                            }
-
-                        </li>
-                        <li class="dropdown-item" type="button"><a href="~/Views/Manage/AccountSettings.cshtml">Account Settings</a></li>
+                            }                            
+                         </li>
+                        <li class="dropdown-item" type="button">@Html.ActionLink("Account Settings", "UserDetails", "Manage")</li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item" type="button">
                             @if (Request.IsAuthenticated)

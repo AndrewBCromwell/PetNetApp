@@ -468,11 +468,6 @@ namespace LogicLayer
             return userRoles;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/03/29]
-        /// Returns all entries from Role table.
-        /// </summary>
-        /// <returns>List of strings</returns>
         public List<string> RetrieveAllRoles()
         {
             List<string> roles = new List<string>();

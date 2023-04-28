@@ -169,5 +169,10 @@ namespace WpfPresentation.Misc
             rectRightArrow.Height = canvasBanner.ActualHeight;
         }
 
+        private void frameLandingPage_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            frameLandingPage.Navigate(LandingBodyLoggedInPage.GetLandingBodyLoggedInPage(_mainWindow));
+        }
     }
 }

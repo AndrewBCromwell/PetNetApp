@@ -29,6 +29,7 @@ namespace DataAccessLayerFakes
         private List<string> fakePassword = new List<string>();
         private List<string> fakeGenders = new List<string>();
         private List<string> fakePronouns = new List<string>();
+        private List<string> fakeRoles = new List<string>();
         private Users fakeUser = new Users();
 
 
@@ -142,6 +143,7 @@ namespace DataAccessLayerFakes
             fakeUsers[2].Roles.Add("Volunteer");
 
             fakePassword.Add("9c9064c59f1ffa2e174ee754d2979be80dd30db552ec03e7e327e9b1a4bd594e");
+            fakePassword.Add("newuser");
 
             fakeGenders.Add("Male");
             fakeGenders.Add("Female");
@@ -152,6 +154,10 @@ namespace DataAccessLayerFakes
             fakePronouns.Add("She/Her");
             fakePronouns.Add("They/Them");
             fakePronouns.Add("Any/All");
+
+            fakeRoles.Add("Admin");
+            fakeRoles.Add("Vet");
+            fakeRoles.Add("Fosterer");
 
             // Fakes for the adoption record functionaly (Refered to as CustomerRecords in the drive and github) - Teft
             fakeUsers[0].AdoptionRecords.Add(new UsersAdoptionRecords()
@@ -341,8 +347,7 @@ namespace DataAccessLayerFakes
         }
 
         /// <summary>
-        /// NEEDS TESTING
-        /// [Mads Rhea - 2023/02/??]
+        /// [Mads Rhea - 2023/03/23]
         /// Tests to see if UpdateUserDetails successfully updates a varity of user details.
         /// </summary>
         /// <returns>int</returns>
@@ -439,7 +444,6 @@ namespace DataAccessLayerFakes
         }
 
         /// <summary>
-        /// NEEDS TESTING
         /// [Mads Rhea - 2023/02/23]
         /// Tests to see if the method successfully updates the users email.
         /// </summary>
@@ -448,19 +452,14 @@ namespace DataAccessLayerFakes
         {
             int rowsAffected = 0;
 
-            for (int i = 0; i < fakeUsers.Count; i++)
+            foreach (var fakeUser in fakeUsers)
             {
-                int index = -1;
-                if (fakeUsers[i].Email == oldEmail)
+                if (fakeUser.Email == oldEmail && fakePassword[1] == passwordHash)
                 {
-                    index = i;
-
-                    if (fakePassword[index] == passwordHash)
-                    {
-                        fakePassword[index] = newEmail;
-                        rowsAffected += 1;
-                    }
+                    fakeUser.Email = newEmail;
+                    rowsAffected++;
                 }
+
             }
 
             return rowsAffected;
@@ -485,11 +484,13 @@ namespace DataAccessLayerFakes
             }
             return userfakes;
         }
+
         public Users SelectUserByUsersId(int UsersId)
         {
             return fakeUser;
             //throw new NotImplementedException();
         }
+
         public UsersVM SelectUserByUsersIdWithRoles(int UsersId)
         {
             throw new NotImplementedException();
@@ -631,14 +632,40 @@ namespace DataAccessLayerFakes
             return usersAdoptionRecords;
         }
 
+        //mads
         public List<string> SelectAllRoles()
         {
-            throw new NotImplementedException();
+            return fakeRoles;
         }
 
+        //mads - come back to
         public UsersVM AuthenticateUser(string email, string passwordHash)
         {
-            throw new NotImplementedException();
+            UsersVM user = new UsersVM();
+            foreach (var fakeUser in fakeUsers)
+            {
+                if (fakeUser.Email.Equals(email) && fakePassword[1].Equals(passwordHash))
+                {
+                    user = new UsersVM()
+                    {
+                        UsersId = fakeUser.UsersId,
+                        ShelterId = (fakeUser.ShelterId == null) ? null : fakeUser.ShelterId,
+                        GivenName = fakeUser.GivenName,
+                        FamilyName = fakeUser.FamilyName,
+                        Email = fakeUser.Email,
+                        Address = fakeUser.Address,
+                        Address2 = fakeUser.Address2,
+                        Zipcode = fakeUser.Zipcode,
+                        Phone = fakeUser.Phone,
+                        Active = fakeUser.Active,
+                        Suspend = fakeUser.Suspend,
+                        Roles = fakeUser.Roles,
+                        AdoptionRecords = fakeUser.AdoptionRecords
+                    };
+                }
+            }
+
+            return user;
         }
 
         public int UpdateUserShelterid(int userid, int shelterid, int? oldShelterId)
@@ -668,7 +695,25 @@ namespace DataAccessLayerFakes
 
         public int InsertOrDeleteUserRole(int usersId, string role, bool delete = false)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                foreach (var roles in fakeUser.Roles)
+                {
+                    if (fakeUser.UsersId == usersId && roles != role)
+                    {
+                        fakeUser.Roles.Add(role);
+                        result++;
+                    }
+                    else if (fakeUser.UsersId == usersId && roles == role)
+                    {
+                        fakeUser.Roles.Remove(roles);
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

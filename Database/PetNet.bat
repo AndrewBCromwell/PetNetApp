@@ -151,6 +151,11 @@ sqlcmd -S localhost -E -i StoredProceduresScripts\sp_view_foster_applications.sq
 sqlcmd -S localhost -E -i StoredProceduresScripts\EnterDonation_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\EditEvents_SP.sql
 sqlcmd -S localhost -E -i StoredProceduresScripts\Viewalleventsbyvisabilty.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\FavoriteAndUnfavoritePost_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\HideReply_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\SortTicket_SP.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\ViewAllPrescriptions.sql
+sqlcmd -S localhost -E -i StoredProceduresScripts\AddPrescriptions.sql
 
 ECHO .
 ECHO if no errors appear DB was created

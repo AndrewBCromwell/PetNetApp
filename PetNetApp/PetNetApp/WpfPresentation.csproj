@@ -134,6 +134,9 @@
     <Compile Include="Animals\AdoptionApplicationResponse.xaml.cs">
       <DependentUpon>AdoptionApplicationResponse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\AddPrescription.xaml.cs">
+      <DependentUpon>AddPrescription.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
       <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
     </Compile>
@@ -345,6 +348,9 @@
     <Compile Include="Animals\Medical_Notes.xaml.cs">
       <DependentUpon>Medical_Notes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\ViewPrescriptions.xaml.cs">
+      <DependentUpon>ViewPrescriptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Community\SuspendUserPopup.xaml.cs">
       <DependentUpon>SuspendUserPopup.xaml</DependentUpon>
     </Compile>
@@ -546,9 +552,6 @@
     </Compile>
     <Compile Include="Misc\LandingBodyLoggedInPage.xaml.cs">
       <DependentUpon>LandingBodyLoggedInPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Misc\LandingBodyLoggedOutPage.xaml.cs">
-      <DependentUpon>LandingBodyLoggedOutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Misc\LogInPage.xaml.cs">
       <DependentUpon>LogInPage.xaml</DependentUpon>
@@ -841,6 +844,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Animals\AddPrescription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ViewPrescriptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -976,10 +987,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Misc\LandingBodyLoggedInPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Misc\LandingBodyLoggedOutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

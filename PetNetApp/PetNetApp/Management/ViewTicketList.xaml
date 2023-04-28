@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfPresentation.Development.Management"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1000" MinWidth="1000"
       Title="ViewTicketList" Loaded="Page_Loaded">
 
     <Grid>
@@ -38,8 +38,19 @@
                 <StackPanel>
                     <TextBox x:Name="txtSearch" Margin="0 10 0 5" Height="35" Text="Search..." GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" KeyDown="txtSearch_KeyDown" ></TextBox>
                     <Button x:Name="btnConfirm" Margin="5 0 5 5" Height="35" Click="btnConfirm_Click">Confirm</Button>
-                    <Button x:Name="btnSortBy" Margin="5 0 5 5" Height="35">Sort By:</Button>
-                    <Button x:Name="btnNewTicket" Margin="5 0 5 5" Height="50" Click="btnNewTicket_Click">Open new Ticket...</Button>
+                    <Button x:Name="btnSortBy" Margin="5 0 5 5" Height="35"  Click="btnSortBy_Click" MouseEnter="btnSortBy_MouseEnter" MouseLeave="btnSortBy_MouseLeave" >Sort By:</Button>
+                    <StackPanel x:Name="stkpnlSortBy" Visibility="Collapsed" MinWidth="333" MinHeight="130" Background="White">
+                        <Label Content="Start Date:" Margin="0,0,200,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <DatePicker x:Name="btnSortStartDate" Height="25" Width="175" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="125,-25,0,0" SelectedDateChanged="btnSortStartDate_SelectedDateChanged" />
+                        <Label Content="End Date:" Margin="0,0,205,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <DatePicker x:Name="btnSortEndDate" Height="25" Width="175" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="125,-25,0,0" SelectedDateChanged="btnSortEndDate_SelectedDateChanged" />
+                        <Label Content="Ticket Owner:" Width="125" HorizontalAlignment="Center" Padding="0" Margin="0,5,150,0" VerticalAlignment="Center" />
+                        <ComboBox x:Name="cmboSortUser" SelectedItem="User" Text="User" Height="25" Width="175" Margin="125,-20,0,0" Padding="1,1,1,3" SelectionChanged="cmboSortUser_SelectionChanged" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                        <Label Content="Ticket Status:" Width="125" HorizontalAlignment="Center" Padding="0" Margin="0,5,147,0" VerticalAlignment="Center" />
+                        <ComboBox x:Name="cmboSortStatus" Height="25" Width="175" VerticalAlignment="Center" Margin="125,-20,0,0" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="cmboSortStatus_SelectionChanged"  />
+                    </StackPanel>
+                    <Button x:Name="btnNewTicket" Margin="5" Height="50" Click="btnNewTicket_Click">Open new Ticket...</Button>
                 </StackPanel>
             </Grid>
         </Grid>

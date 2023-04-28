@@ -1044,9 +1044,20 @@ VALUES
 (100003,"Flu shot",0,0,1,0,0,0,"A shot for the flu"),
 (100003,"Covid shot",0,0,1,0,0,0,"A shot for covid"),
 (100003,"Cant sleep",0,0,0,1,0,0,"A pill for sleeping"),
-(100001,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
-(100003,"Rash",0,0,0,1,0,0,"Some Ointment for skin"),
-(100002,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain")
+(100002,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100004,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100005,"Rash",0,0,0,1,0,0,"Some Ointment for skin"),
+(100006,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100007,"Cant sleep",0,0,0,1,0,0,"A pill for sleeping"),
+(100008,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100009,"Rash",0,0,0,1,0,0,"Some Ointment for skin"),
+(100010,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100011,"Cant sleep",0,0,0,1,0,0,"A pill for sleeping"),
+(100012,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100013,"Rash",0,0,0,1,0,0,"Some Ointment for skin"),
+(100014,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100015,"Cant sleep",0,0,0,1,0,0,"A pill for sleeping"),
+(100016,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain")
 
 GO
 
@@ -1113,10 +1124,22 @@ insert into [dbo].[Prescription]
 		)		
 	
 	VALUES 
-		(100011,100002,'Treatment',"malatoin","5mg","Once a day",10,"1 pill by mouth at bedtime",GETDATE(),GETDATE()),
-		(100012,100002,'Treatment',"asprin","20mg","Twice a day",30,"1 pill by mouth Every 8 hours",GETDATE(),GETDATE()),
-		(100013,100002,'Treatment',"Skin Care","100ml","Once a day",10,"Apply ointment to skin of infected area",GETDATE(),GETDATE()),
-		(100014,100002,'Treatment',"Joint Care","50mg","Twice a day",30,"1 pill by mouth every 12 hours",GETDATE(),GETDATE())
+		(100011,100002,"Treatment","malatoin","5mg","Once a day",10,"1 pill by mouth at bedtime",GETDATE(),GETDATE()),
+		(100012,100002,"Treatment","asprin","20mg","Twice a day",30,"1 pill by mouth Every 8 hours",GETDATE(),GETDATE()),
+		(100013,100002,"Treatment","Skin Care","100ml","Once a day",10,"Apply ointment to skin of infected area",GETDATE(),GETDATE()),
+		(100014,100002,"Treatment","Joint Care","50mg","Twice a day",30,"1 pill by mouth every 12 hours",GETDATE(),GETDATE()),
+		(100015,100002,"Treatment","Amoxicillin","500mg","Three times a day",20,"1 pill by mouth every 8 hours",GETDATE(),GETDATE()),
+		(100016,100002,"Treatment","Rabies Vaccine","20mg","Once every 6 months",1,"Administer intramuscularly on left hind leg",GETDATE(),GETDATE()),
+		(100017,100002,"Treatment","Ivermectin","1ml","Once a week",4,"Apply topically on back of neck",GETDATE(),GETDATE()),
+		(100018,100002,"Treatment","Fluoxetine","20mg","Once a day",30,"1 pill by mouth every morning",GETDATE(),GETDATE()),
+		(100019,100002,"Treatment","Lysine","500mg","Twice a day",60,"1 pill by mouth every 12 hours",GETDATE(),GETDATE()),
+		(100020,100002,"Treatment","Prednisolone","10mg","Once a day",20,"1 pill by mouth every evening",GETDATE(),GETDATE()),
+		(100021,100002,"Treatment","Doxycycline","100mg","Twice a day",30,"1 pill by mouth every 12 hours",GETDATE(),GETDATE()),
+		(100022,100002,"Treatment","Famotidine","20mg","Once a day",60,"1 pill by mouth every evening",GETDATE(),GETDATE()),
+		(100023,100002,"Treatment","Metronidazole","250mg","Three times a day",14,"1 pill by mouth every 8 hours",GETDATE(),GETDATE()),
+		(100024,100002,"Treatment","Cephalexin","250mg","Four times a day",40,"1 pill by mouth every 6 hours",GETDATE(),GETDATE())
+		
+
 
 print '' print '*** creating Kennel sample data'
 GO 

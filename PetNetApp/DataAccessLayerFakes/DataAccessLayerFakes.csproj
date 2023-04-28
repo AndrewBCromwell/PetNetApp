@@ -66,6 +66,7 @@
     <Compile Include="LibraryAccessorFakes.cs" />
     <Compile Include="ResourceAddRequestAccessorFake.cs" />
     <Compile Include="ShelterInventoryAccessorFakes.cs" />
+    <Compile Include="PrescriptionAccessorFakes.cs" />
     <Compile Include="ShelterItemTransactionAccessorFakes.cs" />
     <Compile Include="InstitutionalEntityAccessorFake.cs" />
     <Compile Include="SurrenderFormFakes.cs" />

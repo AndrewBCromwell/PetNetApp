@@ -1,4 +1,15 @@
-﻿using System;
+﻿/// <summary>
+/// Mads Rhea
+/// Created: 2023/02/05
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/28
+/// 
+/// Final QA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,19 +38,42 @@ namespace WpfPresentation.Misc
     /// </summary>
     ///
     /// <remarks>
-    /// Updater Name
-    /// Updated: yyyy/mm/dd
+    /// Oleksiy Fedchuk
+    /// Updated: 2023/04/28
+    /// 
+    /// Final QA
     /// </remarks>
     public partial class LogInPage : Page
     {
         private static LogInPage _existingLogIn = null;
         private MasterManager _manager = MasterManager.GetMasterManager();
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         public LogInPage()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         public static LogInPage GetLogInPage()
         {
             if (_existingLogIn == null)
@@ -49,7 +83,19 @@ namespace WpfPresentation.Misc
 
             return _existingLogIn;
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
             string email = txtEmail.Text;
@@ -102,7 +148,19 @@ namespace WpfPresentation.Misc
                 ErrorLoading(true);
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             txtEmail.Text = "";
@@ -111,7 +169,18 @@ namespace WpfPresentation.Misc
 
             txtEmail.Focus();
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="onOff"></param>
         private void ErrorLoading(bool onOff)
         {
             if (onOff)
@@ -129,14 +198,38 @@ namespace WpfPresentation.Misc
                 rowError.Height = new GridLength(15);
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="error"></param>
+        /// <param name="help"></param>
         private void ChangeErrorText(string error, string help)
         {
             lblErrorErr.Content = error;
             lblErrorHelp.Content = help;
         }
-
-        // testing method to ensure the program is correctly detecting roles
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// testing method to ensure the program is correctly detecting roles
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="user"></param>
+        /// <returns></returns>
         private string RoleBuilder(UsersVM user)
         {
             string roles = "";
@@ -162,12 +255,36 @@ namespace WpfPresentation.Misc
             }
             return roles;
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(SignUp.GetSignUpPage());
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -175,7 +292,19 @@ namespace WpfPresentation.Misc
                 txtPassword.Focus();
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

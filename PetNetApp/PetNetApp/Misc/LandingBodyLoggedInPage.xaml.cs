@@ -50,5 +50,15 @@ namespace WpfPresentation.Misc
 
             return _existingLandingBodyLoggedIn;
         }
+
+        private void btnLogIn_Click(object sender, RoutedEventArgs e)
+        {
+            // Add navigation to login screen
+        }
+
+        private void btnSignUp_Click(object sender, RoutedEventArgs e)
+        {
+            // add navigation to sign up screen
+        }
     }
 }
