@@ -1,6 +1,7 @@
 ﻿using DataObjects;
 using LogicLayer;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using MVCPresentation.Models;
 using System;
 using System.Collections.Generic;
@@ -10,86 +11,47 @@ using System.Web.Mvc;
 
 namespace MVCPresentation.Controllers
 {
- 
+    /// <summary>
+    /// Chris Dreismeier
+    /// Created: 2023/04/27
+    /// 
+    /// User Profile Controller
+    /// </summary>
     public class UserProfileController : Controller
     {
         MasterManager _manager = MasterManager.GetMasterManager();
+
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/04/27
+        /// 
+        /// Displays the users profile and the users information
+        /// </summary>
         // GET: UserProfile
         public ActionResult Index()
         {
+            var dbContext = new ApplicationDbContext();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
+            var user = userManager.FindById(User.Identity.GetUserId());
+
+            try
+            {
+                if(user.ShelterId != null)
+                {
+                    ViewBag.UserShelter = _manager.ShelterManager.RetrieveShelterVMByShelterID((int)user.ShelterId);
+                }
+                else
+                {
+                    ViewBag.NoShelter = "You do not have a shelter selected!";
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
             return View(); 
-        }
-
-        // GET: UserProfile/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: UserProfile/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: UserProfile/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UserProfile/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: UserProfile/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UserProfile/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UserProfile/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         // Code by Alexis Oetken 

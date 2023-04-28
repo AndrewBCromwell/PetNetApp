@@ -25,7 +25,18 @@ namespace MVCPresentation.Controllers
 
         public AccountController()
         {
-          
+           try
+            {
+                LogicLayer.UsersManager usersManager = new LogicLayer.UsersManager();
+                _genders = usersManager.RetrieveGenders();
+                _pronouns = usersManager.RetrievePronouns();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -242,10 +253,11 @@ namespace MVCPresentation.Controllers
                         }
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
                     ViewBag.Genders = _genders;
                     ViewBag.Pronouns = _pronouns;
+                    ViewBag.Error = "There was an error creating your account";
                     return View(model);
                 }
             }
