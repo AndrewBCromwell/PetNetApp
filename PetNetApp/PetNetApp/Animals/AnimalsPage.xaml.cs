@@ -49,7 +49,7 @@ namespace WpfPresentation.Animals
         private AnimalsPage()
         {
             InitializeComponent();
-            _animalsTabButtons = new Button[] { btnAdopt, btnFoster, btnSurrender, btnAnimalList, btnMedical };
+            _animalsTabButtons = new Button[] { btnAdopt, btnSurrender, btnAnimalList, btnMedical };
         }
         /// <summary>
         /// Author: Stephen Jaurigue
@@ -94,13 +94,6 @@ namespace WpfPresentation.Animals
             frameAnimals.Navigate(WpfPresentation.Animals.ViewAllAdoptableAnimalsPage.GetViewAllAdoptableAnimalsPage());
 
             
-        }
-
-        private void btnFoster_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton(btnFoster);
-            // replace with page name and then delete comment
-            frameAnimals.Navigate(null);
         }
         /// <summary>
         /// Author: Stephen Jaurigue
@@ -232,7 +225,6 @@ namespace WpfPresentation.Animals
             HideAllButtons();
             ShowAdoptButtonByRole();
             ShowAnimalListButtonByRole();
-            ShowFosterButtonByRole();
             ShowMedicalButtonByRole();
             ShowSurrenderButtonByRole();
         }
@@ -258,18 +250,6 @@ namespace WpfPresentation.Animals
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnAnimalList.Visibility = Visibility.Visible;
-            }
-        }
-        /// <summary>
-        /// Author: Stephen Jaurigue
-        /// Date: 2023/04/21
-        /// </summary>
-        public void ShowFosterButtonByRole()
-        {
-            string[] allowedRoles = { "Admin", "Manager", "Employee" };
-            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
-            {
-                btnFoster.Visibility = Visibility.Visible;
             }
         }
         /// <summary>

@@ -391,7 +391,11 @@ namespace WpfPresentation.Fundraising
 
         private void btnAddHost_Click(object sender, RoutedEventArgs e)
         {
-            PromptWindow.ShowPrompt("Add Host", "Feature not implemented");
+            AddEditInstitutionalEntity addEditInstitutionalEntity = new AddEditInstitutionalEntity(_contactType);
+            addEditInstitutionalEntity.Owner = Window.GetWindow(this);
+            addEditInstitutionalEntity.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            addEditInstitutionalEntity.ShowDialog();
+            NavigationService.Navigate(new ViewFundraisingEventHosts());
         }
 
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)

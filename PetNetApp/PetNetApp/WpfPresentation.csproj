@@ -1302,7 +1302,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Icons\" />
+    <Resource Include="Images\menulight.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\petnetLogo.png">
@@ -1498,6 +1498,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\no_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menudark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

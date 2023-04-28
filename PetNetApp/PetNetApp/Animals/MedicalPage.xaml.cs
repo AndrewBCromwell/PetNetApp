@@ -27,6 +27,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
+using LogicLayerInterfaces;
 
 namespace WpfPresentation.Animals.Medical
 {
@@ -39,7 +40,7 @@ namespace WpfPresentation.Animals.Medical
 
         private MasterManager _manager = null;
 
-        private AnimalManager _animalManager = null;
+        private IAnimalManager _animalManager = null;
         private List<Animal> _animals = null;
 
         private Grid grid = null;
@@ -57,8 +58,8 @@ namespace WpfPresentation.Animals.Medical
         public MedicalPage(MasterManager manager)
         {
             InitializeComponent();
-            _animalManager = new AnimalManager();
             _manager = manager;
+            _animalManager = _manager.AnimalManager;
         }
 
         /// <summary>
@@ -149,7 +150,20 @@ namespace WpfPresentation.Animals.Medical
             imageBorder.Margin = new Thickness(48, 42, 25, 85);
 
             Image image = new Image();
-            image.Source = new BitmapImage(new Uri("/WpfPresentation;component/Images/sampleDogImage.png", UriKind.Relative)); // tempory placeholder image while the lack of an images relation to the animals table is determined
+            image.Source = new BitmapImage(new Uri("/WpfPresentation;component/Images/no_image.png", UriKind.Relative));
+            
+            try
+            {
+                List<Images> animalImages = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(animal.AnimalId);
+                if (animalImages.Count != 0)
+                {
+                    image.Source = _manager.ImagesManager.RetrieveImageByImages(animalImages[0]);
+                }
+            } 
+            catch (Exception ex)
+            {
+                image.Source = new BitmapImage(new Uri("/WpfPresentation;component/Images/BrokenImageGreen.png", UriKind.Relative));
+            }
             image.Height = 175;
             image.Width = 175;
             image.HorizontalAlignment = HorizontalAlignment.Center;

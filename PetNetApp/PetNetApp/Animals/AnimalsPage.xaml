@@ -16,7 +16,6 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                 <Rectangle Width="25"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Adopt" x:Name="btnAdopt" Click="btnAdopt_Click"/>
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Foster" x:Name="btnFoster" Click="btnFoster_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Surrender" x:Name="btnSurrender" Click="btnSurrender_Click" />
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Animal List" x:Name="btnAnimalList" Click="btnAnimalList_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Medical" x:Name="btnMedical" Click="btnMedical_Click" />

@@ -21,7 +21,7 @@
 
                 <Border x:Name="Border" BorderBrush="#5F987A" BorderThickness="5" Grid.Row="1" HorizontalAlignment="Center" CornerRadius="10">
                     <!--<Image x:Name="imgAnimalListImg" Source="../Images/perfectCAT.png" HorizontalAlignment="Center" Grid.Row="1"></Image>-->
-                    <Image Source="../Images/perfectCAT.png" HorizontalAlignment="Center" Grid.Row="1" Margin="1">
+                    <Image Source="../Images/perfectCAT.png" HorizontalAlignment="Center" Grid.Row="1" Margin="1" x:Name="imgAnimal">
                         <!--<Image.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=Border}"/>
                         </Image.OpacityMask>-->

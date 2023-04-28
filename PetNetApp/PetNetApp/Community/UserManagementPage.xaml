@@ -11,27 +11,10 @@
 
     <Grid Background="#EEF2E6">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100px"/>
             <RowDefinition/>
             <RowDefinition Height="50px"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="180"/>
-            </Grid.ColumnDefinitions>
-
-            <uc:PlaceholderTextBox x:Name="txtSearchUserName" Grid.Column="1" Height="60" 
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center" DefaultText="Search" FontSize="22"/>
-            <ComboBox Name="cmbFilterUsers" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="160"
-                      Height="60" BorderBrush="Black" Background="White" Margin="0 0 10 0">
-                
-                <ComboBoxItem>Add User Filter Here</ComboBoxItem>
-                
-            </ComboBox>
-        </Grid>
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="0">
             <StackPanel x:Name="stpUsersList">
                 
             </StackPanel>

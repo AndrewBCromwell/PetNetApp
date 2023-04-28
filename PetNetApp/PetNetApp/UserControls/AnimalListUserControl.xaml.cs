@@ -30,6 +30,22 @@ namespace WpfPresentation.UserControls
         {
             InitializeComponent();
             _animal =_manager.AnimalManager.RetrieveAnimalByAnimalId(animal.AnimalId, animal.AnimalShelterId);
+            try
+            {
+                List<Images> images = _manager.ImagesManager.RetriveImageByAnimalId(animal.AnimalId);
+                if (images.Count != 0)
+                {
+                    imgAnimal.Source = _manager.ImagesManager.RetrieveImageByImages(images[0]);
+                }
+                else
+                {
+                    imgAnimal.Source = new BitmapImage(new Uri("/WpfPresentation;component/Images/no_image.png", UriKind.Relative));
+                }
+            }
+            catch (Exception ex)
+            {
+                imgAnimal.Source = new BitmapImage(new Uri("/WpfPresentation;component/Images/BrokenImageGreen.png", UriKind.Relative));
+            }
         }
 
         private void btnViewAnimalProfile_Click(object sender, RoutedEventArgs e)
