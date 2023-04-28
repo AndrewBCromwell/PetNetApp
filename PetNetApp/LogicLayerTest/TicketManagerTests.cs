@@ -24,11 +24,11 @@ namespace LogicLayerTest
             _ticketManager = new TicketManager(new TicketAccessorFakes());
         }
 
-        //[TestCleanup]
-        //public void testTearDown()
-        //{
-        //    _ticketManager = null;
-        //}
+        [TestCleanup]
+        public void testTearDown()
+        {
+            _ticketManager = null;
+        }
 
         [TestMethod]
         public void TestRetrieveAllTickets()
@@ -84,6 +84,101 @@ namespace LogicLayerTest
             Assert.AreEqual(result, expectedResult);
         }
 
+        [TestMethod]
+        public void TestSelectAllTicketStatusId()
+        {
+            int result = 0;
+            int expected = 2;
 
+            result = _ticketManager.RetrieveAllTicketStatusId().Count;
+
+
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestMethod]
+        public void TestSelectTicketsByStatusId()
+        {
+            int result = 0;
+            const string status = "Open";
+            int expected = 3;
+
+            result = _ticketManager.RetrieveTicketsByTicketStatusId(status).Count();
+
+            Assert.AreEqual(result, expected);
+
+        }
+
+        [TestMethod]
+        public void TestSelectTicketsByEmail()
+        {
+            int result = 0;
+            const string email = "fakeEmail@company.com";
+            int expected = 3;
+
+            result = _ticketManager.RetrieveTicketsByEmail(email).Count();
+
+            Assert.AreEqual(result, expected);
+
+        }
+
+        [TestMethod]
+        public void TestSelectTicketsByEmailNotInDatabase()
+        {
+            int result = 0;
+            const string email = "fakerEmail@company.com";
+            int expected = 0;
+
+            result = _ticketManager.RetrieveTicketsByEmail(email).Count();
+
+            Assert.AreEqual(result, expected);
+
+        }
+
+        [TestMethod]
+        public void TestSelectTicketsOnDate()
+        {
+            int result = 0;
+            DateTime d = DateTime.Now;
+            string date = d.ToShortDateString();
+            int expected = 3;
+
+            result = _ticketManager.RetrieveTicketsByDate(date).Count();
+
+            Assert.AreEqual(result, expected);
+
+        }
+
+        [TestMethod]
+        public void TestSelectTicketsBetweenStartDateAndEndDate()
+        {
+            int result = 0;
+            DateTime sdate = DateTime.Now.AddHours(-1);
+            DateTime edate = DateTime.Now.AddHours(1);
+            string startDate = sdate.ToShortDateString();
+            string endDate = edate.ToShortDateString();
+            int expected = 3;
+
+            result = _ticketManager.RetrieveTicketsByDate(startDate, endDate).Count();
+
+            Assert.AreEqual(expected, result);
+
+        }
+
+        [TestMethod]
+        public void TestSelectTicketsBetweenStartDateAndEndDateNoTickets()
+        {
+            int result = 0;
+            DateTime sdate = DateTime.Now.AddDays(-2);
+            DateTime edate = DateTime.Now.AddDays(-1);
+            string startDate = sdate.ToShortDateString();
+            string endDate = edate.ToShortDateString();
+            int expected = 0;
+
+            result = _ticketManager.RetrieveTicketsByDate(startDate, endDate).Count();
+
+            Assert.AreEqual(expected, result);
+
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace DataAccessLayer
     /// Mads Rhea
     /// Created: 2023/01/27
     /// 
-    /// Accessor for all tables relating to Users.
+    /// Accessor for all stored procedures relating to Users.
     /// </summary>
     ///
     /// <remarks>
@@ -24,20 +24,6 @@ namespace DataAccessLayer
     public class UsersAccessor : IUsersAccessor
     {
 
-        /// <summary>
-        /// Chris Dreismeier
-        /// Created: 2023/03/02
-        /// 
-        /// 
-        /// </summary>
-        /// Selects all users with a certain role
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="RoleId"></param>
         public List<UsersVM> SelectUserByRole(string roleId, int shelterId)
         {
             var users = new List<UsersVM>();
@@ -98,19 +84,16 @@ namespace DataAccessLayer
 
                 throw ex;
             }
+            finally
+            {
+                conn.Close();
+            }
 
             return users;
 
 
         }
 
-        /// <summary>
-        /// Hoang Chu
-        /// Created: 2023/03/02
-        /// 
-        /// 
-        /// </summary>
-        /// Selects all users with employee role
         public List<UsersVM> SelectAllEmployees()
         {
             List<UsersVM> employeeList = new List<UsersVM>();
@@ -167,11 +150,6 @@ namespace DataAccessLayer
             return employeeList;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/02/15]
-        /// Confirms if given Email and PasswordHash match a User within the Users table.
-        /// </summary>
-        /// <returns>int</returns>
         public int AuthenticateUserWithEmailAndPasswordHash(string email, string passwordHash)
         {
             int result = 0;
@@ -209,11 +187,6 @@ namespace DataAccessLayer
             return result;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/02/15]
-        /// Returns user from the Users table based off of matching email.
-        /// </summary>
-        /// <returns>UsersVM</returns>
         public UsersVM SelectUserByEmail(string email)
         {
             UsersVM user = null;
@@ -293,11 +266,6 @@ namespace DataAccessLayer
             return user;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/02/15]
-        /// Returns all roles connected to the UsersId in the UserRoles table.
-        /// </summary>
-        /// <returns>List of strings</returns>
         public List<string> SelectRolesByUserID(int userId)
         {
             List<string> roles = new List<string>();
@@ -343,11 +311,6 @@ namespace DataAccessLayer
             return roles;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/02/15]
-        /// Returns all PronounId values from Pronoun table.
-        /// </summary>
-        /// <returns>List of strings</returns>
         public List<string> SelectAllPronouns()
         {
             List<string> pronouns = new List<string>();
@@ -393,11 +356,6 @@ namespace DataAccessLayer
             return pronouns;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/02/15]
-        /// Returns all GenderId values from Gender table.
-        /// </summary>
-        /// <returns>List of strings</returns>
         public List<string> SelectAllGenders()
         {
             List<string> genders = new List<string>();
@@ -443,11 +401,6 @@ namespace DataAccessLayer
             return genders;
         }
 
-        /// <summary>
-        /// [Alex Oetken - 2023/02/??]
-        /// Injects new user into the Users table.
-        /// </summary>
-        /// <returns>int</returns>
         public int CreateNewUser(Users user, string PasswordHash)
         {
 
@@ -495,11 +448,6 @@ namespace DataAccessLayer
             return rows;
         }
 
-        /// <summary>
-        /// [Alex Oetken - 2023/02/??]
-        /// Updates User active status to false based on UserId.
-        /// </summary>
-        /// <returns>int</returns>
         public int DeactivateUserAccount(int UserId)
         {
             int rows = 0;
@@ -534,14 +482,6 @@ namespace DataAccessLayer
             return rows;
         }
 
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/15
-        /// 
-        /// Selects users by users Id
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public List<UsersVM> SelectUsersByUsersId(int usersId)
         {
             List<UsersVM> users = new List<UsersVM>();
@@ -600,24 +540,15 @@ namespace DataAccessLayer
             {
                 throw ex;
             }
+            finally
+            {
+                conn.Close();
+            }
             return users;
 
 
         }
 
-        /// Barry Mikukas
-        /// Created: 2023/02/09
-        /// 
-        /// 
-        /// </summary>
-        /// Selects users with a given UsersId
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// 
-        /// </remarks>
-        /// <param usersId="UsersId"></param>
         public Users SelectUserByUsersId(int UsersId)
         {
             var user = new Users();
@@ -670,22 +601,19 @@ namespace DataAccessLayer
             {
                 throw ex;
             }
+            finally
+            {
+                conn.Close();
+            }
 
             return user;
         }
-        /// <summary>
-        /// By: Barry Mikulas
-        /// Created: 2023/02/11
-        /// </summary>
-        /// <param name="UsersId"></param>
-        /// <returns>UsersVM</returns>
+
         public UsersVM SelectUserByUsersIdWithRoles(int UsersId)
         {
             throw new NotImplementedException();
         }
 
-
-        // Teft Francisco
         public int UpdateUserActive(int userId, bool active)
         {
             int rows;
@@ -722,11 +650,6 @@ namespace DataAccessLayer
             return rows;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/02/15]
-        /// Injects updated user info into the Users table where the UsersId, GivenName, FamilyName, GenderId, PronounId, Address, Address2, Phone, and Zipcode match.
-        /// </summary>
-        /// <returns>int</returns>
         public int UpdateUserDetails(Users oldUser, Users updatedUser)
         {
 
@@ -785,11 +708,6 @@ namespace DataAccessLayer
 
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/02/15]
-        /// Injects updated PasswordHash into Users table where the Email and old PasswordHash match.
-        /// </summary>
-        /// <returns>int</returns>
         public int UpdatePasswordHash(string email, string oldPasswordHash, string newPasswordHash)
         {
             int rowsAffected = 0;
@@ -828,11 +746,6 @@ namespace DataAccessLayer
             return rowsAffected;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/02/24]
-        /// Updates User email in the Users table.
-        /// </summary>
-        /// <returns>int</returns>
         public int UpdateUserEmail(string oldEmail, string newEmail, string passwordHash)
         {
             int rowsAffected = 0;
@@ -870,12 +783,6 @@ namespace DataAccessLayer
             return rowsAffected;
         }
 
-        /// <summary>
-        /// [Barry Mikulas - 2023/02/26]
-        /// Updates User suspended status to value sent in.
-        /// </summary>
-        /// <returns>int # records updated</returns>
-
         public int UpdateUserSuspend(int usersId, bool suspend)
         {
             int rowsAffected = 0;
@@ -912,12 +819,6 @@ namespace DataAccessLayer
             // throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// [Barry Mikulas - 2023/02/26]
-        /// Returns the count of active, unsuspended accounts by roleId
-        /// Used initially to check to get number of Admin roles are active, unsuspended
-        /// </summary>
-        /// <returns>int # of usersId matching criteria</returns>
         public int SelectCountActiveUnsuspendedUsersByRole(string roleId)
         {
 
@@ -1017,11 +918,6 @@ namespace DataAccessLayer
             return adoptionRecordsList;
         }
 
-        /// <summary>
-        /// [Mads Rhea - 2023/03/29]
-        /// Returns all RoleIDs from the Role table.
-        /// </summary>
-        /// <returns>List of strings</returns>
         public List<string> SelectAllRoles()
         {
             List<string> roles = new List<string>();

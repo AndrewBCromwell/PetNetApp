@@ -40,7 +40,8 @@ namespace MVCPresentation.Models
     }
 
     public class ChangePasswordViewModel
-    {
+    { 
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Current password")]
@@ -66,11 +67,6 @@ namespace MVCPresentation.Models
         public string Number { get; set; }
     }
 
-    public class AccountSettingsViewModel
-    { 
-     // add
-    }
-
     public class VerifyPhoneNumberViewModel
     {
         [Required]
@@ -87,5 +83,35 @@ namespace MVCPresentation.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+
+
+    /////////////////////////////////// YOOHOO !!!!!!! MADS !!! DOWN HERE BUDDY !!!
+
+    public class UserDetailsViewModel
+    {
+        [Display(Name = "First Name")]
+        public string GivenName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string FamilyName { get; set; }
+
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Display(Name = "Apt / Suite / Etc.")]
+        public string Address2 { get; set; }
+
+        [Display(Name = "Gender")]
+        public List<string> GenderId { get; set; }
+
+        [Display(Name = "Pronouns")]
+        public List<string> PronounId { get; set; }
+
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
+        [Display(Name = "Zipcode")]
+        public string Zipcode { get; set; }
     }
 }

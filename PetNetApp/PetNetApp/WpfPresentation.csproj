@@ -169,7 +169,7 @@
     </Compile>
     <Compile Include="Management\Inventory\EditInventoryQuantityPage.xaml.cs">
       <DependentUpon>EditInventoryQuantityPage.xaml</DependentUpon>
-	 </Compile>
+    </Compile>
     <Compile Include="Management\Inventory\Library\RequestNewLibraryItem.xaml.cs">
       <DependentUpon>RequestNewLibraryItem.xaml</DependentUpon>
     </Compile>
@@ -549,9 +549,6 @@
     </Compile>
     <Compile Include="Misc\LandingBodyLoggedInPage.xaml.cs">
       <DependentUpon>LandingBodyLoggedInPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Misc\LandingBodyLoggedOutPage.xaml.cs">
-      <DependentUpon>LandingBodyLoggedOutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Misc\LogInPage.xaml.cs">
       <DependentUpon>LogInPage.xaml</DependentUpon>
@@ -979,10 +976,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Misc\LandingBodyLoggedInPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Misc\LandingBodyLoggedOutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCPresentation.Models;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace MVCPresentation.Controllers
 {
@@ -15,9 +17,24 @@ namespace MVCPresentation.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IEnumerable<String> _genders;
+        private IEnumerable<String> _pronouns;
+
 
         public ManageController()
         {
+            try
+            {
+                LogicLayer.UsersManager usersManager = new LogicLayer.UsersManager();
+                _genders = usersManager.RetrieveGenders();
+                _pronouns = usersManager.RetrievePronouns();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -238,7 +255,8 @@ namespace MVCPresentation.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                ViewBag.Results = "Password successfully changed!";
+                return RedirectToAction("ChangePassword", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
             return View(model);
@@ -322,18 +340,52 @@ namespace MVCPresentation.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+
+        /////////////////////////////////////////////////////// MADS' PLAYGROUND ⬇⬇⬇⬇ (SORRY SOMEONE [ME] DRUGGED ME. ASSHOLE.)
         //
-        // GET: /Manage/AccountSettings
-        public ActionResult AccountSettings()
+        //
+
+        // GET: /Manage/UserDetails
+        public ActionResult UserDetails()
         {
-            return View();
+            ViewBag.Genders = _genders;
+            ViewBag.Pronouns = _pronouns;
+            ViewBag.UserDetails = new UserDetailsViewModel();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                    var user = _userManager.FindById(User.Identity.GetUserId());
+
+                    ViewBag.UserDetails = new UserDetailsViewModel
+                    {
+                        GivenName = user.GivenName,
+                        FamilyName = user.FamilyName,
+                        Address = user.Address,
+                        Address2 = user.AddressTwo,
+                        GenderId = ViewBag.Genders,
+                        PronounId = ViewBag.Pronouns,
+                        Phone = user.PhoneNumber,
+                        Zipcode = user.Zipcode
+
+                    };
+                }
+                catch
+                {
+
+                }
+            }
+
+            return View(ViewBag.UserDetails);
         }
 
         //
-        // POST: /Manage/AccountSettings
+        // POST: /Manage/UserDetails
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AccountSettings(ChangePasswordViewModel model)
+        public async Task<ActionResult> UserDetails(UserDetailsViewModel model)
         {
 
             return View(model);

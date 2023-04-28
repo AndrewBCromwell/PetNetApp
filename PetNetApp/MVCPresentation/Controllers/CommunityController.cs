@@ -857,5 +857,8 @@ namespace MVCPresentation.Controllers
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
             return userManager.FindById(User.Identity.GetUserId());
         }
+
+        // MADS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     }
 }

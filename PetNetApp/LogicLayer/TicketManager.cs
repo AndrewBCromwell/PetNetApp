@@ -71,5 +71,66 @@ namespace LogicLayer
             }
             return result;
         }
+
+
+        public List<string> RetrieveAllTicketStatusId()
+        {
+            try
+            {
+                return _ticketAccessor.SelectAllTicketStatusId();
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve ticket statuses", e);
+            }
+        }
+
+        public List<string> RetrieveAllEmailsFromTickets()
+        {
+            try
+            {
+                return _ticketAccessor.SelectEmailsByTickets();
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve emails", e);
+            }
+        }
+
+        public List<TicketVM> RetrieveTicketsByTicketStatusId(string ticketStatus)
+        {
+            try
+            {
+                return _ticketAccessor.SelectTicketsByTicketStatusId(ticketStatus);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve tickets", e);
+            }
+        }
+
+        public List<TicketVM> RetrieveTicketsByEmail(string email)
+        {
+            try
+            {
+                return _ticketAccessor.SelectTicketsByEmail(email);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve tickets", e);
+            }
+        }
+
+        public List<TicketVM> RetrieveTicketsByDate(string startDate, string endDate = null)
+        {
+            try
+            {
+                return _ticketAccessor.SelectTicketsByDate(startDate, endDate);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Failed to retrieve tickets", e);
+            }
+        }
     }
 }

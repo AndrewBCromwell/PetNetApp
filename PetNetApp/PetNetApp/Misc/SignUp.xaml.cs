@@ -1,4 +1,15 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Mads Rhea
+/// Created: 2023/02/05
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/28
+/// 
+/// Final QA
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using PetNetApp;
 using System;
@@ -27,6 +38,12 @@ namespace WpfPresentation.Misc
     /// 
     /// Notes: -
     /// </summary>
+    /// <remarks>
+    /// Oleksiy Fedchuk
+    /// Updated: 2023/04/28
+    /// 
+    /// Final QA
+    /// </remarks>
     public partial class SignUp : Page
     {
         private static SignUp _existingSignUp = null;
@@ -34,12 +51,33 @@ namespace WpfPresentation.Misc
         private Users _user = null;
         private const string COMBOBOX_PLACEHOLDER_TEXT = "---";
 
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         public SignUp()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         public static SignUp GetSignUpPage()
         {
             if (_existingSignUp == null)
@@ -49,9 +87,19 @@ namespace WpfPresentation.Misc
 
             return _existingSignUp;
         }
-
-
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
             string email = txtEmail.Text;
@@ -171,6 +219,19 @@ namespace WpfPresentation.Misc
 
 
         }
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSignUpCancel_Click(object sender, RoutedEventArgs e)
         {
             var result = PromptWindow.ShowPrompt("Really Cancel?", "Are you sure? You will lose your progress.",
@@ -193,7 +254,19 @@ namespace WpfPresentation.Misc
                 
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // 4 lines added by Stephen Jaurigue
@@ -202,8 +275,18 @@ namespace WpfPresentation.Misc
             genderSelection.Items.Add(new ComboBoxItem() { Content = COMBOBOX_PLACEHOLDER_TEXT, IsEnabled = false });
             pronounSelection.Items.Add(new ComboBoxItem() { Content = COMBOBOX_PLACEHOLDER_TEXT, IsEnabled = false });
 
-            List<string> genders = _manager.UsersManager.RetrieveGenders();
-            List<string> pronouns = _manager.UsersManager.RetrievePronouns();
+            List<string> genders = new List<string>();
+            List<string> pronouns = new List<string>();
+            try
+            {
+                genders = _manager.UsersManager.RetrieveGenders();
+                pronouns = _manager.UsersManager.RetrievePronouns();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
 
             genderSelection.SelectedIndex = 0;
             pronounSelection.SelectedIndex = 0;

@@ -215,6 +215,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\accountsettings.css" />
     <Content Include="Content\animals.css" />
     <Content Include="colors.css" />
     <Content Include="Content\Animal\adoptableAnimal-desktop.css" />
@@ -242,6 +243,7 @@
     <Content Include="Content\Fundraising\campaigns-mobile.css" />
     <Content Include="Content\Fundraising\campaigns.css" />
     <Content Include="Content\Fundraising\events.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\sub-menu.css" />
     <Content Include="Content\Fundraising\page-navigation.css" />
     <Content Include="Content\ShelterNetwork.css" />
@@ -265,7 +267,8 @@
     <Content Include="Views\Animals\SurrenderAnimalFormSubmit.cshtml" />
     <Content Include="Views\UserProfile\AdoptionApplicationsPartial.cshtml" />
     <Content Include="Views\Animals\Index.cshtml" />
-    <Content Include="Views\Manage\AccountSettings.cshtml" />
+    <Content Include="Views\Shared\_PartialAccountMenu.cshtml" />
+    <Content Include="Views\Manage\Settings.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
     <Resource Include="Images\Animal\BrokenImage.png">
@@ -658,12 +661,8 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\UserDetails.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
@@ -709,6 +708,9 @@
     <EmbeddedResource Include="Migrations\202304070814588_Zipcode.resx">
       <DependentUpon>202304070814588_Zipcode.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

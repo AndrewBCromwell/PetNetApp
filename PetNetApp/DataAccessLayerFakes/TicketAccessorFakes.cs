@@ -12,6 +12,7 @@ namespace DataAccessLayerFakes
     {
         List<TicketVM> fakeTickVMs = new List<TicketVM>();
         TicketVM fakeTicketVM = new TicketVM();
+        List<string> fakeTicketStatusId = new List<string>();
 
         public TicketAccessorFakes()
         {
@@ -47,6 +48,9 @@ namespace DataAccessLayerFakes
                 TicketActive = true,
                 Email = "fakeEmail@company.com"
             });
+
+            fakeTicketStatusId.Add("Open");
+            fakeTicketStatusId.Add("Closed");
         }
 
         public int InsertTicket(int UserId, string TicketStatusId, string TicketTitle, string TicketContext)
@@ -79,6 +83,62 @@ namespace DataAccessLayerFakes
             }
 
             return result;
+        }
+
+        public List<string> SelectAllTicketStatusId()
+        {
+            return fakeTicketStatusId;
+        }
+
+        public List<string> SelectEmailsByTickets()
+        {
+            List<string> emails = new List<string>();
+
+            foreach (var ticket in fakeTickVMs)
+            {
+                emails.Add(ticket.Email);
+            }
+
+            return emails;
+        }
+
+        public List<TicketVM> SelectTicketsByEmail(string email)
+        {
+            List<TicketVM> tickets = new List<TicketVM>();
+
+            foreach (var ticket in fakeTickVMs)
+            {
+                if (ticket.Email == email) { tickets.Add(ticket); }
+            }
+
+            return tickets;
+
+        }
+
+        public List<TicketVM> SelectTicketsByTicketStatusId(string ticketStatus)
+        {
+            List<TicketVM> tickets = new List<TicketVM>();
+
+            foreach (var ticket in fakeTickVMs)
+            {
+                if (ticket.TicketStatusId == ticketStatus) { tickets.Add(ticket); }
+            }
+
+            return tickets;
+        }
+
+        public List<TicketVM> SelectTicketsByDate(string startDate, string endDate = null)
+        {
+            List<TicketVM> tickets = new List<TicketVM>();
+            DateTime sDate = Convert.ToDateTime(startDate);
+            DateTime eDate = Convert.ToDateTime(endDate);
+
+            foreach (var ticket in fakeTickVMs)
+            {
+                if (ticket.TicketDate.ToShortDateString().Equals(startDate) || (ticket.TicketDate >= sDate && ticket.TicketDate <= eDate)) { tickets.Add(ticket); }
+            }
+
+            return tickets;
         }
     }
 }

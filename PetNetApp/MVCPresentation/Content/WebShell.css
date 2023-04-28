@@ -188,3 +188,19 @@ button.shellrow-2 :hover {
     max-width: 160px;
     min-width: 150px;
 }
+
+.dropdown-item a {
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-item li:hover {
+    font-weight: 600;
+    color: #1C6758;
+}
+
+.dropdown-item a:hover {
+        font-weight: 600;
+        color: #1C6758;
+
+}

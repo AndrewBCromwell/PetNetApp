@@ -1,4 +1,15 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Mads Rhea
+/// Created: 2023/02/05
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/28
+/// 
+/// Final QA
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -26,10 +37,16 @@ namespace WpfPresentation.Management
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private List<TicketVM> _ticketVMs = null;
 
+
         public ViewTicketList(MasterManager manager)
         {
             InitializeComponent();
             _masterManager = manager;
+            cmboSortStatus.SelectedItem = null;
+            cmboSortUser.SelectedItem = null;
+            btnSortStartDate.SelectedDate = null;
+            btnSortEndDate.SelectedDate = null;
+            btnSortEndDate.IsEnabled = false;
         }
 
         /// <summary>
@@ -41,9 +58,15 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Mads Rhea
+        /// Updated: 2023/04/24
+        /// Added sort combobox item sources
+        /// </remarks>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -58,11 +81,16 @@ namespace WpfPresentation.Management
                 {
                     PromptWindow.ShowPrompt("Error", "No tickets avaliable.", ButtonMode.Ok);
                 }
+                cmboSortUser.ItemsSource = _masterManager.TicketManager.RetrieveAllEmailsFromTickets();
+                cmboSortStatus.ItemsSource = _masterManager.TicketManager.RetrieveAllTicketStatusId();
             }
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", ex.InnerException.Message);
             }
+
+            
+
         }
 
         /// <summary>
@@ -74,9 +102,10 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -95,9 +124,10 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -117,9 +147,10 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: 
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         private void refreshTickets(List<TicketVM> ticketVM)
         {
@@ -135,9 +166,10 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: 
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         public void refreshTickets()
         {
@@ -155,9 +187,10 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: 
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -186,9 +219,10 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: 
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         private List<TicketVM> searchResults(List<TicketVM> tickets)
         {
@@ -228,9 +262,10 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         private void btnNewTicket_Click(object sender, RoutedEventArgs e)
         {
@@ -246,9 +281,10 @@ namespace WpfPresentation.Management
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         private void btnTicket_Click(object sender, RoutedEventArgs e)
         {
@@ -265,5 +301,266 @@ namespace WpfPresentation.Management
                 }
             }
         }
+
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Expands the "Sort By" submenu
+        /// 
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void btnSortBy_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (stkpnlSortBy.Visibility == Visibility.Visible)
+            {
+                if ((string)btnSortBy.Content == "Reset")
+                {
+                    cmboSortStatus.SelectedItem = null;
+                    cmboSortUser.SelectedItem = null;
+                    btnSortStartDate.SelectedDate = null;
+                    btnSortEndDate.SelectedDate = null;
+                    btnSortEndDate.IsEnabled = false;
+                    refreshTickets();
+
+                }
+                else
+                {
+                    stkpnlSortBy.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                stkpnlSortBy.Visibility = Visibility.Visible;
+            }
+
+            btnSortBy.Content = "Sort By:";
+
+        }
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Clears other filters and updates ticket list
+        /// based on user selected from dropdown
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void cmboSortUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnSortBy.Content = "Reset";
+            cmboSortStatus.SelectedItem = null;
+            btnSortStartDate.SelectedDate = null;
+            btnSortEndDate.SelectedDate = null;
+            btnSortEndDate.IsEnabled = false;
+
+            if (cmboSortUser.SelectedItem != null)
+            {
+                try
+                {
+
+                    List<TicketVM> tickets = _masterManager.TicketManager.RetrieveTicketsByEmail(cmboSortUser.SelectedItem.ToString());
+                    refreshTickets(tickets);
+                }
+                catch (Exception up)
+                {
+                    throw up;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Clears other filters and updates ticket list
+        /// based on TicketStatusId selected
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void cmboSortStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnSortBy.Content = "Reset";
+            cmboSortUser.SelectedItem = null;
+            btnSortStartDate.SelectedDate = null;
+            btnSortEndDate.SelectedDate = null;
+            btnSortEndDate.IsEnabled = false;
+
+            if (cmboSortStatus.SelectedItem != null)
+            {
+                try
+                {
+                    List<TicketVM> tickets = _masterManager.TicketManager.RetrieveTicketsByTicketStatusId(cmboSortStatus.SelectedItem.ToString());
+                    refreshTickets(tickets);
+                }
+                catch (Exception up)
+                {
+                    throw up;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Clears other filters and updates ticket list
+        /// based on startdate/enddate given
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void btnSortStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {   
+            btnSortBy.Content = "Reset";
+            cmboSortStatus.SelectedItem = null;
+            cmboSortUser.SelectedItem = null;
+            btnSortEndDate.IsEnabled = true;
+
+            if (btnSortStartDate.SelectedDate != null && btnSortEndDate.SelectedDate == null)
+            {
+                try
+                {
+                    DateTime date = (DateTime)btnSortStartDate.SelectedDate;
+
+                    List<TicketVM> tickets = _masterManager.TicketManager.RetrieveTicketsByDate(date.ToShortDateString());
+                    refreshTickets(tickets);
+                    btnSortEndDate.DisplayDateStart = date;
+                    btnSortEndDate.IsEnabled = true;
+                }
+                catch (Exception up)
+                {
+                    throw up;
+                }
+            }
+            else if (btnSortStartDate.SelectedDate != null && btnSortEndDate.IsEnabled && btnSortEndDate.SelectedDate != null)
+            {
+                try
+                {
+                    DateTime sdate = (DateTime)btnSortStartDate.SelectedDate;
+                    DateTime edate = (DateTime)btnSortEndDate.SelectedDate;
+
+                    List<TicketVM> tickets = _masterManager.TicketManager.RetrieveTicketsByDate(sdate.ToShortDateString(), edate.ToShortDateString());
+                    refreshTickets(tickets);
+
+                    btnSortEndDate.DisplayDateStart = sdate;
+                }
+                catch (Exception up)
+                {
+                    throw up;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Clears other filters and updates ticket list
+        /// based on startdate and enddate given
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void btnSortEndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnSortBy.Content = "Reset";
+            cmboSortStatus.SelectedItem = null;
+            cmboSortUser.SelectedItem = null;
+
+            if (btnSortEndDate.SelectedDate != null)
+            {
+                try
+                {
+                    DateTime sdate = (DateTime)btnSortStartDate.SelectedDate;
+                    DateTime edate = (DateTime)btnSortEndDate.SelectedDate;
+
+                    List<TicketVM> tickets = _masterManager.TicketManager.RetrieveTicketsByDate(sdate.ToShortDateString(), edate.ToShortDateString());
+                    refreshTickets(tickets);
+
+                    btnSortEndDate.DisplayDateStart = sdate;
+                }
+                catch (Exception up)
+                {
+                    throw up;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Updates the "Sort By" buttons text
+        /// when the mouse enters the element
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void btnSortBy_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if ((string)btnSortBy.Content == "Sort By:" && stkpnlSortBy.Visibility == Visibility.Visible)
+            {
+                btnSortBy.Content = "Close?";
+            }
+            else if ((string)btnSortBy.Content == "Sort By:" && stkpnlSortBy.Visibility == Visibility.Collapsed)
+            {
+                btnSortBy.Content = "Open?";
+            }
+        }
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Updates the "Sort By" buttons text 
+        /// when the mouse leaves the element
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void btnSortBy_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if ((string)btnSortBy.Content == "Close?" || (string)btnSortBy.Content == "Open?")
+            {
+                btnSortBy.Content = "Sort By:";
+            }
+        }
     }
-}
+    }
+

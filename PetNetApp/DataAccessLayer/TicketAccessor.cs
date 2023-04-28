@@ -119,5 +119,256 @@ namespace DataAccessLayer
 
             return rows;
         }
+
+        public List<string> SelectAllTicketStatusId()
+        {
+            List<string> ticketStatuses = new List<string>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_all_ticketstatusid";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ticketStatuses.Add(reader.GetString(0));
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Cannot retrieve ticket statuses.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return ticketStatuses;
+        }
+
+        public List<string> SelectEmailsByTickets()
+        {
+            List<string> emails = new List<string>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_emails_by_tickets";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        emails.Add(reader.GetString(0));
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Cannot retrieve emails.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return emails;
+        }
+
+        public List<TicketVM> SelectTicketsByTicketStatusId(string ticketStatus)
+        {
+            List<TicketVM> tickets = new List<TicketVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_tickets_by_ticketstatusid";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@TicketStatusId", SqlDbType.NVarChar, 50);
+
+            cmd.Parameters["@TicketStatusId"].Value = ticketStatus;
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var ticket = new TicketVM();
+
+                        ticket.TicketId = reader.GetInt32(0);
+                        ticket.UserId = reader.GetInt32(1);
+                        ticket.TicketStatusId = reader.GetString(2);
+                        ticket.TicketTitle = reader.GetString(3);
+                        ticket.TicketContext = reader.GetString(4);
+                        ticket.TicketDate = reader.GetDateTime(5);
+                        ticket.TicketActive = reader.GetBoolean(6);
+                        ticket.Email = reader.GetString(7);
+
+                        tickets.Add(ticket);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return tickets;
+        }
+
+        public List<TicketVM> SelectTicketsByEmail(string email)
+        {
+            List<TicketVM> tickets = new List<TicketVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_tickets_by_email";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 254);
+
+            cmd.Parameters["@Email"].Value = email;
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var ticket = new TicketVM();
+
+                        ticket.TicketId = reader.GetInt32(0);
+                        ticket.UserId = reader.GetInt32(1);
+                        ticket.TicketStatusId = reader.GetString(2);
+                        ticket.TicketTitle = reader.GetString(3);
+                        ticket.TicketContext = reader.GetString(4);
+                        ticket.TicketDate = reader.GetDateTime(5);
+                        ticket.TicketActive = reader.GetBoolean(6);
+                        ticket.Email = reader.GetString(7);
+
+                        tickets.Add(ticket);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return tickets;
+        }
+
+        public List<TicketVM> SelectTicketsByDate(string startDate, string endDate = null)
+        {
+            List<TicketVM> tickets = new List<TicketVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_tickets_by_date";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@StartDate", SqlDbType.Date);
+            cmd.Parameters["@StartDate"].Value = startDate;
+            if (endDate != null)
+            {
+                cmd.Parameters.Add("@EndDate", SqlDbType.Date);
+                cmd.Parameters["@EndDate"].Value = endDate;
+            }
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var ticket = new TicketVM();
+
+                        ticket.TicketId = reader.GetInt32(0);
+                        ticket.UserId = reader.GetInt32(1);
+                        ticket.TicketStatusId = reader.GetString(2);
+                        ticket.TicketTitle = reader.GetString(3);
+                        ticket.TicketContext = reader.GetString(4);
+                        ticket.TicketDate = reader.GetDateTime(5);
+                        ticket.TicketActive = reader.GetBoolean(6);
+                        ticket.Email = reader.GetString(7);
+
+                        tickets.Add(ticket);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return tickets;
+        }
     }
 }

@@ -54,19 +54,185 @@ namespace LogicLayerInterfaces
         /// <returns>int</returns>
         int RetrieveCountActiveUnsuspendUserAccountsByRoleId(string RoleId);
 
-        // Mads
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         UsersVM LoginUser(string email, string password);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="source"></param>
+        /// <returns></returns>
         string HashSha256(string source);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         List<string> RetrieveGenders();
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         List<string> RetrievePronouns();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="oldUser"></param>
+        /// <param name="updatedUser"></param>
+        /// <returns></returns>
         bool EditUserDetails(Users oldUser, Users updatedUser);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="email"></param>
+        /// <param name="oldPassword"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
         bool ResetPassword(string email, string oldPassword, string newPassword);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="oldEmail"></param>
+        /// <param name="newEmail"></param>
+        /// <param name="passwordHash"></param>
+        /// <returns></returns>
         bool UpdateEmail(string oldEmail, string newEmail, string passwordHash);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         List<string> RetrieveAllRoles();
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="usersId"></param>
+        /// <returns></returns>
         List<string> RetrieveRolesByUsersId(int usersId);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="email"></param>
+        /// <returns></returns>
         bool RetrieveUserByEmail(string email);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="email"></param>
+        /// <param name="passwordHash"></param>
+        /// <returns></returns>
         UsersVM AuthenticateUser(string email, string passwordHash);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="usersId"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         bool AddUserRole(int usersId, string role);
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="usersId"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         bool DeleteUserRole(int usersId, string role);
 
         // Alex Oetken

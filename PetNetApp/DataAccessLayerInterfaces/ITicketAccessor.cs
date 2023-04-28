@@ -17,9 +17,10 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         /// <exception cref="Exception">No tickets to be selected</exception>
         /// <returns>List of ticket objects</returns>
@@ -33,9 +34,10 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         /// <exception cref="Exception">Inserting ticket failed</exception>
         /// <returns>Rows Affected</returns>
@@ -49,14 +51,100 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="newTicket">ticket to be updated</param>
         /// <param name="oldTicket">old ticket </param>
         /// <exception cref="Exception">Update Fails</exception>
         /// <returns>Rows affected</returns>	
         int UpdateTicketStatus(Ticket newTicket, Ticket oldTicket);
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Selects a list of all ticket status ids
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <exception cref="Exception">No ticketstatusids returned</exception>
+        /// <returns>List of strings</returns>
+        List<string> SelectAllTicketStatusId();
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Selects a list of all emails that've made tickets
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <exception cref="Exception">No tickets to be selected</exception>
+        /// <returns>List of strings</returns>
+        List<string> SelectEmailsByTickets();
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Selects a list of all tickets by ticketstatusid
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <exception cref="Exception">No tickets to be selected</exception>
+        /// <returns>List of TicketVM</returns>
+        List<TicketVM> SelectTicketsByTicketStatusId(string ticketStatus);
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Selects a list of all tickets by email
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <exception cref="Exception">No tickets to be selected</exception>
+        /// <returns>List of TicketVM</returns>
+        List<TicketVM> SelectTicketsByEmail(string email);
+
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/04/20
+        /// 
+        /// Selects a list of all tickets by date
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <exception cref="Exception">No tickets to be selected</exception>
+        /// <returns>List of TicketVM</returns>
+        List<TicketVM> SelectTicketsByDate(string startDate, string endDate = null);
     }
 }

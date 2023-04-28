@@ -1,4 +1,15 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Mads Rhea
+/// Created: 2023/02/05
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/28
+/// 
+/// Final QA
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using PetNetApp;
 using System;
@@ -26,8 +37,10 @@ namespace WpfPresentation.Misc
     /// </summary>
     ///
     /// <remarks>
-    /// Updater Name
-    /// Updated: yyyy/mm/dd
+    /// Oleksiy Fedchuk
+    /// Updated: 2023/04/28
+    /// 
+    /// Final QA
     /// </remarks>
     public partial class DeactivateButtonPage : Page
     {
@@ -36,16 +49,45 @@ namespace WpfPresentation.Misc
         private bool isAvaliable = false;
         private int animalsFostering = 0;
         private int animalsCanFoster = 0;
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         public DeactivateButtonPage()
         {
             InitializeComponent();
+            try
+            {
+                isAvaliable = _manager.FosterManager.RetrieveCurrentlyAcceptingAnimalsByUsersId(_manager.User.UsersId);
+                animalsFostering = _manager.FosterManager.RetrieveNumberOfAnimalsFostererHasByUsersId(_manager.User.UsersId);
+                animalsCanFoster = _manager.FosterManager.RetrieveNumberOfAnimalsApprovedByUsersId(_manager.User.UsersId);
+            }
+            catch (Exception ex)
+            {
 
-            isAvaliable = _manager.FosterManager.RetrieveCurrentlyAcceptingAnimalsByUsersId(_manager.User.UsersId);
-            animalsFostering = _manager.FosterManager.RetrieveNumberOfAnimalsFostererHasByUsersId(_manager.User.UsersId);
-            animalsCanFoster = _manager.FosterManager.RetrieveNumberOfAnimalsApprovedByUsersId(_manager.User.UsersId);
+                throw ex;
+            }
+
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         public static DeactivateButtonPage GetDeactivateButtonPage()
         {
             if (_existingDeactivateButton == null)
@@ -55,7 +97,19 @@ namespace WpfPresentation.Misc
 
             return _existingDeactivateButton;
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeactivateButton_Click(object sender, RoutedEventArgs e)
         {
             var result = PromptWindow.ShowPrompt("Deactivate Account", "Are you sure? This action cannot be undone.", ButtonMode.YesNo);
@@ -77,17 +131,49 @@ namespace WpfPresentation.Misc
                 }
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             txtblkDeactivateWarning.Text = "WARNING: Clicking the button below will deactivate your account!\nThe only way you can get your account back is having an admin reactivate it for you.\n\nBE SURE THIS IS WHAT YOU WANT TO DO BEFORE PROCEEDING.";
             RoleToggle();
             
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         private void RoleToggle()
         {
-            List<string> userRoles = _manager.UsersManager.RetrieveRolesByUsersId(_manager.User.UsersId);
+
+            List<string> userRoles = new List<string>();
+            try
+            {
+                userRoles = _manager.UsersManager.RetrieveRolesByUsersId(_manager.User.UsersId);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             foreach (string role in userRoles)
             {
                 if (role == "Fosterer")
@@ -96,7 +182,17 @@ namespace WpfPresentation.Misc
                 }
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         private void ShowFosterToggle()
         {
             lblNoOfAnimals.Content = animalsFostering + " Fostering / " + animalsCanFoster + " Max Number";
@@ -126,7 +222,17 @@ namespace WpfPresentation.Misc
                 btnToggleFoster.IsEnabled = true;
             }    
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         private void ToggleFosterButtonText()
         {
             if (!isAvaliable)
@@ -152,7 +258,19 @@ namespace WpfPresentation.Misc
                 btnToggleFoster.Content = "Available";
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnToggleFoster_Click(object sender, RoutedEventArgs e)
         {
             if (animalsFostering < animalsCanFoster)
@@ -174,8 +292,6 @@ namespace WpfPresentation.Misc
                     }
                 }
             }
-
-            
         }
     }
 }

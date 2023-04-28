@@ -1,6 +1,17 @@
 ﻿using DataObjects;
 using LogicLayer;
 using PetNetApp;
+/// <summary>
+/// Mads Rhea
+/// Created: 2023/02/05
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/28
+/// 
+/// Final QA
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,14 +37,27 @@ namespace WpfPresentation.Misc
     /// </summary>
     ///
     /// <remarks>
-    /// Updater Name
-    /// Updated: yyyy/mm/dd
+    /// Oleksiy Fedchuk
+    /// Updated: 2023/04/28
+    /// 
+    /// Final QA
     /// </remarks>
     public partial class AccountInfoPage : Page
     {
         private static AccountInfoPage _existingAccountInfo = null;
         private MasterManager _manager = MasterManager.GetMasterManager();
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         public AccountInfoPage()
         {
             InitializeComponent();
@@ -41,7 +65,19 @@ namespace WpfPresentation.Misc
 
             lblCurrentEmail.Content = "Current Email: " + _manager.User.Email;
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         public static AccountInfoPage GetAccountInfoPage()
         {
             if (_existingAccountInfo == null)
@@ -51,7 +87,20 @@ namespace WpfPresentation.Misc
 
             return _existingAccountInfo;
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPasswordSave_Click(object sender, RoutedEventArgs e)
         {
             string oldPassword = txtOldPassword.Password;
@@ -114,7 +163,20 @@ namespace WpfPresentation.Misc
             Keyboard.ClearFocus();
 
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEmailSave_Click(object sender, RoutedEventArgs e)
         {
             string email = txtNewEmail.Text;
@@ -166,7 +228,20 @@ namespace WpfPresentation.Misc
             Keyboard.ClearFocus();
 
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtOldPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Tab)
@@ -174,7 +249,20 @@ namespace WpfPresentation.Misc
                 txtNewPassword.Focus();
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtNewPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Tab)
@@ -182,7 +270,20 @@ namespace WpfPresentation.Misc
                 txtConfirmPassword.Focus();
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtConfirmPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Tab)
@@ -190,7 +291,18 @@ namespace WpfPresentation.Misc
                 btnPasswordSave_Click(sender, e);
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
         private void RefreshOnAccountUpdate()
         {
             txtNewEmail.Clear();
@@ -200,7 +312,20 @@ namespace WpfPresentation.Misc
             txtNewPassword.Clear();
             txtConfirmPassword.Clear();
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtNewEmail_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Tab)
@@ -208,7 +333,20 @@ namespace WpfPresentation.Misc
                 passConfirmEmail.Focus();
             }
         }
-
+        /// <summary>
+        /// Mads Rhea
+        /// Created: 2023/02/05
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/28
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void passConfirmEmail_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Tab)
