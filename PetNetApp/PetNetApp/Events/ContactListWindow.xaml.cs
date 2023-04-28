@@ -53,7 +53,8 @@ namespace WpfPresentation.Events
         private void DisplayContact(InstitutionalEntity contact)
         {
             UCEventContact ucEventContact = new UCEventContact();
-            ucEventContact.lblContactName.Content = contact.CompanyName;
+            string contactName = (contact.CompanyName == null ? "Unknow" : contact.CompanyName) + " -- " + contact.GivenName + " " + contact.FamilyName;
+            ucEventContact.lblContactName.Content = contactName;
             ucEventContact.btnView.Click += (obj, arg) => BtnView_Click(contact);
             ucEventContact.btnAdd.Click += (obj, arg) => BtnAdd_Click(contact);
             ucEventContact.Margin = new Thickness(0, 0, 0, 10);
@@ -93,7 +94,8 @@ namespace WpfPresentation.Events
             {
                 foreach (InstitutionalEntity contact in _contactList)
                 {
-                    if (contact.CompanyName.ToLower().Contains(txtSearchContact.Text.ToLower()))
+                    string contactName = (contact.CompanyName == null ? "Unknow" : contact.CompanyName) + " -- " + contact.GivenName + " " + contact.FamilyName;
+                    if (contactName.ToLower().Contains(txtSearchContact.Text.ToLower()))
                     {
                         contactSelectedList.Add(contact);
                     }
