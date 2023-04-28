@@ -34,8 +34,7 @@ print '' print '*** creating sp_select_all_animals_without_kennel'
 GO
 CREATE PROCEDURE [dbo].[sp_select_all_animals_without_kennel]
 (
-    @ShelterId    [int],
-	@AnimalTypeId [nvarchar](50)
+    @ShelterId    [int]
 )
 AS
     BEGIN
@@ -48,6 +47,5 @@ AS
         WHERE   [AnimalKenneling].[AnimalId] IS NULL
         AND     [Death].[AnimalId] IS NULL
         AND     [AnimalShelterId] = @ShelterId
-		AND		[AnimalTypeId] = @AnimalTypeId
     END
 GO

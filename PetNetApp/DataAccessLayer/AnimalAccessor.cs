@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Media.Imaging;
 
 namespace DataAccessLayer
 {
@@ -698,7 +698,7 @@ namespace DataAccessLayer
                         /*
                            [AnimalId], [AnimalName], [AnimalGender], [AnimalTypeId], [AnimalBreedId],		
                            [Personality], [Description], [AnimalStatusId], [RecievedDate], [MicrochipSerialNumber], 	
-                           [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes]
+                           [Aggressive], [AggressiveDescription], [ChildFriendly], [NeuterStatus], [Notes], [AnimalShelterId]
                         */
 
                         animal.AnimalId = reader.GetInt32(0);
@@ -716,6 +716,7 @@ namespace DataAccessLayer
                         animal.ChildFriendly = reader.GetBoolean(12);
                         animal.NeuterStatus = reader.GetBoolean(13);
                         animal.Notes = reader.IsDBNull(14) ? null : reader.GetString(14);
+                        animal.AnimalShelterId = reader.GetInt32(15);
                     }
                 }
             }
@@ -732,6 +733,12 @@ namespace DataAccessLayer
             return animal;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="usersId"></param>
+        /// <returns></returns>
         public List<AnimalVM> SelectAdoptedAnimalByUserId(int usersId)
         {
             List<AnimalVM> animals = new List<AnimalVM>();
@@ -809,6 +816,121 @@ namespace DataAccessLayer
             }
 
             return fosterPlacementRecord;
+        }
+
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="fundraisingEventId"></param>
+        /// <returns></returns>
+        public List<AnimalVM> SelectAnimalsByFundraisingEventId(int fundraisingEventId)
+        {
+            //throw new NotImplementedException();
+            List<AnimalVM> animals = new List<AnimalVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_animals_by_fundraising_event_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@FundraisingEventId", fundraisingEventId);
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var animal = new AnimalVM();
+
+                        animal.AnimalId = reader.GetInt32(0);
+                        animal.AnimalName = reader.GetString(1);
+                        animal.AnimalTypeId = reader.GetString(2);
+                        animal.AnimalBreedId = reader.GetString(3);
+                        animal.Personality = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        animal.Description = reader.IsDBNull(5) ? null : reader.GetString(5);
+                        animal.AnimalStatusId = reader.GetString(6);
+                        animal.BroughtIn = reader.GetDateTime(7);
+                        animal.MicrochipNumber = reader.GetString(8);
+                        animal.Aggressive = reader.GetBoolean(9);
+                        animal.AggressiveDescription = reader.IsDBNull(10) ? null : reader.GetString(10);
+                        animal.ChildFriendly = reader.GetBoolean(11);
+                        animal.NeuterStatus = reader.GetBoolean(12);
+                        animal.Notes = reader.IsDBNull(13) ? null : reader.GetString(13);
+                        animal.AnimalShelterId = reader.GetInt32(14);
+                        animal.AnimalStatusDescription = "";
+                        animal.KennelName = "";
+                        animal.AnimalGender = "";
+                        animal.AnimalTypeDescription = "";
+                        animal.AnimalBreedDescription = "";
+                        animal.MedicalNotes = new List<MedicalRecord>();
+                        animal.AnimalDeath = new DeathVM();
+                        animal.AnimalImages = new List<Images>();
+
+                        animals.Add(animal);
+                    }
+                }
+
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return animals;
+        }
+
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <returns></returns>
+        public List<AnimalVM> SelectAllAdoptableAnimals()
+        {
+            List<AnimalVM> adoptableAnimals = new List<AnimalVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_adoptable_animals";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var animal = new AnimalVM();
+
+                        animal.AnimalId = reader.GetInt32(0);
+                        animal.AnimalShelterId = reader.GetInt32(1);
+                        animal.AnimalName = reader.GetString(2);
+                        animal.AnimalTypeId = reader.GetString(3);
+                        animal.AnimalBreedId = reader.GetString(4);
+                        adoptableAnimals.Add(animal);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return adoptableAnimals;
         }
     }
 }

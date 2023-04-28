@@ -24,5 +24,16 @@ namespace LogicLayerInterfaces
 		/// <exception cref="ApplicationException">Selection failed</exception>
 		/// <returns>ShelterItemTransactionVMs for the specified shelter</returns>
 		List<ShelterItemTransactionVM> RetrieveInventoryTransactionByShelterId(int shelterId);
-    }
+
+		/// <summary>
+		/// Nathan Zumsande
+		/// Created: 2023/04/14
+		/// 
+		/// Adds an Item Transaction
+		/// </summary>
+		/// <param name="transaction"></param>
+		/// <exception cref="ApplicationException">If no row was inserted</exception>
+		/// <returns>True or false if row was added</returns>
+		bool AddItemTransaction(ShelterItemTransaction transaction);
+	}
 }

@@ -24,22 +24,83 @@ namespace DataAccessLayer
 {
     public class ScheduleAccessor : IScheduleAccessor
     {
+        public int DeleteScheduleVM(int scheduleId)
+        {
+            int rows = 0;
 
-        /// <summary>
-        /// Chris Dreismeier
-        /// Created: 2023/02/09
-        /// 
-        /// Gets all people who are scheduled on the date passed through
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="selectedDate">date the user selected to see who is scheduled that day</param>
-        /// <exception cref="SQLException">Select fails</exception>
-        /// <returns>List<ScheduleVM></returns>
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            //  command text
+            var cmdText = "sp_delete_schedule_by_scheduleid";
+
+            // command 
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // add parameter objects to the command 
+            cmd.Parameters.AddWithValue("@ScheduleId", scheduleId);
+
+
+            try
+            {
+                // open the connection
+                conn.Open();
+                // execute command
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close the connection
+                conn.Close();
+            }
+
+
+            return rows;
+        }
+
+        public int InsertSchedulebyUserid(ScheduleVM scheduleVM)
+        {
+            int rowsAffected = 0;
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdText = "sp_insert_schedule";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+            cmd.Parameters.Add("@StartTime", SqlDbType.DateTime);
+            cmd.Parameters.Add("@EndTime", SqlDbType.DateTime);
+
+            cmd.Parameters["@UsersId"].Value = scheduleVM.UserId;
+            cmd.Parameters["@StartTime"].Value = scheduleVM.StartTime;
+            cmd.Parameters["@EndTime"].Value = scheduleVM.EndTime;
+
+            try
+            {
+                conn.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
         public List<ScheduleVM> SelectScheduleByDate(DateTime selectedDate)
         {
             var schedules = new List<ScheduleVM>();
@@ -91,23 +152,6 @@ namespace DataAccessLayer
 
             return schedules;
         }
-
-
-        /// <summary>
-        /// Chris Dreismeier
-        /// Created: 2023/02/17
-        /// 
-        /// Gets all of the Schedules that for the user passed through
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
-        /// <param name="userId">The user that you want to see specific schedule</param>
-        /// <exception cref="SQLException">Select fails</exception>
-        /// <returns>List<ScheduleVM></returns>
         public List<ScheduleVM> SelectScheduleByUser(int userId)
         {
             var schedules = new List<ScheduleVM>();
@@ -158,6 +202,61 @@ namespace DataAccessLayer
             }
 
             return schedules;
+        }
+
+        public int UpdateScheduleVM(ScheduleVM oldSchedule, ScheduleVM newSchedule)
+        {
+            int rows = 0;
+
+            // connection
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            //  command text
+            var cmdText = "sp_update_schedule";
+
+            // command 
+            var cmd = new SqlCommand(cmdText, conn);
+
+            // command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // add parameter objects to the command 
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+            cmd.Parameters.Add("@ScheduleId", SqlDbType.Int);
+            cmd.Parameters.Add("@StartTime", SqlDbType.DateTime);
+            cmd.Parameters.Add("@EndTime", SqlDbType.DateTime);
+            cmd.Parameters.Add("@OldStartTime", SqlDbType.DateTime);
+            cmd.Parameters.Add("@OldEndTime", SqlDbType.DateTime);
+
+            // set the values for the parameter objects
+            cmd.Parameters["@UsersId"].Value = newSchedule.UserId;
+            cmd.Parameters["@ScheduleId"].Value = newSchedule.ScheduleId;
+            cmd.Parameters["@StartTime"].Value = newSchedule.StartTime;
+            cmd.Parameters["@EndTime"].Value = newSchedule.EndTime;
+            cmd.Parameters["@OldStartTime"].Value = oldSchedule.StartTime;
+            cmd.Parameters["@OldEndTime"].Value = oldSchedule.EndTime;
+
+            // now that the command is set up, we can invoke it in a try-catch block
+            try
+            {
+                // open the connection
+                conn.Open();
+                // execute command
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close the connection
+                conn.Close();
+            }
+
+
+            return rows;
         }
     }
 }

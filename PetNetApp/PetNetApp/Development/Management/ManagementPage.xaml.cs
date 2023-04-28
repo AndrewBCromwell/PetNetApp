@@ -16,6 +16,7 @@ using LogicLayer;
 using WpfPresentation.Management;
 using DataObjects;
 using WpfPresentation.Development.Management.Inventory;
+using WpfPresentation.Development.Management.Library;
 
 namespace WpfPresentation.Development.Management
 {
@@ -31,7 +32,7 @@ namespace WpfPresentation.Development.Management
         public ManagementPage(MasterManager manager)
         {
             InitializeComponent();
-            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
+            _managementPageButtons = new Button[] { btnInventory, btnLibrary, btnKennel, btnTickets, btnVolunteer, btnSchedule };
             _manager = manager;
         }
 
@@ -142,6 +143,10 @@ namespace WpfPresentation.Development.Management
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
 
-        
+        private void btnLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameManagement.Navigate(WpfPresentation.Management.Inventory.Library.LibraryUI.GetLibraryUI(_manager));
+        }
     }
 }

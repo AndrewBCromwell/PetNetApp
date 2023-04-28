@@ -6,9 +6,11 @@
 /// 
 /// </summary>
 ///
+/// 
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
 /// </remarks>
 using DataObjects;
 using LogicLayer;
@@ -36,7 +38,18 @@ namespace WpfPresentation.Animals
     {
         private MedicalRecordManager _medicalRecordManager = null;
         private List<MedicalRecordVM> _medicalRecords = null;
+        private MasterManager _manager = MasterManager.GetMasterManager();
         private Animal _animal = null;
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/10
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="animal"></param>
         
         private ViewPrescriptions _viewPrescriptions = null;
         
@@ -48,12 +61,22 @@ namespace WpfPresentation.Animals
             _medicalRecordManager = new MedicalRecordManager();
             _animal = animal;
         }
-
+        /// <summary>
+        ///  Matthew Meppelink
+        /// Created: 2023/02/10
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             lblTreatmentAnimalName.Content = _animal.AnimalName + ": Diagnosis and Treatment";
             lblTreatmentAnimalId.Content = "Animal ID: " + _animal.AnimalId;
-            refreshPage();
+            RefreshPage();
         }
 
         /// <summary>
@@ -64,13 +87,13 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void refreshPage()
+        public void RefreshPage()
         {
             stckMedicalTreatment.Children.Clear();
             try
@@ -96,7 +119,7 @@ namespace WpfPresentation.Animals
                     scrlMedicalTreatment.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
                     foreach (MedicalRecord medicalRecord in _medicalRecords)
                     {
-                        createDiagnosisBox(medicalRecord);
+                        CreateDiagnosisBox(medicalRecord);
                     }
                 }
 
@@ -116,12 +139,16 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
+        /// Nathan Zumsande
+        /// Updated: 2023/03/07 
+        /// Made it so only Users with Admin or Vet Roles can click QuarantineStatus button
         /// 
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="medicalRecord"></param>
-        private void createDiagnosisBox(MedicalRecord medicalRecord)
+        private void CreateDiagnosisBox(MedicalRecord medicalRecord)
         {
             Grid grid = new Grid();
             grid.Width = 350;
@@ -178,6 +205,11 @@ namespace WpfPresentation.Animals
             btnQuarantineStatus.Content = image;
             Grid.SetRow(btnQuarantineStatus, 1);
 
+            if (!_manager.User.Roles.Contains("Vet") && !_manager.User.Roles.Contains("Admin"))
+            {
+                btnQuarantineStatus.IsEnabled = false;
+            }
+
             Label lblQuarantineStatus = new Label();
             lblQuarantineStatus.Margin = new Thickness(45, 0, 0, 0);
             lblQuarantineStatus.VerticalAlignment = VerticalAlignment.Center;
@@ -232,7 +264,8 @@ namespace WpfPresentation.Animals
 
                 // add Quarantine window to be opened here and remove PromptWindow
 
-                PromptWindow.ShowPrompt("Quarantine", "TODO", ButtonMode.Ok);
+                
+                frmDiagnosisTreatment.Navigate(new QuarantinePage(medicalRecord, _medicalRecordManager, this));
             };
 
             btnPrescriptions.Click += (s, e) =>
@@ -250,7 +283,17 @@ namespace WpfPresentation.Animals
 
             stckMedicalTreatment.Children.Add(grid);
         }
-
+        /// <summary>
+        ///  Matthew Meppelink
+        /// Created: 2023/02/10
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scrollviewer = sender as ScrollViewer;

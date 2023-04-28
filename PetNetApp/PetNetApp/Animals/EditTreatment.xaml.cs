@@ -7,8 +7,9 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
 /// </remarks>
 /// 
 using DataObjects;
@@ -40,6 +41,19 @@ namespace WpfPresentation.Animals
         private MedicalRecord _medicalRecord = null;
         private string _oldDiagnosisName = null;
         private string _oldNotes = null;
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="medicalRecord"></param>
+        /// <param name="medicalTreatmentPage"></param>
         public EditTreatment(MedicalRecord medicalRecord, MedicalTreatmentPage medicalTreatmentPage)
         {
             InitializeComponent();
@@ -57,6 +71,20 @@ namespace WpfPresentation.Animals
             _oldNotes = medicalRecord.MedicalNotes.ToString();
         }
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// saves the user inputed data and updates the data in the database
+        /// 
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// 
         private void btnSave_click(object sender, RoutedEventArgs e)
         {
             PromptSelection selection = (PromptWindow.ShowPrompt("Update Diagnosis", "Do you want to update this treatment record?", ButtonMode.YesNo));
@@ -64,12 +92,13 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    _medicalRecordManager.UpdateTreatmentByMedicalRecordId(_medicalRecord.MedicalRecordId, txtDiagnosisUpdate.Text.ToString(), txtNotesUpdate.Text.ToString());
-                    _medicalTreatmentPage.refreshPage();
+                    _medicalRecordManager.EditTreatmentByMedicalRecordId(_medicalRecord.MedicalRecordId, txtDiagnosisUpdate.Text.ToString(), txtNotesUpdate.Text.ToString(), _oldDiagnosisName, _oldNotes);
+                    _medicalTreatmentPage.RefreshPage();
                 }
                 catch (Exception ex)
                 {
                     PromptWindow.ShowPrompt("Error", ex.Message + "\n" + ex.InnerException.Message, ButtonMode.Ok);
+                    _medicalTreatmentPage.RefreshPage();
                 }
             }
             else
@@ -80,6 +109,21 @@ namespace WpfPresentation.Animals
             NavigationService.Navigate(null);
         }
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// Created: 2023/02/16
+        /// 
+        /// cancels the edit, prompts user to confirm their actino if fields have 
+        /// been changed
+        /// 
+        /// </summary>
+        ///
+        ///<remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// 
         private void btnCancel_click(object sender, RoutedEventArgs e)
         {
             if (!_oldDiagnosisName.Equals(txtDiagnosisUpdate.Text) || !_oldNotes.Equals(txtNotesUpdate.Text))

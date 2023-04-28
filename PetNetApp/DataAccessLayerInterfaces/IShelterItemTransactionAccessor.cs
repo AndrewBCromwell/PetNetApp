@@ -19,5 +19,16 @@ namespace DataAccessLayerInterfaces
 		/// <exception cref="SQLException">Selection failed</exception>
 		/// <returns>ShelterItemTransactionVMs for the specified shelter</returns>
 		List<ShelterItemTransactionVM> SelcetShelterItemTransactionByShelterId(int shelterId);
-    }
+
+		/// <summary>
+		/// Nathan Zumsande
+		/// Created: 2023/04/14
+		/// 
+		/// Adds an Item Transaction
+		/// </summary>
+		/// <param name="transaction"></param>
+		/// <exception cref="SQLException">Insert Fails</exception>
+		/// <returns>The number of rows edited</returns>
+		int InsertItemTransaction(ShelterItemTransaction transaction);
+	}
 }

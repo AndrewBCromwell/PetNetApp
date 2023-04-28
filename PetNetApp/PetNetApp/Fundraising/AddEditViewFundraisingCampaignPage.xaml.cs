@@ -1,4 +1,15 @@
-﻿using DataObjects;
+﻿///<summary>
+/// Stephen Jaurigue
+/// Created: 2023/04/21
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -38,6 +49,16 @@ namespace WpfPresentation.Fundraising
         public static readonly DependencyProperty FundraisingCampaignProperty =
             DependencyProperty.Register("FundraisingCampaign", typeof(FundraisingCampaignVM), typeof(AddEditViewFundraisingCampaignPage), new PropertyMetadata(null));
 
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private AddEditViewFundraisingCampaignPage()
         {
             DataContext = this;
@@ -49,7 +70,13 @@ namespace WpfPresentation.Fundraising
         /// Stephen Jaurigue
         /// Created: 2023/02/28
         /// </summary>
-        /// <returns>An empty page to create a new fundraising campiagn</returns>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns>An empty page to create a new fundraising campaign</returns>
         public static AddEditViewFundraisingCampaignPage GetAddFundraisingCampaignPage()
         {
             if (_existingAddEditViewFundraisingCampaignPage == null)
@@ -64,6 +91,12 @@ namespace WpfPresentation.Fundraising
         /// Stephen Jaurigue
         /// Created: 2023/02/28
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="fundraisingCampaign">The fundraising campaign to edit</param>
         /// <returns>a new or existing fundraising campaign page set up to edit the campaign</returns>
         public static AddEditViewFundraisingCampaignPage GetEditFundraisingCampaignPage(FundraisingCampaignVM fundraisingCampaign)
@@ -90,6 +123,12 @@ namespace WpfPresentation.Fundraising
         /// Stephen Jaurigue
         /// Created: 2023/02/28
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="fundraisingCampaign">The fundraising campaign to view</param>
         /// <returns>a new or existing fundraising campaign page set up to view the campaign</returns>
         public static AddEditViewFundraisingCampaignPage GetViewFundraisingCampaignPage(FundraisingCampaignVM fundraisingCampaign)
@@ -110,12 +149,33 @@ namespace WpfPresentation.Fundraising
             _existingAddEditViewFundraisingCampaignPage.SetupViewFundraisingCampaign(fundraisingCampaign);
             return _existingAddEditViewFundraisingCampaignPage;
         }
+
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private void HideErrors()
         {
             lblTitleError.Visibility = Visibility.Collapsed;
             lblDescriptionError.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private void SetupNewFundraisingCampaign()
         {
             _windowMode = WindowMode.New;
@@ -137,6 +197,17 @@ namespace WpfPresentation.Fundraising
             ClearAndPopulateSponsors();
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="fundraisingCampaign"></param>
         private void SetupViewFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
         {
             _windowMode = WindowMode.View;
@@ -151,6 +222,16 @@ namespace WpfPresentation.Fundraising
             ClearAndPopulateSponsors();
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private void ClearAndPopulateSponsors()
         {
             stackSponsors.Children.Clear();
@@ -162,12 +243,35 @@ namespace WpfPresentation.Fundraising
             }
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="institutionalEntity"></param>
         private void btnRemoveSponsor_Click(object sender, RoutedEventArgs e, InstitutionalEntity institutionalEntity)
         {
             FundraisingCampaign.Sponsors.Remove(institutionalEntity);
             ClearAndPopulateSponsors();
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private void ViewMode()
         {
             tbTitle.IsReadOnly = true;
@@ -181,6 +285,16 @@ namespace WpfPresentation.Fundraising
             btnEdit.IsDefault = true;
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private void AddEditMode()
         {
             tbTitle.IsReadOnly = false;
@@ -196,6 +310,17 @@ namespace WpfPresentation.Fundraising
             tbTitle.SelectAll();
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="fundraisingCampaign"></param>
         private void SetupEditFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign)
         {
             _windowMode = WindowMode.Edit;
@@ -212,6 +337,18 @@ namespace WpfPresentation.Fundraising
             ClearAndPopulateSponsors();
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dpStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             dpEndDate.DisplayDateStart = dpStartDate.SelectedDate;
@@ -221,6 +358,18 @@ namespace WpfPresentation.Fundraising
             }
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             switch(_windowMode)
@@ -236,6 +385,18 @@ namespace WpfPresentation.Fundraising
             }
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateFundraisingCampaign())
@@ -278,7 +439,17 @@ namespace WpfPresentation.Fundraising
             }
             RefreshUI();
         }
-
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <returns></returns>
         private bool ValidateFundraisingCampaign()
         {
             bool isValid = true;
@@ -304,6 +475,16 @@ namespace WpfPresentation.Fundraising
             return isValid;
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private void ReloadFundraisingCampaignDataAndReturnToViewMode()
         {
             try
@@ -324,6 +505,12 @@ namespace WpfPresentation.Fundraising
         /// 
         /// fakes a change in the Fundraising campaign property to trigger a redraw on all bindings in wpf
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         private void RefreshUI()
         {
             var temp = FundraisingCampaign;
@@ -331,16 +518,52 @@ namespace WpfPresentation.Fundraising
             FundraisingCampaign = temp;
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             SetupEditFundraisingCampaign(FundraisingCampaign);
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(ViewCampaignsPage.GetViewCampaignsPage());
         }
 
+        /// <summary>
+        /// Author: Stephen Jaurigue
+        /// Date: 2023/04/21
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddSponsors_Click(object sender, RoutedEventArgs e)
         {
             AddFundraisingCampaignSponsorsWindow addFundraisingCampaignSponsorsWindow = new AddFundraisingCampaignSponsorsWindow(FundraisingCampaign.Sponsors);

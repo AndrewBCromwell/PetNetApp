@@ -78,7 +78,7 @@ namespace DataAccessLayer
                         user.FamilyName = reader.GetString(5);
                         user.Email = reader.GetString(6);
                         user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
-                        user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
+                        user.Address2 = reader.IsDBNull(8) ? null : reader.GetString(8);
                         user.Zipcode = reader.GetString(9);
                         user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                         user.CreationDate = reader.GetDateTime(11);
@@ -134,7 +134,7 @@ namespace DataAccessLayer
                 {
                     UsersVM user = new UsersVM();
                     // [UsersId], [GenderId], [PronounId], [ShelterId], [GivenName], [FamilyName],
-                    // [Email], [PasswordHash], [Address], [AddressTwo], [Zipcode], [Phone], [CreationDate], 
+                    // [Email], [PasswordHash], [Address], [Address2], [Zipcode], [Phone], [CreationDate], 
                     // [Active], [Suspended]
 
                     user.UsersId = reader.GetInt32(0);
@@ -145,7 +145,7 @@ namespace DataAccessLayer
                     user.FamilyName = reader.GetString(5);
                     user.Email = reader.GetString(6);
                     user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
-                    user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
+                    user.Address2 = reader.IsDBNull(8) ? null : reader.GetString(8);
                     user.Zipcode = reader.GetString(9);
                     user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                     user.CreationDate = reader.GetDateTime(11);
@@ -216,7 +216,6 @@ namespace DataAccessLayer
         /// <returns>UsersVM</returns>
         public UsersVM SelectUserByEmail(string email)
         {
-
             UsersVM user = null;
 
             DBConnection connectionFactory = new DBConnection();
@@ -250,7 +249,7 @@ namespace DataAccessLayer
                         GivenName = reader.GetString(4),
                         FamilyName = reader.GetString(5),
                         Email = reader.GetString(6),
-                        Address = reader.GetString(7),
+                        // nullable
                         // nullable
                         Zipcode = reader.GetString(9),
                         Phone = reader.GetString(10),
@@ -273,8 +272,12 @@ namespace DataAccessLayer
                     }
                     else
                     {
-                        user.AddressTwo = reader.GetString(8);
+                        user.Address2 = reader.GetString(8);
                     }
+                }
+                else
+                {
+                    throw new ApplicationException("User not found.");
                 }
                 reader.Close();
             }
@@ -580,7 +583,7 @@ namespace DataAccessLayer
                         user.Email = reader.GetString(6);
                         //user.PasswordHash = reader.GetString(7);
                         user.Address = reader.IsDBNull(7) ? null : reader.GetString(7);
-                        user.AddressTwo = reader.IsDBNull(8) ? null : reader.GetString(8);
+                        user.Address2 = reader.IsDBNull(8) ? null : reader.GetString(8);
                         user.Zipcode = reader.GetString(10);
                         user.Phone = reader.IsDBNull(10) ? null : reader.GetString(10);
                         user.CreationDate = reader.GetDateTime(12);
@@ -652,7 +655,7 @@ namespace DataAccessLayer
                     user.FamilyName = reader.GetString(5);
                     user.Email = reader.GetString(6);
                     user.Address = reader.GetString(7);
-                    user.AddressTwo = reader.GetString(8);
+                    user.Address2 = reader.GetString(8);
                     user.Zipcode = reader.GetString(9);
                     user.Phone = reader.GetString(10);
                     user.CreationDate = reader.GetDateTime(11);
@@ -669,8 +672,6 @@ namespace DataAccessLayer
             }
 
             return user;
-
-            //throw new NotImplementedException();
         }
         /// <summary>
         /// By: Barry Mikulas
@@ -723,7 +724,7 @@ namespace DataAccessLayer
 
         /// <summary>
         /// [Mads Rhea - 2023/02/15]
-        /// Injects updated user info into the Users table where the UsersId, GivenName, FamilyName, GenderId, PronounId, Address, AddressTwo, Phone, and Zipcode match.
+        /// Injects updated user info into the Users table where the UsersId, GivenName, FamilyName, GenderId, PronounId, Address, Address2, Phone, and Zipcode match.
         /// </summary>
         /// <returns>int</returns>
         public int UpdateUserDetails(Users oldUser, Users updatedUser)
@@ -745,7 +746,7 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@OldGenderId", oldUser.GenderId);
             cmd.Parameters.AddWithValue("@OldPronounId", oldUser.PronounId);
             cmd.Parameters.AddWithValue("@OldAddress", oldUser.Address);
-            cmd.Parameters.AddWithValue("@OldAddressTwo", oldUser.AddressTwo);
+            cmd.Parameters.AddWithValue("@OldAddress2", oldUser.Address2);
             cmd.Parameters.AddWithValue("@OldPhone", oldUser.Phone);
             cmd.Parameters.AddWithValue("@OldZipcode", oldUser.Zipcode);
 
@@ -759,8 +760,8 @@ namespace DataAccessLayer
             cmd.Parameters["@NewPronounId"].Value = updatedUser.PronounId;
             cmd.Parameters.Add("@NewAddress", SqlDbType.NVarChar, 50);
             cmd.Parameters["@NewAddress"].Value = updatedUser.Address;
-            cmd.Parameters.Add("@NewAddressTwo", SqlDbType.NVarChar, 50);
-            cmd.Parameters["@NewAddressTwo"].Value = updatedUser.AddressTwo;
+            cmd.Parameters.Add("@NewAddress2", SqlDbType.NVarChar, 50);
+            cmd.Parameters["@NewAddress2"].Value = updatedUser.Address2;
             cmd.Parameters.Add("@NewPhone", SqlDbType.NVarChar, 13);
             cmd.Parameters["@NewPhone"].Value = updatedUser.Phone;
             cmd.Parameters.Add("@NewZipcode", SqlDbType.Char, 9);
@@ -960,10 +961,238 @@ namespace DataAccessLayer
             return roleCount;
             // throw new NotImplementedException();
         }
+
+        public List<UsersAdoptionRecords> SelectAdoptionRecordsByUserID(int usersId)
+        {
+            var adoptionRecordsList = new List<UsersAdoptionRecords>();
+
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdtext = "sp_select_adoption_records_by_user_id";
+
+            var cmd = new SqlCommand(cmdtext, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@UsersId", SqlDbType.Int);
+
+            cmd.Parameters["@UsersId"].Value = usersId;
+
+
+
+            try
+            {
+
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var adoptionRecords = new UsersAdoptionRecords();
+
+                        adoptionRecords.animalName = reader.GetString(0);
+                        adoptionRecords.animalSpecies = reader.GetString(1);
+                        adoptionRecords.animalBreed = reader.GetString(2);
+                        adoptionRecords.oldAnimalId = reader.GetInt32(3);
+
+                        adoptionRecordsList.Add(adoptionRecords);
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return adoptionRecordsList;
+        }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/03/29]
+        /// Returns all RoleIDs from the Role table.
+        /// </summary>
+        /// <returns>List of strings</returns>
+        public List<string> SelectAllRoles()
+        {
+            List<string> roles = new List<string>();
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_select_all_roles";
+
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        roles.Add(reader.GetString(0));
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Cannot retrieve roles.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return roles;
+        }
+
+        public UsersVM AuthenticateUser(string email, string passwordHash)
+        {
+            UsersVM result = null;
+
+            DBConnection connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmd = new SqlCommand("sp_authenticate_user");
+            cmd.Connection = conn;
+
+            // set the command type
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // add parameters for the procedure
+            cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 250);
+            cmd.Parameters.Add("@PasswordHash", SqlDbType.NVarChar, 100);
+
+            // set the values for the parameters
+            cmd.Parameters["@Email"].Value = email;
+            cmd.Parameters["@PasswordHash"].Value = passwordHash;
+
+            // now that the command is set up, we can execute it
+            try
+            {
+                // open the connection
+                conn.Open();
+
+                // execute the command
+                if (1 == Convert.ToInt32(cmd.ExecuteScalar()))
+                {
+                    // if the command worked correctly, get a user
+                    // object
+                    result = SelectUserByEmail(email);
+                }
+                else
+                {
+                    throw new ApplicationException("User not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
+        }
+
+
+        public int UpdateUserShelterid(int userid, int shelterid, int? oldShelterId)
+        {
+            int rowsAffected = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            string cmdText = "sp_update_usershelter";
+            var cmd = new SqlCommand(cmdText, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Usersid", userid);
+            if(oldShelterId == null)
+            {
+                cmd.Parameters.AddWithValue("@OldShelterid", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@OldShelterid", oldShelterId);
+            }
+            
+            cmd.Parameters.AddWithValue("@NewShelterid", shelterid);
+
+            try
+            {
+                conn.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rowsAffected;
+        }
+
+        public int InsertOrDeleteUserRole(int usersId, string role, bool delete = false)
+        {
+            int rows = 0;
+
+            string cmdText = delete ? "sp_delete_user_role" : "sp_insert_user_role";
+
+            DBConnection connectionFactory = new DBConnection();
+
+            var conn = connectionFactory.GetConnection();
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UsersId", usersId);
+            cmd.Parameters.AddWithValue("@RoleId", role);
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return rows;
+        }
+
     }
-
-
-
 }
 
 

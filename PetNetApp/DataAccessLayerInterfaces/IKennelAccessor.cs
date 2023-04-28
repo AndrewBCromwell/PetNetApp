@@ -101,9 +101,9 @@ namespace DataAccessLayerInterfaces
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="AnimalId">int for the the specific kennel</param>
         /// <exception cref="Exception">No kennel is retrived witht that AnimalId</exception>
@@ -143,10 +143,9 @@ namespace DataAccessLayerInterfaces
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
         /// <param name="ShelterId">int for the the specific shelter</param>
-        /// /// <param name="AnimalTypeId">string for the the specific type of animal</param>
         /// <exception cref="Exception">Failed to retrived a list of animals</exception>
         /// <returns>List of animals</returns>
-        List<Animal> SelectAllAnimalsForKennel(int ShelterId, string AnimalTypeId);
+        List<Animal> SelectAllAnimalsForKennel(int ShelterId);
 
         /// <summary>
         /// Asa Armstrong
@@ -159,6 +158,12 @@ namespace DataAccessLayerInterfaces
         /// Asa Armstrong
         /// Updated: 2023/02/24
         /// Added Comment.
+        /// </remarks>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="kennelId">kennelId</param>
         /// <param name="animalId">animalId</param>

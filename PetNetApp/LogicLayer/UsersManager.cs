@@ -64,7 +64,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Could not retrieve volunteers", ex);
             }
 
             return users;
@@ -312,21 +312,6 @@ namespace LogicLayer
             }
             return usersList;
         }
-        /// <summary>
-        /// Barry Mikulas
-        /// Created: 2023/02/09
-        /// 
-        /// 
-        /// </summary>
-        /// Retrieves a users with given usersId
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// 
-        /// </remarks>
-        /// <param usersId="UsersId"></param>
-        /// 
         public Users RetrieveUserByUsersId(int UsersId)
         {
             //throw new NotImplementedException();
@@ -405,7 +390,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Suspend user failed.", ex);
             }
 
             return result;
@@ -427,7 +412,7 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Unsuspend user failed.", ex);
             }
 
             return result;
@@ -444,12 +429,179 @@ namespace LogicLayer
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ApplicationException("Unable to retrieve count of unsuspended accounts.", ex);
             }
 
             return usersIdCount;
             // return 2; //green test
             //throw new NotImplementedException(); //red test
+        }
+
+        public List<UsersAdoptionRecords> RetrieveAdoptionRecordsByUserID(int usersId)
+        {
+            List<UsersAdoptionRecords> userAdoptionRecords = new List<UsersAdoptionRecords>();
+            try
+            {
+                userAdoptionRecords = _userAccessor.SelectAdoptionRecordsByUserID(usersId);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("An error has occured", e);
+            }
+            return userAdoptionRecords;
+        }
+
+        public List<string> RetrieveRolesByUsersId(int usersId)
+        {
+            List<string> userRoles = new List<string>();
+
+            try
+            {
+                userRoles = _userAccessor.SelectRolesByUserID(usersId);
+            }
+            catch (Exception e)
+            {
+
+                throw new ApplicationException("An error has occured", e);
+            }
+
+            return userRoles;
+        }
+
+        /// <summary>
+        /// [Mads Rhea - 2023/03/29]
+        /// Returns all entries from Role table.
+        /// </summary>
+        /// <returns>List of strings</returns>
+        public List<string> RetrieveAllRoles()
+        {
+            List<string> roles = new List<string>();
+
+            try
+            {
+                roles = _userAccessor.SelectAllRoles();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return roles;
+        }
+
+        public bool RetrieveUserByEmail(string email)
+        {
+            try
+            {
+                return _userAccessor.SelectUserByEmail(email) != null;
+            }
+            catch (ApplicationException ae) 
+            {
+                if (ae.Message == "User not found.")
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Database Error.", up);
+            }
+        }
+
+        public UsersVM AuthenticateUser(string email, string passwordHash)
+        {
+            UsersVM result = null;
+
+            var password = HashSha256(passwordHash);
+            passwordHash = null;
+
+            try
+            {
+               result = _userAccessor.AuthenticateUser(email, password);
+            }
+            catch (Exception up)
+            {
+                throw new ApplicationException("Login failed!", up);
+            }
+
+            return result;
+        }
+
+        public UsersVM RetrieveUserByUserEmail(string email)
+        {
+            UsersVM userVM = new UsersVM();
+
+            try
+            {
+                userVM = _userAccessor.SelectUserByEmail(email);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed retrieving a user.", ex);
+            }
+
+            return userVM;
+        }
+
+        public bool EditUserShelterId(int userId, int shelterId, int? oldShelterId)
+        {
+            bool wasAdded = false;
+
+            try
+            {
+                wasAdded = 1 == _userAccessor.UpdateUserShelterid(userId, shelterId, oldShelterId);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Database Error.", ex);
+            }
+
+            return wasAdded;
+        }
+
+        public bool AddUserRole(int usersId, string role)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _userAccessor.InsertOrDeleteUserRole(usersId, role));
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Role not added!", ex);
+            }
+            return result;
+        }
+
+        public bool DeleteUserRole(int usersId, string role)
+        {
+            bool result = false;
+            try
+            {
+                result = (1 == _userAccessor.InsertOrDeleteUserRole(usersId, role, delete: true));
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Role not removed!", ex);
+            }
+            return result;
+        }
+
+        public Users RetrieveUserObjectByEmail(string email)
+        {
+            try
+            {
+                return _userAccessor.SelectUserByEmail(email);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve User Object by Email. ", ex);
+            }
         }
     }
 }

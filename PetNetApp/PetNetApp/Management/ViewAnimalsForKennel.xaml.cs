@@ -49,7 +49,7 @@ namespace WpfPresentation.Development.Management
         {
             try
             {
-                _animals = _masterManger.KennelManager.RetrieveAllAnimalsForKennel(_Kennel.ShelterId, _Kennel.AnimalTypeId);
+                _animals = _masterManger.KennelManager.RetrieveAllAnimalsForKennel(_Kennel.ShelterId);
                 if (_animals.Count > 0)
                 {
                     datAnimals.ItemsSource = _animals;
@@ -85,6 +85,11 @@ namespace WpfPresentation.Development.Management
         private void datAnimals_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             SelectedAnimal = (Animal)(datAnimals.SelectedItem);
+            this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

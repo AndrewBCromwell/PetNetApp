@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using WpfPresentation.Community.UsersControl;
 using LogicLayer;
 using DataObjects;
-using WpfPresentation.Development.Community;
 
 namespace WpfPresentation.Community
 {
@@ -46,11 +45,16 @@ namespace WpfPresentation.Community
         /// Updated: 2023/02/26
         /// Updated the sub menu on user to change between suspend and unsuspend user depending on their current Suspend Status
         /// Updated menu for Update to say Update Roles
+        /// 
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="user"></param>
         /// <param name="index"></param>
 
-        public void DisplayUsers(Users user, int index)
+        public void DisplayUsers(UsersVM user, int index)
         {
             UCPreviewUser ucPreviewUser = new UCPreviewUser();
             if (user.Active)
@@ -67,7 +71,7 @@ namespace WpfPresentation.Community
             }
             ucPreviewUser.lblUserAccountName.Content = user.GivenName + " " + user.FamilyName;
             ucPreviewUser.lblUserEmailName.Content = user.Email;
-            ucPreviewUser.btnUsersProfile.Click += (obj, arg) => usersProfile_MouseClick();
+            ucPreviewUser.btnUsersProfile.Click += (obj, arg) => usersProfile_MouseClick(user);
             ucPreviewUser.btnUsersMoreDetails.Click += (obj, arg) =>
                     {
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu = new ContextMenu();
@@ -109,6 +113,16 @@ namespace WpfPresentation.Community
                             ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemActivate);
                         }
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu.IsOpen = true;
+
+                        // Customer records option.
+
+                        MenuItem menuItemCustomerRecords = new MenuItem()
+                        { Header = "Customer Records" };
+                        menuItemCustomerRecords.Click += (object1, args) => menuItem_CustomerRecords_Click(user);
+                        ucPreviewUser.btnUsersMoreDetails.ContextMenu.Items.Add(menuItemCustomerRecords);
+
+                        // Return statement.
+
                         return;
                     };
             if(index % 2 == 0)
@@ -124,15 +138,40 @@ namespace WpfPresentation.Community
             stpUsersList.Children.Add(ucPreviewUser);
         }
 
-        private void usersProfile_MouseClick()
+        /// <summary>
+        /// Created by Teft Francisco
+        /// Created: 2023/03/03
+        /// Button will navigate to the user's customer records.
+        /// </summary>
+        private void menuItem_CustomerRecords_Click(Users user)
         {
-            MessageBox.Show("User's profile");
+            NavigationService.Navigate(new CustomerRecordsPage(user));
+        }
+
+        private void usersProfile_MouseClick(UsersVM user)
+        {
+            NavigationService.Navigate(new WpfPresentation.Misc.UserProfilePage(user));
         }
 
         // MenuItem Click
+        /// <summary>
+        /// Barry Mikulas
+        /// 2023/04/27
+        /// 
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="user"></param>
         private void menuItem_Update_Click(Users user)
         {
             RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_masterManager, user);
+            roleManagementPopupWindow.Owner = Window.GetWindow(this);
+            roleManagementPopupWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             roleManagementPopupWindow.ShowDialog();
         }
 
@@ -144,7 +183,8 @@ namespace WpfPresentation.Community
         private void menuItem_Suspend_Click(Users user)
         {
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_masterManager, user);
-            //SuspendUserPopup suspendUserPopup = new SuspendUserPopup();
+            suspendUserPopup.Owner = Window.GetWindow(this);
+            suspendUserPopup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             suspendUserPopup.ShowDialog();
             NavigationService.Navigate(new UserManagementPage());
         }
@@ -158,7 +198,8 @@ namespace WpfPresentation.Community
         {
             
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_masterManager, user);
-            //SuspendUserPopup suspendUserPopup = new SuspendUserPopup();
+            suspendUserPopup.Owner = Window.GetWindow(this);
+            suspendUserPopup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             suspendUserPopup.ShowDialog();
             NavigationService.Navigate(new  UserManagementPage());
         }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
+using WpfPresentation.Fundraising;
 using WpfPresentation.Management;
 
 namespace WpfPresentation.Development.Fundraising
@@ -30,7 +31,7 @@ namespace WpfPresentation.Development.Fundraising
         {
             InitializeComponent();
             _manager = manager;
-            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations };
+            _fundraisingPageButtons = new Button[] { btnCampaigns, btnDonations, btnEvents, btnViewContacts, btnViewSponsors, btnHosts };
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace WpfPresentation.Development.Fundraising
             return _existingFundraisingPage;
         }
 
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
@@ -122,6 +123,78 @@ namespace WpfPresentation.Development.Fundraising
         {
             ChangeSelectedButton((Button)sender);
             frameFundraising.Navigate(WpfPresentation.Fundraising.ViewDonationsPage.ExistingDonationPage);
+        }
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/01
+        /// 
+        /// Show contacts button if user has appropriate permissions
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        public void ShowContactsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnViewContacts.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/01
+        /// 
+        /// Show contacts button if user has appropriate permissions
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        public void ShowEventsButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnEvents.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void btnViewContacts_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(WpfPresentation.Fundraising.ViewFundraisingEventContacts.GetViewEventContacts());
+        }
+
+        private void btnEvents_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEvents());
+        }
+
+        private void btnViewSponsors_Click(object sender, RoutedEventArgs e)
+        {
+            string[] allowedRoles = { "Admin", "Manager", "Marketing" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnViewSponsors.Visibility = Visibility.Visible;
+
+            }
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(ViewFundraisingEventSponsors.GetViewEventSponsors());
+
+        }
+
+        private void btnHosts_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameFundraising.Navigate(ViewFundraisingEventHosts.GetViewFundraisingEventHosts());
         }
     }
 }

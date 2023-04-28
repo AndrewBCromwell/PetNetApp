@@ -7,8 +7,10 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/17
+/// 
+/// Final QA
 /// </remarks>
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -16,24 +18,22 @@ using LogicLayer;
 using DataAccessLayerFakes;
 using DataObjects;
 using System.Collections.Generic;
+using LogicLayerInterfaces;
+
 namespace LogicLayerTest
 {
     
     [TestClass]
     public class VaccinationManagerTests
     {
-        VaccinationManager vaccinationManager = null;
+        private IVaccinationManager vaccinationManager = null;
+
         [TestInitialize]
-        public void TestUp()
+        public void TestSetup()
         {
             vaccinationManager = new VaccinationManager(new VaccinationAccessorFake());
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/09
-        /// 
-        /// Tests RetrieveVaccinationsByAnimal
-        /// </summary>
+
         [TestMethod]
         public void TestRetrieveVaccinationsByAnimalId()
         {
@@ -42,12 +42,7 @@ namespace LogicLayerTest
             int actualResult = vaccinationManager.RetrieveVaccinationsByAnimalId(animalId).Count;
             Assert.AreEqual(expectedResult, actualResult);
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/09
-        /// 
-        /// Tests AddVaccination
-        /// </summary>
+
         [TestMethod]
         public void TestAddVaccinationByMedicalRecordId()
         {
@@ -67,12 +62,7 @@ namespace LogicLayerTest
             bool actualResult = vaccinationManager.AddVaccination(testVaccination, animalId);
             Assert.AreEqual(expectedResult, actualResult);
         }
-        /// <summary>
-        /// Zaid Rachman
-        /// 2023/02/09
-        /// TestsEditVaccination
-        /// 
-        /// </summary>
+
         [TestMethod]
         public void TestEditVaccination()
         {
@@ -96,6 +86,16 @@ namespace LogicLayerTest
             bool actualResult = vaccinationManager.EditVaccination(testOldVaccination, testVaccination);
             Assert.AreEqual(expectedResult, actualResult);
 
+        }
+
+        [TestMethod]
+        public void TestSelectVaccinationByMedicalRecordId()
+        {
+            int medicalRecordId = 666;
+            int expectedVaccinationId = 666;
+            int actualVaccinationId = vaccinationManager.RetrieveVaccinationByMedicalRecordId(medicalRecordId).VaccineId;
+            
+            Assert.AreEqual(expectedVaccinationId, actualVaccinationId);
         }
 
     }

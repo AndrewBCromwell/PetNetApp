@@ -1,4 +1,28 @@
-﻿using System;
+﻿/// <summary>
+/// Brian Collum
+/// Created: 2023/02/23
+/// ShelterAccessor governs access to the shelter entries in the database
+/// </summary>
+///
+/// <remarks>
+/// Brian Collum
+/// Updated: 2023/03/30
+/// 
+/// Further cleanup from the AddressTwo => Address2 refactor
+/// 
+/// Brian Collum
+/// Updated: 2023/04/27
+/// 
+/// Added a Trim() method to  data access methods that retrieve shelter zipcodes from the database.
+/// Specifically RetrieveShelterList() and SelectShelterVMByShelterID(int shelterID)
+/// This should prevent the display of trailing whitespace in shelter Zip Code fields.
+/// 
+/// Brian Collum
+/// Updated: 2023/04/28
+/// Fixed UpdateZipCodeByShelterID
+/// </remarks>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +35,7 @@ using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
-    /// <summary>
-    /// Brian Collum
-    /// Created: 2023/02/23
-    /// ShelterAccessor governs access to the shelter entries in the database
-    /// </summary>
+    
     public class ShelterAccessor : IShelterAccessor
     {
         public List<Shelter> RetrieveShelterList()
@@ -48,8 +68,8 @@ namespace DataAccessLayer
                             shelter.ShelterId = Convert.ToInt32(reader["ShelterId"]);
                             shelter.ShelterName = Convert.ToString(reader["ShelterName"]);
                             shelter.Address = Convert.ToString(reader["Address"]);
-                            shelter.AddressTwo = Convert.ToString(reader["AddressTwo"]);
-                            shelter.ZipCode = Convert.ToString(reader["Zipcode"]);
+                            shelter.Address2 = Convert.ToString(reader["AddressTwo"]);
+                            shelter.ZipCode = Convert.ToString(reader["Zipcode"]).Trim();
                             shelter.Phone = Convert.ToString(reader["Phone"]);
                             shelter.Email = Convert.ToString(reader["Email"]);
                             shelter.AreasOfNeed = Convert.ToString(reader["Areasofneed"]);
@@ -89,7 +109,7 @@ namespace DataAccessLayer
                 return shelterList;
             }
         }
-        public bool InsertShelter(string shelterName, string address, string addressTwo, string zipCode, string phone, string email, string areasOfNeed, bool shelterActive)
+        public bool InsertShelter(string shelterName, string address, string Address2, string zipCode, string phone, string email, string areasOfNeed, bool shelterActive)
         {
             // Initialize result to failure
             bool result = false;
@@ -114,7 +134,7 @@ namespace DataAccessLayer
 
             cmd.Parameters["ShelterName"].Value = shelterName;
             cmd.Parameters["Address"].Value = address;
-            cmd.Parameters["AddressTwo"].Value = addressTwo;
+            cmd.Parameters["AddressTwo"].Value = Address2;
             cmd.Parameters["Zipcode"].Value = zipCode;
             cmd.Parameters["Phone"].Value = phone;
             cmd.Parameters["Email"].Value = email;
@@ -176,8 +196,8 @@ namespace DataAccessLayer
                             shelter.ShelterId = Convert.ToInt32(reader["ShelterId"]);
                             shelter.ShelterName = Convert.ToString(reader["ShelterName"]);
                             shelter.Address = Convert.ToString(reader["Address"]);
-                            shelter.AddressTwo = Convert.ToString(reader["AddressTwo"]);
-                            shelter.ZipCode = Convert.ToString(reader["Zipcode"]);
+                            shelter.Address2 = Convert.ToString(reader["AddressTwo"]);
+                            shelter.ZipCode = Convert.ToString(reader["Zipcode"]).Trim();
                             shelter.Phone = Convert.ToString(reader["Phone"]);
                             shelter.Email = Convert.ToString(reader["Email"]);
                             shelter.AreasOfNeed = Convert.ToString(reader["Areasofneed"]);
@@ -318,7 +338,7 @@ namespace DataAccessLayer
             return result;
         }
 
-        public int UpdateAddressTwoByShelterID(int shelterID, string newAddressTwo)
+        public int UpdateAddress2ByShelterID(int shelterID, string newAddress2)
         {
             // This should be 1 upon successful script execution
             int result = 0;
@@ -334,7 +354,7 @@ namespace DataAccessLayer
             cmd.Parameters.Add("ShelterId", SqlDbType.Int);
             cmd.Parameters.Add("newAddressTwo", SqlDbType.NVarChar, 50);
             cmd.Parameters["ShelterId"].Value = shelterID;
-            cmd.Parameters["newAddressTwo"].Value = newAddressTwo;
+            cmd.Parameters["newAddressTwo"].Value = newAddress2;
             try
             {
                 conn.Open();
@@ -464,11 +484,11 @@ namespace DataAccessLayer
             cmd.CommandType = CommandType.StoredProcedure;
             // Parameters
             cmd.Parameters.Add("ShelterId", SqlDbType.Int);
-            cmd.Parameters.Add("oldZipcode", SqlDbType.NVarChar, 50);
-            cmd.Parameters.Add("newZipcode", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("oldZipcode", SqlDbType.Char, 9);
+            cmd.Parameters.Add("newZipcode", SqlDbType.Char, 9);
             cmd.Parameters["ShelterId"].Value = shelterID;
             cmd.Parameters["oldZipcode"].Value = oldZipCode;
-            cmd.Parameters["newZipcode"].Value = oldZipCode;
+            cmd.Parameters["newZipcode"].Value = newZipcode;
             try
             {
                 conn.Open();
@@ -499,6 +519,92 @@ namespace DataAccessLayer
             // Parameters
             cmd.Parameters.Add("ShelterId", SqlDbType.Int);
             cmd.Parameters["ShelterId"].Value = shelterID;
+            try
+            {
+                conn.Open();
+                result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
+        }
+
+        public List<HoursOfOperation> SelectHoursOfOperationByShelterID(int shelterID)
+        {
+            var hoursOfOperation = new List<HoursOfOperation>();
+
+            var conn = new DBConnection().GetConnection();
+
+            var cmdtext = "sp_select_hours_of_operation_by_shelter_id";
+
+            var cmd = new SqlCommand(cmdtext, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@ShelterId", SqlDbType.Int);
+
+            cmd.Parameters["@ShelterId"].Value = shelterID;
+
+
+
+            try
+            {
+
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var hours = new HoursOfOperation();
+                        hours.OpenHour = reader.GetTimeSpan(0);
+                        hours.CloseHour = reader.GetTimeSpan(1);
+                        hoursOfOperation.Add(hours);
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return hoursOfOperation;
+        }
+
+        public int UpdateHoursOfOperationByShelterID(int shelterID, int dayOfWeek, HoursOfOperation hours)
+        {
+            int result = 0;
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+
+            var cmdText = "sp_update_hours_of_operation_by_shelter_id";
+
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("ShelterId", SqlDbType.Int);
+            cmd.Parameters.Add("OpenTime", SqlDbType.Time);
+            cmd.Parameters.Add("CloseTime", SqlDbType.Time);
+            cmd.Parameters.Add("DayOfWeek", SqlDbType.TinyInt);
+            cmd.Parameters["ShelterId"].Value = shelterID;
+            cmd.Parameters["OpenTime"].Value = hours.OpenHour;
+            cmd.Parameters["CloseTime"].Value = hours.CloseHour;
+            cmd.Parameters["DayOfWeek"].Value = dayOfWeek;
             try
             {
                 conn.Open();

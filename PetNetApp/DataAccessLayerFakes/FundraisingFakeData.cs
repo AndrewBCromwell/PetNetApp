@@ -17,10 +17,15 @@ namespace DataObjects
         public static List<FundraisingCampaignVM> FundraisingCampaigns { get; set; }
         public static List<InstitutionalEntity> InstitutionalEntities { get; set; }
         public static List<Tuple<int, int>> FundraisingCampaignEntities { get; set; }
+        public static List<FundraisingEventVM> FundraisingEvents { get; set; }
+        public static List<Tuple<int, int>> FundraisingEventEntities { get; set; }
+        public static List<FundraisingEventVM> FundraisingEventsActive { get; set; }
+        public static List<Shelter> Shelters { get; set; }
 
         static FundraisingFakeData()
         {
             ResetFakeFundraisingCampaignData();
+            ResetFakeFundraisingEventData();
         }
 
         /// <summary>
@@ -269,6 +274,82 @@ namespace DataObjects
                 new Tuple<int,int>(110000,17),
                 new Tuple<int,int>(110000,18),
                 new Tuple<int,int>(110000,19)
+            };
+
+            FundraisingEventEntities = new List<Tuple<int, int>>()
+            {
+                new Tuple<int,int>(100000,10),
+                new Tuple<int,int>(100000,11),
+                new Tuple<int,int>(100000,13),
+                new Tuple<int,int>(100000,15),
+                new Tuple<int,int>(100000,14),
+                new Tuple<int,int>(100000,17),
+                new Tuple<int,int>(100000,18),
+                new Tuple<int,int>(100000,19),
+                new Tuple<int,int>(100001,10),
+                new Tuple<int,int>(100001,16),
+                new Tuple<int,int>(100001,15),
+                new Tuple<int,int>(100001,13),
+                new Tuple<int,int>(100002,12),
+                new Tuple<int,int>(100002,10),
+                new Tuple<int,int>(100002,15),
+                new Tuple<int,int>(100002,17),
+                new Tuple<int,int>(100002,18),
+                new Tuple<int,int>(100003,10),
+                new Tuple<int,int>(100003,11),
+                new Tuple<int,int>(100003,12),
+                new Tuple<int,int>(100003,16),
+                new Tuple<int,int>(100004,10),
+                new Tuple<int,int>(100004,11),
+                new Tuple<int,int>(100004,13),
+                new Tuple<int,int>(100004,14),
+                new Tuple<int,int>(100004,17),
+                new Tuple<int,int>(100004,18),
+                new Tuple<int,int>(100004,19)
+            };
+        }
+
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/30
+        /// 
+        /// This method resets the data stored inside the properties to their initial values,
+        /// this is needed when using performing unit test cleanup so the data resets in between
+        /// </summary>
+        public static void ResetFakeFundraisingEventData()
+        {
+            Random rand = new Random();
+            int fundraisingEventId = 100000;
+            string[] etList = { "Dogs", "Cats", "Frogs", "Snakes", "Turtles" };
+            FundraisingEvents = new List<FundraisingEventVM>()
+            {
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="This fall, you and your dog can change lives together.", AdditionalInfo="Things to know", Cost = 100.00M, NumOfAttendees = 65, NumAnimalsAdopted = 4, UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = "",  Complete=false, Hidden=false, Title="Wine Dinner 2023",StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="A memorable evening, including gourmet food, expertly paired wines, and an opportunity to make a difference for animals.", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Walk for animals.", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Show your love for animals needing adoption.", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""}
+            };
+
+            FundraisingEventsActive = new List<FundraisingEventVM>()
+            {
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100001, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="This fall, you and your dog can change lives together.", AdditionalInfo="Things to know", Cost = 100.00M, NumOfAttendees = 65, NumAnimalsAdopted = 4, UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100002, ImageId = "",  Complete=false, Hidden=true, Title="Wine Dinner 2023",StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="A memorable evening, including gourmet food, expertly paired wines, and an opportunity to make a difference for animals.", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100003, ImageId = "",  Complete=true, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Walk for animals.", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100004, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Show your love for animals needing adoption.", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100005, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""},
+                new FundraisingEventVM(){ FundraisingEventId = fundraisingEventId++, UsersId = 100000, CampaignId = 100000, ShelterId = 100006, ImageId = "",  Complete=false, Hidden=false, Title="Fundraising Event for " + etList[rand.Next(0, etList.Length)] + rand.Next(100),StartTime=DateTime.Today + TimeSpan.FromDays(4), EndTime = DateTime.Today + TimeSpan.FromDays(4) + TimeSpan.FromHours(4) , Description="Garble", AdditionalInfo="Things to know", Cost = 0.00M, NumOfAttendees = rand.Next(100), NumAnimalsAdopted = rand.Next(20), UpdateNotes = ""}
+            };
+
+            Shelters = new List<Shelter>()
+            {
+                new Shelter(){ ShelterId = 100001, ShelterActive = true},
+                new Shelter(){ ShelterId = 100002, ShelterActive = true},
+                new Shelter(){ ShelterId = 100003, ShelterActive = true},
+                new Shelter(){ ShelterId = 100004, ShelterActive = true},
+                new Shelter(){ ShelterId = 100005, ShelterActive = true},
+                new Shelter(){ ShelterId = 100006, ShelterActive = true}
             };
         }
     }

@@ -17,6 +17,8 @@ using WpfPresentation.UserControls;
 
 namespace WpfPresentation.Fundraising
 {
+    /// please remove this page before moving the other version of it from Development
+
     /// <summary>
     /// Interaction logic for AddFundraisingCampaignSponsorsWindow.xaml
     /// </summary>

@@ -18,5 +18,6 @@ namespace DataObjects
         public string Address2 { get; set; }
         public string Zipcode { get; set; }
         public string ContactType { get; set; }
+        public int ShelterId { get; set; }
     }
 }

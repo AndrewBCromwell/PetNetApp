@@ -1,6 +1,4 @@
-﻿using DataAccessLayer;
-using DataAccessLayerInterfaces;
-using DataObjects;
+﻿using DataObjects;
 using LogicLayerInterfaces;
 using System;
 using System.Collections.Generic;
@@ -50,6 +48,24 @@ namespace LogicLayer
         public IDonationManager DonationManager { get; private set; }
         public IImagesManager ImagesManager { get; private set; }
         public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
+        public IFundraisingEventManager FundraisingEventManager { get; set; }
+        public IZipcodeManager ZipcodeManager { get; set; }
+        public IRequestManager RequestManager { get; private set; }
+        public IVaccinationManager VaccinationManager { get; set; }
+        public IAdoptionApplicationManager AdoptionApplicationManager { get; set; }
+        public IShelterInventoryItemManager ShelterInventoryItemManager { get; set; }
+        public IShelterManager ShelterManager { get; set; }
+        public IItemManager ItemManager { get; set; }
+        public IVolunteerManager VolunteerManager { get; set; }
+        public IPostManager PostManager { get; set; }
+        public IReplyManager ReplyManager { get; set; }
+        public IFosterApplicationResponseManager FosterApplicationResponseManager { get; set; }
+        public IResourceAddRequestManager ResourceAddRequestManager { get; set; }
+        public IFosterManager FosterManager { get; set; }
+        public IPledgeManager PledgeManager { get; set; }
+        public IEventManager EventManager { get; set; }
+        public IAdoptionApplicationResponseManager AdoptionApplicationResponseManager { get; set; }
+        public IFosterApplicationManager FosterApplicationManager { get; set; }
         public IPrescriptionManager PrescriptionManager { get; private set; }
 
 
@@ -72,26 +88,42 @@ namespace LogicLayer
             ShelterItemTransactionManager = new ShelterItemTransactionManager();
             ImagesManager = new ImagesManager();
             DonationManager = new DonationManager();
+            FundraisingEventManager = new FundraisingEventManager();
+            ZipcodeManager = new ZipcodeManager();
+            RequestManager = new RequestManager();
+            VaccinationManager = new VaccinationManager();
+            ShelterInventoryItemManager = new ShelterInventoryItemManager();
+            ShelterManager = new ShelterManager();
+            ItemManager = new ItemManager();
+            VolunteerManager = new VolunteerManager();
+            PostManager = new PostManager();
+            ReplyManager = new ReplyManager();
+            AdoptionApplicationManager = new AdoptionApplicationManager();
+            FosterApplicationResponseManager = new FosterApplicationResponseManager();
+            ResourceAddRequestManager = new ResourceAddRequestManager();
+            FosterManager = new FosterManager();
+            PledgeManager = new PledgeManager();
+            EventManager = new EventManager();
+            AdoptionApplicationResponseManager = new AdoptionApplicationResponseManager();
+            FosterApplicationManager = new FosterApplicationManager();
             PrescriptionManager = new PrescriptionManager();
 
 
             //for testing from dev page
-           User = new UsersVM()
-           {
-               UsersId = 100004,
-               ShelterId = 100000,
-               GivenName = "Barry",
-               FamilyName = "Mikulas",
-               Email = "bmikulas@company.com",
-               Address = "4150 riverview road",
-               Zipcode = "52411",
-               Phone = "319-123-1325",
-               Active = true,
-               Suspend = false,
-               Roles = new List<string>() { "Admin" }
-           };
-
-
+            User = new UsersVM()
+            {
+                UsersId = 100004,
+                ShelterId = 100000,
+                GivenName = "Barry",
+                FamilyName = "Mikulas",
+                Email = "bmikulas@company.com",
+                Address = "4150 riverview road",
+                Zipcode = "52411",
+                Phone = "319-123-1325",
+                Active = true,
+                Suspend = false,
+                Roles = new List<string>() { "Admin" }
+            };
         }
 
         public static MasterManager GetMasterManager()
@@ -106,6 +138,7 @@ namespace LogicLayer
         {
             UserChangedAction handler = UserLogout;
             handler?.Invoke();
+            
         }
         protected virtual void OnUserLogin()
         {

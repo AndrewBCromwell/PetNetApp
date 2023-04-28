@@ -165,11 +165,11 @@ namespace LogicLayer
         /// /// <param name="AnimalTypeId">string for the the specific type of animal</param>
         /// <exception cref="Exception">Failed to retrived a list of animals</exception>
         /// <returns>List of animals</returns>
-        public List<Animal> RetrieveAllAnimalsForKennel(int ShelterId, string AnimalTypeId)
+        public List<Animal> RetrieveAllAnimalsForKennel(int ShelterId)
         {
             try
             {
-                return kennelAccessor.SelectAllAnimalsForKennel(ShelterId, AnimalTypeId);
+                return kennelAccessor.SelectAllAnimalsForKennel(ShelterId);
             }
             catch (Exception ex)
             {
@@ -178,7 +178,6 @@ namespace LogicLayer
             }
         }
 
-        // Created By: Asa Armstrong
         public bool RemoveAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId)
         {
             try

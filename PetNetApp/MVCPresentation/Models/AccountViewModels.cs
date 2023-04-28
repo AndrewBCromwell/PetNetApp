@@ -69,6 +69,18 @@ namespace MVCPresentation.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Display(Name = "First Name")]
+        public string GivenName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string FamilyName { get; set; }
+
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
+        [Display(Name = "Zipcode")]
+        public string Zipcode { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
@@ -76,9 +88,16 @@ namespace MVCPresentation.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Pronouns")]
+        public List<string> PronounId { get; set; }
+
+        [Display(Name = "Gender")]
+        public List<string> GenderId { get; set; }
+
     }
 
     public class ResetPasswordViewModel
@@ -109,4 +128,5 @@ namespace MVCPresentation.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
 }

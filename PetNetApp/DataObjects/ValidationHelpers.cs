@@ -10,7 +10,12 @@ namespace DataObjects
 {
     public static class ValidationHelpers
     {
-        public static Regex ZipcodeRegex { get; private set; } = new Regex(@"^(\d{5}|\d{9})$");
+        /// <summary>
+        /// Updated by: Barry Mikulas
+        /// 2023-03-04
+        /// Changed regex for zipcode to allow only 5 digits due to all zip coe data only being 5 digits
+        /// </summary>
+        public static Regex ZipcodeRegex { get; private set; } = new Regex(@"^(\d{5})$");
         public static Regex PhoneRegex { get; private set; } = new Regex(@"^\d{10,13}$");
         public static Regex AmountRegex { get; private set; } = new Regex(@"^(([1-9]\d{0,4})|0)(\.\d{1,2})?$");
         public static Regex EmailRegex { get; private set; } = new Regex(@"^(?=^.{1,64}@)[a-zA-Z0-9]+([-_\.]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(-?[a-zA-Z0-9]+)*\.[a-zA-Z0-9]{2,}([-\.]?[a-zA-Z0-9]{2,})*$");
@@ -117,8 +122,9 @@ namespace DataObjects
         /// Stephen Jaurigue
         /// Created: 2023/02/15
         /// 
-        /// Confirms zipcode is 5 or 9 digits
+        /// Confirms zipcode is 5 digits
         /// </summary>
+        /// Updated by Barry Mikulas 2023-03-04    changed regex to only allow 5 digits
         /// <returns>Whether the string is a valid zipcode</returns>
         public static bool IsValidZipcode(this string zipcode)
         {
@@ -183,6 +189,17 @@ namespace DataObjects
         public static bool IsValidTitle(this string title)
         {
             return title != null && title.Length >= 5 && title.Length <= 50;
+        }
+        /// <summary>
+        /// Brian Collum
+        /// Created: 2023/03/09
+        /// Validator for a Generic NVarchar of length X
+        /// Confirms that the supplied string is not null, empty, and is shorter than the supplied character limit
+        /// </summary>
+        /// <returns>Whether the string is a valid shelter name</returns>
+        public static bool IsValidNVarcharX(this string targetString, int characterLimit)
+        {
+            return targetString != "" && targetString != null && targetString.Length <= characterLimit;
         }
     }
 }

@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfPresentation.Animals"
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="ViewAdoptableAnimalProfile" Height="556.8" Loaded="Page_Loaded">
+      Title="ViewAdoptableAnimalProfile" Height="600" Loaded="Page_Loaded">
 
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -126,6 +126,7 @@
                                 <RowDefinition Height="150"/>
                                 <RowDefinition Height="70"/>
                                 <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"></RowDefinition>
                             </Grid.RowDefinitions>
 
                             <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
@@ -135,7 +136,7 @@
                             </ScrollViewer>
                             
 
-                            <Button x:Name="btnFillApplication" Grid.Row="1" Margin="5" HorizontalContentAlignment="Left">
+                            <Button x:Name="btnFillApplication" Grid.Row="1" Margin="5" HorizontalContentAlignment="Left" Visibility="Hidden">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="70"/>
@@ -147,7 +148,7 @@
                             </Button>
 
 
-                            <Button x:Name="btnDownloadApplication" Grid.Row="2" Margin="5" HorizontalContentAlignment="Left">
+                            <Button x:Name="btnDownloadApplication" Grid.Row="2" Margin="5" HorizontalContentAlignment="Left" Visibility="Hidden">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="70"/>
@@ -156,6 +157,9 @@
                                     <Image Grid.Column="0" Source="../Images/download_light.png" HorizontalAlignment="Left"/>
                                     <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">| Download Application</Label>
                                 </Grid>
+                            </Button>
+                            <Button x:Name="btnViewApplications" Grid.Row="3" Margin="5" Click="btnViewApplications_Click">
+                                <Label>View All Applications</Label>
                             </Button>
                         </Grid>
                         <!--End Description part-->
@@ -167,6 +171,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
                     <Border BorderBrush="#3D8361" BorderThickness="0 3 0 0"></Border>
                     
@@ -216,7 +221,7 @@
                         <!--End send button-->
                     </Grid>
 
-                    <Grid Grid.Row="2" Margin="10 0">
+                    <Grid Grid.Row="1" Margin="10 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition/>
@@ -230,7 +235,7 @@
                                    TextWrapping="Wrap" MaxHeight="200" MinHeight="80" Margin="8" Foreground="#1C6758"/>
                         </Grid>
                     </Grid>
-
+                    <Button x:Name="btnViewAllComment" Grid.Row="2" Width="120" Height="40" Content="View All" HorizontalAlignment="Right" Margin="0 -15 0 0" Click="btnViewAllComment_Click"/>
                 </Grid>
             </Grid>
         </ScrollViewer>

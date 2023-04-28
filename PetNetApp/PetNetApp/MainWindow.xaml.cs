@@ -97,8 +97,7 @@ namespace PetNetApp
         private void btnEvents_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnEvents);
-            // replace with page name and then delete comment
-            frameMain.Navigate(null);
+            frameMain.Navigate(WpfPresentation.Events.EventsPage.GetEventsPage());
         }
 
         private void btnCommunity_Click(object sender, RoutedEventArgs e)
@@ -128,7 +127,7 @@ namespace PetNetApp
             }
             else
             {
-                frameMain.Navigate(UserProfilePage.GetUserProfilePage(this));
+                frameMain.Navigate(UserProfilePage.GetUserProfilePage(this, _manager.User));
             }
         }
 
@@ -205,6 +204,7 @@ namespace PetNetApp
                 if (result == PromptSelection.Yes)
                 {
                     _manager.User = null;
+
                 }
             }
         }
@@ -257,7 +257,7 @@ namespace PetNetApp
         }
         private void ShowSheltersButtonByRoles()
         {
-            string[] allowedRoles = { "Admin", "Manager" };
+            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnShelters.Visibility = Visibility.Visible;

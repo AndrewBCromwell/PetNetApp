@@ -38,7 +38,7 @@ namespace LogicLayerTest
                 ShelterId = 0,
                 ShelterName = "Test Shelter 00",
                 Address = "Fake area 00",
-                AddressTwo = "Fake address 00",
+                Address2 = "Fake address 00",
                 ZipCode = "50001",
                 Phone = "000-000-0000",
                 Email = "zero@zero.zerp",
@@ -50,7 +50,7 @@ namespace LogicLayerTest
                 ShelterId = 000001,
                 ShelterName = "Test Shelter 01",
                 Address = "Fake area 01",
-                AddressTwo = "Fake address 01",
+                Address2 = "Fake address 01",
                 ZipCode = "50001",
                 Phone = "555-666-7777",
                 Email = "fake@fake.fake",
@@ -62,7 +62,7 @@ namespace LogicLayerTest
                 ShelterId = 000002,
                 ShelterName = "Test Shelter 02",
                 Address = "Fake area 02",
-                AddressTwo = null,
+                Address2 = null,
                 ZipCode = "50002",
                 Phone = null,
                 Email = null,
@@ -76,7 +76,7 @@ namespace LogicLayerTest
             Assert.AreEqual(testList[0].ShelterId, testShelterZero.ShelterId);
             Assert.AreEqual(testList[0].ShelterName, testShelterZero.ShelterName);
             Assert.AreEqual(testList[0].Address, testShelterZero.Address);
-            Assert.AreEqual(testList[0].AddressTwo, testShelterZero.AddressTwo);
+            Assert.AreEqual(testList[0].Address2, testShelterZero.Address2);
             Assert.AreEqual(testList[0].ZipCode, testShelterZero.ZipCode);
             Assert.AreEqual(testList[0].Phone, testShelterZero.Phone);
             Assert.AreEqual(testList[0].Email, testShelterZero.Email);
@@ -86,7 +86,7 @@ namespace LogicLayerTest
             Assert.AreEqual(testList[1].ShelterId, testShelterOne.ShelterId);
             Assert.AreEqual(testList[1].ShelterName, testShelterOne.ShelterName);
             Assert.AreEqual(testList[1].Address, testShelterOne.Address);
-            Assert.AreEqual(testList[1].AddressTwo, testShelterOne.AddressTwo);
+            Assert.AreEqual(testList[1].Address2, testShelterOne.Address2);
             Assert.AreEqual(testList[1].ZipCode, testShelterOne.ZipCode);
             Assert.AreEqual(testList[1].Phone, testShelterOne.Phone);
             Assert.AreEqual(testList[1].Email, testShelterOne.Email);
@@ -96,7 +96,7 @@ namespace LogicLayerTest
             Assert.AreEqual(testList[2].ShelterId, testShelterTwo.ShelterId);
             Assert.AreEqual(testList[2].ShelterName, testShelterTwo.ShelterName);
             Assert.AreEqual(testList[2].Address, testShelterTwo.Address);
-            Assert.AreEqual(testList[2].AddressTwo, testShelterTwo.AddressTwo);
+            Assert.AreEqual(testList[2].Address2, testShelterTwo.Address2);
             Assert.AreEqual(testList[2].ZipCode, testShelterTwo.ZipCode);
             Assert.AreEqual(testList[2].Phone, testShelterTwo.Phone);
             Assert.AreEqual(testList[2].Email, testShelterTwo.Email);
@@ -112,7 +112,7 @@ namespace LogicLayerTest
             Assert.AreEqual(000001, testShelter.ShelterId);
             Assert.AreEqual("Test Shelter 01", testShelter.ShelterName);
             Assert.AreEqual("Fake area 01", testShelter.Address);
-            Assert.AreEqual("Fake address 01", testShelter.AddressTwo);
+            Assert.AreEqual("Fake address 01", testShelter.Address2);
             Assert.AreEqual("50001", testShelter.ZipCode);
             Assert.AreEqual("555-666-7777", testShelter.Phone);
             Assert.AreEqual("fake@fake.fake", testShelter.Email);
@@ -131,7 +131,7 @@ namespace LogicLayerTest
                 ShelterId = 000003,
                 ShelterName = "Test Shelter 03",
                 Address = "Fake area 03",
-                AddressTwo = "Fake address 03",
+                Address2 = "Fake address 03",
                 ZipCode = "50002",
                 Phone = "444-555-6666",
                 Email = "fake3@fake3.fake3",
@@ -151,7 +151,7 @@ namespace LogicLayerTest
                 Assert.AreEqual(_sheterList[3].ShelterId, testShelterThree.ShelterId);
                 Assert.AreEqual(_sheterList[3].ShelterName, testShelterThree.ShelterName);
                 Assert.AreEqual(_sheterList[3].Address, testShelterThree.Address);
-                Assert.AreEqual(_sheterList[3].AddressTwo, testShelterThree.AddressTwo);
+                Assert.AreEqual(_sheterList[3].Address2, testShelterThree.Address2);
                 Assert.AreEqual(_sheterList[3].ZipCode, testShelterThree.ZipCode);
                 Assert.AreEqual(_sheterList[3].Phone, testShelterThree.Phone);
                 Assert.AreEqual(_sheterList[3].Email, testShelterThree.Email);
@@ -235,7 +235,7 @@ namespace LogicLayerTest
 
         }
         [TestMethod]
-        public void TestEditAddressTwo()
+        public void TestEditAddress2()
         {
             _sheterList = _shelterManager.GetShelterList();
             int idTarget = 1;
@@ -252,10 +252,10 @@ namespace LogicLayerTest
             }
             if (idIndex >= 0)
             {
-                Assert.AreEqual("Fake address 01", _sheterList[idIndex].AddressTwo);
-                if (_shelterManager.EditAddressTwo(_sheterList[idIndex], "Fake address 666"))
+                Assert.AreEqual("Fake address 01", _sheterList[idIndex].Address2);
+                if (_shelterManager.EditAddress2(_sheterList[idIndex], "Fake address 666"))
                 {
-                    Assert.AreEqual("Fake address 666", _sheterList[idIndex].AddressTwo);
+                    Assert.AreEqual("Fake address 666", _sheterList[idIndex].Address2);
                 }
                 else
                 {
@@ -467,6 +467,51 @@ namespace LogicLayerTest
             {
                 Assert.Fail();
             }
+        }
+
+        [TestMethod]
+        public void TestRetrieveHoursOfOperationByShelterID()
+        {
+            ShelterVM testShelter = new ShelterVM();
+            List<HoursOfOperation> fakeHoursOfOperation = new List<HoursOfOperation>
+                {
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")}
+                };
+            testShelter = _shelterManager.RetrieveShelterVMByShelterID(0);
+            Assert.AreEqual(testShelter.HoursOfOperation[0].OpenHour.ToString(), fakeHoursOfOperation[0].OpenHour.ToString());
+            Assert.AreEqual(testShelter.HoursOfOperation[0].CloseHour.ToString(), fakeHoursOfOperation[0].CloseHour.ToString());
+
+
+        }
+
+        [TestMethod]
+        public void TestEditHoursOfOperationByShelterID()
+        {
+            bool updateSuccessful = false;
+            ShelterVM testShelter = new ShelterVM();
+            List<HoursOfOperation> fakeHoursOfOperation = new List<HoursOfOperation>
+                {
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("10:00:00"), CloseHour = TimeSpan.Parse("06:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("11:00:00"), CloseHour = TimeSpan.Parse("07:00:00")},
+                    new HoursOfOperation { OpenHour = TimeSpan.Parse("09:00:00"), CloseHour = TimeSpan.Parse("05:00:00")}
+                };
+            HoursOfOperation hoursToUpdate = new HoursOfOperation { OpenHour = TimeSpan.Parse("02:00:00"), CloseHour = TimeSpan.Parse("04:00:00") };
+            testShelter = _shelterManager.RetrieveShelterVMByShelterID(0);
+
+            updateSuccessful = _shelterManager.EditHoursOfOperationByShelterID(0, 1, hoursToUpdate);
+            testShelter = _shelterManager.RetrieveShelterVMByShelterID(0);
+            Assert.IsTrue(updateSuccessful);
+
         }
     }
 }

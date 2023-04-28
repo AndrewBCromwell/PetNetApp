@@ -1,4 +1,15 @@
-﻿using System;
+﻿/// <summary>
+/// Author: Stephen Jaurigue
+/// Date: 2023/04/21
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,13 +28,15 @@ namespace DataObjects
         public int UsersId { get; set; }
         public int ShelterId { get; set; }
         public bool Active { get; set; }
+        public decimal AmountRaised { get; set; }
+        public int NumOfAttendees { get; set; }
+        public int NumAnimalsAdopted { get; set; }
     }
 
     public class FundraisingCampaignVM : FundraisingCampaign
     {
         public List<InstitutionalEntity> Sponsors { get; set; }
-        //public List<CampaignUpdate> CampaignUpdates { get; set; }
-        //public List<FundraisingEvent> FundraisingEventList { get; set; }
+        public List<FundraisingEvent> FundraisingEventList { get; set; }
     }
 
     public static class FundraisingCampaignExtensions

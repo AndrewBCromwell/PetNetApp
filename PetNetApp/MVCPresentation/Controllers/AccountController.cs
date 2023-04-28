@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -9,17 +10,33 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCPresentation.Models;
+using LogicLayer;
 
 namespace MVCPresentation.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IEnumerable<String> _genders;
+        private IEnumerable<String> _pronouns;
 
         public AccountController()
         {
+           try
+            {
+                LogicLayer.UsersManager usersManager = new LogicLayer.UsersManager();
+                _genders = usersManager.RetrieveGenders();
+                _pronouns = usersManager.RetrievePronouns();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -70,6 +87,7 @@ namespace MVCPresentation.Controllers
         {
             if (!ModelState.IsValid)
             {
+
                 return View(model);
             }
 
@@ -139,6 +157,9 @@ namespace MVCPresentation.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Genders = _genders;
+            ViewBag.Pronouns = _pronouns;
+
             return View();
         }
 
@@ -149,26 +170,119 @@ namespace MVCPresentation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+           
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                LogicLayer.UsersManager usrMgr = new LogicLayer.UsersManager();
+                
+                try
+                {
+                    if (usrMgr.RetrieveUserByEmail(model.Email))
+                    {
+                        var oldUser = usrMgr.AuthenticateUser(model.Email, model.Password);
+                        var user = new ApplicationUser
+                        {
+                            UsersId = oldUser.UsersId,
+                            GivenName = oldUser.GivenName,
+                            FamilyName = oldUser.FamilyName,
+                            PhoneNumber = oldUser.Phone,
+                            PronounId = oldUser.PronounId,
+                            GenderId = oldUser.GenderId,
+                            ShelterId = oldUser.ShelterId,
+                            Address = oldUser.Address,
+                            AddressTwo = oldUser.Address2,
+                            Zipcode = oldUser.Zipcode,
+
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            var roles = usrMgr.RetrieveRolesByUsersId(oldUser.UsersId);
+
+                            foreach (var role in roles)
+                            {
+                                UserManager.AddToRole(user.Id, role);
+                            }
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
+                    else // for web-side users
+                    {
+                        var newUser = new DataObjects.Users()
+                        {
+                            GenderId = model.GenderId.First(),
+                            PronounId = model.PronounId.First(),
+                            GivenName = model.GivenName,
+                            FamilyName = model.FamilyName,
+                            Email = model.Email,
+                            Zipcode = model.Zipcode,
+                            Phone = model.Phone
+                            
+                        };
+
+                        if (usrMgr.AddUser(newUser, model.Password))
+                        {
+                            var userId = usrMgr.RetrieveUserByUserEmail(model.Email);
+                            var user = new ApplicationUser
+                            {
+                                UsersId = userId.UsersId,
+                                GivenName = model.GivenName,
+                                FamilyName = model.FamilyName,
+                                PhoneNumber = model.Phone,
+                                PronounId = model.PronounId.First(),
+                                GenderId = model.GenderId.First(),
+                                Zipcode = model.Zipcode,
+                                UserName = model.Email,
+                                Email = model.Email
+                            };
+
+                            var result = await UserManager.CreateAsync(user, model.Password);
+
+                            if (result.Succeeded)
+                            {
+                                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                                return RedirectToAction("Index", "Home");
+                            }
+                            AddErrors(result);
+                        }
+                    }
                 }
-                AddErrors(result);
+                catch(Exception ex)
+                {
+                    ViewBag.Genders = _genders;
+                    ViewBag.Pronouns = _pronouns;
+                    ViewBag.Error = "There was an error creating your account";
+                    return View(model);
+                }
+            }
+            else
+            {
+                try
+                {
+                    _genders = _masterManager.UsersManager.RetrieveGenders();
+                    _pronouns = _masterManager.UsersManager.RetrievePronouns();
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "Could not retrieve Genders or pronouns. \n" + ex.Message;
+                    return View("Error");
+                }
+
+                ViewBag.Genders = _genders;
+                ViewBag.Pronouns = _pronouns;
+                return View();
             }
 
+
             // If we got this far, something failed, redisplay form
+            ViewBag.Genders = _genders;
+            ViewBag.Pronouns = _pronouns;
             return View(model);
         }
 
@@ -392,6 +506,7 @@ namespace MVCPresentation.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["User"] = null;
             return RedirectToAction("Index", "Home");
         }
 

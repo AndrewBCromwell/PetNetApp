@@ -25,6 +25,17 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException"></exception>
         /// <returns>List<KennelVM></returns>
         List<KennelVM> RetrieveKennels(int ShelterId);
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/11
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="AnimalId"></param>
+        /// <returns></returns>
         Kennel RetrieveKennelIdByAnimalId(int AnimalId);
         bool AddAnimalIntoKennelByAnimalId(int KennelId, int AnimalId);
 
@@ -42,7 +53,7 @@ namespace LogicLayerInterfaces
         /// </remarks>
         /// <exception cref="ApplicationException"></exception>
         /// <returns>List<KennelVM></returns>
-        List<Animal> RetrieveAllAnimalsForKennel(int ShelterId, string AnimalTypeId);
+        List<Animal> RetrieveAllAnimalsForKennel(int ShelterId);
         List<string> RetrieveAnimalTypes();
 
         /// <summary>
@@ -90,6 +101,12 @@ namespace LogicLayerInterfaces
         /// Asa Armstrong
         /// Updated: 2023/02/24
         /// Added Comment.
+        /// </remarks>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="kennelId">kennelId</param>
         /// <param name="animalId">animalId</param>

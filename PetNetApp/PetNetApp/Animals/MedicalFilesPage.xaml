@@ -14,7 +14,7 @@
             <RowDefinition Height="70"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label x:Name="lblAdditionalFiles" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Additional Files</Label>
+        <Label x:Name="lblAdditionalFiles" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Images</Label>
 
         <DataGrid x:Name="datAdditionalFiles" Grid.Row="1" IsReadOnly="True" Margin="75, 0, 75, 0" BorderBrush="Transparent" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled">
             <DataGrid.RowStyle>
@@ -27,7 +27,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="lblNoFiles" Grid.Row="1" FontSize="16"></Label>
-        <Button x:Name="btnAddFile" Grid.Row="2" Width="100" Click="btnAddFile_Click" Margin="10" Height="40">Add</Button>
+        
         
     </Grid>
 </Page>

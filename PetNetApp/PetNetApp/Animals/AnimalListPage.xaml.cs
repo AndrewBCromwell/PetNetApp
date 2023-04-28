@@ -25,7 +25,7 @@ namespace WpfPresentation.Animals
     {
         private static AnimalListPage _existingAnimalListPage = null;
         private MasterManager _masterManager = null;
-        private List<Animal> _animals = null;
+        private List<Animal> _animals = null; 
 
 
         public AnimalListPage(MasterManager manager)
@@ -73,6 +73,11 @@ namespace WpfPresentation.Animals
                 return;
             }
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddAnimalPage(_masterManager));
         }
     }
 }

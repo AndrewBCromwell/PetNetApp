@@ -1,4 +1,14 @@
-﻿using DataObjects;
+﻿///<summary>
+///William Rients
+/// Created: 2023/03/10
+///
+/// </summary>
+/// <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -23,9 +33,20 @@ namespace WpfPresentation.Animals
     public partial class AnimalMedicalProfile : Page
     {
         private int _animalId;
+        private List<Images> _imagesList;
         Kennel _kennel = new Kennel();
         AnimalVM _animalVM = new AnimalVM();
         MasterManager _masterManager = MasterManager.GetMasterManager();
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/03/11
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="animalId"></param>
         private ViewPrescriptions _viewPrescriptions = null;
 
         public AnimalMedicalProfile(int animalId)
@@ -42,11 +63,11 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
-        public void disableControls()
+        public void DisableControls()
         {
             txtAnimalBreed.IsEnabled = false;
             txtAnimalId.IsEnabled = false;
@@ -70,13 +91,13 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            disableControls();
+            DisableControls();
             try
             {
                 _animalVM = _masterManager.AnimalManager.RetrieveAnimalMedicalProfileByAnimalId(_animalId);
@@ -87,7 +108,14 @@ namespace WpfPresentation.Animals
                 txtAnimalMicrochipNum.Text = _animalVM.MicrochipNumber;
                 txtAnimalName.Text = _animalVM.AnimalName;
                 txtAnimalNotes.Text = _animalVM.Notes;
-                txtAnimalKennelNum.Text = _kennel.KennelId.ToString();
+                if (_kennel.KennelId == 0)
+                {
+                    txtAnimalKennelNum.Text = "Unassigned";
+                }
+                else
+                {
+                    txtAnimalKennelNum.Text = _kennel.KennelId.ToString();
+                }
                 if (_animalVM.AnimalGender == "Male")
                 {
                     rdbAnimalGenderMale.IsChecked = true;
@@ -104,12 +132,83 @@ namespace WpfPresentation.Animals
                 {
                     rdbAnimalAlteredYes.IsChecked = true;
                 }
+                PopulateImage();
             }
             catch (Exception ex)
             {
                 PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message, ButtonMode.Ok);
+            }            
+        }
+
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/03/24
+        /// 
+        /// Populates the animals medical image
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        private void PopulateImage()
+        {
+            if (_imagesList == null || _imagesList.Count == 0)
+            {
+                try
+                {
+                    _imagesList = _masterManager.ImagesManager.RetrieveMedicalImagesByAnimalId(_animalId);
+                }
+                catch (Exception ex)
+                {
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                }
             }
+
+            if (_imagesList.Count == 0)
+            {
+                lblNoImage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                try
+                {
+                    imgMedAnimal.Source = _masterManager.ImagesManager.RetrieveImageByImages(_imagesList[0]);
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+                catch (Exception)
+                {
+                    BitmapImage brokenImage = new BitmapImage();
+                    brokenImage.BeginInit();
+                    brokenImage.UriSource = new Uri(@"/Images/BrokenImageGreen.png", UriKind.Relative);
+                    brokenImage.EndInit();
+                    imgMedAnimal.Source = brokenImage;
+                    imgMedAnimal.Height = 250;
+                    imgMedAnimal.Width = 250;
+                    lblNoImage.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/26
+        /// Description: Navigates to AddEditAnimalDeath page
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDeath_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new AddAnimalDOD513(_animalVM, _kennel));
             
+         
         }
         /// <summary>
         /// Tyler hand

@@ -13,9 +13,12 @@
             <RowDefinition Height="100" />
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label x:Name="lblViewInventoryChanges" Grid.Row="0" Content="View Changes to Inventory Data" VerticalContentAlignment="Center"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblViewInventoryChanges" Grid.Row="0" Grid.Column="1" Content="View Changes to Inventory Data" VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center" FontSize="24"/>
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
             <StackPanel x:Name="stpInventroyItemTransactionList">
 
             </StackPanel>

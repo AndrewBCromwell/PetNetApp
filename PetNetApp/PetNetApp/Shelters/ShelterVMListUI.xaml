@@ -22,9 +22,8 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Button x:Name="btnAddShelter" Grid.Column="0" Grid.Row="0" Content="+ | Add Shelter" Style="{StaticResource ResourceKey=rsrcDefaultButton}" Margin="20 10 10 10" Click="btnAddShelter_Click" />
-            <ComboBox x:Name="cboxFilter" Grid.Column="3" Grid.Row="0" Margin="10 10 20 10"/>
-            <TextBox x:Name="txtSearch" Grid.Column="2" Grid.Row="0" Margin="10" />
-            <!--Style="{StaticResource ResourceKey=rsrcMultiLineTextBlock}"-->
+            <ComboBox x:Name="cboxFilter" Grid.Column="3" Grid.Row="0" Margin="10 10 20 10" Visibility="Hidden"/>
+            <TextBox x:Name="txtSearch" Grid.Column="2" Grid.Row="0" Margin="10" Visibility="Hidden"/>
             <DataGrid x:Name="datShelterVMListView"
                   Visibility="Visible"
                   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
@@ -35,7 +34,7 @@
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ShelterId}" Header="ID" Width="1*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ShelterName}" Header="Shelter Name" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding Address}" Header="Address" Width="2*"></DataGridTextColumn>
-                    <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding AddressTwo}" Header="Address Two" Width="2*"></DataGridTextColumn>
+                    <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding Address2}" Header="Address Two" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ZipCode}" Header="Zip" Width="1*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding Phone}" Header="Phone" Width="2*"></DataGridTextColumn>
                     <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding Email}" Header="Email" Width="2*"></DataGridTextColumn>

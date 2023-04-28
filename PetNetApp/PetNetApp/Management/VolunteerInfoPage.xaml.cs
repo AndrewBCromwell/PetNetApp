@@ -105,10 +105,25 @@ namespace WpfPresentation.Management
         {
             // Not implemented; enter your method here. According to the UI design this would use the "frameVolunteerDetails" frame.
         }
+        /// <summary>
+        /// Barry Mikulas
+        /// 2023/02/26
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRoleManagement_Click(object sender, RoutedEventArgs e)
         {
             // Not implemented; enter your method here. According to the UI design this would use the "frameVolunteerDetails" frame.
-            Development.Community.RoleManagementPopup roleManagementPopupWindow = new Development.Community.RoleManagementPopup(_mastermanager, _user);
+            RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_mastermanager, _user);
+            roleManagementPopupWindow.Owner = Window.GetWindow(this);
+            roleManagementPopupWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             roleManagementPopupWindow.ShowDialog();
         }
         private void btnKeyManagement_Click(object sender, RoutedEventArgs e)
@@ -128,6 +143,8 @@ namespace WpfPresentation.Management
         private void btnSuspendUser_Click(object sender, RoutedEventArgs e)
         {
             SuspendUserPopup suspendUserPopup = new SuspendUserPopup(_mastermanager, _user);
+            suspendUserPopup.Owner = Window.GetWindow(this);
+            suspendUserPopup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             bool result = (bool)suspendUserPopup.ShowDialog();
             // update _user object suspend status status if suspendPopup returns true
             if (result)
@@ -181,7 +198,7 @@ namespace WpfPresentation.Management
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             // This will have to be changed when VolunteerManagement.xaml leaves the development folder.
-            NavigationService.Navigate(new Development.Management.VolunteerManagment());
+            NavigationService.Navigate(new Management.VolunteerManagment());
         }
 
 

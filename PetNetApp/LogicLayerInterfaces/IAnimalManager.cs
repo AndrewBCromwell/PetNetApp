@@ -25,7 +25,9 @@ namespace LogicLayerInterfaces
         /// <exception cref="ApplicationException">Add Fails</exception>
         /// <returns>Boolean representing success or failure</returns>
         bool AddAnimal(AnimalVM animal);
+
         List<Animal> RetrieveAllAnimals(String animalName);
+
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/02/02
@@ -130,11 +132,61 @@ namespace LogicLayerInterfaces
         /// <returns>Boolean representing success or failure</returns>
         bool EditAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
         List<Animal> RetrieveAllAnimals(int shelterId);
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/02/11
+        /// 
+        /// Retrieve Animal Medical Profile By Animal Id
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="AnimalId"></param>
+        /// <returns></returns>
         AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
+        AnimalVM RetrieveAnimalAdoptableProfile(int animalId);
 
-        AnimalVM RetriveAnimalAdoptableProfile(int animalId);
+        List<AnimalVM> RetrieveAdoptedAnimalByUserId(int userId);
+        FosterPlacementRecord RetrieveFosterPlacementRecordNotes(int animalId);
 
-        List<AnimalVM> RetriveAdoptedAnimalByUserId(int userId);
-        FosterPlacementRecord RetriveFosterPlacementRecordNotes(int animalId);
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/20
+        /// 
+        /// Retrieves a list of animals for a fundraising event
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// <param name="fundraisingEventId">The fundraisingEventId of the event retrieving animals for</param>
+        /// <exception cref="ApplicationException">Retrieve Fails</exception>
+        /// <returns>List of AnimalVMs</returns>
+        List<AnimalVM> RetrieveAnimalsByFundrasingEventId(int fundraisingEventId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/04/12
+        /// 
+        /// Retrieves all animals available for adoption at all shelters
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// </remarks>
+        /// <exception cref="ApplicationException">Retrieve Fails</exception>
+        /// <returns>List of AnimalVM objects</returns>
+        List<AnimalVM> RetrieveAllAdoptableAnimals();
     }
 }

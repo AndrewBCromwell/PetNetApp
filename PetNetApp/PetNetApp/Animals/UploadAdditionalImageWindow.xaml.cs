@@ -9,8 +9,9 @@
 /// </summary>
 ///
 /// <remarks>
-/// Updater name:
-/// Updated date:
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
 /// </remarks>
 
 using DataObjects;
@@ -43,13 +44,34 @@ namespace WpfPresentation.Animals
         private bool _imageSelected = false;
         private OpenFileDialog _fileDialog = new OpenFileDialog();
 
+        /// <summary>
+        /// Andrew S.
+        /// Created: 2023/03/06
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="animal"></param>
+        /// <param name="manager"></param>
         public UploadAdditionalImageWindow(Animal animal, MasterManager manager)
         {
             _animal = animal;
             _manager = manager;
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Andrew S.
+        /// Created: 2023/03/06
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBrowseFiles_Click(object sender, RoutedEventArgs e)
         {
             _fileDialog.Filter = "Images|*.png;*.jpg;*.gif;*.jpeg;*.tiff;*.tif;*.webp;*.wav;*.bmp;*.exif";
@@ -75,12 +97,32 @@ namespace WpfPresentation.Animals
                 imgSelectedImage.Source = null;
             }
         }
-
+        /// <summary>
+        /// Andrew S.
+        /// Created: 2023/03/06
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelUpload_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// Andrew S.
+        /// Created: 2023/03/06
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUploadFile_Click(object sender, RoutedEventArgs e)
         {
             if (_imageSelected)

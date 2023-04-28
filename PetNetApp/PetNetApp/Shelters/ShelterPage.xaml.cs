@@ -47,7 +47,7 @@ namespace WpfPresentation.Shelters
         {
             InitializeComponent();
             _manager = manager;
-            _shelterTabButtons = new Button[] { btnShelter, btnRescue, btnAnimalControl };
+            _shelterTabButtons = new Button[] { btnShelter, btnRescue, btnAnimalControl, btnShelterNetwork };
         }
 
         public static ShelterPage GetShelterPage(MasterManager manager)
@@ -73,6 +73,7 @@ namespace WpfPresentation.Shelters
             ShowShelterButtonByRole();
             ShowRescueButtonByRole();
             ShowAnimalControlButtonByRole();
+            ShowShelterNetworkButtonByRole();
         }
         public void ShowShelterButtonByRole()
         {
@@ -96,6 +97,20 @@ namespace WpfPresentation.Shelters
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnAnimalControl.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/02/28
+        /// Access for shelter network page
+        /// </summary>
+        public void ShowShelterNetworkButtonByRole()
+        {
+            string[] allowedRoles = { "Admin", "Manager" };
+            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
+            {
+                btnShelterNetwork.Visibility = Visibility.Visible;
             }
         }
 
@@ -181,6 +196,19 @@ namespace WpfPresentation.Shelters
         private void svShelterPageTabs_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             UpdateScrollButtons();
+        }
+
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/02/28
+        ///  Click event to navigate to the shelter network page
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="sender"></param>
+        private void btnShelterNetwork_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton((Button)sender);
+            frameShelter.Navigate(ShelterNetworkPage.GetShelterNetworkPage(_manager));
         }
     }
 }

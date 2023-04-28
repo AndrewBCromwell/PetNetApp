@@ -75,7 +75,7 @@ namespace WpfPresentation.Misc
                cmboGender.SelectedItem.ToString() == _manager.User.GenderId &&
                cmboPronoun.SelectedItem.ToString() == _manager.User.PronounId &&
                txtAddress.Text == _manager.User.Address &&
-               txtAddressTwo.Text == _manager.User.AddressTwo &&
+               txtAddress2.Text == _manager.User.Address2 &&
                txtPhone.Text == _manager.User.Phone &&
                txtZipcode.Text == _manager.User.Zipcode)
             {
@@ -91,7 +91,7 @@ namespace WpfPresentation.Misc
                     GenderId = (string)cmboGender.SelectedItem,
                     PronounId = (string)cmboPronoun.SelectedItem,
                     Address = txtAddress.Text,
-                    AddressTwo = txtAddressTwo.Text,
+                    Address2 = txtAddress2.Text,
                     Phone = txtPhone.Text,
                     Zipcode = txtZipcode.Text
 
@@ -121,7 +121,7 @@ namespace WpfPresentation.Misc
             cmboGender.SelectedItem = _manager.User.GenderId;
             cmboPronoun.SelectedItem = _manager.User.PronounId;
             txtAddress.Text = _manager.User.Address;
-            txtAddressTwo.Text = _manager.User.AddressTwo;
+            txtAddress2.Text = _manager.User.Address2;
             txtPhone.Text = _manager.User.Phone;
             txtZipcode.Text = _manager.User.Zipcode;
         }

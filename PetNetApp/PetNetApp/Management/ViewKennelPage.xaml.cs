@@ -27,11 +27,20 @@ namespace WpfPresentation.Management
         private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<KennelVM> kennelVMs = null;
         private List<KennelVM> kennelsToRemove = new List<KennelVM>();
+
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         public ViewKennelPage()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -86,16 +95,6 @@ namespace WpfPresentation.Management
         /// <summary>
         /// Gwen Arman
         /// Created: 2023/02/01
-        /// 
-        /// Method navigates to seperate use cases depending on whether
-        /// the kennel is occupied
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
         /// <param name="kennelVM"></param>
         private void UserControlClick(KennelVM kennelVM)
         {
@@ -109,6 +108,10 @@ namespace WpfPresentation.Management
             }
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         private void KennelUserControlClick(KennelVM kennelVM, KennelUserControl kennelUserControl)
         {
             if (kennelUserControl.grdKennelUserControlBorder.BorderBrush.ToString().Equals("#FF1C6758"))
@@ -148,11 +151,19 @@ namespace WpfPresentation.Management
             kennelUserControl.btnKennel.Foreground = new SolidColorBrush(Color.FromRgb(238, 242, 230));
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddKennelPage());
         }
 
+        /// <summary>
+        /// Author: Gwen
+        /// Date: 4/21/23
+        /// </summary>
         private void btnRemoveKennel_Click(object sender, RoutedEventArgs e)
         {
             string kennelList = "";

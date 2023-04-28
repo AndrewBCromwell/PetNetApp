@@ -11,5 +11,6 @@ namespace LogicLayerInterfaces
     {
         bool AddAnimalUpdatesByAnimalId(int animalId, string animalRecordNotes);
         string RetrieveAnimalUpdatesByAnimal(int animalId);
+        List<AnimalUpdates> RetrieveAllAnimalUpdatesByAnimalId(int animalId);
     }
 }

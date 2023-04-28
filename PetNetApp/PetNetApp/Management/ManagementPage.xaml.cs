@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using WpfPresentation.Development.Management;
 using WpfPresentation.Management.Inventory;
+using WpfPresentation.Management.Inventory.Library;
 
 namespace WpfPresentation.Management
 {
@@ -38,11 +39,29 @@ namespace WpfPresentation.Management
                 _existingManagementPage?.frameManagement.Navigate(null);
             };
         }
+
+        public static ManagementPage GetManagementPage(MasterManager manager)
+        {
+            if (_existingManagementPage == null)
+            {
+                _existingManagementPage = new ManagementPage(manager);
+            }
+            return _existingManagementPage;
+        }
+
         public ManagementPage()
         {
             InitializeComponent();
             _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
         }
+
+        public ManagementPage(MasterManager manager)
+        {
+            InitializeComponent();
+            _managementPageButtons = new Button[] { btnInventory, btnKennel, btnTickets, btnVolunteer, btnSchedule };
+            _manager = manager;
+        }
+
         public void HideAllButtons()
         {
             UnselectAllButtons();
@@ -62,7 +81,7 @@ namespace WpfPresentation.Management
         }
         public void ShowInventoryButtonByRole()
         {
-            string[] allowedRoles = { "Admin", "Manager" };
+            string[] allowedRoles = { "Admin", "Manager", "Employee" };
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnInventory.Visibility = Visibility.Visible;
@@ -76,6 +95,7 @@ namespace WpfPresentation.Management
                 btnKennel.Visibility = Visibility.Visible;
             }
         }
+
         public void ShowTicketsButtonByRole()
         {
             string[] allowedRoles = { "Admin", "Manager", "Helpdesk", "Maintenance" };
@@ -109,7 +129,7 @@ namespace WpfPresentation.Management
             }
             return _existingManagementPage;
         }
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
@@ -124,8 +144,7 @@ namespace WpfPresentation.Management
         private void btnInventory_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnInventory);
-            // replace with page name and then delete comment
-            frameManagement.Navigate(new ViewInventoryChangesPage(_manager));
+            frameManagement.Navigate(InventoryNavigationPage.GetInventoryNavigationPage(_manager));
         }
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
@@ -143,14 +162,14 @@ namespace WpfPresentation.Management
         {
             ChangeSelectedButton(btnVolunteer);
             // replace with page name and then delete comment
-            frameManagement.Navigate(new Development.Management.VolunteerManagment());
+            frameManagement.Navigate(new Management.VolunteerManagment());
             
         }
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnSchedule);
             // replace with page name and then delete comment
-            frameManagement.Navigate(null);
+            frameManagement.Navigate(new Management.SchedulePage());
         }
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -197,5 +216,6 @@ namespace WpfPresentation.Management
         {
             svManagementPageTabs.ScrollToHorizontalOffset(svManagementPageTabs.HorizontalOffset - 130);
         }
+
     }
 }

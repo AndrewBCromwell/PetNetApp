@@ -29,12 +29,12 @@ namespace LogicLayerInterfaces
         /// Inserts a new Vaccination. Takes in an animalId and a Vaccination object as parameters.
         /// </summary>
         /// 
-        ///  <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
         /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="vaccine"></param>
         /// <param name="animalId"></param>
         /// <returns></returns>
@@ -48,13 +48,11 @@ namespace LogicLayerInterfaces
         /// </summary>
         /// 
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
         /// </remarks>
-        /// 
-        /// 
-        /// 
         /// <param name="animalId"></param>
         /// <returns></returns>
         List<Vaccination> RetrieveVaccinationsByAnimalId(int animalId);
@@ -65,15 +63,27 @@ namespace LogicLayerInterfaces
         /// Updates Vaccination record. Takes in the oldVaccine and new Vaccine objects as parameters
         /// 
         /// </summary>
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
-        /// </remarks>
         /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/17
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="oldVaccine"></param>
         /// <param name="newVaccine"></param>
         /// <returns></returns>
         bool EditVaccination(Vaccination oldVaccine, Vaccination newVaccine);
+
+        /// <summary>
+        /// Molly Meister
+        /// Created: 2023/03/10
+        /// 
+        /// Calls the Accessor method to retrieve the vaccination associated with the specified medical record
+        /// </summary>
+        /// <param name="medicalRecordId">The ID of the medical record to get vaccination for</param>
+        /// <exception cref="ApplicationException">If the retrieval fails</exception>
+        /// <returns>A VaccinationVM object for the medical record</returns>
+        VaccinationVM RetrieveVaccinationByMedicalRecordId(int medicalRecordId);
     }
 }

@@ -25,6 +25,7 @@ namespace DataAccessLayerInterfaces
         /// <exception cref="Exception">Insert Fails</exception>
         /// <returns>Rows affected</returns>
         int InsertAnimal(AnimalVM animal);
+
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/02/01
@@ -128,6 +129,12 @@ namespace DataAccessLayerInterfaces
         /// <returns>Rows edited</returns>
         int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="shelterId"></param>
+        /// <returns></returns>
         List<Animal> SelectAllAnimals(int shelterId);
         List<Animal> SelectAllAnimalsNotInKennel();
 
@@ -154,12 +161,46 @@ namespace DataAccessLayerInterfaces
         /// Updated: yyyy/mm/dd
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        /// <param name="animalId">int for the animal</param>
+        /// <param name="AnimalId">int for the animal</param>
         /// <exception cref="Exception">No animal is retrived with that Id</exception>
         /// <returns>AnimalVM object</returns>	
         AnimalVM SelectAnimalMedicalProfileByAnimalId(int AnimalId);
 
         List<AnimalVM> SelectAdoptedAnimalByUserId(int usersId);
         FosterPlacementRecord SelectFosterPlacementRecordNotes(int animalId);
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/03/20
+        /// 
+        /// Selects a list of animalVM models for a given fundraising event id
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="fundraisingEventId">int for the fundraising event id</param>
+        /// <exception cref="Exception">No animals retrieved with that event id</exception>
+        /// <returns>List of AnimalVM objects</returns>
+        List<AnimalVM> SelectAnimalsByFundraisingEventId(int fundraisingEventId);
+
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/04/12
+        /// 
+        /// Selects a list of all animals available for
+        /// adoption at all shelters.
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <exception cref="Exception">No animals retrieved with that event id</exception>
+        /// <returns>List of AnimalVM objects</returns>
+        List<AnimalVM> SelectAllAdoptableAnimals();
     }
 }
