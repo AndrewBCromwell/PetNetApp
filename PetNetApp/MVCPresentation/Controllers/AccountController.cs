@@ -10,31 +10,23 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCPresentation.Models;
+using LogicLayer;
 
 namespace MVCPresentation.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private MasterManager _masterManager = MasterManager.GetMasterManager();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IEnumerable<String> _genders;
         private IEnumerable<String> _pronouns;
+        
 
         public AccountController()
         {
-            try
-            {
-                LogicLayer.UsersManager usersManager = new LogicLayer.UsersManager();
-                _genders = usersManager.RetrieveGenders();
-                _pronouns = usersManager.RetrievePronouns();
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+          
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -85,6 +77,7 @@ namespace MVCPresentation.Controllers
         {
             if (!ModelState.IsValid)
             {
+
                 return View(model);
             }
 
@@ -154,6 +147,17 @@ namespace MVCPresentation.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            try
+            {
+                _genders = _masterManager.UsersManager.RetrieveGenders();
+                _pronouns = _masterManager.UsersManager.RetrievePronouns();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "Could not retrieve Genders or pronouns. \n" + ex.Message;
+                return View("Error");
+            }
+
             ViewBag.Genders = _genders;
             ViewBag.Pronouns = _pronouns;
 
@@ -250,10 +254,41 @@ namespace MVCPresentation.Controllers
                         }
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
+                    ViewBag.Message = "Failed to add user." + ex.Message;
+                    try
+                    {
+                        _genders = _masterManager.UsersManager.RetrieveGenders();
+                        _pronouns = _masterManager.UsersManager.RetrievePronouns();
+                    }
+                    catch (Exception up)
+                    {
+                        ViewBag.Error = "Could not retrieve Genders or pronouns. \n" + up.Message;
+                        return View("Error");
+                    }
+
+                    ViewBag.Genders = _genders;
+                    ViewBag.Pronouns = _pronouns;
                     return View(model);
                 }
+            }
+            else
+            {
+                try
+                {
+                    _genders = _masterManager.UsersManager.RetrieveGenders();
+                    _pronouns = _masterManager.UsersManager.RetrievePronouns();
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "Could not retrieve Genders or pronouns. \n" + ex.Message;
+                    return View("Error");
+                }
+
+                ViewBag.Genders = _genders;
+                ViewBag.Pronouns = _pronouns;
+                return View();
             }
 
             // If we got this far, something failed, redisplay form

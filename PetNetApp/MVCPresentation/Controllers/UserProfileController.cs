@@ -11,7 +11,6 @@ namespace MVCPresentation.Controllers
         // GET: UserProfile
         public ActionResult Index()
         {
-
             return View();
         }
 

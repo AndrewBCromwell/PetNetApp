@@ -370,6 +370,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Donate\Donate.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -505,7 +506,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Donate\" />
     <Folder Include="Views\Events\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Views\Test\" />

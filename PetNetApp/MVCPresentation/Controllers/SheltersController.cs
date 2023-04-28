@@ -35,6 +35,7 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        [Authorize]
         // GET: Shelters
         public ActionResult SelectShelter()
         {
@@ -56,7 +57,7 @@ namespace MVCPresentation.Controllers
         }
 
 
-
+        [Authorize]
         // GET: SelectedShelters
         public ActionResult SelectedShelter(int id)
         {
