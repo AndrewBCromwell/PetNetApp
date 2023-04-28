@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace WpfPresentation.Community.UsersControl
     /// </summary>
     public partial class UCPreviewUser : UserControl
     {
+
         public UCPreviewUser()
         {
+
             InitializeComponent();
+        }
+
+        private void btnUsersProfile_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

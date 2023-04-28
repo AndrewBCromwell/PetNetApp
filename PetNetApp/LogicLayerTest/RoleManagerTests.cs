@@ -69,7 +69,7 @@ namespace LogicLayerTest
         public void TestReturnsCorrectRoleListByUsersId()
         {
             //arrange
-            const int expectedCount = 2;
+            const int expectedCount = 1;
             int actualCount;
             int usersId = 100001;
 

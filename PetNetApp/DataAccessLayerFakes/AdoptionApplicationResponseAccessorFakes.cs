@@ -39,5 +39,40 @@ namespace DataAccessLayerFakes
             }
             return rows;
         }
+
+        public AdoptionApplicationResponseVM SelectAdoptionApplicationResponseByAdoptionApplicationId(int adoptionApplicationId)
+        {
+            try
+            {
+                var response = fakeResponses.FirstOrDefault(d => d.AdoptionApplicationResponseId == adoptionApplicationId);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int UpdateAdoptionApplicationResponse(AdoptionApplicationResponse newAdoptionApplicationResponse, AdoptionApplicationResponse oldAdoptionApplicationResponse)
+        {
+            int result = 0;
+
+            var response = fakeResponses.FirstOrDefault(d => d.AdoptionApplicationResponseId == oldAdoptionApplicationResponse.AdoptionApplicationResponseId);
+            if (!(response == null))
+            {
+                response = (AdoptionApplicationResponseVM)newAdoptionApplicationResponse;
+            }
+
+            if (response.AdoptionApplicationResponseId == newAdoptionApplicationResponse.AdoptionApplicationResponseId &&
+                response.AdoptionApplicationResponseDate == newAdoptionApplicationResponse.AdoptionApplicationResponseDate &&
+                response.AdoptionApplicationId == newAdoptionApplicationResponse.AdoptionApplicationId &&
+                response.AdoptionApplicationResponseNotes == newAdoptionApplicationResponse.AdoptionApplicationResponseNotes &&
+                response.ResponderUserId == newAdoptionApplicationResponse.ResponderUserId)
+            {
+                result = 1;
+            }
+
+            return result;
+        }
     }
 }

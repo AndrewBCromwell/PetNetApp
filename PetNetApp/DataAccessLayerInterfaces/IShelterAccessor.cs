@@ -13,6 +13,12 @@ namespace DataAccessLayerInterfaces
     /// Created: 2023/02/23
     /// IShelterAccessor interface governing access to the ShelterAccessor class in DataAccessLayer
     /// </summary>
+    /// <remarks>
+    /// Zaid Rachman
+    /// Updated: 2023/04/27
+    /// 
+    /// Final QA
+    /// </remarks>
     public interface IShelterAccessor
     {
         /// <summary>
@@ -36,6 +42,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Adds a new shelter to the database
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterName">The name of the shelter</param>
         /// <param name="address">the address of the shelter</param>
         /// <param name="Address2">the extended address information of the shelter</param>
@@ -62,6 +74,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the name of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <param name="oldShelterName">The old name of the shelter</param>
         /// <param name="newShelterName">The new name of the shelter</param>
@@ -74,6 +92,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the address of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <param name="oldAddress">The old address of the shelter</param>
         /// <param name="newAddress">The new address of the shelter</param>
@@ -86,6 +110,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the Address2 of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <param name="newAddress2">The new Address2 of the shelter</param>
         /// <exception cref="SQLException">All can throw SQLExceptions</exception>
@@ -97,6 +127,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the zipcode of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <param name="oldZipCode">The old zipcode of the shelter</param>
         /// <param name="newZipCode">The new zipcode of the shelter</param>
@@ -109,6 +145,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the phone number of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <param name="newPhone">The new phone number of the shelter</param>
         /// <exception cref="SQLException">All can throw SQLExceptions</exception>
@@ -120,6 +162,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the email of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <param name="newEmail">The new email address of the shelter</param>
         /// <exception cref="SQLException">All can throw SQLExceptions</exception>
@@ -131,6 +179,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the areas of need of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <param name="newAreasOfNeed">The new areas of need of the shelter</param>
         /// <exception cref="SQLException">All can throw SQLExceptions</exception>
@@ -142,6 +196,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the active status of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <param name="oldActiveStatus">The old active status of the shelter</param>
         /// <param name="newActiveStatus">The new active status of the shelter</param>
@@ -154,6 +214,12 @@ namespace DataAccessLayerInterfaces
         /// Created: 2023/02/23
         /// Deactivates a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterID">The ID of the shelter</param>
         /// <exception cref="SQLException">All can throw SQLExceptions</exception>
         /// <returns>Integer number of rows affected</returns>

@@ -34,10 +34,13 @@
             <h2 class="animal-shelter">ShelterID: @Model.AnimalShelterId</h2>
             <p class="animal-description">@Model.Description</p>
             <button class="btn" onclick="location.href='@Url.Action("AdoptionApplication", "Animals", new {animalId=Model.AnimalId})'"><span class="fill-application-icon"></span><span>Fill out Application</span></button>
-            <form method="get" action="@Url.Content("/Files/AdoptionApplication.docx")">
-                <button type="submit" class="btn"><span class="download-application-icon"></span> <span>Download Application</span></button>
+            <form method="get" class="nav nav-buttons-center" action="@Url.Content("/Files/AdoptionApplication.docx")">
+                <button type="submit" class="btn"><span class="download-application-icon"></span> <span class="hide">Download Application</span></button>
+
             </form>
-            
+            <button class="btn" onclick="location.href='@Url.Action("AddBookmark", "UserProfile", new { animalId = Model.AnimalId })'"><img src="~/Images/bookmark_light.png" width="30"/><span>Bookmark Animal</span></button>
+
+
         </div>
         <div class="adoptableAnimal-comment-grid">
             <div class="user-icon no-border"></div>

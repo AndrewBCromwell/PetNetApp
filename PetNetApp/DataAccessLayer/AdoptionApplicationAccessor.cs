@@ -22,7 +22,10 @@ namespace DataAccessLayer
             var cmd = new SqlCommand(cmdText, conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@UsersId", 100000);
+            if(app.AdoptionApplicant.UserId != null)
+            {
+                cmd.Parameters.AddWithValue("@UsersId", app.AdoptionApplicant.UserId);
+            }
             cmd.Parameters.AddWithValue("@ApplicantGivenName", app.AdoptionApplicant.ApplicantGivenName);
             cmd.Parameters.AddWithValue("@ApplicantFamilyName", app.AdoptionApplicant.ApplicantFamilyName);
             cmd.Parameters.AddWithValue("@ApplicantAddress", app.AdoptionApplicant.ApplicantAddress);
@@ -75,6 +78,7 @@ namespace DataAccessLayer
                 {
                     while (reader.Read())
                     {
+
                         AdoptionApplicationVM application = new AdoptionApplicationVM()
                         {
                             AdoptionApplicationId = reader.GetInt32(0),
@@ -220,6 +224,89 @@ namespace DataAccessLayer
             }
 
             return rowsAffected;
+        }
+
+        public List<AdoptionApplicationVM> SelectAllAdoptionApplicationsByUsersId(int usersId)
+        {
+            List<AdoptionApplicationVM> applications = new List<AdoptionApplicationVM>();
+
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_select_all_adoption_applications_by_users_id";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@usersId  ", usersId);
+
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Animal animal = new Animal()
+                        {
+                            AnimalId = reader.GetInt32(1),
+                            AnimalShelterId = reader.GetInt32(18),
+                            AnimalName = reader.GetString(19),
+                            AnimalTypeId = reader.GetString(21),
+                            AnimalBreedId = reader.GetString(22),
+                            Personality = reader.IsDBNull(23) ? null : reader.GetString(23),
+                            Description = reader.IsDBNull(24) ? null : reader.GetString(24),
+                            AnimalStatusId = reader.GetString(25),
+                            BroughtIn = reader.GetDateTime(26),
+                            MicrochipNumber = reader.IsDBNull(27) ? null : reader.GetString(27),
+                            Aggressive = reader.GetBoolean(28),
+                            AggressiveDescription = reader.IsDBNull(29) ? null : reader.GetString(29),
+                            ChildFriendly = reader.GetBoolean(30),
+                            NeuterStatus = reader.GetBoolean(31),
+                            Notes = reader.IsDBNull(32) ? null : reader.GetString(32)
+                        };
+
+                        AdoptionApplicationVM application = new AdoptionApplicationVM()
+                        {
+                            AdoptionApplicationId = reader.GetInt32(0),
+                            AnimalId = reader.GetInt32(1),
+                            ApplicationStatusId = reader.GetString(2),
+                            AdoptionApplicationDate = reader.GetDateTime(3),
+                            ApplicantId = reader.GetInt32(4),
+                            AdoptionAnimal = animal
+                        };
+
+                        Applicant applicant = new Applicant()
+                        {
+                            ApplicantId = reader.GetInt32(4),
+                            UserId = reader.IsDBNull(5) ? null : (int?)reader.GetInt32(5),
+                            ApplicantGivenName = reader.GetString(6),
+                            ApplicantFamilyName = reader.GetString(7),
+                            ApplicantAddress = reader.GetString(8),
+                            ApplicantAddress2 = reader.IsDBNull(9) ? "" : reader.GetString(9),
+                            ApplicantZipCode = reader.GetString(10),
+                            ApplicantPhoneNumber = reader.GetString(11),
+                            ApplicantEmail = reader.GetString(12),
+                            HomeTypeId = reader.GetString(13),
+                            HomeOwnershipId = reader.GetString(14),
+                            NumberOfChildren = reader.GetInt32(15),
+                            NumberOfPets = reader.GetInt32(16),
+                            CurrentlyAcceptingAnimals = reader.GetBoolean(17)
+                        };
+
+                        application.AdoptionApplicant = applicant;
+                        applications.Add(application);
+                    }
+                }
+            }
+            catch (Exception up)
+            {
+                throw up;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return applications;
         }
     }
 }

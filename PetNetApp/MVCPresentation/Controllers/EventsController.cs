@@ -11,6 +11,7 @@ namespace MVCPresentation.Controllers
         // GET: Events
         public ActionResult Index()
         {
+            ViewBag.Tab = "Events";
             return View();
         }
     }

@@ -45,11 +45,16 @@ namespace WpfPresentation.Community
         /// Updated: 2023/02/26
         /// Updated the sub menu on user to change between suspend and unsuspend user depending on their current Suspend Status
         /// Updated menu for Update to say Update Roles
+        /// 
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="user"></param>
         /// <param name="index"></param>
 
-        public void DisplayUsers(Users user, int index)
+        public void DisplayUsers(UsersVM user, int index)
         {
             UCPreviewUser ucPreviewUser = new UCPreviewUser();
             if (user.Active)
@@ -66,7 +71,7 @@ namespace WpfPresentation.Community
             }
             ucPreviewUser.lblUserAccountName.Content = user.GivenName + " " + user.FamilyName;
             ucPreviewUser.lblUserEmailName.Content = user.Email;
-            ucPreviewUser.btnUsersProfile.Click += (obj, arg) => usersProfile_MouseClick();
+            ucPreviewUser.btnUsersProfile.Click += (obj, arg) => usersProfile_MouseClick(user);
             ucPreviewUser.btnUsersMoreDetails.Click += (obj, arg) =>
                     {
                         ucPreviewUser.btnUsersMoreDetails.ContextMenu = new ContextMenu();
@@ -143,12 +148,25 @@ namespace WpfPresentation.Community
             NavigationService.Navigate(new CustomerRecordsPage(user));
         }
 
-        private void usersProfile_MouseClick()
+        private void usersProfile_MouseClick(UsersVM user)
         {
-            MessageBox.Show("User's profile");
+            NavigationService.Navigate(new WpfPresentation.Misc.UserProfilePage(user));
         }
 
         // MenuItem Click
+        /// <summary>
+        /// Barry Mikulas
+        /// 2023/04/27
+        /// 
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="user"></param>
         private void menuItem_Update_Click(Users user)
         {
             RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_masterManager, user);

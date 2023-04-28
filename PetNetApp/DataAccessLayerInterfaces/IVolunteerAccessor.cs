@@ -7,8 +7,10 @@
 /// </summary>
 /// 
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Zaid Rachman
+/// Updated: 2023/04/24
+/// 
+/// Final QA
 /// </remarks>
 using DataObjects;
 using System;
@@ -29,12 +31,56 @@ namespace DataAccessLayerInterfaces
 		/// </summary>
 		///
 		/// <remarks>
-		/// Updater Name
-		/// Updated: yyyy/mm/dd 
-		/// example: Fixed a problem when user inputs bad data
+		/// Zaid Rachman
+		/// Updated: 2023/04/24
+		/// 
+		/// Final QA
 		/// </remarks>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		List<VolunteerVM> SelectVolunteersbyFundraisingEventId(int fundraisingEventId);
+		/// <summary>
+		/// Oleksiy Fedchuk
+		/// Created: 2023/04/21
+		/// 
+		/// </summary>
+		/// <remarks>
+		/// Zaid Rachman
+		/// Updated: 2023/04/24
+		/// 
+		/// Final QA
+		/// </remarks>
+		/// <returns></returns>
+		List<int> SelectAllVolunteers();
+		/// <summary>
+		/// Oleksiy Fedchuk
+		/// Created: 2023/04/21
+		/// 
+		/// </summary>
+		/// <remarks>
+		/// Zaid Rachman
+		/// Updated: 2023/04/24
+		/// 
+		/// Final QA
+		/// </remarks>
+		/// <param name="volunteer"></param>
+		/// <param name="fundraisingEventId"></param>
+		/// <returns></returns>
+		int InsertVolunteerToEventbyVolunteerAndEventId(int userId, int fundraisingEventId);
+		/// <summary>
+		/// Oleksiy Fedchuk
+		/// Created: 2023/04/21
+		/// 
+		/// </summary>
+		/// <remarks>
+		/// Zaid Rachman
+		/// Updated: 2023/04/24
+		/// 
+		/// Final QA
+		/// </remarks>
+		/// <param name="usersId"></param>
+		/// <param name="fundraisingEventId"></param>
+		/// <returns></returns>
+		int DeleteVolunteerFromEventbyUsersIdAndFundraisingEventId(int usersId, int fundraisingEventId);
 	}
 }

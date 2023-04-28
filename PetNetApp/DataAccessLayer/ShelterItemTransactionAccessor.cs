@@ -60,6 +60,52 @@ namespace DataAccessLayer
 
             return shelterItemTransactions;
         }
-    
+
+        public int InsertItemTransaction(ShelterItemTransaction transaction)
+        {
+            int rows = 0;
+
+            // connection
+            var connectionFactory = new DBConnection();
+            var conn = connectionFactory.GetConnection();
+            var cmdText = "sp_insert_item_transaction";
+            var cmd = new SqlCommand(cmdText, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            /*
+            @ShelterId                  int,
+            @ItemId                     nvarchar(50),
+	        @ChangedByUsersId           int,
+            @InventoryChangeReasonId    nvarchar(50),
+	        @QuantityIncrement          int,
+            @DateChanged                datetime
+            */
+            cmd.Parameters.AddWithValue("@ShelterId", transaction.ShelterId);
+            cmd.Parameters.AddWithValue("@ItemId", transaction.ItemId);
+            cmd.Parameters.AddWithValue("@ChangedByUsersId", transaction.ChangedByUsersId);
+            cmd.Parameters.AddWithValue("@InventoryChangeReasonId", transaction.InventoryChangeReasonId);
+            cmd.Parameters.AddWithValue("@QuantityIncrement", transaction.QuantityIncrement);
+            cmd.Parameters.AddWithValue("@DateChanged", DateTime.Now);
+
+            try
+            {
+                // open connection
+                conn.Open();
+
+                // execute
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // close connection
+                conn.Close();
+            }
+
+            return rows;
+        }
+
     }
 }

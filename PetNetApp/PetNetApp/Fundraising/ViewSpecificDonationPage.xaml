@@ -65,7 +65,7 @@
         </StackPanel>
         <Label Grid.Row="4" x:Name="lblInKind">In-Kind Donation:</Label>
         <Label Grid.Row="5" x:Name="lblDesc">Description</Label>
-        <Label Grid.Row="5" Grid.Column="1" x:Name="lblQuanity">Quanity</Label>
+        <Label Grid.Row="5" Grid.Column="1" x:Name="lblQuantity">Quantity</Label>
         <ScrollViewer Grid.Row="6" Grid.ColumnSpan="2" x:Name="svInkind">
             <StackPanel x:Name="spInKindDonations"></StackPanel>
         </ScrollViewer>

@@ -21,8 +21,35 @@ using DataObjects;
 namespace DataAccessLayerInterfaces
 {
     public interface IProcedureAccessor
-    {
+    {/// <summary>
+     ///  Andrew Cromwell
+     /// 2023/02/24
+     /// 
+     /// </summary>
+     /// <remarks>
+     /// Zaid Rachman
+     /// Updated: 2023/04/27
+     /// 
+     /// Final QA
+     /// </remarks>
+     /// <param name="procedure"></param>
+     /// <param name="medicalRecordId"></param>
+     /// <returns></returns>
         int InsetProcedureByMedicalRecordId(Procedure procedure, int medicalRecordId);
+        /// <summary>
+        /// Andrew Cromwell
+        /// 2023/02/24
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="procedure"></param>
+        /// <param name="oldProcedure"></param>
+        /// <returns></returns>
         int UpdateProcedureByProcedureId(Procedure procedure, Procedure oldProcedure);
         List<ProcedureVM> SelectProceduresByAnimalId(int animalId);
 

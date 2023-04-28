@@ -75,5 +75,40 @@ namespace DataAccessLayerInterfaces
         /// <param name="reply">The reply to update</param>
         /// <returns>int rows affected</returns>
         int UpdateReplyVisibilityByReplyId(ReplyVM reply);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Adds a new report to the database for the selected reply
+        /// </summary>
+        /// <param name="replyId"></param>
+        /// <param name="userId"></param>
+        /// <param name="reportMessageId"></param>
+        /// <returns></returns>
+        int InsertReplyReport(int replyId, int userId, int reportMessageId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Removes a report from the database for the selected reply
+        /// </summary>
+        /// <param name="replyId"></param>
+        /// <param name="userId"></param>
+        /// <param name="reportMessageId"></param>
+        /// <returns></returns>
+        int DeleteReplyReport(int replyId, int userId);
+
+        /// <summary>
+        /// Stephen Jaurigue
+        /// 2023/04/13
+        /// 
+        /// Selects the count of reports this user has on this post
+        /// </summary>
+        /// <param name="replyId">the post</param>
+        /// <param name="userId"> the user</param>
+        /// <returns>count of reports user has on post</returns>
+        int SelectUserReplyReportedByReplyIdandUserId(int replyId, int userId);
     }
 }

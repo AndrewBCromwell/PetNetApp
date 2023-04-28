@@ -19,6 +19,7 @@
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Events" x:Name="btnEvents" Click="btnEvents_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Create Event" x:Name="btnCreateEvent" Click="btnCreateEvent_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Event History" x:Name="btnEventHistory" Click="btnEventHistory_Click" />
+                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Event Results" x:Name="btnEventResults" />
                 <Rectangle Width="25"/>
             </StackPanel>
         </ScrollViewer>

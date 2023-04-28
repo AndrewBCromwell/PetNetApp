@@ -22,8 +22,49 @@ namespace LogicLayerInterfaces
 {
     public interface IProcedureManager
     {
+        /// <summary>
+        /// Andrew Cromwell
+        /// 2023/02/24
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="procedure"></param>
+        /// <param name="medicalRecordId"></param>
+        /// <returns></returns>
         bool AddProcedureByMedicalRecordId(Procedure procedure, int medicalRecordId);
+        /// <summary>
+        ///  Andrew Cromwell
+        /// 2023/02/24
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="procedure"></param>
+        /// <param name="oldProcedure"></param>
+        /// <returns></returns>
         bool EditProcedureByProcedureId(Procedure procedure, Procedure oldProcedure);
+        /// <summary>
+        /// Andrew Cromwell
+        /// 2023/02/24
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
         List<ProcedureVM> RetrieveProceduresByAnimalId(int animalId);
 
         /// <summary>

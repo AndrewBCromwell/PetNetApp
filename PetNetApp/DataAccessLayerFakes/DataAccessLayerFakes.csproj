@@ -45,12 +45,14 @@
     <Compile Include="AdoptionApplicationResponseAccessorFakes.cs" />
     <Compile Include="AnimalFakeData.cs" />
     <Compile Include="AdoptionApplicationAccessorFakes.cs" />
+    <Compile Include="BookmarkFakes.cs" />
     <Compile Include="DeathAccessorFake.cs" />
     <Compile Include="AnimalAccessorFakes.cs" />
     <Compile Include="AnimalUpdatesFakes.cs" />
     <Compile Include="DonationAccessorFake.cs" />
     <Compile Include="FosterAccessorFakes.cs" />
     <Compile Include="EventAccessorFakes.cs" />
+    <Compile Include="FosterApplicationAccessorFakes.cs" />
     <Compile Include="FundraisingCampaignAccessorFake.cs" />
     <Compile Include="FundraisingFakeData.cs" />
     <Compile Include="FundraisingEventAccessorFakes.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="ShelterInventoryAccessorFakes.cs" />
     <Compile Include="ShelterItemTransactionAccessorFakes.cs" />
     <Compile Include="InstitutionalEntityAccessorFake.cs" />
+    <Compile Include="SurrenderFormFakes.cs" />
     <Compile Include="TestAccessorFake.cs" />
     <Compile Include="KennelAccessorFake.cs" />
     <Compile Include="MedicalRecordAccessorFakes.cs" />

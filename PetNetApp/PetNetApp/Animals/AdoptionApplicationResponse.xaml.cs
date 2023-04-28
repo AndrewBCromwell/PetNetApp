@@ -80,6 +80,7 @@ namespace WpfPresentation.Animals
                 if(txt_Comments.Text == null || txt_Comments.Text == "")
                 {
                     PromptWindow.ShowPrompt("Alert", "Comments are required for a denied application.");
+                    return;
                 }
             }
             _response = new DataObjects.AdoptionApplicationResponseVM()
@@ -124,7 +125,7 @@ namespace WpfPresentation.Animals
             {
                 try
                 {
-                    if(_manager.AdoptionApplicationResponseManager.AddAdoptionApplicationResponseByAdoptionApplicationId(_response))
+                    if (_manager.AdoptionApplicationResponseManager.AddAdoptionApplicationResponseByAdoptionApplicationId(_response))
                     {
                         PromptWindow.ShowPrompt("Success", "The response was successfully submitted.");
                     }
@@ -133,7 +134,7 @@ namespace WpfPresentation.Animals
                 {
                     PromptWindow.ShowPrompt("Error", "There was an issue inserting the response. \n\n" + up.InnerException.Message);
                     PromptWindow.ShowPrompt("title", "mesaage", ButtonMode.YesNo);
-                    
+
                 }
             }
             var window = Window.GetWindow(this);

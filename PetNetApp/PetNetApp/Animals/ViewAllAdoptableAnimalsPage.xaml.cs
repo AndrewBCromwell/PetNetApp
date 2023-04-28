@@ -5,9 +5,10 @@
 /// Interaction logic for ViewAllAdoptableAnimalsPage.xaml
 /// </summary>
 ///
-/// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+///  <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
 /// </remarks>
 
 using System;
@@ -44,10 +45,10 @@ namespace WpfPresentation.Animals
         /// Public constructor for ViewAllAdoptableAnimalsPage
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         private ViewAllAdoptableAnimalsPage()
         {
@@ -63,9 +64,9 @@ namespace WpfPresentation.Animals
         /// </summary>
         /// 
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         public static ViewAllAdoptableAnimalsPage GetViewAllAdoptableAnimalsPage()
         {
@@ -83,11 +84,18 @@ namespace WpfPresentation.Animals
         /// 
         /// Window loaded method
         /// </summary>
-        ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Andrew Cromwell
+        /// Updated: 2023/04/25
+        /// 
+        /// Made the method call cmbAnimalFilter_DropDownClosed so that the fillter
+        /// will still be applied when the page is left and then returned to
+        /// </remarks>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/25
+        /// Final QA
         /// </remarks>
         /// /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -95,8 +103,7 @@ namespace WpfPresentation.Animals
         {
             try
             {
-                _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals();
-                DisplayUserControls();
+                cmbAnimalFilter_DropDownClosed(sender, e);
             }
             catch (Exception ex)
             {
@@ -112,13 +119,14 @@ namespace WpfPresentation.Animals
         /// there are no animals in the system a message is displayed informing the user.
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         private void DisplayUserControls()
         {
+            grdAdoptableAnimalsList.Children.Clear();
             if (_adoptableAnimals.Count == 0)
             {
                 nothingToShowMessage.Visibility = Visibility.Visible;
@@ -158,10 +166,10 @@ namespace WpfPresentation.Animals
         /// BrokenImage.png is displayed. Is no image is available no_image.png is displayed.
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="animalId">Id of the animal</param>
         /// <returns>A BitmapImage</returns>
@@ -209,10 +217,10 @@ namespace WpfPresentation.Animals
         /// name, otherwise the name is an empty string.
         /// </summary>
         ///
-        /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        ///  <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         /// <param name="shelterId">The Id of the shelter</param>
         /// <exception cref="Exception">Retrieve shelter object fails</exception>
@@ -229,6 +237,53 @@ namespace WpfPresentation.Animals
                 shelterName = "";
             }
             return shelterName;
+        }
+
+        /// <summary>
+        /// Andrew Cromwell
+        /// Created 2023/04/24
+        /// 
+        /// Populates the page with only the type of animal the user selected from the combo box.
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/25
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbAnimalFilter_DropDownClosed(object sender, EventArgs e)
+        {
+            string filter = (string)cmbAnimalFilter.SelectionBoxItem;
+            try
+            {
+                switch (filter)
+                {
+                    case "All":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals();
+                        break;
+                    case "Dogs":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Dog").ToList();
+                        break;
+                    case "Cats":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Cat").ToList();
+                        break;
+                    case "Birds":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId == "Bird").ToList();
+                        break;
+                    case "Other":
+                        _adoptableAnimals = _masterManager.AnimalManager.RetrieveAllAdoptableAnimals().Where(A => A.AnimalTypeId != "Dog" && A.AnimalTypeId != "Cat" &&
+                            A.AnimalTypeId != "Bird").ToList();
+                        break;
+                    default:
+                        break;
+                }
+                DisplayUserControls();
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException, ButtonMode.Ok);
+            }
         }
     }
 }

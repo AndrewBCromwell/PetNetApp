@@ -155,8 +155,7 @@ namespace WpfPresentation.Shelters
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnContact_Click(object sender, RoutedEventArgs e)
-        {
-            //PromptWindow.ShowPrompt("Todo", "Todo", ButtonMode.Ok);
+        { 
             Shelter shelter = (Shelter)((Button)e.Source).DataContext;
             frameShelterNetwork.Navigate(new ContactPage(_masterManager, shelter));
         }

@@ -1,4 +1,14 @@
-﻿using DataObjects;
+﻿///<summary>
+///William Rients
+/// Created: 2023/03/10
+///
+/// </summary>
+/// <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/21
+/// Final QA
+/// </remarks>
+using DataObjects;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -27,7 +37,16 @@ namespace WpfPresentation.Animals
         Kennel _kennel = new Kennel();
         AnimalVM _animalVM = new AnimalVM();
         MasterManager _masterManager = MasterManager.GetMasterManager();
-
+        /// <summary>
+        /// William Rients
+        /// Created: 2023/03/11
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <param name="animalId"></param>
         public AnimalMedicalProfile(int animalId)
         {
             InitializeComponent();
@@ -42,11 +61,11 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
-        public void disableControls()
+        public void DisableControls()
         {
             txtAnimalBreed.IsEnabled = false;
             txtAnimalId.IsEnabled = false;
@@ -70,13 +89,13 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            disableControls();
+            DisableControls();
             try
             {
                 _animalVM = _masterManager.AnimalManager.RetrieveAnimalMedicalProfileByAnimalId(_animalId);
@@ -111,7 +130,7 @@ namespace WpfPresentation.Animals
                 {
                     rdbAnimalAlteredYes.IsChecked = true;
                 }
-                populateImage();
+                PopulateImage();
             }
             catch (Exception ex)
             {
@@ -127,11 +146,11 @@ namespace WpfPresentation.Animals
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
         /// </remarks>
-        private void populateImage()
+        private void PopulateImage()
         {
             if (_imagesList == null || _imagesList.Count == 0)
             {
@@ -170,5 +189,16 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/26
+        /// Description: Navigates to AddEditAnimalDeath page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDeath_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new AddAnimalDOD513(_animalVM, _kennel));
+        }
     }
 }

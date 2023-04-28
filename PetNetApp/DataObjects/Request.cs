@@ -1,4 +1,12 @@
-﻿using System;
+﻿/// <summary>
+/// Andrew Cromwell
+/// Created: 2023/03/24
+/// 
+/// Class for the creation of Request Objects with set data fields.
+/// This is the type of request for one shelter to send items to another shelter.
+/// </summary>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

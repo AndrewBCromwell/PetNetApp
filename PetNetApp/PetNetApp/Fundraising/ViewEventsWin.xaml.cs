@@ -1,4 +1,10 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Ethan Kline
+/// Created: 04/14/2023
+/// 
+/// ViewEventsWin class
+/// </summary>
+using DataObjects;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -25,14 +31,28 @@ namespace WpfPresentation.Fundraising
         private List<SponsorEvent> _sponsorEvents;
         private SponsorEvent _sponsorEvent;
 
-
+        /// <summary>
+        /// Ethan Kline
+        /// Created: 04/14/2023
+        /// 
+        /// constructor that takes in a sponseorevent and a master manager
+        /// </summary>
+        /// <param name="sponsorEvent"></param>
+        /// <param name="masterManager"></param>
         public ViewEventsWin(SponsorEvent sponsorEvent, MasterManager masterManager)
         {
             _sponsorEvent = sponsorEvent;
             _manager = masterManager;
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Ethan Kline
+        /// Created: 04/14/2023
+        /// 
+        /// on load populate the grid with all the sponserevents by name 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             datVeiwEventsGrid.ItemsSource = null;
@@ -70,7 +90,14 @@ namespace WpfPresentation.Fundraising
                 lblEventName.Content = _sponsorEvent.CompanyName + " Events";
             }
         }
-
+        /// <summary>
+        /// Ethan Kline
+        /// Created: 04/14/2023
+        /// 
+        /// on click close this window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

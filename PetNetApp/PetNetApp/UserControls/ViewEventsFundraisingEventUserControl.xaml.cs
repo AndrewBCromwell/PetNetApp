@@ -58,8 +58,10 @@ namespace WpfPresentation.UserControls
             {
                 try
                 {
-        //            _masterManager.FundraisingCampaignManager.RemoveFundraisingEvent(FundraisingEvent);
-                    OnEventDeleted();
+                    if (_masterManager.FundraisingEventManager.DeactivateFundraisingEvent(FundraisingEvent.FundraisingEventId))
+                    {
+                        OnEventDeleted();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -88,6 +90,12 @@ namespace WpfPresentation.UserControls
         private void menuAddPledge_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GetNavigationService(this).Navigate(new CreateNewPledge(FundraisingEvent.FundraisingEventId, _masterManager));
+        }
+
+        private void menuAddDonation_Click(object sender, RoutedEventArgs e)
+        {
+            // added by Asa Armstrong
+            NavigationService.GetNavigationService(this).Navigate(new EnterDonation(FundraisingEvent.FundraisingEventId));
         }
     }
 }

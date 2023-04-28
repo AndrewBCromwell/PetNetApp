@@ -39,7 +39,7 @@ namespace WpfPresentation.Community
         public CommunityPage()
         {
             InitializeComponent();
-            _communityTabButtons = new Button[] { btnAbout, btnForum, btnUsers };
+            _communityTabButtons = new Button[] { btnAbout, btnForum, btnUsers, btnResources };
         }
         public static CommunityPage GetCommunityPage()
         {
@@ -154,6 +154,7 @@ namespace WpfPresentation.Community
             ShowAboutButtonByRole();
             ShowForumButtonByRole();
             ShowUsersButtonByRole();
+            ShowResourcesButtonByRole();
         }
         public void ShowAboutButtonByRole()
         {
@@ -178,6 +179,18 @@ namespace WpfPresentation.Community
             {
                 btnUsers.Visibility = Visibility.Visible;
             }
+        }
+
+        /// <summary>
+        /// Barry Mikulas
+        /// Created: 2023/04/26
+        /// 
+        /// Show resources button for all users.
+        /// 
+        /// </summary>
+        public void ShowResourcesButtonByRole()
+        {
+            btnResources.Visibility = Visibility.Visible;
         }
     }
 }

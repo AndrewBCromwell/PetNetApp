@@ -22,7 +22,6 @@ namespace MVCPresentation.Controllers
         private ApplicationUserManager _userManager;
         private IEnumerable<String> _genders;
         private IEnumerable<String> _pronouns;
-        
 
         public AccountController()
         {
@@ -147,17 +146,6 @@ namespace MVCPresentation.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            try
-            {
-                _genders = _masterManager.UsersManager.RetrieveGenders();
-                _pronouns = _masterManager.UsersManager.RetrievePronouns();
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = "Could not retrieve Genders or pronouns. \n" + ex.Message;
-                return View("Error");
-            }
-
             ViewBag.Genders = _genders;
             ViewBag.Pronouns = _pronouns;
 
@@ -254,20 +242,8 @@ namespace MVCPresentation.Controllers
                         }
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
-                    ViewBag.Message = "Failed to add user." + ex.Message;
-                    try
-                    {
-                        _genders = _masterManager.UsersManager.RetrieveGenders();
-                        _pronouns = _masterManager.UsersManager.RetrievePronouns();
-                    }
-                    catch (Exception up)
-                    {
-                        ViewBag.Error = "Could not retrieve Genders or pronouns. \n" + up.Message;
-                        return View("Error");
-                    }
-
                     ViewBag.Genders = _genders;
                     ViewBag.Pronouns = _pronouns;
                     return View(model);
@@ -291,7 +267,10 @@ namespace MVCPresentation.Controllers
                 return View();
             }
 
+
             // If we got this far, something failed, redisplay form
+            ViewBag.Genders = _genders;
+            ViewBag.Pronouns = _pronouns;
             return View(model);
         }
 
@@ -515,6 +494,7 @@ namespace MVCPresentation.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["User"] = null;
             return RedirectToAction("Index", "Home");
         }
 

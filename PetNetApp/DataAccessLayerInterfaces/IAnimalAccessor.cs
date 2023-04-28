@@ -129,6 +129,12 @@ namespace DataAccessLayerInterfaces
         /// <returns>Rows edited</returns>
         int UpdateAnimal(AnimalVM oldAnimal, AnimalVM newAnimal);
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="shelterId"></param>
+        /// <returns></returns>
         List<Animal> SelectAllAnimals(int shelterId);
         List<Animal> SelectAllAnimalsNotInKennel();
 

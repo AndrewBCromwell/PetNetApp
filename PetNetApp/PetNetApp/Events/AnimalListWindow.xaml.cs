@@ -36,12 +36,25 @@ namespace WpfPresentation.Events
             return returnValue;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCanle_Click(object sender, RoutedEventArgs e)
         {
             returnValue = null;
             this.DialogResult = false;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="animal"></param>
         private void DisplayAnimal(Animal animal)
         {
             UCAnimalCanTakeToEvent ucAnimal = new UCAnimalCanTakeToEvent();
@@ -52,18 +65,35 @@ namespace WpfPresentation.Events
             stpAnimalList.Children.Add(ucAnimal);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="animal"></param>
         private void BtnView_Click(Animal animal)
         {
             PromptWindow.ShowPrompt("Animal Detail", "Name: " + animal.AnimalName + "\n\n"
                 + "Type: " + animal.AnimalTypeId + "\n\n" + "Breed: " + animal.AnimalBreedId);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="animal"></param>
         private void BtnAdd_Click(Animal animal)
         {
             returnValue = animal;
             this.DialogResult = false;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void PopulateAnimals()
         {
             stpAnimalList.Children.Clear();
@@ -73,11 +103,22 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private Animal GetReturnValue()
         {
             return returnValue;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void AnimalSearching()
         {
             selectedAnimal = new List<Animal>();
@@ -101,11 +142,25 @@ namespace WpfPresentation.Events
             PopulateAnimals();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             AnimalSearching();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearchAnimal_TextChanged(object sender, TextChangedEventArgs e)
         {
             AnimalSearching();

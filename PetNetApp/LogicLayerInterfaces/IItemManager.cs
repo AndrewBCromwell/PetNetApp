@@ -45,7 +45,13 @@ namespace LogicLayerInterfaces
         /// 
         /// Adds an Item
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
+        /// <exception cref="ApplicationException">If no row was inserted</exception>
         /// <returns>True or false if row was added</returns>
         bool AddItem(string itemId);
 
@@ -55,6 +61,12 @@ namespace LogicLayerInterfaces
         /// 
         /// Returns a list of strings that are the item categories
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
+        /// <exception cref="ApplicationException">If list is null (Retrieved no categories)</exception>
         /// <returns>A list of the string categories</returns>
         List<string> RetrieveAllCategories();
 
@@ -73,6 +85,7 @@ namespace LogicLayerInterfaces
         /// </remarks>
         /// <param name="itemId"></param>
         /// <param name="category"></param>
+        /// <exception cref="ApplicationException">If no row was inserted</exception>
         /// <returns>True or false if row was added</returns>
         bool AddItemCategory(string itemId, string category);
 
@@ -90,6 +103,7 @@ namespace LogicLayerInterfaces
         /// FinalQA
         /// </remarks>
         /// <param name="categoryId"></param>
+        /// <exception cref="ApplicationException">If it catches an SQL Exception</exception>
         /// <returns>True or false if row was added</returns>
         bool AddCategory(string categoryId);
 
@@ -99,8 +113,15 @@ namespace LogicLayerInterfaces
         /// 
         /// Removes an ItemCategory
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/21
+        /// Final QA
+        /// </remarks>
         /// <param name="itemId"></param>
         /// <param name="category"></param>
+        /// <exception cref="ApplicationException">If no row was deleted</exception>
         /// <returns>True or false if row was removed</returns>
         bool RemoveItemCategory(string itemId, string category);
     }

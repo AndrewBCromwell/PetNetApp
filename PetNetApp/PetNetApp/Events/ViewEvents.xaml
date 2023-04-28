@@ -25,12 +25,15 @@
                 <ColumnDefinition Width="191*"/>
                 <ColumnDefinition Width="184*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="datVeiwEventsGrid"   IsReadOnly="True" ColumnWidth="*" Grid.ColumnSpan="2"  />
+            <DataGrid x:Name="datVeiwEventsGrid"   IsReadOnly="True" ColumnWidth="*" Grid.ColumnSpan="2" SelectionMode="Single" MouseDoubleClick="datVeiwEventsGrid_MouseDoubleClick"  />
 
         </Grid>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
 
-            <Button x:Name="btn_close" Content="Close" Grid.Column="3" HorizontalAlignment="Center" Width="155" Height="50" RenderTransformOrigin="0.19,0.5" Margin="10,0,0,0" Padding="1"  VerticalAlignment="Bottom" />
+            <Button x:Name="btn_add" Content="Add" Grid.Column="3" HorizontalAlignment="Center" Width="155" Height="50" RenderTransformOrigin="0.19,0.5" Margin="10,0,0,0" Padding="1"  VerticalAlignment="Bottom" Click="btn_add_Click" />
+            <Button x:Name="btn_delete" Content="Delete" Grid.Column="3" HorizontalAlignment="Center" Width="155" Height="50" RenderTransformOrigin="0.19,0.5" Margin="10,0,0,0" Padding="1"  VerticalAlignment="Top" Click="btn_delete_Click" />
+            <Button x:Name="btn_edit" Content="Edit" Grid.Column="3" HorizontalAlignment="Center" Width="155" Height="50" RenderTransformOrigin="0.19,0.5" Margin="10,0,0,0" Padding="1"  VerticalAlignment="Bottom" Click="btn_edit_Click" />
+
 
         </StackPanel>
 

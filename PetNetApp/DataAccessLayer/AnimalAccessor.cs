@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Media.Imaging;
 
 namespace DataAccessLayer
 {
@@ -733,6 +733,12 @@ namespace DataAccessLayer
             return animal;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="usersId"></param>
+        /// <returns></returns>
         public List<AnimalVM> SelectAdoptedAnimalByUserId(int usersId)
         {
             List<AnimalVM> animals = new List<AnimalVM>();
@@ -812,6 +818,12 @@ namespace DataAccessLayer
             return fosterPlacementRecord;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <param name="fundraisingEventId"></param>
+        /// <returns></returns>
         public List<AnimalVM> SelectAnimalsByFundraisingEventId(int fundraisingEventId)
         {
             //throw new NotImplementedException();
@@ -876,6 +888,11 @@ namespace DataAccessLayer
             return animals;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// </summary>
+        /// <returns></returns>
         public List<AnimalVM> SelectAllAdoptableAnimals()
         {
             List<AnimalVM> adoptableAnimals = new List<AnimalVM>();

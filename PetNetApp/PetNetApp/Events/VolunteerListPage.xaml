@@ -63,7 +63,7 @@
             </Grid.ColumnDefinitions>
             <!-- This button probably should not be called Add Event. It should probably be called Add Volunteer as that's what I assume that is for. 
             I'm keeping it as Add Event because that's what is on the UI.-->
-            <Button x:Name="btnAddEvent" Content="Add Event" Width="100" Height="40" Click="btnAddEvent_Click"></Button>
+            <Button x:Name="btnAddVolunteer" Content="Add Volunteer" Width="125" Height="40" Click="btnAddVolunteer_Click"></Button>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>

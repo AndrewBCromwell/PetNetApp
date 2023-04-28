@@ -23,7 +23,8 @@
         <Label x:Name="lblOrderList" FontSize="24" FontWeight="bold" Grid.Row="0"
                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0"
                Content="Order List"/>
-       
+        <Button x:Name="btnPrintCart" Grid.Row="0" HorizontalAlignment="Right"
+                Margin="20 0" Width="200" Height="60" Content="Print Cart" Click="btnPrintCart_Click"/>
 
         <DataGrid x:Name="datCartList" Grid.Row="1" Margin="20 0 20 0" 
                   CanUserResizeRows="False" CanUserResizeColumns="True"
@@ -33,7 +34,6 @@
                 <DataGridTextColumn Header="Item Name" Binding="{Binding ItemId}" Width="1*"/>
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="90"/>
                 <DataGridTextColumn Header="Flags" Binding="{Binding DisplayFlags}" Width="2*"/>
-
                 <DataGridTextColumn Header="Last Updated" Binding="{Binding LastUpdated, StringFormat=\{0:MM/dd/yyyy\}}" Width="1*"/>
                 <DataGridTextColumn Header="Location" Binding="{Binding ShelterName}" Width="1*"/>
 

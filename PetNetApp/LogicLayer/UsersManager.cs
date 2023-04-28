@@ -591,5 +591,17 @@ namespace LogicLayer
             }
             return result;
         }
+
+        public Users RetrieveUserObjectByEmail(string email)
+        {
+            try
+            {
+                return _userAccessor.SelectUserByEmail(email);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to retrieve User Object by Email. ", ex);
+            }
+        }
     }
 }
