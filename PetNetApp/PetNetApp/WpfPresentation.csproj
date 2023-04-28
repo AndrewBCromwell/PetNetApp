@@ -63,6 +63,9 @@
     <Compile Include="Animals\AddEditVaccinationsPage.xaml.cs">
       <DependentUpon>AddEditVaccinationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animals\AddPrescription.xaml.cs">
+      <DependentUpon>AddPrescription.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Animals\AnimalMedicalProfile.xaml.cs">
       <DependentUpon>AnimalMedicalProfile.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,9 @@
     </Page>
     <Compile Include="Animals\UploadAdditionalImageWindow.xaml.cs">
       <DependentUpon>UploadAdditionalImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animals\ViewPrescriptions.xaml.cs">
+      <DependentUpon>ViewPrescriptions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Community\SuspendUserPopup.xaml.cs">
       <DependentUpon>SuspendUserPopup.xaml</DependentUpon>
@@ -258,6 +264,14 @@
     <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
       <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
     </Compile>
+    <Page Include="Animals\AddPrescription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animals\ViewPrescriptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

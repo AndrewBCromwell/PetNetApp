@@ -26,6 +26,7 @@ namespace WpfPresentation.Animals
         Kennel _kennel = new Kennel();
         AnimalVM _animalVM = new AnimalVM();
         MasterManager _masterManager = MasterManager.GetMasterManager();
+        private ViewPrescriptions _viewPrescriptions = null;
 
         public AnimalMedicalProfile(int animalId)
         {
@@ -109,6 +110,19 @@ namespace WpfPresentation.Animals
                 PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message, ButtonMode.Ok);
             }
             
+        }
+        /// <summary>
+        /// Tyler hand
+        /// Created: 2023/04/17
+        /// 
+        /// Click 
+        /// all animals information populates the text boxes
+        /// </summary>
+        ///
+        private void btnAddPrescriptions_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.Navigate(new ViewPrescriptions(_animalId));
         }
     }
 }

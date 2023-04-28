@@ -50,6 +50,7 @@ namespace LogicLayer
         public IDonationManager DonationManager { get; private set; }
         public IImagesManager ImagesManager { get; private set; }
         public IInstitutionalEntityManager InstitutionalEntityManager { get; private set; }
+        public IPrescriptionManager PrescriptionManager { get; private set; }
 
 
         private MasterManager()
@@ -71,23 +72,24 @@ namespace LogicLayer
             ShelterItemTransactionManager = new ShelterItemTransactionManager();
             ImagesManager = new ImagesManager();
             DonationManager = new DonationManager();
+            PrescriptionManager = new PrescriptionManager();
 
 
             //for testing from dev page
-            //User = new UsersVM()
-            //{
-            //    UsersId = 100004,
-            //    ShelterId = 100000,
-            //    GivenName = "Barry",
-            //    FamilyName = "Mikulas",
-            //    Email = "bmikulas@company.com",
-            //    Address = "4150 riverview road",
-            //    Zipcode = "52411",
-            //    Phone = "319-123-1325",
-            //    Active = true,
-            //    Suspend = false,
-            //    Roles = new List<string>() { "Admin" }
-            //};
+           User = new UsersVM()
+           {
+               UsersId = 100004,
+               ShelterId = 100000,
+               GivenName = "Barry",
+               FamilyName = "Mikulas",
+               Email = "bmikulas@company.com",
+               Address = "4150 riverview road",
+               Zipcode = "52411",
+               Phone = "319-123-1325",
+               Active = true,
+               Suspend = false,
+               Roles = new List<string>() { "Admin" }
+           };
 
 
         }
