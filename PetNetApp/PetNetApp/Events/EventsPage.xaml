@@ -17,9 +17,9 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                 <Rectangle Width="25"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Events" x:Name="btnEvents" Click="btnEvents_Click"/>
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Create Event" x:Name="btnCreateEvents" Click="btnCreateEvents_Click"/>
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Event History" x:Name="btnEventHistory" Click="btnEventHistory_Click"/>
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Event Results" x:Name="btnEventResults" Click="btnEventResults_Click" />
+                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Create Event" x:Name="btnCreateEvents" Click="btnCreateEvents_Click" Visibility="Collapsed"/>
+                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Event History" x:Name="btnEventHistory" Click="btnEventHistory_Click" Visibility="Collapsed"/>
+                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Event Results" x:Name="btnEventResults" Click="btnEventResults_Click"/>
                 <Rectangle Width="25"/>
             </StackPanel>
         </ScrollViewer>
