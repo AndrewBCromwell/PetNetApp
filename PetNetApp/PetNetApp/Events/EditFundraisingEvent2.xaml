@@ -37,7 +37,7 @@
                 <Label Grid.Row="0" Content="Edit Fundraising Event" FontSize="30" VerticalAlignment="Center"/>
                 <Label Grid.Row="1" Content="EVENT CONTACTS" FontSize="20"/>
                 <Label x:Name="lblContactError" Grid.Row="1" Content="Please select at least one contact" FontSize="20" Margin="100 0 0 0" Foreground="Red" Visibility="Hidden"/>
-                <Button x:Name="btnChooseContact" Grid.Column="1" Grid.Row="1" Content="Choose Contact" Width="150" HorizontalAlignment="Right" Margin="0 0 10 0" Click="btnChooseContact_Click"/>
+                <Button x:Name="btnChooseContact" Grid.Column="1" Grid.Row="1" Content="Choose Contact" Width="150" HorizontalAlignment="Right" Margin="0 0 20 0" Click="btnChooseContact_Click"/>
 
                 <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="#3D8361" 
                         BorderThickness="2" Padding="5" MinHeight="100" MaxHeight="350" Margin="0 10 10 10">
@@ -68,7 +68,7 @@
                     <Label Grid.Column="0" Content="ANIMALS TO TAKE" VerticalAlignment="Center"/>
 
                 </Grid>
-                <Button x:Name="btnChooseAnimal" Grid.Row="5" Grid.Column="1" Margin="5" Content="Choose Animal" Height="40" Width="150" HorizontalAlignment="Right" Click="btnChooseAnimal_Click"></Button>
+                <Button x:Name="btnChooseAnimal" Grid.Row="5" Grid.Column="1" Margin="0 0 20 0" Content="Choose Animal" Height="40" Width="150" HorizontalAlignment="Right" Click="btnChooseAnimal_Click"></Button>
                 <Button x:Name="btnUploadImage" Grid.Row="7" Grid.Column="0" Content="Upload Image" Width="200" HorizontalAlignment="Left" Margin="0 0 20 0" Height="45" Click="btnUploadImage_Click"></Button>
                 <Border Grid.Row="6" BorderBrush="#3D8361" Grid.ColumnSpan="2"  BorderThickness="2" 
                         Padding="5" MinHeight="100"  Margin="0 10 10 10" MaxHeight="350">
