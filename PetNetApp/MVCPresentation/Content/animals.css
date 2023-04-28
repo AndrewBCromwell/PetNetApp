@@ -31,6 +31,6 @@
     margin: 3%,5%,5%,0;
 }
 
-#filterByAnimalType .header{
+#filterByAnimalType .grid-container {
     display: none;
 }
