@@ -1,4 +1,4 @@
-﻿@{string[] tabs = { "Adopt", "Shelters", "Community", "Donate", "Events", "Fundraising",  };}
+﻿@{string[] tabs = { "Adopt", "Shelters", "Community", "Donate", "Events", "Fundraising", };}
 @using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.Owin
 
@@ -96,8 +96,7 @@
                             else
                             {
                                 <p>Hello, Guest!</p>
-                            }
-                            
+                            }                            
                          </li>
                         <li class="dropdown-item" type="button">@Html.ActionLink("Account Settings", "UserDetails", "Manage")</li>
                         <li class="dropdown-divider"></li>
@@ -128,7 +127,7 @@
         <div class="shellrow-2 header-menu">
             <div class="shellcol-1"></div>
             <div class="shellcol-2 animalButton" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Animals", "Adoptable", "Animals", null, new { @class = (ViewBag.Tab == "Adopt" ? "active-main-tab" : "") })</button></div>
-            <div class="shellcol-3" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Shelters", "SelectShelter", "Shelters", null, new { @class = (ViewBag.Tab == "Shelters" ? "active-main-tab" : "") })</button></div>
+            <div class="shellcol-3" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Shelters", "ShelterNetwork", "Shelters", null, new { @class = (ViewBag.Tab == "Shelters" ? "active-main-tab" : "") })</button></div>
             <div class="shellcol-4 fundraisingButton" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Community", "Index", "Community", null, new { @class = (ViewBag.Tab == "Community" ? "active-main-tab" : "") })</button></div>
             <div class="shellcol-5" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Donate", "Index", "Donate", null, new { @class = (ViewBag.Tab == "Donate" ? "active-main-tab" : "") })</button></div>
             <div class="shellcol-6" style="width: 10%"><button class="header-menu-list-item" style="width: 190px;">@Html.ActionLink("Events", "Index", "Events", null, new { @class = (ViewBag.Tab == "Events" ? "active-main-tab" : "") })</button></div>
@@ -167,30 +166,34 @@
 
     <footer>
         <div class="footer-images">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-auto">
+                        @Html.ActionLink("Terms of Service", "TermsOfService", "Home")
+                    </div>
+                    <div class="col-auto">
+                        @Html.ActionLink("About Us", "About", "Home")
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="~/Scripts/PetnetBorder.js"></script>
+   
     <script>
         $('.dropdown-toggle').dropdown()
-
         function logoHover(img, onOff) {
             (onOff) ? img.src = "../Images/petnetLogo.png" : img.src = "../Images/petnetLogo_hover.png";
-
         }
-
         function bellHover(img, onOff) {
             (onOff) ? img.src = "../Images/bell_notification_hover.png" : img.src = "../Images/bell_notification.png";
         }
-
         function profileHover(img, onOff) {
             (onOff) ? img.src = "../Images/user_hover.png" : img.src = "../Images/abstract-user-flat-4.png";
         }
-
         function menuHover(img, onOff) {
             (onOff) ? img.src = "../Images/menuIcon_hover.png" : img.src = "../Images/menuIcon.png";
         }
-
     </script>
 </body>
 </html>

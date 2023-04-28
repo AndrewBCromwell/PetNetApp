@@ -66,6 +66,7 @@
     <Compile Include="IReplyManager.cs" />
     <Compile Include="IResourceAddRequestManager.cs" />
     <Compile Include="IShelterInventoryItemManager.cs" />
+    <Compile Include="IPrescriptionManager.cs" />
     <Compile Include="IProcedureManager.cs" />
     <Compile Include="IRequestManager.cs" />
     <Compile Include="IRoleManager.cs" />

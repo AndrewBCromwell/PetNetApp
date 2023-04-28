@@ -17,6 +17,14 @@
             <!-- user control -->
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Margin="138 0">Show:</Label>
+        <ComboBox x:Name="cmbAnimalFilter" Width="100" Height="35" Margin="38 0" HorizontalAlignment="Right" DropDownClosed="cmbAnimalFilter_DropDownClosed">
+            <ComboBoxItem IsSelected="True">All</ComboBoxItem>
+            <ComboBoxItem>Dogs</ComboBoxItem>
+            <ComboBoxItem>Cats</ComboBoxItem>
+            <ComboBoxItem>Birds</ComboBoxItem>
+            <ComboBoxItem>Other</ComboBoxItem>
+        </ComboBox>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Grid.Row="1" Padding="20, 20, 20, 0" Margin="38, 10, 38, 0" Background="#EEEFE1">
             <Grid x:Name="grdAdoptableAnimalsList" Grid.Row="1" Grid.Column="1" Background="#EEEFE1" Margin="30 0 30 30">
                 <Grid.ColumnDefinitions>

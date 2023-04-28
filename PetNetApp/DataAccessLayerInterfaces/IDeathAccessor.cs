@@ -32,6 +32,12 @@ namespace DataAccessLayerInterfaces
         /// Updated: 2023/02/24
         /// Added Comment.
         /// </remarks>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="death">death</param>
         /// <exception cref="SQLException">Insert fails.</exception>
         /// <returns>Rows edited</returns>
@@ -49,11 +55,17 @@ namespace DataAccessLayerInterfaces
         /// Updated: 2023/02/24
         /// Added Comment.
         /// </remarks>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="animal">animal</param>
         /// <exception cref="SQLException">Select fails.</exception>
         /// <returns>DeathVM</returns>
         DeathVM SelectAnimalDeath(Animal animal);
-        
+
         /// <summary>
         /// Asa Armstrong
         /// Created: 2023/02/24
@@ -65,6 +77,12 @@ namespace DataAccessLayerInterfaces
         /// Asa Armstrong
         /// Updated: 2023/02/24
         /// Added Comment.
+        /// </remarks>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
         /// </remarks>
         /// <param name="newDeath">The new death record to replace the old record</param>
         /// <param name="oldDeath">The old death record</param>

@@ -44,7 +44,9 @@ namespace LogicLayerTest.Animals
         [TestMethod]
         public void TestAddAnimalDOD()
         {
-            Assert.AreEqual(_deathManager.AddAnimalDeath(_death), true);
+            var expected = true;
+            var actual = _deathManager.AddAnimalDeath(_death);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]

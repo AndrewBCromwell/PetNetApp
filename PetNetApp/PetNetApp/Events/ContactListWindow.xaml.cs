@@ -31,12 +31,25 @@ namespace WpfPresentation.Events
             returnValue = null;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCanle_Click(object sender, RoutedEventArgs e)
         {
             returnValue = null;
             this.DialogResult = false;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="contact"></param>
         private void DisplayContact(InstitutionalEntity contact)
         {
             UCEventContact ucEventContact = new UCEventContact();
@@ -47,6 +60,11 @@ namespace WpfPresentation.Events
             stpContactList.Children.Add(ucEventContact);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void PopulateContacts()
         {
             stpContactList.Children.Clear();
@@ -56,6 +74,11 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void ContactSearching()
         {
             contactSelectedList = new List<InstitutionalEntity>();
@@ -79,28 +102,60 @@ namespace WpfPresentation.Events
             PopulateContacts();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="contact"></param>
         private void BtnAdd_Click(InstitutionalEntity contact)
         {
             returnValue = contact;
             this.DialogResult = false;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="contact"></param>
         private void BtnView_Click(InstitutionalEntity contact)
         {
             PromptWindow.ShowPrompt("Sponsor Detail", "Name: " + contact.CompanyName + "\n\n"
                 + "Email: " + contact.Email + "\n\n" + "Phone Number: " + contact.Phone);
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearchContact_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            ContactSearching();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public InstitutionalEntity GetReturnValue()
         {
             return returnValue;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ContactSearching();

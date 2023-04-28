@@ -273,7 +273,7 @@ namespace LogicLayerTest
             string expectedResult = "Test name 1";
             string actualResult = "";
 
-            actualResult = _animalManager.RetriveAnimalAdoptableProfile(999999).AnimalName;
+            actualResult = _animalManager.RetrieveAnimalAdoptableProfile(999999).AnimalName;
 
             Assert.AreEqual(expectedResult, actualResult);
         }
@@ -284,7 +284,7 @@ namespace LogicLayerTest
             int expectedResult = 3;
             int actualResult = 0;
 
-            actualResult = _animalManager.RetriveAdoptedAnimalByUserId(100000).Count();
+            actualResult = _animalManager.RetrieveAdoptedAnimalByUserId(100000).Count();
 
             Assert.AreEqual(expectedResult, actualResult);
         }
@@ -295,7 +295,7 @@ namespace LogicLayerTest
             string expectedResult = "This is a note";
             string actualResult = "";
 
-            actualResult = _animalManager.RetriveFosterPlacementRecordNotes(100000).FosterPlacementRecordNotes;
+            actualResult = _animalManager.RetrieveFosterPlacementRecordNotes(100000).FosterPlacementRecordNotes;
 
             Assert.AreEqual(expectedResult, actualResult);
         }

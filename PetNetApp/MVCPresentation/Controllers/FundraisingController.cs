@@ -209,6 +209,12 @@ namespace MVCPresentation.Controllers
         /// 
         /// Controller method for \Fundraising\event to view a single event
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// 2023/04/26
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="frEvent">the id of the event to view</param>
         /// <returns></returns>
         [HttpGet]
@@ -265,6 +271,12 @@ namespace MVCPresentation.Controllers
         /// 
         /// Controller method for /Fundraising/Event to get a partial view for a single event
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// 2023/04/26
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="collection">The event from the view button click</param>
         /// <returns></returns>
         [HttpPost]
@@ -333,6 +345,12 @@ namespace MVCPresentation.Controllers
         /// 
         /// Controller method for /Fundraising/Events to view all public events
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// 2023/04/26
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="fundraisingEventsViewModel">The model holding the different parameters for searching and event data</param>
         /// <param name="Page">The current page of event we are on</param>
         /// <returns></returns>

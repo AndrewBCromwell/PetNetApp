@@ -24,9 +24,11 @@ AS
 	BEGIN
 		Select 	[Donation].[DonationId], [Donation].[UsersId], [Users].[GivenName], [Users].[FamilyName], [Donation].[ShelterId],
 				[Amount], [Message], [Date], [Donation].[GivenName], [Donation].[FamilyName], [HasInKindDonation],
-                [Anonymous], [Target], [PaymentMethod], [ScheduledDonationId], [FundraisingEventId]
+                [Anonymous], [Target], [PaymentMethod], [ScheduledDonationId], [FundraisingEventId], [ShelterName]
 		From 	[Donation] left join [Users]
 					on [Donation].[UsersId] = [Users].[UsersId]
+					left join [Shelter]
+                    on [Donation].[ShelterId] = [Shelter].[ShelterId]
 		Where	[Donation].[ShelterId] = @ShelterId
     END
 GO

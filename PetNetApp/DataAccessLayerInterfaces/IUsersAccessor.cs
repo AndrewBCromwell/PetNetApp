@@ -248,8 +248,8 @@ namespace DataAccessLayerInterfaces
         /// Takes a usersId and returns a users object
         /// </summary>
         /// <remarks>
-        /// Oleksiy Fedchuk
-        /// Updated: 2023/04/28
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
         /// 
         /// Final QA
         /// </remarks>
@@ -264,8 +264,8 @@ namespace DataAccessLayerInterfaces
         /// Takes a usersId and returns a users object
         /// </summary>
         /// <remarks>
-        /// Oleksiy Fedchuk
-        /// Updated: 2023/04/28
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
         /// 
         /// Final QA
         /// </remarks>
@@ -280,8 +280,8 @@ namespace DataAccessLayerInterfaces
         /// Takes a usersId and changes the suspend status to the value of suspend parameter
         /// </summary>
         /// <remarks>
-        /// Oleksiy Fedchuk
-        /// Updated: 2023/04/28
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
         /// 
         /// Final QA
         /// </remarks>
@@ -297,8 +297,8 @@ namespace DataAccessLayerInterfaces
         /// Takes a roleId and counts the number active, unsuspended accounts with that roleId
         /// </summary>
         /// <remarks>
-        /// Oleksiy Fedchuk
-        /// Updated: 2023/04/28
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
         /// 
         /// Final QA
         /// </remarks>

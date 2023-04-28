@@ -146,11 +146,17 @@ namespace LogicLayerInterfaces
         /// <param name="AnimalId"></param>
         /// <returns></returns>
         AnimalVM RetrieveAnimalMedicalProfileByAnimalId(int AnimalId);
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
+        AnimalVM RetrieveAnimalAdoptableProfile(int animalId);
 
-        AnimalVM RetriveAnimalAdoptableProfile(int animalId);
-
-        List<AnimalVM> RetriveAdoptedAnimalByUserId(int userId);
-        FosterPlacementRecord RetriveFosterPlacementRecordNotes(int animalId);
+        List<AnimalVM> RetrieveAdoptedAnimalByUserId(int userId);
+        FosterPlacementRecord RetrieveFosterPlacementRecordNotes(int animalId);
 
         /// <summary>
         /// Barry Mikulas

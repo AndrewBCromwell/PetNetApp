@@ -1044,9 +1044,20 @@ VALUES
 (100003,"Flu shot",0,0,1,0,0,0,"A shot for the flu"),
 (100003,"Covid shot",0,0,1,0,0,0,"A shot for covid"),
 (100003,"Cant sleep",0,0,0,1,0,0,"A pill for sleeping"),
-(100001,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
-(100003,"Rash",0,0,0,1,0,0,"Some Ointment for skin"),
-(100002,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain")
+(100002,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100004,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100005,"Rash",0,0,0,1,0,0,"Some Ointment for skin"),
+(100006,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100007,"Cant sleep",0,0,0,1,0,0,"A pill for sleeping"),
+(100008,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100009,"Rash",0,0,0,1,0,0,"Some Ointment for skin"),
+(100010,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100011,"Cant sleep",0,0,0,1,0,0,"A pill for sleeping"),
+(100012,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100013,"Rash",0,0,0,1,0,0,"Some Ointment for skin"),
+(100014,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain"),
+(100015,"Cant sleep",0,0,0,1,0,0,"A pill for sleeping"),
+(100016,"Tummy Hurts",0,0,0,1,0,0,"A pill for pain")
 
 GO
 
@@ -1113,10 +1124,22 @@ insert into [dbo].[Prescription]
 		)		
 	
 	VALUES 
-		(100011,100002,'Treatment',"malatoin","5mg","Once a day",10,"1 pill by mouth at bedtime",GETDATE(),GETDATE()),
-		(100012,100002,'Treatment',"asprin","20mg","Twice a day",30,"1 pill by mouth Every 8 hours",GETDATE(),GETDATE()),
-		(100013,100002,'Treatment',"Skin Care","100ml","Once a day",10,"Apply ointment to skin of infected area",GETDATE(),GETDATE()),
-		(100014,100002,'Treatment',"Joint Care","50mg","Twice a day",30,"1 pill by mouth every 12 hours",GETDATE(),GETDATE())
+		(100011,100002,"Treatment","malatoin","5mg","Once a day",10,"1 pill by mouth at bedtime",GETDATE(),GETDATE()),
+		(100012,100002,"Treatment","asprin","20mg","Twice a day",30,"1 pill by mouth Every 8 hours",GETDATE(),GETDATE()),
+		(100013,100002,"Treatment","Skin Care","100ml","Once a day",10,"Apply ointment to skin of infected area",GETDATE(),GETDATE()),
+		(100014,100002,"Treatment","Joint Care","50mg","Twice a day",30,"1 pill by mouth every 12 hours",GETDATE(),GETDATE()),
+		(100015,100002,"Treatment","Amoxicillin","500mg","Three times a day",20,"1 pill by mouth every 8 hours",GETDATE(),GETDATE()),
+		(100016,100002,"Treatment","Rabies Vaccine","20mg","Once every 6 months",1,"Administer intramuscularly on left hind leg",GETDATE(),GETDATE()),
+		(100017,100002,"Treatment","Ivermectin","1ml","Once a week",4,"Apply topically on back of neck",GETDATE(),GETDATE()),
+		(100018,100002,"Treatment","Fluoxetine","20mg","Once a day",30,"1 pill by mouth every morning",GETDATE(),GETDATE()),
+		(100019,100002,"Treatment","Lysine","500mg","Twice a day",60,"1 pill by mouth every 12 hours",GETDATE(),GETDATE()),
+		(100020,100002,"Treatment","Prednisolone","10mg","Once a day",20,"1 pill by mouth every evening",GETDATE(),GETDATE()),
+		(100021,100002,"Treatment","Doxycycline","100mg","Twice a day",30,"1 pill by mouth every 12 hours",GETDATE(),GETDATE()),
+		(100022,100002,"Treatment","Famotidine","20mg","Once a day",60,"1 pill by mouth every evening",GETDATE(),GETDATE()),
+		(100023,100002,"Treatment","Metronidazole","250mg","Three times a day",14,"1 pill by mouth every 8 hours",GETDATE(),GETDATE()),
+		(100024,100002,"Treatment","Cephalexin","250mg","Four times a day",40,"1 pill by mouth every 6 hours",GETDATE(),GETDATE())
+		
+
 
 print '' print '*** creating Kennel sample data'
 GO 
@@ -1249,28 +1272,28 @@ INSERT INTO [dbo].[Pledge]
 		[UsersId],
 		[DonationId],
 		[FundraisingEventId],
+		[Date],
 		[Amount],
         [Message],
         [GivenName],
         [FamilyName],
         [Phone],
-        [Email],
-		[Date]
+        [Email]
 		)
 	VALUES
-		(100007,100000,100000, 100.00, 'Giving back', 'John', 'Smith', '6546546544', 'js@gmail.com', '2023-04-09'),
-		(100007,null,100000, 200.00, 'Take it', 'John', 'Smith', '6546546544', 'js@gmail.com', '2023-03-18'),
-		(100007,100002,100000, 300.00, 'For dog', 'John', 'Smith', '6546546544', 'js@gmail.com', '2022-03-18'),
-		(100007,100003,100000, 400.00, 'For cat', 'John', 'Smith', '6546546544', 'js@gmail.com', '2023-01-18'),
-		(100007,100004,100000, 500.00, 'For rat', 'John', 'Smith', '6546546544', 'js@gmail.com', '2023-07-22'),
-        (100008,100005,100000, 50.00, 'Here you go', 'Marc', 'Smith', '6546546544', 'ms@gmail.com', '2022-10-18'),
-		(100008,null,100000, 50.00, 'Take it', 'Marc', 'Smith', '6546546544', 'ms@gmail.com', '2023-02-18'),
-		(100008,null,100000, 50.00, 'For rat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com',  '2023-03-18'),
-		(100008,null,100000, 50.00, 'For cat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com', '2023-03-18'),
-        (100009,null,100000, 50.00, 'Here you go again', 'Amy', 'Smith', '6546546544', 'as@gmail.com', '2023-03-18'),
-		(100009,null,100000, 50.00, 'For cat', 'Amy', 'Smith', '6546546544', 'as@gmail.com', '2023-03-18'),
-		(100009,100006,100000, 50.00, 'For rat', 'Amy', 'Smith', '6546546544', 'as@gmail.com', '2022-01-09'),
-		(100009,null,100000, 50.00, 'Here you go again 3rd time', 'Amy', 'Smith', '6546546544', 'as@gmail.com', '2000-03-09')
+		(100007, 100000, 100000, '2023-04-21', 100.00, 'Giving back', 'John', 'Pearson', '6546546544', 'jp@gmail.com'),
+		(100007, null, 100000, GETDATE(), 200.00, 'Take it', 'Asa', 'Smith', '6546546544', 'as@gmail.com'),
+		(100007, 100002, 100000, '2023-03-22', 300.00, 'For dog', 'Chris', 'Northup', '6546546544', 'cn@gmail.com'),
+		(100007, 100003, 100000, GETDATE(), 400.00, 'For cat', 'Will', 'Smith', '6546546544', 'ws@gmail.com'),
+		(100007, 100004, 100000, GETDATE(), 500.00, 'For snake', 'John', 'Armstrong', '6546546544', 'ja@gmail.com'),
+        (100008, 100005, 100000, GETDATE(), 50.00, 'Here you go', 'Marc', 'Benjamin', '6546546544', 'mb@gmail.com'),
+		(100008, null, 100000, '2023-03-15', 50.00, 'Take it', 'Marc', 'Jones', '6546546544', 'mj@gmail.com'),
+		(100008, null, 100000, '2023-05-01', 50.00, 'For cat', 'Mark', 'Williams', '6546546544', 'mw@gmail.com'),
+		(100008, null, 100000, '2023-04-12', 50.00, 'For cat', 'Matthew', 'Smith', '6546546544', 'ms2@gmail.com'),
+        (100009, null, 100000, '2023-03-30', 50.00, 'Here you go again', 'Amy', 'Dre', '6546546544', 'ad@gmail.com'),
+		(100009, null, 100000, '2023-03-31', 50.00, 'For cat', 'Tonya', 'West', '6546546544', 'ta@gmail.com'),
+		(100009, 100006, 100001, GETDATE(), 50.00, 'For rat', 'Lisa', 'Catz', '6546546544', 'lc@gmail.com'),
+		(100009, null, 100001, GETDATE(), 50.00, 'For the animals', 'Anne', 'Jackson', '6546546544', 'aj@gmail.com')
 GO
 
 print '' print '*** creating AdoptionApplication sample data'

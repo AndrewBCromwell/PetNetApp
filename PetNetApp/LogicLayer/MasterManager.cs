@@ -66,6 +66,7 @@ namespace LogicLayer
         public IEventManager EventManager { get; set; }
         public IAdoptionApplicationResponseManager AdoptionApplicationResponseManager { get; set; }
         public IFosterApplicationManager FosterApplicationManager { get; set; }
+        public IPrescriptionManager PrescriptionManager { get; private set; }
 
 
         private MasterManager()
@@ -105,6 +106,8 @@ namespace LogicLayer
             EventManager = new EventManager();
             AdoptionApplicationResponseManager = new AdoptionApplicationResponseManager();
             FosterApplicationManager = new FosterApplicationManager();
+            PrescriptionManager = new PrescriptionManager();
+
 
             //for testing from dev page
             User = new UsersVM()

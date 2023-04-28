@@ -8,6 +8,8 @@
 /// <remarks>
 /// Updater Name
 /// Updated: yyyy/mm/dd
+/// example: Fixed a problem when user inputs bad data
+/// </remarks>
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -36,6 +38,17 @@ namespace WpfPresentation.Shelters
         private Shelter _shelter;
         private List<UsersVM> _users = null;
 
+        /// <summary>
+        /// Nathan Zumsande
+        /// Created: 2023/03/08
+        /// 
+        /// Empty constructor
+        /// </summary>
+        /// <remarks>
+        /// Updater Name
+        /// Updated: yyyy/mm/dd
+        /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
         public ContactPage()
         {
             InitializeComponent();

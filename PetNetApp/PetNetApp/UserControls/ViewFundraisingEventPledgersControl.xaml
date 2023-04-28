@@ -38,6 +38,7 @@
                     <Label Content="{Binding PledgeVM.FamilyName}" Foreground="{Binding Foreground}" MinWidth="{Binding FamilyNameWidth}" ></Label>
                     <Label Content="{Binding PledgeVM.Amount}" ContentStringFormat="C" Foreground="{Binding Foreground}" MinWidth="{Binding AmountWidth}" ></Label>
                     <Label Content="{Binding PledgeVM.DonationAmount}" ContentStringFormat="C" Foreground="{Binding Foreground}" MinWidth="{Binding DonationAmountWidth}"></Label>
+                    <Label Content="{Binding PledgeVM.Date}" Foreground="{Binding Foreground}" MinWidth="{Binding DateWidth}"></Label>
                 </StackPanel>
                 <Button x:Name="btnView"  Grid.Column="1" Margin="3" Style="{StaticResource ResourceKey=rsrcSafeButton}" Click="btnView_Click" >View</Button>
             </Grid>

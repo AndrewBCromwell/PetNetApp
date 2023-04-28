@@ -27,6 +27,7 @@ namespace DataAccessLayerInterfaces
 		/// Adds an Item Transaction
 		/// </summary>
 		/// <param name="transaction"></param>
+		/// <exception cref="SQLException">Insert Fails</exception>
 		/// <returns>The number of rows edited</returns>
 		int InsertItemTransaction(ShelterItemTransaction transaction);
 	}

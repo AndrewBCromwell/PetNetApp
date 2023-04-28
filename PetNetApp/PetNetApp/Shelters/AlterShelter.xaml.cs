@@ -22,6 +22,12 @@ namespace WpfPresentation.Shelters
     /// Created: 2023/02/23
     /// Multi-use window for viewing, adding, and editing shelters
     /// </summary>
+    /// <remarks>
+    /// Zaid Rachman
+    /// Updated: 2023/04/27
+    /// 
+    /// Final QA
+    /// </remarks>
     public partial class AlterShelter : Window
     {
         private MasterManager _manager = null;
@@ -34,6 +40,12 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Constructor for adding a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="manager">The MasterManager from the parent UI</param>
         public AlterShelter(MasterManager manager)
         {
@@ -49,6 +61,12 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Constructor for viewing or editing a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="manager">The MasterManager from the parent UI</param>
         /// <param name="selectedShelter">The shelter to open and view or edit</param>
         /// <param name="windowMode">string that determines whether this window opens as a view or as an edit window</param>
@@ -66,6 +84,12 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Loads the Alter Shelter window and selects the mode that the window opens into
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -73,15 +97,15 @@ namespace WpfPresentation.Shelters
             // Select window type based on _windowMode
             if (_windowMode.Equals("addshelter"))
             {
-                loadAddShelterWindow();
+                LoadAddShelterWindow();
             }
             else if (_windowMode.Equals("viewshelter"))
             {
-                loadViewShelterWindow();
+                LoadViewShelterWindow();
             }
             else if (_windowMode.Equals("editshelter"))
             {
-                loadEditShelterWindow();
+                LoadEditShelterWindow();
             }
         }
         /// <summary>
@@ -89,7 +113,13 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Initialized the Alter Shelter window for Add Shelter mode
         /// </summary>
-        private void loadAddShelterWindow()
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void LoadAddShelterWindow()
         {
             lblAddEditMainLabel.Content = "Add Shelter";
 
@@ -139,7 +169,13 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Initializes the Alter Shelter window for View Shelter mode
         /// </summary>
-        private void loadViewShelterWindow()
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void LoadViewShelterWindow()
         {
             lblAddEditMainLabel.Content = "View Shelter";
             txtShelterName.IsReadOnly = true;
@@ -190,7 +226,13 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Initializes the Alter Shelter window in Edit Shelter mode
         /// </summary>
-        private void loadEditShelterWindow()
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        private void LoadEditShelterWindow()
         {
             lblAddEditMainLabel.Content = "Edit Shelter";
             txtShelterName.IsReadOnly = false;
@@ -248,6 +290,12 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Cancel button closes window without changes
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -260,6 +308,12 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// X button in the corner closes window without changes
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCloseWindowX_Click(object sender, RoutedEventArgs e)
@@ -273,6 +327,12 @@ namespace WpfPresentation.Shelters
         /// Next button
         /// Submits all valid fields in Add or Edit window, commits changes to logic layer
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
@@ -281,7 +341,7 @@ namespace WpfPresentation.Shelters
             try
             {
                 // Validate input
-                string validationCheck = reportInvalidFields();
+                string validationCheck = ReportInvalidFields();
                 if (validationCheck.Equals("No error"))
                 {
                     if (_windowMode.Equals("addshelter"))
@@ -339,9 +399,14 @@ namespace WpfPresentation.Shelters
         /// Created: 2023/02/23
         /// Reports what fields of the current shelter cannot be committed to the Database
         /// Appends failed fields to an error message
-        /// </summary>
+        /// </summary><remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <returns>A string containing the invalid shelter fields</returns>
-        private string reportInvalidFields()
+        private string ReportInvalidFields()
         {
             StringBuilder errorMessage = new StringBuilder("Failed to update shelter:");
             if (!txtShelterName.Text.IsValidShelterName())

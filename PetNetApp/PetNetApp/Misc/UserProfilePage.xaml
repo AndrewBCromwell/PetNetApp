@@ -55,8 +55,9 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Top" Margin="15 1 15 0" Background="#1C6758">
-                    <Button x:Name="btnPendingAdoptionApplications" Margin="1 1 1 0" Padding="10 5" MinWidth="275" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Click="btnPendingAdoptionApplications_Click">Pending Adoption Applications</Button>
-                    <Button x:Name="btnFosterApplications" Margin="1 1 1 0" Padding="10 5" MinWidth="175" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Click="btnFosterApplications_Click">Foster Applications</Button>
+                    <Button x:Name="btnPendingAdoptionApplications" Margin="1 1 1 0" Padding="10 5" MinWidth="225" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Click="btnPendingAdoptionApplications_Click">Pending Adoption Applications</Button>
+                    <Button x:Name="btnFosterApplications" Margin="1 1 1 0" Padding="10 5" MinWidth="150" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Click="btnFosterApplications_Click">Foster Applications</Button>
+                    <Button x:Name="btnUserInformation" Margin="1 1 1 0" Padding="10 5" MinWidth="150" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Click="btnUserInformation_Click">User Information</Button>
                 </StackPanel>
                 <ScrollViewer x:Name="scrTabBox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="15 0 15 10">
                     <StackPanel x:Name="spTabBox" Background="white" ></StackPanel>

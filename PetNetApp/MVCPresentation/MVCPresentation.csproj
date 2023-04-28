@@ -202,20 +202,27 @@
     <Compile Include="Migrations\202304070814588_Zipcode.Designer.cs">
       <DependentUpon>202304070814588_Zipcode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304141422458_Repo Cloned.cs" />
+    <Compile Include="Migrations\202304141422458_Repo Cloned.Designer.cs">
+      <DependentUpon>202304141422458_Repo Cloned.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AdoptableAnimalModel.cs" />
+    <Compile Include="Models\AnimalViewModels.cs" />
+    <Compile Include="Models\DonationViewModels.cs" />
     <Compile Include="Models\FundraisingViewModels.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\TicketModel.cs" />
+    <Compile Include="Models\ShelterViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\accountsettings.css" />
+    <Content Include="Content\about-us.css" />
     <Content Include="Content\animals.css" />
     <Content Include="colors.css" />
     <Content Include="Content\Animal\adoptableAnimal-desktop.css" />
@@ -269,6 +276,8 @@
     <Content Include="Views\Animals\Index.cshtml" />
     <Content Include="Views\Shared\_PartialAccountMenu.cshtml" />
     <Content Include="Views\Manage\Settings.cshtml" />
+    <Content Include="Views\Manage\AccountSettings.cshtml" />
+    <Content Include="Views\Community\ReinstatePost.cshtml" />
     <Resource Include="Images\Animal\no_image.png" />
     <Resource Include="Images\Animal\BrokenImageGreen.png" />
     <Resource Include="Images\Animal\BrokenImage.png">
@@ -392,6 +401,8 @@
     <Content Include="Views\UserProfile\Index.cshtml" />
     <Content Include="Views\Shelters\SelectShelter.cshtml" />
     <Content Include="Views\Community\Delete.cshtml" />
+    <Content Include="Views\Shelters\HoursOfOperation.cshtml" />
+    <Content Include="Views\Shelters\EditHoursOfOperation.cshtml" />
     <Content Include="Views\Community\DeleteReply.cshtml" />
     <Content Include="Views\Animals\Adoptable.cshtml" />
     <Content Include="Views\Community\ReportPartial.cshtml" />
@@ -410,6 +421,10 @@
     <Content Include="Views\Community\ReportReplyPartial.cshtml" />
     <Content Include="Views\Community\BeginReplyReport.cshtml" />
     <Content Include="Views\Pledge\Create.cshtml" />
+    <Content Include="Views\Management\Index.cshtml" />
+    <Content Include="Views\Management\Create.cshtml" />
+    <Content Include="Views\Home\TermsOfService.cshtml" />
+    <Content Include="Views\Donate\Donate.cshtml" />
     <Resource Include="Images\abstract-user-flat-4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -668,8 +683,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Donations\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Donate\" />
+    <Folder Include="Views\Events\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
@@ -707,6 +724,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304070814588_Zipcode.resx">
       <DependentUpon>202304070814588_Zipcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304141422458_Repo Cloned.resx">
+      <DependentUpon>202304141422458_Repo Cloned.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

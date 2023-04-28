@@ -47,6 +47,8 @@ namespace WpfPresentation.Animals
         /// Final QA
         /// </remarks>
         /// <param name="animalId"></param>
+        private ViewPrescriptions _viewPrescriptions = null;
+
         public AnimalMedicalProfile(int animalId)
         {
             InitializeComponent();
@@ -189,5 +191,37 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/26
+        /// Description: Navigates to AddEditAnimalDeath page
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDeath_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new AddAnimalDOD513(_animalVM, _kennel));
+            
+         
+        }
+        /// <summary>
+        /// Tyler hand
+        /// Created: 2023/04/17
+        /// 
+        /// Click 
+        /// all animals information populates the text boxes
+        /// </summary>
+        ///
+        private void btnAddPrescriptions_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.Navigate(new ViewPrescriptions(_animalId));
+        }
     }
 }

@@ -1,4 +1,15 @@
-﻿using DataObjects;
+﻿/// <summary>
+/// Author: Stephen Jaurigue
+/// Date: 2023/04/21
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
+/// </remarks>
+using DataObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +26,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// A method to get the fundraising campaigns for this shelter
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
         /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
         /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
@@ -27,7 +43,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// A method to get the active fundraising campaigns for all active shelters
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
         /// 
+        /// Final QA
+        /// </remarks>
         /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
         List<FundraisingCampaignVM> SelectAllActiveFundraisingCampaigns();
@@ -38,7 +59,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// A method to get the active fundraising campaigns for this active shelter
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
         /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelterId">The Shelters Id to get the Fundraising Campaigns for</param>
         /// <exception cref="SQLException">Load Fails</exception>
         /// <returns>List<FundraisingCampaign></FundraisingCampaign></returns>
@@ -50,6 +76,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// A method to create a new fundraising campaign for this shelter
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="fundraisingCampaign"></param>
         /// <returns>Total Number of Rows affected</returns>
         int InsertFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
@@ -62,6 +94,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Loads a Fundraising Campaign VM by its id
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="fundraisingCampaignId">The Id of the Fundraising Campaign to load</param>
         /// <returns>A Fundraising Campaign VM</returns>
         FundraisingCampaignVM SelectFundraisingCampaignByFundraisingCampaignId(int fundraisingCampaignId);
@@ -72,6 +110,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Deactivates the record for this fundraising campaign
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="fundraisingCampaign">Campaign to deactivate</param>
         /// <returns>the number of campaigns deactivated</returns>
         int DeleteFundraisingCampaign(FundraisingCampaignVM fundraisingCampaign);
@@ -82,6 +126,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// A method to create a new fundraising campaign update
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="campaignUpdate">The campaign update record</param>
         /// <returns>ID of the update record created</returns>
         int InsertCampaignUpdate(CampaignUpdate campaignUpdate);
@@ -92,6 +142,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// A method to update the fundraising campaign results
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="oldFundraisingCampaignVM">The original campaign record</param>
         /// <param name="newFundraisingCampaignVM">The new campaign record</param>
         int UpdateFundraisingCampaignResults(FundraisingCampaignVM oldFundraisingCampaignVM,

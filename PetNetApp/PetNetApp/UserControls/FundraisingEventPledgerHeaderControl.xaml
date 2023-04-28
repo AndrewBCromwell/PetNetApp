@@ -16,8 +16,9 @@
                 <StackPanel Orientation="Horizontal" Margin="20 0" VerticalAlignment="Center" Grid.Column="0" >
                     <Label MinWidth="150">Given Name</Label>
                     <Label MinWidth="150">Family Name</Label>
-                    <Label MinWidth="150">Pledge Amount</Label>
-                    <Label MinWidth="150">Donation Amount</Label>
+                    <Label MinWidth="170">Pledge Amount</Label>
+                    <Label MinWidth="155">Donation Amount</Label>
+                    <Label MinHeight="150">Date</Label>
                 </StackPanel>
             </Grid>
         </Border>

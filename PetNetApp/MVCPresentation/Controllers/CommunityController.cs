@@ -731,7 +731,16 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// 2023/04/13
+        /// 
+        /// Sets a posts visibility to false
+        /// </summary>
+        /// <param name="id">post id</param>
+        /// <returns></returns>
         // GET: Community/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id != null)
@@ -740,6 +749,32 @@ namespace MVCPresentation.Controllers
                 try
                 {
                     post = masterManager.PostManager.RetrieveActivePosts().Find(p => p.PostId == id);
+                    if (post == null)
+                    {
+                        ViewBag.Message = "That post doesn't exist";
+                        return View("Error");
+                    }
+
+                    if (post.PostVisibility == false)
+                    {
+                        ViewBag.Message = "That post has been deleted";
+                    }
+
+                    if (GetLoggedInUser().UsersId == post.PostAuthor || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    {
+                        if (GetLoggedInUser().UsersId != post.PostAuthor && !User.IsInRole("Admin") && !User.IsInRole("Moderator"))
+                        {
+                            ViewBag.Message = "You can't delete a post you didn't make";
+                            return View("Error");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Only admins can delete messages from others";
+                        return View("Error");
+                    }
+
+
                 }
                 catch (Exception ex)
                 {
@@ -755,6 +790,14 @@ namespace MVCPresentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Matthew Meppelink
+        /// 2023/04/13
+        /// 
+        /// Sets a posts visibility to false
+        /// </summary>
+        /// <param name="id">post id</param>
+        /// <returns></returns>
         // POST: Community/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -767,7 +810,122 @@ namespace MVCPresentation.Controllers
                             First(p => p.PostId == id);
                     Post newPost = masterManager.PostManager.RetrieveActivePosts().
                             First(p => p.PostId == id);
+
+                    if (GetLoggedInUser().UsersId == oldPost.PostAuthor || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    {
+                        if (GetLoggedInUser().UsersId != oldPost.PostAuthor && !User.IsInRole("Admin") && !User.IsInRole("Moderator"))
+                        {
+                            ViewBag.Message = "You can't delete a post you didn't make";
+                            return View("Error");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Only admins can delete messages from others";
+                        return View("Error");
+                    }
+
                     newPost.PostVisibility = false;
+                    masterManager.PostManager.EditPostVisibility(newPost.PostId, newPost.PostVisibility, oldPost.PostVisibility);
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = ex.Message;
+                    return View("Error");
+                }
+            else
+            {
+                ViewBag.Message = "You need to specify a post to delete";
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// 2023/04/13
+        /// 
+        /// Sets a posts visibility to false
+        /// </summary>
+        /// <param name="id">post id</param>
+        /// <returns></returns>
+        // GET: Community/Delete/5
+        [Authorize]
+        public ActionResult ReinstatePost(int? id)
+        {
+            if (id != null)
+            {
+                Post post = new Post();
+                try
+                {
+                    post = masterManager.PostManager.RetrievePostByPostId((int)id);
+                    if (post.PostVisibility == true)
+                    {
+                        ViewBag.Message = "This post is already active";
+                        return View("Error");
+                    }
+
+                    if (GetLoggedInUser().UsersId == post.PostAuthor || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    {
+                        if (GetLoggedInUser().UsersId != post.PostAuthor && !User.IsInRole("Admin") && User.IsInRole("Moderator"))
+                        {
+                            ViewBag.Message = "You can't reinstate a post you didn't make";
+                            return View("Error");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Only admins can reinstate messages from others";
+                        return View("Error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message + ex.InnerException;
+                    return View("Error");
+                }
+                return View(post);
+            }
+            else
+            {
+                ViewBag.Message = "You need to specify a post to view";
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Matthew Meppelink
+        /// 2023/04/13
+        /// 
+        /// Sets a posts visibility to false
+        /// </summary>
+        /// <param name="id">post id</param>
+        /// <returns></returns>
+        // POST: Community/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ReinstatePost(int? id, FormCollection collection)
+        {
+            if (id != null)
+                try
+                {
+                    Post oldPost = masterManager.PostManager.RetrievePostByPostId((int)id);
+                    Post newPost = masterManager.PostManager.RetrievePostByPostId((int)id);
+                    newPost.PostVisibility = true;
+                    if (GetLoggedInUser().UsersId == oldPost.PostAuthor || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    {
+                        if (GetLoggedInUser().UsersId != oldPost.PostAuthor && !User.IsInRole("Admin") && User.IsInRole("Moderator"))
+                        {
+                            ViewBag.Message = "You can't reinstate a post you didn't make";
+                            return View("Error");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Only admins can reinstate messages from others";
+                        return View("Error");
+                    }
                     masterManager.PostManager.EditPostVisibility(newPost.PostId, newPost.PostVisibility, oldPost.PostVisibility);
 
                     return RedirectToAction("Index");

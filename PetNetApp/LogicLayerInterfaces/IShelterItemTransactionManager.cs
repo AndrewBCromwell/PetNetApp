@@ -32,6 +32,7 @@ namespace LogicLayerInterfaces
 		/// Adds an Item Transaction
 		/// </summary>
 		/// <param name="transaction"></param>
+		/// <exception cref="ApplicationException">If no row was inserted</exception>
 		/// <returns>True or false if row was added</returns>
 		bool AddItemTransaction(ShelterItemTransaction transaction);
 	}

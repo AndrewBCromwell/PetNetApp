@@ -75,7 +75,7 @@
 
                     @if (!item.PostVisibility && (ViewBag.HasAdminRole || ViewBag.HasModeratorRole))
                     {
-                        @Html.ActionLink("Reinstate Post", "Reinstate", new { id = item.PostId }, new { @class = "report-button" });
+                        @Html.ActionLink("Reinstate Post", "ReinstatePost", new { id = item.PostId }, new { @class = "report-button" });
                     }
                     @if (User.Identity.IsAuthenticated)
                     {

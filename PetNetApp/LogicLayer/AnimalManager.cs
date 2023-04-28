@@ -173,7 +173,7 @@ namespace LogicLayer
                 throw new ApplicationException("Animal medical profile not found", ex);
             }
         }
-        public AnimalVM RetriveAnimalAdoptableProfile(int animalId)
+        public AnimalVM RetrieveAnimalAdoptableProfile(int animalId)
         {
             AnimalVM animalVM;
 
@@ -189,7 +189,7 @@ namespace LogicLayer
             return animalVM;
         }
 
-        public List<AnimalVM> RetriveAdoptedAnimalByUserId(int userId)
+        public List<AnimalVM> RetrieveAdoptedAnimalByUserId(int userId)
         {
             List<AnimalVM> animals;
 
@@ -206,7 +206,7 @@ namespace LogicLayer
             return animals;
         }
 
-        public FosterPlacementRecord RetriveFosterPlacementRecordNotes(int animalId)
+        public FosterPlacementRecord RetrieveFosterPlacementRecordNotes(int animalId)
         {
             FosterPlacementRecord fosterPlacementRecord;
 

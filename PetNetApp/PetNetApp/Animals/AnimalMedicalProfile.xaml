@@ -16,7 +16,8 @@
         </Grid.RowDefinitions>
         <Label x:Name="lblProfileName" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" FontSize="35" FontWeight="Bold">Medical Profile</Label>
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 0 20 10">
-            <Button x:Name="btnSave" Height="45" Width="85">Save</Button>
+            <Button x:Name="btnDeath" Height="45" Width="85" Margin="20 0 20 0" Style="{StaticResource ResourceKey=rsrcWarningButton}" Click="btnDeath_Click">Death</Button>
+            <Button x:Name="btnSave" Height="45" Width="85" Margin="20 0 20 0">Save</Button>
             <Button x:Name="btnEdit" Height="45" Width="85" Margin="20 0 20 0">Edit</Button>
         </StackPanel>
         <ScrollViewer Grid.Row="1">
@@ -90,7 +91,7 @@
                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center">No image available</Label>
                     <Image x:Name="imgMedAnimal" Grid.Row="2" Grid.ColumnSpan="2" Margin="25" MaxHeight="300" HorizontalAlignment="Center" />
                     <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                        <Label FontWeight="Bold" FontSize="25">Medicine Schedule</Label>
+                        <Button x:Name="btnAddPrescriptions" Click="btnAddPrescriptions_Click" FontWeight="Bold" FontSize="25" Height="50"  >Prescriptions</Button>
                         <Image  Height="23" Width="34" Source="/WpfPresentation;component/Images/libraryplus_dark.png" ></Image>
                     </StackPanel>
                 </Grid>
