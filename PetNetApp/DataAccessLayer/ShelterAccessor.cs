@@ -16,6 +16,10 @@
 /// Added a Trim() method to  data access methods that retrieve shelter zipcodes from the database.
 /// Specifically RetrieveShelterList() and SelectShelterVMByShelterID(int shelterID)
 /// This should prevent the display of trailing whitespace in shelter Zip Code fields.
+/// 
+/// Brian Collum
+/// Updated: 2023/04/28
+/// Fixed UpdateZipCodeByShelterID
 /// </remarks>
 
 using System;
@@ -480,11 +484,11 @@ namespace DataAccessLayer
             cmd.CommandType = CommandType.StoredProcedure;
             // Parameters
             cmd.Parameters.Add("ShelterId", SqlDbType.Int);
-            cmd.Parameters.Add("oldZipcode", SqlDbType.NVarChar, 50);
-            cmd.Parameters.Add("newZipcode", SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("oldZipcode", SqlDbType.Char, 9);
+            cmd.Parameters.Add("newZipcode", SqlDbType.Char, 9);
             cmd.Parameters["ShelterId"].Value = shelterID;
             cmd.Parameters["oldZipcode"].Value = oldZipCode;
-            cmd.Parameters["newZipcode"].Value = oldZipCode;
+            cmd.Parameters["newZipcode"].Value = newZipcode;
             try
             {
                 conn.Open();
