@@ -205,7 +205,7 @@ namespace WpfPresentation.Events
         {
             try
             {
-                lblTitle.Content = "Volunteer List for " + _masterManager.FundraisingCampaignManager.RetrieveFundraisingCampaignByFundraisingCampaignId(_eventId).Title;
+                lblTitle.Content = "Volunteer List for " + _masterManager.FundraisingEventManager.RetrieveFundraisingEventByFundraisingEventId(_eventId).Title;
             }
             catch (Exception ex)
             {
