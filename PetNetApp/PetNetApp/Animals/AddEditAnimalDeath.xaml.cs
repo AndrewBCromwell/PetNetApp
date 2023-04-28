@@ -117,6 +117,10 @@ namespace WpfPresentation.Animals
         {
             try
             {
+                if (date_DOD.SelectedDate == null)
+                {
+                    throw new ApplicationException("Death Date cannot be empty.");
+                }
                 _death.DeathDate = date_DOD.SelectedDate.Value;
                 _death.DeathCause = txt_Cause.Text;
                 _death.DeathNotes = txt_Notes.Text;
