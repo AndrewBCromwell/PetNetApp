@@ -44,7 +44,7 @@ namespace WpfPresentation.Shelters
         {
             InitializeComponent();
             _manager = manager;
-            _shelterTabButtons = new Button[] { btnShelter, btnRescue, btnAnimalControl, btnShelterNetwork };
+            _shelterTabButtons = new Button[] { btnShelter, btnShelterNetwork };
         }
 
         public static ShelterPage GetShelterPage(MasterManager manager)
@@ -68,8 +68,6 @@ namespace WpfPresentation.Shelters
         {
             HideAllButtons();
             ShowShelterButtonByRole();
-            ShowRescueButtonByRole();
-            ShowAnimalControlButtonByRole();
             ShowShelterNetworkButtonByRole();
         }
         public void ShowShelterButtonByRole()
@@ -78,22 +76,6 @@ namespace WpfPresentation.Shelters
             if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
             {
                 btnShelter.Visibility = Visibility.Visible;
-            }
-        }
-        public void ShowRescueButtonByRole()
-        {
-            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
-            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
-            {
-                btnRescue.Visibility = Visibility.Visible;
-            }
-        }
-        public void ShowAnimalControlButtonByRole()
-        {
-            string[] allowedRoles = { "Admin", "Manager", "Maintenance" };
-            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
-            {
-                btnAnimalControl.Visibility = Visibility.Visible;
             }
         }
 
@@ -130,20 +112,6 @@ namespace WpfPresentation.Shelters
             ChangeSelectedButton((Button)sender);
             // frameShelter.Navigate(ShelterAddEditDelete.GetShelterAddEditDelete(_manager));
             frameShelter.Navigate(ShelterVMListUI.GetShelterVMListUI(_manager));
-        }
-
-        private void btnRescue_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameShelter.Navigate(null);
-        }
-
-        private void btnAnimalControl_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameShelter.Navigate(null);
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

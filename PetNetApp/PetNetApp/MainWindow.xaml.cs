@@ -54,6 +54,7 @@ namespace PetNetApp
                 HideAllButtons();
                 mnuUser.Header = "Hello, Guest";
                 mnuLogout.Header = "Log In";
+                frameMain.Navigate(LandingPage.GetLandingPage(this));
             };
             _mainTabButtons = new Button[] { btnAnimals, btnCommunity, btnEvents, btnShelters, btnFundraising, btnManagement };
             if (_manager.User == null)

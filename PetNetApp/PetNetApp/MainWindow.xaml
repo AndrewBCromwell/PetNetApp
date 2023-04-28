@@ -94,7 +94,7 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="160"/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="120"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="btnPetNetLogo" Grid.Column="0" Margin="24,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#00000000" Panel.ZIndex="1" Width="200" Height="70" Click="btnPetNetLogo_Click">
                 <Button.Style>
