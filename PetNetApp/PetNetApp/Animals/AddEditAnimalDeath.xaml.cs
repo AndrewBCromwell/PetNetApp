@@ -10,7 +10,12 @@
 /// Updated: 2023/03/01
 /// Added Comments.
 /// </remarks>
-
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// FinalQA
+/// </remarks>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +49,12 @@ namespace WpfPresentation.Animals
         /// Date: 2023/04/23
         /// Description: Constructor for page AddAnimalDOD513
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="animal"></param>
         public AddAnimalDOD513(Animal animal, Kennel kennel = null)
         {
@@ -62,6 +73,17 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         private void retrieveOldDeath()
         {
             try
@@ -73,7 +95,17 @@ namespace WpfPresentation.Animals
                 PromptWindow.ShowPrompt("Error", ex.Message, ButtonMode.Ok);
             }
         }
-
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         private void populateControls()
         {
             txt_Name.Text = (_oldDeathVM.AnimalName == null || _oldDeathVM.AnimalName.Length == 0) ?
@@ -82,7 +114,17 @@ namespace WpfPresentation.Animals
             txt_AnimalID.Text = _animal.AnimalId.Equals(0) ? (_oldDeathVM.AnimalId.Equals(0) ? "UNKNOWN" : _oldDeathVM.AnimalId.ToString()) :
                                 _animal.AnimalId.ToString();
         }
-
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         private void setEditMode()
         {
             // _death = _oldDeathVM; // just creates a pointer instead of a new DeathVM
@@ -111,6 +153,12 @@ namespace WpfPresentation.Animals
         /// Date: 2023/04/23
         /// Description: Adds a new record to the DB or Edits an existing one.
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_Save_Click(object sender, RoutedEventArgs e)
@@ -221,6 +269,12 @@ namespace WpfPresentation.Animals
         /// Date: 2023/04/23
         /// Description: Cancels the Add/Edit and returns from the page.
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)

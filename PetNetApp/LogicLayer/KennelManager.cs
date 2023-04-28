@@ -178,7 +178,6 @@ namespace LogicLayer
             }
         }
 
-        // Created By: Asa Armstrong
         public bool RemoveAnimalKennelingByKennelIdAndAnimalId(int kennelId, int animalId)
         {
             try

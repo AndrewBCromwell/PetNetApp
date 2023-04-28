@@ -194,6 +194,12 @@ namespace WpfPresentation.Animals
         /// Date: 2023/04/26
         /// Description: Navigates to AddEditAnimalDeath page
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// FinalQA
+        /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnDeath_Click(object sender, RoutedEventArgs e)
