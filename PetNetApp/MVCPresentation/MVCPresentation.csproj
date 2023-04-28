@@ -208,7 +208,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AdoptableAnimalModel.cs" />
+    <Compile Include="Models\AnimalViewModels.cs" />
+    <Compile Include="Models\DonationViewModels.cs" />
     <Compile Include="Models\FundraisingViewModels.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -682,6 +683,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Donations\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Donate\" />
     <Folder Include="Views\Events\" />

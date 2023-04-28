@@ -97,5 +97,24 @@ namespace WpfPresentation.UserControls
             // added by Asa Armstrong
             NavigationService.GetNavigationService(this).Navigate(new EnterDonation(FundraisingEvent.FundraisingEventId));
         }
+
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/04/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuVolunteer_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(Events.VolunteerListPage.GetVolunteerListPage(FundraisingEvent.FundraisingEventId));
+        }
     }
 }

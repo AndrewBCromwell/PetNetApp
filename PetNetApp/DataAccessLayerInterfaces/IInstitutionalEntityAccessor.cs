@@ -28,6 +28,12 @@ namespace DataAccessLayerInterfaces
         /// 
         /// Gets a list of all the institutional entities that are sponsors for the fundraising campaign
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="fundraisingCampaignId">Id of the campaign</param>
         /// <returns></returns>
         List<InstitutionalEntity> SelectFundraisingSponsorsByCampaignId(int fundraisingCampaignId);

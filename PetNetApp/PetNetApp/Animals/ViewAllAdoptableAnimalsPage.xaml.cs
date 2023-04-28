@@ -42,7 +42,7 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/04/12
         /// 
-        /// Public constructor for ViewAllAdoptableAnimalsPage
+        /// Private constructor for ViewAllAdoptableAnimalsPage
         /// </summary>
         ///
         ///  <remarks>
@@ -68,6 +68,7 @@ namespace WpfPresentation.Animals
         /// Updated: 2023/04/21
         /// Final QA
         /// </remarks>
+        /// <returns>ViewAllAdoptableAnimalsPage</returns>
         public static ViewAllAdoptableAnimalsPage GetViewAllAdoptableAnimalsPage()
         {
             if (_existingViewAllAdoptableAnimalsPage == null)
@@ -97,7 +98,7 @@ namespace WpfPresentation.Animals
         /// Updated: 2023/04/25
         /// Final QA
         /// </remarks>
-        /// /// <param name="sender"></param>
+        /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

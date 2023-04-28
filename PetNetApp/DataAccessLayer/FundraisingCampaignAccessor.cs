@@ -1,4 +1,15 @@
-﻿using System;
+﻿/// <summary>
+/// Author: Stephen Jaurigue
+/// Date: 2023/04/21
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;

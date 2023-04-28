@@ -4,11 +4,11 @@
 /// 
 /// Contains interfaces for Instutional Entity functions
 /// </summary>
-///
 /// <remarks>
-/// Updater
-/// Updated: 
-/// Comment:
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
 /// </remarks>
 using System;
 using System.Collections.Generic;
@@ -27,6 +27,12 @@ namespace LogicLayerInterfaces
         /// 
         /// Uses the Accessor method to retrieve Sponsors for the campaign and rewraps exceptions
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="campaignId"></param>
         /// <returns></returns>
         List<InstitutionalEntity> RetrieveFundraisingSponsorsByCampaignId(int campaignId);

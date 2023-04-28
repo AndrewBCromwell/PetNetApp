@@ -33,7 +33,7 @@ namespace WpfPresentation.Fundraising
 
 
         /// <summary>
-        /// Used for add entity
+        /// Default constructor for AddEditInstitutionalEnity
         /// </summary>
         /// <param name="entityType">sets the type of institutional being added</param>
         public AddEditInstitutionalEntity(string entityType)
@@ -284,6 +284,8 @@ namespace WpfPresentation.Fundraising
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             _windowMode = WindowMode2.Edit;
@@ -303,9 +305,12 @@ namespace WpfPresentation.Fundraising
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            validateEntityOnSave();
+            ValidateEntityOnSave();
         }
 
         /// <summary>
@@ -319,7 +324,8 @@ namespace WpfPresentation.Fundraising
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
-        private void validateEntityOnSave()
+        /// </remarks>
+        private void ValidateEntityOnSave()
         {
             if (tbGivenName.Text == "" || tbFamilyName.Text == "" || tbEmail.Text == "" || tbPhone.Text == ""
                 || tbAddress.Text == "" || tbZipcode.Text == "")
@@ -511,13 +517,16 @@ namespace WpfPresentation.Fundraising
         /// Andrew Schneider
         /// Created: 2023/03/10
         /// 
-        /// Method with try/catch to save a new institutional entity record
+        /// Method with try/catch to save a new institutional entity record. Prompt window inserts
+        /// contact type into success prompt window.
         /// </summary>
         ///
         /// <remarks>
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="newInstitutionalEntity">The Institutional Entity to be saved</param>
         private void SaveNewEntity(InstitutionalEntity newInstitutionalEntity)
         {
             try
@@ -547,6 +556,8 @@ namespace WpfPresentation.Fundraising
         /// Updater Name
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
+        /// </remarks>
+        /// <param name="newInstitutionalEntity">The updated Institutional Entity</param>
         private void UpdateEntity(InstitutionalEntity newInstitutionalEntity)
         {
             try
