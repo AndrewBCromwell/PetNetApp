@@ -54,6 +54,7 @@ namespace WpfPresentation.Fundraising
         /// Updated: 2023/04/21 
         /// Moved Page_Loaded functionality into its own method - populatePage() so that
         /// it can be called when the page loads and when a filter/sort has been applied.
+        /// 
         /// Zaid Rachman
         /// Updated: 2023/04/27
         /// Final QA
@@ -96,6 +97,7 @@ namespace WpfPresentation.Fundraising
         /// Updated: 2023/04/21 
         /// Moved some Page_Loaded functionality into its own method, populatePage(), so that
         /// it can be called when the page loads and when a filter/sort has been applied.
+        /// 
         /// Zaid Rachman
         /// Updated: 2023/04/27
         /// Final QA
@@ -140,6 +142,7 @@ namespace WpfPresentation.Fundraising
         /// Andrew Schneider
         /// Updated: 2023/04/22
         /// Added navigation to the catch
+        /// 
         /// Zaid Rachman
         /// Updated: 2023/04/27
         /// Final QA
