@@ -43,6 +43,15 @@ namespace MVCPresentation.Controllers
                 try
                 {
                     // Logic to add donation to the database
+                    try
+                    {
+                        _masterManager.DonationManager.AddDonation(donation);
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.Message = ex.Message + "<br/><br/>" + ex.InnerException.Message;
+                        return View("Error");
+                    }
 
                     return RedirectToAction("Index");
                 }
