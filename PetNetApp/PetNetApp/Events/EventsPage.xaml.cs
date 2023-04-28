@@ -41,7 +41,7 @@ namespace WpfPresentation.Events
         public EventsPage()
         {
             InitializeComponent();
-            _eventsTabButtons = new Button[] { btnEvents, btnCreateEvents, btnEventHistory, btnEventResults };
+            _eventsTabButtons = new Button[] { btnEvents, btnCreateEvents, btnEventResults };
         }
         /// <summary>
         /// Oleksiy Fedchuk
@@ -147,23 +147,13 @@ namespace WpfPresentation.Events
         private void btnEvents_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with events list
-            //frameEvents.Navigate(new VolunteerListPage());
             frameEvents.Navigate(new ViewEvents(_manager));
         }
 
         private void btnCreateEvents_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
             frameEvents.Navigate(new AddFundraisingEvent());
-        }
-
-        private void btnEventHistory_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton((Button)sender);
-            // replace with page name and then delete comment
-            frameEvents.Navigate(null);
         }
 
         private void btnEventResults_Click(object sender, RoutedEventArgs e)

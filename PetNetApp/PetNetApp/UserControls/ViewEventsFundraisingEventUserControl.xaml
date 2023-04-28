@@ -54,14 +54,14 @@
                             </Setter>
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/WpfPresentation;component/Development/Images/menudark.png"/>
+                                    <ImageBrush ImageSource="/WpfPresentation;component/Images/menudark.png"/>
                                 </Setter.Value>
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background">
                                         <Setter.Value>
-                                            <ImageBrush ImageSource="/WpfPresentation;component/Development/Images/menulight.png" />
+                                            <ImageBrush ImageSource="/WpfPresentation;component/Images/menulight.png" />
                                         </Setter.Value>
                                     </Setter>
                                 </Trigger>

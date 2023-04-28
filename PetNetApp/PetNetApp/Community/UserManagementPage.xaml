@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfPresentation.Development.Community"
+      xmlns:local="clr-namespace:WpfPresentation.Community"
       xmlns:uc="clr-namespace:WpfPresentation.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="700"
@@ -22,8 +22,6 @@
                 <ColumnDefinition Width="180"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="btnAddUser" Content="+ | Add User" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                    Height="60" Width="150" FontSize="20" Margin="50 0 0 0"/>
             <uc:PlaceholderTextBox x:Name="txtSearchUserName" Grid.Column="1" Height="60" 
                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center" DefaultText="Search" FontSize="22"/>
             <ComboBox Name="cmbFilterUsers" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="160"

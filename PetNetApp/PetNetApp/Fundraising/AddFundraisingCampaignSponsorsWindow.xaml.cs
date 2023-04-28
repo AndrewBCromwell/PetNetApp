@@ -17,7 +17,6 @@ using WpfPresentation.UserControls;
 
 namespace WpfPresentation.Fundraising
 {
-    /// please remove this page before moving the other version of it from Development
 
     /// <summary>
     /// Interaction logic for AddFundraisingCampaignSponsorsWindow.xaml
@@ -29,6 +28,7 @@ namespace WpfPresentation.Fundraising
         private List<InstitutionalEntity> _addedSponsors = new List<InstitutionalEntity>();
         private MasterManager _masterManager = MasterManager.GetMasterManager();
         private string _currentSearch = "";
+        private string _entityType = null;
 
 
 
@@ -59,9 +59,35 @@ namespace WpfPresentation.Fundraising
             InitializeComponent();
         }
 
+
+        public AddFundraisingCampaignSponsorsWindow(List<InstitutionalEntity> currentSponsors, string entityType)
+        {
+            DataContext = this;
+            _currentSponsors = currentSponsors;
+            _entityType = entityType;
+            try
+            {
+                _allSponsors = _masterManager.InstitutionalEntityManager.RetrieveAllInstitutionalEntitiesByShelterIdAndEntityType((int)_masterManager.User.ShelterId, entityType);
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", ex.Message);
+                _allSponsors = new List<InstitutionalEntity>();
+            }
+            InitializeComponent();
+
+        }
+
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ClearAndPopulateAddInstitutionalEntities();
+            if (_entityType != null)
+            {
+                lblTitle.Content = "Add Event " + _entityType;
+                ptbSearchText.DefaultText = "Search " + _entityType;
+                btnNewSponsor.Content = "Add New " + _entityType;
+            }
             CloseSelectedInstitutionalEntity();
         }
 
@@ -106,7 +132,7 @@ namespace WpfPresentation.Fundraising
 
         private void btnNewSponsor_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Not implimented");
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)

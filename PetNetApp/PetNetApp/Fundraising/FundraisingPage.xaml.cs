@@ -75,7 +75,7 @@ namespace WpfPresentation.Fundraising
         /// Date: 2023/04/21
         /// </summary>
         /// <param name="selectedButton"></param>
-        private void ChangeSelectedButton(Button selectedButton)
+        public void ChangeSelectedButton(Button selectedButton)
         {
             UnselectAllButtons();
             selectedButton.Style = (Style)Application.Current.Resources["rsrcSelectedButton"];
@@ -324,7 +324,7 @@ namespace WpfPresentation.Fundraising
         {
             ChangeSelectedButton((Button)sender);
             // replace with page name and then delete comment
-            frameFundraising.Navigate(WpfPresentation.Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
+            frameFundraising.Navigate(WpfPresentation.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
 
         private void btnViewSponsors_Click(object sender, RoutedEventArgs e)

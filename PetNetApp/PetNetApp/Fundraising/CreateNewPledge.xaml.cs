@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
-using WpfPresentation.Development.Fundraising;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.Fundraising
 {

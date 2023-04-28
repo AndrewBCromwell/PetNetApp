@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
-using WpfPresentation.Development.Fundraising;
 using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.UserControls

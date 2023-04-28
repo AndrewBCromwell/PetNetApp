@@ -25,7 +25,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
-using WpfPresentation.Development.Fundraising;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.UserControls
 {
@@ -93,7 +93,7 @@ namespace WpfPresentation.UserControls
         /// <param name="e"></param>
         private void menuEdit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetEditFundraisingCampaignPage(FundraisingCampaign));
+            NavigationService.GetNavigationService(this).Navigate(AddEditViewFundraisingCampaignPage.GetEditFundraisingCampaignPage(FundraisingCampaign));
         }
         /// <summary>
         /// Stephen Jaurigue
@@ -110,7 +110,7 @@ namespace WpfPresentation.UserControls
         /// <param name="e"></param>
         private void menuView_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetViewFundraisingCampaignPage(FundraisingCampaign));
+            NavigationService.GetNavigationService(this).Navigate(AddEditViewFundraisingCampaignPage.GetViewFundraisingCampaignPage(FundraisingCampaign));
         }
         /// <summary>
         /// Stephen Jaurigue

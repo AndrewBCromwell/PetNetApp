@@ -39,7 +39,7 @@ namespace WpfPresentation.Community
         public CommunityPage()
         {
             InitializeComponent();
-            _communityTabButtons = new Button[] { btnAbout, btnForum, btnUsers, btnResources };
+            _communityTabButtons = new Button[] { btnUsers, btnResources };
         }
         public static CommunityPage GetCommunityPage()
         {
@@ -65,13 +65,6 @@ namespace WpfPresentation.Community
             }
         }
 
-        private void btnForum_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton(btnForum);
-            // replace with page name and then delete comment
-            frameCommunity.Navigate(null);
-        }
-
         private void btnUsers_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnUsers);
@@ -83,13 +76,6 @@ namespace WpfPresentation.Community
         {
             ChangeSelectedButton((Button)sender);
             frameCommunity.Navigate(new Resources());
-        }
-
-        private void btnAbout_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton(btnAbout);
-            // replace with page name and then delete comment
-            frameCommunity.Navigate(null);
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -151,26 +137,8 @@ namespace WpfPresentation.Community
         public void ShowButtonsByRole()
         {
             HideAllButtons();
-            ShowAboutButtonByRole();
-            ShowForumButtonByRole();
             ShowUsersButtonByRole();
             ShowResourcesButtonByRole();
-        }
-        public void ShowAboutButtonByRole()
-        {
-            //string[] allowedRoles = { "Admin", "Manager", "Volunteer", "Employee", "Maintenance" };
-            //if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
-            //{
-                btnAbout.Visibility = Visibility.Visible;
-            //}
-        }
-        public void ShowForumButtonByRole()
-        {
-            string[] allowedRoles = { "Admin", "Manager", "Helpdesk", "Moderator" };
-            if (_manager.User.Roles.Exists(role => allowedRoles.Contains(role)))
-            {
-                btnForum.Visibility = Visibility.Visible;
-            }
         }
         public void ShowUsersButtonByRole()
         {

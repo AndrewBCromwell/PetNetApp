@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 using WpfPresentation.Animals;
 using WpfPresentation.Management;
 
-namespace WpfPresentation.Development.Management
+namespace WpfPresentation.Management
 {
     /// <summary>
     /// Interaction logic for AssignAnimalToKennel.xaml

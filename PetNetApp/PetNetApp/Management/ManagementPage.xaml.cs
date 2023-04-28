@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogicLayer;
-using WpfPresentation.Development.Management;
+using WpfPresentation.Management;
 using WpfPresentation.Management.Inventory;
 using WpfPresentation.Management.Inventory.Library;
 

@@ -197,8 +197,7 @@ namespace WpfPresentation.Management
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            // This will have to be changed when VolunteerManagement.xaml leaves the development folder.
-            NavigationService.Navigate(new Management.VolunteerManagment());
+            NavigationService.Navigate(new VolunteerManagment());
         }
 
 

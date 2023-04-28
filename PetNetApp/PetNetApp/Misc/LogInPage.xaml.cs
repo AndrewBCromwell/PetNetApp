@@ -26,7 +26,7 @@ using System.Windows.Shapes;
 using LogicLayer;
 using DataObjects;
 using PetNetApp;
-using WpfPresentation.Development;
+using WpfPresentation;
 
 namespace WpfPresentation.Misc
 {

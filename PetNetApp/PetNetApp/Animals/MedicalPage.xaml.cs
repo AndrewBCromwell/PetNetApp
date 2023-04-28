@@ -149,7 +149,7 @@ namespace WpfPresentation.Animals.Medical
             imageBorder.Margin = new Thickness(48, 42, 25, 85);
 
             Image image = new Image();
-            image.Source = new BitmapImage(new Uri("/WpfPresentation;component/Development/Images/sampleDogImage.png", UriKind.Relative)); // tempory placeholder image while the lack of an images relation to the animals table is determined
+            image.Source = new BitmapImage(new Uri("/WpfPresentation;component/Images/sampleDogImage.png", UriKind.Relative)); // tempory placeholder image while the lack of an images relation to the animals table is determined
             image.Height = 175;
             image.Width = 175;
             image.HorizontalAlignment = HorizontalAlignment.Center;

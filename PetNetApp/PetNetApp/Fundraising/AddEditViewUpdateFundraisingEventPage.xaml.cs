@@ -18,7 +18,7 @@ using WpfPresentation.Fundraising;
 using WpfPresentation.UserControls;
 using System.Text.RegularExpressions;
 
-namespace WpfPresentation.Development.Fundraising
+namespace WpfPresentation.Fundraising
 {
     /// <summary>
     /// Interaction logic for AddEditFundraisingEventPage.xaml

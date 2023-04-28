@@ -16,10 +16,8 @@
         <ScrollViewer x:Name="svCommunityPageTabs" Background="#6A9F83" Grid.Row="0" HorizontalScrollBarVisibility="Hidden" Height="40" VerticalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" ScrollChanged="svCommunityPageTabs_ScrollChanged">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                 <Rectangle Width="25"/>
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Forum" x:Name="btnForum" Click="btnForum_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Users" x:Name="btnUsers" Click="btnUsers_Click"/>
                 <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="Resources" x:Name="btnResources" Click="btnResources_Click" />
-                <Button Margin="1 1 1 0" Padding="10 5" MinWidth="100" Height="35" Style="{StaticResource ResourceKey=rsrcUnselectedButton}" Content="About" x:Name="btnAbout" Click="btnAbout_Click" />
                 <Rectangle Width="25"/>
             </StackPanel>
         </ScrollViewer>

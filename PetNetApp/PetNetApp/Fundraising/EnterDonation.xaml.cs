@@ -204,7 +204,7 @@ namespace WpfPresentation.Fundraising
         {
             if (Donation.FundraisingEventId != null)
             {
-                NavigationService.Navigate(WpfPresentation.Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
+                NavigationService.Navigate(WpfPresentation.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
             }
             else if (Donation.ScheduledDonationId != null)
             {

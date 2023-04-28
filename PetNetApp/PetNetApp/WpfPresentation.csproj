@@ -167,6 +167,12 @@
     <Compile Include="Community\RoleManagementPopup.xaml.cs">
       <DependentUpon>RoleManagementPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
+      <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fundraising\ViewFundraisingEventsPage.xaml.cs">
+      <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\Inventory\CheckInCheckOutPage.xaml.cs">
       <DependentUpon>CheckInCheckOutPage.xaml</DependentUpon>
     </Compile>
@@ -175,9 +181,6 @@
     </Compile>
     <Compile Include="Management\Inventory\Library\RequestNewLibraryItem.xaml.cs">
       <DependentUpon>RequestNewLibraryItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Events\ViewEventGraphsPage.xaml.cs">
-      <DependentUpon>ViewEventGraphsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\ViewEventGraphsPage.xaml.cs">
       <DependentUpon>ViewEventGraphsPage.xaml</DependentUpon>
@@ -193,12 +196,6 @@
     </Compile>
     <Compile Include="Animals\ViewAllAdoptableAnimalsPage.xaml.cs">
       <DependentUpon>ViewAllAdoptableAnimalsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
-      <DependentUpon>AddEditViewFundraisingCampaignPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml.cs">
-      <DependentUpon>AddEditViewUpdateFundraisingEventPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\EditEventPage.xaml.cs">
       <DependentUpon>EditEventPage.xaml</DependentUpon>
@@ -230,17 +227,11 @@
     <Compile Include="Fundraising\UpdateFundraisingCampaign.xaml.cs">
       <DependentUpon>UpdateFundraisingCampaign.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Fundraising\ViewFundraisingEventsPage.xaml.cs">
-      <DependentUpon>ViewFundraisingEventsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Fundraising\DonorInfoPage.xaml.cs">
       <DependentUpon>DonorInfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\ViewFundraisingEventContacts.xaml.cs">
       <DependentUpon>ViewFundraisingEventContacts.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Management\Inventory\Library\LibraryUI.xaml.cs">
-      <DependentUpon>LibraryUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
@@ -399,9 +390,6 @@
     <Compile Include="Events\EditFundraisingEvent2.xaml.cs">
       <DependentUpon>EditFundraisingEvent2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Events\EventsPage.xaml.cs">
-      <DependentUpon>EventsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Events\SponsorListWindow.xaml.cs">
       <DependentUpon>SponsorListWindow.xaml</DependentUpon>
     </Compile>
@@ -429,17 +417,11 @@
     <Compile Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml.cs">
       <DependentUpon>AddEditViewFundraisingCampaignPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Fundraising\AddFundraisingCampaignSponsorsWindow.xaml.cs">
-      <DependentUpon>AddFundraisingCampaignSponsorsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Community\UCAdoptedAnimal.xaml.cs">
       <DependentUpon>UCAdoptedAnimal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Community\ViewUpdateFromFosterProfile.xaml.cs">
       <DependentUpon>ViewUpdateFromFosterProfile.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Fundraising\FundraisingPage.xaml.cs">
-      <DependentUpon>FundraisingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fundraising\ViewCampaignsPage.xaml.cs">
       <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
@@ -486,9 +468,6 @@
     <Compile Include="UserControls\ViewCampaignsFundraisingCampaignUserControl.xaml.cs">
       <DependentUpon>ViewCampaignsFundraisingCampaignUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml.cs">
-      <DependentUpon>ViewInventoryChangesPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Fundraising\FundraisingPage.xaml.cs">
       <DependentUpon>FundraisingPage.xaml</DependentUpon>
     </Compile>
@@ -513,9 +492,6 @@
     <Compile Include="UserControls\PlaceholderTextBox.cs" />
     <Compile Include="Animals\ViewAdoptableAnimalProfile.xaml.cs">
       <DependentUpon>ViewAdoptableAnimalProfile.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Fundraising\ViewCampaignsPage.xaml.cs">
-      <DependentUpon>ViewCampaignsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
@@ -580,15 +556,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Development\Shelters\AlterShelter.xaml.cs">
-      <DependentUpon>AlterShelter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Shelters\ShelterPage.xaml.cs">
-      <DependentUpon>ShelterPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Shelters\ShelterVMListUI.xaml.cs">
-      <DependentUpon>ShelterVMListUI.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Management\AddEditSchedule.xaml.cs">
       <DependentUpon>AddEditSchedule.xaml</DependentUpon>
     </Compile>
@@ -624,6 +591,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fundraising\ViewFundraisingEventsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Management\Inventory\CheckInCheckOutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -633,10 +608,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Inventory\Library\RequestNewLibraryItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Events\ViewEventGraphsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -656,17 +627,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Fundraising\AddEditViewFundraisingCampaignPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Animals\ViewAllAdoptableAnimalsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Fundraising\AddEditViewUpdateFundraisingEventPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Events\EditEventPage.xaml">
       <SubType>Designer</SubType>
@@ -728,10 +691,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Development\Fundraising\ViewFundraisingEventsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Animals\MedicalRecordListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -741,10 +700,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Animals\Medical_Notes.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Management\Inventory\Library\LibraryUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -808,10 +763,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Events\EventsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Events\SponsorListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -852,14 +803,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Management\Inventory\ViewInventoryChangesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Shelters\AlterShelter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Animals\UploadAdditionalImageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -884,17 +827,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Development\Shelters\ShelterVMListUI.xaml">
-    </Page>
     <Page Include="Fundraising\ViewSpecificDonationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Fundraising\AddEditViewFundraisingCampaignPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Fundraising\AddFundraisingCampaignSponsorsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -994,10 +931,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Development\Shelters\ShelterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Animals\AnimalMedicalProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1033,10 +966,6 @@
     <Page Include="Animals\VaccinationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Fundraising\FundraisingPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Shelters\ContactPage.xaml">
       <SubType>Designer</SubType>
@@ -1114,10 +1043,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Fundraising\ViewCampaignsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Management\ViewTicketList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1146,10 +1071,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Animals\AnimalsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Animals\MedicalNavigationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1166,21 +1087,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Development\Community\CommunityPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Development\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Management\AssignAnimalToKennel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Management\ManagementPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Management\ViewAnimalsForKennel.xaml">
       <SubType>Designer</SubType>
@@ -1244,20 +1153,8 @@
     <Compile Include="Animals\AnimalListPage.xaml.cs">
       <DependentUpon>AnimalListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Development\Animals\AnimalsPage.xaml.cs">
-      <DependentUpon>AnimalsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Animals\MedicalNavigationPage.xaml.cs">
       <DependentUpon>MedicalNavigationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Community\CommunityPage.xaml.cs">
-      <DependentUpon>CommunityPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Management\ManagementPage.xaml.cs">
-      <DependentUpon>ManagementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\VolunteerManagment.xaml.cs">
       <DependentUpon>VolunteerManagment.xaml</DependentUpon>
@@ -1268,9 +1165,6 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Development\StyleShowcase.xaml.cs">
-      <DependentUpon>StyleShowcase.xaml</DependentUpon>
     </Compile>
     <Page Include="Management\ManagementPage.xaml">
       <SubType>Designer</SubType>
@@ -1333,10 +1227,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\AnimalListUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\StyleShowcase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1412,10 +1302,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Development\Donations\" />
-    <Folder Include="Development\Misc\" />
-    <Folder Include="Donate\" />
-    <Folder Include="Donations\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
@@ -1479,111 +1365,12 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Development\Images\abstract-user-flat-4.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\bell.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\bell_hover.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\bell_notification.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\bell_notification_hover.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\LeftArrow.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\LeftArrow_Hover.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\menuIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\menuIcon_hover.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\petnetLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\RightArrow.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\RightArrow_Hover.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\user_hover.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\pharmacy_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\notes_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\needle_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\clipboard_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\beaker_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\ambulance_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\libraryplus_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\arrow_left3_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\PlusIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\AnimalImage.png" />
     <Resource Include="Images\threedots.png" />
     <Resource Include="Images\usericondark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\threedots.png" />
-    <Resource Include="Development\Images\usericondark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\sampleDogImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\txtSearch.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ambulance_dark.png" />
@@ -1610,15 +1397,7 @@
     <Resource Include="Images\pharmacy_dark.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Development\Images\perfectCAT.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\perfectCAT.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\cameradark.png" />
-    <Resource Include="Development\Images\emoticonhappydark.png" />
-    <Resource Include="Development\Images\senddark.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\cameradark.png" />
@@ -1629,24 +1408,6 @@
     <Resource Include="Images\PlusIcon_light.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Development\Images\application_light.png" />
-    <Resource Include="Development\Images\cards_light.png" />
-    <Resource Include="Development\Images\download_light.png" />
-    <Resource Include="Development\Images\heart_light.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Animals\AnimalImages\dogPic1.jpg" />
-    <Resource Include="Development\Animals\AnimalImages\dogPic2.jpg" />
-    <Resource Include="Development\Animals\AnimalImages\dogPic3.jpg" />
-    <Resource Include="Development\Animals\AnimalImages\dogPic4.jpg" />
-    <Resource Include="Development\Animals\AnimalImages\dogPic5.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Animals\AnimalImages\dogPic6.jpg" />
-    <Resource Include="Development\Animals\AnimalImages\dogPic7.jpg" />
-    <Resource Include="Development\Animals\AnimalImages\dogPic8.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Animals\AnimalImages\dogPic1.jpg" />
     <Resource Include="Animals\AnimalImages\dogPic2.jpg" />
     <Resource Include="Animals\AnimalImages\dogPic3.jpg" />
@@ -1655,10 +1416,6 @@
     <Resource Include="Animals\AnimalImages\dogPic6.jpg" />
     <Resource Include="Animals\AnimalImages\dogPic7.jpg" />
     <Resource Include="Animals\AnimalImages\dogPic8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Development\Images\menudark.png" />
-    <Resource Include="Development\Images\menulight.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Placeholder\bannerImage_1.jpg" />

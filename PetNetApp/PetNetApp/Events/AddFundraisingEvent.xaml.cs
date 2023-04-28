@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.Community;
-using WpfPresentation.Development.Fundraising;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.Events
 {
@@ -240,7 +240,7 @@ namespace WpfPresentation.Events
                 == PromptSelection.Yes)
             {
                 var mainWindow = (MainWindow)MainWindow.GetWindow(this);
-                Development.Fundraising.FundraisingPage fundraisingPage = Development.Fundraising.FundraisingPage.GetFundraisingPage(_masterManager);
+                FundraisingPage fundraisingPage = FundraisingPage.GetFundraisingPage(_masterManager);
                 fundraisingPage.ChangeSelectedButton(fundraisingPage.btnEvents);
                 mainWindow.ChangeSelectedButton(mainWindow.btnFundraising);
                 mainWindow.frameMain.Navigate(fundraisingPage);

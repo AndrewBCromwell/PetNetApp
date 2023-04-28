@@ -30,7 +30,7 @@
         <TextBox x:Name="txtSearchMedicalAnimals" Grid.Column="1" Margin="0,0,15,0" HorizontalAlignment="Right" Padding="10,0,0,0" BorderBrush="#FF1C6758" BorderThickness="2" Width="256" VerticalAlignment="Center" Height="35" Cursor="IBeam" KeyDown="txtSearchMedicalAnimals_KeyDown"/>
         <Label Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,25,0" Width="25" Height="25">
             <Label.Background>
-                <ImageBrush ImageSource="/WpfPresentation;component/Development/Images/txtSearch.png"/>
+                <ImageBrush ImageSource="/WpfPresentation;component/Images/magnifydark.png"/>
             </Label.Background>
         </Label>
         <ScrollViewer Grid.Row="1" Grid.Column="1">

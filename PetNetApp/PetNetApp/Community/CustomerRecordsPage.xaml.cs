@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using WpfPresentation.Community.UsersControl;
 using LogicLayer;
 using DataObjects;
-using WpfPresentation.Development.Community;
+using WpfPresentation.Community;
 
 namespace WpfPresentation.Community
 {

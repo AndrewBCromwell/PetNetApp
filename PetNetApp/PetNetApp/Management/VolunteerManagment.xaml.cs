@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataObjects;
 using LogicLayer;
-using PetNetApp.Development;
+using PetNetApp;
 
 namespace WpfPresentation.Management
 {
@@ -92,8 +92,7 @@ namespace WpfPresentation.Management
         {
             if (datVolunteer.SelectedItem != null)
             {
-                // This needs to nagivate to VolunteerInfoPage.xaml but is within the development folder.
-                NavigationService.Navigate(new WpfPresentation.Management.VolunteerInfoPage((UsersVM)datVolunteer.SelectedItem));
+                NavigationService.Navigate(new VolunteerInfoPage((UsersVM)datVolunteer.SelectedItem));
             }
             else
             {

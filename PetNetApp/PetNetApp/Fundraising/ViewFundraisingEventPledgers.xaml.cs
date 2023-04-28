@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using DataAccessLayerFakes;
 using DataObjects;
 using LogicLayer;
-using WpfPresentation.Development.Fundraising;
+using WpfPresentation.Fundraising;
 using WpfPresentation.UserControls;
 
 namespace WpfPresentation.Fundraising

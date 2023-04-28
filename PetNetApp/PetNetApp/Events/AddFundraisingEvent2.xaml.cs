@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPresentation.Community;
 using PetNetApp;
+using WpfPresentation.Fundraising;
 
 namespace WpfPresentation.Events
 {
@@ -405,11 +406,11 @@ namespace WpfPresentation.Events
         private void NavigateToViewFundraisingEvent()
         {
             var mainWindow = (MainWindow)MainWindow.GetWindow(this);
-            Development.Fundraising.FundraisingPage fundraisingPage = Development.Fundraising.FundraisingPage.GetFundraisingPage(_masterManager);
+            FundraisingPage fundraisingPage = FundraisingPage.GetFundraisingPage(_masterManager);
             fundraisingPage.ChangeSelectedButton(fundraisingPage.btnEvents);
             mainWindow.ChangeSelectedButton(mainWindow.btnFundraising);
             mainWindow.frameMain.Navigate(fundraisingPage);
-            fundraisingPage.frameFundraising.Navigate(Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
+            fundraisingPage.frameFundraising.Navigate(ViewFundraisingEventsPage.GetViewFundraisingEvents());
         }
     }
 }

@@ -363,7 +363,7 @@ namespace WpfPresentation.Fundraising
         ///
         private void btnAddCampaign_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage());
+            NavigationService.Navigate(AddEditViewFundraisingCampaignPage.GetAddFundraisingCampaignPage());
         }
 
         /// <summary>
