@@ -29,7 +29,6 @@ namespace WpfPresentation.Fundraising
         private List<PledgeVM> _pledgeVMs = null;
         private List<PledgeVM> _filteredPledgeVMs = new List<PledgeVM>();
         private FundraisingEvent _fundraisingEvent = null;
-        //private const DateTime _minPledgeDate = 
         MasterManager _masterManager = null;
 
 
@@ -55,6 +54,12 @@ namespace WpfPresentation.Fundraising
         /// Updated: 2023/04/21 
         /// Moved Page_Loaded functionality into its own method - populatePage() so that
         /// it can be called when the page loads and when a filter/sort has been applied.
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             stackHeader.Children.Clear();
@@ -91,6 +96,9 @@ namespace WpfPresentation.Fundraising
         /// Updated: 2023/04/21 
         /// Moved some Page_Loaded functionality into its own method, populatePage(), so that
         /// it can be called when the page loads and when a filter/sort has been applied.
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="pledgeVMs">A list of pledges, full or filtered</param>
         public void PopulatePage(List<PledgeVM> pledgeVMs)
@@ -132,6 +140,10 @@ namespace WpfPresentation.Fundraising
         /// Andrew Schneider
         /// Updated: 2023/04/22
         /// Added navigation to the catch
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
+        /// </remarks>
         private void LoadPledgers()
         {
             if (_pledgeVMs == null)
@@ -162,9 +174,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         public void ResetFilters()
         {
@@ -185,9 +197,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -212,9 +224,12 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ViewFundraisingEventsPage());
@@ -233,9 +248,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -293,9 +308,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         public void FilterPledgesByDate()
         {
@@ -321,7 +336,7 @@ namespace WpfPresentation.Fundraising
 
             if (endDate < startDate)
             {
-                endDate = DateTime.MaxValue;
+                endDate = DateTime.MaxValue.AddDays(-1);
             }
 
             foreach (var pledge in _pledgeVMs)
@@ -343,9 +358,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="datePickerUsed">Boolean indicating if the date picker was used</param>
         private void FilterPledgesByPledgeAmount(bool datePickerUsed)
@@ -381,6 +396,17 @@ namespace WpfPresentation.Fundraising
                 case 9: // $1000 or Less
                     pledgeFilterAmount = 1000;
                     break;
+                case 10: // $1000 +
+                    pledgeFilterAmount = 1000;
+                    if (datePickerUsed)
+                    {
+                        _filteredPledgeVMs = _filteredPledgeVMs.Where(p => p.Amount > pledgeFilterAmount).ToList();
+                    }
+                    else
+                    {
+                        _filteredPledgeVMs = _pledgeVMs.Where(p => p.Amount > pledgeFilterAmount).ToList();
+                    }
+                    return;
                 default:
                     break;
             }
@@ -405,9 +431,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="comboBoxOrDatePickerUsed">Boolean for if combo box or date picker have been used</param>
         public void FilterPledgesByCompletionStatus(bool comboBoxOrDatePickerUsed)
@@ -437,9 +463,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="filtersUsed">Boolean indicating if any filters have been used</param>
         public void SortPledges(bool filtersUsed)
@@ -469,9 +495,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -493,9 +519,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -520,9 +546,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -548,9 +574,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -567,9 +593,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -586,9 +612,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -605,9 +631,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -624,9 +650,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -643,9 +669,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -662,9 +688,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -681,9 +707,9 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>

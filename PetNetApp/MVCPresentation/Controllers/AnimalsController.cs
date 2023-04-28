@@ -134,7 +134,7 @@ namespace MVCPresentation.Controllers
         /// Controller method for /Animals/Adoptable to view a list of adoptable animals
         /// </summary>
         /// 
-        /// /// <remarks>
+        /// <remarks>
         /// Andrew Cromwell
         /// Updated 2023/04/20
         /// 

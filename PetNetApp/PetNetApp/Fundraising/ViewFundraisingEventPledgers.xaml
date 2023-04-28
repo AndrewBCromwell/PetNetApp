@@ -75,6 +75,7 @@
                             <ComboBoxItem Content="$250 of Less"/>
                             <ComboBoxItem Content="$500 of Less"/>
                             <ComboBoxItem Content="$1000 of Less"/>
+                            <ComboBoxItem Content="$1000 +"/>
                         </ComboBox>
                         <Label x:Name="lblPledgeCompleted" Grid.Row="5" Content="Pledge Completed" Margin="26 0 0 0"
                                Foreground="#EEF2E6" FontSize="13" Padding="0 5" MouseEnter="lblPledgeCompleted_MouseEnter" MouseLeave="lblPledgeCompleted_MouseLeave" MouseDown="lblPledgeCompleted_MouseDown"/>

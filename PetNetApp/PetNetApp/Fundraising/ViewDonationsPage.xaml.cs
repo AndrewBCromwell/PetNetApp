@@ -55,7 +55,8 @@ namespace WpfPresentation.Fundraising
             "$100 or Less",
             "$250 or Less",
             "$500 or Less",
-            "$1000 or Less"
+            "$1000 or Less",
+            "$1000 +"
         };
 
         /// <summary>
@@ -417,6 +418,20 @@ namespace WpfPresentation.Fundraising
                 case "$1000 or Less":
                     donationFilterAmount = 1000;
                     break;
+                case "$1000 +":
+                    donationFilterAmount = 1000;
+                    for (int i = 0; i < donationVMs.Count; i++)
+                    {
+                        if (donationVMs[i].Amount == null)
+                        {
+                            continue;
+                        }
+                        if (donationVMs[i].Amount > donationFilterAmount)
+                        {
+                            _filteredDonationVMs.Add(donationVMs[i]);
+                        }
+                    }
+                    return;
                 default:
                     break;
             }

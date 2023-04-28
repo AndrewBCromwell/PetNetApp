@@ -166,7 +166,7 @@
     </Compile>
     <Compile Include="Management\Inventory\EditInventoryQuantityPage.xaml.cs">
       <DependentUpon>EditInventoryQuantityPage.xaml</DependentUpon>
-	 </Compile>
+    </Compile>
     <Compile Include="Management\Inventory\Library\RequestNewLibraryItem.xaml.cs">
       <DependentUpon>RequestNewLibraryItem.xaml</DependentUpon>
     </Compile>
@@ -196,9 +196,6 @@
     </Compile>
     <Compile Include="Fundraising\ViewDonationReceiptWindow.xaml.cs">
       <DependentUpon>ViewDonationReceiptWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Development\Fundraising\AddEditInstitutionalEntity.xaml.cs">
-      <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Inventory\Library\AddCategoryTagPage.xaml.cs">
       <DependentUpon>AddCategoryTagPage.xaml</DependentUpon>
@@ -257,9 +254,9 @@
     <Compile Include="Fundraising\ViewFundraisingEventSponsors.xaml.cs">
       <DependentUpon>ViewFundraisingEventSponsors.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
+    <!--<Compile Include="Fundraising\AddEditInstitutionalEntity.xaml.cs">
       <DependentUpon>AddEditInstitutionalEntity.xaml</DependentUpon>
-    </Compile>
+    </Compile>-->
     <Compile Include="Management\Inventory\AddRequestLinePage.xaml.cs">
       <DependentUpon>AddRequestLinePage.xaml</DependentUpon>
     </Compile>
@@ -859,10 +856,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Development\Fundraising\AddFundraisingCampaignSponsorsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Development\Fundraising\AddEditInstitutionalEntity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
