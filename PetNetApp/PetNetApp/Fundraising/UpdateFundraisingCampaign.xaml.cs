@@ -4,10 +4,11 @@
 /// 
 /// Interaction logic for UpdateFundraisingCampaign.xaml
 /// </summary>
-///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
 /// </remarks>
 
 using System;
@@ -40,6 +41,18 @@ namespace WpfPresentation.Fundraising
         private int _displayedTotalNumAnimalsAdopted = 0;
         private bool _campgainComplete = false;
 
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="fundraisingCampaignVM"></param>
         public UpdateFundraisingCampaign(FundraisingCampaignVM fundraisingCampaignVM)
         {
             _oldFundraisingCampaignVM = fundraisingCampaignVM;
@@ -49,7 +62,19 @@ namespace WpfPresentation.Fundraising
             _campgainComplete = _oldFundraisingCampaignVM.Complete;
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Andrew Schneider
+        /// Created: 2023/03/23
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateUI();
@@ -64,9 +89,10 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         private void UpdateUI()
         {
@@ -96,9 +122,10 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -143,9 +170,10 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -168,9 +196,10 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <returns>Bool indicating success</returns>
         private bool ValidateAndAssignInput()

@@ -64,7 +64,7 @@ namespace WpfPresentation.Events
         public VolunteerListPage()
         {
             InitializeComponent();
-            cboSort.SelectionChanged += comboChanged;
+            cboSort.SelectionChanged += ComboChanged;
         }
 
         /// <summary>
@@ -602,7 +602,7 @@ namespace WpfPresentation.Events
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void comboChanged(object sender, RoutedEventArgs e)
+        private void ComboChanged(object sender, RoutedEventArgs e)
         {
             ApplyVolunteerSort();
         }
