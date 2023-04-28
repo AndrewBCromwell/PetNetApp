@@ -13,6 +13,7 @@ namespace DataAccessLayerFakes
         public MedicalRecord oldmedicalRecord = new MedicalRecord();
         public MedicalRecord newmedicalRecord = new MedicalRecord();
         public MedicalRecord addmedicalRecord = new MedicalRecord();
+        public List<MedicalRecord> addmedicalRecords = new List<MedicalRecord>();
 
         private Dictionary<int, int> medicalRecordRepresentation = new Dictionary<int, int>()
         {
@@ -35,6 +36,11 @@ namespace DataAccessLayerFakes
 
         public MedicalRecordAccessorFakes()
         {
+            addmedicalRecords.Add(new MedicalRecord
+            {
+                MedicalNotes = "help",
+                AnimalId=2
+            });
             medicalRecords.Add(new MedicalRecordVM
             {
                 MedicalRecordId = 100000,
@@ -147,14 +153,16 @@ namespace DataAccessLayerFakes
 
         public int AddMedicalNotes(MedicalRecord medicalRecord)
         {
-            if (addmedicalRecord.AnimalId >= 100000)
-            {
-                return  1;
-            }
-            else
-            {
-                return 2;
-            }
+            int row;
+            int row2;
+            row = medicalRecords.Count;
+       
+            MedicalRecordVM m = new MedicalRecordVM();
+            m.MedicalNotes = medicalRecord.MedicalNotes;
+            medicalRecords.Add(m);
+            row2 = medicalRecords.Count - row;
+            return row2;
+            
         }
 
         public int UpdateQuarantineStatusByMedicalRecordId(int medicalRecordId, bool quarantineStatus, bool oldQuarantineStatus)

@@ -35,6 +35,7 @@ namespace LogicLayerInterfaces
         /// </remarks>
         /// <param name="test"></param>
         /// <param name="medicalRecordId"></param>
+        /// <exception cref="ApplicationException">If there is a concurrency issue and no rows where inserted</exception>
         /// <returns>True or false if row was edited</returns>
         bool AddTestByMedicalRecordId(Test test, int medicalRecordId);
 

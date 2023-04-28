@@ -40,6 +40,11 @@ namespace WpfPresentation.Fundraising
         private int _totalPages = 1;
         private int _itemsPerPage = 10;
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/23
+        /// Description: Constructor for page ViewFundraisingEventHosts
+        /// </summary>
         private ViewFundraisingEventHosts()
         {
             InitializeComponent();

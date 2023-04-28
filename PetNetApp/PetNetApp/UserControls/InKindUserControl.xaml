@@ -14,6 +14,6 @@
         <Label Margin="10,0,0,0" Foreground="#3D8361" x:Name="lblDescription">
             <TextBlock TextWrapping="Wrap" Text="{Binding InKind.Description}"></TextBlock>
         </Label>
-        <Label Margin="20,0,0,0" Foreground="#3D8361" Grid.Column="1" x:Name="lblQuantity" Content="{Binding InKind.Quanity}"></Label>
+        <Label Margin="20,0,0,0" Foreground="#3D8361" Grid.Column="1" x:Name="lblQuantity" Content="{Binding InKind.Quantity}"></Label>
     </Grid>
 </UserControl>

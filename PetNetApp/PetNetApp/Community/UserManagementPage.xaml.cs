@@ -45,6 +45,11 @@ namespace WpfPresentation.Community
         /// Updated: 2023/02/26
         /// Updated the sub menu on user to change between suspend and unsuspend user depending on their current Suspend Status
         /// Updated menu for Update to say Update Roles
+        /// 
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="user"></param>
         /// <param name="index"></param>
@@ -149,6 +154,19 @@ namespace WpfPresentation.Community
         }
 
         // MenuItem Click
+        /// <summary>
+        /// Barry Mikulas
+        /// 2023/04/27
+        /// 
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="user"></param>
         private void menuItem_Update_Click(Users user)
         {
             RoleManagementPopup roleManagementPopupWindow = new RoleManagementPopup(_masterManager, user);

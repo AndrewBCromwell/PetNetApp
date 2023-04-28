@@ -4,7 +4,12 @@
 /// 
 /// This is the Volunteer List Page
 /// </summary>
-
+/// <remarks>
+/// Zaid Rachman
+/// Updated: 2023/04/24
+/// 
+/// Final QA
+/// </remarks>
 using DataObjects;
 using LogicLayer;
 using System;
@@ -50,10 +55,16 @@ namespace WpfPresentation.Events
         /// 
         /// Initializes the page
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         public VolunteerListPage()
         {
             InitializeComponent();
-            cboSort.SelectionChanged += comboChanged;
+            cboSort.SelectionChanged += ComboChanged;
         }
 
         /// <summary>
@@ -62,6 +73,12 @@ namespace WpfPresentation.Events
         /// 
         /// Gets a list of volunteers that are part of the event based off of the eventId that's passed
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="eventId"></param>
         /// <returns></returns>
         public static VolunteerListPage GetVolunteerListPage(int eventId)
@@ -70,8 +87,8 @@ namespace WpfPresentation.Events
             {
                 _existingVolunteerList = new VolunteerListPage();
             }
-            _existingVolunteerList.LoadVolunteerData();
             _existingVolunteerList._eventId = eventId;
+            _existingVolunteerList.LoadVolunteerData();
 
             _existingVolunteerList._needsReloaded = false;
             return _existingVolunteerList;
@@ -83,6 +100,12 @@ namespace WpfPresentation.Events
         /// 
         /// Loads the list of volunteers
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         private void LoadVolunteerData()
         {
             try
@@ -102,6 +125,12 @@ namespace WpfPresentation.Events
         /// 
         /// Applys the combo box sort option if applicable
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="resetPage"></param>
         private void ApplyVolunteerSort(bool resetPage = true)
         {
@@ -126,6 +155,12 @@ namespace WpfPresentation.Events
         /// 
         /// Checks names and compares it to the searched phrase
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="volunteerVM"></param>
         /// <returns></returns>
         private bool SearchForTextInVolunteer(VolunteerVM volunteerVM)
@@ -139,6 +174,12 @@ namespace WpfPresentation.Events
         /// 
         /// Updates the amount of pages are necessary for the list
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         private void UpdateNavigationInformation()
         {
             _totalPages = (_filteredVolunteers.Count - 1) / _itemsPerPage + 1;
@@ -148,9 +189,30 @@ namespace WpfPresentation.Events
         /// Created: 2023/03/09
         /// 
         /// </summary>
+        /// 
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/4/20
+        /// 
+        /// Added a try-catch statement that grabs a campaigns title and changes lblTitle to include it.
+        /// 
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         private void UpdateUI()
         {
-            //lblTitle.Content = "Volunteer List for " + however it is neccessary to get the Event Name (Needs an event object);
+            try
+            {
+                lblTitle.Content = "Volunteer List for " + _masterManager.FundraisingCampaignManager.RetrieveFundraisingCampaignByFundraisingCampaignId(_eventId).Title;
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "Unable to grab the event title. \n" + ex.Message);
+                return;
+            }
+            
             lblTotalPages.Content = "Total " + _totalPages + " page(s)";
             PopulateNavigationButtons();
             PopulateVolunteerList();
@@ -160,6 +222,12 @@ namespace WpfPresentation.Events
         /// Created: 2023/03/09
         /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         private void PopulateNavigationButtons()
         {
             btnPrevious.Visibility = _currentPage == 1 ? Visibility.Collapsed : Visibility.Visible;
@@ -207,6 +275,12 @@ namespace WpfPresentation.Events
         /// Created: 2023/03/09
         /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="page"></param>
         private void NavigateToPage(int page)
         {
@@ -234,44 +308,111 @@ namespace WpfPresentation.Events
             int i = 0;
             foreach (VolunteerVM volunteer in _filteredVolunteers.Skip(_itemsPerPage * (_currentPage - 1)).Take(_itemsPerPage))
             {
-                VolunteerListUserControl item = new VolunteerListUserControl(volunteer, i % 2 == 0);
+                UserControls.VolunteerListUserControl item = new UserControls.VolunteerListUserControl(volunteer, i % 2 == 0);
                 i++;
                 stackVolunteers.Children.Add(item);
             }
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
             _currentPage--;
             UpdateUI();
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPageSearch_Click(object sender, RoutedEventArgs e)
         {
             NavigateToTypedPage();
         }
-
-        private void btnAddEvent_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             _currentPage++;
             UpdateUI();
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             TrySearch();
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSort_Click(object sender, RoutedEventArgs e)
         {
             TrySearch();
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
         {
             if (txtSearch.Text == "Search Name...")
@@ -283,7 +424,19 @@ namespace WpfPresentation.Events
                 txtSearch.Text = txtSearch.Text;
             }
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
         {
             string tempText = txtSearch.Text;
@@ -297,7 +450,19 @@ namespace WpfPresentation.Events
                 txtSearch.Text = tempText;
             }
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (_needsReloaded)
@@ -317,6 +482,12 @@ namespace WpfPresentation.Events
         /// 
         /// Checks if the inputed page is a valid page
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="page"></param>
         /// <returns></returns>
         private bool IsValidPage(string page)
@@ -336,6 +507,12 @@ namespace WpfPresentation.Events
         /// Created: 2023/03/09
         /// 
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         private void NavigateToTypedPage()
         {
             if (IsValidPage(txtPageLookup.Text))
@@ -348,7 +525,19 @@ namespace WpfPresentation.Events
                 txtPageLookup.Text = _currentPage.ToString();
             }
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtPageLookup_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -362,6 +551,12 @@ namespace WpfPresentation.Events
         /// 
         /// Attempts to search for volunteers based off of what was typed
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
         private void TrySearch()
         {
             string newSearchText = txtSearch.Text.ToLower().Trim();
@@ -374,7 +569,19 @@ namespace WpfPresentation.Events
                 }
             }
         }
-
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -382,10 +589,39 @@ namespace WpfPresentation.Events
                 TrySearch();
             }
         }
-
-        private void comboChanged(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/03/09
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ComboChanged(object sender, RoutedEventArgs e)
         {
             ApplyVolunteerSort();
+        }
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/04/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddVolunteer_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(AddVolunteerToEvent.GetAddVolunteerToEvent(_eventId));
         }
     }
 }

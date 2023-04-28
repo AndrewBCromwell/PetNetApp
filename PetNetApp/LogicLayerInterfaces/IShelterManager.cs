@@ -58,6 +58,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the name of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <param name="newShelterName">The new name of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
@@ -68,6 +74,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the address of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <param name="newAddress">The new address of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
@@ -78,6 +90,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the Address2 of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <param name="newAddress2">The new Address2 of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
@@ -88,6 +106,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the zipcode of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <param name="newZipcode">The new zipcode of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
@@ -98,6 +122,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the phone number of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <param name="newPhone">The new phone number of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
@@ -108,6 +138,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the email address of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <param name="newEmail">The new email address of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
@@ -118,6 +154,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the areas of need of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <param name="newAreasOfNeed">The new areas of need of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
@@ -128,6 +170,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Updates the active status of a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <param name="newActiveStatus">The new active status of the shelter</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
@@ -153,6 +201,12 @@ namespace LogicLayerInterfaces
         /// Created: 2023/02/23
         /// Deactivates a shelter
         /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="shelter">The shelter object to update</param>
         /// <returns>Boolean containing whether the operation succeeded or failed</returns>
         bool DeactivateShelter(Shelter shelter);

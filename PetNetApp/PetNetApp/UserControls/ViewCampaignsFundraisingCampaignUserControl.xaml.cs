@@ -1,4 +1,15 @@
-﻿using System;
+﻿/// <summary>
+/// Stephen Jaurigue
+/// Created: 2023/02/20
+/// 
+/// </summary>
+/// <remarks>
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
+/// </remarks>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +47,12 @@ namespace WpfPresentation.UserControls
         /// Created: 2023/02/20
         /// 
         /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         /// <param name="fundraisingCampaign">The campaign associated with this control</param>
         /// <param name="useAlternateColors">Whether or not to use the alternate color pattern</param>
         public ViewCampaignsFundraisingCampaignUserControl(FundraisingCampaignVM fundraisingCampaign, bool useAlternateColors)
@@ -44,22 +61,70 @@ namespace WpfPresentation.UserControls
             UseAlternateColors = useAlternateColors;
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).ContextMenu.IsOpen = true;
         }
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuEdit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetEditFundraisingCampaignPage(FundraisingCampaign));
         }
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuView_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GetNavigationService(this).Navigate(Development.Fundraising.AddEditViewFundraisingCampaignPage.GetViewFundraisingCampaignPage(FundraisingCampaign));
         }
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuDelete_Click(object sender, RoutedEventArgs e)
         {
             if (PromptWindow.ShowPrompt("Delete", "Are you sure you want to delete " + FundraisingCampaign.Title+"?",ButtonMode.DeleteCancel) == PromptSelection.Delete)
@@ -75,17 +140,57 @@ namespace WpfPresentation.UserControls
                 }
             }
         }
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
         protected virtual void OnCampaignDeleted()
         {
             DeletedAction deletedAction = CampaignDeleted;
             deletedAction?.Invoke();
         }
-
+        /// <summary>
+        /// Stephen Jaurigue
+        /// Created: 2023/02/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuUpdate_Click(object sender, RoutedEventArgs e)
         {
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new WpfPresentation.Fundraising.UpdateFundraisingCampaign(FundraisingCampaign));
+        }
+        /// <summary>
+        /// Oleksiy Fedchuk
+        /// Created: 2023/04/20
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Zaid Rachman
+        /// Updated: 2023/04/24
+        /// 
+        /// Final QA
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuVolunteers_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(Events.VolunteerListPage.GetVolunteerListPage(FundraisingCampaign.FundraisingCampaignId));
         }
     }
 }

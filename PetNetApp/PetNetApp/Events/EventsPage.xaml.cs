@@ -41,7 +41,7 @@ namespace WpfPresentation.Events
         public EventsPage()
         {
             InitializeComponent();
-            _eventsTabButtons = new Button[] { btnEvents, btnCreateEvents, btnEventHistory };
+            _eventsTabButtons = new Button[] { btnEvents, btnCreateEvents, btnEventHistory, btnEventResults };
         }
         /// <summary>
         /// Oleksiy Fedchuk

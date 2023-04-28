@@ -35,10 +35,16 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" x:Name="lbl_FosterName" Content="Foster Name:" VerticalAlignment="Bottom"/>
                 <TextBox Grid.Row="1" x:Name="txt_FosterName" Text="Name" IsEnabled="False"/>
+                
                 <Label Grid.Row="2" x:Name="lbl_FosterAccountID" Content="Foster Account ID:" VerticalAlignment="Bottom"/>
                 <TextBox Grid.Row="3" x:Name="txt_FosterAccountID" Text="FosterAccountID" IsEnabled="False"/>
-                <Label Grid.Row="4" x:Name="lbl_FosterReportID" Content="Foster Report ID:" VerticalAlignment="Bottom"/>
-                <TextBox Grid.Row="5" x:Name="txt_FosterReportID" Text="FosterReportID" IsEnabled="False"/>
+
+                <Label Grid.Row="2" x:Name="lbl_DateCreated" Content="Date Created:" VerticalAlignment="Bottom" Visibility="Hidden"/>
+                <TextBox Grid.Row="3" x:Name="txt_DateCreated" Text="DateCreated" IsEnabled="False" Visibility="Hidden"/>
+                
+                <Label Grid.Row="4" x:Name="lbl_FosterReportID" Content="Foster Response ID:" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="5" x:Name="txt_FosterReportID" Text="Save Your Response" IsEnabled="False"/>
+                
                 <Label Grid.Row="6" x:Name="lbl_ApprovedToFoster" Content="Approved to Foster?" VerticalAlignment="Bottom"/>
                 <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Left" Margin="30,0,0,0">
                     <RadioButton x:Name="rad_ApprovedYes" Grid.Row="7" Margin="0 0 30 0" GroupName="Approved">Yes</RadioButton>

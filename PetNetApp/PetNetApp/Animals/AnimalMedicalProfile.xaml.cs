@@ -189,5 +189,16 @@ namespace WpfPresentation.Animals
             }
         }
 
+        /// <summary>
+        /// Author: Asa Armstrong
+        /// Date: 2023/04/26
+        /// Description: Navigates to AddEditAnimalDeath page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDeath_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new AddAnimalDOD513(_animalVM, _kennel));
+        }
     }
 }

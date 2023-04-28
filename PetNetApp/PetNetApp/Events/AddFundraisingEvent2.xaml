@@ -93,7 +93,7 @@
             </Grid.ColumnDefinitions>
             <CheckBox x:Name="cbIsHidden" Grid.Row="0" Content="Hidden" HorizontalAlignment="Right" FontSize="18"/>
             <Button x:Name="btnSave" Grid.Column="1" Width="120" Margin="0 0 10 0" HorizontalAlignment="Right" Content="Save" Height="50" Click="btnSave_Click"/>
-            <Button x:Name="btnCancel" Grid.Column="2" Width="120" Content="Cancel" Height="50"/>
+            <Button x:Name="btnCancel" Grid.Column="2" Width="120" Content="Cancel" Height="50" Click="btnCancel_Click"/>
         </Grid>
 
     </Grid>

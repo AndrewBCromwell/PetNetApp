@@ -29,7 +29,7 @@
                 <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ProcedureName}" Header="Procedure" Width="1*"></DataGridTextColumn>
                 <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ProcedureDate}" Header="Date" Width="1*"></DataGridTextColumn>
                 <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding SurgeonGivenName}" Header="Surgeon Given Name" Width="2*"></DataGridTextColumn>
-                <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding SurgeonFamilyName}" Header="Surgeon FamilyName" Width="2*"></DataGridTextColumn>
+                <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding SurgeonFamilyName}" Header="Surgeon Family Name" Width="2*"></DataGridTextColumn>
                 <DataGridTextColumn ElementStyle="{StaticResource ResourceKey=rsrcMultiLineTextBlock}" Binding="{Binding ProcedureNotes}" Header="Notes" Width="1.2*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

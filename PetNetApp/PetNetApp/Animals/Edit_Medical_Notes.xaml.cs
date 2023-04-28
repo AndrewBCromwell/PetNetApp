@@ -72,6 +72,7 @@ namespace WpfPresentation.Animals
         /// <summary>
         /// Ethan Kline
         /// 2023/03/10
+        /// Constructor that is used when we add a Medicalnote 
         /// 
         /// 
         /// </summary>
@@ -93,6 +94,7 @@ namespace WpfPresentation.Animals
         /// <summary>
         /// Ethan Kline
         /// 2023/03/10
+        /// on load if we are editing call the populate
         /// 
         /// 
         /// </summary>
@@ -113,6 +115,7 @@ namespace WpfPresentation.Animals
         /// <summary>
         /// Ethan Kline
         /// 2023/03/10
+        /// if we are editing fill in the note
         /// 
         /// 
         /// </summary>
@@ -197,7 +200,7 @@ namespace WpfPresentation.Animals
         /// <summary>
         /// Ethan Kline
         /// 2023/03/10
-        /// 
+        /// if this is clicked go back to the medical note page
         /// 
         /// </summary>
         /// <remarks>

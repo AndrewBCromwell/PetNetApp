@@ -93,18 +93,14 @@ namespace WpfPresentation.Animals
             // replace with page name and then delete comment
             frameAnimals.Navigate(WpfPresentation.Animals.ViewAllAdoptableAnimalsPage.GetViewAllAdoptableAnimalsPage());
 
-            //var viewDonationReceiptWindow = new WpfPresentation.Fundraising.ViewDonationReceiptWindow(100001);
-            //viewDonationReceiptWindow.Owner = Window.GetWindow(this);
-            //viewDonationReceiptWindow.ShowDialog();
+            
         }
 
         private void btnFoster_Click(object sender, RoutedEventArgs e)
         {
             ChangeSelectedButton(btnFoster);
             // replace with page name and then delete comment
-            //frameAnimals.Navigate(null);
-            PromptWindow.ShowPrompt("Edit in future", "Need to replace the foster application response page here and relink it correctly.");
-            frameAnimals.Navigate(new AddEditReportOnFoster(100000)); // need to replace with actual foster page and add report to Foster application
+            frameAnimals.Navigate(null);
         }
         /// <summary>
         /// Author: Stephen Jaurigue

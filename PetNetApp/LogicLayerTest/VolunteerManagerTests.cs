@@ -11,6 +11,7 @@
 /// Updated: yyyy/mm/dd
 /// </remarks>
 using DataAccessLayerFakes;
+using DataObjects;
 using LogicLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -49,6 +50,38 @@ namespace LogicLayerTest
             actualCount = volunteers.Count;
 
             Assert.AreEqual(expectedCount, actualCount);
+        }
+
+        [TestMethod]
+        public void TestRetrieveAllVolunteers()
+        {
+            int expectedCount = 5;
+            int actualCount = 0;
+
+            actualCount = _volunteerManager.RetrieveAllVolunteers().Count();
+
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+
+        [TestMethod]
+        public void TestAddVolunteerToEventbyVolunteerAndEventId()
+        {
+            bool expected = true;
+            bool actual = false;
+
+            actual = _volunteerManager.AddVolunteerToEventbyVolunteerAndEventId(100010, 100000);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestRemoveVolunteerFromEventbyUsersIdAndFundraisingEventId()
+        {
+            bool expected = true;
+
+            bool actual = _volunteerManager.RemoveVolunteerFromEventbyUsersIdAndFundraisingEventId(100000, 100000);
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }

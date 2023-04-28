@@ -5,72 +5,73 @@
 }
 
 <div class="container">
-    <div class="h3 font-weight-bold text-center">      
-           @ViewBag.User.GivenName @ViewBag.User.FamilyName Donations          
+    <div class="h3 font-weight-bold text-center">
+        @ViewBag.User.GivenName @ViewBag.User.FamilyName Donations
     </div>
 
 </div>
 <div class="container">
     <div class="overflow">
-    <table class="table table-striped table-hover table-responsive-lg">
-        <thead>
-            <tr>
-                <th scope="col">
-                    Shelter Name
-                </th>
-                <th scope="col">
-                    Amount
-                </th>
-                <th scope="col">
-                    Date
-                </th>
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.Message)
-                </th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model)
-            {
-                var date = item.DateDonated.Value.ToString("MM/dd/yyyy");
-                string shortMessage = "";
-                if (item.Message.Length > 45)
-                {
-                    shortMessage = item.Message.Substring(0, 45) + "...";
-                }
+        <table class="table table-striped table-hover table-responsive-lg">
+            <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.ShelterName)
+                    <th scope="col">
+                        Shelter Name
                     </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.Amount)
+                    <th scope="col">
+                        Amount
                     </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => date)
+                    <th scope="col">
+                        Date
                     </th>
-                    @if (item.Message.Length > 45)
-                    {
-                        <th>
-                            @Html.DisplayFor(modelItem => shortMessage)
-                        </th>
-                    }
-                    else
-                    {
-                        <th>
-                            @Html.DisplayFor(modelItem => item.Message)
-                        </th>
-                    }
-                    <td>
-                        @*<btn class="btn btn-primary">@Html.ActionLink("View", "Details", new { id = item.DonationId })</btn>*@
-                        @Html.ActionLink("View", "Details", new { id = item.DonationId }, new { @class = "btn btn-primary" })
-
-                    </td>
-
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Message)
+                    </th>
                 </tr>
-            }
-        </tbody>
+            </thead>
 
-    </table>
-</div></div>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var date = item.DateDonated.Value.ToString("MM/dd/yyyy");
+                    string shortMessage = "";
+                    if (item.Message.Length > 45)
+                    {
+                        shortMessage = item.Message.Substring(0, 45) + "...";
+                    }
+                    <tr>
+                        <th>
+                            @Html.DisplayFor(modelItem => item.ShelterName)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(modelItem => date)
+                        </th>
+                        @if (item.Message.Length > 45)
+                        {
+                            <th>
+                                @Html.DisplayFor(modelItem => shortMessage)
+                            </th>
+                        }
+                        else
+                        {
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Message)
+                            </th>
+                        }
+                        <td>
+                            @*<btn class="btn btn-primary">@Html.ActionLink("View", "Details", new { id = item.DonationId })</btn>*@
+                            @Html.ActionLink("View", "Details", new { id = item.DonationId }, new { @class = "btn btn-primary" })
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
 

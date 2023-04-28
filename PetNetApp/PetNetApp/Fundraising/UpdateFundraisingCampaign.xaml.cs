@@ -4,10 +4,11 @@
 /// 
 /// Interaction logic for UpdateFundraisingCampaign.xaml
 /// </summary>
-///
 /// <remarks>
-/// Updater Name
-/// Updated: yyyy/mm/dd
+/// Oleksiy Fedchuk
+/// Updated: 2023/04/27
+/// 
+/// Final QA
 /// </remarks>
 
 using System;
@@ -46,13 +47,15 @@ namespace WpfPresentation.Fundraising
         /// 
         /// Public constructor for UpdateFundraisingCampaign which assigns values and calls
         /// InitializeComponent().
+        /// 
         /// </summary>
-        ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
-        /// <param name="fundraisingCampaignVM">The Campaign to be updated</param>
+        /// <param name="fundraisingCampaignVM"></param>
         public UpdateFundraisingCampaign(FundraisingCampaignVM fundraisingCampaignVM)
         {
             _oldFundraisingCampaignVM = fundraisingCampaignVM;
@@ -62,17 +65,18 @@ namespace WpfPresentation.Fundraising
             _campgainComplete = _oldFundraisingCampaignVM.Complete;
             InitializeComponent();
         }
-
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/03/23
         /// 
         /// Page Loaded method. Calls UpdateUI() helper method.
+        /// 
         /// </summary>
-        ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -90,9 +94,10 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         private void UpdateUI()
         {
@@ -121,9 +126,10 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -168,9 +174,10 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -193,9 +200,10 @@ namespace WpfPresentation.Fundraising
         /// </summary>
         ///
         /// <remarks>
-        /// Updater Name
-        /// Updated: yyyy/mm/dd 
-        /// example: Fixed a problem when user inputs bad data
+        /// Oleksiy Fedchuk
+        /// Updated: 2023/04/27
+        /// 
+        /// Final QA
         /// </remarks>
         /// <returns>Bool indicating success</returns>
         private bool ValidateAndAssignInput()

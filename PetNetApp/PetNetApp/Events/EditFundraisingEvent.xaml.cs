@@ -1,5 +1,6 @@
 ﻿using DataObjects;
 using LogicLayer;
+using PetNetApp;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -47,6 +48,11 @@ namespace WpfPresentation.Events
             _users = _masterManager.User;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void PopulateFundraisingEvent()
         {
             if (_fundraisingEvent != null)
@@ -71,6 +77,12 @@ namespace WpfPresentation.Events
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private bool CreateFundraisingEventValidator()
         {
             bool isSuccess = true;
@@ -133,6 +145,11 @@ namespace WpfPresentation.Events
             return isSuccess;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void DateAndTimePickerStartUp()
         {
             datePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Now));
@@ -162,6 +179,11 @@ namespace WpfPresentation.Events
             cbxAMorPMEnd.SelectedItem = "PM";
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
         private void DisplayItemsForComboBox()
         {
             foreach (FundraisingCampaign campaign in _fundraisingCampaigns)
@@ -176,6 +198,13 @@ namespace WpfPresentation.Events
             cbHost.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -193,15 +222,58 @@ namespace WpfPresentation.Events
             PopulateFundraisingEvent();
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             if (CreateFundraisingEventValidator())
             {
-                // Need to change this code latter
                 NavigationService.Navigate(new EditFundraisingEvent2(_fundraisingEvent));
             }
         }
 
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (PromptWindow.ShowPrompt("Cancel", "Are you really want to cancel?\n\nYour changed will not save!", ButtonMode.YesNo)
+                == PromptSelection.Yes)
+            {
+                NavigateToViewFundraisingEvent();
+            }
+        }
+
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        private void NavigateToViewFundraisingEvent()
+        {
+            var mainWindow = (MainWindow)MainWindow.GetWindow(this);
+            Development.Fundraising.FundraisingPage fundraisingPage = Development.Fundraising.FundraisingPage.GetFundraisingPage(_masterManager);
+            fundraisingPage.ChangeSelectedButton(fundraisingPage.btnEvents);
+            mainWindow.ChangeSelectedButton(mainWindow.btnFundraising);
+            mainWindow.frameMain.Navigate(fundraisingPage);
+            fundraisingPage.frameFundraising.Navigate(Development.Fundraising.ViewFundraisingEventsPage.GetViewFundraisingEvents());
+        }
+
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public FundraisingEvent GetFundraisingEvent()
         {
             return _fundraisingEvent;
