@@ -39,8 +39,9 @@ namespace DataAccessLayer
                         donation.Amount = reader.IsDBNull(5) ? null : (decimal?)reader.GetDecimal(5);
                         donation.Message = reader.IsDBNull(6) ? null : reader.GetString(6);
                         donation.DateDonated = reader.IsDBNull(7) ? null : (DateTime?)reader.GetDateTime(7);
-                        donation.GivenName = reader.IsDBNull(8) ? null : reader.GetString(8);
-                        donation.FamilyName = reader.IsDBNull(9) ? null : reader.GetString(9);
+                        donation.GivenName = reader.IsDBNull(8) ? reader.GetBoolean(11) ? null : reader.IsDBNull(2) ? null : reader.GetString(2) : reader.GetString(8);
+                        donation.FamilyName = reader.IsDBNull(9) ? reader.GetBoolean(11) ? null : reader.IsDBNull(3) ? null : reader.GetString(3) : reader.GetString(9);
+
                         donation.HasInKindDonation = reader.GetBoolean(10);
                         donation.Anonymous = reader.GetBoolean(11);
                         donation.Target = reader.IsDBNull(12) ? null : reader.GetString(12);
@@ -105,6 +106,7 @@ namespace DataAccessLayer
                         donation.PaymentMethod = reader.IsDBNull(13) ? null : reader.GetString(13);
                         donation.ScheduledDonationId = reader.IsDBNull(14) ? null : (int?)reader.GetInt32(14);
                         donation.FundraisingEventId = reader.IsDBNull(15) ? null : (int?)reader.GetInt32(15);
+
                         donation.User = user;
                     }
                 }
@@ -219,6 +221,8 @@ namespace DataAccessLayer
                         donation.PaymentMethod = reader.IsDBNull(13) ? null : reader.GetString(13);
                         donation.ScheduledDonationId = reader.IsDBNull(14) ? null : (int?)reader.GetInt32(14);
                         donation.FundraisingEventId = reader.IsDBNull(15) ? null : (int?)reader.GetInt32(15);
+                        donation.ShelterName = reader.GetString(16);
+
                         donation.User = user;
 
                         donationVMs.Add(donation);

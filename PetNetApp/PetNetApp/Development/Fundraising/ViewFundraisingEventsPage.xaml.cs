@@ -213,7 +213,7 @@ namespace WpfPresentation.Development.Fundraising
                 ViewEventsFundraisingEventUserControl item = new ViewEventsFundraisingEventUserControl(fundraisingEvent, i % 2 == 0);
                 item.EventDeleted += () =>
                 {
-                    ApplyFundraisingEventFilterAndSort(false);
+                    LoadFundraisingEventsData();
                 };
                 i++;
                 stackEvents.Children.Add(item);

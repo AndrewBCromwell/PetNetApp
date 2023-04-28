@@ -6,37 +6,70 @@ using System.Web.Mvc;
 using DataObjects;
 using LogicLayer;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
-
+using MVCPresentation.Models;
 
 namespace MVCPresentation.Controllers
 {
     public class UserDonationsController : Controller
     {
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/04/27
+        /// 
+        /// User Donations Controller
+        /// </summary>
         private MasterManager masterManager = MasterManager.GetMasterManager();
         private List<DonationVM> donationVMs;
         private DonationVM donationVM;
         private ApplicationUserManager userManager;
-        
 
+
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/04/27
+        /// 
+        /// Gives user a list of all of there donations
+        /// </summary>
+        // GET: Donate
+        [Authorize]
         // GET: UserDonations
         public ActionResult Index()
         {
-            userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var dbContext = new ApplicationDbContext();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
             var user = userManager.FindById(User.Identity.GetUserId());
+
             try
             {
-                donationVMs = masterManager.DonationManager.RetrieveDonationsByUserId(100001);
-                ViewBag.User = masterManager.UsersManager.RetrieveUserByUsersId(100001);
+                if(user.UsersId != null)
+                {
+                    donationVMs = masterManager.DonationManager.RetrieveDonationsByUserId((int)user.UsersId);
+                    ViewBag.User = masterManager.UsersManager.RetrieveUserByUsersId((int)user.UsersId);
+                }
+                else
+                {
+                    ViewBag.Error = "There was an error retrieving your data please try again later";
+                }
+                
             }
             catch (Exception)
             {
-                ViewBag.Message = "Could not retrieve donations";
+                ViewBag.Error = "Could not retrieve donations";
                 View("Error");
             }
             return View(donationVMs);
         }
 
+        /// <summary>
+        /// Chris Dreismeier
+        /// Created: 2023/04/27
+        /// 
+        /// Gives a user more details on a specific donation
+        /// </summary>
+        // GET: Donate
+        [Authorize]
         // GET: UserDonations/Details/5
         public ActionResult Details(int? id)
         {
@@ -73,33 +106,9 @@ namespace MVCPresentation.Controllers
             }
             else
             {
-                ViewBag.Message = "No donation with that ID";
+                ViewBag.Error = "No donation with that ID";
                 return View("Error");
             }
-        }
-
-        //// GET: UserDonations/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: UserDonations/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
- 
+        } 
     }
 }

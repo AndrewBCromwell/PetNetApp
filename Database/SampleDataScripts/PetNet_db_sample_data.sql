@@ -1249,28 +1249,28 @@ INSERT INTO [dbo].[Pledge]
 		[UsersId],
 		[DonationId],
 		[FundraisingEventId],
+		[Date],
 		[Amount],
         [Message],
         [GivenName],
         [FamilyName],
         [Phone],
-        [Email],
-		[Date]
+        [Email]
 		)
 	VALUES
-		(100007,100000,100000, 100.00, 'Giving back', 'John', 'Smith', '6546546544', 'js@gmail.com', '2023-04-09'),
-		(100007,null,100000, 200.00, 'Take it', 'John', 'Smith', '6546546544', 'js@gmail.com', '2023-03-18'),
-		(100007,100002,100000, 300.00, 'For dog', 'John', 'Smith', '6546546544', 'js@gmail.com', '2022-03-18'),
-		(100007,100003,100000, 400.00, 'For cat', 'John', 'Smith', '6546546544', 'js@gmail.com', '2023-01-18'),
-		(100007,100004,100000, 500.00, 'For rat', 'John', 'Smith', '6546546544', 'js@gmail.com', '2023-07-22'),
-        (100008,100005,100000, 50.00, 'Here you go', 'Marc', 'Smith', '6546546544', 'ms@gmail.com', '2022-10-18'),
-		(100008,null,100000, 50.00, 'Take it', 'Marc', 'Smith', '6546546544', 'ms@gmail.com', '2023-02-18'),
-		(100008,null,100000, 50.00, 'For rat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com',  '2023-03-18'),
-		(100008,null,100000, 50.00, 'For cat', 'Marc', 'Smith', '6546546544', 'ms@gmail.com', '2023-03-18'),
-        (100009,null,100000, 50.00, 'Here you go again', 'Amy', 'Smith', '6546546544', 'as@gmail.com', '2023-03-18'),
-		(100009,null,100000, 50.00, 'For cat', 'Amy', 'Smith', '6546546544', 'as@gmail.com', '2023-03-18'),
-		(100009,100006,100000, 50.00, 'For rat', 'Amy', 'Smith', '6546546544', 'as@gmail.com', '2022-01-09'),
-		(100009,null,100000, 50.00, 'Here you go again 3rd time', 'Amy', 'Smith', '6546546544', 'as@gmail.com', '2000-03-09')
+		(100007, 100000, 100000, '2023-04-21', 100.00, 'Giving back', 'John', 'Pearson', '6546546544', 'jp@gmail.com'),
+		(100007, null, 100000, GETDATE(), 200.00, 'Take it', 'Asa', 'Smith', '6546546544', 'as@gmail.com'),
+		(100007, 100002, 100000, '2023-03-22', 300.00, 'For dog', 'Chris', 'Northup', '6546546544', 'cn@gmail.com'),
+		(100007, 100003, 100000, GETDATE(), 400.00, 'For cat', 'Will', 'Smith', '6546546544', 'ws@gmail.com'),
+		(100007, 100004, 100000, GETDATE(), 500.00, 'For snake', 'John', 'Armstrong', '6546546544', 'ja@gmail.com'),
+        (100008, 100005, 100000, GETDATE(), 50.00, 'Here you go', 'Marc', 'Benjamin', '6546546544', 'mb@gmail.com'),
+		(100008, null, 100000, '2023-03-15', 50.00, 'Take it', 'Marc', 'Jones', '6546546544', 'mj@gmail.com'),
+		(100008, null, 100000, '2023-05-01', 50.00, 'For cat', 'Mark', 'Williams', '6546546544', 'mw@gmail.com'),
+		(100008, null, 100000, '2023-04-12', 50.00, 'For cat', 'Matthew', 'Smith', '6546546544', 'ms2@gmail.com'),
+        (100009, null, 100000, '2023-03-30', 50.00, 'Here you go again', 'Amy', 'Dre', '6546546544', 'ad@gmail.com'),
+		(100009, null, 100000, '2023-03-31', 50.00, 'For cat', 'Tonya', 'West', '6546546544', 'ta@gmail.com'),
+		(100009, 100006, 100001, GETDATE(), 50.00, 'For rat', 'Lisa', 'Catz', '6546546544', 'lc@gmail.com'),
+		(100009, null, 100001, GETDATE(), 50.00, 'For the animals', 'Anne', 'Jackson', '6546546544', 'aj@gmail.com')
 GO
 
 print '' print '*** creating AdoptionApplication sample data'

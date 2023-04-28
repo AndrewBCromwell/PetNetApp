@@ -5,6 +5,7 @@
 
 @{
     ViewBag.Title = "Index";
+    ShelterVM shelter = (ShelterVM)ViewBag.UserShelter;
 }
 
 
@@ -71,6 +72,15 @@
                                 <p class="card-text">@user.Address</p>
                             </div>
                         </div>
+                        <div>
+                            <div>
+                                <h4>Your Shelter</h4>
+                            </div>
+                            <div>
+                                <p class="card-text">@shelter.ShelterName</p>
+                                <p class="card-text">@ViewBag.NoShelter</p>
+                            </div>
+                        </div>
 
 
                         @if (user.AddressTwo != null)
@@ -96,8 +106,8 @@
                     @Html.ActionLink("Change Your Shelter", "SelectShelter", "Shelters", "", new { @class = "btn btn-primary btn-block m-3" })
                 </div>
                 <div>
-                    <btn class="btn btn-primary btn-block m-3">Test</btn>
-                    @*@Html.ActionLink("Test", "Details", new { @class = "btn btn-primary btn-block m-3" })*@
+                    @*<btn class="btn btn-primary btn-block m-3">Test</btn>*@
+                    @Html.ActionLink("View Your Donations", "Index", "UserDonations", "", new { @class = "btn btn-primary btn-block m-3" })
                 </div>
 
             </div>

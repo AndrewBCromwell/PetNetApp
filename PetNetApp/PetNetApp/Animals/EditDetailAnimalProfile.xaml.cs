@@ -76,19 +76,18 @@ namespace WpfPresentation.Animals
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            populateComboBoxes();
-            setDetailMode();
-            populateImage();
+            PopulateComboBoxes();
+            SetDetailMode();
+            PopulateImage();
         }
 
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/02/02
         /// 
-        /// Helper method for setting the page for viewing (detail mode);
-        /// Changes visibility, enabled, and read only settings for text
-        /// boxes and combo boxes as needed;
-        /// Changes buttons' content property
+        /// Helper method for setting the page for viewing (detail mode). Changes visibility,
+        /// enabled, and read only settings for text boxes and combo boxes as needed. Changes
+        /// buttons' content property
         /// </summary>
         ///
         /// <remarks>
@@ -96,11 +95,11 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        private void setDetailMode()
+        private void SetDetailMode()
         {
             btnEditSave.Content = "Edit";
             btnBack.Content = "Back";
-            populateControls();
+            PopulateControls();
 
             txtAnimalTypeId.Visibility = Visibility.Visible;
             txtAnimalBreedId.Visibility = Visibility.Visible;
@@ -172,10 +171,8 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/02
         /// 
-        /// Helper method for setting the page to editing mode;
-        /// Changes visibility, enabled, and read only settings
-        /// for text boxes and combo boxes as needed;
-        /// Changes buttons' content property
+        /// Helper method for setting the page to editing mode. Changes visibility, enabled, and read
+        /// only settings for text boxes and combo boxes as needed. Changes buttons' content property
         /// </summary>
         ///
         /// <remarks>
@@ -183,7 +180,7 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        private void setEditMode()
+        private void SetEditMode()
         {
             btnEditSave.Content = "Save";
             btnBack.Content = "Cancel";
@@ -249,7 +246,7 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        private void populateControls()
+        private void PopulateControls()
         {
             _toolTip.Content = _animalVM.AnimalStatusDescription;
             ToolTipService.SetToolTip(txtAnimalStatusId, _toolTip);
@@ -286,12 +283,10 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/02
         /// 
-        /// Helper method for populating the combo boxes with all
-        /// the available data that can be selected when editing
-        /// the animal profile record;
-        /// The _yesNo list is used to present the user with human
-        /// readable Yes/No options that can be coverted to booleans
-        /// in the background
+        /// Helper method for populating the combo boxes with all the available data that can be
+        /// selected when editing the animal profile record. The _yesNo list is used to present
+        /// the user with human readable Yes/No options that can be coverted to booleans in the
+        /// background.
         /// </summary>
         ///
         /// <remarks>
@@ -300,19 +295,28 @@ namespace WpfPresentation.Animals
         /// Fixed a problem where the breeds list was getting set to the dictionary items
         /// instead of being left blank until a type was selected
         /// </remarks>
-        private void populateComboBoxes()
+        /// <exception cref="Exception"></exception>
+        private void PopulateComboBoxes()
         {
-            _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
-            _types = _manager.AnimalManager.RetrieveAllAnimalTypes();
-            cmbAnimalTypeId.ItemsSource = _types;
+            try
+            {
+                _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
+                _types = _manager.AnimalManager.RetrieveAllAnimalTypes();
+                cmbAnimalTypeId.ItemsSource = _types;
 
-            _genders = _manager.AnimalManager.RetrieveAllAnimalGenders();
-            cmbAnimalGender.ItemsSource = _genders;
-            _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
-            cmbAnimalStatusId.ItemsSource = _statuses;
-            cmbAggressive.ItemsSource = _yesNo;
-            cmbChildFriendly.ItemsSource = _yesNo;
-            cmbNeuterStatus.ItemsSource = _yesNo;
+                _genders = _manager.AnimalManager.RetrieveAllAnimalGenders();
+                cmbAnimalGender.ItemsSource = _genders;
+                _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
+                cmbAnimalStatusId.ItemsSource = _statuses;
+                cmbAggressive.ItemsSource = _yesNo;
+                cmbChildFriendly.ItemsSource = _yesNo;
+                cmbNeuterStatus.ItemsSource = _yesNo;
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "An error occured populating combo boxes\n" + ex, ButtonMode.Ok);
+                NavigationService.Navigate(WpfPresentation.Animals.AnimalListPage.GetAnimalListPage(_manager));
+            }
         }
 
         /// <summary>
@@ -328,7 +332,7 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        private void populateImage()
+        private void PopulateImage()
         {
             if (_imagesList == null || _imagesList.Count == 0)
             {
@@ -371,11 +375,10 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/02
         /// 
-        /// Click event method that performs two different operations
-        /// based on the content property of the button. If "Edit"
-        /// the method setEditMode() is called. If "Save" validation
-        /// checking is performed on the editable fields and an 
-        /// attempt is made to update the animal record in the database.
+        /// Click event method that performs two different operations based on the content
+        /// property of the button. If "Edit" the method setEditMode() is called. If "Save"
+        /// validation checking is performed on the editable fields and an attempt is made
+        /// to update the animal record in the database.
         /// </summary>
         ///
         /// <remarks>
@@ -383,11 +386,13 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEditSave_Click(object sender, RoutedEventArgs e)
         {
             if (btnEditSave.Content.ToString() == "Edit")
             {
-                setEditMode();
+                SetEditMode();
             }
             // If button text is not "Edit" then it is "Save" and we need to validate and save the entered information.
             else
@@ -494,7 +499,7 @@ namespace WpfPresentation.Animals
                                 // success
                                 PromptWindow.ShowPrompt("Success", "Animal record has been updated", ButtonMode.Ok);
                                 _animalVM = newAnimal;
-                                setDetailMode();
+                                SetDetailMode();
                             }
                             else
                             {
@@ -514,19 +519,20 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/03
         /// 
-        /// Click event method that performs two different operations
-        /// based on the content property of the button. If "Back" 
-        /// the user is navigated back to the page from which they
-        /// came (usually AnimalListUserControl.xaml). If "Cancel" a
-        /// popup is shown to confirm if the user actually intends to
-        /// stop editing without saving changes. 
+        /// Click event method that performs two different operations based on the content property
+        /// of the button. If "Back" the user is navigated back to the page from which they came
+        /// (usually AnimalListUserControl.xaml). If "Cancel" a popup is shown to confirm if the
+        /// user actually intends to stop editing without saving changes. 
         /// </summary>
         ///
         /// <remarks>
         /// Stephen Jaurigue
         /// Updated: 2023/02/28 
-        /// Fixed a problem where the user returns to this page after navigating somewhere else that the back button doesn't go to the AnimalListPage
+        /// Fixed a problem where the user returns to this page after navigating somewhere else that
+        /// the back button doesn't go to the AnimalListPage
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Back_Click(object sender, RoutedEventArgs e)
         {
             if (btnBack.Content.ToString() == "Back")
@@ -540,7 +546,7 @@ namespace WpfPresentation.Animals
                                                     "Changes will not be saved.", ButtonMode.YesNo);
                 if (result == PromptSelection.Yes)
                 {
-                    setDetailMode();
+                    SetDetailMode();
                 }
             }
         }
@@ -549,12 +555,10 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/03
         /// 
-        /// Click event method that takes the user to the adoption
-        /// profile of the animal they are currently viewing. If 
-        /// the user is currently editing (btnEditSave content =
-        /// "Save") a popup is shown to confirm if the user actually 
-        /// intends to stop editing and leave the page without saving
-        /// changes. 
+        /// Click event method that takes the user to the adoption profile of the animal they are
+        /// currently viewing. If the user is currently editing (btnEditSave content = "Save") a
+        /// popup is shown to confirm if the user actually intends to stop editing and leave the
+        /// page without saving changes. 
         /// </summary>
         ///
         /// <remarks>
@@ -562,13 +566,15 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdoptionProfile_Click(object sender, RoutedEventArgs e)
         {
             var result = PromptWindow.ShowPrompt("Discard Changes", "Are you sure you want to leave?\n" +
                                                     "Changes will not be saved.", ButtonMode.YesNo);
             if (result == PromptSelection.Yes)
             {
-                setDetailMode();
+                SetDetailMode();
                 var page = AnimalsPage.GetAnimalsPage();
                 page.ChangeSelectedButton(page.btnAdopt);
                 NavigationService.Navigate(new WpfPresentation.Animals.
@@ -587,11 +593,9 @@ namespace WpfPresentation.Animals
     /// Andrew Schneider
     /// Created: 2023/02/03
     /// 
-    /// Click event method that takes the user to the kennel page.
-    /// If the user is currently editing (btnEditSave content =
-    /// "Save") a popup is shown to confirm if the user actually 
-    /// intends to stop editing and leave the page without saving
-    /// changes. 
+    /// Click event method that takes the user to the kennel page. If the user is currently editing
+    /// (btnEditSave content = "Save") a popup is shown to confirm if the user actually intends to
+    /// stop editing and leave the page without saving changes. 
     /// </summary>
     ///
     /// <remarks>
@@ -599,6 +603,8 @@ namespace WpfPresentation.Animals
     /// Updated: yyyy/mm/dd 
     /// example: Fixed a problem when user inputs bad data
     /// </remarks>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void btnKennelPage_Click(object sender, RoutedEventArgs e)
     {
         if (btnEditSave.Content.ToString() == "Save")
@@ -607,7 +613,7 @@ namespace WpfPresentation.Animals
                                                 "Changes will not be saved.", ButtonMode.YesNo);
             if (result == PromptSelection.Yes)
             {
-                setDetailMode();
+                SetDetailMode();
                 NavigationService.Navigate(new WpfPresentation.Management.ViewKennelPage());
             }
         }
@@ -621,12 +627,10 @@ namespace WpfPresentation.Animals
     /// Andrew Schneider
     /// Created: 2023/02/03
     /// 
-    /// Click event method that takes the user to the medical 
-    /// profile of the animal they are currently viewing. If
-    /// the user is currently editing (btnEditSave content =
-    /// "Save") a popup is shown to confirm if the user actually 
-    /// intends to stop editing and leave the page without saving
-    /// changes. 
+    /// Click event method that takes the user to the medical profile of the animal they are
+    /// currently viewing. If the user is currently editing (btnEditSave content = "Save") a
+    /// popup is shown to confirm if the user actually intends to stop editing and leave the
+    /// page without saving changes. 
     /// </summary>
     ///
     /// <remarks>
@@ -634,6 +638,8 @@ namespace WpfPresentation.Animals
     /// Updated: 2023/02/28 
     /// Fixed a problem where medical page back feature wouldn't return to the animal profile page
     /// </remarks>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void btnMedicalProfile_Click(object sender, RoutedEventArgs e)
     {
         if (btnEditSave.Content.ToString() == "Save")
@@ -642,7 +648,7 @@ namespace WpfPresentation.Animals
                                                 "Changes will not be saved.", ButtonMode.YesNo);
             if (result == PromptSelection.Yes)
             {
-                setDetailMode();
+                SetDetailMode();
                 NavigationService nav = NavigationService.GetNavigationService(this);
                 nav.Navigate(new WpfPresentation.Animals.MedicalNavigationPage(_manager, _animalVM));
             }
@@ -660,9 +666,8 @@ namespace WpfPresentation.Animals
     /// Andrew Schneider
     /// Created: 2023/02/22
     /// 
-    /// Helper method that links the breeds and types combo
-    /// boxes so that when an animal type is selected only
-    /// breeds of that type are available in the breeds box
+    /// Helper method that links the breeds and types combo boxes so that when an animal type
+    /// is selected only breeds of that type are available in the breeds box.
     /// </summary>
     ///
     /// <remarks>
@@ -670,6 +675,8 @@ namespace WpfPresentation.Animals
     /// Updated: yyyy/mm/dd 
     /// example: Fixed a problem when user inputs bad data
     /// </remarks>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void cmbAnimalTypeId_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         cmbAnimalBreedId.ItemsSource = _breeds[cmbAnimalTypeId.SelectedItem.ToString()];
@@ -680,10 +687,8 @@ namespace WpfPresentation.Animals
     /// Andrew Schneider
     /// Created: 2023/02/22
     /// 
-    /// Helper method that links the Aggressive combo box with
-    /// the Aggressive Description textbox, so that a description
-    /// can only be entered if "Yes" has been selected in the combo
-    /// box.
+    /// Helper method that links the Aggressive combo box with the Aggressive Description textbox,
+    /// so that a description can only be entered if "Yes" has been selected in the combo box.
     /// </summary>
     ///
     /// <remarks>
@@ -691,6 +696,8 @@ namespace WpfPresentation.Animals
     /// Updated: yyyy/mm/dd 
     /// example: Fixed a problem when user inputs bad data
     /// </remarks>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void cmbAggressive_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (cmbAggressive.SelectedItem.ToString() == "Yes")

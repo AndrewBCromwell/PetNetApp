@@ -51,7 +51,7 @@ namespace WpfPresentation.Community
 
             try
             {
-                fosterPlacementRecord = _masterManager.AnimalManager.RetriveFosterPlacementRecordNotes(animalId);
+                fosterPlacementRecord = _masterManager.AnimalManager.RetrieveFosterPlacementRecordNotes(animalId);
                 PromptWindow.ShowPrompt("Animal Update", fosterPlacementRecord.FosterPlacementRecordNotes);
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace WpfPresentation.Community
             stackPanelAdoptedAnimal.Children.Clear();
             try
             {
-                _animalList = _masterManager.AnimalManager.RetriveAdoptedAnimalByUserId(_userId);
+                _animalList = _masterManager.AnimalManager.RetrieveAdoptedAnimalByUserId(_userId);
 
                 foreach (AnimalVM animal in _animalList)
                 {

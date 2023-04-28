@@ -50,7 +50,7 @@ namespace MVCPresentation.Controllers
                 ViewBag.HomeTypes = _manager.AdoptionApplicationManager.RetrieveAllHomeTypes();
                 ViewBag.HomeOwnershipTypes = _manager.AdoptionApplicationManager.RetrieveAllHomeOwnershipTypes();
                 ViewBag.AnimalId = animalId.ToString();
-                ViewBag.AnimalName = _manager.AnimalManager.RetriveAnimalAdoptableProfile((int)animalId).AnimalName;
+                ViewBag.AnimalName = _manager.AnimalManager.RetrieveAnimalAdoptableProfile((int)animalId).AnimalName;
                 if(user != null)
                 {
                     ViewBag.UserId = user.UsersId;
@@ -134,7 +134,7 @@ namespace MVCPresentation.Controllers
         /// Controller method for /Animals/Adoptable to view a list of adoptable animals
         /// </summary>
         /// 
-        /// /// <remarks>
+        /// <remarks>
         /// Andrew Cromwell
         /// Updated 2023/04/20
         /// 
@@ -316,7 +316,14 @@ namespace MVCPresentation.Controllers
             ViewBag.Tab = "Adopt";
             return View();
         }
-                
+
+        /// <summary>
+        /// Author: Hoang Chu
+        /// 04/27/2023
+        /// 
+        /// </summary>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult AdoptableAnimal(int? animalId)
         {
@@ -333,7 +340,7 @@ namespace MVCPresentation.Controllers
                 }
                 else
                 {
-                    animal = _manager.AnimalManager.RetriveAnimalAdoptableProfile((int)animalId);
+                    animal = _manager.AnimalManager.RetrieveAnimalAdoptableProfile((int)animalId);
                     animalNote = _manager.AnimalUpdatesManager.RetrieveAnimalUpdatesByAnimal((int)animalId);
                     ViewBag.AnimalNote = animalNote;
                     animalImages = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId((int)animalId);

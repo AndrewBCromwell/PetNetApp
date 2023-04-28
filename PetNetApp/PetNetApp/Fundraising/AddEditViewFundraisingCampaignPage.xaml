@@ -28,7 +28,7 @@
             <Label Content="View Fundraising Campaign" Grid.Row="0" Grid.ColumnSpan="2" FontSize="25" VerticalAlignment="Center" Margin="12 0" x:Name="lblHeader"/>
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="12 0">
                 <Label Content="TITLE"/>
-                <Label Content="* Required (3-50 Characters)" Name="lblTitleError" Foreground="#b22b29" Margin="10 0 0 0" Visibility="Collapsed"/>
+                <Label Content="* Required (5-50 Characters)" Name="lblTitleError" Foreground="#b22b29" Margin="10 0 0 0" Visibility="Collapsed"/>
             </StackPanel>
             <TextBox x:Name="tbTitle" Grid.Row="2" Grid.ColumnSpan="2" Margin="10 0" Height="40" MaxLength="50" Text="{Binding FundraisingCampaign.Title, Mode=TwoWay}"/>
             <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="12 0">

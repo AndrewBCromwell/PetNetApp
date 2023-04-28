@@ -71,6 +71,7 @@
                     <Button.ContextMenu>
                         <ContextMenu>
                             <MenuItem Name="menuView" Click="menuView_Click" Header="View"/>
+                            <MenuItem Name="menuVolunteer" Header="Volunteer" Click="menuVolunteer_Click" />
                             <MenuItem Name="menuEdit" Click="menuEdit_Click" Header="Edit"/>
                             <MenuItem Name="menuUpdate" Click="menuUpdate_Click" Header="Update"/>
                             <MenuItem Name="menuDelete" Click="menuDelete_Click" Header="Delete"/>

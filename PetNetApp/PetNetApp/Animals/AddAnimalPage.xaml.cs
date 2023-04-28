@@ -9,7 +9,6 @@
 /// Andrew Schneider
 /// Updated: 2023/02/22
 /// </remarks>
-/// 
 
 using System;
 using System.Collections.Generic;
@@ -65,7 +64,10 @@ namespace WpfPresentation.Animals
         /// <summary>
         /// Andrew Schneider
         /// Created: 2023/02/01
+        /// 
+        /// Page Loaded event method. Sets certain values and calls populateComboBoxes().
         /// </summary>
+        /// <remarks>
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -73,7 +75,7 @@ namespace WpfPresentation.Animals
         {
             dpReceivedDate.SelectedDate = DateTime.Today;
             dpReceivedDate.IsEnabled = false;
-            populateComboBoxes();
+            PopulateComboBoxes();
             wpAnimalImages.Children.Clear();
         }
 
@@ -81,12 +83,10 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/02
         /// 
-        /// Helper method for populating the combo boxes with all
-        /// the available data that can be selected when editing
-        /// the animal profile record;
-        /// The _yesNo list is used to present the user with human
-        /// readable Yes/No options that can be coverted to booleans
-        /// in the background
+        /// Helper method for populating the combo boxes with all the available data that can be
+        /// selected when editing the animal profile record. The _yesNo list is used to present
+        /// the user with human readable Yes/No options that can be coverted to booleans in the
+        /// background.
         /// </summary>
         ///
         /// <remarks>
@@ -94,20 +94,29 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        private void populateComboBoxes()
+        /// <exception cref="Exception">Fails to retrieve data to fill combo boxes</exception>
+        private void PopulateComboBoxes()
         {
-            _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
-            _types = _manager.AnimalManager.RetrieveAllAnimalTypes();
-            cmbAnimalTypeId.ItemsSource = _types;
+            try
+            {
+                _breeds = _manager.AnimalManager.RetrieveAllAnimalBreeds();
+                _types = _manager.AnimalManager.RetrieveAllAnimalTypes();
+                cmbAnimalTypeId.ItemsSource = _types;
 
-            _genders = _manager.AnimalManager.RetrieveAllAnimalGenders();
-            cmbAnimalGender.ItemsSource = _genders;
-            _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
-            cmbAnimalStatusId.ItemsSource = _statuses;
-            _kennels = _manager.KennelManager.RetrieveAllEmptyKennels(_manager.User.ShelterId.Value);
-            cmbAggressive.ItemsSource = _yesNo;
-            cmbChildFriendly.ItemsSource = _yesNo;
-            cmbNeuterStatus.ItemsSource = _yesNo;
+                _genders = _manager.AnimalManager.RetrieveAllAnimalGenders();
+                cmbAnimalGender.ItemsSource = _genders;
+                _statuses = _manager.AnimalManager.RetrieveAllAnimalStatuses();
+                cmbAnimalStatusId.ItemsSource = _statuses;
+                _kennels = _manager.KennelManager.RetrieveAllEmptyKennels(_manager.User.ShelterId.Value);
+                cmbAggressive.ItemsSource = _yesNo;
+                cmbChildFriendly.ItemsSource = _yesNo;
+                cmbNeuterStatus.ItemsSource = _yesNo;
+            }
+            catch (Exception ex)
+            {
+                PromptWindow.ShowPrompt("Error", "An error occured populating combo boxes\n" + ex, ButtonMode.Ok);
+                NavigationService.Navigate(WpfPresentation.Animals.AnimalListPage.GetAnimalListPage(MasterManager.GetMasterManager()));
+            }
         }
 
         /// <summary>
@@ -123,6 +132,8 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (btnSave.Content.ToString() == "Edit")
@@ -236,7 +247,7 @@ namespace WpfPresentation.Animals
                         try
                         {
                             _manager.AnimalManager.AddAnimal(_newAnimal);
-                            addAnimalToKennel();
+                            AddAnimalToKennel();
                             SetEditMode();
                         }
                         catch (Exception ex)
@@ -262,7 +273,8 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        private void addAnimalToKennel()
+        /// <exception cref="Exception">Insert animal into kennel fails</exception>
+        private void AddAnimalToKennel()
         {
             if (!(cmbKennelName.SelectedItem == null || cmbKennelName.SelectedItem.ToString() == ""))
             {
@@ -297,6 +309,8 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             var result = PromptWindow.ShowPrompt("Discard Changes", "Are you sure you want to cancel?\n" +
@@ -321,6 +335,8 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbAnimalType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cmbAnimalBreedId.ItemsSource = _breeds[cmbAnimalTypeId.SelectedItem.ToString()];
@@ -334,10 +350,8 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/22
         /// 
-        /// Helper method that links the Aggressive combo box with
-        /// the Aggressive Description textbox, so that a description
-        /// can only be entered if "Yes" has been selected in the combo
-        /// box.
+        /// Helper method that links the Aggressive combo box with the Aggressive Description textbox,
+        /// so that a description can only be entered if "Yes" has been selected in the combo box.
         /// </summary>
         ///
         /// <remarks>
@@ -345,6 +359,8 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbAggressive_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbAggressive.SelectedItem.ToString() == "Yes")
@@ -365,12 +381,10 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/28
         /// 
-        /// Helper method for setting the page to "Edit" mode -
-        /// this is the mode after the "Save" button has been
-        /// clicked to save the initial record and return an
-        /// animal Id and the user is ready to add images. We
-        /// have to get an Id for the new animal before we can
-        /// save images to the record
+        /// Helper method for setting the page to "Edit" mode - this is the mode after the "Save"
+        /// button has been clicked to save the initial record and return an animal Id and the user
+        /// is ready to add images. We have to get an Id for the new animal before we can save images
+        /// to the record.
         /// </summary>
         ///
         /// <remarks>
@@ -401,11 +415,9 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/28
         /// 
-        /// Click event method for the "Add Images" button.
-        /// Checks to see if page has been saved (to return
-        /// an animal Id) and then creates an instance of
-        /// UploadAdditionalImageWindow where the user can
-        /// add images.
+        /// Click event method for the "Add Images" button. Checks to see if page has been saved
+        /// (to return an animal Id) and then creates an instance of UploadAdditionalImageWindow
+        /// where the user can add images.
         /// </summary>
         ///
         /// <remarks>
@@ -413,6 +425,8 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddImages_Click(object sender, RoutedEventArgs e)
         {
             if (btnSave.Content.ToString() == "Save")
@@ -424,7 +438,7 @@ namespace WpfPresentation.Animals
                 var uploadAdditionalFileWindow = new WpfPresentation.Animals.UploadAdditionalImageWindow(_newAnimal, _manager);
                 uploadAdditionalFileWindow.Owner = Window.GetWindow(this);
                 uploadAdditionalFileWindow.ShowDialog();
-                populateImages();
+                PopulateImages();
             }
         }
 
@@ -432,9 +446,8 @@ namespace WpfPresentation.Animals
         /// Andrew Schneider
         /// Created: 2023/02/27
         /// 
-        /// Helper method to display images that have been
-        /// added to the animal profiel record using
-        /// UploadAdditionalImageWindow.
+        /// Helper method to display images that have been added to the animal
+        /// profile record using UploadAdditionalImageWindow.
         /// </summary>
         ///
         /// <remarks>
@@ -442,7 +455,8 @@ namespace WpfPresentation.Animals
         /// Updated: yyyy/mm/dd 
         /// example: Fixed a problem when user inputs bad data
         /// </remarks>
-        private void populateImages()
+        /// <exception cref="Exception">Fails to retrieve animal images</exception>
+        private void PopulateImages()
         {
             if (_imagesList == null || _imagesList.Count == 0)
             {
@@ -450,21 +464,20 @@ namespace WpfPresentation.Animals
                 {
                     _imagesList = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(_newAnimal.AnimalId);
 
+                    foreach (var image in _imagesList)
+                    {
+                        Image viewableImage = new Image();
+                        viewableImage.Margin = new Thickness(10, 0, 10, 0);
+                        viewableImage.Stretch = Stretch.Uniform;
+                        viewableImage.StretchDirection = StretchDirection.Both;
+                        viewableImage.Source = _manager.ImagesManager.RetrieveImageByImages(image);
+                        wpAnimalImages.Children.Add(viewableImage);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.InnerException.Message);
+                    PromptWindow.ShowPrompt("Error", ex.Message + "\n\n" + ex.Message);
                 }
-            }
-
-            foreach (var image in _imagesList)
-            {
-                Image viewableImage = new Image();
-                viewableImage.Margin = new Thickness(10, 0, 10, 0);
-                viewableImage.Stretch = Stretch.Uniform;
-                viewableImage.StretchDirection = StretchDirection.Both;
-                viewableImage.Source = _manager.ImagesManager.RetrieveImageByImages(image);
-                wpAnimalImages.Children.Add(viewableImage);
             }
         }
     }

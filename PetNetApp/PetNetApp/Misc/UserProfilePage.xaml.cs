@@ -47,7 +47,7 @@ namespace WpfPresentation.Misc
         {
             _user = user;
             InitializeComponent();
-            _profileTabButtons = new Button[] { btnPendingAdoptionApplications, btnFosterApplications};
+            _profileTabButtons = new Button[] { btnPendingAdoptionApplications, btnFosterApplications, btnUserInformation};
         }
 
         /// <summary>
@@ -209,6 +209,8 @@ namespace WpfPresentation.Misc
                 _fosterApplicationList = _manager.FosterApplicationManager.RetrieveAllFosterApplicationsByUsersId(userId);
                 if (_fosterApplicationList.Count > 0)
                 {
+                    scrTabBox.Visibility = Visibility.Visible;
+                    spTabBox.Visibility = Visibility.Visible;
                     foreach (FosterApplicationVM application in _fosterApplicationList)
                     {
                         GetFosterApplicantUC(application);
@@ -240,7 +242,7 @@ namespace WpfPresentation.Misc
             AnimalVM animal;
             try
             {
-                animal = _manager.AnimalManager.RetriveAnimalAdoptableProfile(application.AnimalId);
+                animal = _manager.AnimalManager.RetrieveAnimalAdoptableProfile(application.AnimalId);
                 ApplicantUC applicantUC = new ApplicantUC(applicant, application, animal);
 
                 applicantUC.lblUsersAccountName.Content = animal.AnimalName;
@@ -353,6 +355,12 @@ namespace WpfPresentation.Misc
             _adoptionApplicationList = null;
             _fosterApplicationList = null;
             lblNoApplications.Visibility = Visibility.Hidden;
+        }
+
+        private void btnUserInformation_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeSelectedButton(btnUserInformation);
+            // logic here for user information page(s)
         }
     }
 }
