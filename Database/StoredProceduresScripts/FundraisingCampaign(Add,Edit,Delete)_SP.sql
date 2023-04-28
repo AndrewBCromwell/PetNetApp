@@ -117,7 +117,8 @@ AS
 				[FamilyName], [Email], [Phone], [Address],
 				[AddressTwo], [Zipcode], [ContactType]
 		FROM 	[dbo].[InstitutionalEntity]
-		WHERE	[InstitutionalEntity].[ContactType] = "Sponsor"
+		WHERE	[InstitutionalEntity].[ContactType] = 'Sponsor'
+		ORDER BY [CompanyName]
 	END
 GO
 

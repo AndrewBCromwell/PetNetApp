@@ -9,6 +9,7 @@ AS
 		[Email], [Phone], [Address], [AddressTwo], [Zipcode], [ContactType]
 		FROM [InstitutionalEntity]
 		WHERE [ContactType] = 'Host'
+		ORDER BY [CompanyName]
 	END
 GO
 
@@ -21,6 +22,7 @@ AS
 		[Email], [Phone], [Address], [AddressTwo], [Zipcode], [ContactType]
 		FROM [InstitutionalEntity]
 		WHERE [ContactType] = 'Contact'
+		ORDER BY [CompanyName]
 	END
 GO
 
