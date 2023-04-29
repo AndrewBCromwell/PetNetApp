@@ -200,7 +200,7 @@ namespace WpfPresentation.Misc
                 if(_manager.UsersManager.AddUser(_user, password))
                 {
                     PromptWindow.ShowPrompt("Success","Account has been created! Please log in using your new credentials.");
-                    NavigationService.Navigate(new LogInPage());
+                    NavigationService.Navigate(LogInPage.GetLogInPage());
                    
                 }
             } 
@@ -246,7 +246,7 @@ namespace WpfPresentation.Misc
                 txtGivenName.Clear();
                 txtZipCode.Clear();
                 txtPhone.Clear();
-                NavigationService.Navigate(new LogInPage());
+                NavigationService.Navigate(LogInPage.GetLogInPage());
 
             }
             else

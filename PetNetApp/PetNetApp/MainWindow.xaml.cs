@@ -121,7 +121,7 @@ namespace PetNetApp
             }
             else
             {
-                frameMain.Navigate(UserProfilePage.GetUserProfilePage(this, _manager.User));
+                frameMain.Navigate(UserProfilePage.GetUserProfilePage(_manager.User));
             }
         }
 

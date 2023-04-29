@@ -154,7 +154,7 @@ namespace WpfPresentation.UserControls
                 var myWindow = Window.GetWindow(this);
                 myWindow.Close();
                 MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-                mainWindow.frameMain.Navigate(new WpfPresentation.Misc.UserProfilePage(userVM));
+                mainWindow.frameMain.Navigate(Misc.UserProfilePage.GetUserProfilePage(userVM));
 
             }
             catch (Exception up)

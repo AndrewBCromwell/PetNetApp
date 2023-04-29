@@ -22,13 +22,13 @@ using LogicLayer;
 using DataObjects;
 using PetNetApp;
 using WpfPresentation.UserControls;
+using WpfPresentation.Community;
 
 namespace WpfPresentation.Misc
 {
     public partial class UserProfilePage : Page
     {
         private static UserProfilePage _existingProfilePage = null;
-        private MainWindow _mainWindow = null;
         private UsersVM _user;
         private MasterManager _manager = MasterManager.GetMasterManager();
         private Button[] _profileTabButtons;
@@ -43,11 +43,10 @@ namespace WpfPresentation.Misc
         /// Initializes the _user and _profileTabButtons.
         /// </summary>
         /// <param name="user"></param>
-        public UserProfilePage(UsersVM user)
+        public UserProfilePage()
         {
-            _user = user;
             InitializeComponent();
-            _profileTabButtons = new Button[] { btnPendingAdoptionApplications, btnFosterApplications, btnUserInformation};
+            _profileTabButtons = new Button[] { btnPendingAdoptionApplications, btnFosterApplications};
         }
 
         /// <summary>
@@ -63,13 +62,14 @@ namespace WpfPresentation.Misc
         /// <param name="mainWindow"></param>
         /// <param name="user"></param>
         /// <returns></returns>
-        public static UserProfilePage GetUserProfilePage(MainWindow mainWindow, UsersVM user)
+        public static UserProfilePage GetUserProfilePage(UsersVM user)
         {
             if (_existingProfilePage == null)
             {
-                _existingProfilePage = new UserProfilePage(user);
+                _existingProfilePage = new UserProfilePage();
             }
-            _existingProfilePage._mainWindow = mainWindow;
+            _existingProfilePage._user = user;
+            _existingProfilePage.PopulateProfile();
 
             return _existingProfilePage;
         }
@@ -355,12 +355,6 @@ namespace WpfPresentation.Misc
             _adoptionApplicationList = null;
             _fosterApplicationList = null;
             lblNoApplications.Visibility = Visibility.Hidden;
-        }
-
-        private void btnUserInformation_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeSelectedButton(btnUserInformation);
-            // logic here for user information page(s)
         }
     }
 }

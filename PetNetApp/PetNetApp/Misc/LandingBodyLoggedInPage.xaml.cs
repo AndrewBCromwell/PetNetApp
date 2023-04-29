@@ -53,12 +53,12 @@ namespace WpfPresentation.Misc
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
-            // Add navigation to login screen
+            NavigationService.Navigate(LogInPage.GetLogInPage());
         }
 
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
-            // add navigation to sign up screen
+            NavigationService.Navigate(SignUp.GetSignUpPage());
         }
     }
 }

@@ -171,8 +171,10 @@ namespace WpfPresentation.Misc
 
         private void frameLandingPage_Loaded(object sender, RoutedEventArgs e)
         {
-
-            frameLandingPage.Navigate(LandingBodyLoggedInPage.GetLandingBodyLoggedInPage(_mainWindow));
+            if(_manager.User == null)
+            {
+                frameLandingPage.Navigate(LandingBodyLoggedInPage.GetLandingBodyLoggedInPage(_mainWindow));
+            }
         }
     }
 }

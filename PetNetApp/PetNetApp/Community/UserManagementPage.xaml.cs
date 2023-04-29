@@ -150,7 +150,7 @@ namespace WpfPresentation.Community
 
         private void usersProfile_MouseClick(UsersVM user)
         {
-            NavigationService.Navigate(new WpfPresentation.Misc.UserProfilePage(user));
+            NavigationService.Navigate(Misc.UserProfilePage.GetUserProfilePage(user));
         }
 
         // MenuItem Click
