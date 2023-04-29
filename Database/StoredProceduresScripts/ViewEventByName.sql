@@ -24,7 +24,7 @@ SELECT  FundraisingEvent.FundraisingEventId,
         ON  InstitutionalEntity.InstitutionalEntityId = FundraisingEventEntity.ContactId 
     JOIN FundraisingEvent
         ON FundraisingEventEntity.EventId = FundraisingEvent.FundraisingEventId
-WHERE CompanyName = @CompanyName;
+WHERE CompanyName = @CompanyName  AND ContactType = 'Sponsor';
 
 	
 	END
