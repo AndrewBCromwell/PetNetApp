@@ -38,7 +38,8 @@ namespace MVCPresentation.Controllers
             {
                 if(user.ShelterId != null)
                 {
-                    ViewBag.UserShelter = _manager.ShelterManager.RetrieveShelterVMByShelterID((int)user.ShelterId);
+                    var userShelter = _manager.ShelterManager.RetrieveShelterVMByShelterID((int)user.ShelterId);
+                    ViewBag.UserShelterName = userShelter.ShelterName;
                 }
                 else
                 {

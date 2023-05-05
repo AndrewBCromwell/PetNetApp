@@ -5,7 +5,7 @@
 
 @{
     ViewBag.Title = "Index";
-    ShelterVM shelter = (ShelterVM)ViewBag.UserShelter;
+
 }
 
 
@@ -77,8 +77,8 @@
                                 <h4>Your Shelter</h4>
                             </div>
                             <div>
-                                <p class="card-text">@shelter.ShelterName</p>
                                 <p class="card-text">@ViewBag.NoShelter</p>
+                                <p class="card-text">@ViewBag.UserShelterName</p>
                             </div>
                         </div>
 
@@ -99,7 +99,7 @@
             </div>
             <div class="col-md-4">
                 <div>
-                    @Html.ActionLink("Manage Account", "Index", "Manage", "", new { @class = "btn btn-primary btn-block m-3" })
+                    @Html.ActionLink("Manage Account", "UserDetails", "Manage", "", new { @class = "btn btn-primary btn-block m-3" })
                 </div>
                 <div>
                     @*<btn class="btn btn-primary btn-block m-3">Test</btn>*@
@@ -150,5 +150,5 @@
 
 
 
-}
+  }
 

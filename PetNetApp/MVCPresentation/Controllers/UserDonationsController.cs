@@ -46,7 +46,7 @@ namespace MVCPresentation.Controllers
                 if(user.UsersId != null)
                 {
                     donationVMs = masterManager.DonationManager.RetrieveDonationsByUserId((int)user.UsersId);
-                    ViewBag.User = masterManager.UsersManager.RetrieveUserByUsersId((int)user.UsersId);
+                    ViewBag.User = user;
                 }
                 else
                 {
