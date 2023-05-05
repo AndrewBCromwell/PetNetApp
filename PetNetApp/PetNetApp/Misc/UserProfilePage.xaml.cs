@@ -85,6 +85,7 @@ namespace WpfPresentation.Misc
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             UnselectAllButtons();
+            ClearTabBox();
             PopulateProfile();
         }
 
