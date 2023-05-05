@@ -176,19 +176,11 @@ namespace MVCPresentation.Controllers
                 try
                 {
                     imagesList = _manager.ImagesManager.RetrieveAnimalImagesByAnimalId(animal.AnimalId);
+                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/no_image.png";
                 }
                 catch
                 {
-                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/BrokenImage.png";
-                }
-
-                if(imagesList.Count == 0)
-                {
                     adoptableAnimalModel.AnimalImageSource = "/Images/Animal/no_image.png";
-                }
-                else
-                {
-                    adoptableAnimalModel.AnimalImageSource = "/Images/Animal/" + imagesList[0].ImageId + ".png";
                 }
 
                 try

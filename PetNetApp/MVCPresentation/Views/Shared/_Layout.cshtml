@@ -91,7 +91,7 @@
                                 ApplicationUserManager userManager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                                 var user = userManager.FindById(User.Identity.GetUserId());
 
-                                <p>Hello, @user.GivenName!</p>
+                                //<p>Hello, @user.GivenName!</p>
                             }
                             else
                             {
