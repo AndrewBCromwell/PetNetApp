@@ -685,8 +685,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Donations\" />
     <Folder Include="Views\Default\" />
-    <Folder Include="Views\Donate\" />
-    <Folder Include="Views\Events\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>

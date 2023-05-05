@@ -28,6 +28,7 @@ namespace MVCPresentation.Controllers
         /// Displays the users profile and the users information
         /// </summary>
         // GET: UserProfile
+        [Authorize]
         public ActionResult Index()
         {
             var dbContext = new ApplicationDbContext();
