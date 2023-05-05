@@ -103,7 +103,7 @@ namespace WpfPresentation.Fundraising
                 GetUser();
             }
             string shelterName = GetShelterName();
-            lblShelterNameMessage.Content = "Your donation " + shelterName + " was submitted";
+            lblShelterNameMessage.Content = "Your donation" + shelterName + " was submitted";
             PopulateContactInfoStackPanel();
             PopulateFinancialStackPanel();
 
@@ -215,16 +215,24 @@ namespace WpfPresentation.Fundraising
         /// <returns>Shelter name</returns>
         private string GetShelterName()
         {
-            string shelterName = "to ";
+            string shelterName = " to ";
             try
             {
-                _shelter = _manager.ShelterManager.RetrieveShelterVMByShelterID(_donationVM.DonationId);
+                _shelter = _manager.ShelterManager.RetrieveShelterVMByShelterID(_donationVM.ShelterId);
             }
             catch (Exception)
             {
                 return shelterName = "";
             }
-            return shelterName += _shelter.ShelterName;
+            
+            if(_shelter.ShelterName == null || _shelter.ShelterName == "")
+            {
+                return shelterName = "";
+            }
+            else
+            {
+                return shelterName += _shelter.ShelterName;
+            }
         }
 
         /// <summary>
