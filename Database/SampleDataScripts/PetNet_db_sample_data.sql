@@ -738,7 +738,8 @@ INSERT INTO [dbo].[UserRoles]
         ('Inspector', 100003),
         ('Admin', 100004),
         ('Volunteer', 100005),
-        ('Volunteer', 100006)
+        ('Volunteer', 100006),
+		('Manager', 100003)
         
 GO
 
@@ -948,9 +949,11 @@ print '' print '*** Creating Applicant sample data'
 GO
 INSERT INTO [dbo].[Applicant]
 		(
+		[UsersId],
 		[ApplicantGivenName],
         [ApplicantFamilyName],
         [ApplicantAddress],
+		[ApplicantAddress2],	
         [ApplicantZipCode],
         [ApplicantPhoneNumber],
         [ApplicantEmail],
@@ -961,12 +964,20 @@ INSERT INTO [dbo].[Applicant]
         [CurrentlyAcceptingAnimals]
 		)
 	VALUES
-		('Gwen', 'Arman', '101 South Park Street', 50001, 9876543211, 
-        'ga@gmail.com', 'House', 'Own', 0,0, 1),
-        ('Xander', 'Arman', '123 North Park Street', 50001, 9876543311, 
-        'xa@gmail.com', 'Apartment/Condo', 'Own', 0,0, 1),
-        ('Nicholas', 'Arman', '963 West Park Street', 50001, 9876543411, 
-        'na@gmail.com', 'Trailer', 'Own', 0,0, 1)
+		(100000, 'Mads', 'Rhea', '1234 1st St', NULL, 50001, 123456789, 'email@mail.com',
+		'House', 'Own', 0, 0, 1),
+		(100001, 'Stephen', 'Jaurigue', '1234 2nd St', NULL, 50001, 123456789, 'email@mail.com',
+		'House', 'Own', 0, 0, 1),
+		(100002, 'Molly', 'Meister', '1234 1st St', NULL, 50001, 123456789, 'email@mail.com',
+		'House', 'Own', 0, 0, 1),
+		(100003, 'Tyler', 'Hand', '789 Kirkwood Pkwy', 'Apt 240', 52240, 3196666666,
+		'tylerhand@company.com', 'Trailer', 'Own', 1, 0, 1),
+		(100004, 'Barry', 'Mikulas', '2 Kirkwood Pkwy', 'Apt 4', 52405, 3195555555,
+		'barrymikulas@company.com', 'Apartment/Condo', 'Rent', 0, 0, 1),
+		(100005, 'Chris', 'Dreismeier', '4150 Riverview Rd', 'Apt 16', 51101, 3192948541,
+		'chrisdreismeier@company.com', 'House', 'Rent', 0, 2, 1),
+		(100006, 'Asa', 'Armstrong', '1234 Chestnut Rd', NULL, 52405, 3191234321,
+		'asaarmstrong@company.com', 'House', 'Own', 2, 0, 1)
 GO
 
 print '' print '*** Creating FosterApplication sample data'
@@ -1032,10 +1043,10 @@ GO
 INSERT INTO [dbo].[MedicalRecord]
 ([AnimalId],[MedicalNotes],[MedProcedure],[Test],[Vaccination],[Prescription],[Images],[QuarantineStatus],[Diagnosis])
 VALUES
-(100000,"Routine Checkup",0,1,0,0,0,0,"Alls well that ends well"),
-(100000,"Routine Checkup",0,1,0,0,0,0,"Ditto"),
-(100001,"Alpacha my bags",0,1,0,0,0,0,"and go"),
-(100000,"Slight sickness",0,1,0,0,0,1,"Covid 19"),
+(100000,"Routine Checkup",0,1,0,0,0,0,"Healthy"),
+(100000,"Routine Checkup",0,1,0,0,0,0,"Healthy"),
+(100001,"Wellness Checkup",0,1,0,0,0,0,"Scabies"),
+(100000,"Wellness Checkup",0,1,0,0,0,1,"Slight Cough"),
 (100002,"Coughing Fireballs",0,1,0,0,0,0,"Normal Dragon Stuff"),
 (100002,"Stopped Coughing Fireballs",0,1,0,0,0,0,"Okay now we worry"),
 (100002,"Leg surgery",1,0,0,0,0,0,"They can walk again!"),
@@ -1306,10 +1317,16 @@ INSERT INTO [dbo].[AdoptionApplication]
 		[AdoptionApplicationDate]
 		)
 	VALUES
-		(100000, 100000, 'Pending', DEFAULT),
-        (100001, 100001, 'Pending', DEFAULT),
-        (100002, 100002, 'Approved', DEFAULT)
+		(100000, 100000, 'Approved', DEFAULT),
+		(100000, 100003, 'Pending', DEFAULT),
+		(100001, 100003, 'Pending', DEFAULT),
+        (100002, 100002, 'Approved', DEFAULT),
+		(100003, 100010, 'Pending', DEFAULT),
+		(100005, 100013, 'Pending', DEFAULT),
+		(100005, 100008, 'Pending', DEFAULT),
+		(100006, 100011, 'Pending', DEFAULT)
 GO
+
 
 print '' print '*** creating InstitutionalEntity sample data'
 GO 
@@ -1503,8 +1520,7 @@ INSERT INTO [dbo].[AdoptionApplicationResponse]
 		)
 	VALUES
 		(100000, 100000, 1, 'It went well'),
-        (100001, 100001, 1, 'It went well'),
-        (100002, 100002, 1, 'It went well')
+        (100002, 100001, 1, 'Nice big yard.')
 GO
 
 print '' print '*** creating FundraiserVolunteerUser sample data'
