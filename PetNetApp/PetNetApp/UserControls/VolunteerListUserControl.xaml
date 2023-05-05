@@ -67,7 +67,7 @@
                     </Button.Style>
                     <Button.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Name="menuView" Header="View" Click="menuView_Click"/>
+                            <!--<MenuItem Name="menuView" Header="View" Click="menuView_Click"/> -->
                             <MenuItem Name="menuRemove" Header="Remove" Click="menuRemove_Click"/>
                         </ContextMenu>
                     </Button.ContextMenu>
